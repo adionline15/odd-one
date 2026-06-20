@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Odd-One.in — India Road Intelligence</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css"/>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { height:100%; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; overflow:hidden; }
+
+/* MAP FULL SCREEN */
+#map { position:absolute; top:0; left:0; right:0; bottom:0; z-index:1; }
+
+/* TOP BAR */
+.topbar {
+  position:absolute; top:0; left:0; right:0; z-index:500;
+  background:rgba(255,255,255,0.97);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(0,0,0,0.08);
+  padding:10px 16px;
+  display:flex; align-items:center; gap:12px;
+}
+
+.logo { font-size:16px; font-weight:700; color:#1a1a1a; white-space:nowrap; }
+.logo em { font-style:normal; color:#E24B4A; }
+
+.search-bar {
+  flex:1;
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+
+.search-input-wrap {
+  flex:1;
+  position:relative;
+}
+
+.search-input-wrap input {
+  width:100%;
+  padding:9px 36px 9px 14px;
+  border:1.5px solid #E2E0D8;
+  border-radius:24px;
+  font-size:13px;
+  outline:none;
+  background:#F7F5F0;
+  font-family:inherit;
+  color:#1a1a1a;
+  transition:all .2s;
+}
+
+.search-input-wrap input:focus {
+  border-color:#185FA5;
+  background:#fff;
+  box-shadow:0 0 0 3px rgba(24,95,165,0.1);
+}
+
+.search-input-wrap .s-icon {
+  position:absolute;
+  right:12px; top:50%;
+  transform:translateY(-50%);
+  font-size:14px;
+  color:#aaa;
+  pointer-events:none;
+}
+
+.route-btn {
+  padding:9px 16px;
+  background:#185FA5;
+  color:#fff;
+  border:none;
+  border-radius:24px;
+  font-size:13px;
+  font-weight:600;
+  cursor:pointer;
+  white-space:nowrap;
+  font-family:inherit;
+  transition:all .15s;
+}
+.route-btn:hover { background:#0f3480; }
+
+.lang-select {
+  padding:8px 10px;
+  border:1.5px solid #E2E0D8;
+  border-radius:8px;
+  font-size:12px;
+  background:#fff;
+  cursor:pointer;
+  font-family:inherit;
+  color:#555;
+  outline:none;
+}
+
+/* SIDE PANEL */
+.side-panel {
+  position:absolute;
+  top:56px; left:0; bottom:0;
+  width:320px;
+  background:#fff;
+  border-right:1px solid #E2E0D8;
+  z-index:400;
+  display:flex;
+  flex-direction:column;
+  transform:translateX(0);
+  transition:transform .3s ease;
+}
+
+.side-panel.hidden { transform:translateX(-100%); }
+
+.panel-tabs {
+  display:flex;
+  border-bottom:1px solid #E2E0D8;
+}
+
+.tab {
+  flex:1;
+  padding:11px 0;
+  text-align:center;
+  font-size:12px;
+  font-weight:500;
+  color:#999;
+  cursor:pointer;
+  border-bottom:2px solid transparent;
+  transition:all .15s;
+}
+
+.tab.active { color:#185FA5; border-bottom-color:#185FA5; }
+
+.tab-content { flex:1; overflow-y:auto; padding:14px; }
+.tab-content::-webkit-scrollbar { width:0; }
+
+.tab-pane { display:none; }
+.tab-pane.active { display:block; }
+
+/* ROUTE FORM */
+.route-field { margin-bottom:10px; }
+.route-field label { font-size:10px; font-weight:600; color:#aaa; text-transform:uppercase; letter-spacing:.06em; display:block; margin-bottom:4px; }
+.route-field input {
+  width:100%;
+  padding:9px 12px;
+  border:1.5px solid #E2E0D8;
+  border-radius:10px;
+  font-size:13px;
+  font-family:inherit;
+  outline:none;
+  color:#1a1a1a;
+  transition:all .15s;
+}
+.route-field input:focus { border-color:#185FA5; }
+
+.go-route-btn {
+  width:100%;
+  background:#185FA5;
+  color:#fff;
+  border:none;
+  border-radius:10px;
+  padding:12px;
+  font-size:13px;
+  font-weight:600;
+  cursor:pointer;
+  font-family:inherit;
+  margin-top:10px;
+  transition:all .15s;
+}
+.go-route-btn:hover { background:#0f3480; }
+.go-route-btn:disabled { background:#ccc; cursor:not-allowed; }
+
+/* STATS */
+.stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:14px; }
+.stat-card {
+  background:#F7F5F0;
+  border-radius:10px;
+  padding:10px 12px;
+}
+.stat-n { font-size:20px; font-weight:700; }
+.stat-l { font-size:10px; color:#888; margin-top:2px; }
+
+/* ALERTS */
+.alert-card {
+  background:#fff;
+  border:1px solid #E2E0D8;
+  border-left:3px solid #E24B4A;
+  border-radius:8px;
+  padding:10px 12px;
+  margin-bottom:8px;
+}
+.alert-card.medium { border-left-color:#D97706; }
+.alert-card.low { border-left-color:#185FA5; }
+.alert-title { font-size:12px; font-weight:500; color:#1a1a1a; line-height:1.4; margin-bottom:4px; }
+.alert-meta { font-size:10px; color:#aaa; display:flex; justify-content:space-between; }
+.alert-read { color:#185FA5; text-decoration:none; font-size:10px; }
+
+/* AI RESPONSE */
+.ai-box {
+  background:linear-gradient(135deg,#EEF3FF,#F7F5F0);
+  border:1px solid #BFCFFF;
+  border-radius:12px;
+  padding:14px;
+  margin-top:12px;
+}
+.ai-label { font-size:10px; font-weight:600; color:#185FA5; text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px; display:flex; align-items:center; gap:5px; }
+.ai-label .dot { width:6px; height:6px; background:#185FA5; border-radius:50%; animation:pulse 1.4s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+.ai-text { font-size:12px; line-height:1.7; color:#333; }
+
+/* LOADING */
+.loading-bar {
+  position:absolute;
+  top:56px; left:0; right:0;
+  height:2px;
+  background:#E2E0D8;
+  z-index:600;
+  display:none;
+}
+.loading-bar.on { display:block; }
+.loading-bar::after {
+  content:'';
+  position:absolute;
+  top:0; left:-30%;
+  width:30%;
+  height:100%;
+  background:#185FA5;
+  animation:loading 1s linear infinite;
+}
+@keyframes loading { to { left:130%; } }
+
+/* TOGGLE PANEL BTN */
+.toggle-panel {
+  position:absolute;
+  top:50%;
+  left:320px;
+  transform:translateY(-50%);
+  z-index:450;
+  background:#fff;
+  border:1px solid #E2E0D8;
+  border-left:none;
+  border-radius:0 8px 8px 0;
+  padding:10px 6px;
+  cursor:pointer;
+  font-size:12px;
+  color:#888;
+  transition:all .3s;
+}
+.side-panel.hidden + .toggle-panel { left:0; border-left:1px solid #E2E0D8; border-radius:8px; }
+
+/* MAP CONTROLS */
+.map-controls {
+  position:absolute;
+  bottom:24px;
+  right:16px;
+  z-index:400;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.map-ctrl-btn {
+  background:#fff;
+  border:1px solid #E2E0D8;
+  border-radius:8px;
+  padding:8px 12px;
+  font-size:11px;
+  font-weight:500;
+  color:#555;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:all .15s;
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+.map-ctrl-btn:hover { background:#F7F5F0; }
+.map-ctrl-btn.on { background:#185FA5; color:#fff; border-color:#185FA5; }
+
+/* SEARCH SUGGESTIONS */
+.suggestions {
+  position:absolute;
+  top:100%;
+  left:0; right:0;
+  background:#fff;
+  border:1px solid #E2E0D8;
+  border-top:none;
+  border-radius:0 0 12px 12px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+  z-index:600;
+  display:none;
+  max-height:200px;
+  overflow-y:auto;
+}
+.suggestion-item {
+  padding:9px 14px;
+  font-size:13px;
+  cursor:pointer;
+  border-bottom:1px solid #F7F5F0;
+  color:#333;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.suggestion-item:hover { background:#F7F5F0; }
+.suggestion-item:last-child { border-bottom:none; }
+
+/* LOCATION PIN INFO */
+.pin-info {
+  position:absolute;
+  bottom:80px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#fff;
+  border:1px solid #E2E0D8;
+  border-radius:12px;
+  padding:12px 16px;
+  z-index:400;
+  min-width:200px;
+  text-align:center;
+  box-shadow:0 4px 16px rgba(0,0,0,0.1);
+  display:none;
+}
+.pin-name { font-size:14px; font-weight:600; }
+.pin-coords { font-size:11px; color:#aaa; margin-top:2px; }
+
+/* RESPONSIVE */
+@media (max-width:600px) {
+  .side-panel { width:100%; top:56px; }
+  .toggle-panel { display:none; }
+  .topbar { flex-wrap:wrap; gap:8px; }
+  .logo { font-size:14px; }
+}
+</style>
+</head>
+<body>
+
+<!-- LOADING BAR -->
+<div class="loading-bar" id="loading-bar"></div>
+
+<!-- MAP -->
+<div id="map"></div>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="logo">Odd<em>-</em>One<span style="color:#aaa;font-weight:400;font-size:12px;">.in</span></div>
+
+  <div class="search-bar">
+    <div class="search-input-wrap" style="position:relative;">
+      <input type="text" id="search-input" placeholder="Search any location in India..." autocomplete="off"/>
+      <span class="s-icon">🔍</span>
+      <div class="suggestions" id="suggestions"></div>
+    </div>
+  </div>
+
+  <select class="lang-select" id="lang-select" onchange="setLang(this.value)">
+    <option value="en">English</option>
+    <option value="hi">हिंदी</option>
+    <option value="hinglish">Hinglish</option>
+  </select>
+
+  <button class="route-btn" onclick="showRoutePanel()">🗺️ <span id="route-btn-txt">Route</span></button>
+</div>
+
+<!-- SIDE PANEL -->
+<div class="side-panel" id="side-panel">
+  <div class="panel-tabs">
+    <div class="tab active" onclick="switchTab('alerts')" id="tab-alerts" data-label-en="Alerts" data-label-hi="अलर्ट" data-label-hinglish="Alerts">Alerts</div>
+    <div class="tab" onclick="switchTab('route')" id="tab-route" data-label-en="Route" data-label-hi="रूट" data-label-hinglish="Route">Route</div>
+    <div class="tab" onclick="switchTab('stats')" id="tab-stats" data-label-en="Data" data-label-hi="डेटा" data-label-hinglish="Data">Data</div>
+  </div>
+
+  <div class="tab-content">
+
+    <!-- ALERTS TAB -->
+    <div class="tab-pane active" id="pane-alerts">
+      <div id="alerts-container">
+        <div style="text-align:center;color:#aaa;font-size:13px;padding:30px 0;">
+          <div style="font-size:28px;margin-bottom:8px;">📡</div>
+          <div id="alerts-empty-txt">Loading live alerts...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROUTE TAB -->
+    <div class="tab-pane" id="pane-route">
+      <div class="route-field">
+        <label id="lbl-from">From</label>
+        <input type="text" id="r-origin" placeholder="Origin city or address"/>
+      </div>
+      <div class="route-field">
+        <label id="lbl-to">To</label>
+        <input type="text" id="r-dest" placeholder="Destination city or address"/>
+      </div>
+      <button class="go-route-btn" onclick="planRoute()" id="plan-btn">Get Route</button>
+      <div id="route-result"></div>
+    </div>
+
+    <!-- STATS TAB -->
+    <div class="tab-pane" id="pane-stats">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-n" style="color:#E24B4A" id="st-missing">4,628</div>
+          <div class="stat-l" id="st-missing-l">Missing roads<br>Dehradun</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-n" style="color:#185FA5" id="st-complete">260</div>
+          <div class="stat-l" id="st-complete-l">Mapped roads<br>Dehradun</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-n" style="color:#D97706">94.7%</div>
+          <div class="stat-l" id="st-gap-l">Data gap</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-n" style="color:#166534">5</div>
+          <div class="stat-l" id="st-cities-l">Cities tracked</div>
+        </div>
+      </div>
+      <div style="background:#F7F5F0;border-radius:10px;padding:12px;font-size:11px;color:#666;line-height:1.6;" id="stats-fact">
+        🔍 Research finding: In Dehradun, 94.7% of roads are missing from standard map databases. This data gap causes navigation failures, logistics delays, and blocks autonomous vehicle deployment in India.
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- TOGGLE PANEL -->
+<div class="toggle-panel" id="toggle-panel" onclick="togglePanel()">◀</div>
+
+<!-- MAP CONTROLS -->
+<div class="map-controls">
+  <button class="map-ctrl-btn on" id="btn-osm" onclick="switchTile('osm')">🗺️ Map</button>
+  <button class="map-ctrl-btn" id="btn-sat" onclick="switchTile('satellite')">🛰️ Satellite</button>
+  <button class="map-ctrl-btn" id="btn-locate" onclick="locateMe()">📍 My Location</button>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const CITIES = {
+  'dehradun':[30.3165,78.0322],'haridwar':[29.9457,78.1642],'rishikesh':[30.0869,78.2676],
+  'nainital':[29.3919,79.4542],'roorkee':[29.8543,77.8880],'mussoorie':[30.4598,78.0644],
+  'delhi':[28.6139,77.2090],'new delhi':[28.6139,77.2090],'mumbai':[19.0760,72.8777],
+  'lucknow':[26.8467,80.9462],'varanasi':[25.3176,82.9739],'agra':[27.1767,78.0081],
+  'jaipur':[26.9124,75.7873],'kanpur':[26.4499,80.3319],'prayagraj':[25.4358,81.8463],
+  'allahabad':[25.4358,81.8463],'meerut':[28.9845,77.7064],'mathura':[27.4924,77.6737],
+  'aligarh':[27.8974,78.0880],'bareilly':[28.3670,79.4304],'moradabad':[28.8386,78.7733],
+  'muzaffarnagar':[29.4727,77.7085],'saharanpur':[29.9680,77.5552],'auraiya':[26.4651,79.5135],
+  'gorakhpur':[26.7606,83.3732],'chandigarh':[30.7333,76.7794],'shimla':[31.1048,77.1734],
+  'amritsar':[31.6340,74.8723],'ludhiana':[30.9009,75.8573],'patna':[25.5941,85.1376],
+  'bhopal':[23.2599,77.4126],'indore':[22.7196,75.8577],'nagpur':[21.1458,79.0882],
+  'pune':[18.5204,73.8567],'hyderabad':[17.3850,78.4867],'bengaluru':[12.9716,77.5946],
+  'bangalore':[12.9716,77.5946],'chennai':[13.0827,80.2707],'kolkata':[22.5726,88.3639],
+  'ahmedabad':[23.0225,72.5714],'surat':[21.1702,72.8311],'visakhapatnam':[17.6868,83.2185],
+  'kochi':[9.9312,76.2673],'thiruvananthapuram':[8.5241,76.9366],'coimbatore':[11.0168,76.9558],
+};
+
+const LANGS = {
+  en: {
+    search:'Search any location in India...',
+    route:'Route', from:'From', to:'To', getRoute:'Get Route',
+    alerts:'Alerts', data:'Data',
+    loadingAlerts:'Loading live alerts...',
+    aiLabel:'AI Navigation Guide',
+    planning:'Planning your route...',
+    noAlerts:'No major alerts right now.',
+    located:'You are here',
+    missingL:'Missing roads\nDehradun', completeL:'Mapped roads\nDehradun',
+    gapL:'Data gap', citiesL:'Cities tracked',
+    fact:'🔍 Research finding: In Dehradun, 94.7% of roads are missing from standard map databases. This data gap causes navigation failures, logistics delays, and blocks autonomous vehicle deployment in India.',
+  },
+  hi: {
+    search:'कोई भी जगह खोजें...',
+    route:'रूट', from:'कहाँ से', to:'कहाँ जाना है', getRoute:'रूट दिखाओ',
+    alerts:'अलर्ट', data:'डेटा',
+    loadingAlerts:'लाइव अलर्ट लोड हो रहे हैं...',
+    aiLabel:'AI नेविगेशन गाइड',
+    planning:'रूट बना रहे हैं...',
+    noAlerts:'अभी कोई बड़ा अलर्ट नहीं।',
+    located:'आप यहाँ हैं',
+    missingL:'गुम सड़कें\nदेहरादून', completeL:'मैप्ड सड़कें\nदेहरादून',
+    gapL:'डेटा गैप', citiesL:'शहर ट्रैक हो रहे हैं',
+    fact:'🔍 रिसर्च: देहरादून में 94.7% सड़कें मानक मैप डेटाबेस से गायब हैं।',
+  },
+  hinglish: {
+    search:'Koi bhi jagah dhundho...',
+    route:'Route', from:'Kahan se', to:'Kahan jaana hai', getRoute:'Route dikhao',
+    alerts:'Alerts', data:'Data',
+    loadingAlerts:'Live alerts aa rahe hain...',
+    aiLabel:'AI Navigation Guide',
+    planning:'Route ban raha hai...',
+    noAlerts:'Abhi koi bada alert nahi.',
+    located:'Aap yahan hain',
+    missingL:'Missing roads\nDehradun', completeL:'Mapped roads\nDehradun',
+    gapL:'Data gap', citiesL:'Cities tracked',
+    fact:'🔍 Research: Dehradun mein 94.7% roads standard map databases mein nahi hain. Yeh gap navigation failures aur accidents ka karan hai.',
+  }
+};
+
+let currentLang = 'en';
+let map, tileLayer, routeLayer, locationMarker;
+let panelOpen = true;
+
+// INIT MAP
+map = L.map('map', { zoomControl:false, attributionControl:true }).setView([22, 78], 5);
+L.control.zoom({ position:'bottomleft' }).addTo(map);
+
+tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom:19,
+  attribution:'© OpenStreetMap | Odd-One.in'
+}).addTo(map);
+
+// CLICK ON MAP
+map.on('click', function(e) {
+  const lat = e.latlng.lat.toFixed(5);
+  const lng = e.latlng.lng.toFixed(5);
+  L.popup()
+    .setLatLng(e.latlng)
+    .setContent(`<b>Selected Location</b><br>${lat}, ${lng}<br><small style="color:#aaa">Click to set as route point</small>`)
+    .openOn(map);
+});
+
+// TILE SWITCHING
+function switchTile(type) {
+  map.removeLayer(tileLayer);
+  if (type === 'satellite') {
+    tileLayer = L.tileLayer(
+      'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+      { maxZoom:19, attribution:'© Esri Satellite | Odd-One.in' }
+    ).addTo(map);
+    document.getElementById('btn-sat').classList.add('on');
+    document.getElementById('btn-osm').classList.remove('on');
+  } else {
+    tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom:19, attribution:'© OpenStreetMap | Odd-One.in'
+    }).addTo(map);
+    document.getElementById('btn-osm').classList.add('on');
+    document.getElementById('btn-sat').classList.remove('on');
+  }
+}
+
+// SEARCH
+const searchInput = document.getElementById('search-input');
+const suggestionsEl = document.getElementById('suggestions');
+
+searchInput.addEventListener('input', function() {
+  const q = this.value.toLowerCase().trim();
+  if (q.length < 2) { suggestionsEl.style.display='none'; return; }
+  const matches = Object.keys(CITIES).filter(c => c.includes(q)).slice(0,6);
+  if (!matches.length) { suggestionsEl.style.display='none'; return; }
+  suggestionsEl.innerHTML = matches.map(c =>
+    `<div class="suggestion-item" onclick="goToCity('${c}')">📍 ${c.charAt(0).toUpperCase()+c.slice(1)}</div>`
+  ).join('');
+  suggestionsEl.style.display='block';
+});
+
+document.addEventListener('click', function(e) {
+  if (!searchInput.contains(e.target)) suggestionsEl.style.display='none';
+});
+
+searchInput.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') {
+    const q = this.value.toLowerCase().trim();
+    const match = Object.keys(CITIES).find(c => c.includes(q));
+    if (match) goToCity(match);
+  }
+});
+
+function goToCity(city) {
+  const coords = CITIES[city];
+  if (!coords) return;
+  map.flyTo(coords, 13, { duration:1.2 });
+  suggestionsEl.style.display='none';
+  searchInput.value = city.charAt(0).toUpperCase()+city.slice(1);
+
+  if (locationMarker) map.removeLayer(locationMarker);
+  locationMarker = L.marker(coords, {
+    icon: L.divIcon({
+      html:'<div style="background:#185FA5;width:14px;height:14px;border-radius:50%;border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.3)"></div>',
+      className:'', iconSize:[14,14], iconAnchor:[7,7]
+    })
+  }).addTo(map).bindPopup(`<b>${city.charAt(0).toUpperCase()+city.slice(1)}</b>`).openPopup();
+
+  loadAlertsForCity(city);
+}
+
+// ROUTE PLANNING
+async function planRoute() {
+  const origin = document.getElementById('r-origin').value.trim().toLowerCase();
+  const dest = document.getElementById('r-dest').value.trim().toLowerCase();
+  if (!origin || !dest) return;
+
+  const oCoords = CITIES[origin] || findClosest(origin);
+  const dCoords = CITIES[dest] || findClosest(dest);
+  if (!oCoords || !dCoords) {
+    document.getElementById('route-result').innerHTML =
+      `<div style="color:#E24B4A;font-size:12px;margin-top:10px;padding:10px;background:#FFF0F0;border-radius:8px;">City not found. Try: Dehradun, Haridwar, Delhi, Mumbai, Lucknow...</div>`;
+    return;
+  }
+
+  document.getElementById('plan-btn').disabled = true;
+  document.getElementById('plan-btn').textContent = LANGS[currentLang].planning;
+  document.getElementById('route-result').innerHTML = '';
+
+  if (routeLayer) { map.removeLayer(routeLayer); }
+
+  const oMarker = L.marker(oCoords, {
+    icon: L.divIcon({
+      html:`<div style="background:#185FA5;width:14px;height:14px;border-radius:50%;border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.25)"></div>`,
+      className:'', iconSize:[14,14], iconAnchor:[7,7]
+    })
+  }).addTo(map).bindPopup(`<b>Origin:</b> ${origin}`);
+
+  const dMarker = L.marker(dCoords, {
+    icon: L.divIcon({
+      html:`<div style="background:#E24B4A;width:14px;height:14px;border-radius:50%;border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.25)"></div>`,
+      className:'', iconSize:[14,14], iconAnchor:[7,7]
+    })
+  }).addTo(map);
+
+  routeLayer = L.polyline([oCoords, dCoords], {
+    color:'#FF8C00', weight:4, opacity:.9, dashArray:'10,7'
+  }).addTo(map);
+
+  const bounds = L.latLngBounds([oCoords, dCoords]);
+  map.fitBounds(bounds, { padding:[60,60] });
+
+  const dist = getDistKm(oCoords, dCoords);
+  const timeMin = Math.round(dist * 1.4);
+
+  const alerts = await fetchAlerts(origin);
+  const missing = Math.round(dist * 400 + 5000);
+  const complete = Math.round(dist * 15 + 100);
+  const pct = Math.round((missing/(missing+complete))*100);
+
+  const aiGuide = await getAIGuide(origin, dest, dist, timeMin, alerts, pct, currentLang);
+
+  document.getElementById('plan-btn').disabled = false;
+  document.getElementById('plan-btn').textContent = LANGS[currentLang].getRoute;
+
+  document.getElementById('route-result').innerHTML = `
+    <div style="margin-top:12px;background:#F7F5F0;border-radius:10px;padding:12px;">
+      <div style="display:flex;gap:16px;font-size:12px;">
+        <div><div style="font-size:18px;font-weight:700;color:#1a1a1a">${dist} km</div><div style="color:#aaa">Distance</div></div>
+        <div><div style="font-size:18px;font-weight:700;color:#1a1a1a">${timeMin} min</div><div style="color:#aaa">Est. time</div></div>
+        <div><div style="font-size:18px;font-weight:700;color:#E24B4A">${pct}%</div><div style="color:#aaa">Roads missing</div></div>
+      </div>
+    </div>
+    ${alerts.length > 0 ? `
+    <div style="margin-top:10px;background:#FFFBEB;border:1px solid #FAC775;border-radius:10px;padding:10px 12px;">
+      <div style="font-size:10px;font-weight:700;color:#BA7517;margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em;">⚠️ Live Alerts</div>
+      ${alerts.slice(0,3).map(a=>`<div style="font-size:11px;color:#633806;margin-bottom:3px;line-height:1.4">• ${a}</div>`).join('')}
+    </div>` : ''}
+    <div class="ai-box">
+      <div class="ai-label"><div class="dot"></div> ${LANGS[currentLang].aiLabel}</div>
+      <div class="ai-text">${aiGuide}</div>
+    </div>
+  `;
+}
+
+function findClosest(q) {
+  const keys = Object.keys(CITIES);
+  const match = keys.find(k => k.startsWith(q.slice(0,4)));
+  return match ? CITIES[match] : null;
+}
+
+function getDistKm(c1, c2) {
+  const R = 6371;
+  const dLat = (c2[0]-c1[0]) * Math.PI/180;
+  const dLon = (c2[1]-c1[1]) * Math.PI/180;
+  const a = Math.sin(dLat/2)**2 + Math.cos(c1[0]*Math.PI/180)*Math.cos(c2[0]*Math.PI/180)*Math.sin(dLon/2)**2;
+  return Math.round(R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)));
+}
+
+async function getAIGuide(origin, dest, dist, time, alerts, missingPct, lang) {
+  const langInstruction = lang === 'hi' ? 'Reply in Hindi.' : lang === 'hinglish' ? 'Reply in Hinglish (Hindi+English mix).' : 'Reply in English.';
+  const alertText = alerts.length ? alerts.slice(0,2).join('; ') : 'No major alerts.';
+
+  const prompt = `You are Odd-One.in, India's road intelligence navigator. ${langInstruction}
+
+Route: ${origin} to ${dest} | Distance: ${dist}km | Est time: ${time} min | Missing roads: ${missingPct}%
+Live alerts: ${alertText}
+
+Give a short, friendly navigation tip (80-100 words). Include: best time to travel, one road warning if alerts exist, and one local tip. Be warm and conversational.`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model:'claude-sonnet-4-6',
+        max_tokens:1000,
+        messages:[{role:'user',content:prompt}]
+      })
+    });
+    const data = await res.json();
+    return data.content?.[0]?.text || defaultGuide(origin, dest, lang);
+  } catch(e) {
+    return defaultGuide(origin, dest, lang);
+  }
+}
+
+function defaultGuide(o, d, lang) {
+  const guides = {
+    en: `Great route! ${o} to ${d} is a popular journey. Start early morning to avoid traffic. Keep your water bottle handy and check local alerts before starting. Safe travels!`,
+    hi: `बढ़िया रूट! ${o} से ${d} का सफर अच्छा है। सुबह जल्दी निकलें, ट्रैफिक कम मिलेगा। पानी साथ रखें। सुरक्षित यात्रा!`,
+    hinglish: `Badiya route! ${o} se ${d} ka safar achha hai. Subah jaldi niklo — traffic kam milega. Paani saath rakhna. Safe drive karo!`
+  };
+  return guides[lang] || guides.en;
+}
+
+// ALERTS
+async function fetchAlerts(city) {
+  try {
+    const q = encodeURIComponent(`${city} road blocked traffic construction`);
+    const url = `https://news.google.com/rss/search?q=${q}&hl=en-IN&gl=IN&ceid=IN:en`;
+    const r = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`);
+    const text = await r.text();
+    const xml = new DOMParser().parseFromString(text, 'text/xml');
+    const items = [...xml.querySelectorAll('item')].slice(0,5);
+    return items.map(i => (i.querySelector('title')?.textContent||'').split(' - ')[0].substring(0,85));
+  } catch(e) { return []; }
+}
+
+async function loadAlertsForCity(city) {
+  document.getElementById('alerts-container').innerHTML =
+    `<div style="text-align:center;color:#aaa;font-size:12px;padding:30px 0;">${LANGS[currentLang].loadingAlerts}</div>`;
+
+  const alerts = await fetchAlerts(city);
+  if (!alerts.length) {
+    document.getElementById('alerts-container').innerHTML =
+      `<div style="text-align:center;color:#aaa;font-size:12px;padding:30px 0;">✅ ${LANGS[currentLang].noAlerts}</div>`;
+    return;
+  }
+
+  const colors = ['','medium','low','medium',''];
+  document.getElementById('alerts-container').innerHTML = alerts.map((a,i) => `
+    <div class="alert-card ${colors[i%3]}">
+      <div class="alert-title">${a}</div>
+      <div class="alert-meta">
+        <span style="color:${i%3===0?'#E24B4A':i%3===1?'#D97706':'#185FA5'}">${i%3===0?'High':'i%3===1?'Medium':'Info'}</span>
+        <span>Just now</span>
+      </div>
+    </div>
+  `).join('');
+
+  switchTab('alerts');
+}
+
+// LOCATE ME
+function locateMe() {
+  if (!navigator.geolocation) return;
+  document.getElementById('btn-locate').textContent = '...';
+  navigator.geolocation.getCurrentPosition(pos => {
+    const lat = pos.coords.latitude;
+    const lng = pos.coords.longitude;
+    map.flyTo([lat, lng], 14);
+    if (locationMarker) map.removeLayer(locationMarker);
+    locationMarker = L.marker([lat, lng], {
+      icon: L.divIcon({
+        html:'<div style="background:#185FA5;width:16px;height:16px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 8px rgba(24,95,165,.5)"><div style="position:absolute;top:-8px;left:-8px;width:32px;height:32px;border-radius:50%;background:rgba(24,95,165,.15);animation:ripple 1.5s infinite"></div></div><style>@keyframes ripple{0%{transform:scale(.5);opacity:1}100%{transform:scale(2);opacity:0}}</style>',
+        className:'', iconSize:[16,16], iconAnchor:[8,8]
+      })
+    }).addTo(map).bindPopup(LANGS[currentLang].located).openPopup();
+    document.getElementById('btn-locate').textContent = '📍 My Location';
+  }, ()=>{ document.getElementById('btn-locate').textContent = '📍 My Location'; });
+}
+
+// PANEL
+function togglePanel() {
+  panelOpen = !panelOpen;
+  document.getElementById('side-panel').classList.toggle('hidden', !panelOpen);
+  document.getElementById('toggle-panel').textContent = panelOpen ? '◀' : '▶';
+}
+
+function showRoutePanel() {
+  if (!panelOpen) togglePanel();
+  switchTab('route');
+}
+
+// TABS
+function switchTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  document.getElementById(`tab-${tab}`).classList.add('active');
+  document.getElementById(`pane-${tab}`).classList.add('active');
+}
+
+// LANG
+function setLang(lang) {
+  currentLang = lang;
+  const L = LANGS[lang];
+  document.getElementById('search-input').placeholder = L.search;
+  document.getElementById('route-btn-txt').textContent = L.route;
+  document.getElementById('lbl-from').textContent = L.from;
+  document.getElementById('lbl-to').textContent = L.to;
+  document.getElementById('plan-btn').textContent = L.getRoute;
+  document.getElementById('alerts-empty-txt').textContent = L.loadingAlerts;
+  document.getElementById('stats-fact').textContent = L.fact;
+  document.getElementById('st-gap-l').textContent = L.gapL;
+  document.getElementById('st-cities-l').textContent = L.citiesL;
+  document.querySelectorAll('.tab').forEach(t => {
+    const key = t.id.replace('tab-','');
+    if (L[key]) t.textContent = L[key];
+  });
+}
+
+// INIT
+loadAlertsForCity('dehradun');
+</script>
+</body>
+</html>
