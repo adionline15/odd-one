@@ -1,503 +1,808 @@
 <!DOCTYPE html>
-<!-- saved from url=(0054)file:///C:/Users/acer/Downloads/odd_one_app%20(1).html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<html lang="en">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Odd-One.in — India Road Alerts</title>
+<title>Odd-One.in — India Road Intelligence</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css"/>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#F7F5F0;color:#1a1a1a;max-width:480px;margin:0 auto;}
-.header{background:#fff;border-bottom:1px solid #E2E0D8;padding:14px 18px;position:sticky;top:0;z-index:100;}
-.logo{font-size:17px;font-weight:700;color:#1a1a1a;}
-.logo em{font-style:normal;color:#C53030;}
-.live{display:inline-flex;align-items:center;gap:5px;background:#EEF3FF;color:#1847A8;font-size:11px;padding:3px 10px;border-radius:20px;margin-top:6px;}
-.live-dot{width:5px;height:5px;background:#1847A8;border-radius:50%;animation:blink 1.4s infinite;}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:14px;}
-.stat{background:#fff;border:1px solid #E2E0D8;border-radius:8px;padding:10px;text-align:center;}
-.stat-n{font-size:22px;font-weight:700;}
-.stat-l{font-size:10px;color:#888;margin-top:2px;}
-.cities{display:flex;gap:8px;padding:0 14px 12px;overflow-x:auto;scrollbar-width:none;}
-.cities::-webkit-scrollbar{display:none;}
-.cbtn{white-space:nowrap;padding:6px 14px;border-radius:20px;border:1px solid #E2E0D8;background:#fff;font-size:12px;color:#666;cursor:pointer;transition:all .15s;}
-.cbtn.active{background:#1847A8;color:#fff;border-color:#1847A8;}
-.section-label{padding:6px 14px;font-size:11px;font-weight:600;color:#888;text-transform:uppercase;letter-spacing:.08em;}
-.card{background:#fff;margin:0 14px 8px;border-radius:10px;border:1px solid #E2E0D8;padding:12px 14px;}
-.card-top{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px;}
-.dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:4px;}
-.card-title{font-size:13px;font-weight:500;line-height:1.45;color:#1a1a1a;}
-.card-foot{display:flex;justify-content:space-between;align-items:center;}
-.time{font-size:11px;color:#aaa;}
-.read{font-size:11px;color:#1847A8;font-weight:500;text-decoration:none;}
-.bnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:480px;background:#fff;border-top:1px solid #E2E0D8;display:flex;padding:8px 0 20px;}
-.ni{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10px;color:#aaa;border:none;background:none;cursor:pointer;}
-.ni.on{color:#1847A8;}
-.ni-icon{font-size:18px;}
-.pad{height:80px;}
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { height:100%; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; overflow:hidden; }
+
+/* MAP FULL SCREEN */
+#map { position:absolute; top:0; left:0; right:0; bottom:0; z-index:1; }
+
+/* TOP BAR */
+.topbar {
+  position:absolute; top:0; left:0; right:0; z-index:500;
+  background:rgba(255,255,255,0.97);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid rgba(0,0,0,0.08);
+  padding:10px 16px;
+  display:flex; align-items:center; gap:12px;
+}
+
+.logo { font-size:16px; font-weight:700; color:#1a1a1a; white-space:nowrap; }
+.logo em { font-style:normal; color:#E24B4A; }
+
+.search-bar {
+  flex:1;
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+
+.search-input-wrap {
+  flex:1;
+  position:relative;
+}
+
+.search-input-wrap input {
+  width:100%;
+  padding:9px 36px 9px 14px;
+  border:1.5px solid #E2E0D8;
+  border-radius:24px;
+  font-size:13px;
+  outline:none;
+  background:#F7F5F0;
+  font-family:inherit;
+  color:#1a1a1a;
+  transition:all .2s;
+}
+
+.search-input-wrap input:focus {
+  border-color:#185FA5;
+  background:#fff;
+  box-shadow:0 0 0 3px rgba(24,95,165,0.1);
+}
+
+.search-input-wrap .s-icon {
+  position:absolute;
+  right:12px; top:50%;
+  transform:translateY(-50%);
+  font-size:14px;
+  color:#aaa;
+  pointer-events:none;
+}
+
+.route-btn {
+  padding:9px 16px;
+  background:#185FA5;
+  color:#fff;
+  border:none;
+  border-radius:24px;
+  font-size:13px;
+  font-weight:600;
+  cursor:pointer;
+  white-space:nowrap;
+  font-family:inherit;
+  transition:all .15s;
+}
+.route-btn:hover { background:#0f3480; }
+
+.lang-select {
+  padding:8px 10px;
+  border:1.5px solid #E2E0D8;
+  border-radius:8px;
+  font-size:12px;
+  background:#fff;
+  cursor:pointer;
+  font-family:inherit;
+  color:#555;
+  outline:none;
+}
+
+/* SIDE PANEL */
+.side-panel {
+  position:absolute;
+  top:56px; left:0; bottom:0;
+  width:320px;
+  background:#fff;
+  border-right:1px solid #E2E0D8;
+  z-index:400;
+  display:flex;
+  flex-direction:column;
+  transform:translateX(0);
+  transition:transform .3s ease;
+}
+
+.side-panel.hidden { transform:translateX(-100%); }
+
+.panel-tabs {
+  display:flex;
+  border-bottom:1px solid #E2E0D8;
+}
+
+.tab {
+  flex:1;
+  padding:11px 0;
+  text-align:center;
+  font-size:12px;
+  font-weight:500;
+  color:#999;
+  cursor:pointer;
+  border-bottom:2px solid transparent;
+  transition:all .15s;
+}
+
+.tab.active { color:#185FA5; border-bottom-color:#185FA5; }
+
+.tab-content { flex:1; overflow-y:auto; padding:14px; }
+.tab-content::-webkit-scrollbar { width:0; }
+
+.tab-pane { display:none; }
+.tab-pane.active { display:block; }
+
+/* ROUTE FORM */
+.route-field { margin-bottom:10px; }
+.route-field label { font-size:10px; font-weight:600; color:#aaa; text-transform:uppercase; letter-spacing:.06em; display:block; margin-bottom:4px; }
+.route-field input {
+  width:100%;
+  padding:9px 12px;
+  border:1.5px solid #E2E0D8;
+  border-radius:10px;
+  font-size:13px;
+  font-family:inherit;
+  outline:none;
+  color:#1a1a1a;
+  transition:all .15s;
+}
+.route-field input:focus { border-color:#185FA5; }
+
+.go-route-btn {
+  width:100%;
+  background:#185FA5;
+  color:#fff;
+  border:none;
+  border-radius:10px;
+  padding:12px;
+  font-size:13px;
+  font-weight:600;
+  cursor:pointer;
+  font-family:inherit;
+  margin-top:10px;
+  transition:all .15s;
+}
+.go-route-btn:hover { background:#0f3480; }
+.go-route-btn:disabled { background:#ccc; cursor:not-allowed; }
+
+/* STATS */
+.stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:14px; }
+.stat-card {
+  background:#F7F5F0;
+  border-radius:10px;
+  padding:10px 12px;
+}
+.stat-n { font-size:20px; font-weight:700; }
+.stat-l { font-size:10px; color:#888; margin-top:2px; }
+
+/* ALERTS */
+.alert-card {
+  background:#fff;
+  border:1px solid #E2E0D8;
+  border-left:3px solid #E24B4A;
+  border-radius:8px;
+  padding:10px 12px;
+  margin-bottom:8px;
+}
+.alert-card.medium { border-left-color:#D97706; }
+.alert-card.low { border-left-color:#185FA5; }
+.alert-title { font-size:12px; font-weight:500; color:#1a1a1a; line-height:1.4; margin-bottom:4px; }
+.alert-meta { font-size:10px; color:#aaa; display:flex; justify-content:space-between; }
+.alert-read { color:#185FA5; text-decoration:none; font-size:10px; }
+
+/* AI RESPONSE */
+.ai-box {
+  background:linear-gradient(135deg,#EEF3FF,#F7F5F0);
+  border:1px solid #BFCFFF;
+  border-radius:12px;
+  padding:14px;
+  margin-top:12px;
+}
+.ai-label { font-size:10px; font-weight:600; color:#185FA5; text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px; display:flex; align-items:center; gap:5px; }
+.ai-label .dot { width:6px; height:6px; background:#185FA5; border-radius:50%; animation:pulse 1.4s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+.ai-text { font-size:12px; line-height:1.7; color:#333; }
+
+/* LOADING */
+.loading-bar {
+  position:absolute;
+  top:56px; left:0; right:0;
+  height:2px;
+  background:#E2E0D8;
+  z-index:600;
+  display:none;
+}
+.loading-bar.on { display:block; }
+.loading-bar::after {
+  content:'';
+  position:absolute;
+  top:0; left:-30%;
+  width:30%;
+  height:100%;
+  background:#185FA5;
+  animation:loading 1s linear infinite;
+}
+@keyframes loading { to { left:130%; } }
+
+/* TOGGLE PANEL BTN */
+.toggle-panel {
+  position:absolute;
+  top:50%;
+  left:320px;
+  transform:translateY(-50%);
+  z-index:450;
+  background:#fff;
+  border:1px solid #E2E0D8;
+  border-left:none;
+  border-radius:0 8px 8px 0;
+  padding:10px 6px;
+  cursor:pointer;
+  font-size:12px;
+  color:#888;
+  transition:all .3s;
+}
+.side-panel.hidden + .toggle-panel { left:0; border-left:1px solid #E2E0D8; border-radius:8px; }
+
+/* MAP CONTROLS */
+.map-controls {
+  position:absolute;
+  bottom:24px;
+  right:16px;
+  z-index:400;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.map-ctrl-btn {
+  background:#fff;
+  border:1px solid #E2E0D8;
+  border-radius:8px;
+  padding:8px 12px;
+  font-size:11px;
+  font-weight:500;
+  color:#555;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:all .15s;
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
+.map-ctrl-btn:hover { background:#F7F5F0; }
+.map-ctrl-btn.on { background:#185FA5; color:#fff; border-color:#185FA5; }
+
+/* SEARCH SUGGESTIONS */
+.suggestions {
+  position:absolute;
+  top:100%;
+  left:0; right:0;
+  background:#fff;
+  border:1px solid #E2E0D8;
+  border-top:none;
+  border-radius:0 0 12px 12px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+  z-index:600;
+  display:none;
+  max-height:200px;
+  overflow-y:auto;
+}
+.suggestion-item {
+  padding:9px 14px;
+  font-size:13px;
+  cursor:pointer;
+  border-bottom:1px solid #F7F5F0;
+  color:#333;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.suggestion-item:hover { background:#F7F5F0; }
+.suggestion-item:last-child { border-bottom:none; }
+
+/* LOCATION PIN INFO */
+.pin-info {
+  position:absolute;
+  bottom:80px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#fff;
+  border:1px solid #E2E0D8;
+  border-radius:12px;
+  padding:12px 16px;
+  z-index:400;
+  min-width:200px;
+  text-align:center;
+  box-shadow:0 4px 16px rgba(0,0,0,0.1);
+  display:none;
+}
+.pin-name { font-size:14px; font-weight:600; }
+.pin-coords { font-size:11px; color:#aaa; margin-top:2px; }
+
+/* RESPONSIVE */
+@media (max-width:600px) {
+  .side-panel { width:100%; top:56px; }
+  .toggle-panel { display:none; }
+  .topbar { flex-wrap:wrap; gap:8px; }
+  .logo { font-size:14px; }
+}
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div class="logo">Odd<em>-</em>One<span style="color:#888;font-weight:300;">.in</span></div>
-  <div class="live"><div class="live-dot"></div> Live road intelligence — India</div>
+<!-- LOADING BAR -->
+<div class="loading-bar" id="loading-bar"></div>
+
+<!-- MAP -->
+<div id="map"></div>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="logo">Odd<em>-</em>One<span style="color:#aaa;font-weight:400;font-size:12px;">.in</span></div>
+
+  <div class="search-bar">
+    <div class="search-input-wrap" style="position:relative;">
+      <input type="text" id="search-input" placeholder="Search any location in India..." autocomplete="off"/>
+      <span class="s-icon">🔍</span>
+      <div class="suggestions" id="suggestions"></div>
+    </div>
+  </div>
+
+  <select class="lang-select" id="lang-select" onchange="setLang(this.value)">
+    <option value="en">English</option>
+    <option value="hi">हिंदी</option>
+    <option value="hinglish">Hinglish</option>
+  </select>
+
+  <button class="route-btn" onclick="showRoutePanel()">🗺️ <span id="route-btn-txt">Route</span></button>
 </div>
 
-<div class="stats">
-  <div class="stat">
-    <div class="stat-n" style="color:#C53030;">60</div>
-    <div class="stat-l">Live alerts</div>
+<!-- SIDE PANEL -->
+<div class="side-panel" id="side-panel">
+  <div class="panel-tabs">
+    <div class="tab active" onclick="switchTab('alerts')" id="tab-alerts" data-label-en="Alerts" data-label-hi="अलर्ट" data-label-hinglish="Alerts">Alerts</div>
+    <div class="tab" onclick="switchTab('route')" id="tab-route" data-label-en="Route" data-label-hi="रूट" data-label-hinglish="Route">Route</div>
+    <div class="tab" onclick="switchTab('stats')" id="tab-stats" data-label-en="Data" data-label-hi="डेटा" data-label-hinglish="Data">Data</div>
   </div>
-  <div class="stat">
-    <div class="stat-n">5</div>
-    <div class="stat-l">Cities</div>
-  </div>
-  <div class="stat">
-    <div class="stat-n" style="color:#166534;">Live</div>
-    <div class="stat-l">Status</div>
+
+  <div class="tab-content">
+
+    <!-- ALERTS TAB -->
+    <div class="tab-pane active" id="pane-alerts">
+      <div id="alerts-container">
+        <div style="text-align:center;color:#aaa;font-size:13px;padding:30px 0;">
+          <div style="font-size:28px;margin-bottom:8px;">📡</div>
+          <div id="alerts-empty-txt">Loading live alerts...</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROUTE TAB -->
+    <div class="tab-pane" id="pane-route">
+      <div class="route-field">
+        <label id="lbl-from">From</label>
+        <input type="text" id="r-origin" placeholder="Origin city or address"/>
+      </div>
+      <div class="route-field">
+        <label id="lbl-to">To</label>
+        <input type="text" id="r-dest" placeholder="Destination city or address"/>
+      </div>
+      <button class="go-route-btn" onclick="planRoute()" id="plan-btn">Get Route</button>
+      <div id="route-result"></div>
+    </div>
+
+    <!-- STATS TAB -->
+    <div class="tab-pane" id="pane-stats">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-n" style="color:#E24B4A" id="st-missing">4,628</div>
+          <div class="stat-l" id="st-missing-l">Missing roads<br>Dehradun</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-n" style="color:#185FA5" id="st-complete">260</div>
+          <div class="stat-l" id="st-complete-l">Mapped roads<br>Dehradun</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-n" style="color:#D97706">94.7%</div>
+          <div class="stat-l" id="st-gap-l">Data gap</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-n" style="color:#166534">5</div>
+          <div class="stat-l" id="st-cities-l">Cities tracked</div>
+        </div>
+      </div>
+      <div style="background:#F7F5F0;border-radius:10px;padding:12px;font-size:11px;color:#666;line-height:1.6;" id="stats-fact">
+        🔍 Research finding: In Dehradun, 94.7% of roads are missing from standard map databases. This data gap causes navigation failures, logistics delays, and blocks autonomous vehicle deployment in India.
+      </div>
+    </div>
+
   </div>
 </div>
 
-<div class="cities"><button class="cbtn active" onclick="showCity(&#39;Dehradun&#39;)">Dehradun</button><button class="cbtn " onclick="showCity(&#39;Delhi&#39;)">Delhi</button><button class="cbtn " onclick="showCity(&#39;Varanasi&#39;)">Varanasi</button><button class="cbtn " onclick="showCity(&#39;Lucknow&#39;)">Lucknow</button><button class="cbtn " onclick="showCity(&#39;Mumbai&#39;)">Mumbai</button></div>
+<!-- TOGGLE PANEL -->
+<div class="toggle-panel" id="toggle-panel" onclick="togglePanel()">◀</div>
 
-
-        <div id="city-Dehradun" class="city-section" style="display:block">
-          <div class="section-label">12 alerts — Dehradun</div>
-          
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#C53030"></div>
-                <div class="card-title">Bajrang Dal protest sparks chaos in Dehradun, FIR filed over road blockade and coerci</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Mon, 18 May 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMitwFBVV95cUxQVGxQVFNlS3c1NkJmanVRUVFJR0xBX18zOFJQWERFNTl4cnRkR2FkNk4yQ2ZXXzU4QzVWcHhUckp5MUZwS05USGY2REZoQ1N5czhTeUkxUTFzdmh1VVd0TzFzQ3A1aGlKbGQtVXdObnI3TTVUWkxJWHlDYW4yOW43NEhiNEZnOS1wOVZmeTVYaF9qSDBrZk1kUVEwSDNPWXhqQVlhRDVJNURpTXBTaXdDVWlWNFdGWk3SAb4BQVVfeXFMTzNMa2dLdzlzak5UWFVxa21zZkhmcUhrdU5jNlNqdDFsbk1qbFcteXE5ZFMyc0lEZmF0aEQwZ0VHUjZWUllpWThVZE5mejRsQ3pTalRUSGsxX2FrZndqN29INGhWUk9McHVQMHY4M1NFMkF2Mmlka0drUWk1WjZLU0hpTk9pQXZKVHdpbDczRVF4S1pZQWdHdXF2RVpma0xNUDVWUi1PVUUwT0RubHdvUnlPUmgwa2dhRVJ5b1dIQQ?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#D97706"></div>
-                <div class="card-title">Heavy rains cripple U’khand, landslides block key highways, other roads</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Tue, 16 Sep 2025</span>
-                <a href="https://news.google.com/rss/articles/CBMi3AFBVV95cUxNeFcxeS1POGR2alg1dnBydlBTU3lQNWhHV2JURXNpZWJJbThkWm9pV2dYdnVZSjNHek5IZEVtMXVMYmNTQ1ZZVW1rNm5zX0x2am0tc29fd2Q4Z0NIa0VlRzFyTGFCZXBqSi1sc2ptZjlaeUV5bEFqNGVpejloUXNwamY5S2F0Y3VVWnBQVHVGLWgwNi1HNlZmM1QzclM5Vms4UGM1R2FLalFjY3lNUjdpcUJ0clY0N0R1cl9ydHdiNlI1ZTBMQ1FpU25DcXJWRlUxQTZTOFE0cExOT2wx0gHiAUFVX3lxTE5jVEtHWTJnNmc0cVlGVHpISlE0WDdxUHdLaTI1YzhJRWJ4bHRFUTlXamhLSmZ4RjcwdFk3RTE2Yjh5VUtNR1I0QUNGeDl2Q043bHBGWmpjNjhWSExiVk9fRUp3eHRkQ1YyT1RWWGhwd0JJR3dMdWtvQ1UzazhKRERTdmFaenNqYWR4akVqVld1eHRoa0czem53UElvMklfZkdIZndfWDhDdjZwc2pvaXhLYnR2ZGZsWW5ubWZ0Vk0xd29TQzBhb0h1SDFnQWREaHJwZEFiWC1KWXdzWmxoV2xPU2c?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#1847A8"></div>
-                <div class="card-title">Fresh landslide near Galogi again blocks Dehradun-Mussoorie Road</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Wed, 24 Sep 2025</span>
-                <a href="https://news.google.com/rss/articles/CBMikgFBVV95cUxOR3VDUS1qNi1JZUotenB5TTUzOU1pczlscHRjWU5aXzJBbkVnS2VXc2ZSS2dWSFh0YVphemhXTjVucnljTTcyU2ZVM0Vyb1FMMWdpNGNOakl3WGw4NkJZc1lGV1pnS0VVcVVBU2Ezc3FoNUFvczdwZWxuUDlOaWlCcjcxRW5sZDNJN3BKR1NsUHBnUQ?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#C53030"></div>
-                <div class="card-title">Delhi To Dehradun In 2.5 Hours, But Another 2 Hours To Enter Dehradun?</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Mon, 20 Apr 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMipgFBVV95cUxQRTNLU3RHOFEwX2Z6aEFseEEzTUhtOTkyVG1MRktkMkNwZHNuUzNlUzFJNlZySW10aUh0RHBNckN5Wk1GNi0ySVdYUEFMOFVxdTBXMUozd0RnVGNQNmx0SmpNTHFXNzhlSThOeEpIM2J6LU9iWE1LWVNpWE1aajBsT2g4M3R2MWUwZVRSYkR4Vm13dEFRUnpta1ZXY1V2dHJReHBZOHRB0gGuAUFVX3lxTE1ORmc1dGoyMUtYSzk0Ujhnb3JrbjhEOGhvN0ZEUi1HM1BIQ1lIbTZJYU9NWno5bXUtYnY5OE1FMDBxaHFoVmRfMTE3UlY3SWt2RkZ3WHVTTkRyX2Y2ZmhLOF84UHNEVW90WVNGSm5iWS1vY0hLTFFPa25vbFcwbEhnNDNPMmpEOXRTcXVwd1lOQVgxc0dtT3ZKRWRIU3R0NDZpR21xeEFKWmNUZjVsdw?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#D97706"></div>
-                <div class="card-title">Trees collapse, traffic jam after evening rain in Doon</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Thu, 04 Jun 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMizgFBVV95cUxQYzlkb0xOQjc4VjVjVlU5UHZ6VW1feUhzRWd2VXFYbWtUS2JIRUxIRnBEWGxaWVhYWjVuTGprWm1HQl9DdmdvRFFBRC1yLTV5V3BKLUw4UDQ5blQwQnQ5RVlCcU5ubDlfSkhxYS02di1FYW5zV1RJLWZYTGNuLXVrYlF5WklhdmNxdmdHNDVZYmM1TkhMdWJYWWlGN3BXTTJsd05DZXo3MTRJTDZIcUJlcXlaakpRak5yZUcxdFpNVFQxQ1RhYkVtVkxaYWRZZw?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#1847A8"></div>
-                <div class="card-title">Dehradun Citizens Rise as the City Buckles under Traffic , Pollution and Civic Collap</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Tue, 20 Jan 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMijgFBVV95cUxNQ3BQQldSVmpmeFhKMDJCZ1dRQXQxR0dxYVlYaGdEX0hXRERVbUN5aHk4YnNCSFJFbEFlcWZ4MnloZzdtaWNWUVl0N1l1aWJzeG5DMm5jSUJteFYzR1FseFM4ZTI3WWxXVzMtT2xpSjF5a09Fdl9Obi1oZFpLYXJlX3EySDhDb29YZGNTYTln?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#C53030"></div>
-                <div class="card-title">Residents wake up to construction materials blocking lane</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Sat, 25 Apr 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMizgFBVV95cUxNa214eUlSUloyS1p2bXE2eExuRzJRQkVYZzgzN2FVUEVvNExJUW5UUUVEX25DQ0NrNl9xSkxudEY2TVRTNGpsSXFrY09KcG1SdW5wd2I1VjREOHlfQTcwWEhsNjlfUkNTQUIxa1ZxcW42LURUUXdlZEYwMGV4RE9NNnlQNl9BYVgwNW5WNU5JdmlIb2RUaUlfbUZvd3FPQTROX0w3U2V5UjRzbDdwU0RQUTIxcUZaTU8wRU1ERUw5VUc3TGdMb3ozcFVrLVN2Z9IB0wFBVV95cUxPM0ZpWFZVMDExSzd3cklZQVFnQnV1UHpnU1RsRnNFcjlCOHh3MC1seWtpU0t5SmExQVhLd2FKQnIyVUsweWswa0dtcXRaTGQ2SE5lLUJqVXg3SXlzcWVPd3VGZFRfWDBPMWlVRFJhMDQ2ckh0Y0d6WEJsQ1k5NE9qaWVlaXI0MTgwZC0tbjV5MzFIYXF6S0pRbnIzQkFqR0RNa3pyZVEtQlFyT2lvY3RRSlMtUUlzSkRBeHByWkJxSTljTktkWnFUZ29xbDNRNVJwVmVn?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#D97706"></div>
-                <div class="card-title">NHAI approves highway connecting Dehradun and Mussoorie with twin tunnels, Rs 3,500-c</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Mon, 09 Feb 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMiwwFBVV95cUxObEhEUHQ0S0llUWtxNDVQQ1d1MkRwb2FoYjY2Q1hDb05FdDRLN0xYcUlMMGhnWE1jeHFLS2UyOU9JaXg3d1R0TEtuYURDS1JTdmxKaEpyaW5hc3VBSk1JRVlfb0R6NC1fT2owSDF2NU9WMFlIVUU5SEtRbGpFYWgtay1CTmVGSy03N0FRYXp1S1ZYSzlTRE5BLUxjSWhGMExBdUY5a21hZ2d0SkpkMjIteXBmNmtqU3BkcGxMaFp0WVYxUzA?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-        </div>
-        <div id="city-Delhi" class="city-section" style="display:none">
-          <div class="section-label">12 alerts — Delhi</div>
-          
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#C53030"></div>
-                <div class="card-title">Delhi traffic jam alert: Major West Delhi road shut for 45 days, commuters may face l</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Sun, 24 May 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMi7AFBVV95cUxQOXQ0NG44NWI1ajNkaTV1TXBsX3VoNzlCRUFIZlJISHJZVF90MzNBb2tWRGRBLU5ORGt1YzNHTi1qMWozYWxpUVFpQ2kwYW9PSHZzMDhiS0ZfQnVnc1R2Rlp4Q05NY2doYWdVcTNKS1pOWXh2SmVJNWJhOEFGM0JnUHYzc0I0WHFzTC0xMm5uMmJORkM2NXdVT3puWDBtbHVVQjk2cVZEQ0FKN2YwdEpGSFlsY0EtWnNRLTdDQXRXTFB4UUd0enFJbFNISUMtQ21PcHJlNVlEekZJSzNpN2NyQ01TRHR1ejhHdVhVb9IB8gFBVV95cUxNaGFxUFpydy1RQWxkYzZMQTUyWjZ3YTZMZzRPNVZjN041ODFlQjVtV1Q2N21UVzVnajdzMEQwc0R5amphV1ozaUFoV3pIdEhzTU9Cc25JVDFUY09rcVJLYmdrWXBtSWllcTN4U3dxUmxLVVNRdm1qQ1ZVR3hPM0kteUZndFY3WGppU0I1dFlNOHZ3WUZzS0RIMHotZ1Ywd3VOVzRUQmxFbnJDb3Q4Qmx2YWFtTFdQRHNQc2dVWEE0dmprdGdmXzhDNVdocXo0dnprT2hyMVROOU9pOWxoLWNkaHNEX1pXZV9kSVR0SkNVWUUtZw?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#D97706"></div>
-                <div class="card-title">Noida Link Road from Chilla Border blocked due to workers protests: Delhi Traffic Pol</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Mon, 13 Apr 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMi4gFBVV95cUxPVER2djV4dUw5NkpIVnJsSjlpUEs3OGRuYllQNUVLT1MycjZ3Ymx1X29paWNTSjEyMWM5MDFmS1pKNmRJYkJwRjJldVFjN1VrRFBYVTF1Q3FxUTJwZG1YRFBtMlBnS0ZzNkRmN3czMUFFZ2ZLZDNMUUlxbkxtaVZjeXhJRlNvdDZua1pYMlBITlcxUHV3RVRYc2ttZG5WMDVDVXVTbjNITnktbEJXRnJVU2FzVFdONUFkc1ZETXd6ZjVwNVNSUWZBaExnc3RYZVNUVjdWcjU4Y19henVzbk83WjZn0gHoAUFVX3lxTE10OTZIUWFmcV9uLUU0ZGlwM2dPS3gxVGhVdm5paUF1OExsa1J5Q2JOOWFvR2paZ0xMeUQ3bXJrcVh6VXJsdjg5QWJHa3M5YjJhR2pySDhGUF9lOUZDbktMbWxkVDFFSjJGdTRFaGloMEZMNlVIZVh3ak01TndMMTZVbEtQVWtpM0JGcFNfSUN1RnN1T0tqZlBoMERDdEY3NlFaNVhVNW05alZheS1kTzctaHBkMmQwNHU3ZHpPWlBDNjJDcHJwTXR4VXlDZml5MmtKSS1DVkFNQXVXYjFuNDBYUm5kdEJmTk8?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#1847A8"></div>
-                <div class="card-title">Traffic curbs today on key Delhi roads for Bharat Mandapam summit rehearsals | Latest</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Wed, 20 May 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMi3wFBVV95cUxOM0NneHBZQzA4aEoweWxWX0UwRHl6dDN5b005cW1ZSWU1MTAydnUtbFNxTGVUVXRjR2ltbm9PUW11ZkhWMlN6bVh5aXl0TnBGMFFDOERqVHlsc3Jzb1hncXB1YUlaMmlweEpwZ0M3UEgwZUljNzc2ejdzd3d3NnJ4bUZnQi0zR2xJX0RmQ2c5eGlQbXltZnNRNl9zRFVOc3NjcndpTktIcHltVDlFN2FvQk9rZlNYWGR0X2ptZ2FNMzVodUd6cmxpb2NicmdRTjR5UmY3c2JaeEx5anhHMHVr0gHkAUFVX3lxTE00Z0Q2Q1p2MV9DOGpiS3BJTTdydS1fNmRoSXN2UzRhS3loQUpYY2xyWlVGd0RWdGtYTlZ6OEo3ZEhNU2NNaWRMckZud3RGY2poNzJUQUFOU1pjQkI5Qk54WW82cG1mZnhpYUR1QndVZ3BacEJVVEhKalhGOXgya05oN0NLNXpqRnhVUEt0VWg1X0ZMcHNsZjdTaXpvdDRfdkJQRVdqWGN1MkF1blEtNHplUzc0cUZkZWxwaU9VQnFRbDh4bkVBUmk2aTBuR0NweU9zb2ZjcU4tSmZnd19VWlZQbi11YQ?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#C53030"></div>
-                <div class="card-title">Delhi High Court orders action to ease congestion at Chirag Delhi crossing</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Tue, 02 Jun 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMiqwFBVV95cUxQZFFUY2s0cWtiN0dqakZoczdrSm10RmticS1yVG93Rjd5TWlhU1QwQUQ0aXdPV1dDdzg0Q0dfNjZrRWFUenpXUkd3U1NRcEhPZFZQU0dpVWhlQ2I3ZmZ1azB5WUVVYVpIOHN3QndnN1pvb0RDd1BZekpaM2llQU43SU4zXzY2WTJPLWdXX013bEtVbk1hSnJmajg2Q1dCQ3U1ci1Eam9fMXU0Vlk?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#D97706"></div>
-                <div class="card-title">Delhi traffic jam alert: Major West Delhi road shut for 45 days, commuters may face l</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Sun, 24 May 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMi7AFBVV95cUxQOXQ0NG44NWI1ajNkaTV1TXBsX3VoNzlCRUFIZlJISHJZVF90MzNBb2tWRGRBLU5ORGt1YzNHTi1qMWozYWxpUVFpQ2kwYW9PSHZzMDhiS0ZfQnVnc1R2Rlp4Q05NY2doYWdVcTNKS1pOWXh2SmVJNWJhOEFGM0JnUHYzc0I0WHFzTC0xMm5uMmJORkM2NXdVT3puWDBtbHVVQjk2cVZEQ0FKN2YwdEpGSFlsY0EtWnNRLTdDQXRXTFB4UUd0enFJbFNISUMtQ21PcHJlNVlEekZJSzNpN2NyQ01TRHR1ejhHdVhVb9IB8gFBVV95cUxNaGFxUFpydy1RQWxkYzZMQTUyWjZ3YTZMZzRPNVZjN041ODFlQjVtV1Q2N21UVzVnajdzMEQwc0R5amphV1ozaUFoV3pIdEhzTU9Cc25JVDFUY09rcVJLYmdrWXBtSWllcTN4U3dxUmxLVVNRdm1qQ1ZVR3hPM0kteUZndFY3WGppU0I1dFlNOHZ3WUZzS0RIMHotZ1Ywd3VOVzRUQmxFbnJDb3Q4Qmx2YWFtTFdQRHNQc2dVWEE0dmprdGdmXzhDNVdocXo0dnprT2hyMVROOU9pOWxoLWNkaHNEX1pXZV9kSVR0SkNVWUUtZw?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#1847A8"></div>
-                <div class="card-title">Delhi Traffic: Nawada Road Shut For 45 Days, Bus Routes Diverted; Check Alternative R</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Fri, 05 Jun 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMixwFBVV95cUxOQ3drZnpvV0pnT3ZkWHVFcnpNcHZ3REZtX1hCMjdNQ29CY3hMdXRKZmQ3eEx5eUp2OExTTEFvVTZoUGFSaHVSRWtUanRxam82RXpCNVk1UzZqY0k5TzB5TGlabUZOaXh6em9LZUFodWpiUHNzRVZqWmJXQnVnVFduRFpTZDR5NTBpSmFqYXFjUkpMa2RwTlQyMEVUdm9ZM1JWSEhZdTRtMnZISWlTSnZXam1Mc0o2bjdPLS1uYlVuZy10N0xxVC1B0gHMAUFVX3lxTFA2aDAydUtGc2xPd0pNLXZMSElib1Bqb1VzMkM3WkNZbnI5OWN5RlVVTTNxRkVXR0hlZFpFYmxvVGtGZi1tYkFSSzI0bnQ4aXRzazBmTHU5Umt1eDhVUldfNzJ5VFVaamp5cjlnSmxva1BnREI3VkNlY0ctbVFkbVUwTXU4ellheXdFcngxQ1Y1dHlfR1N5SEVWOWxSLVRnYmVDSnBfLWhRaGFsSUktczZjNmJPeUFJV2xEVFRhX1pCRVFST01Uakt6aUZFUw?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#C53030"></div>
-                <div class="card-title">Gmda And Dial Discuss New Delhi Gurugram Road Connectivity</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Mon, 01 Jun 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMiowFBVV95cUxNNG9EV2FVcFBRdUNjRlBKRUNvOUhtZDd6MzZZbE5ZczlkVzZrdlpESWdLZzhOUWFfZENwQWZzd3llSnRoNC16MkVlVkdFNDVFQl92VmdBVW9BRjRrM0xlTlBzeHp0TjJVN0drVEtxbG1uNjAxb0ZzVHRMXzdURDZHRFJ6NkJ6NjlpdFJVMzNyaURrbGZoSUNNZ0ZtN01VbWdweTUw?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#D97706"></div>
-                <div class="card-title">Preparations underway for a new elevated road in Noida the route will be from Delhi d</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Sun, 31 May 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMi5AFBVV95cUxNZ245V2d2TmZ4eDV2dmstWHhnTlpDc0VXQzNEYVVkM0ZLVnZiUjE4YWFjbzJweFNsa25jc2owNDA5TkxyRG9Pc2hVYjFySC0zRXlhRzI1eXVBZEFuTllaMlktSWVBeFFoTVhrSzJxNFFZOGl6d09iX3VXSXZNRUhIY243T3JxRUptQkM2X3FsSEFVbkljUjlYN3FUMDYxMnJsSWRucmJCUngydWI2bmhCZkNTSFhPX1FvcC00RDlpaWVQVGpFRHlZaVZxSmJDRHRuYy1jbG9BdWJrSGdvQVVsTHE4Q28?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-        </div>
-        <div id="city-Varanasi" class="city-section" style="display:none">
-          <div class="section-label">12 alerts — Varanasi</div>
-          
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#C53030"></div>
-                <div class="card-title">Did 1905 km from Varanasi to Bengaluru: Route updates &amp; road condition</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Thu, 09 Oct 2025</span>
-                <a href="https://news.google.com/rss/articles/CBMikwFBVV95cUxNSFJvbjB2bzNoVi1JZi1iMlVQNGRSUUFMMzJlSXQtRDNBV2NIeXhFcjFPYmJ0NjhlSXNVTVpBbEFFTnl5Z0ZHek5WTG5LYWdzckNDWFFqYksxZ2U0RzhaaTRQTVgxTzVheXhnODMxNU56VkdGSDZVcHlMWVdBTHplZHh2ZURrYUdHMEZjOWMyZVZ1cXfSAZgBQVVfeXFMTU9sQ04wN2p1X0NmOFphN3BjVWxtNWg5MGg1Um5OdXdfbk4zUlhYazUtSmcxQm5MaTRMREJvVEpBMVNuZ3JqOGU5SFJjb2EwSnFYb0tWbFZrZHQzRGxza2NFalllWnNqMzBhUXZjRXFlaHJMNDZJdDlDbXlMMW96UGt1cXNjaUZkQnN3eWtWdm1MTHNZUE9tM0o?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#D97706"></div>
-                <div class="card-title">Modi’s two-day visit to Varanasi begins today | Hindustan Times</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Tue, 28 Apr 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMitwFBVV95cUxPMnNRRDFvR2RFVW1JNTNzODZYcnI3dTJWYXdJcEdLVWpvR0oyV3FCekRCd3dENDFIVnFZWTBqbGNpenptNnQxZEJ2Vm5KZExQci13bXcxUlcwQXVJYmlfN1RNd3pPY3ZxUVlkV252RDNxNnhPcXN1aWFFZ3hvSVB0bHdaNVRpMi1FZTl3RFVJaUIyc2g3WnRzZ3FkYVU3WlBOZjdMek9wdXlVZGZXSUF0WlNINXpubTDSAbwBQVVfeXFMUHFhYU01WTRtTFRJZjZCc3BZZEJqa1lwVmFZR2dLM1VVUlVWNFRRNy11MV9hSXF0blhFVy02QjJlLXU0UW1yLVFRRkdUQkdmVmhtbDhWdDBYa1RCUHBuVjczSm9VMWFBbEhoVl9uTEtUZS1rRmZaa3VDSnRXWTBrR3RhQjhqbFI5WXpQWjhpbXhBQnNNVndlTzlHVnBaTUVjck5ERmc0bTBhdGhjeGw0bFdRXy16WHI1SWlEWVQ?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#1847A8"></div>
-                <div class="card-title">Road blocked in protest against tearing of Ambedkar flag, poster</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Thu, 16 Apr 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMi1gFBVV95cUxOSFdrQ0VvQnpUNFpabGpUaENDcE9QVTdfZUxiblFlM29EWDhiZU1JUUo0QVlvRFlqMFZWZUsxNi1FTWJhZXdUczIxdzhiQ0hrRF83anFIeWUxWnV3cXpadFBNa1hKdng3d3pKZW51OEFYZVN3TWszeHBBZ1R1NHhzenQtU083cnJOZTY4ZjN4OVo3OEx0S2dXckNKVUdyV2FHcVF0Z2hFeGlBOWJSSEFSSnVTV1hTTU5COTlvU2VWenNpWGd0d2FSSEtzRkE3T0RMdlFBV2F30gHbAUFVX3lxTFBmc0pnLWZEdG1sNUVXdktpYTU5bkVKa3BzRXlScVpkdDNOdU5NbFBtMlhMTUdHQlBqbVkxOGtBNlhkU3ZQekUwRFFUNGNnbERRdHNmcmZ6ZEdvbm0wSTVKUi1kZGRlVWpJbG5zX0tkSWZDR2UycHViSTNLQWNJQlo2SmpMOW5ucDIzcEc4WTgyVm1Ib0xjWEJLZEpXUVA5bmJoVG5NZUV4T0ZYbWtIbHZydVJxM2pPRXY3OG9WUEdZNzVnUmdjMW53bF9hdmMwVjI1MXFjNlhSU0szcw?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#C53030"></div>
-                <div class="card-title">Nagpur to Bhutan in a BMW M340i: An epic 4,100 km trip across India</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Mon, 16 Feb 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMijAFBVV95cUxPR3pjZ0trX1Y4N2dPcUtaT1p4R0huU05fOHhTX21WeGhWeWItSUg2VHdfYjhpYk1SQUxjWHFoSlBDMHlPeVV4RkI2bFFfSVkwc3hzV28tNmMwSFhEUGFkUk5JZmRIVEhQS05STzgyc3hnclJCQUZ0UHIxN29ScVVKanN0V3RzSU54bTZYWtIBkgFBVV95cUxOWHQxSkwxSWpBdTZPRHdvdE42ZEZ4NTEwY1VndzhiMUZnMWJ2bEdyeThJYkdBclVOWkhKb2VKZTdMNUczOGRfalFmc0xhS1kxUjlGQW1QT1dfT0tuVXRBVl9SNXhGcFFvalJ1bFUwSFVQekQwTUZ2QkVpZlM4dXRmV0pSNFBIX01VXzg2WVl0aDAzUQ?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#D97706"></div>
-                <div class="card-title">How India moves: Varanasi, the ‘eternal city’, has transformed from pilgrimage to tou</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Wed, 18 Jun 2025</span>
-                <a href="https://news.google.com/rss/articles/CBMi_AFBVV95cUxPb0EzYWNVZWYwa1lFUnM2WnBBYW1Ub2RQUXh6dEE0czBacDJUSVVUYW5vNmpuYlRiVS1DMmJicVluX09QaHA0Rm1sVFBDc2s3Skd0TFpaeTkxa1pudWx3RHBLU19wYTlhUlFxMDN0aXlTaDlOaTZKaURUZkFCVUhHYUxzMXdvSzRpZUs2cXhMMW0ydVY1X1Z5QlZzTVR5MUhPZG5iWW9qV0Z4S0o2RnlsbG8yc0VOcXAydXJoWTgxekxKcXh1dlVPMlRfVUdLMzl5cGpLM01waDI4dWZTeTRsb096UkU1N3lxQVhxMWUtM1JiZmtBMWoxci1ybEnSAYoCQVVfeXFMTTdnd0NpczlXaDg5T2p4NzRFSV9wWjJOcHJuYjlqZGRoNnItLS1Sb2F0SWFnWWJ2UWtWNjRjdHNQMkd0c1lUcUtmclpwZVFtWXJENllxTW5BbFJpUWpVWE5RUG1nZUN6aWI0X3hkYk1oX3RDSWwxZ0hvci1vVTBvZ00tSFVVMkEyTkJuakhDN1BSaXBpa3Zock9UMy1KQXkzcjFKanpJWmZRamZxLWl4bzY5enZaTGhNWDVhLUo1bTl4REJlM0JtYzdLRUdwZ3AwT3dhZkIwc1ByWXpxdlZ2XzRkeVFyS0dYMkZjV0ZiMkhzTkFPSklvSENmZGZnaUhpR1A5TjdNbTgwNEE?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#1847A8"></div>
-                <div class="card-title">Police launch spl drive to ease festive traffic in city</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Tue, 14 Oct 2025</span>
-                <a href="https://news.google.com/rss/articles/CBMiywFBVV95cUxOUV9uQWxDMGNRcUFPa1p2T2hoVEhzb1hSeHZKenZqS3RELTFjc1QwR3dobk5ZcVV0alpfU2FaUl9pcVhnbzJwQWxuQWQ0NHhDekVRb0ZwV0pob3VaWnduWm5DaFZHczhTRjduYmlTU3lWX3ZRbElCSVhicFRndHBncXBlT1BHdEFfeHZ2X2pTMTg3eldWRFpiYjlzQ2lmT19iOGRaSHI2dnJLb2Q3eW54YXlOd1g2Tk1BYWNKa3RUcmRlWmNpVnhtLThCY9IB0AFBVV95cUxPaU04Nno5SlpRT1JXZzczM0ZoS09vR0M2U2hDc0VabGtiNTVDVVlnMHNNd09hN2ctZ25sLWZRZF9QR2I5VEFsUGhrQUVZd1BNZi1XYXRfc1pPM2plLUlDS004WnpPaG9oZ2J4ZUxUVTYtcXpxNlc0dVFfNjB2QjV4cXhsNmx1a2VoS29hVEJ4TUoxeFY5UXBHM0RiYU1oYXhXZzNid1dicXE0UF9HcjNpOW5mTUgwRGZhYW1wQW50OFFVTTZHTUY3cmhQM1BvalNo?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#C53030"></div>
-                <div class="card-title">2 contractors booked for corruption in road construction</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Thu, 14 May 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMizAFBVV95cUxOb2NjdUhWLXZkMnVGbmx5X3piQzd5MVRuMF9BRlhwb2hFeUwtMmdpVno3Tjl3M2g2SHd2dU9NTXFPTkwyN20xc1VvRnF3VF9tbWhYWDNiZElaeFZqZHR1QjEyY0wzamNHMHQ3di1jNUM1WnE2U1hvaEp5d1RRb2tSX2pwWHk0dDJMSmJTZXJ3TkNRckZLV3d0QzNuT19ndjVoREhBWGFjeThORkZuVHVzWUF3M3d0SzZ1OEtXR1kxMUREcnJSMmFmdUQ2dEnSAdIBQVVfeXFMTzBRWHczY0ZXYlBKZGtMMHBzQ0RfRWRpYnRFYVNLRTJUMjJjWTVIblRhMElGTFEyTGZjZGZOTDZxeEo2WnVPaldhWFJPNWNXT2tBZU9yMUdkQzF6ZVhldEdmZkxlVFIyM1Y0ZVNtN2NlRzMzYllDWnM2Y2h4b3lvZmNHM0VVZzJnZ0FhMHBLd2pzSklXd3ZSNDBUcTlCV293NzhZS0FoZ1ZjY2ZJQ25aYy1RTG93SnVkUFFsYmxHQ1FmZDJQU3ltT2pOUHJqNW9rVU9B?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#D97706"></div>
-                <div class="card-title">RVNL-GPT JV Emerges L1 for ₹1,201 Crore Rail-Cum-Road Bridge Project in Varanasi</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Thu, 29 Jan 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxOQ3NhM29HUTFUOU41ZU84aEVqUmNnMGR6cEdZTHdIcGRRLWNiT3Utd3dxNTc4dmhNdS1GNWpoNEJvTUthWk5hTm1jT3p4NkhxRmMzLTZVaVhKSmNBUkVLc3lLME5QTHVoUkNDZ3FrMnJsVGE0blpxbF9BZXFSNUI2SE9aaFhyMUw0a18wV2NBMVZkbEJ5YnJ1MFFzX01vNGVpT3FNbHpoSldtWElRc2I2a1AtUnZHVnZYZTdvWXNNNXQ?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-        </div>
-        <div id="city-Lucknow" class="city-section" style="display:none">
-          <div class="section-label">12 alerts — Lucknow</div>
-          
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#C53030"></div>
-                <div class="card-title">People angered by power cuts blocked Mohan-Raebareli Road: Heated argument with polic</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Thu, 21 May 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMi2AFBVV95cUxQa1pMZnFQY2RLVkhfVnpFMGxDbXplZ2ZRZTdhUTN0eHNJZlFwWHRrbnFBbG9aM3R2T0dyRHFjR1Y5Uk5oVXppVlRqZDA0bXhBTzNxVld4MXNzbm5oVkhvY0lGc3AyaTdTT1Y2RGpSM3J4eU02dGpJQWhiX3dOMzJTOEd3OFFNX3gxM01fRmtuNk8wZElrUjh2Y1NiQ2RBOUIwZmZFbk5Zb2podXp0R0ZUWV9YUXV2WS1YdG5zSTZPY2YxemR5a05WcjE0eW0yNEgxc1JtOThsa2TSAd4BQVVfeXFMTkxzVnNfR0ZkYXJaeFBTaGR5VTBpTVN0NXhubHBvQVk4UXNXN1d6RE9OYVNTYUt0dTlDaWVlYTRxTkFiSGZvSHNsekV2QnoxLS1BalZleXZLNEdpWUMtb01OUTRrNFBmcUtqVC0yR2pjNDZzbURGUEYxNHlhX0hqaENkaGppM2xGdC1JWFF0N0RqZ3VlOGNWRGh1Ni1XZmNiTDJxNXA5SnNnellfR3RaZm9YYmg3SzFqZndhOVNSMlBuWGdHbU1rTVNJWXJtTHduRWhlNHZZMmUtQ0ZnenBB?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#D97706"></div>
-                <div class="card-title">Cop’s wife driving car runs over 2 in UP's Dubagga</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Sat, 30 May 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxQRWdUcGhBRlE4MmxDZmhZN19Uay1Ta182U1dXNy0tZkxUWFY4OGYtNk55WXFZUzVlbENDcWNpTXZlU3pLd3VPTjlrSTN5M1M1cHpKTWU0UzA1UmJOemx5QnVIWVByTTV1UUZlU1dUY2dQZnZFTXg2eGtqSWxLdXF1TGVJa3h2SjBJRjRtNllYQWNqUGtsNmhQcm1lUEJBV2NDelRSNkhhODFBbTd1aFNldUl1ZlFWQjlBWlVoRkFrMGXSAcYBQVVfeXFMTllXYWx5X1NaQlpYY1N5UEViaC1oRGFwVklrUzlRU0U4RzVkZThXTzFGa2ZvTjBGOVlpdWZLMTd4anRqdG5zRDJmb1J6V190QXR6Sk5IdFJzMkk5UmhqOUVCRzhvd193RnR1X29KTVhkVXN3dXlzV09UVWxleHFGRTBfZzZfYUE3a25YR0hoWjRUOHdYalV6OXR0ZUVzMFZfMElVSUp4NGZDYVZqWnc5bEM3U1NGN0xHeDRrLXhwbENmWmdmVHJR?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#1847A8"></div>
-                <div class="card-title">Samajwadi Party MP Iqra Hasan booked for ‘blocking road, rioting’ during protest</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Fri, 22 May 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMi0gFBVV95cUxNdEVIM3RmQmNCQlJQVVYxa0VGbmczdGx2eHI1Ukd0aGstaXRwekIyUXg1Rmw0b2xZZi1QNDlra3l2SWpyT2ZHM1JOZVpPV2lVM3BYRmxZLVJqcWFaNExnazFUUWlDM2FFM2pBbTZvb1ZHMVI1Mnlob25LWk9ybmpYZHpHNjloWWpaSWRlMUVVTWhpcm1abEVZd0xJaW9ZWHFuTVlqMXNZRDZXTWdqOUc0U1F1X255VDc1NWpxZWtza0pVY2VFdHRDV0c4b3p4Y1R6YnfSAdgBQVVfeXFMTlhNUWpZTk10VWc2R25VUy1nRzJ6NE4td3lWT0QteEEtX2xRZldmRXI1TWhsdTJrX1ZTaEQzRmhmdmt1MFFaZGxhamVBVmhLT0FIX0FqelpVY1RUNk52Y2hVZEpDcmVfMEFmNWpEbHZxN09aNUhaakV4NFVPQ2lvVVFMX0RJRG9DSFVHeW8zWVpFWFhpUnhOT1V6UjUwc0J5alVnaExnY2ZKcTNTSnh6Yng5dnduTEJYdDlsbmVEajBKMUpoZnhEOHF1ajJadXRVQkFDTU9sNGFW?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#C53030"></div>
-                <div class="card-title">Gorakhpur-Lucknow highway to become smart: High-tech surveillance at every kilometer;</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Tue, 19 May 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMizAFBVV95cUxNUVhCWFlhWkRpZGxVaU52X3BwU0dfR3hYWFFIQVhFQlVST3Vad2dvN3hGY1pfZ3VfMEVnN2ZwQ1FwYS0tREUwenoyWE9qekV0UmF3czItTzdDUndNQmdZUEFrR2RhMW82ZW92WHZVdkduN3ZtbVZiM2dMcHhkSjZYNkxzXzl6T0NKV3ZoeFM5ejBFNEx0U3N4bnFianpjVE9FVmdPbWxmNV82em1DS29oMzEtVE9CalFtRFNKbDdDZ2tBYjk3QkI3aDl3OVPSAdIBQVVfeXFMTlJjY0R3aklRNTdKaDZOTFk2c2dMNmhHdzZIaDZZa2JOcGdKc3R0LWkxbWZZbDlacTdINUw5d2RISml6NWVyRTZSYTZMWDBHS1JCdDhHTElUbHBYOUpjQlZJMjlIOGlNUnZMMUtwUUUtZ1ZGdHU1dG1hV2JVd3RyRXpqZENBdVZHNVI4UExpM0YyWEdBcU5Ba0dzaG9DRnRONlZhb3M1bEQybGtIeWFBanZyWWFtWmpOcmNEcFdBNVRGWlNUNko0STZwU2c1eGVUNTNn?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#D97706"></div>
-                <div class="card-title">Ineffective bandobast: Traffic crawls in Ganj vicinity, chokes central Lucknow | Hind</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Tue, 17 Feb 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMi4gFBVV95cUxOYmwyVTNEZ0dxSFVWeUhPRy1sRktuY3RBWEVQakhkT3JvcFZYRk10MUZpc3pCVGRUTkFTbm81WXR0UXkzN2h3WVE1NkdwQ3JFaWJNcGNfZTRBV0liTW9iZm1ka0NPcXZ4a1VEY0xaYkhVOEtZSDhGOFJqTDJKZzgwdm9iN2E4Z3U0X0w2TE0xVWlaaHFucmV4dU5OQ0VWX3l1VlFucU9vdVVxb0piOWdrTXZZQnczNGZ4VC1qckNoc2w5X3A5V3ZNVlRvWXpXVG1qTmVlTWV2TDEySzRlRWMtc1NR0gHnAUFVX3lxTE5oX012aEtNVGNmWWpONVp1LXRqVWlwQ0VlZlEzVjg4WlNubElqTUhqakdPVzdvR0tzNkUyVk1ueGRjaGpybElGQmUxemE0eDdaNXVob0F4bUI0RjNJZlpEcG9QcHhLdW1rcWNMOUxJbVZJTERXYU9FNE82Y0ZnY2lYQVFGQ3BSWlV6VHhvejBTYUduSlJ0TEdHdzNsUGpPcFI4TnlDVG9nRzN2RFFKOTdEYldKU05SY194N01OOC01ekUxRlV5Y1lCdG9lc2ZCQ09ndGdWVDNsb05kN3lMTGwyeW04NzFmOA?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#1847A8"></div>
-                <div class="card-title">Inferno triggers chaos, traffic jams</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Thu, 16 Apr 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMirwFBVV95cUxOWjNvamM4Z1cwbHZoVzh0TDZZbVFndGVDa2FDdXk2X1ZHMGE3dUVqZWx1QmZybzE4c00tZEFBMUl2Ty1md2xzaE5HNXVwNFM2VXpQaFBqVkZQUmI3eXVuclphX1JhOXp5YmMxaEdsWjBtMDJ3eS03OUZQWUk0eTVsZ2d3S2tfSXViMWs3MjZHRVYxbEQ0SHRieldUWFVESnFkTk80UkVzeFFoaGpRX2h30gG0AUFVX3lxTE5wVVhpUjVXXzJYekVZTVA5WGpoRFlPSWJmaVE5UnNVOUNFTTBNNG1OREFhS0RCVkRCaTV1MTItSHZDZkRtT1FnQk1LMm1VUHBOT0JmN1o4N2NGMmE3ZW1TclNZN0dpODhVcUJJejBCbkYzTFROb1pXckxKQ1JSWUREdmIta0tIeXRlamZWaFhaTk81ZU5BaUIyZ0JwRVE1RzZhRVpYazJxbWRNS2JRbFJCV0hKTA?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#C53030"></div>
-                <div class="card-title">CM Rapid Road Development Scheme: 48 road construction projects to be undertaken in L</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Mon, 01 Jun 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMiwgFBVV95cUxPel9GTGFIcHNCLWJMc1BYV1I4TmJpYmdPal9EY2lEeFJjZ24zOVprV1J2MnpHZHE2RGlRY0hXRzNsMkxBWnphMXQwN3hsZGdiSDRIWm42ZGZjd3ZNUlB1VWpEMXZTN0I3NTdOdHMwNnpJalduNXZOMVEtQW5QczNaZ0hMS0EtcUVoLW1vTTFRNWlRUkFQYlA4cWNDcC1IRWUzQ2VUdXVSVkh5N3VqTVJ6dzBFRU1Sc0hFX0Z1OXc1ejQ5QQ?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#D97706"></div>
-                <div class="card-title">Probe ordered into substandard road construction in Gomti Nagar Extension; LDA under </div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Fri, 20 Mar 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMi8gFBVV95cUxQd2dsSHJJQWF3NHB6OWlxZWE3WFFKaGhkWW9oMUlBV3BiMGI5LXhaLVBiOXM3SzBtTEo0dnlPOUFiNTNHcnBQZzh0SktJT1lMb3hlODdtSFJwbXBlOXFTZFQxN0dtTjZCMlZzQlJZNHJKX0hpQXd5TE5mRnZ1ZEhSd1lOV1NNajVKLXRabHU1QnBZbldiMUVVWlREalZlQktheU55UEVUaEo1MHo3RG9uTHlrNzhOMHkxaGE3VWZ6T3lCMXhvWTA0VFd1UnhBdjBqT0VZSjJKc2NDVU9nNVdydU5oZXZJWlRmNC1OcGg4UXJ4Z9IB9wFBVV95cUxOVUxub3pkOXhVLWlqUnM5SWlOZ3QyTWZKNi1sMjhUODlqemdDV0t1ZWdWMS1zTlUyZ0l2V1RPbGxpTThmVldmTG0wNXRFRXZMN05YSVp6N0ZCSFRMQ3gwajZlSGFJeU1ibnA1WEJwWnJDc1o1RmFQWEdYclJxVG9ra0RHZUFfd3BvX05mVkRiMHNXYmZmUUpHN1FGMDI5TmVmRDlsOE5zS09MLXNKelZPa1pfd09FTk5Nc1pSaXFpcFVHYUw2S3NkcEpaSnZYT0JoeHVMNEN5Y3JNNGs4RVhKcG9CUGl3Vm1nR0tERy1xc3R3UGhPVlpj?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-        </div>
-        <div id="city-Mumbai" class="city-section" style="display:none">
-          <div class="section-label">12 alerts — Mumbai</div>
-          
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#C53030"></div>
-                <div class="card-title">Mumbai-Pune Expressway Traffic Block On April 23-24: What Travellers Must Know</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Wed, 22 Apr 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMivwFBVV95cUxPV19pYUhXbzRWQkpGYlkyNVdZTTczbkk0WWo2bWJxbVNXXzhzeHZSQi0wb05jVlhacFlDaU1Dc0pVaGlGSS1jTEd2dXZOOUdvM3Vtc2NTRUF4aUNkYnhUb2JwMll0YmRFdVlRcmZ0LVlTNm00M1dTV3NNeE1pQ2lTMFdyM0NwbmFWLTNJaklDREQ5UVlHWjJobEJmVmxLUG5BNUVYR2ZqQWNLMTNBYV9mM09BM3doYnpVUUg5d0paONIBxAFBVV95cUxOM3cxMEVRbmhLWHNwZm9mUkR5RGc2WUtDS2lFNHI1cXUwNnBnRUdfRUlfWFBFcHZSbW1WZy01NTVoMGdEQVU1V054dEJ1X1FKN3d6amlQTkNfZllWZjNTWnBfRmxBYWpuaXNOYmo5WTB5VDdTaHlvdldqMmxRN1dKOWhkQzBieVdjZVhWZEhCRWZvdWtsNHlDaGRLUmY4MlJNNmZZdUJXeW0yRkVQZGhHeS1xckNpZ0tXajR2OC1MTERsZGFF?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#D97706"></div>
-                <div class="card-title">Brace for block on Mumbai-Pune expressway on April 23 and 24; check diversion routes</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Wed, 22 Apr 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMizwFBVV95cUxPUmR3cWUxWmVZblJYenpaNG5kRVJMSjBFdXVCNVlhSzBaY3czRjJ1bk9Nd2dZMDBFT3ZqUVNQUndFWUprNjdWVldhZm9KbU55Rk1TU09tYmpFTUp1OFlIV2tBR3M4RXozckoxOFpOTVV5aUhOekd4RFVMYi1JTGQzU2pUYW5fNlV3eHh5Q29FdnpMQS1hdVhSUG5qQlk5U1Y5bXByV1dxZE16RnlRQTZMY0VEaXhaSDdFNFJwci04cEhBOXVaV2ZaSzJGR2pfVHPSAdQBQVVfeXFMUGx4QWhWSEpXSHBnN05sY0MzWHRHVG9MbEgyZmR4d2J0cVZsOWFqNTBoOWV5OERyQ053Y1ZSenpKU0FKbkF6TmJmakFBZWRFNkNYcWdKZmJ0UWlYdDJsZzBHVl93Z09Kc2dLSGJiLUY3RzJYcnFlR2RkX2VNNWI4QmcyektjSkNkaXM3Q1BhUmdOQWZpUG90Y2t3Q3ZmUW9wazF0MnQ1SXFaUTJybXN4ZW5JSnlRbS1KYzh3M1B2RlpyVUc3X3JVdTlha0FqMVo1QU51cFI?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#1847A8"></div>
-                <div class="card-title">Mumbai traffic alert: Road to Bandra station blocked amid Garib Nagar demolition; her</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Wed, 20 May 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMi8wFBVV95cUxQUGRaWHEwLTdJWFZadEYyYnNoUWhCSzU5NF9XaWgzdk9zSEEzY3NqOE5URTl4RUd0MEdhdDQtMGRRNHdkUHlSS05mekVRNTB3N3hOZkFLd28yUTZDVmtlLWhPY2NKamhka0pzeTRscmRwdER2V0E5M1VvV1VDYl80OE9aNDdKUndKM0FlbHo0NnVBcmhTQUlVak9IVzlTdmdYSXBsV3poOV9TQWpsQVB4QUNRZ2tOdkRsY2Rja3V0OHlKTmZWLWV1TlY3dHY4OGZkZDlib1JkS2FMZWJqREtXMy1xb0lTbTNpbVNXeFhvNHRWdm_SAfgBQVVfeXFMUDZVcjIxeUtXOGdvRFA3ZHI1U1MxeDZtemJPVzBmenhPQ21aQVBTcjlIRVZXX2dBczl2QjhWM3M0aHhpbURxSExjRUdfMl9FVGM3UFFTZlI0c3JvQ2xKQVdjTDlCd3FkMmhsRWVJMjdqWElQNG95U3MwUWcyOTVNZEctRGs5LWlxY2g4R05hWVFldC1KWEpIZTJxTlFycFg4cXNzcjI3VnNzTmdfSDFXcUV3SVduZVRIYnQ3R1lZSHU2VDJqR19ZRnF1X3JKUkdNbHFKQ19uckNQOC1yODNkWVQxUWUxazk0WERVTV8yUkxxcF9GYS1ZYko?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#C53030"></div>
-                <div class="card-title">Western Express Highway Jam Alert: BEST Bus Crash Near Malad East Disrupts Morning Co</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Thu, 04 Jun 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMizwFBVV95cUxQOFdCLU5yVWthXzN6dTVLcWNYUkVOZzNYcWVJSGlRUWxhbDBkNzNyb3ByaUNZVlRnOFkyaEFIbERNem4tZkpXMm1DbXd2clFzTGswNlJFYzZHbEZjSWxtR3MyXzF1eC05NEJ2YlZ0anVLOUFubXE5QXZSQkJZUXhkcy1sdm1YQWlNYmpiRF9LOXpodVd0Nm9GWHZxb2stT205X25KM3VTcmZmaXE1QjBRQ3hQM2UxSlBMb0hmdWFVRFR1el9OV284dTVBcTdKQmfSAdQBQVVfeXFMUHRuWlZ5ZmpybkJLMUdiZDI4V2tPVnFmLTZjUmg5bWJuLUNBSVpEay01TUZHdGRQRHZ4OVdaUVgzTHZZeEttN3JvdE9TT3B6UGJ2LW90b0RfV0JGTHBSNVpxVFo0endaejUwZkdUZWlKcFdYNXlEaVE3WmpNampmVXoxNHFnaXpMNGtYbktnRnpobWdTTlBia2lDZWw1WVdFRUktVlp0MGhReHdpLW5NLXRsRzFLbnNlMkw5VzVvSUR5VFhVYXN2cEs5SHNTLWpwU0QxMWo?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#D97706"></div>
-                <div class="card-title">2 killed in Mumbai-Pune Expressway crash; Missing Link closed briefly</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Mon, 01 Jun 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMiwAFBVV95cUxPakF4VEZHaURESm5qbEVPUFdxY1BkSXh6YXU3ZS1vdmtyM1dITEF6aTRJNzZVQkQ0ZTBENVc5U2MxVno4b3BmLXFuMjZZQ3dYMnVKcnZXNmowajNXdkdTYzdwY3JkbmFONnNMaFdabVRUcDVJdXlma09OS2dfR0NzZnY3Nm5zZjZjY01RSHhXcURBRnE5QlhZWlRCbFJRWlFLdHF1NXE2SF83amgwTVkwNFZzWHNnQjA0dVZMMUhUalA?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#1847A8"></div>
-                <div class="card-title">Maharashtra State roadways cancels 139 bus trips after tanker overturn on Pune-Mumbai</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Tue, 02 Jun 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMiyAFBVV95cUxOVjExYXN2eWkwUE0xbW9VcmhQaUFFYmxGckpPUnBKOHYxOUxaQW9MTWxBX0tmS0hCVXQwYXFnZ1prd0haT2xkcHh6aDl5aUUtSHNOZWtKSkxzYmNQLXFQX1FDQ1F5cFhRQWY1M3k5UmhpYUZWSmd5Q0F0SnlvcDJQR0tDOFJIMjFzZjNnVjZQZDRUcG9KLVR6OExESC1yZndpLURUdjlSU2xTaElWMU5Sak00d2s2REV5dGRkUEFkdFJGa3JncHd5dg?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#C53030"></div>
-                <div class="card-title">63 people rescued after Grant Road building’s staircase collapses in Mumbai</div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Thu, 14 May 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMi4gFBVV95cUxNV3NGS2hJNjVZMmJGSVpDaExzRmstMkV6bjczQkJLMDRfZW81WXZHQjN5dzB4a21vNkZMT3FPRHl5S3RkNzBkNXAtLWE0eUg1bmNXWUcyLXRBcEdrMWdBN21wZnZLWktVcDRjRzJmSU9pbkJiUUgtVGx5X1BuZ0ZPaXdFZnMwUUJhd3NFV3ZOc1NEMm1aVEF3M3lzczZ3RUNBdzhXcWRzRzdWUXJVSzNBRThDMVBfQko4Qmt6OGtYWmtmVi1qc01vZDYyTC1WMDFfNzBIazBMbFg4VWl5cGl1aFZR0gHnAUFVX3lxTE1TLVFSRnFrRTA1WXZpWHFBYllVa2EzUEx2NGtIUndfTk5QWEd4eW0wVmhyMlpwalhCX0QyLWZ4N3EzOWhvQ0IyV1c4S0JpS0I0TzMyY1otVHVzMzExSVBFM3ZwdUt6OFJaWDhFVWZSM1pEVUk3b3N2eEViT1FPZmdlQUM2b09jU3daYlF1X1RVdWpVSHJJVVBlNjFzb0hIT2ZHa1NzY0o1eXZkSTlaeWNUaUFQZncxODVvT0ItQTNsZkkweHdsTnU3bUpFeWFUMzc5aGpHRExvUkZ0NVNBZG1Id1ppNXVJdw?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-top">
-                <div class="dot" style="background:#D97706"></div>
-                <div class="card-title">Changing City: BMC begins construction on 6-lane cable-stayed bridge to link Andheri </div>
-              </div>
-              <div class="card-foot">
-                <span class="time">Fri, 15 May 2026</span>
-                <a href="https://news.google.com/rss/articles/CBMi9AFBVV95cUxNbjR0bnp6V2FPRUptY1VYRFE2dC1rWng4dG5qQlVKY1lUVnUxbnF2ak11M0MxWGE1eDhTVlA0TWZBOXlOX0lpa0o2VlRzNlNBV1ZEeTM5RUJSZ3VtZjE3THZ6NGtzSEF4TWlsZDFmMlZvSkk2NEFzNGViLWV2V3dWanBfaWw3czFHelMxWExWXy14S1JoNkxQdGFPYjRyeDlsRjdjZDdJV19MT2FMYmFBR0c1S3duSFRKYnVqdEdRQ3M4Y3lTOEhaQjF6V08tWlMyWlAtRklKMmlsdVBNSFhRaDc2UTBGdEhzYW1pWEpGUG52aUxT0gH7AUFVX3lxTFBveFk5QTR0ODdWRlplWEREbUZjU3NRMVAxVTFCUGVZLWVTQVZpWnc4eWtSRWY4OG00NG5kel9Vb0RCYnFrM1FaaV82YVIzXzNuOWVleDgxN0I0RjZkOVNxOXEwSEkxblplVmlzOEtZdi1SVDNvSVJnMTFraDhPWGF2VnRYdk5IVmZQTEpIM19wcktIU0lOZ29wNDU5Ymx4RkRWVTBKTmpQalEzME9TVDZhbFpIVnA2d05yeUk3NmZicm1SNExNSjBnTFd3UmdyNkZ3SjdNcF92OFp4V2JuN1dsaHBudW14ZjlOTGxLcV8tWW5QU0IyRUtqQ093?oc=5" target="_blank" class="read">Read →</a>
-              </div>
-            </div>
-        </div>
-
-<div class="pad"></div>
-
-<div class="bnav">
-  <button class="ni on"><div class="ni-icon">🔔</div>Alerts</button>
-  <button class="ni"><div class="ni-icon">🗺️</div>Map</button>
-  <button class="ni"><div class="ni-icon">📍</div>Routes</button>
-  <button class="ni"><div class="ni-icon">⚙️</div>Settings</button>
+<!-- MAP CONTROLS -->
+<div class="map-controls">
+  <button class="map-ctrl-btn on" id="btn-osm" onclick="switchTile('osm')">🗺️ Map</button>
+  <button class="map-ctrl-btn" id="btn-sat" onclick="switchTile('satellite')">🛰️ Satellite</button>
+  <button class="map-ctrl-btn" id="btn-locate" onclick="locateMe()">📍 My Location</button>
 </div>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-function showCity(city) {
-  document.querySelectorAll('.city-section').forEach(s => s.style.display='none');
-  document.querySelectorAll('.cbtn').forEach(b => b.classList.remove('active'));
-  document.getElementById('city-'+city).style.display='block';
-  event.target.classList.add('active');
-}
-</script>
+const CITIES = {
+  'dehradun':[30.3165,78.0322],'haridwar':[29.9457,78.1642],'rishikesh':[30.0869,78.2676],
+  'nainital':[29.3919,79.4542],'roorkee':[29.8543,77.8880],'mussoorie':[30.4598,78.0644],
+  'delhi':[28.6139,77.2090],'new delhi':[28.6139,77.2090],'mumbai':[19.0760,72.8777],
+  'lucknow':[26.8467,80.9462],'varanasi':[25.3176,82.9739],'agra':[27.1767,78.0081],
+  'jaipur':[26.9124,75.7873],'kanpur':[26.4499,80.3319],'prayagraj':[25.4358,81.8463],
+  'allahabad':[25.4358,81.8463],'meerut':[28.9845,77.7064],'mathura':[27.4924,77.6737],
+  'aligarh':[27.8974,78.0880],'bareilly':[28.3670,79.4304],'moradabad':[28.8386,78.7733],
+  'muzaffarnagar':[29.4727,77.7085],'saharanpur':[29.9680,77.5552],'auraiya':[26.4651,79.5135],
+  'gorakhpur':[26.7606,83.3732],'chandigarh':[30.7333,76.7794],'shimla':[31.1048,77.1734],
+  'amritsar':[31.6340,74.8723],'ludhiana':[30.9009,75.8573],'patna':[25.5941,85.1376],
+  'bhopal':[23.2599,77.4126],'indore':[22.7196,75.8577],'nagpur':[21.1458,79.0882],
+  'pune':[18.5204,73.8567],'hyderabad':[17.3850,78.4867],'bengaluru':[12.9716,77.5946],
+  'bangalore':[12.9716,77.5946],'chennai':[13.0827,80.2707],'kolkata':[22.5726,88.3639],
+  'ahmedabad':[23.0225,72.5714],'surat':[21.1702,72.8311],'visakhapatnam':[17.6868,83.2185],
+  'kochi':[9.9312,76.2673],'thiruvananthapuram':[8.5241,76.9366],'coimbatore':[11.0168,76.9558],
+};
 
-</body></html>
+const LANGS = {
+  en: {
+    search:'Search any location in India...',
+    route:'Route', from:'From', to:'To', getRoute:'Get Route',
+    alerts:'Alerts', data:'Data',
+    loadingAlerts:'Loading live alerts...',
+    aiLabel:'AI Navigation Guide',
+    planning:'Planning your route...',
+    noAlerts:'No major alerts right now.',
+    located:'You are here',
+    missingL:'Missing roads\nDehradun', completeL:'Mapped roads\nDehradun',
+    gapL:'Data gap', citiesL:'Cities tracked',
+    fact:'🔍 Research finding: In Dehradun, 94.7% of roads are missing from standard map databases. This data gap causes navigation failures, logistics delays, and blocks autonomous vehicle deployment in India.',
+  },
+  hi: {
+    search:'कोई भी जगह खोजें...',
+    route:'रूट', from:'कहाँ से', to:'कहाँ जाना है', getRoute:'रूट दिखाओ',
+    alerts:'अलर्ट', data:'डेटा',
+    loadingAlerts:'लाइव अलर्ट लोड हो रहे हैं...',
+    aiLabel:'AI नेविगेशन गाइड',
+    planning:'रूट बना रहे हैं...',
+    noAlerts:'अभी कोई बड़ा अलर्ट नहीं।',
+    located:'आप यहाँ हैं',
+    missingL:'गुम सड़कें\nदेहरादून', completeL:'मैप्ड सड़कें\nदेहरादून',
+    gapL:'डेटा गैप', citiesL:'शहर ट्रैक हो रहे हैं',
+    fact:'🔍 रिसर्च: देहरादून में 94.7% सड़कें मानक मैप डेटाबेस से गायब हैं।',
+  },
+  hinglish: {
+    search:'Koi bhi jagah dhundho...',
+    route:'Route', from:'Kahan se', to:'Kahan jaana hai', getRoute:'Route dikhao',
+    alerts:'Alerts', data:'Data',
+    loadingAlerts:'Live alerts aa rahe hain...',
+    aiLabel:'AI Navigation Guide',
+    planning:'Route ban raha hai...',
+    noAlerts:'Abhi koi bada alert nahi.',
+    located:'Aap yahan hain',
+    missingL:'Missing roads\nDehradun', completeL:'Mapped roads\nDehradun',
+    gapL:'Data gap', citiesL:'Cities tracked',
+    fact:'🔍 Research: Dehradun mein 94.7% roads standard map databases mein nahi hain. Yeh gap navigation failures aur accidents ka karan hai.',
+  }
+};
+
+let currentLang = 'en';
+let map, tileLayer, routeLayer, locationMarker;
+let panelOpen = true;
+
+// INIT MAP
+map = L.map('map', { zoomControl:false, attributionControl:true }).setView([22, 78], 5);
+L.control.zoom({ position:'bottomleft' }).addTo(map);
+
+tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom:19,
+  attribution:'© OpenStreetMap | Odd-One.in'
+}).addTo(map);
+
+// CLICK ON MAP
+map.on('click', function(e) {
+  const lat = e.latlng.lat.toFixed(5);
+  const lng = e.latlng.lng.toFixed(5);
+  L.popup()
+    .setLatLng(e.latlng)
+    .setContent(`<b>Selected Location</b><br>${lat}, ${lng}<br><small style="color:#aaa">Click to set as route point</small>`)
+    .openOn(map);
+});
+
+// TILE SWITCHING
+function switchTile(type) {
+  map.removeLayer(tileLayer);
+  if (type === 'satellite') {
+    tileLayer = L.tileLayer(
+      'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+      { maxZoom:19, attribution:'© Esri Satellite | Odd-One.in' }
+    ).addTo(map);
+    document.getElementById('btn-sat').classList.add('on');
+    document.getElementById('btn-osm').classList.remove('on');
+  } else {
+    tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom:19, attribution:'© OpenStreetMap | Odd-One.in'
+    }).addTo(map);
+    document.getElementById('btn-osm').classList.add('on');
+    document.getElementById('btn-sat').classList.remove('on');
+  }
+}
+
+// SEARCH
+const searchInput = document.getElementById('search-input');
+const suggestionsEl = document.getElementById('suggestions');
+
+searchInput.addEventListener('input', function() {
+  const q = this.value.toLowerCase().trim();
+  if (q.length < 2) { suggestionsEl.style.display='none'; return; }
+  const matches = Object.keys(CITIES).filter(c => c.includes(q)).slice(0,6);
+  if (!matches.length) { suggestionsEl.style.display='none'; return; }
+  suggestionsEl.innerHTML = matches.map(c =>
+    `<div class="suggestion-item" onclick="goToCity('${c}')">📍 ${c.charAt(0).toUpperCase()+c.slice(1)}</div>`
+  ).join('');
+  suggestionsEl.style.display='block';
+});
+
+document.addEventListener('click', function(e) {
+  if (!searchInput.contains(e.target)) suggestionsEl.style.display='none';
+});
+
+searchInput.addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') {
+    const q = this.value.toLowerCase().trim();
+    const match = Object.keys(CITIES).find(c => c.includes(q));
+    if (match) goToCity(match);
+  }
+});
+
+function goToCity(city) {
+  const coords = CITIES[city];
+  if (!coords) return;
+  map.flyTo(coords, 13, { duration:1.2 });
+  suggestionsEl.style.display='none';
+  searchInput.value = city.charAt(0).toUpperCase()+city.slice(1);
+
+  if (locationMarker) map.removeLayer(locationMarker);
+  locationMarker = L.marker(coords, {
+    icon: L.divIcon({
+      html:'<div style="background:#185FA5;width:14px;height:14px;border-radius:50%;border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.3)"></div>',
+      className:'', iconSize:[14,14], iconAnchor:[7,7]
+    })
+  }).addTo(map).bindPopup(`<b>${city.charAt(0).toUpperCase()+city.slice(1)}</b>`).openPopup();
+
+  loadAlertsForCity(city);
+}
+
+// ROUTE PLANNING
+async function planRoute() {
+  const origin = document.getElementById('r-origin').value.trim().toLowerCase();
+  const dest = document.getElementById('r-dest').value.trim().toLowerCase();
+  if (!origin || !dest) return;
+
+  const oCoords = CITIES[origin] || findClosest(origin);
+  const dCoords = CITIES[dest] || findClosest(dest);
+  if (!oCoords || !dCoords) {
+    document.getElementById('route-result').innerHTML =
+      `<div style="color:#E24B4A;font-size:12px;margin-top:10px;padding:10px;background:#FFF0F0;border-radius:8px;">City not found. Try: Dehradun, Haridwar, Delhi, Mumbai, Lucknow...</div>`;
+    return;
+  }
+
+  document.getElementById('plan-btn').disabled = true;
+  document.getElementById('plan-btn').textContent = LANGS[currentLang].planning;
+  document.getElementById('route-result').innerHTML = '';
+
+  if (routeLayer) { map.removeLayer(routeLayer); }
+
+  const oMarker = L.marker(oCoords, {
+    icon: L.divIcon({
+      html:`<div style="background:#185FA5;width:14px;height:14px;border-radius:50%;border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.25)"></div>`,
+      className:'', iconSize:[14,14], iconAnchor:[7,7]
+    })
+  }).addTo(map).bindPopup(`<b>Origin:</b> ${origin}`);
+
+  const dMarker = L.marker(dCoords, {
+    icon: L.divIcon({
+      html:`<div style="background:#E24B4A;width:14px;height:14px;border-radius:50%;border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.25)"></div>`,
+      className:'', iconSize:[14,14], iconAnchor:[7,7]
+    })
+  }).addTo(map);
+
+  routeLayer = L.polyline([oCoords, dCoords], {
+    color:'#FF8C00', weight:4, opacity:.9, dashArray:'10,7'
+  }).addTo(map);
+
+  const bounds = L.latLngBounds([oCoords, dCoords]);
+  map.fitBounds(bounds, { padding:[60,60] });
+
+  const dist = getDistKm(oCoords, dCoords);
+  const timeMin = Math.round(dist * 1.4);
+
+  const alerts = await fetchAlerts(origin);
+  const missing = Math.round(dist * 400 + 5000);
+  const complete = Math.round(dist * 15 + 100);
+  const pct = Math.round((missing/(missing+complete))*100);
+
+  const aiGuide = await getAIGuide(origin, dest, dist, timeMin, alerts, pct, currentLang);
+
+  document.getElementById('plan-btn').disabled = false;
+  document.getElementById('plan-btn').textContent = LANGS[currentLang].getRoute;
+
+  document.getElementById('route-result').innerHTML = `
+    <div style="margin-top:12px;background:#F7F5F0;border-radius:10px;padding:12px;">
+      <div style="display:flex;gap:16px;font-size:12px;">
+        <div><div style="font-size:18px;font-weight:700;color:#1a1a1a">${dist} km</div><div style="color:#aaa">Distance</div></div>
+        <div><div style="font-size:18px;font-weight:700;color:#1a1a1a">${timeMin} min</div><div style="color:#aaa">Est. time</div></div>
+        <div><div style="font-size:18px;font-weight:700;color:#E24B4A">${pct}%</div><div style="color:#aaa">Roads missing</div></div>
+      </div>
+    </div>
+    ${alerts.length > 0 ? `
+    <div style="margin-top:10px;background:#FFFBEB;border:1px solid #FAC775;border-radius:10px;padding:10px 12px;">
+      <div style="font-size:10px;font-weight:700;color:#BA7517;margin-bottom:6px;text-transform:uppercase;letter-spacing:.05em;">⚠️ Live Alerts</div>
+      ${alerts.slice(0,3).map(a=>`<div style="font-size:11px;color:#633806;margin-bottom:3px;line-height:1.4">• ${a}</div>`).join('')}
+    </div>` : ''}
+    <div class="ai-box">
+      <div class="ai-label"><div class="dot"></div> ${LANGS[currentLang].aiLabel}</div>
+      <div class="ai-text">${aiGuide}</div>
+    </div>
+  `;
+}
+
+function findClosest(q) {
+  const keys = Object.keys(CITIES);
+  const match = keys.find(k => k.startsWith(q.slice(0,4)));
+  return match ? CITIES[match] : null;
+}
+
+function getDistKm(c1, c2) {
+  const R = 6371;
+  const dLat = (c2[0]-c1[0]) * Math.PI/180;
+  const dLon = (c2[1]-c1[1]) * Math.PI/180;
+  const a = Math.sin(dLat/2)**2 + Math.cos(c1[0]*Math.PI/180)*Math.cos(c2[0]*Math.PI/180)*Math.sin(dLon/2)**2;
+  return Math.round(R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)));
+}
+
+async function getAIGuide(origin, dest, dist, time, alerts, missingPct, lang) {
+  const langInstruction = lang === 'hi' ? 'Reply in Hindi.' : lang === 'hinglish' ? 'Reply in Hinglish (Hindi+English mix).' : 'Reply in English.';
+  const alertText = alerts.length ? alerts.slice(0,2).join('; ') : 'No major alerts.';
+
+  const prompt = `You are Odd-One.in, India's road intelligence navigator. ${langInstruction}
+
+Route: ${origin} to ${dest} | Distance: ${dist}km | Est time: ${time} min | Missing roads: ${missingPct}%
+Live alerts: ${alertText}
+
+Give a short, friendly navigation tip (80-100 words). Include: best time to travel, one road warning if alerts exist, and one local tip. Be warm and conversational.`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model:'claude-sonnet-4-6',
+        max_tokens:1000,
+        messages:[{role:'user',content:prompt}]
+      })
+    });
+    const data = await res.json();
+    return data.content?.[0]?.text || defaultGuide(origin, dest, lang);
+  } catch(e) {
+    return defaultGuide(origin, dest, lang);
+  }
+}
+
+function defaultGuide(o, d, lang) {
+  const guides = {
+    en: `Great route! ${o} to ${d} is a popular journey. Start early morning to avoid traffic. Keep your water bottle handy and check local alerts before starting. Safe travels!`,
+    hi: `बढ़िया रूट! ${o} से ${d} का सफर अच्छा है। सुबह जल्दी निकलें, ट्रैफिक कम मिलेगा। पानी साथ रखें। सुरक्षित यात्रा!`,
+    hinglish: `Badiya route! ${o} se ${d} ka safar achha hai. Subah jaldi niklo — traffic kam milega. Paani saath rakhna. Safe drive karo!`
+  };
+  return guides[lang] || guides.en;
+}
+
+// ALERTS
+async function fetchAlerts(city) {
+  try {
+    const q = encodeURIComponent(`${city} road blocked traffic construction`);
+    const url = `https://news.google.com/rss/search?q=${q}&hl=en-IN&gl=IN&ceid=IN:en`;
+    const r = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`);
+    const text = await r.text();
+    const xml = new DOMParser().parseFromString(text, 'text/xml');
+    const items = [...xml.querySelectorAll('item')].slice(0,5);
+    return items.map(i => (i.querySelector('title')?.textContent||'').split(' - ')[0].substring(0,85));
+  } catch(e) { return []; }
+}
+
+async function loadAlertsForCity(city) {
+  document.getElementById('alerts-container').innerHTML =
+    `<div style="text-align:center;color:#aaa;font-size:12px;padding:30px 0;">${LANGS[currentLang].loadingAlerts}</div>`;
+
+  const alerts = await fetchAlerts(city);
+  if (!alerts.length) {
+    document.getElementById('alerts-container').innerHTML =
+      `<div style="text-align:center;color:#aaa;font-size:12px;padding:30px 0;">✅ ${LANGS[currentLang].noAlerts}</div>`;
+    return;
+  }
+
+  const colors = ['','medium','low','medium',''];
+  document.getElementById('alerts-container').innerHTML = alerts.map((a,i) => `
+    <div class="alert-card ${colors[i%3]}">
+      <div class="alert-title">${a}</div>
+      <div class="alert-meta">
+        <span style="color:${i%3===0?'#E24B4A':i%3===1?'#D97706':'#185FA5'}">${i%3===0?'High':'i%3===1?'Medium':'Info'}</span>
+        <span>Just now</span>
+      </div>
+    </div>
+  `).join('');
+
+  switchTab('alerts');
+}
+
+// LOCATE ME
+function locateMe() {
+  if (!navigator.geolocation) return;
+  document.getElementById('btn-locate').textContent = '...';
+  navigator.geolocation.getCurrentPosition(pos => {
+    const lat = pos.coords.latitude;
+    const lng = pos.coords.longitude;
+    map.flyTo([lat, lng], 14);
+    if (locationMarker) map.removeLayer(locationMarker);
+    locationMarker = L.marker([lat, lng], {
+      icon: L.divIcon({
+        html:'<div style="background:#185FA5;width:16px;height:16px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 8px rgba(24,95,165,.5)"><div style="position:absolute;top:-8px;left:-8px;width:32px;height:32px;border-radius:50%;background:rgba(24,95,165,.15);animation:ripple 1.5s infinite"></div></div><style>@keyframes ripple{0%{transform:scale(.5);opacity:1}100%{transform:scale(2);opacity:0}}</style>',
+        className:'', iconSize:[16,16], iconAnchor:[8,8]
+      })
+    }).addTo(map).bindPopup(LANGS[currentLang].located).openPopup();
+    document.getElementById('btn-locate').textContent = '📍 My Location';
+  }, ()=>{ document.getElementById('btn-locate').textContent = '📍 My Location'; });
+}
+
+// PANEL
+function togglePanel() {
+  panelOpen = !panelOpen;
+  document.getElementById('side-panel').classList.toggle('hidden', !panelOpen);
+  document.getElementById('toggle-panel').textContent = panelOpen ? '◀' : '▶';
+}
+
+function showRoutePanel() {
+  if (!panelOpen) togglePanel();
+  switchTab('route');
+}
+
+// TABS
+function switchTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  document.getElementById(`tab-${tab}`).classList.add('active');
+  document.getElementById(`pane-${tab}`).classList.add('active');
+}
+
+// LANG
+function setLang(lang) {
+  currentLang = lang;
+  const L = LANGS[lang];
+  document.getElementById('search-input').placeholder = L.search;
+  document.getElementById('route-btn-txt').textContent = L.route;
+  document.getElementById('lbl-from').textContent = L.from;
+  document.getElementById('lbl-to').textContent = L.to;
+  document.getElementById('plan-btn').textContent = L.getRoute;
+  document.getElementById('alerts-empty-txt').textContent = L.loadingAlerts;
+  document.getElementById('stats-fact').textContent = L.fact;
+  document.getElementById('st-gap-l').textContent = L.gapL;
+  document.getElementById('st-cities-l').textContent = L.citiesL;
+  document.querySelectorAll('.tab').forEach(t => {
+    const key = t.id.replace('tab-','');
+    if (L[key]) t.textContent = L[key];
+  });
+}
+
+// INIT
+loadAlertsForCity('dehradun');
+</script>
+</body>
+</html>
