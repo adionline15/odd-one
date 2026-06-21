@@ -10,7 +10,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const query = encodeURIComponent(`${city} road blocked traffic construction`);
+    const query = encodeURIComponent(`${city} road blocked traffic construction when:7d`);
     const url = `https://news.google.com/rss/search?q=${query}&hl=en-IN&gl=IN&ceid=IN:en`;
 
     const response = await fetch(url, {
