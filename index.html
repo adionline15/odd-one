@@ -415,24 +415,15 @@ function getDistKm(c1, c2) {
 }
 
 async function getAIGuide(origin, dest, dist, time, alerts, missingPct, lang) {
-  const langInstruction = lang === 'hi' ? 'Reply in Hindi.' : lang === 'hinglish' ? 'Reply in Hinglish (Hindi+English mix).' : 'Reply in English.';
-  const alertText = alerts.length ? alerts.slice(0,2).join('; ') : 'No major alerts.';
-
-  const prompt = `You are Odd-One.in, India's road intelligence navigator. ${langInstruction}
-
-Route: ${origin} to ${dest} | Distance: ${dist}km | Est time: ${time} min | Missing roads: ${missingPct}%
-Live alerts: ${alertText}
-
-Give a short, friendly navigation tip (80-100 words). Include: best time to travel, one road warning if alerts exist, and one local tip. Be warm and conversational.`;
-
   try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ model:'claude-sonnet-4-6', max_tokens:1000, messages:[{role:'user',content:prompt}] })
+    const res = await fetch('/api/route-guide', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ origin, dest, dist, time, alerts, missingPct, lang })
     });
+    if (!res.ok) return defaultGuide(origin, dest, lang);
     const data = await res.json();
-    return data.content?.[0]?.text || defaultGuide(origin, dest, lang);
+    return data.text || defaultGuide(origin, dest, lang);
   } catch(e) {
     return defaultGuide(origin, dest, lang);
   }
