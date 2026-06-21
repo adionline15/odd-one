@@ -10,10 +10,8 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 html, body { height:100%; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; overflow:hidden; }
 
-/* MAP FULL SCREEN */
 #map { position:absolute; top:0; left:0; right:0; bottom:0; z-index:1; }
 
-/* TOP BAR */
 .topbar {
   position:absolute; top:0; left:0; right:0; z-index:500;
   background:rgba(255,255,255,0.97);
@@ -26,302 +24,108 @@ html, body { height:100%; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
 .logo { font-size:16px; font-weight:700; color:#1a1a1a; white-space:nowrap; }
 .logo em { font-style:normal; color:#E24B4A; }
 
-.search-bar {
-  flex:1;
-  display:flex;
-  gap:8px;
-  align-items:center;
-}
-
-.search-input-wrap {
-  flex:1;
-  position:relative;
-}
-
+.search-bar { flex:1; display:flex; gap:8px; align-items:center; }
+.search-input-wrap { flex:1; position:relative; }
 .search-input-wrap input {
-  width:100%;
-  padding:9px 36px 9px 14px;
-  border:1.5px solid #E2E0D8;
-  border-radius:24px;
-  font-size:13px;
-  outline:none;
-  background:#F7F5F0;
-  font-family:inherit;
-  color:#1a1a1a;
-  transition:all .2s;
+  width:100%; padding:9px 36px 9px 14px; border:1.5px solid #E2E0D8;
+  border-radius:24px; font-size:13px; outline:none; background:#F7F5F0;
+  font-family:inherit; color:#1a1a1a; transition:all .2s;
 }
-
-.search-input-wrap input:focus {
-  border-color:#185FA5;
-  background:#fff;
-  box-shadow:0 0 0 3px rgba(24,95,165,0.1);
-}
-
-.search-input-wrap .s-icon {
-  position:absolute;
-  right:12px; top:50%;
-  transform:translateY(-50%);
-  font-size:14px;
-  color:#aaa;
-  pointer-events:none;
-}
+.search-input-wrap input:focus { border-color:#185FA5; background:#fff; box-shadow:0 0 0 3px rgba(24,95,165,0.1); }
+.search-input-wrap .s-icon { position:absolute; right:12px; top:50%; transform:translateY(-50%); font-size:14px; color:#aaa; pointer-events:none; }
 
 .route-btn {
-  padding:9px 16px;
-  background:#185FA5;
-  color:#fff;
-  border:none;
-  border-radius:24px;
-  font-size:13px;
-  font-weight:600;
-  cursor:pointer;
-  white-space:nowrap;
-  font-family:inherit;
-  transition:all .15s;
+  padding:9px 16px; background:#185FA5; color:#fff; border:none; border-radius:24px;
+  font-size:13px; font-weight:600; cursor:pointer; white-space:nowrap; font-family:inherit; transition:all .15s;
 }
 .route-btn:hover { background:#0f3480; }
 
-.lang-select {
-  padding:8px 10px;
-  border:1.5px solid #E2E0D8;
-  border-radius:8px;
-  font-size:12px;
-  background:#fff;
-  cursor:pointer;
-  font-family:inherit;
-  color:#555;
-  outline:none;
-}
+.lang-select { padding:8px 10px; border:1.5px solid #E2E0D8; border-radius:8px; font-size:12px; background:#fff; cursor:pointer; font-family:inherit; color:#555; outline:none; }
 
-/* SIDE PANEL */
 .side-panel {
-  position:absolute;
-  top:56px; left:0; bottom:0;
-  width:320px;
-  background:#fff;
-  border-right:1px solid #E2E0D8;
-  z-index:400;
-  display:flex;
-  flex-direction:column;
-  transform:translateX(0);
-  transition:transform .3s ease;
+  position:absolute; top:56px; left:0; bottom:0; width:320px; background:#fff;
+  border-right:1px solid #E2E0D8; z-index:400; display:flex; flex-direction:column;
+  transform:translateX(0); transition:transform .3s ease;
 }
-
 .side-panel.hidden { transform:translateX(-100%); }
 
-.panel-tabs {
-  display:flex;
-  border-bottom:1px solid #E2E0D8;
-}
-
-.tab {
-  flex:1;
-  padding:11px 0;
-  text-align:center;
-  font-size:12px;
-  font-weight:500;
-  color:#999;
-  cursor:pointer;
-  border-bottom:2px solid transparent;
-  transition:all .15s;
-}
-
+.panel-tabs { display:flex; border-bottom:1px solid #E2E0D8; }
+.tab { flex:1; padding:11px 0; text-align:center; font-size:12px; font-weight:500; color:#999; cursor:pointer; border-bottom:2px solid transparent; transition:all .15s; }
 .tab.active { color:#185FA5; border-bottom-color:#185FA5; }
 
 .tab-content { flex:1; overflow-y:auto; padding:14px; }
 .tab-content::-webkit-scrollbar { width:0; }
-
 .tab-pane { display:none; }
 .tab-pane.active { display:block; }
 
-/* ROUTE FORM */
 .route-field { margin-bottom:10px; }
 .route-field label { font-size:10px; font-weight:600; color:#aaa; text-transform:uppercase; letter-spacing:.06em; display:block; margin-bottom:4px; }
 .route-field input {
-  width:100%;
-  padding:9px 12px;
-  border:1.5px solid #E2E0D8;
-  border-radius:10px;
-  font-size:13px;
-  font-family:inherit;
-  outline:none;
-  color:#1a1a1a;
-  transition:all .15s;
+  width:100%; padding:9px 12px; border:1.5px solid #E2E0D8; border-radius:10px;
+  font-size:13px; font-family:inherit; outline:none; color:#1a1a1a; transition:all .15s;
 }
 .route-field input:focus { border-color:#185FA5; }
 
 .go-route-btn {
-  width:100%;
-  background:#185FA5;
-  color:#fff;
-  border:none;
-  border-radius:10px;
-  padding:12px;
-  font-size:13px;
-  font-weight:600;
-  cursor:pointer;
-  font-family:inherit;
-  margin-top:10px;
-  transition:all .15s;
+  width:100%; background:#185FA5; color:#fff; border:none; border-radius:10px; padding:12px;
+  font-size:13px; font-weight:600; cursor:pointer; font-family:inherit; margin-top:10px; transition:all .15s;
 }
 .go-route-btn:hover { background:#0f3480; }
 .go-route-btn:disabled { background:#ccc; cursor:not-allowed; }
 
-/* STATS */
 .stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:14px; }
-.stat-card {
-  background:#F7F5F0;
-  border-radius:10px;
-  padding:10px 12px;
-}
+.stat-card { background:#F7F5F0; border-radius:10px; padding:10px 12px; }
 .stat-n { font-size:20px; font-weight:700; }
 .stat-l { font-size:10px; color:#888; margin-top:2px; }
 
-/* ALERTS */
-.alert-card {
-  background:#fff;
-  border:1px solid #E2E0D8;
-  border-left:3px solid #E24B4A;
-  border-radius:8px;
-  padding:10px 12px;
-  margin-bottom:8px;
-}
+.alert-card { background:#fff; border:1px solid #E2E0D8; border-left:3px solid #E24B4A; border-radius:8px; padding:10px 12px; margin-bottom:8px; }
 .alert-card.medium { border-left-color:#D97706; }
 .alert-card.low { border-left-color:#185FA5; }
 .alert-title { font-size:12px; font-weight:500; color:#1a1a1a; line-height:1.4; margin-bottom:4px; }
 .alert-meta { font-size:10px; color:#aaa; display:flex; justify-content:space-between; }
 .alert-read { color:#185FA5; text-decoration:none; font-size:10px; }
 
-/* AI RESPONSE */
-.ai-box {
-  background:linear-gradient(135deg,#EEF3FF,#F7F5F0);
-  border:1px solid #BFCFFF;
-  border-radius:12px;
-  padding:14px;
-  margin-top:12px;
-}
+.ai-box { background:linear-gradient(135deg,#EEF3FF,#F7F5F0); border:1px solid #BFCFFF; border-radius:12px; padding:14px; margin-top:12px; }
 .ai-label { font-size:10px; font-weight:600; color:#185FA5; text-transform:uppercase; letter-spacing:.06em; margin-bottom:8px; display:flex; align-items:center; gap:5px; }
 .ai-label .dot { width:6px; height:6px; background:#185FA5; border-radius:50%; animation:pulse 1.4s infinite; }
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
 .ai-text { font-size:12px; line-height:1.7; color:#333; }
 
-/* LOADING */
-.loading-bar {
-  position:absolute;
-  top:56px; left:0; right:0;
-  height:2px;
-  background:#E2E0D8;
-  z-index:600;
-  display:none;
-}
+.loading-bar { position:absolute; top:56px; left:0; right:0; height:2px; background:#E2E0D8; z-index:600; display:none; }
 .loading-bar.on { display:block; }
-.loading-bar::after {
-  content:'';
-  position:absolute;
-  top:0; left:-30%;
-  width:30%;
-  height:100%;
-  background:#185FA5;
-  animation:loading 1s linear infinite;
-}
+.loading-bar::after { content:''; position:absolute; top:0; left:-30%; width:30%; height:100%; background:#185FA5; animation:loading 1s linear infinite; }
 @keyframes loading { to { left:130%; } }
 
-/* TOGGLE PANEL BTN */
 .toggle-panel {
-  position:absolute;
-  top:50%;
-  left:320px;
-  transform:translateY(-50%);
-  z-index:450;
-  background:#fff;
-  border:1px solid #E2E0D8;
-  border-left:none;
-  border-radius:0 8px 8px 0;
-  padding:10px 6px;
-  cursor:pointer;
-  font-size:12px;
-  color:#888;
-  transition:all .3s;
+  position:absolute; top:50%; left:320px; transform:translateY(-50%); z-index:450; background:#fff;
+  border:1px solid #E2E0D8; border-left:none; border-radius:0 8px 8px 0; padding:10px 6px;
+  cursor:pointer; font-size:12px; color:#888; transition:all .3s;
 }
 .side-panel.hidden + .toggle-panel { left:0; border-left:1px solid #E2E0D8; border-radius:8px; }
 
-/* MAP CONTROLS */
-.map-controls {
-  position:absolute;
-  bottom:24px;
-  right:16px;
-  z-index:400;
-  display:flex;
-  flex-direction:column;
-  gap:6px;
-}
-
+.map-controls { position:absolute; bottom:24px; right:16px; z-index:400; display:flex; flex-direction:column; gap:6px; }
 .map-ctrl-btn {
-  background:#fff;
-  border:1px solid #E2E0D8;
-  border-radius:8px;
-  padding:8px 12px;
-  font-size:11px;
-  font-weight:500;
-  color:#555;
-  cursor:pointer;
-  white-space:nowrap;
-  transition:all .15s;
-  display:flex;
-  align-items:center;
-  gap:5px;
+  background:#fff; border:1px solid #E2E0D8; border-radius:8px; padding:8px 12px; font-size:11px;
+  font-weight:500; color:#555; cursor:pointer; white-space:nowrap; transition:all .15s; display:flex; align-items:center; gap:5px;
 }
 .map-ctrl-btn:hover { background:#F7F5F0; }
 .map-ctrl-btn.on { background:#185FA5; color:#fff; border-color:#185FA5; }
 
-/* SEARCH SUGGESTIONS */
 .suggestions {
-  position:absolute;
-  top:100%;
-  left:0; right:0;
-  background:#fff;
-  border:1px solid #E2E0D8;
-  border-top:none;
-  border-radius:0 0 12px 12px;
-  box-shadow:0 4px 12px rgba(0,0,0,0.1);
-  z-index:600;
-  display:none;
-  max-height:200px;
-  overflow-y:auto;
+  position:absolute; top:100%; left:0; right:0; background:#fff; border:1px solid #E2E0D8; border-top:none;
+  border-radius:0 0 12px 12px; box-shadow:0 4px 12px rgba(0,0,0,0.1); z-index:600; display:none; max-height:200px; overflow-y:auto;
 }
-.suggestion-item {
-  padding:9px 14px;
-  font-size:13px;
-  cursor:pointer;
-  border-bottom:1px solid #F7F5F0;
-  color:#333;
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
+.suggestion-item { padding:9px 14px; font-size:13px; cursor:pointer; border-bottom:1px solid #F7F5F0; color:#333; display:flex; align-items:center; gap:8px; }
 .suggestion-item:hover { background:#F7F5F0; }
 .suggestion-item:last-child { border-bottom:none; }
 
-/* LOCATION PIN INFO */
 .pin-info {
-  position:absolute;
-  bottom:80px;
-  left:50%;
-  transform:translateX(-50%);
-  background:#fff;
-  border:1px solid #E2E0D8;
-  border-radius:12px;
-  padding:12px 16px;
-  z-index:400;
-  min-width:200px;
-  text-align:center;
-  box-shadow:0 4px 16px rgba(0,0,0,0.1);
-  display:none;
+  position:absolute; bottom:80px; left:50%; transform:translateX(-50%); background:#fff; border:1px solid #E2E0D8;
+  border-radius:12px; padding:12px 16px; z-index:400; min-width:200px; text-align:center; box-shadow:0 4px 16px rgba(0,0,0,0.1); display:none;
 }
 .pin-name { font-size:14px; font-weight:600; }
 .pin-coords { font-size:11px; color:#aaa; margin-top:2px; }
 
-/* RESPONSIVE */
 @media (max-width:600px) {
   .side-panel { width:100%; top:56px; }
   .toggle-panel { display:none; }
@@ -332,16 +136,11 @@ html, body { height:100%; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
 </head>
 <body>
 
-<!-- LOADING BAR -->
 <div class="loading-bar" id="loading-bar"></div>
-
-<!-- MAP -->
 <div id="map"></div>
 
-<!-- TOP BAR -->
 <div class="topbar">
   <div class="logo">Odd<em>-</em>One<span style="color:#aaa;font-weight:400;font-size:12px;">.in</span></div>
-
   <div class="search-bar">
     <div class="search-input-wrap" style="position:relative;">
       <input type="text" id="search-input" placeholder="Search any location in India..." autocomplete="off"/>
@@ -349,17 +148,14 @@ html, body { height:100%; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
       <div class="suggestions" id="suggestions"></div>
     </div>
   </div>
-
   <select class="lang-select" id="lang-select" onchange="setLang(this.value)">
     <option value="en">English</option>
     <option value="hi">हिंदी</option>
     <option value="hinglish">Hinglish</option>
   </select>
-
   <button class="route-btn" onclick="showRoutePanel()">🗺️ <span id="route-btn-txt">Route</span></button>
 </div>
 
-<!-- SIDE PANEL -->
 <div class="side-panel" id="side-panel">
   <div class="panel-tabs">
     <div class="tab active" onclick="switchTab('alerts')" id="tab-alerts" data-label-en="Alerts" data-label-hi="अलर्ट" data-label-hinglish="Alerts">Alerts</div>
@@ -368,8 +164,6 @@ html, body { height:100%; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
   </div>
 
   <div class="tab-content">
-
-    <!-- ALERTS TAB -->
     <div class="tab-pane active" id="pane-alerts">
       <div id="alerts-container">
         <div style="text-align:center;color:#aaa;font-size:13px;padding:30px 0;">
@@ -379,7 +173,6 @@ html, body { height:100%; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
       </div>
     </div>
 
-    <!-- ROUTE TAB -->
     <div class="tab-pane" id="pane-route">
       <div class="route-field">
         <label id="lbl-from">From</label>
@@ -393,7 +186,6 @@ html, body { height:100%; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
       <div id="route-result"></div>
     </div>
 
-    <!-- STATS TAB -->
     <div class="tab-pane" id="pane-stats">
       <div class="stats-grid">
         <div class="stat-card">
@@ -417,14 +209,11 @@ html, body { height:100%; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
         🔍 Research finding: In Dehradun, 94.7% of roads are missing from standard map databases. This data gap causes navigation failures, logistics delays, and blocks autonomous vehicle deployment in India.
       </div>
     </div>
-
   </div>
 </div>
 
-<!-- TOGGLE PANEL -->
 <div class="toggle-panel" id="toggle-panel" onclick="togglePanel()">◀</div>
 
-<!-- MAP CONTROLS -->
 <div class="map-controls">
   <button class="map-ctrl-btn on" id="btn-osm" onclick="switchTile('osm')">🗺️ Map</button>
   <button class="map-ctrl-btn" id="btn-sat" onclick="switchTile('satellite')">🛰️ Satellite</button>
@@ -453,42 +242,24 @@ const CITIES = {
 
 const LANGS = {
   en: {
-    search:'Search any location in India...',
-    route:'Route', from:'From', to:'To', getRoute:'Get Route',
-    alerts:'Alerts', data:'Data',
-    loadingAlerts:'Loading live alerts...',
-    aiLabel:'AI Navigation Guide',
-    planning:'Planning your route...',
-    noAlerts:'No major alerts right now.',
-    located:'You are here',
-    missingL:'Missing roads\nDehradun', completeL:'Mapped roads\nDehradun',
-    gapL:'Data gap', citiesL:'Cities tracked',
+    search:'Search any location in India...', route:'Route', from:'From', to:'To', getRoute:'Get Route',
+    alerts:'Alerts', data:'Data', loadingAlerts:'Loading live alerts...', aiLabel:'AI Navigation Guide',
+    planning:'Planning your route...', noAlerts:'No major alerts right now.', located:'You are here',
+    missingL:'Missing roads\nDehradun', completeL:'Mapped roads\nDehradun', gapL:'Data gap', citiesL:'Cities tracked',
     fact:'🔍 Research finding: In Dehradun, 94.7% of roads are missing from standard map databases. This data gap causes navigation failures, logistics delays, and blocks autonomous vehicle deployment in India.',
   },
   hi: {
-    search:'कोई भी जगह खोजें...',
-    route:'रूट', from:'कहाँ से', to:'कहाँ जाना है', getRoute:'रूट दिखाओ',
-    alerts:'अलर्ट', data:'डेटा',
-    loadingAlerts:'लाइव अलर्ट लोड हो रहे हैं...',
-    aiLabel:'AI नेविगेशन गाइड',
-    planning:'रूट बना रहे हैं...',
-    noAlerts:'अभी कोई बड़ा अलर्ट नहीं।',
-    located:'आप यहाँ हैं',
-    missingL:'गुम सड़कें\nदेहरादून', completeL:'मैप्ड सड़कें\nदेहरादून',
-    gapL:'डेटा गैप', citiesL:'शहर ट्रैक हो रहे हैं',
+    search:'कोई भी जगह खोजें...', route:'रूट', from:'कहाँ से', to:'कहाँ जाना है', getRoute:'रूट दिखाओ',
+    alerts:'अलर्ट', data:'डेटा', loadingAlerts:'लाइव अलर्ट लोड हो रहे हैं...', aiLabel:'AI नेविगेशन गाइड',
+    planning:'रूट बना रहे हैं...', noAlerts:'अभी कोई बड़ा अलर्ट नहीं।', located:'आप यहाँ हैं',
+    missingL:'गुम सड़कें\nदेहरादून', completeL:'मैप्ड सड़कें\nदेहरादून', gapL:'डेटा गैप', citiesL:'शहर ट्रैक हो रहे हैं',
     fact:'🔍 रिसर्च: देहरादून में 94.7% सड़कें मानक मैप डेटाबेस से गायब हैं।',
   },
   hinglish: {
-    search:'Koi bhi jagah dhundho...',
-    route:'Route', from:'Kahan se', to:'Kahan jaana hai', getRoute:'Route dikhao',
-    alerts:'Alerts', data:'Data',
-    loadingAlerts:'Live alerts aa rahe hain...',
-    aiLabel:'AI Navigation Guide',
-    planning:'Route ban raha hai...',
-    noAlerts:'Abhi koi bada alert nahi.',
-    located:'Aap yahan hain',
-    missingL:'Missing roads\nDehradun', completeL:'Mapped roads\nDehradun',
-    gapL:'Data gap', citiesL:'Cities tracked',
+    search:'Koi bhi jagah dhundho...', route:'Route', from:'Kahan se', to:'Kahan jaana hai', getRoute:'Route dikhao',
+    alerts:'Alerts', data:'Data', loadingAlerts:'Live alerts aa rahe hain...', aiLabel:'AI Navigation Guide',
+    planning:'Route ban raha hai...', noAlerts:'Abhi koi bada alert nahi.', located:'Aap yahan hain',
+    missingL:'Missing roads\nDehradun', completeL:'Mapped roads\nDehradun', gapL:'Data gap', citiesL:'Cities tracked',
     fact:'🔍 Research: Dehradun mein 94.7% roads standard map databases mein nahi hain. Yeh gap navigation failures aur accidents ka karan hai.',
   }
 };
@@ -497,45 +268,32 @@ let currentLang = 'en';
 let map, tileLayer, routeLayer, locationMarker;
 let panelOpen = true;
 
-// INIT MAP
 map = L.map('map', { zoomControl:false, attributionControl:true }).setView([22, 78], 5);
 L.control.zoom({ position:'bottomleft' }).addTo(map);
 
 tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom:19,
-  attribution:'© OpenStreetMap | Odd-One.in'
+  maxZoom:19, attribution:'© OpenStreetMap | Odd-One.in'
 }).addTo(map);
 
-// CLICK ON MAP
 map.on('click', function(e) {
   const lat = e.latlng.lat.toFixed(5);
   const lng = e.latlng.lng.toFixed(5);
-  L.popup()
-    .setLatLng(e.latlng)
-    .setContent(`<b>Selected Location</b><br>${lat}, ${lng}<br><small style="color:#aaa">Click to set as route point</small>`)
-    .openOn(map);
+  L.popup().setLatLng(e.latlng).setContent(`<b>Selected Location</b><br>${lat}, ${lng}<br><small style="color:#aaa">Click to set as route point</small>`).openOn(map);
 });
 
-// TILE SWITCHING
 function switchTile(type) {
   map.removeLayer(tileLayer);
   if (type === 'satellite') {
-    tileLayer = L.tileLayer(
-      'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-      { maxZoom:19, attribution:'© Esri Satellite | Odd-One.in' }
-    ).addTo(map);
+    tileLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom:19, attribution:'© Esri Satellite | Odd-One.in' }).addTo(map);
     document.getElementById('btn-sat').classList.add('on');
     document.getElementById('btn-osm').classList.remove('on');
   } else {
-    tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom:19, attribution:'© OpenStreetMap | Odd-One.in'
-    }).addTo(map);
+    tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom:19, attribution:'© OpenStreetMap | Odd-One.in' }).addTo(map);
     document.getElementById('btn-osm').classList.add('on');
     document.getElementById('btn-sat').classList.remove('on');
   }
 }
 
-// SEARCH
 const searchInput = document.getElementById('search-input');
 const suggestionsEl = document.getElementById('suggestions');
 
@@ -544,9 +302,7 @@ searchInput.addEventListener('input', function() {
   if (q.length < 2) { suggestionsEl.style.display='none'; return; }
   const matches = Object.keys(CITIES).filter(c => c.includes(q)).slice(0,6);
   if (!matches.length) { suggestionsEl.style.display='none'; return; }
-  suggestionsEl.innerHTML = matches.map(c =>
-    `<div class="suggestion-item" onclick="goToCity('${c}')">📍 ${c.charAt(0).toUpperCase()+c.slice(1)}</div>`
-  ).join('');
+  suggestionsEl.innerHTML = matches.map(c => `<div class="suggestion-item" onclick="goToCity('${c}')">📍 ${c.charAt(0).toUpperCase()+c.slice(1)}</div>`).join('');
   suggestionsEl.style.display='block';
 });
 
@@ -580,7 +336,6 @@ function goToCity(city) {
   loadAlertsForCity(city);
 }
 
-// ROUTE PLANNING
 async function planRoute() {
   const origin = document.getElementById('r-origin').value.trim().toLowerCase();
   const dest = document.getElementById('r-dest').value.trim().toLowerCase();
@@ -589,8 +344,7 @@ async function planRoute() {
   const oCoords = CITIES[origin] || findClosest(origin);
   const dCoords = CITIES[dest] || findClosest(dest);
   if (!oCoords || !dCoords) {
-    document.getElementById('route-result').innerHTML =
-      `<div style="color:#E24B4A;font-size:12px;margin-top:10px;padding:10px;background:#FFF0F0;border-radius:8px;">City not found. Try: Dehradun, Haridwar, Delhi, Mumbai, Lucknow...</div>`;
+    document.getElementById('route-result').innerHTML = `<div style="color:#E24B4A;font-size:12px;margin-top:10px;padding:10px;background:#FFF0F0;border-radius:8px;">City not found. Try: Dehradun, Haridwar, Delhi, Mumbai, Lucknow...</div>`;
     return;
   }
 
@@ -600,23 +354,15 @@ async function planRoute() {
 
   if (routeLayer) { map.removeLayer(routeLayer); }
 
-  const oMarker = L.marker(oCoords, {
-    icon: L.divIcon({
-      html:`<div style="background:#185FA5;width:14px;height:14px;border-radius:50%;border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.25)"></div>`,
-      className:'', iconSize:[14,14], iconAnchor:[7,7]
-    })
+  L.marker(oCoords, {
+    icon: L.divIcon({ html:`<div style="background:#185FA5;width:14px;height:14px;border-radius:50%;border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.25)"></div>`, className:'', iconSize:[14,14], iconAnchor:[7,7] })
   }).addTo(map).bindPopup(`<b>Origin:</b> ${origin}`);
 
-  const dMarker = L.marker(dCoords, {
-    icon: L.divIcon({
-      html:`<div style="background:#E24B4A;width:14px;height:14px;border-radius:50%;border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.25)"></div>`,
-      className:'', iconSize:[14,14], iconAnchor:[7,7]
-    })
+  L.marker(dCoords, {
+    icon: L.divIcon({ html:`<div style="background:#E24B4A;width:14px;height:14px;border-radius:50%;border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.25)"></div>`, className:'', iconSize:[14,14], iconAnchor:[7,7] })
   }).addTo(map);
 
-  routeLayer = L.polyline([oCoords, dCoords], {
-    color:'#FF8C00', weight:4, opacity:.9, dashArray:'10,7'
-  }).addTo(map);
+  routeLayer = L.polyline([oCoords, dCoords], { color:'#FF8C00', weight:4, opacity:.9, dashArray:'10,7' }).addTo(map);
 
   const bounds = L.latLngBounds([oCoords, dCoords]);
   map.fitBounds(bounds, { padding:[60,60] });
@@ -683,11 +429,7 @@ Give a short, friendly navigation tip (80-100 words). Include: best time to trav
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({
-        model:'claude-sonnet-4-6',
-        max_tokens:1000,
-        messages:[{role:'user',content:prompt}]
-      })
+      body: JSON.stringify({ model:'claude-sonnet-4-6', max_tokens:1000, messages:[{role:'user',content:prompt}] })
     });
     const data = await res.json();
     return data.content?.[0]?.text || defaultGuide(origin, dest, lang);
@@ -705,27 +447,22 @@ function defaultGuide(o, d, lang) {
   return guides[lang] || guides.en;
 }
 
-// ALERTS
+// ALERTS — now calls our own Vercel serverless function instead of the unreliable allorigins proxy
 async function fetchAlerts(city) {
   try {
-    const q = encodeURIComponent(`${city} road blocked traffic construction`);
-    const url = `https://news.google.com/rss/search?q=${q}&hl=en-IN&gl=IN&ceid=IN:en`;
-    const r = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`);
-    const text = await r.text();
-    const xml = new DOMParser().parseFromString(text, 'text/xml');
-    const items = [...xml.querySelectorAll('item')].slice(0,5);
-    return items.map(i => (i.querySelector('title')?.textContent||'').split(' - ')[0].substring(0,85));
+    const r = await fetch(`/api/news?city=${encodeURIComponent(city)}`);
+    if (!r.ok) return [];
+    const data = await r.json();
+    return data.alerts || [];
   } catch(e) { return []; }
 }
 
 async function loadAlertsForCity(city) {
-  document.getElementById('alerts-container').innerHTML =
-    `<div style="text-align:center;color:#aaa;font-size:12px;padding:30px 0;">${LANGS[currentLang].loadingAlerts}</div>`;
+  document.getElementById('alerts-container').innerHTML = `<div style="text-align:center;color:#aaa;font-size:12px;padding:30px 0;">${LANGS[currentLang].loadingAlerts}</div>`;
 
   const alerts = await fetchAlerts(city);
   if (!alerts.length) {
-    document.getElementById('alerts-container').innerHTML =
-      `<div style="text-align:center;color:#aaa;font-size:12px;padding:30px 0;">✅ ${LANGS[currentLang].noAlerts}</div>`;
+    document.getElementById('alerts-container').innerHTML = `<div style="text-align:center;color:#aaa;font-size:12px;padding:30px 0;">✅ ${LANGS[currentLang].noAlerts}</div>`;
     return;
   }
 
@@ -743,7 +480,6 @@ async function loadAlertsForCity(city) {
   switchTab('alerts');
 }
 
-// LOCATE ME
 function locateMe() {
   if (!navigator.geolocation) return;
   document.getElementById('btn-locate').textContent = '...';
@@ -762,7 +498,6 @@ function locateMe() {
   }, ()=>{ document.getElementById('btn-locate').textContent = '📍 My Location'; });
 }
 
-// PANEL
 function togglePanel() {
   panelOpen = !panelOpen;
   document.getElementById('side-panel').classList.toggle('hidden', !panelOpen);
@@ -774,7 +509,6 @@ function showRoutePanel() {
   switchTab('route');
 }
 
-// TABS
 function switchTab(tab) {
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
@@ -782,7 +516,6 @@ function switchTab(tab) {
   document.getElementById(`pane-${tab}`).classList.add('active');
 }
 
-// LANG
 function setLang(lang) {
   currentLang = lang;
   const L = LANGS[lang];
@@ -801,7 +534,6 @@ function setLang(lang) {
   });
 }
 
-// INIT
 loadAlertsForCity('dehradun');
 </script>
 </body>
