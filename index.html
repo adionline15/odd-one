@@ -284,7 +284,7 @@ map.on('click', function(e) {
 function switchTile(type) {
   map.removeLayer(tileLayer);
   if (type === 'satellite') {
-    tileLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom:19, attribution:'© Esri Satellite | Odd-One.in' }).addTo(map);
+    tileLayer = L.tileLayer('https://api.maptiler.com/maps/satellite/{z}/{x}/{y}.jpg?key=wPjNXPCcQMbZpToUUKaI', { maxZoom:19, attribution:'© Esri Satellite | Odd-One.in' }).addTo(map);
     document.getElementById('btn-sat').classList.add('on');
     document.getElementById('btn-osm').classList.remove('on');
   } else {
