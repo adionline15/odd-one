@@ -276,7 +276,7 @@ const isMobile = () => window.innerWidth <= 640;
 // MAP INIT
 map = L.map('map', { zoomControl:false, attributionControl:true }).setView([22,78], 5);
 L.control.zoom({ position:'bottomleft' }).addTo(map);
-tile = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+tile = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {, {
   maxZoom:19, attribution:'© OpenStreetMap | Odd-One.in'
 }).addTo(map);
 setTimeout(()=>map.invalidateSize(), 300);
