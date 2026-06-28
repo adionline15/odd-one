@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Odd-One.in — India Road Intelligence</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html, body { height:100%; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; overflow:hidden; }
+#map { position:fixed; top:0; left:0; right:0; bottom:0; z-index:1; }
+
+/* ── TOP BAR ── */
+.topbar {
+  position:fixed; top:0; left:0; right:0; z-index:1000;
+  background:#fff; border-bottom:1px solid #E2E0D8;
+  padding:8px 12px; display:flex; align-items:center; gap:8px;
+  height:52px; box-shadow:0 1px 8px rgba(0,0,0,0.08);
+}
+.logo { font-size:15px; font-weight:700; color:#1a1a1a; white-space:nowrap; flex-shrink:0; }
+.logo em { font-style:normal; color:#E24B4A; }
+.search-wrap { flex:1; position:relative; }
+.search-wrap input {
+  width:100%; padding:8px 36px 8px 12px;
+  border:1.5px solid #E2E0D8; border-radius:20px;
+  font-size:14px; outline:none; background:#F7F5F0;
+  font-family:inherit; color:#1a1a1a; -webkit-appearance:none;
+}
+.search-wrap input:focus { border-color:#185FA5; background:#fff; }
+.search-icon { position:absolute; right:10px; top:50%; transform:translateY(-50%); font-size:14px; color:#aaa; pointer-events:none; }
+.route-btn-top {
+  padding:8px 14px; background:#185FA5; color:#fff; border:none;
+  border-radius:20px; font-size:13px; font-weight:600;
+  cursor:pointer; white-space:nowrap; font-family:inherit; flex-shrink:0;
+}
+
+/* ── SUGGESTIONS ── */
+.sugg {
+  position:absolute; top:100%; left:0; right:0;
+  background:#fff; border:1px solid #E2E0D8; border-top:none;
+  border-radius:0 0 12px 12px; box-shadow:0 4px 16px rgba(0,0,0,0.12);
+  z-index:2000; display:none; max-height:240px; overflow-y:auto;
+}
+.sugg-item {
+  padding:10px 14px; font-size:13px; cursor:pointer;
+  border-bottom:1px solid #F7F5F0; color:#333;
+  display:flex; align-items:center; gap:8px; min-height:42px;
+}
+.sugg-item:hover, .sugg-item:active { background:#F7F5F0; }
+.sugg-item:last-child { border-bottom:none; }
+
+/* ── DESKTOP SIDEBAR ── */
+.sidebar {
+  position:fixed; top:52px; left:0; bottom:0; width:320px;
+  background:#fff; border-right:1px solid #E2E0D8;
+  z-index:400; display:flex; flex-direction:column;
+  transform:translateX(0); transition:transform .3s ease;
+}
+.sidebar.hidden { transform:translateX(-320px); }
+.toggle-sidebar {
+  position:fixed; top:50%; left:320px; transform:translateY(-50%);
+  z-index:450; background:#fff; border:1px solid #E2E0D8;
+  border-left:none; border-radius:0 8px 8px 0;
+  padding:10px 6px; cursor:pointer; font-size:12px; color:#888;
+  transition:left .3s ease;
+}
+.toggle-sidebar.moved { left:0; border-left:1px solid #E2E0D8; border-radius:8px; }
+
+/* ── MOBILE BOTTOM SHEET ── */
+.bottom-sheet {
+  position:fixed; bottom:0; left:0; right:0; z-index:900;
+  background:#fff; border-radius:20px 20px 0 0;
+  box-shadow:0 -4px 24px rgba(0,0,0,0.12);
+  transform:translateY(calc(100% - 60px));
+  transition:transform 0.3s ease;
+  max-height:82vh; display:flex; flex-direction:column;
+}
+.bottom-sheet.open { transform:translateY(0); }
+.sheet-handle {
+  width:36px; height:4px; background:#E2E0D8; border-radius:2px;
+  margin:10px auto 0; flex-shrink:0; cursor:pointer;
+}
+
+/* ── SHARED TABS ── */
+.tab-bar {
+  display:flex; border-bottom:1px solid #E2E0D8; flex-shrink:0;
+}
+.tab-btn {
+  flex:1; padding:10px 0; text-align:center;
+  font-size:12px; font-weight:500; color:#999; cursor:pointer;
+  border-bottom:2px solid transparent; min-height:42px;
+  display:flex; align-items:center; justify-content:center;
+  transition:all .15s;
+}
+.tab-btn.on { color:#185FA5; border-bottom-color:#185FA5; }
+.tab-content { flex:1; overflow-y:auto; padding:14px; }
+.tab-content::-webkit-scrollbar { width:0; }
+.tab-pane { display:none; }
+.tab-pane.on { display:block; }
+
+/* ── ALERT CARDS ── */
+.alert-card {
+  background:#fff; border:1px solid #E2E0D8;
+  border-left:3px solid #E24B4A;
+  border-radius:10px; padding:11px 13px; margin-bottom:9px;
+}
+.alert-card.medium { border-left-color:#D97706; }
+.alert-card.low { border-left-color:#185FA5; }
+.alert-title { font-size:12px; font-weight:500; line-height:1.45; margin-bottom:4px; color:#1a1a1a; }
+.alert-meta { font-size:10px; color:#aaa; display:flex; justify-content:space-between; }
+
+/* ── ROUTE FORM ── */
+.field { margin-bottom:11px; }
+.field label { font-size:10px; font-weight:600; color:#aaa; text-transform:uppercase; letter-spacing:.06em; display:block; margin-bottom:4px; }
+.field input {
+  width:100%; padding:10px 13px; border:1.5px solid #E2E0D8;
+  border-radius:10px; font-size:14px; font-family:inherit;
+  outline:none; color:#1a1a1a; -webkit-appearance:none;
+}
+.field input:focus { border-color:#185FA5; }
+.go-btn {
+  width:100%; background:#185FA5; color:#fff; border:none;
+  border-radius:10px; padding:12px; font-size:14px;
+  font-weight:600; cursor:pointer; font-family:inherit; margin-top:6px;
+}
+.go-btn:disabled { background:#ccc; cursor:not-allowed; }
+
+/* ── ROUTE RESULT ── */
+.route-stats { display:flex; gap:10px; background:#F7F5F0; border-radius:10px; padding:12px; margin-top:12px; }
+.route-stat { flex:1; text-align:center; }
+.route-stat-n { font-size:18px; font-weight:700; color:#1a1a1a; }
+.route-stat-l { font-size:10px; color:#aaa; margin-top:2px; }
+.alerts-strip { background:#FFFBEB; border:1px solid #FAC775; border-radius:10px; padding:10px 12px; margin-top:10px; }
+.alerts-title { font-size:10px; font-weight:700; color:#BA7517; text-transform:uppercase; margin-bottom:6px; }
+.alert-item-s { font-size:11px; color:#633806; margin-bottom:3px; line-height:1.4; }
+.ai-box { background:#EEF3FF; border:1px solid #BFCFFF; border-radius:12px; padding:13px; margin-top:10px; }
+.ai-label { font-size:10px; font-weight:700; color:#185FA5; text-transform:uppercase; margin-bottom:7px; display:flex; align-items:center; gap:5px; }
+.ai-dot { width:6px; height:6px; background:#185FA5; border-radius:50%; animation:pulse 1.4s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+.ai-text { font-size:12px; line-height:1.7; color:#333; }
+
+/* ── STATS ── */
+.stats-grid { display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-bottom:12px; }
+.stat-box { background:#F7F5F0; border-radius:10px; padding:12px 13px; }
+.stat-n { font-size:20px; font-weight:700; }
+.stat-l { font-size:10px; color:#888; margin-top:2px; }
+
+/* ── MAP CONTROLS ── */
+.map-btns {
+  position:fixed; right:12px; z-index:800;
+  display:flex; flex-direction:column; gap:7px;
+}
+.map-btn {
+  background:#fff; border:1px solid #E2E0D8; border-radius:9px;
+  padding:9px 13px; font-size:11px; font-weight:500; color:#555;
+  cursor:pointer; white-space:nowrap; min-height:40px;
+  display:flex; align-items:center; gap:5px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.07);
+}
+.map-btn.on { background:#185FA5; color:#fff; border-color:#185FA5; }
+
+/* ── RESPONSIVE: show/hide ── */
+.desktop-only { display:flex; }
+.mobile-only  { display:none; }
+
+@media (max-width:640px) {
+  .desktop-only { display:none !important; }
+  .mobile-only  { display:flex !important; }
+  .map-btns { bottom:80px; }
+}
+@media (min-width:641px) {
+  .map-btns { bottom:24px; }
+}
+</style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="logo">Odd<em>-</em>One<span style="color:#aaa;font-weight:400;font-size:11px;">.in</span></div>
+  <div class="search-wrap">
+    <input type="text" id="s-input" placeholder="Search any city in India..." autocomplete="off" autocorrect="off" spellcheck="false"/>
+    <span class="search-icon">🔍</span>
+    <div class="sugg" id="sugg"></div>
+  </div>
+  <button class="route-btn-top mobile-only" onclick="openSheet(); showTab('route')">🗺️ Route</button>
+</div>
+
+<!-- DESKTOP SIDEBAR -->
+<div class="sidebar desktop-only" id="sidebar" style="flex-direction:column;">
+  <div class="tab-bar">
+    <div class="tab-btn on" id="dt-alerts" onclick="showTab('alerts')">Alerts</div>
+    <div class="tab-btn" id="dt-route"  onclick="showTab('route')">Route</div>
+    <div class="tab-btn" id="dt-data"   onclick="showTab('data')">Data</div>
+  </div>
+  <div class="tab-content">
+    <div class="tab-pane on" id="dp-alerts"><div id="d-alerts-box" style="text-align:center;color:#aaa;font-size:13px;padding:30px 0;"><div style="font-size:26px;margin-bottom:6px;">📡</div>Loading live alerts...</div></div>
+    <div class="tab-pane"    id="dp-route">
+      <div class="field"><label>From</label><input type="text" id="d-from" placeholder="Origin city"/></div>
+      <div class="field"><label>To</label><input type="text" id="d-to" placeholder="Destination city"/></div>
+      <button class="go-btn" id="d-go-btn" onclick="planRoute('d')">Get Route →</button>
+      <div id="d-route-out"></div>
+    </div>
+    <div class="tab-pane" id="dp-data"><div id="stats-content"></div></div>
+  </div>
+</div>
+<div class="toggle-sidebar desktop-only" id="toggle-sidebar" onclick="toggleSidebar()">◀</div>
+
+<!-- MOBILE BOTTOM SHEET -->
+<div class="bottom-sheet mobile-only" id="sheet" style="display:flex;flex-direction:column;">
+  <div class="sheet-handle" onclick="toggleSheet()"></div>
+  <div class="tab-bar">
+    <div class="tab-btn on" id="mt-alerts" onclick="showTab('alerts')">🔔 Alerts</div>
+    <div class="tab-btn" id="mt-route"  onclick="showTab('route')">🗺️ Route</div>
+    <div class="tab-btn" id="mt-data"   onclick="showTab('data')">📊 Data</div>
+  </div>
+  <div class="tab-content">
+    <div class="tab-pane on" id="mp-alerts"><div id="m-alerts-box" style="text-align:center;color:#aaa;font-size:13px;padding:24px 0;">📡 Loading...</div></div>
+    <div class="tab-pane"    id="mp-route">
+      <div class="field"><label>From</label><input type="text" id="m-from" placeholder="Origin city"/></div>
+      <div class="field"><label>To</label><input type="text" id="m-to" placeholder="Destination city"/></div>
+      <button class="go-btn" id="m-go-btn" onclick="planRoute('m')">Get Route →</button>
+      <div id="m-route-out"></div>
+    </div>
+    <div class="tab-pane" id="mp-data"><div id="m-stats-content"></div></div>
+  </div>
+</div>
+
+<!-- MAP CONTROLS -->
+<div class="map-btns">
+  <button class="map-btn on" id="btn-map" onclick="setTile('map')">🗺️ Map</button>
+  <button class="map-btn" id="btn-sat" onclick="setTile('sat')">🛰️ Satellite</button>
+  <button class="map-btn" id="btn-loc" onclick="locateMe()">📍 My Location</button>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const CITIES = {
+  'dehradun':[30.3165,78.0322],'haridwar':[29.9457,78.1642],'rishikesh':[30.0869,78.2676],
+  'nainital':[29.3919,79.4542],'mussoorie':[30.4598,78.0644],'roorkee':[29.8543,77.8880],
+  'delhi':[28.6139,77.2090],'new delhi':[28.6139,77.2090],'mumbai':[19.0760,72.8777],
+  'lucknow':[26.8467,80.9462],'varanasi':[25.3176,82.9739],'agra':[27.1767,78.0081],
+  'jaipur':[26.9124,75.7873],'kanpur':[26.4499,80.3319],'prayagraj':[25.4358,81.8463],
+  'allahabad':[25.4358,81.8463],'meerut':[28.9845,77.7064],'mathura':[27.4924,77.6737],
+  'aligarh':[27.8974,78.0880],'bareilly':[28.3670,79.4304],'moradabad':[28.8386,78.7733],
+  'auraiya':[26.4651,79.5135],'gorakhpur':[26.7606,83.3732],'patna':[25.5941,85.1376],
+  'chandigarh':[30.7333,76.7794],'shimla':[31.1048,77.1734],'amritsar':[31.6340,74.8723],
+  'ludhiana':[30.9009,75.8573],'bhopal':[23.2599,77.4126],'indore':[22.7196,75.8577],
+  'nagpur':[21.1458,79.0882],'pune':[18.5204,73.8567],'hyderabad':[17.3850,78.4867],
+  'bengaluru':[12.9716,77.5946],'bangalore':[12.9716,77.5946],'chennai':[13.0827,80.2707],
+  'kolkata':[22.5726,88.3639],'ahmedabad':[23.0225,72.5714],'surat':[21.1702,72.8311],
+  'kochi':[9.9312,76.2673],'visakhapatnam':[17.6868,83.2185],
+  'thiruvananthapuram':[8.5241,76.9366],'coimbatore':[11.0168,76.9558],
+  'muzaffarnagar':[29.4727,77.7085],'saharanpur':[29.9680,77.5552],
+};
+
+const STATS_HTML = `
+  <div class="stats-grid">
+    <div class="stat-box"><div class="stat-n" style="color:#E24B4A">4,628</div><div class="stat-l">Missing roads — Dehradun</div></div>
+    <div class="stat-box"><div class="stat-n" style="color:#185FA5">260</div><div class="stat-l">Mapped roads — Dehradun</div></div>
+    <div class="stat-box"><div class="stat-n" style="color:#D97706">94.7%</div><div class="stat-l">Data gap</div></div>
+    <div class="stat-box"><div class="stat-n" style="color:#166534">5</div><div class="stat-l">Cities tracked</div></div>
+  </div>
+  <div style="background:#F7F5F0;border-radius:10px;padding:12px;font-size:11px;color:#666;line-height:1.6;margin-top:4px;">
+    🔍 Research finding: In Dehradun, 94.7% of roads are missing from standard map databases. This gap causes navigation failures, logistics delays, and blocks autonomous vehicle deployment in India.
+  </div>`;
+document.getElementById('stats-content').innerHTML = STATS_HTML;
+document.getElementById('m-stats-content').innerHTML = STATS_HTML;
+
+let map, tile, routeLines=[], markers=[], locMarker=null;
+let sidebarOpen = true, sheetOpen = false;
+const isMobile = () => window.innerWidth <= 640;
+
+// MAP INIT
+map = L.map('map', { zoomControl:false, attributionControl:true }).setView([22,78], 5);
+L.control.zoom({ position:'bottomleft' }).addTo(map);
+tile = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom:19, attribution:'© OpenStreetMap | Odd-One.in'
+}).addTo(map);
+setTimeout(()=>map.invalidateSize(), 300);
+
+// TILE SWITCH
+function setTile(t) {
+  map.removeLayer(tile);
+  if(t==='sat') {
+    tile = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+      { maxZoom:19, attribution:'© Esri Satellite | Odd-One.in' }).addTo(map);
+    document.getElementById('btn-sat').classList.add('on');
+    document.getElementById('btn-map').classList.remove('on');
+  } else {
+    tile = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      { maxZoom:19, attribution:'© OpenStreetMap | Odd-One.in' }).addTo(map);
+    document.getElementById('btn-map').classList.add('on');
+    document.getElementById('btn-sat').classList.remove('on');
+  }
+}
+
+// SEARCH
+const si = document.getElementById('s-input');
+const sg = document.getElementById('sugg');
+let searchTimer = null;
+
+si.addEventListener('input', function() {
+  const q = this.value.trim();
+  if(q.length < 2) { sg.style.display='none'; return; }
+  const local = Object.keys(CITIES).filter(c=>c.includes(q.toLowerCase())).slice(0,3);
+  const localHTML = local.map(c=>`<div class="sugg-item" onclick="gotoCity('${c}')">📍 ${c.charAt(0).toUpperCase()+c.slice(1)}</div>`).join('');
+  if(local.length) { sg.innerHTML=localHTML; sg.style.display='block'; }
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(async()=>{
+    try {
+      const url=`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q+' India')}&format=json&limit=4&countrycodes=in`;
+      const res=await fetch(url,{headers:{'Accept-Language':'en','User-Agent':'OddOneIn/1.0'}});
+      const data=await res.json();
+      if(!data.length) return;
+      const nomHTML=data.map(r=>`<div class="sugg-item" onclick="gotoCoords(${r.lat},${r.lon},'${r.display_name.split(',')[0].replace(/'/g,"\\'")}')">🔍 ${r.display_name.split(',').slice(0,2).join(', ')}</div>`).join('');
+      sg.innerHTML=localHTML+nomHTML; sg.style.display='block';
+    } catch(e){}
+  }, 500);
+});
+
+si.addEventListener('keydown', e=>{
+  if(e.key==='Enter'){
+    sg.style.display='none'; si.blur();
+    const q=si.value.toLowerCase().trim();
+    const m=Object.keys(CITIES).find(c=>c.includes(q));
+    if(m) gotoCity(m);
+  }
+});
+document.addEventListener('click', e=>{ if(!si.contains(e.target)) sg.style.display='none'; });
+
+function gotoCity(city) {
+  const c=CITIES[city]; if(!c) return;
+  map.flyTo(c,13,{duration:1.2});
+  sg.style.display='none';
+  si.value=city.charAt(0).toUpperCase()+city.slice(1); si.blur();
+  placeMarker(c,si.value);
+  loadAlerts(city);
+  if(isMobile()) openSheet(); else showTab('alerts');
+}
+function gotoCoords(lat,lon,name) {
+  const c=[parseFloat(lat),parseFloat(lon)];
+  map.flyTo(c,14,{duration:1.2});
+  sg.style.display='none'; si.value=name; si.blur();
+  placeMarker(c,name);
+  loadAlerts(name);
+  if(isMobile()) openSheet(); else showTab('alerts');
+}
+function placeMarker(coords,name) {
+  if(locMarker) map.removeLayer(locMarker);
+  locMarker=L.marker(coords,{icon:L.divIcon({
+    html:'<div style="background:#185FA5;width:14px;height:14px;border-radius:50%;border:2.5px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.3)"></div>',
+    className:'',iconSize:[14,14],iconAnchor:[7,7]
+  })}).addTo(map).bindPopup(`<b>${name}</b>`).openPopup();
+}
+
+// ROUTE
+async function planRoute(p) {
+  const from=document.getElementById(p+'-from').value.trim().toLowerCase();
+  const to=document.getElementById(p+'-to').value.trim().toLowerCase();
+  if(!from||!to) return;
+  const fc=CITIES[from]||findClosest(from);
+  const tc=CITIES[to]||findClosest(to);
+  if(!fc||!tc){
+    document.getElementById(p+'-route-out').innerHTML='<div style="color:#E24B4A;font-size:12px;margin-top:10px;padding:10px;background:#FFF0F0;border-radius:8px;">City not found. Try: Dehradun, Delhi, Mumbai, Lucknow...</div>';
+    return;
+  }
+  const btn=document.getElementById(p+'-go-btn');
+  btn.disabled=true; btn.textContent='Planning...';
+  routeLines.forEach(l=>map.removeLayer(l)); routeLines=[];
+  markers.forEach(m=>map.removeLayer(m)); markers=[];
+  const mk=(c,col)=>L.marker(c,{icon:L.divIcon({
+    html:`<div style="background:${col};width:14px;height:14px;border-radius:50%;border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.25)"></div>`,
+    className:'',iconSize:[14,14],iconAnchor:[7,7]
+  })}).addTo(map);
+  markers.push(mk(fc,'#185FA5'),mk(tc,'#E24B4A'));
+  let dist,time;
+  try {
+    const osrm=await fetch(`https://router.project-osrm.org/route/v1/driving/${fc[1]},${fc[0]};${tc[1]},${tc[0]}?overview=full&geometries=geojson`);
+    const od=await osrm.json();
+    if(od.code==='Ok'){
+      const route=od.routes[0];
+      dist=Math.round(route.distance/1000); time=Math.round(route.duration/60);
+      const coords=route.geometry.coordinates.map(c=>[c[1],c[0]]);
+      const rl=L.polyline(coords,{color:'#FF8C00',weight:4,opacity:.9}).addTo(map);
+      routeLines.push(rl); map.fitBounds(rl.getBounds(),{padding:[60,80]});
+    } else throw new Error();
+  } catch(e){
+    dist=calcDist(fc,tc); time=Math.round(dist*1.4);
+    const rl=L.polyline([fc,tc],{color:'#FF8C00',weight:4,opacity:.9,dashArray:'10,7'}).addTo(map);
+    routeLines.push(rl); map.fitBounds(L.latLngBounds([fc,tc]),{padding:[60,80]});
+  }
+  const missing=Math.round(dist*400+5000);
+  const pct=Math.round((missing/(missing+dist*15+100))*100);
+  const alerts=await fetchAlerts(from);
+  const aiGuide=await getAIGuide(from,to,dist,time,alerts,pct);
+  btn.disabled=false; btn.textContent='Get Route →';
+  const html=`
+    <div class="route-stats">
+      <div class="route-stat"><div class="route-stat-n">${dist} km</div><div class="route-stat-l">Distance</div></div>
+      <div class="route-stat"><div class="route-stat-n">${time} min</div><div class="route-stat-l">Est. time</div></div>
+      <div class="route-stat"><div class="route-stat-n" style="color:#E24B4A">${pct}%</div><div class="route-stat-l">Roads missing</div></div>
+    </div>
+    ${alerts.length?`<div class="alerts-strip"><div class="alerts-title">⚠️ Live Alerts</div>${alerts.slice(0,3).map(a=>`<div class="alert-item-s">• ${a}</div>`).join('')}</div>`:''}
+    <div class="ai-box">
+      <div class="ai-label"><div class="ai-dot"></div> AI Navigation Guide</div>
+      <div class="ai-text">${aiGuide}</div>
+    </div>`;
+  document.getElementById(p+'-route-out').innerHTML=html;
+}
+
+function findClosest(q){ return CITIES[Object.keys(CITIES).find(k=>k.startsWith(q.slice(0,4)))||'']||null; }
+function calcDist(c1,c2){
+  const R=6371,dLat=(c2[0]-c1[0])*Math.PI/180,dLon=(c2[1]-c1[1])*Math.PI/180;
+  const a=Math.sin(dLat/2)**2+Math.cos(c1[0]*Math.PI/180)*Math.cos(c2[0]*Math.PI/180)*Math.sin(dLon/2)**2;
+  return Math.round(R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a)));
+}
+
+// AI GUIDE — calls our secure Vercel backend which uses Gemini
+async function getAIGuide(origin, dest, dist, time, alerts, missingPct) {
+  try {
+    const res = await fetch('/api/route-guide', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ origin, dest, dist, time, alerts, missingPct, lang: 'en' })
+    });
+    if(!res.ok) return defaultGuide(origin, dest);
+    const data = await res.json();
+    return data.text || defaultGuide(origin, dest);
+  } catch(e) { return defaultGuide(origin, dest); }
+}
+function defaultGuide(o,d){
+  return `Great route! ${o} to ${d} is a popular journey. Start early morning to avoid traffic. Keep your water bottle handy and check local alerts before starting. Safe travels! 🙏`;
+}
+
+// ALERTS — calls our /api/news Vercel backend (not allorigins proxy)
+async function fetchAlerts(city) {
+  try {
+    const r = await fetch(`/api/news?city=${encodeURIComponent(city)}`);
+    if(!r.ok) return [];
+    const data = await r.json();
+    return data.alerts || [];
+  } catch(e) { return []; }
+}
+
+async function loadAlerts(city) {
+  const loading = '<div style="text-align:center;color:#aaa;font-size:13px;padding:26px 0;"><div style="font-size:24px;margin-bottom:6px;">📡</div>Loading alerts...</div>';
+  document.getElementById('d-alerts-box').innerHTML = loading;
+  document.getElementById('m-alerts-box').innerHTML = loading;
+  const alerts = await fetchAlerts(city);
+  if(!alerts.length){
+    const msg='<div style="text-align:center;color:#aaa;font-size:13px;padding:26px 0;">✅ No major alerts right now</div>';
+    document.getElementById('d-alerts-box').innerHTML=msg;
+    document.getElementById('m-alerts-box').innerHTML=msg;
+    return;
+  }
+  const cols=['','medium','low','medium',''];
+  const html=alerts.map((a,i)=>`
+    <div class="alert-card ${cols[i%3]}">
+      <div class="alert-title">${a}</div>
+      <div class="alert-meta">
+        <span style="color:${i%3===0?'#E24B4A':i%3===1?'#D97706':'#185FA5'}">${i%3===0?'High':i%3===1?'Medium':'Info'}</span>
+        <span>Just now</span>
+      </div>
+    </div>`).join('');
+  document.getElementById('d-alerts-box').innerHTML=html;
+  document.getElementById('m-alerts-box').innerHTML=html;
+  showTab('alerts');
+}
+
+// LOCATE ME
+function locateMe() {
+  if(!navigator.geolocation) return;
+  document.getElementById('btn-loc').textContent='...';
+  navigator.geolocation.getCurrentPosition(pos=>{
+    const c=[pos.coords.latitude,pos.coords.longitude];
+    map.flyTo(c,15);
+    if(locMarker) map.removeLayer(locMarker);
+    locMarker=L.marker(c,{icon:L.divIcon({
+      html:'<div style="background:#185FA5;width:16px;height:16px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 8px rgba(24,95,165,.5)"></div>',
+      className:'',iconSize:[16,16],iconAnchor:[8,8]
+    })}).addTo(map).bindPopup('You are here').openPopup();
+    document.getElementById('btn-loc').textContent='📍 My Location';
+  },()=>{ document.getElementById('btn-loc').textContent='📍 My Location'; });
+}
+
+// SIDEBAR (desktop)
+function toggleSidebar() {
+  sidebarOpen=!sidebarOpen;
+  document.getElementById('sidebar').classList.toggle('hidden',!sidebarOpen);
+  const tog=document.getElementById('toggle-sidebar');
+  tog.textContent=sidebarOpen?'◀':'▶';
+  tog.classList.toggle('moved',!sidebarOpen);
+  setTimeout(()=>map.invalidateSize(),320);
+}
+
+// BOTTOM SHEET (mobile)
+function toggleSheet() {
+  sheetOpen=!sheetOpen;
+  document.getElementById('sheet').classList.toggle('open',sheetOpen);
+}
+function openSheet() {
+  sheetOpen=true;
+  document.getElementById('sheet').classList.add('open');
+}
+
+// TABS (shared — updates both desktop and mobile)
+function showTab(t) {
+  ['alerts','route','data'].forEach(x=>{
+    const on=x===t;
+    const dt=document.getElementById('dt-'+x);
+    const mt=document.getElementById('mt-'+x);
+    const dp=document.getElementById('dp-'+x);
+    const mp=document.getElementById('mp-'+x);
+    if(dt) dt.classList.toggle('on',on);
+    if(mt) mt.classList.toggle('on',on);
+    if(dp) dp.classList.toggle('on',on);
+    if(mp) mp.classList.toggle('on',on);
+  });
+}
+
+// INIT
+loadAlerts('dehradun');
+</script>
+</body>
+</html>
