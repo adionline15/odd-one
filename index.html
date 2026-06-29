@@ -30,6 +30,7 @@ html, body { height:100%; font-family:'Inter',sans-serif; background:var(--bg); 
 
 /* ── MAP ── */
 #map { position:fixed; inset:0; z-index:1; }
+.leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(0.85) saturate(0.6); }
 .leaflet-control-attribution { display:none; }
 
 /* ── TOP BAR ── */
@@ -435,7 +436,7 @@ const isMobile = ()=>window.innerWidth<=640;
 map = L.map('map',{zoomControl:false,attributionControl:false}).setView([22,78],5);
 L.control.zoom({position:'bottomleft'}).addTo(map);
 
-tile = L.tileLayer('https://{s}.basemaps.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,className:'dark-map/{z}/{x}/{y}.png',{maxZoom:19}).addTo(map);
+tile = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19}).addTo(map);
 setTimeout(()=>map.invalidateSize(),300);
 
 map.on('click', e=>{
@@ -453,7 +454,7 @@ function setTile(t){
     document.getElementById('btn-sat').classList.add('on');
     document.getElementById('btn-map').classList.remove('on');
   } else {
-    tile=L.tileLayer('https://{s}.basemaps.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,className:'dark-map/{z}/{x}/{y}.png',{maxZoom:19}).addTo(map);
+    tile=L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19}).addTo(map);
     document.getElementById('btn-map').classList.add('on');
     document.getElementById('btn-sat').classList.remove('on');
   }
