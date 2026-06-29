@@ -300,7 +300,7 @@ html, body { height:100%; font-family:'Inter',sans-serif; background:var(--bg); 
 @media (max-width:640px) {
   .desktop-only { display:none !important; }
   .mobile-only { display:flex !important; }
-  .map-btns { bottom:76px; }
+  .map-btns { bottom:72px; right:12px; z-index:1000; }
   .topbar { padding:0 10px; gap:8px; }
 }
 @media (min-width:641px) {
@@ -501,14 +501,14 @@ function gotoCity(city){
   si.value=city.charAt(0).toUpperCase()+city.slice(1);si.blur();
   placeMarker(c,si.value);
   loadAlerts(city);
-  if(isMobile())openSheet();else showTab('alerts');
+  if(isMobile()){openSheetMid();showTab('alerts');}else showTab('alerts');
 }
 function gotoCoords(lat,lon,name){
   const c=[parseFloat(lat),parseFloat(lon)];
   map.flyTo(c,14,{duration:1.2});
   sg.style.display='none';si.value=name;si.blur();
   placeMarker(c,name);loadAlerts(name);
-  if(isMobile())openSheet();else showTab('alerts');
+  if(isMobile()){openSheetMid();showTab('alerts');}else showTab('alerts');
 }
 function placeMarker(coords,name){
   if(locMarker)map.removeLayer(locMarker);
@@ -661,6 +661,13 @@ function toggleSidebar(){
 // ── SHEET ──
 function toggleSheet(){sheetOpen=!sheetOpen;document.getElementById('sheet').classList.toggle('open',sheetOpen);}
 function openSheet(){sheetOpen=true;document.getElementById('sheet').classList.add('open');}
+// Opens sheet halfway — shows tabs but map buttons still visible
+function openSheetMid(){
+  sheetOpen=false;
+  const sheet=document.getElementById('sheet');
+  sheet.classList.remove('open');
+  // Just peek — default state shows tabs at bottom
+}
 
 // ── TABS ──
 function showTab(t){
