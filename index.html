@@ -435,7 +435,7 @@ const isMobile = ()=>window.innerWidth<=640;
 map = L.map('map',{zoomControl:false,attributionControl:false}).setView([22,78],5);
 L.control.zoom({position:'bottomleft'}).addTo(map);
 
-tile = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png/{z}/{x}/{y}.png',{maxZoom:19}).addTo(map);
+tile = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png/{z}/{x}/{y}.png',{maxZoom:19}).addTo(map);
 setTimeout(()=>map.invalidateSize(),300);
 
 map.on('click', e=>{
@@ -453,7 +453,7 @@ function setTile(t){
     document.getElementById('btn-sat').classList.add('on');
     document.getElementById('btn-map').classList.remove('on');
   } else {
-    tile=L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png/{z}/{x}/{y}.png',{maxZoom:19}).addTo(map);
+    tile=L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png/{z}/{x}/{y}.png',{maxZoom:19}).addTo(map);
     document.getElementById('btn-map').classList.add('on');
     document.getElementById('btn-sat').classList.remove('on');
   }
