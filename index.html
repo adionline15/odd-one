@@ -402,7 +402,7 @@
     L.control.zoom({ position: 'bottomleft' }).addTo(map);
 
     // Initial tile layer setup
-    tile = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(map);
+    tile = L.tileLayer('/api/tiles?z={z}&x={x}&y={y}', { maxZoom: 19 }).addTo(map);
 
     setTimeout(() => map.invalidateSize(), 300);
 
@@ -428,7 +428,7 @@
         document.getElementById('btn-map').classList.remove('on');
         document.getElementById('btn-map').querySelector('span').classList.replace('bg-white', 'bg-zinc-600');
       } else {
-        tile = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(map);
+        tile = L.tileLayer('/api/tiles?z={z}&x={x}&y={y}', { maxZoom: 19 }).addTo(map);
 
         document.getElementById('btn-map').classList.add('on');
         document.getElementById('btn-map').querySelector('span').classList.replace('bg-zinc-600', 'bg-white');
