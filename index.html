@@ -45,7 +45,7 @@
       /* filter applied via JS for map mode only */
     }
     .dark-map-filter {
-      /* MapTiler dark style - no filter needed */
+      filter: invert(1) hue-rotate(180deg) brightness(1.05) saturate(0.65) !important;
     }
     .leaflet-control-attribution {
       display: none !important;
@@ -402,7 +402,7 @@
     L.control.zoom({ position: 'bottomleft' }).addTo(map);
 
     // Initial tile layer setup
-    tile = L.tileLayer('https://api.maptiler.com/maps/streets-v2-dark/{z}/{x}/{y}.png?key=6pBBkKOL0SJZhySKd057', { maxZoom: 19 }).addTo(map);
+    tile = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(map);
 
     setTimeout(() => map.invalidateSize(), 300);
 
@@ -428,7 +428,7 @@
         document.getElementById('btn-map').classList.remove('on');
         document.getElementById('btn-map').querySelector('span').classList.replace('bg-white', 'bg-zinc-600');
       } else {
-        tile = L.tileLayer('https://api.maptiler.com/maps/streets-v2-dark/{z}/{x}/{y}.png?key=6pBBkKOL0SJZhySKd057', { maxZoom: 19 }).addTo(map);
+        tile = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(map);
 
         document.getElementById('btn-map').classList.add('on');
         document.getElementById('btn-map').querySelector('span').classList.replace('bg-zinc-600', 'bg-white');
