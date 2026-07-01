@@ -71,7 +71,7 @@ Reply in Hindi, be friendly like local friend, suggest route, halts, food, time 
 
 if __name__ == "__main__":
     result = smart_rag_navigate(
-        user_query="Dehradun se Haridwar jaana hai subah 8 baje car se",
+        user_query="Dehradun se Delhi jaana hai subah 8 baje car se",
         origin="Dehradun",
         destination="Delhi"
     )
