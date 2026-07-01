@@ -73,6 +73,6 @@ if __name__ == "__main__":
     result = smart_rag_navigate(
         user_query="Dehradun se Haridwar jaana hai subah 8 baje car se",
         origin="Dehradun",
-        destination="Haridwar"
+        destination="Delhi"
     )
     print(result)
