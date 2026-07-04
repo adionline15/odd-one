@@ -418,7 +418,7 @@
     function setTile(t) {
       map.removeLayer(tile);
       if (t === 'sat') {
-        tile = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19 }).addTo(map);
+        tile = L.tileLayer('https://server.https://api.maptiler.com/maps/satellite/{z}/{x}/{y}.jpg?key=6pBBkKOL0SJZhySKd057.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19 }).addTo(map);
         document.getElementById('btn-sat').classList.add('on');
         document.getElementById('btn-sat').querySelector('span').classList.replace('bg-zinc-600', 'bg-white');
         document.getElementById('btn-map').classList.remove('on');
