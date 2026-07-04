@@ -318,10 +318,10 @@
 
     <!-- ── MAP LAYERS FLOATING CONTROLS (BOTTOM RIGHT) ── -->
     <div class="absolute bottom-16 sm:bottom-6 right-4 z-40 flex flex-col gap-2">
-      <button id="btn-map" class="bg-black/80 hover:bg-zinc-900 text-zinc-300 hover:text-white border border-zinc-800 text-[10px] font-semibold tracking-wider uppercase px-4 py-2.5 rounded-full shadow-2xl transition-all cursor-pointer on flex items-center gap-1.5" onclick="setTile('map')">
+      <button id="btn-map" class="bg-black/80 hover:bg-zinc-900 text-zinc-300 hover:text-white border border-zinc-800 text-[10px] font-semibold tracking-wider uppercase px-4 py-2.5 rounded-full shadow-2xl transition-all cursor-pointer on flex items-center gap-1.5" onclick="tile = L.tileLayer('/api/tiles?z={z}&x={x}&y={y}', {   maxZoom: 19,   subdomains: [''] }).addTo(map);('map')">
         <span class="w-1.5 h-1.5 rounded-full bg-white"></span> Map
       </button>
-      <button id="btn-sat" class="bg-black/80 hover:bg-zinc-900 text-zinc-300 hover:text-white border border-zinc-800 text-[10px] font-semibold tracking-wider uppercase px-4 py-2.5 rounded-full shadow-2xl transition-all cursor-pointer flex items-center gap-1.5" onclick="setTile('sat')">
+      <button id="btn-sat" class="bg-black/80 hover:bg-zinc-900 text-zinc-300 hover:text-white border border-zinc-800 text-[10px] font-semibold tracking-wider uppercase px-4 py-2.5 rounded-full shadow-2xl transition-all cursor-pointer flex items-center gap-1.5" onclick="tile = L.tileLayer('/api/tiles?z={z}&x={x}&y={y}', {   maxZoom: 19,   subdomains: [''] }).addTo(map);('sat')">
         <span class="w-1.5 h-1.5 rounded-full bg-zinc-600"></span> Satellite
       </button>
       <button id="btn-loc" class="bg-black/80 hover:bg-zinc-900 text-zinc-300 hover:text-white border border-zinc-800 text-[10px] font-semibold tracking-wider uppercase px-4 py-2.5 rounded-full shadow-2xl transition-all cursor-pointer flex items-center gap-1.5" onclick="locateMe()">
@@ -418,7 +418,7 @@
     });
 
     // ── MAP TILE LAYER SELECTION ──
-    function setTile(t) {
+    function tile = L.tileLayer('/api/tiles?z={z}&x={x}&y={y}', {   maxZoom: 19,   subdomains: [''] }).addTo(map);(t) {
       map.removeLayer(tile);
       if (t === 'sat') {
         tile = L.'/api/tiles?z={z}&x={x}&y={y}'('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19 }).addTo(map);
