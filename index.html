@@ -402,7 +402,7 @@
     L.control.zoom({ position: 'bottomleft' }).addTo(map);
 
     // Initial tile layer setup
-    tile = L.tileLayer('/api/tiles?z={z}&x={x}&y={y}', { maxZoom: 19, subdomains: [''] }).addTo(map);
+    tile = L.'/api/tiles?z={z}&x={x}&y={y}'('/api/tiles?z={z}&x={x}&y={y}', { maxZoom: 19, subdomains: [''] }).addTo(map);
 
     setTimeout(() => map.invalidateSize(), 300);
 
@@ -421,14 +421,14 @@
     function setTile(t) {
       map.removeLayer(tile);
       if (t === 'sat') {
-        tile = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19 }).addTo(map);
+        tile = L.'/api/tiles?z={z}&x={x}&y={y}'('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19 }).addTo(map);
         setTimeout(()=>{ const tp=document.querySelector('.leaflet-tile-pane'); if(tp) tp.classList.remove('dark-map-filter'); }, 50);
         document.getElementById('btn-sat').classList.add('on');
         document.getElementById('btn-sat').querySelector('span').classList.replace('bg-zinc-600', 'bg-white');
         document.getElementById('btn-map').classList.remove('on');
         document.getElementById('btn-map').querySelector('span').classList.replace('bg-white', 'bg-zinc-600');
       } else {
-        tile = L.tileLayer('/api/tiles?z={z}&x={x}&y={y}', { maxZoom: 19, subdomains: [''] }).addTo(map);
+        tile = L.'/api/tiles?z={z}&x={x}&y={y}'('/api/tiles?z={z}&x={x}&y={y}', { maxZoom: 19, subdomains: [''] }).addTo(map);
 
         document.getElementById('btn-map').classList.add('on');
         document.getElementById('btn-map').querySelector('span').classList.replace('bg-zinc-600', 'bg-white');
