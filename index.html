@@ -42,10 +42,8 @@
       background-color: #050505;
     }
     .leaflet-tile-pane {
-      /* filter applied via JS for map mode only */
-    }
-    .dark-map-filter {
-      filter: invert(1) hue-rotate(180deg) brightness(1.05) saturate(0.65) !important;
+      filter: invert(1) hue-rotate(180deg) brightness(1.05) saturate(0.65);
+      filter: invert(1) hue-rotate(180deg) brightness(1.05) saturate(0.65);
     }
     .leaflet-control-attribution {
       display: none !important;
@@ -318,10 +316,10 @@
 
     <!-- ── MAP LAYERS FLOATING CONTROLS (BOTTOM RIGHT) ── -->
     <div class="absolute bottom-16 sm:bottom-6 right-4 z-40 flex flex-col gap-2">
-      <button id="btn-map" class="bg-black/80 hover:bg-zinc-900 text-zinc-300 hover:text-white border border-zinc-800 text-[10px] font-semibold tracking-wider uppercase px-4 py-2.5 rounded-full shadow-2xl transition-all cursor-pointer on flex items-center gap-1.5" onclick="tile = L.tileLayer('/api/tiles?z={z}&x={x}&y={y}', {   maxZoom: 19,   subdomains: [''] }).addTo(map);('map')">
+      <button id="btn-map" class="bg-black/80 hover:bg-zinc-900 text-zinc-300 hover:text-white border border-zinc-800 text-[10px] font-semibold tracking-wider uppercase px-4 py-2.5 rounded-full shadow-2xl transition-all cursor-pointer on flex items-center gap-1.5" onclick="setTile('map')">
         <span class="w-1.5 h-1.5 rounded-full bg-white"></span> Map
       </button>
-      <button id="btn-sat" class="bg-black/80 hover:bg-zinc-900 text-zinc-300 hover:text-white border border-zinc-800 text-[10px] font-semibold tracking-wider uppercase px-4 py-2.5 rounded-full shadow-2xl transition-all cursor-pointer flex items-center gap-1.5" onclick="tile = L.tileLayer('/api/tiles?z={z}&x={x}&y={y}', {   maxZoom: 19,   subdomains: [''] }).addTo(map);('sat')">
+      <button id="btn-sat" class="bg-black/80 hover:bg-zinc-900 text-zinc-300 hover:text-white border border-zinc-800 text-[10px] font-semibold tracking-wider uppercase px-4 py-2.5 rounded-full shadow-2xl transition-all cursor-pointer flex items-center gap-1.5" onclick="setTile('sat')">
         <span class="w-1.5 h-1.5 rounded-full bg-zinc-600"></span> Satellite
       </button>
       <button id="btn-loc" class="bg-black/80 hover:bg-zinc-900 text-zinc-300 hover:text-white border border-zinc-800 text-[10px] font-semibold tracking-wider uppercase px-4 py-2.5 rounded-full shadow-2xl transition-all cursor-pointer flex items-center gap-1.5" onclick="locateMe()">
@@ -402,7 +400,7 @@
     L.control.zoom({ position: 'bottomleft' }).addTo(map);
 
     // Initial tile layer setup
-   tile = L.tileLayer('/api/tiles?z={z}&x={x}&y={y}', { maxZoom: 19, subdomains: [''] }).addTo(map);
+    tile = L.tileLayer('/api/tiles?z={z}&x={x}&y={y}', { maxZoom: 19 }).addTo(map);
     setTimeout(() => map.invalidateSize(), 300);
 
     // Manual Point Select Popup
@@ -418,16 +416,15 @@
 
     // ── MAP TILE LAYER SELECTION ──
     function setTile(t) {
+      map.removeLayer(tile);
       if (t === 'sat') {
         tile = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19 }).addTo(map);
-     
         document.getElementById('btn-sat').classList.add('on');
         document.getElementById('btn-sat').querySelector('span').classList.replace('bg-zinc-600', 'bg-white');
         document.getElementById('btn-map').classList.remove('on');
         document.getElementById('btn-map').querySelector('span').classList.replace('bg-white', 'bg-zinc-600');
       } else {
-        tile = L.'/api/tiles?z={z}&x={x}&y={y}'('/api/tiles?z={z}&x={x}&y={y}', { maxZoom: 19, subdomains: [''] }).addTo(map);
-
+        tile = L.tileLayer('/api/tiles?z={z}&x={x}&y={y}', { maxZoom: 19 }).addTo(map);
         document.getElementById('btn-map').classList.add('on');
         document.getElementById('btn-map').querySelector('span').classList.replace('bg-zinc-600', 'bg-white');
         document.getElementById('btn-sat').classList.remove('on');
