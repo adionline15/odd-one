@@ -402,8 +402,7 @@
     L.control.zoom({ position: 'bottomleft' }).addTo(map);
 
     // Initial tile layer setup
-    tile = L.'/api/tiles?z={z}&x={x}&y={y}'('/api/tiles?z={z}&x={x}&y={y}', { maxZoom: 19, subdomains: [''] }).addTo(map);
-
+   tile = L.tileLayer('/api/tiles?z={z}&x={x}&y={y}', { maxZoom: 19, subdomains: [''] }).addTo(map);
     setTimeout(() => map.invalidateSize(), 300);
 
     // Manual Point Select Popup
@@ -419,7 +418,7 @@
 
     // ── MAP TILE LAYER SELECTION ──
     function tile = L.tileLayer('/api/tiles?z={z}&x={x}&y={y}', {   maxZoom: 19,   subdomains: [''] }).addTo(map);(t) {
-      map.removeLayer(tile);
+      tile = L.tileLayer('/api/tiles?z={z}&x={x}&y={y}', { maxZoom: 19, subdomains: [''] }).addTo(map);
       if (t === 'sat') {
         tile = L.'/api/tiles?z={z}&x={x}&y={y}'('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19 }).addTo(map);
         setTimeout(()=>{ const tp=document.querySelector('.leaflet-tile-pane'); if(tp) tp.classList.remove('dark-map-filter'); }, 50);
