@@ -417,11 +417,10 @@
     });
 
     // ── MAP TILE LAYER SELECTION ──
-    function tile = L.tileLayer('/api/tiles?z={z}&x={x}&y={y}', {   maxZoom: 19,   subdomains: [''] }).addTo(map);(t) {
-      tile = L.tileLayer('/api/tiles?z={z}&x={x}&y={y}', { maxZoom: 19, subdomains: [''] }).addTo(map);
+    function setTile(t) {
       if (t === 'sat') {
-        tile = L.'/api/tiles?z={z}&x={x}&y={y}'('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19 }).addTo(map);
-        setTimeout(()=>{ const tp=document.querySelector('.leaflet-tile-pane'); if(tp) tp.classList.remove('dark-map-filter'); }, 50);
+        tile = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19 }).addTo(map);
+     
         document.getElementById('btn-sat').classList.add('on');
         document.getElementById('btn-sat').querySelector('span').classList.replace('bg-zinc-600', 'bg-white');
         document.getElementById('btn-map').classList.remove('on');
