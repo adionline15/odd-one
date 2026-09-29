@@ -1,22 +1,46 @@
+const TILE_HOSTS = ['a', 'b', 'c'];
+
+function isValidTile(value, max) {
+  if (!/^\\d+$/.test(String(value))) return false;
+  const n = Number(value);
+  return Number.isInteger(n) && n >= 0 && n <= max;
+}
+
 export default async function handler(req, res) {
-  const { z, x, y } = req.query;
-  if (!z || !x || !y) return res.status(400).end();
-  const s = ['a','b','c'][Math.floor(Math.random()*3)];
-  const url = `https://${s}.tile.openstreetmap.org/${z}/${x}/${y}.png`;
+  if (req.method !== 'GET') {
+    res.setHeader('Allow', 'GET');
+    return res.status(405).end();
+  }
+
+  const { z, x, y } = req.query || {};
+  if (!isValidTile(z, 19) || !isValidTile(x, 1_000_000) || !isValidTile(y, 1_000_000)) {
+    return res.status(400).end();
+  }
+
+  const host = TILE_HOSTS[Number(x) % TILE_HOSTS.length];
+  const tileUrl = `https://${host}.tile.openstreetmap.org/${z}/${x}/${y}.png`;
+
   try {
-    const r = await fetch(url, {
+    const response = await fetch(tileUrl, {
       headers: {
-        'User-Agent': 'OddOneIn/1.0 (www.odd-one.in)',
-        'Referer': 'https://www.odd-one.in'
-      }
+        'User-Agent': 'OddOneIn/1.0 (https://www.odd-one.in)',
+        'Referer': 'https://www.odd-one.in',
+        'Accept': 'image/png,image/*'
+      },
+      signal: AbortSignal.timeout(5000)
     });
-    if (!r.ok) return res.status(r.status).end();
-    const buf = await r.arrayBuffer();
+
+    if (!response.ok) {
+      return res.status(response.status).end();
+    }
+
+    const buffer = await response.arrayBuffer();
     res.setHeader('Content-Type', 'image/png');
-    res.setHeader('Cache-Control', 's-maxage=86400');
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    return res.send(Buffer.from(buf));
-  } catch(e) {
-    return res.status(500).end();
+    res.setHeader('Cache-Control', 's-maxage=86400, stale-while-revalidate=3600');
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+
+    return res.send(Buffer.from(buffer));
+  } catch {
+    return res.status(502).end();
   }
 }
