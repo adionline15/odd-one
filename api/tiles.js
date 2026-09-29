@@ -1,7 +1,7 @@
 const TILE_HOSTS = ['a', 'b', 'c'];
 
 function isValidTile(value, max) {
-  if (!/^\\d+$/.test(String(value))) return false;
+  if (!/^\d+$/.test(String(value))) return false;
   const n = Number(value);
   return Number.isInteger(n) && n >= 0 && n <= max;
 }
