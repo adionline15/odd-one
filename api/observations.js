@@ -59,6 +59,7 @@ async function supabaseRequest(path, options = {}) {
   if (!response.ok) {
     const error = new Error('Database request failed');
     error.status = response.status;
+    error.upstreamBody = text.slice(0, 500);
     throw error;
   }
 
@@ -108,8 +109,13 @@ export default async function handler(req, res) {
       return json(res, 200, { observations: Array.isArray(data) ? data : [] });
     } catch (error) {
       if (error.code === 'NOT_CONFIGURED') {
+        console.error('[observations] Supabase is not configured');
         return json(res, 503, { error: 'Observation service is not configured' });
       }
+      console.error('[observations] Supabase GET failed', {
+        status: error.status || 0,
+        body: error.upstreamBody || 'no upstream response body'
+      });
       return json(res, 502, { error: 'Observation service unavailable' });
     }
   }
@@ -169,8 +175,13 @@ export default async function handler(req, res) {
       return json(res, 201, { observation: Array.isArray(data) ? data[0] : data });
     } catch (error) {
       if (error.code === 'NOT_CONFIGURED') {
+        console.error('[observations] Supabase is not configured');
         return json(res, 503, { error: 'Observation database is not configured' });
       }
+      console.error('[observations] Supabase POST failed', {
+        status: error.status || 0,
+        body: error.upstreamBody || 'no upstream response body'
+      });
       return json(res, 502, { error: 'Could not save observation' });
     }
   }
