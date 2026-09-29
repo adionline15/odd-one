@@ -2,7 +2,7 @@
 
 **India road intelligence — MVP**
 
-Odd-One.in is a map-first prototype for discovering road conditions, route information, and local road alerts. The current MVP combines an OpenStreetMap base map, OSRM routing, Google News road-alert extraction, and an optional Gemini-powered route guide.
+Odd-One.in is a map-first prototype for discovering road conditions, route information, and local road alerts. The current MVP combines an OpenStreetMap base map, OSRM routing, Google News road-alert extraction, an optional Gemini-powered route guide, and the foundation for verified road observations.
 
 ## Current MVP
 
@@ -23,10 +23,10 @@ Browser
   ├── Route request ─────────────► OSRM
   ├── Search ────────────────────► Nominatim
   ├── GET /api/news ─────────────► Google News RSS
-  └── POST /api/route-guide ─────► Vercel Function ──► Gemini API
+  ├── POST /api/route-guide ─────► Vercel Function ──► Gemini API
+  └── GET /api/observations ─────► Vercel Function ──► Supabase/PostGIS
                                       │
-                                      └── GEMINI_API_KEY
-                                         stays server-side
+                                      └── secrets stay server-side
 ```
 
 ## Important data boundary
@@ -35,27 +35,23 @@ The prototype **does not currently claim a verified road-coverage percentage**. 
 
 This is intentional: the product should never turn a synthetic number into an apparent real-world road statistic.
 
-## API endpoints
+## Observation data layer
 
-| Endpoint | Method | Purpose |
-|---|---|---|
-| `/api/news?city=...` | GET | Fetch recent road/traffic/construction alerts |
-| `/api/route-guide` | POST | Generate optional route guidance with Gemini |
-| `/api/tiles/{z}/{x}/{y}` | GET | Server-side OSM tile proxy |
+The repository now contains a PostGIS-backed observation foundation:
 
-## Environment variables
+- `db/schema.sql` — observation tables, enums, spatial index, RLS, and RPC functions
+- `api/observations.js` — validated API for approved map observations and pending submissions
 
-Set these in the Vercel project environment, not in Git:
+Observation lifecycle:
 
 ```text
-GEMINI_API_KEY=...
+source → ingest → validate → pending → review → approved → publish
+                                      └──────────► rejected
 ```
 
-No API key is required in the browser.
+Only approved observations are returned by the public observation read path.
 
-## Production MVP boundary
-
-The next product layer is a verified road-observation system:
+### Observation model
 
 ```text
 Observation
@@ -72,15 +68,51 @@ Observation
 └── reviewed_by
 ```
 
-Recommended lifecycle:
+### Supabase setup
+
+The database layer uses Supabase Postgres + PostGIS. Supabase documents PostGIS as the geospatial layer for indexed point/polygon queries and recommends keeping the extension outside the `public` schema. citeturn1search0
+
+1. Create a Supabase project.
+2. Enable PostGIS in a dedicated `gis` schema.
+3. Run `db/schema.sql` in the Supabase SQL Editor.
+4. Add these **Vercel server-side** variables:
 
 ```text
-pending ──► approved
-    │
-    └──────► rejected
+SUPABASE_URL=...
+SUPABASE_SECRET_KEY=...
+OBSERVATIONS_SUBMISSION_ENABLED=false
 ```
 
-Only approved observations should become public road-intelligence data.
+Supabase's Data API is generated from the database schema and protected by API-key authentication; current docs distinguish server-side secret keys from client-side publishable keys. citeturn0search0turn0search3
+
+Keep `OBSERVATIONS_SUBMISSION_ENABLED=false` until authentication and abuse protection are implemented.
+
+## API endpoints
+
+| Endpoint | Method | Purpose |
+|---|---|---|
+| `/api/news?city=...` | GET | Recent road/traffic/construction alerts |
+| `/api/route-guide` | POST | Optional Gemini route guidance |
+| `/api/tiles/{z}/{x}/{y}` | GET | Server-side OSM tile proxy |
+| `/api/observations?minLat=...&minLon=...&maxLat=...&maxLon=...` | GET | Approved observations in a map viewport |
+| `/api/observations` | POST | Submit a pending observation when explicitly enabled |
+
+## Environment variables
+
+See `.env.example`.
+
+Secrets must be configured in Vercel, never committed to Git.
+
+## Production MVP boundary
+
+The next product layer is:
+
+1. connect Supabase/PostGIS
+2. add authenticated observation submission
+3. render approved observations on the map
+4. build reviewer/admin workflow
+5. add API documentation
+6. add monitoring, rate limiting, backups, and audit logs
 
 ## Repository structure
 
@@ -88,7 +120,9 @@ Only approved observations should become public road-intelligence data.
 - `api/news.js` — road-alert API
 - `api/route-guide.js` — Gemini route-guide API
 - `api/tiles.js` — OSM tile proxy
-- `docs/ARCHITECTURE.md` — product/backend direction
+- `api/observations.js` — observation API
+- `db/schema.sql` — PostGIS schema and database functions
+- `docs/ARCHITECTURE.md` — system architecture
 - `docs/SECURITY.md` — production security checklist
 - `oddone_rag.py` and older prototype HTML files — research/legacy experiments
 
@@ -96,9 +130,8 @@ Only approved observations should become public road-intelligence data.
 
 The repository is designed for Vercel's static frontend + serverless API model.
 
-Before deploying production data services, add:
+Before production traffic:
 
-- persistent Postgres/PostGIS storage
 - authenticated observation submission
 - moderation/review workflow
 - audit logs
