@@ -24,8 +24,8 @@ function json(res, status, body) {
 
 function getConfig() {
   return {
-    url: (process.env.SUPABASE_URL || '').replace(/\/$/, ''),
-    key: process.env.SUPABASE_SECRET_KEY || ''
+    url: (process.env.SUPABASE_URL || '').trim().replace(/\/+$/, ''),
+    key: (process.env.SUPABASE_SECRET_KEY || '').trim()
   };
 }
 
@@ -41,11 +41,10 @@ async function supabaseRequest(path, options = {}) {
     ...options,
     headers: {
       apikey: key,
-      Authorization: `Bearer ${key}`,
       'Content-Type': 'application/json',
       ...(options.headers || {})
     },
-    signal: AbortSignal.timeout(7000)
+    signal: AbortSignal.timeout(10000)
   });
 
   const text = await response.text();
@@ -113,6 +112,10 @@ export default async function handler(req, res) {
         return json(res, 503, { error: 'Observation service is not configured' });
       }
       console.error('[observations] Supabase GET failed', {
+        name: error.name || 'Error',
+        message: error.message || 'unknown error',
+        name: error.name || 'Error',
+        message: error.message || 'unknown error',
         status: error.status || 0,
         body: error.upstreamBody || 'no upstream response body'
       });
