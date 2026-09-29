@@ -170,10 +170,10 @@
       <!-- Live Connection Status Overlay (Top Left) -->
       <div class="absolute top-4 left-4 z-20 pointer-events-none">
         <div class="bg-black/75 backdrop-blur-md px-4 py-3 border border-zinc-800 rounded-xl flex flex-col gap-1 shadow-2xl">
-          <p class="text-[9px] uppercase tracking-widest text-zinc-500 font-semibold">Radar Satellite Status</p>
+          <p class="text-[9px] uppercase tracking-widest text-zinc-500 font-semibold">Road Intelligence Status</p>
           <div class="flex items-center gap-2">
             <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
-            <span class="text-xs text-zinc-200 font-medium">Live Active Feed</span>
+            <span class="text-xs text-zinc-200 font-medium">Live alerts + routing</span>
           </div>
         </div>
       </div>
@@ -193,14 +193,14 @@
           <div class="w-px h-6 bg-zinc-800"></div>
           <div class="text-center min-w-[80px]">
             <p class="text-[9px] uppercase tracking-widest text-zinc-500 font-bold mb-0.5">Missing Roads</p>
-            <p id="stat-gap-val" class="text-sm font-serif-lux italic text-rose-500 font-semibold">-- %</p>
+            <p id="stat-gap-val" class="text-sm font-serif-lux italic text-zinc-400 font-semibold">N/A</p>
           </div>
         </div>
       </div>
     </div>
 
     <!-- ── DESKTOP SIDEBAR (RIGHT) ── -->
-    <aside class="hidden sm:flex w-80 bg-zinc-950 border-l border-zinc-900 flex-col z-20 relative shadow-2xl overflow-hidden shrink-0">
+    <aside id="sidebar" class="hidden sm:flex w-80 bg-zinc-950 border-l border-zinc-900 flex-col z-20 relative shadow-2xl overflow-hidden shrink-0">
       
       <!-- Premium Tab Control Bar -->
       <div class="flex border-b border-zinc-900 bg-black/60 shrink-0">
@@ -368,24 +368,25 @@
     const STATS_HTML = `
       <div class="grid grid-cols-2 gap-3">
         <div class="bg-zinc-900/50 border border-zinc-800/80 rounded-xl p-4">
-          <p class="text-xs font-serif-lux italic text-rose-500 font-bold text-lg leading-none">4,628</p>
-          <p class="text-[9px] uppercase tracking-wider text-zinc-500 font-bold mt-1.5 leading-tight">Missing Roads<br>Dehradun</p>
+          <p class="text-xs font-serif-lux italic text-sky-400 font-bold text-lg leading-none">OSM</p>
+          <p class="text-[9px] uppercase tracking-wider text-zinc-500 font-bold mt-1.5 leading-tight">Base map<br>source</p>
         </div>
         <div class="bg-zinc-900/50 border border-zinc-800/80 rounded-xl p-4">
-          <p class="text-xs font-serif-lux italic text-sky-400 font-bold text-lg leading-none">260</p>
-          <p class="text-[9px] uppercase tracking-wider text-zinc-500 font-bold mt-1.5 leading-tight">Mapped Roads<br>Dehradun</p>
+          <p class="text-xs font-serif-lux italic text-emerald-400 font-bold text-lg leading-none">LIVE</p>
+          <p class="text-[9px] uppercase tracking-wider text-zinc-500 font-bold mt-1.5 leading-tight">Road alerts<br>feed</p>
         </div>
         <div class="bg-zinc-900/50 border border-zinc-800/80 rounded-xl p-4">
-          <p class="text-xs font-serif-lux italic text-amber-500 font-bold text-lg leading-none">94.7%</p>
-          <p class="text-[9px] uppercase tracking-wider text-zinc-500 font-bold mt-1.5 leading-tight">Data Gap<br>Uttarakhand</p>
+          <p class="text-xs font-serif-lux italic text-amber-500 font-bold text-lg leading-none">OSRM</p>
+          <p class="text-[9px] uppercase tracking-wider text-zinc-500 font-bold mt-1.5 leading-tight">Route<br>engine</p>
         </div>
         <div class="bg-zinc-900/50 border border-zinc-800/80 rounded-xl p-4">
-          <p class="text-xs font-serif-lux italic text-emerald-400 font-bold text-lg leading-none">5</p>
-          <p class="text-[9px] uppercase tracking-wider text-zinc-500 font-bold mt-1.5 leading-tight">Cities<br>Tracked</p>
+          <p class="text-xs font-serif-lux italic text-white font-bold text-lg leading-none">AI</p>
+          <p class="text-[9px] uppercase tracking-wider text-zinc-500 font-bold mt-1.5 leading-tight">Optional<br>route guide</p>
         </div>
       </div>
-      <div class="bg-zinc-900/40 border border-zinc-800/60 rounded-xl p-4 text-xs text-zinc-400 leading-relaxed font-serif-lux italic">
-        🔍 Research: In Dehradun, 94.7% of roads are missing from standard map databases — causing navigation failures, logistics delays, and blocking autonomous vehicle deployment in India.
+      <div class="bg-zinc-900/40 border border-zinc-800/60 rounded-xl p-4 text-xs text-zinc-400 leading-relaxed">
+        <p class="font-semibold text-zinc-200 mb-1">Data coverage</p>
+        Road-data completeness is not yet measured by this prototype. Route-level coverage metrics will appear only after verified road observations are connected.
       </div>`;
     document.getElementById('stats-content').innerHTML = STATS_HTML;
     document.getElementById('m-stats-content').innerHTML = STATS_HTML;
@@ -469,7 +470,7 @@
             return `
               <div class="sugg-item flex items-center gap-2.5 px-4 py-2.5 text-xs text-zinc-400 border-b border-zinc-900 cursor-pointer transition-colors" onclick="gotoCoords(${r.lat},${r.lon},'${safeName}')">
                 <span class="text-zinc-500">🔍</span>
-                <span class="truncate">${r.display_name.split(',').slice(0, 2).join(', ')}</span>
+                <span class="truncate">${escapeHTML(r.display_name.split(',').slice(0, 2).join(', '))}</span>
                 <span class="text-[9px] uppercase tracking-wider text-zinc-600 ml-auto font-bold">OSM</span>
               </div>`;
           }).join('');
@@ -524,6 +525,12 @@
       }).addTo(map).bindPopup(`<b class="text-white">${name}</b>`).openPopup();
     }
 
+    function escapeHTML(value) {
+      return String(value).replace(/[&<>"']/g, char => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[char]));
+    }
+
     // ── HIGH SPEED ROUTER ENGINE (OSRM) ──
     async function planRoute(p) {
       const from = document.getElementById(p + '-from').value.trim().toLowerCase();
@@ -576,13 +583,13 @@
         map.fitBounds(L.latLngBounds([fc, tc]), { padding: [60, 80] });
       }
 
-      const missing = Math.round(dist * 400 + 5000);
-      const pct = Math.min(98, Math.round((missing / (missing + dist * 15 + 100)) * 100));
+      // Do not manufacture road-coverage numbers. Verified observation data will populate this later.
+      const pct = null;
       
       // Update floating desktop stat overlay
       document.getElementById('stat-dist-val').innerText = `${dist} km`;
       document.getElementById('stat-time-val').innerText = `${time} mins`;
-      document.getElementById('stat-gap-val').innerText = `${pct}%`;
+      document.getElementById('stat-gap-val').innerText = pct === null ? 'N/A' : `${pct}%`;
 
       const alerts = await fetchAlerts(from);
       const aiGuide = await getAIGuide(from, to, dist, time, alerts, pct);
@@ -600,7 +607,7 @@
             <p class="text-[9px] uppercase tracking-wider text-zinc-500 font-bold mt-1">Duration</p>
           </div>
           <div class="bg-zinc-900/60 border border-zinc-800 rounded-xl p-3 text-center">
-            <p class="text-rose-500 text-base font-bold">${pct}<span class="text-[10px] font-normal">%</span></p>
+            <p class="text-zinc-400 text-base font-bold">${pct === null ? 'N/A' : `${pct}%`}</p>
             <p class="text-[9px] uppercase tracking-wider text-zinc-500 font-bold mt-1">Data Gap</p>
           </div>
         </div>
@@ -609,7 +616,7 @@
         <div class="bg-rose-500/10 border border-rose-500/25 rounded-xl p-4 space-y-2 mt-3">
           <p class="text-[10px] uppercase tracking-wider text-rose-500 font-bold">⚠ Live Local Alerts</p>
           <div class="space-y-1.5">
-            ${alerts.slice(0, 3).map(a => `<p class="text-xs text-zinc-300 leading-snug">• ${a}</p>`).join('')}
+            ${alerts.slice(0, 3).map(a => `<p class="text-xs text-zinc-300 leading-snug">• ${escapeHTML(a)}</p>`).join('')}
           </div>
         </div>` : ''}
 
@@ -700,7 +707,7 @@
               <span class="text-[8px] font-bold tracking-widest uppercase border px-2 py-0.5 rounded-full ${badgeClasses}">${badgeLabel}</span>
               <span class="text-[9px] text-zinc-600 font-semibold font-mono-lux">Just Now</span>
             </div>
-            <p class="text-xs text-zinc-200 leading-snug">${a}</p>
+            <p class="text-xs text-zinc-200 leading-snug">${escapeHTML(a)}</p>
           </div>`;
       }).join('');
       
