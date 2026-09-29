@@ -34,11 +34,11 @@ export default async function handler(req, res) {
       return res.status(200).json({ alerts: [] });
     }
 
-    const itemBlocks = xml.match(/<item>[\\s\\S]*?<\\/item>/g) || [];
+    const itemBlocks = xml.match(/<item>[\s\S]*?<\/item>/g) || [];
     const alerts = itemBlocks.slice(0, 5).map(block => {
-      const titleMatch = block.match(/<title>([\\s\\S]*?)<\\/title>/);
+      const titleMatch = block.match(/<title>([\s\S]*?)<\/title>/);
       let title = titleMatch ? titleMatch[1] : '';
-      title = title.replace(/^<!\\[CDATA\\[([\\s\\S]*?)\\]\\]>$/, '$1');
+      title = title.replace(/^<!\[CDATA\[([\s\S]*?)\]\]>$/, '$1');
       title = title
         .replace(/&amp;/g, '&')
         .replace(/&quot;/g, '"')
