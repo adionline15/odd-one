@@ -11,17 +11,22 @@
 - Map tile coordinates are validated.
 - Dynamic alert/search text is HTML-escaped before insertion into the page.
 - Repository secrets and local environment files are ignored by Git.
+- Observation database credentials are server-side only.
+- Observation submission is disabled by default.
+- Observation records use a pending/approved/rejected lifecycle.
+- Public observation reads are limited to approved records.
 
-## Before production traffic
+## Before enabling public submissions
 
-- Add authentication for observation submission and review.
-- Add server-side authorization checks for every protected operation.
-- Add IP/user rate limiting to public APIs.
+- Add user authentication.
+- Bind `created_by` to the authenticated user.
+- Add server-side authorization checks for review operations.
+- Add IP/user rate limiting.
+- Add CAPTCHA/abuse protection if anonymous submission is ever allowed.
 - Add request IDs and structured server logs.
-- Add abuse protection and payload-size limits at the edge.
+- Add payload-size limits at the edge.
 - Store secrets only in the deployment secret manager.
 - Add dependency/security scanning.
-- Add database migrations and least-privilege DB credentials.
 - Add audit logs for moderation actions.
 - Add backup and restore tests.
 - Add monitoring and alerting.
