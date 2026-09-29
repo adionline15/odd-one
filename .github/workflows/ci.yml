@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Check JavaScript syntax
+        shell: bash
+        run: |
+          set -euo pipefail
+          node --check api/news.js
+          node --check api/route-guide.js
+          node --check api/tiles.js
+          python3 - <<'PY'
+          import re
+          import subprocess
+          from pathlib import Path
+
+          html = Path("index.html").read_text(encoding="utf-8")
+          scripts = re.findall(r"<script(?:\\s[^>]*)?>(.*?)</script>", html, re.S)
+          for i, script in enumerate(scripts, 1):
+              if not script.strip():
+                  continue
+              path = Path(f"/tmp/index-script-{i}.js")
+              path.write_text(script, encoding="utf-8")
+              subprocess.run(["node", "--check", str(path)], check=True)
+          print(f"Validated {len(scripts)} inline script blocks.")
+          PY
+
+      - name: Validate JSON
+        run: node -e "JSON.parse(require('fs').readFileSync('vercel.json','utf8')); console.log('vercel.json OK')"
+
+      - name: Check for committed API keys
+        shell: bash
+        run: |
+          if grep -RIn --exclude-dir=.git --exclude=.gitignore -E 'AIza[0-9A-Za-z_-]{20,}' .; then
+            echo "Potential Google API key detected in repository."
+            exit 1
+          fi
+          if grep -RIn --exclude-dir=.git --exclude=.gitignore -E 'GEMINI_API_KEY[[:space:]]*=[[:space:]]*[^[:space:]]+' .; then
+            echo "Potential hard-coded GEMINI_API_KEY detected in repository."
+            exit 1
+          fi
