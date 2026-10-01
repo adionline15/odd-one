@@ -193,3 +193,4 @@ All rights reserved unless a separate license is added to this repository.
 - No data means no approved observations were returned for the active viewport.
 - Awaiting data means a product capability exists but the required verified temporal dataset is not present.
 - Approximate route output must remain visibly distinct from provider-backed routing.
+- Third-party map and imagery attribution must remain visible where provider terms require it.
