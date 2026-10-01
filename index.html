@@ -1327,7 +1327,8 @@
       document.getElementById('stat-time-val').innerText = `${time} mins`;
       document.getElementById('stat-gap-val').innerText = pct === null ? 'N/A' : `${pct}%`;
 
-      const alerts = await fetchAlerts(from);
+      const alertResult = await fetchAlerts(from);
+      const alerts = alertResult.alerts;
       const aiGuide = await getAIGuide(from, to, dist, time, alerts, pct);
       setRouteLoadingState(false);
 
