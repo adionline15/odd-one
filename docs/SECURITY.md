@@ -7,6 +7,8 @@
 - API methods are explicitly restricted.
 - User-controlled city input is validated before the news request.
 - External API calls have timeouts.
+- Observation viewport requests are bounded and validated server-side.
+- Observation metadata is size-limited at both API and database layers.
 - Route-guide request values are type/range checked.
 - Map tile coordinates are validated.
 - Dynamic alert/search text is HTML-escaped before insertion into the page.
