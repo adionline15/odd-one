@@ -198,3 +198,5 @@ All rights reserved unless a separate license is added to this repository.
 - A single observation response is capped to keep viewport reads bounded.
 - Observation summaries describe approved returned records, not nationwide road coverage.
 - Map reads are scoped to the current viewport.
+
+- Newer viewport requests take precedence over older responses.
