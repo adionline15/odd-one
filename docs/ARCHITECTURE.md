@@ -78,7 +78,17 @@ source → ingest → validate → pending → review → approved → publish
 
 Public endpoints should read from approved observations only.
 
-## 5. Product rule
+## 5. Request boundaries
+
+The browser talks to small serverless endpoints rather than directly holding privileged credentials.
+
+- Observation reads are viewport-scoped and return approved data only.
+- News queries are city-scoped and cached briefly.
+- Route guidance receives bounded route metrics and a small alert set.
+- Tile requests validate zoom and tile coordinates before proxying upstream.
+- Secrets remain server-side.
+
+## 6. Product rule
 
 Every intelligence item should be traceable to:
 
