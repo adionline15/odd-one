@@ -44,7 +44,7 @@ create table if not exists public.observations (
   created_by uuid references auth.users(id),
   reviewed_by uuid references auth.users(id),
   reviewed_at timestamptz,
-  review_note text,
+  review_note text check (review_note is null or char_length(review_note) <= 2000),
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
