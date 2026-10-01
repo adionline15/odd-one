@@ -186,3 +186,5 @@ All rights reserved unless a separate license is added to this repository.
 
 - Never invent road observations, alerts, historical change, or confidence.
 - Clearly label verified observations, estimates, unavailable services, and awaiting data.
+
+- Source labels are descriptive provenance, not independent proof.
