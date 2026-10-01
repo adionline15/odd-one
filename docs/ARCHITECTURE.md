@@ -108,3 +108,8 @@ Every intelligence item should be traceable to:
 - **whether** it has been reviewed
 
 This provenance model is the foundation for scaling beyond a visual prototype.
+
+
+## Viewport-first loading
+
+The map requests intelligence for the active geographic viewport rather than attempting an unbounded India-wide observation payload.
