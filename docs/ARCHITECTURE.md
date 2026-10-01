@@ -117,3 +117,5 @@ Viewport requests carry client-side request identity so an older response cannot
 ## Viewport-first loading
 
 The map requests intelligence for the active geographic viewport rather than attempting an unbounded India-wide observation payload.
+
+- Summary groups describe returned approved observations; a group count is not a claim about total road coverage.
