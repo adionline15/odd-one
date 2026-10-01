@@ -226,6 +226,9 @@ as $$
   limit least(greatest(p_limit, 1), 500);
 $$;
 
+comment on function public.approved_observations_in_view(double precision, double precision, double precision, double precision, integer)
+  is 'Returns approved observations intersecting a geographic viewport, newest first.';
+
 revoke execute on function public.approved_observations_in_view(
   double precision,
   double precision,
