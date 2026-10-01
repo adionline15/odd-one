@@ -998,6 +998,7 @@
     }
 
     async function loadObservationsInView() {
+      const requestId = ++observationRequestId;
       setObservationLayerStatus('loading');
       const bounds = map.getBounds();
       observationViewportKey = [
@@ -1028,6 +1029,7 @@
           throw new Error(detail);
         }
         const payload = await response.json();
+        if (requestId !== observationRequestId) return;
         if (payload.api_version !== 'observations-v6') {
           throw new Error('Unsupported observation API version');
         }
