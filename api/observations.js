@@ -131,9 +131,12 @@ export default async function handler(req, res) {
       res.setHeader('Vary', 'Accept-Encoding');
       res.setHeader('X-Odd-One-API', 'observations-v6');
       res.setHeader('X-Odd-One-Observation-Count', String(observations.length));
+      res.setHeader('X-Odd-One-Observation-Limit', String(limit));
       return json(res, 200, {
         api_version: 'observations-v6',
         count: observations.length,
+        limit,
+        truncated: observations.length >= limit,
         observations
       });
     } catch (error) {
