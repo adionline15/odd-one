@@ -121,11 +121,17 @@
   <!-- ── TOP NAVIGATION BAR ── -->
   <nav class="h-16 flex items-center justify-between px-4 sm:px-8 border-b border-zinc-800 bg-[#0a0a0a] z-50 shadow-lg shrink-0">
     <!-- Brand Info -->
-    <div class="flex items-center gap-4 sm:gap-6">
+    <div class="flex items-center gap-5 sm:gap-8">
       <div class="flex items-baseline cursor-pointer" onclick="map.flyTo([22,78],5);">
         <h1 class="text-xl sm:text-2xl font-serif-lux italic text-white tracking-tighter">Odd-One<span class="text-zinc-500 font-sans font-light">.in</span></h1>
       </div>
-
+      <div class="hidden lg:flex items-center gap-5 text-[9px] uppercase tracking-[0.18em] text-zinc-500">
+        <button class="hover:text-white transition-colors" onclick="showTab('alerts')">Platform</button>
+        <button class="hover:text-white transition-colors" onclick="showTab('data')">Data</button>
+        <button class="hover:text-white transition-colors" onclick="showTab('route')">Routing</button>
+        <span class="text-zinc-800">/</span>
+        <span class="font-mono-lux text-zinc-600">INDIA // ROAD INTELLIGENCE</span>
+      </div>
     </div>
 
     <!-- Search Engine -->
@@ -159,11 +165,17 @@
       
       <!-- Live Connection Status Overlay (Top Left) -->
       <div class="absolute top-4 left-4 z-20 pointer-events-none">
-        <div class="bg-black/75 backdrop-blur-md px-4 py-3 border border-zinc-800 rounded-xl flex flex-col gap-1 shadow-2xl">
-          <p class="text-[9px] uppercase tracking-widest text-zinc-500 font-semibold">Road Intelligence Status</p>
-          <div class="flex items-center gap-2">
-            <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
-            <span class="text-xs text-zinc-200 font-medium">Live alerts + routing</span>
+        <div class="bg-[#070707]/82 backdrop-blur-xl px-5 py-4 border border-zinc-800/80 rounded-2xl shadow-2xl">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="text-[8px] uppercase tracking-[0.2em] text-zinc-500 font-semibold">Live intelligence layer</span>
+          </div>
+          <h2 class="text-xl sm:text-2xl leading-[1.05] font-serif-lux italic text-white tracking-tight">Understanding India's roads through intelligence.</h2>
+          <p class="mt-2 text-[10px] leading-relaxed text-zinc-500 max-w-[290px]">Satellite imagery, computer vision and verified road observations — unified into one continuously improving network.</p>
+          <div class="mt-4 flex items-center gap-2">
+            <span class="px-2 py-1 rounded-md border border-zinc-800 bg-zinc-900/70 text-[8px] uppercase tracking-wider text-zinc-400">Satellite</span>
+            <span class="px-2 py-1 rounded-md border border-zinc-800 bg-zinc-900/70 text-[8px] uppercase tracking-wider text-zinc-400">AI / CV</span>
+            <span class="px-2 py-1 rounded-md border border-zinc-800 bg-zinc-900/70 text-[8px] uppercase tracking-wider text-zinc-400">Road graph</span>
           </div>
         </div>
       </div>
