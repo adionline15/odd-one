@@ -1077,6 +1077,7 @@
         console.warn('[observations] Could not load road observations', error);
         clearObservationLayers();
         observationRecords = [];
+        document.querySelectorAll('.obs-returned-count').forEach(el => { el.textContent = '0'; });
         refreshObservationSourceOptions();
         applyObservationFilters();
         renderTemporalChangeIntelligence([]);
