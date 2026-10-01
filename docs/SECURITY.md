@@ -66,3 +66,5 @@ Privileged Supabase credentials and AI provider keys remain server-side. Browser
 - Query bounds are validated before database requests.
 
 - Client code validates API version before applying response state.
+
+- Failed observation reads clear stale counts and markers.
