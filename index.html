@@ -825,7 +825,7 @@
         const note = document.getElementById('road-intel-note');
         const rawNote = observation.metadata && typeof observation.metadata.note === 'string' ? observation.metadata.note.trim() : '';
         if (rawNote) {
-          note.textContent = String(rawNote);
+          note.textContent = String(rawNote).slice(0, 500);
           note.classList.remove('hidden');
         } else {
           note.textContent = '';
