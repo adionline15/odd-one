@@ -193,7 +193,7 @@ export default async function handler(req, res) {
       return json(res, 400, { error: 'Invalid observation payload' });
     }
 
-    const observedDate = new Date(observedAt);
+    const observedDate = new Date(observedAt.slice(0, 64));
     if (!observedAt || Number.isNaN(observedDate.getTime())) {
       return json(res, 400, { error: 'Invalid observed_at timestamp' });
     }
