@@ -125,3 +125,4 @@ The map requests intelligence for the active geographic viewport rather than att
 - Approval controls public visibility; it does not manufacture missing metadata.
 - Fallback routing is a degraded estimate and remains visually distinct from provider-backed routing.
 - External geocoding, routing, imagery, and news providers are treated as replaceable upstream dependencies.
+- The browser owns presentation and interaction state; privileged database access remains server-side.
