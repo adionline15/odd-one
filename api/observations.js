@@ -142,7 +142,7 @@ export default async function handler(req, res) {
     } catch (error) {
       if (error.code === 'NOT_CONFIGURED') {
         console.error('[observations] Supabase is not configured');
-        return json(res, 503, { api_version: 'observations-v5', error: 'Observation service is not configured' });
+        return json(res, 503, { api_version: 'observations-v6', error: 'Observation service is not configured' });
       }
       console.error('[observations] Supabase GET failed', {
         name: error.name || 'Error',
