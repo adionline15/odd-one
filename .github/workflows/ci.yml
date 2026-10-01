@@ -69,6 +69,9 @@ jobs:
           grep -q "api_version: 'observations-v6'" api/observations.js
           grep -q "api_version: 'observation-summary-v1'" api/observation-summary.js
 
+      - name: Check database metadata contract
+        run: grep -q "jsonb_typeof(metadata) = 'object'" db/schema.sql
+
       - name: Check patch formatting
         run: git diff --check
 
