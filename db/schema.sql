@@ -79,6 +79,8 @@ create index if not exists observations_submitted_at
 create index if not exists observations_metadata_gin
   on public.observations using gin (metadata);
 
+comment on table public.observations is 'Verified road intelligence observations; only approved rows are publicly readable.';
+
 alter table public.observations enable row level security;
 
 drop policy if exists "approved observations are public" on public.observations;
