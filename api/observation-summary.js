@@ -30,7 +30,7 @@ async function request(path, options = {}) {
       headers: { apikey: key, 'Content-Type': 'application/json', ...(options.headers || {}) },
       signal: controller.signal
     });
-    const text = await response.text();
+    const text = (await response.text()).slice(0, 100000);
     let data = null;
     try { data = text ? JSON.parse(text) : null; } catch {}
     if (!response.ok) {
