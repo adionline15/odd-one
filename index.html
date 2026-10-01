@@ -553,6 +553,69 @@
     tile = L.tileLayer('/api/tiles?z={z}&x={x}&y={y}', { maxZoom: 19 }).addTo(map);
     setTimeout(() => map.invalidateSize(), 300);
 
+    // ── HEXAGONAL ROAD INTELLIGENCE GRID ──
+    // Visual hex cells replace the old square-cell presentation.
+    // Cells are rendered in screen space so the hexagons stay perfectly regular.
+    let hexGridLayer = L.layerGroup().addTo(map);
+    let hexGridTimer = null;
+
+    function clearHexGrid() {
+      hexGridLayer.clearLayers();
+    }
+
+    function redrawHexGrid() {
+      clearTimeout(hexGridTimer);
+      hexGridTimer = setTimeout(() => {
+        if (!map || !hexGridLayer) return;
+
+        const size = Math.max(30, Math.min(44, 30 + (map.getZoom() - 5) * 1.6));
+        const width = map.getSize().x;
+        const height = map.getSize().y;
+        const stepX = Math.sqrt(3) * size;
+        const stepY = 1.5 * size;
+        const pixelBounds = map.getPixelBounds();
+        const minX = pixelBounds.min.x - stepX * 2;
+        const maxX = pixelBounds.max.x + stepX * 2;
+        const minY = pixelBounds.min.y - size * 2;
+        const maxY = pixelBounds.max.y + size * 2;
+
+        const polygons = [];
+        let row = 0;
+
+        for (let y = minY; y <= maxY; y += stepY, row++) {
+          const xOffset = (row % 2) ? stepX / 2 : 0;
+
+          for (let x = minX + xOffset; x <= maxX; x += stepX) {
+            const center = L.point(x, y);
+            const vertices = [];
+
+            for (let i = 0; i < 6; i++) {
+              const angle = (Math.PI / 180) * (60 * i - 30);
+              const point = L.point(
+                center.x + size * Math.cos(angle),
+                center.y + size * Math.sin(angle)
+              );
+              const latLng = map.unproject(point, map.getZoom());
+              vertices.push([latLng.lat, latLng.lng]);
+            }
+
+            polygons.push(L.polygon(vertices, {
+              color: '#ffffff',
+              weight: 0.7,
+              opacity: 0.16,
+              fill: false,
+              interactive: false
+            }));
+          }
+        }
+
+        polygons.forEach(polygon => polygon.addTo(hexGridLayer));
+      }, 80);
+    }
+
+    map.on('zoomend moveend', redrawHexGrid);
+    redrawHexGrid();
+
     // ── VERIFIED ROAD OBSERVATIONS ──
     let observationLayers = [];
     let observationLoadTimer = null;
