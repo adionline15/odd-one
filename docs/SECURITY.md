@@ -57,3 +57,4 @@ Privileged Supabase credentials and AI provider keys remain server-side. Browser
 - Public pages should remain protected from clickjacking through the configured frame policy.
 - JSON endpoints explicitly declare JSON content types to reduce content-sniffing ambiguity.
 - Strict referrer policy limits accidental leakage of route or query context.
+- Metadata is untrusted input even when it originates from an authenticated submission.
