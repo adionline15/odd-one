@@ -546,10 +546,9 @@
     L.control.zoom({ position: 'bottomleft' }).addTo(map);
 
     // Initial tile layer setup
-    tile = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    tile = L.tileLayer('/api/tiles?z={z}&x={x}&y={y}', {
       maxZoom: 19,
-      subdomains: 'abcd',
-      attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
+      attribution: '&copy; Esri, HERE, Garmin, USGS, Intermap, INCREMENT P, and the GIS User Community'
     }).addTo(map);
     setTimeout(() => map.invalidateSize(), 300);
 
@@ -713,10 +712,9 @@
         document.getElementById('btn-map').classList.remove('on');
         document.getElementById('btn-map').querySelector('span').classList.replace('bg-white', 'bg-zinc-600');
       } else {
-        tile = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        tile = L.tileLayer('/api/tiles?z={z}&x={x}&y={y}', {
           maxZoom: 19,
-          subdomains: 'abcd',
-          attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
+          attribution: '&copy; Esri, HERE, Garmin, USGS, Intermap, INCREMENT P, and the GIS User Community'
         }).addTo(map);
         document.getElementById('btn-map').classList.add('on');
         document.getElementById('btn-map').querySelector('span').classList.replace('bg-zinc-600', 'bg-white');
