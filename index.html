@@ -1093,6 +1093,9 @@
         applyObservationFilters();
         renderTemporalChangeIntelligence([]);
         setObservationLayerStatus('error');
+        document.querySelectorAll('.obs-layer-meta').forEach(el => {
+          el.textContent = 'Viewport · unavailable';
+        });
       }
     }
 
