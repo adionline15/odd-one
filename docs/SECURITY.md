@@ -52,3 +52,5 @@ Serverless endpoints should bound request and upstream response sizes before par
 ## Secret boundary
 
 Privileged Supabase credentials and AI provider keys remain server-side. Browser code must use public, non-privileged endpoints.
+
+- Keep cross-origin access narrow and review any public endpoint before enabling broad browser access.
