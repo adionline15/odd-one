@@ -88,11 +88,15 @@ The browser talks to small serverless endpoints rather than directly holding pri
 - Tile requests validate zoom and tile coordinates before proxying upstream.
 - Secrets remain server-side.
 
-## 6. Freshness model
+## 6. Summary service
+
+The summary endpoint aggregates only approved observations already stored in PostGIS. It does not infer missing coverage or generate synthetic intelligence metrics.
+
+## 7. Freshness model
 
 Road intelligence is time-bound data, not a timeless map attribute. Every observation carries observed_at, while the UI separately tracks the latest successful viewport load. Cached reads therefore reduce duplicate work without changing the underlying observation timestamps.
 
-## 7. Product rule
+## 8. Product rule
 
 Every intelligence item should be traceable to:
 
