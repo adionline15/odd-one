@@ -96,6 +96,12 @@ Keep `OBSERVATIONS_SUBMISSION_ENABLED=false` until authentication and abuse prot
 
 ## Observation API contract
 
+## Observation viewport limits
+
+The public observation read path accepts geographic viewports up to 60 degrees in latitude and longitude span and caps a single response at 500 observations. Larger areas should be explored through normal map navigation rather than a single unbounded request.
+
+
+
 Successful observation reads return API version `observations-v6` and include `count`, `limit`, and `truncated` metadata. Responses are briefly cacheable to reduce repeated viewport reads while the frontend refreshes only the active map area.
 
 ## API endpoints
