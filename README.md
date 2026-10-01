@@ -149,6 +149,7 @@ The next production layer is:
 - `api/route-guide.js` — Gemini route-guide API
 - `api/tiles.js` — OSM tile proxy
 - `api/observations.js` — observation API
+- `api/observation-summary.js` — approved observation summary API
 - `db/schema.sql` — PostGIS schema and database functions
 - `docs/ARCHITECTURE.md` — system architecture
 - `docs/SECURITY.md` — production security checklist
