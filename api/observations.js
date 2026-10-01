@@ -199,7 +199,7 @@ export default async function handler(req, res) {
 
     const metadataText = JSON.stringify(metadata);
     if (metadataText.length > 8000) {
-      return json(res, 400, { error: 'Observation metadata is too large' });
+      return json(res, 413, { error: 'Observation metadata is too large' });
     }
 
     try {
