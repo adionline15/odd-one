@@ -34,7 +34,7 @@ export default async function handler(req, res) {
       return res.status(502).json({ error: 'Upstream news service unavailable' });
     }
 
-    const xml = await response.text();
+    const xml = (await response.text()).slice(0, 250000);
     if (!xml.includes('<item>')) {
       return res.status(200).json({ source: 'Google News RSS', window: '7d', count: 0, alerts: [] });
     }
