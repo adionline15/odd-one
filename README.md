@@ -196,3 +196,4 @@ All rights reserved unless a separate license is added to this repository.
 - Third-party map and imagery attribution must remain visible where provider terms require it.
 - External geocoding is triggered by explicit search actions rather than continuous autocomplete.
 - A single observation response is capped to keep viewport reads bounded.
+- Observation summaries describe approved returned records, not nationwide road coverage.
