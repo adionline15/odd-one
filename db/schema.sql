@@ -87,6 +87,10 @@ create index if not exists observations_submitted_at
 create index if not exists observations_metadata_gin
   on public.observations using gin (metadata);
 
+create index if not exists observations_approved_confidence
+  on public.observations (confidence desc)
+  where status = 'approved';
+
 comment on table public.observations is 'Verified road intelligence observations; only approved rows are publicly readable.';
 comment on column public.observations.status is 'pending until reviewed; approved rows are published; rejected rows remain private.';
 comment on column public.observations.observed_at is 'Timestamp when the road condition or map event was observed.';
