@@ -34,7 +34,7 @@ export default async function handler(req, res) {
 
     const xml = await response.text();
     if (!xml.includes('<item>')) {
-      return res.status(200).json({ alerts: [] });
+      return res.status(200).json({ source: 'Google News RSS', window: '7d', count: 0, alerts: [] });
     }
 
     const itemBlocks = xml.match(/<item>[\s\S]*?<\/item>/g) || [];
@@ -51,7 +51,7 @@ export default async function handler(req, res) {
       return title.split(' - ')[0].trim().substring(0, 120);
     }).filter(Boolean);
 
-    return res.status(200).json({ alerts });
+    return res.status(200).json({ source: 'Google News RSS', window: '7d', count: alerts.length, alerts });
   } catch {
     return res.status(502).json({ error: 'Unable to fetch road alerts' });
   }
