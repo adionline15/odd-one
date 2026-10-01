@@ -21,6 +21,10 @@ export default async function handler(req, res) {
     return res.status(503).json({ error: 'AI service is not configured' });
   }
 
+  if (JSON.stringify(req.body || {}).length > 12000) {
+    return res.status(413).json({ error: 'Request payload too large' });
+  }
+
   const body = req.body && typeof req.body === 'object' ? req.body : {};
   const origin = cleanText(body.origin);
   const dest = cleanText(body.dest);
