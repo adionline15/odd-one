@@ -95,6 +95,12 @@ export default async function handler(req, res) {
     }
 
     try {
+      // First verify the PostgREST connection with a minimal, non-spatial query.
+      // This separates network/configuration failures from RPC/PostGIS failures.
+      await supabaseRequest('observations?select=id&status=eq.approved&limit=1', {
+        method: 'GET'
+      });
+
       const data = await supabaseRequest('rpc/approved_observations_in_view', {
         method: 'POST',
         body: JSON.stringify({
@@ -105,6 +111,7 @@ export default async function handler(req, res) {
           p_limit: limit
         })
       });
+      res.setHeader('X-Odd-One-API', 'observations-v3');
       return json(res, 200, { observations: Array.isArray(data) ? data : [] });
     } catch (error) {
       if (error.code === 'NOT_CONFIGURED') {
