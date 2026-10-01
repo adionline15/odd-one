@@ -70,3 +70,5 @@ Privileged Supabase credentials and AI provider keys remain server-side. Browser
 - Failed observation reads clear stale counts and markers.
 
 - Retry controls are disabled while a recovery request is active.
+
+- Superseded viewport requests are cancelled where supported.
