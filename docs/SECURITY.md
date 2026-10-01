@@ -63,3 +63,4 @@ Privileged Supabase credentials and AI provider keys remain server-side. Browser
 - Observation submission remains disabled by default until end-user identity binding is complete.
 - External requests should fail within bounded time instead of holding serverless execution indefinitely.
 - Logs should contain operational status without secrets, raw authorization headers, or database credentials.
+- Query bounds are validated before database requests.
