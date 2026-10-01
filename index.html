@@ -1408,7 +1408,7 @@
 
       let dist, time, routeSource = 'OSRM';
       try {
-        const osrm = await fetch(`https://router.project-osrm.org/route/v1/driving/${fc[1]},${fc[0]};${tc[1]},${tc[0]}?overview=full&geometries=geojson`);
+        const osrm = await fetch(`https://router.project-osrm.org/route/v1/driving/${fc[1]},${fc[0]};${tc[1]},${tc[0]}?overview=full&geometries=geojson`, { signal: routeAbortController.signal });
         const od = await osrm.json();
         if (od.code === 'Ok') {
           const route = od.routes[0];
