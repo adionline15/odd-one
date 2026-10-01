@@ -7,6 +7,8 @@ export default async function handler(req, res) {
   }
 
   res.setHeader('Cache-Control', 's-maxage=300, stale-while-revalidate=600');
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
 
   const city = typeof req.query?.city === 'string' ? req.query.city.trim() : '';
   if (!city || !CITY_PATTERN.test(city)) {
