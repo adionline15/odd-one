@@ -133,3 +133,5 @@ The map requests intelligence for the active geographic viewport rather than att
 - Observation summaries return `observation-summary-v1`.
 
 - Route source distinguishes provider-backed and approximate output.
+
+- News results retain upstream source attribution in the API contract.
