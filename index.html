@@ -1103,6 +1103,7 @@
         setObservationLayerStatus(observations.length ? 'live' : 'empty');
       document.querySelectorAll('.obs-layer-error').forEach(el => { el.textContent = ''; });
       } catch (error) {
+        if (requestId !== observationRequestId) return;
         console.warn('[observations] Could not load road observations', error);
         clearObservationLayers();
         observationRecords = [];
