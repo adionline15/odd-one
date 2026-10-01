@@ -170,6 +170,10 @@ export default async function handler(req, res) {
       return json(res, 503, { error: 'Observation submission is not enabled' });
     }
 
+    if (JSON.stringify(req.body || {}).length > 12000) {
+      return json(res, 413, { error: 'Observation request too large' });
+    }
+
     const body = req.body && typeof req.body === 'object' ? req.body : {};
     const lat = Number(body.lat);
     const lon = Number(body.lon);
