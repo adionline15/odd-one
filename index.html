@@ -337,7 +337,8 @@
   </footer>
 
   <!-- Leaflet Scripts -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>\n    <!-- TensorFlow.js: CNN inference runtime for satellite-image enhancement -->\n    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- CNN enhancement runtime will be loaded only when the enhancement feature is enabled. -->
   
   <script>
     // ── CITIES INTEL DATA ──
@@ -701,7 +702,7 @@
       map.removeLayer(tile);
       if (t === 'sat') {
         document.getElementById('map').classList.remove('map-dark');
-        tile = L.tileLayer('/api/satellite?z={z}&x={x}&y={y}', {
+        tile = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
           maxZoom: 19,
           maxNativeZoom: 19,
           attribution: '&copy; Esri, Maxar, Earthstar Geographics, and the GIS User Community'
