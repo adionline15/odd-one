@@ -88,6 +88,7 @@ Give a short, friendly navigation tip (80-100 words). Include: best time to trav
       return res.status(502).json({ error: 'AI service returned no guidance' });
     }
 
+    res.setHeader('X-Odd-One-AI-Model', 'gemini-2.5-flash');
     return res.status(200).json({ text: text.slice(0, 1200) });
   } catch {
     return res.status(502).json({ error: 'AI service unavailable' });
