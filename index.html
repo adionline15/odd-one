@@ -778,6 +778,7 @@
     let observationLoadTimer = null;
     let observationRequestId = 0;
     let observationAbortController = null;
+    let observationSummaryRequestId = 0;
 
     function clearObservationLayers() {
       observationLayers.forEach(layer => map.removeLayer(layer));
