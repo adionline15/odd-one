@@ -55,3 +55,4 @@ Privileged Supabase credentials and AI provider keys remain server-side. Browser
 
 - Keep cross-origin access narrow and review any public endpoint before enabling broad browser access.
 - Public pages should remain protected from clickjacking through the configured frame policy.
+- JSON endpoints explicitly declare JSON content types to reduce content-sniffing ambiguity.
