@@ -16,6 +16,7 @@
 - Observation database credentials are server-side only.
 - Observation submission is disabled by default.
 - Observation records use a pending/approved/rejected lifecycle.
+- API responses set defensive content-type, framing, and referrer headers where applicable.
 - Public observation reads are limited to approved records.
 
 ## Before enabling public submissions
