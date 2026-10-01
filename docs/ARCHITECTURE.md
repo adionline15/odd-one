@@ -121,3 +121,4 @@ The map requests intelligence for the active geographic viewport rather than att
 - Summary groups describe returned approved observations; a group count is not a claim about total road coverage.
 - Observation source identifies the submitted signal origin and should not be interpreted as independent verification.
 - Confidence is a normalized score supplied by the observation pipeline; it is not a guarantee of correctness.
+- observed_at describes observation time; submitted_at describes ingestion time.
