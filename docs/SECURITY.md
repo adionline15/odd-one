@@ -68,3 +68,5 @@ Privileged Supabase credentials and AI provider keys remain server-side. Browser
 - Client code validates API version before applying response state.
 
 - Failed observation reads clear stale counts and markers.
+
+- Retry controls are disabled while a recovery request is active.
