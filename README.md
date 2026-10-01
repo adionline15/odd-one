@@ -188,3 +188,4 @@ All rights reserved unless a separate license is added to this repository.
 - Clearly label verified observations, estimates, unavailable services, and awaiting data.
 
 - Source labels are descriptive provenance, not independent proof.
+- Confidence is shown as a score and should be read with source and timestamp context.
