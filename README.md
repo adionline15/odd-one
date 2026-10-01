@@ -210,3 +210,5 @@ All rights reserved unless a separate license is added to this repository.
 - Satellite imagery provides visual context; it is not automatically a verified road event.
 
 - AI output is not presented as verified observation data unless it enters the approved lifecycle.
+
+- Routing and observation intelligence are separate data products.
