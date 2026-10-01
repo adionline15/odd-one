@@ -145,3 +145,5 @@ The map requests intelligence for the active geographic viewport rather than att
 - Change detection should produce provenance metadata before entering the approved observation lifecycle.
 
 - Human or automated review must precede public approval.
+
+- Map markers are projections of API records and should not create independent intelligence state.
