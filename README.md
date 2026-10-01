@@ -214,3 +214,5 @@ All rights reserved unless a separate license is added to this repository.
 - Routing and observation intelligence are separate data products.
 
 - News feed data is contextual and should not be treated as road verification.
+
+- Provider failures remain visible rather than being silently converted into synthetic data.
