@@ -615,7 +615,7 @@
           <div class="flex items-center gap-2">
             <span class="obs-layer-dot w-1.5 h-1.5 rounded-full bg-zinc-600"></span>
             <span class="obs-layer-status font-mono-lux text-[8px] text-zinc-500">LOADING</span>
-            <span class="font-mono-lux text-[8px] text-zinc-500"><span class="obs-visible-count">0</span> VISIBLE · <span class="obs-returned-count">0</span> RETURNED</span><button type="button" class="obs-layer-retry hidden text-[8px] uppercase tracking-wider font-bold text-zinc-400 hover:text-white transition-colors" title="Retry verified observation layer">RETRY</button>
+            <span class="font-mono-lux text-[8px] text-zinc-500"><span class="obs-visible-count">0</span> VISIBLE · <span class="obs-returned-count">0</span> RETURNED</span><button type="button" class="obs-layer-retry hidden text-[8px] uppercase tracking-wider font-bold text-zinc-400 hover:text-white transition-colors" title="Retry verified observation layer"><span class="obs-layer-error hidden text-[8px] text-rose-400 ml-2">SERVICE ERROR</span>RETRY</button>
           </div>
         </div>
         <div class="p-4 space-y-3">
@@ -850,6 +850,9 @@
         el.className = 'obs-layer-dot w-1.5 h-1.5 rounded-full ' + config.dot;
       });
       document.querySelectorAll('.obs-layer-retry').forEach(el => {
+        el.classList.toggle('hidden', state !== 'error');
+      });
+      document.querySelectorAll('.obs-layer-error').forEach(el => {
         el.classList.toggle('hidden', state !== 'error');
       });
     }
