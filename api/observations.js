@@ -94,8 +94,8 @@ export default async function handler(req, res) {
       return json(res, 400, { error: 'Invalid map bounds' });
     }
 
+    let stage = 'connectivity';
     try {
-      let stage = 'connectivity';
       // First verify the PostgREST connection with a minimal, non-spatial query.
       await supabaseRequest('observations?select=id&status=eq.approved&limit=1', {
         method: 'GET'
