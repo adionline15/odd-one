@@ -98,6 +98,7 @@ comment on column public.observations.submitted_at is 'Timestamp when the observ
 comment on column public.observations.confidence is 'Normalized confidence score from 0 to 1.';
 comment on column public.observations.source is 'Origin of the observation signal.';
 comment on column public.observations.observation_type is 'Normalized road intelligence event category.';
+comment on column public.observations.metadata is 'Structured provenance and optional temporal/change-detection attributes.';
 
 alter table public.observations enable row level security;
 
