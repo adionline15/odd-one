@@ -1420,11 +1420,12 @@
     async function fetchAlerts(city) {
       try {
         const r = await fetch(`/api/news?city=${encodeURIComponent(city)}`);
-        if (!r.ok) return [];
+        if (!r.ok) throw new Error(`Alert feed returned ${r.status}`);
         const data = await r.json();
-        return data.alerts || [];
+        return { alerts: Array.isArray(data.alerts) ? data.alerts : [], error: null };
       } catch (e) {
-        return [];
+        console.warn('[alerts] Could not load alert feed', e);
+        return { alerts: [], error: e };
       }
     }
 
@@ -1437,7 +1438,19 @@
       document.getElementById('d-alerts-box').innerHTML = loading;
       document.getElementById('m-alerts-box').innerHTML = loading;
       
-      const alerts = await fetchAlerts(city);
+      const result = await fetchAlerts(city);
+      if (result.error) {
+        const msg = `
+          <div class="text-center py-12 text-zinc-500 space-y-2 bg-zinc-900/30 rounded-xl border border-zinc-900 p-5">
+            <span class="text-2xl block">!</span>
+            <p class="text-xs uppercase tracking-wider text-rose-400 font-bold">Alert feed unavailable</p>
+            <p class="text-[11px] text-zinc-600">The current alert source could not be reached. No safety conclusion is implied.</p>
+          </div>`;
+        document.getElementById('d-alerts-box').innerHTML = msg;
+        document.getElementById('m-alerts-box').innerHTML = msg;
+        return;
+      }
+      const alerts = result.alerts;
       if (!alerts.length) {
         const msg = `
           <div class="text-center py-12 text-zinc-500 space-y-1 bg-zinc-900/30 rounded-xl border border-zinc-900 p-5">
