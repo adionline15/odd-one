@@ -216,10 +216,19 @@ returns table (
   confidence numeric,
   metadata jsonb
 )
-language sql
+language plpgsql
 security definer
 set search_path = public, gis
-as $$
+as $
+begin
+  if p_min_lat < -90 or p_min_lat > 90 or p_max_lat < -90 or p_max_lat > 90 or
+     p_min_lon < -180 or p_min_lon > 180 or p_max_lon < -180 or p_max_lon > 180 or
+     p_min_lat >= p_max_lat or p_min_lon >= p_max_lon then
+    raise exception 'Invalid summary viewport';
+  end if;
+
+  return query
+
   select
     o.id,
     gis.st_y(o.location::gis.geometry),
