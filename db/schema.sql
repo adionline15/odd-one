@@ -99,6 +99,7 @@ comment on column public.observations.confidence is 'Normalized confidence score
 comment on column public.observations.source is 'Origin of the observation signal.';
 comment on column public.observations.observation_type is 'Normalized road intelligence event category.';
 comment on column public.observations.metadata is 'Structured provenance and optional temporal/change-detection attributes.';
+comment on column public.observations.review_note is 'Reviewer rationale kept with moderation history.';
 
 alter table public.observations enable row level security;
 
