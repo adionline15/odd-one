@@ -194,3 +194,4 @@ All rights reserved unless a separate license is added to this repository.
 - Awaiting data means a product capability exists but the required verified temporal dataset is not present.
 - Approximate route output must remain visibly distinct from provider-backed routing.
 - Third-party map and imagery attribution must remain visible where provider terms require it.
+- External geocoding is triggered by explicit search actions rather than continuous autocomplete.
