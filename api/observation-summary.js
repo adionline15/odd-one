@@ -49,6 +49,7 @@ export default async function handler(req, res) {
   res.setHeader('X-Frame-Options', 'DENY');
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
   res.setHeader('Content-Type', 'application/json; charset=utf-8');
+  res.setHeader('Permissions-Policy', 'geolocation=(), camera=(), microphone=()');
 
   if (req.method !== 'GET') {
     res.setHeader('Allow', 'GET');
