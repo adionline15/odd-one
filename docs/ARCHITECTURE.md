@@ -143,3 +143,5 @@ The map requests intelligence for the active geographic viewport rather than att
 - Future ingestion workers should write normalized observations before public publication.
 
 - Change detection should produce provenance metadata before entering the approved observation lifecycle.
+
+- Human or automated review must precede public approval.
