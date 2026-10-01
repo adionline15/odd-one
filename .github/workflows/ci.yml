@@ -56,6 +56,9 @@ jobs:
       - name: Validate JSON
         run: node -e "JSON.parse(require('fs').readFileSync('vercel.json','utf8')); console.log('vercel.json OK')"
 
+      - name: Check patch formatting
+        run: git diff --check
+
       - name: Check for committed API keys
         shell: bash
         run: |
