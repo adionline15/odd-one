@@ -84,6 +84,9 @@ jobs:
       - name: Check route endpoint
         run: test -f api/route-guide.js
 
+      - name: Check news endpoint
+        run: test -f api/news.js
+
       - name: Check patch formatting
         run: git diff --check
 
