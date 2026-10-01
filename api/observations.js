@@ -143,7 +143,12 @@ export default async function handler(req, res) {
           ? 'timeout'
           : error.status
             ? `upstream_${error.status}`
-            : 'network'
+            : 'network',
+        debug: error.status ? undefined : {
+          name: error.name || 'Error',
+          message: error.message || 'unknown error',
+          cause: error.cause?.code || error.cause?.message || undefined
+        }
       });
     }
   }
