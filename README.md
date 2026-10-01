@@ -125,6 +125,10 @@ GET /api/observation-summary?minLat=28&minLon=77&maxLat=29&maxLon=78
 
 The summary is derived only from approved observations and is viewport-scoped. Each group includes observation type, source, count, average confidence, and latest observed timestamp. The endpoint uses a short cache because approved observations can change.
 
+### Public data boundary
+
+Only observations with `approved` status are exposed through public observation reads and summaries.
+
 ## Environment variables
 
 See `.env.example`.
