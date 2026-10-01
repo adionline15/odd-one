@@ -37,6 +37,7 @@ export default async function handler(req, res) {
 
       const buffer = await response.arrayBuffer();
       res.setHeader('Content-Type', response.headers.get('content-type') || 'image/jpeg');
+      res.setHeader('Content-Disposition', 'inline');
       res.setHeader('Cache-Control', 's-maxage=86400, stale-while-revalidate=3600');
       res.setHeader('Vary', 'Accept-Encoding');
       res.setHeader('X-Content-Type-Options', 'nosniff');
