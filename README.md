@@ -19,7 +19,7 @@ Odd-One.in is a map-first prototype for discovering road conditions, route infor
 ```text
 Browser
   │
-  ├── Leaflet map ───────────────► OpenStreetMap tiles
+  ├── Leaflet map ───────────────► Esri World Street Map / imagery
   ├── Route request ─────────────► OSRM
   ├── Search ────────────────────► Nominatim
   ├── GET /api/news ─────────────► Google News RSS
@@ -93,7 +93,7 @@ Keep `OBSERVATIONS_SUBMISSION_ENABLED=false` until authentication and abuse prot
 |---|---|---|
 | `/api/news?city=...` | GET | Recent road/traffic/construction alerts |
 | `/api/route-guide` | POST | Optional Gemini route guidance |
-| `/api/tiles/{z}/{x}/{y}` | GET | Server-side OSM tile proxy |
+| `/api/tiles/{z}/{x}/{y}` | GET | Server-side Esri World Street Map proxy |
 | `/api/observations?minLat=...&minLon=...&maxLat=...&maxLon=...` | GET | Approved observations in a map viewport |
 | `/api/observations` | POST | Submit a pending observation when explicitly enabled |
 
