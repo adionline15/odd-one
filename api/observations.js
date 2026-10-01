@@ -131,6 +131,7 @@ export default async function handler(req, res) {
       res.setHeader('Cache-Control', `public, max-age=${cacheSeconds}, s-maxage=${cacheSeconds}, stale-while-revalidate=30`);
       res.setHeader('Vary', 'Accept-Encoding, Origin');
       res.setHeader('X-Odd-One-API', 'observations-v6');
+      res.setHeader('X-Odd-One-Cache', 'viewport-15s');
       res.setHeader('X-Odd-One-Observation-Count', String(observations.length));
       res.setHeader('X-Odd-One-Observation-Limit', String(limit));
       return json(res, 200, {
