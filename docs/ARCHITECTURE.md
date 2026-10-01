@@ -137,3 +137,5 @@ The map requests intelligence for the active geographic viewport rather than att
 - News results retain upstream source attribution in the API contract.
 
 - Satellite imagery is a visualization source and does not itself create verified observations.
+
+- AI-generated route guidance is explanatory output, not a substitute for verified road records.
