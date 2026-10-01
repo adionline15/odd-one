@@ -202,3 +202,5 @@ All rights reserved unless a separate license is added to this repository.
 - Newer viewport requests take precedence over older responses.
 
 - A service error is distinct from an empty verified dataset.
+
+- Only reviewed approved observations become public.
