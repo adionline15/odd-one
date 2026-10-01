@@ -1113,6 +1113,7 @@
         clearObservationLayers();
         observationRecords = [];
         document.querySelectorAll('.obs-returned-count').forEach(el => { el.textContent = '0'; });
+        document.querySelectorAll('.obs-view-note').forEach(el => { el.classList.add('hidden'); });
         refreshObservationSourceOptions();
         applyObservationFilters();
         renderTemporalChangeIntelligence([]);
