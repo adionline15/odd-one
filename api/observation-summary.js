@@ -84,6 +84,7 @@ export default async function handler(req, res) {
     res.setHeader('X-Odd-One-Source', 'approved-observations');
     return json(res, 200, {
       api_version: 'observation-summary-v1',
+      scope: 'approved',
       count: rows.length,
       summary: rows
     });
