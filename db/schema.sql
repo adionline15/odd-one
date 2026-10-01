@@ -62,6 +62,10 @@ create index if not exists observations_approved_location
 create index if not exists observations_type_status
   on public.observations (observation_type, status);
 
+create index if not exists observations_approved_observed_at
+  on public.observations (observed_at desc)
+  where status = 'approved';
+
 alter table public.observations enable row level security;
 
 drop policy if exists "approved observations are public" on public.observations;
