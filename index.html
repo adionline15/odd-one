@@ -735,6 +735,7 @@
     function clearObservationLayers() {
       observationLayers.forEach(layer => map.removeLayer(layer));
       observationLayers = [];
+      document.getElementById('road-intel-overlay')?.classList.add('hidden');
     }
 
       function observationPresentation(type) {
@@ -788,7 +789,10 @@
         const matchesConfidence = !Number.isFinite(record.confidence) || record.confidence >= minConfidence / 100;
         const show = matchesType && matchesSource && matchesConfidence;
         record.layer.setStyle({ opacity: show ? 1 : 0, fillOpacity: show ? 0.88 : 0 });
-        if (show) visible++;
+        if (show) {
+          record.layer.bringToFront();
+          visible++;
+        }
       });
       document.querySelectorAll('.obs-visible-count').forEach(el => { el.textContent = String(visible); });
       document.querySelectorAll('.obs-filter-confidence-value').forEach(label => { label.textContent = (confidenceValues.length ? Math.max(...confidenceValues) : 0) + '%'; });
@@ -820,63 +824,6 @@
         select.innerHTML = '<option value="all">All sources</option>' + sources.map(source => '<option value="' + escapeHTML(source) + '">' + escapeHTML(source) + '</option>').join('');
         select.value = sources.includes(current) ? current : 'all';
       });
-    }
-
-    async function loadObservationsInView() {
-      const bounds = map.getBounds();
-      const params = new URLSearchParams({
-        minLat: bounds.getSouth().toFixed(6),
-        minLon: bounds.getWest().toFixed(6),
-        maxLat: bounds.getNorth().toFixed(6),
-        maxLon: bounds.getEast().toFixed(6),
-        limit: '500'
-      });
-
-      try {
-        const response = await fetch(`/api/observations?${params.toString()}`, {
-          headers: { 'Accept': 'application/json' }
-        });
-        if (!response.ok) throw new Error('Observation API request failed');
-        const payload = await response.json();
-        clearObservationLayers();
-        observationRecords = [];
-
-        (Array.isArray(payload.observations) ? payload.observations : []).forEach(observation => {
-          const lat = Number(observation.latitude);
-          const lon = Number(observation.longitude);
-          if (!Number.isFinite(lat) || !Number.isFinite(lon)) return;
-
-          const type = escapeHTML(observation.observation_type || 'observation');
-          const source = escapeHTML(observation.source || 'unknown');
-          const confidence = Number(observation.confidence);
-          const confidenceText = Number.isFinite(confidence) ? `${Math.round(confidence * 100)}%` : 'N/A';
-          const observedAt = observation.observed_at
-            ? escapeHTML(new Date(observation.observed_at).toLocaleString('en-IN'))
-            : 'N/A';
-
-          const layer = L.circleMarker([lat, lon], {
-            radius: 9,
-            weight: 2,
-            color: '#f59e0b',
-            fillColor: '#f59e0b',
-            fillOpacity: 0.9
-          }).addTo(map);
-
-          layer.bindPopup(`<div class="space-y-1.5 min-w-[180px]">
-            <p class="text-[9px] uppercase tracking-wider text-zinc-500 font-bold">Verified Road Observation</p>
-            <p class="text-sm text-white font-semibold">${type.replace(/_/g, ' ')}</p>
-            <p class="text-[11px] text-zinc-400">Source: <span class="text-zinc-200">${source}</span></p>
-            <p class="text-[11px] text-zinc-400">Confidence: <span class="text-zinc-200">${confidenceText}</span></p>
-            <p class="text-[11px] text-zinc-400">Observed: <span class="text-zinc-200">${observedAt}</span></p>
-          </div>`);
-          observationLayers.push(layer);
-          observationRecords.push({ layer, typeKey: String(rawType).toLowerCase(), source, confidence });
-        });
-        refreshObservationSourceOptions();
-        applyObservationFilters();
-      } catch (error) {
-        console.warn('[observations] Could not load road observations', error);
-      }
     }
 
     function renderTemporalChangeIntelligence(observations) {
