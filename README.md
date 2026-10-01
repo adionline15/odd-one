@@ -39,6 +39,8 @@ This is intentional: the product should never turn a synthetic number into an ap
 
 The repository now contains a PostGIS-backed observation foundation:
 
+Temporal change intelligence is rendered only when approved observations contain temporal/change metadata; the product does not invent historical change statistics.
+
 - `db/schema.sql` — observation tables, enums, spatial index, RLS, and RPC functions
 - `api/observations.js` — validated API for approved map observations and pending submissions
 
