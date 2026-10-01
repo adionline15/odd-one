@@ -127,6 +127,8 @@ The summary is derived only from approved observations and is viewport-scoped. E
 
 ### Public data boundary
 
+Observation timestamps describe when a signal was observed, not when the map was last refreshed.
+
 Only observations with `approved` status are exposed through public observation reads and summaries.
 
 ## Environment variables
