@@ -39,3 +39,8 @@
 - Add monitoring and alerting.
 - Review third-party API terms and attribution requirements before production scale.
 - Keep provider attribution visible wherever required by the selected map or geospatial provider.
+
+
+## Secret boundary
+
+Privileged Supabase credentials and AI provider keys remain server-side. Browser code must use public, non-privileged endpoints.
