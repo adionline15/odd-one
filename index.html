@@ -1410,7 +1410,7 @@
       try {
         const osrm = await fetch(`https://router.project-osrm.org/route/v1/driving/${fc[1]},${fc[0]};${tc[1]},${tc[0]}?overview=full&geometries=geojson`, { signal: routeAbortController.signal });
         const od = await osrm.json();
-        if (od.code === 'Ok') {
+        if (od.code === 'Ok' && Array.isArray(od.routes) && od.routes[0]?.geometry?.coordinates?.length >= 2) {
           const route = od.routes[0];
           dist = Math.round(route.distance / 1000);
           time = Math.round(route.duration / 60);
