@@ -78,6 +78,9 @@ jobs:
       - name: Check observation endpoint
         run: test -f api/observations.js
 
+      - name: Check summary endpoint
+        run: test -f api/observation-summary.js
+
       - name: Check patch formatting
         run: git diff --check
 
