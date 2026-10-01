@@ -81,6 +81,7 @@ export default async function handler(req, res) {
     res.setHeader('X-Odd-One-API', 'observation-summary-v1');
     res.setHeader('X-Odd-One-Summary-Count', String(rows.length));
     res.setHeader('X-Odd-One-Cache', '30s');
+    res.setHeader('X-Odd-One-Source', 'approved-observations');
     return json(res, 200, {
       api_version: 'observation-summary-v1',
       count: rows.length,
