@@ -76,7 +76,7 @@ export default async function handler(req, res) {
     });
     const rows = Array.isArray(data) ? data : [];
     res.setHeader('Cache-Control', 'public, max-age=30, s-maxage=30, stale-while-revalidate=60');
-    res.setHeader('Vary', 'Accept-Encoding');
+    res.setHeader('Vary', 'Accept-Encoding, Origin');
     res.setHeader('X-Odd-One-API', 'observation-summary-v1');
     res.setHeader('X-Odd-One-Summary-Count', String(rows.length));
     return json(res, 200, {
