@@ -44,6 +44,15 @@ jobs:
           print(f"Validated {len(scripts)} inline script blocks.")
           PY
 
+      - name: Validate required HTML landmarks
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -q '<title>Odd-One.in' index.html
+          grep -q 'id="map"' index.html
+          grep -q 'id="sidebar"' index.html
+          grep -q 'aria-label="Primary navigation"' index.html
+
       - name: Validate JSON
         run: node -e "JSON.parse(require('fs').readFileSync('vercel.json','utf8')); console.log('vercel.json OK')"
 
