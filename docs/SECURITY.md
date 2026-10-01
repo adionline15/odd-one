@@ -59,3 +59,4 @@ Privileged Supabase credentials and AI provider keys remain server-side. Browser
 - Strict referrer policy limits accidental leakage of route or query context.
 - Metadata is untrusted input even when it originates from an authenticated submission.
 - Review notes are bounded to prevent oversized moderation payloads.
+- Read APIs use server-side privileged access while public clients never receive database keys.
