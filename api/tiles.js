@@ -43,6 +43,7 @@ export default async function handler(req, res) {
       res.setHeader('X-Content-Type-Options', 'nosniff');
       res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
       res.setHeader('X-Odd-One-Map', 'esri-world-street-map');
+      res.setHeader('X-Odd-One-Cache', '86400s');
       return res.send(Buffer.from(buffer));
     } catch {}
   }
