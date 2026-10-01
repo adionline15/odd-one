@@ -518,28 +518,48 @@
 
     // ── STATS AND INTEL HTML TEMPLATE ──
     const STATS_HTML = `
-      <div class="grid grid-cols-2 gap-3">
-        <div class="bg-zinc-900/50 border border-zinc-800/80 rounded-xl p-4">
-          <p class="text-xs font-serif-lux italic text-sky-400 font-bold text-lg leading-none">OSM</p>
-          <p class="text-[9px] uppercase tracking-wider text-zinc-500 font-bold mt-1.5 leading-tight">Base map<br>source</p>
+      <div class="border border-zinc-800/80 rounded-2xl bg-zinc-900/30 overflow-hidden">
+        <div class="px-4 py-3 border-b border-zinc-800/70 flex items-center justify-between">
+          <div>
+            <p class="text-[9px] uppercase tracking-[0.18em] text-zinc-500 font-bold">Intelligence stack</p>
+            <p class="text-xs text-zinc-200 mt-1">Signals powering the road layer</p>
+          </div>
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,.55)]"></span>
         </div>
-        <div class="bg-zinc-900/50 border border-zinc-800/80 rounded-xl p-4">
-          <p class="text-xs font-serif-lux italic text-emerald-400 font-bold text-lg leading-none">LIVE</p>
-          <p class="text-[9px] uppercase tracking-wider text-zinc-500 font-bold mt-1.5 leading-tight">Road alerts<br>feed</p>
-        </div>
-        <div class="bg-zinc-900/50 border border-zinc-800/80 rounded-xl p-4">
-          <p class="text-xs font-serif-lux italic text-amber-500 font-bold text-lg leading-none">OSRM</p>
-          <p class="text-[9px] uppercase tracking-wider text-zinc-500 font-bold mt-1.5 leading-tight">Route<br>engine</p>
-        </div>
-        <div class="bg-zinc-900/50 border border-zinc-800/80 rounded-xl p-4">
-          <p class="text-xs font-serif-lux italic text-white font-bold text-lg leading-none">AI</p>
-          <p class="text-[9px] uppercase tracking-wider text-zinc-500 font-bold mt-1.5 leading-tight">Optional<br>route guide</p>
+        <div class="divide-y divide-zinc-800/60">
+          <div class="px-4 py-3 flex items-center justify-between">
+            <span class="text-[10px] text-zinc-300">Satellite imagery</span>
+            <span class="font-mono-lux text-[9px] text-zinc-500">INPUT</span>
+          </div>
+          <div class="px-4 py-3 flex items-center justify-between">
+            <span class="text-[10px] text-zinc-300">Computer vision</span>
+            <span class="font-mono-lux text-[9px] text-zinc-500">AI / CV</span>
+          </div>
+          <div class="px-4 py-3 flex items-center justify-between">
+            <span class="text-[10px] text-zinc-300">Road observations</span>
+            <span class="font-mono-lux text-[9px] text-zinc-500">VERIFIED</span>
+          </div>
+          <div class="px-4 py-3 flex items-center justify-between">
+            <span class="text-[10px] text-zinc-300">Routing graph</span>
+            <span class="font-mono-lux text-[9px] text-zinc-500">NETWORK</span>
+          </div>
         </div>
       </div>
-      <div class="bg-zinc-900/40 border border-zinc-800/60 rounded-xl p-4 text-xs text-zinc-400 leading-relaxed">
-        <p class="font-semibold text-zinc-200 mb-1">Data coverage</p>
-        Road-data completeness is not yet measured by this prototype. Route-level coverage metrics will appear only after verified road observations are connected.
+      <div class="grid grid-cols-2 gap-3">
+        <div class="bg-zinc-900/40 border border-zinc-800/70 rounded-xl p-4">
+          <p class="font-serif-lux italic text-white text-lg">LIVE</p>
+          <p class="text-[9px] uppercase tracking-wider text-zinc-500 font-bold mt-1">Alert feed</p>
+        </div>
+        <div class="bg-zinc-900/40 border border-zinc-800/70 rounded-xl p-4">
+          <p class="font-serif-lux italic text-white text-lg">AI</p>
+          <p class="text-[9px] uppercase tracking-wider text-zinc-500 font-bold mt-1">Detection layer</p>
+        </div>
+      </div>
+      <div class="bg-zinc-900/30 border border-zinc-800/60 rounded-xl p-4 text-[10px] text-zinc-500 leading-relaxed">
+        <p class="font-semibold text-zinc-300 mb-1">Coverage integrity</p>
+        Road-data completeness is not yet measured by this prototype. Metrics will appear only after verified road observations are connected.
       </div>`;
+    
     document.getElementById('stats-content').innerHTML = STATS_HTML;
     document.getElementById('m-stats-content').innerHTML = STATS_HTML;
 
