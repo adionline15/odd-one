@@ -123,7 +123,7 @@ Successful observation reads return API version `observations-v6` and include `c
 GET /api/observation-summary?minLat=28&minLon=77&maxLat=29&maxLon=78
 ```
 
-The summary is derived only from approved observations and is viewport-scoped. Each group includes observation type, source, count, average confidence, and latest observed timestamp.
+The summary is derived only from approved observations and is viewport-scoped. Each group includes observation type, source, count, average confidence, and latest observed timestamp. The endpoint uses a short cache because approved observations can change.
 
 ## Environment variables
 
