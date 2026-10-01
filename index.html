@@ -815,7 +815,7 @@
         document.getElementById('road-intel-dot').style.backgroundColor = presentation.color;
         document.getElementById('road-intel-type').textContent = presentation.label;
         document.getElementById('road-intel-id').textContent = observation.id ? 'ID ' + String(observation.id).slice(0, 8) : 'Verified observation';
-        document.getElementById('road-intel-confidence').textContent = confidenceText;
+        document.getElementById('road-intel-confidence').textContent = confidenceText + ' score';
         document.getElementById('road-intel-confidence-value').textContent = confidenceText;
         document.getElementById('road-intel-source').textContent = source;
         document.getElementById('road-intel-observed').textContent = observedAt;
