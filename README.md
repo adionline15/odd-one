@@ -94,6 +94,10 @@ Supabase's Data API is generated from the database schema and protected by API-k
 
 Keep `OBSERVATIONS_SUBMISSION_ENABLED=false` until authentication and abuse protection are implemented.
 
+## Observation API contract
+
+Successful observation reads return API version `observations-v6` and include `count`, `limit`, and `truncated` metadata. Responses are briefly cacheable to reduce repeated viewport reads while the frontend refreshes only the active map area.
+
 ## API endpoints
 
 | Endpoint | Method | Purpose |
