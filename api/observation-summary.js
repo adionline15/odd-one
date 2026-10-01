@@ -61,6 +61,7 @@ export default async function handler(req, res) {
   const minLon = Number(q.minLon);
   const maxLat = Number(q.maxLat);
   const maxLon = Number(q.maxLon);
+  if (![minLat, minLon, maxLat, maxLon].every(Number.isFinite)) return json(res, 400, { error: 'Invalid summary bounds' });
 
   if (!coordinate(minLat, -90, 90) || !coordinate(maxLat, -90, 90) ||
       !coordinate(minLon, -180, 180) || !coordinate(maxLon, -180, 180) ||
