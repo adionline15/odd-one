@@ -1448,7 +1448,10 @@
       }
     }
 
+    let activeAlertCity = null;
+
     async function loadAlerts(city) {
+      activeAlertCity = city;
       const loading = `
         <div class="flex flex-col items-center justify-center py-12 text-zinc-500 gap-3">
           <div class="w-6 h-6 border-2 border-zinc-700 border-t-zinc-400 rounded-full animate-spin"></div>
@@ -1464,6 +1467,7 @@
             <span class="text-2xl block">!</span>
             <p class="text-xs uppercase tracking-wider text-rose-400 font-bold">Alert feed unavailable</p>
             <p class="text-[11px] text-zinc-600">The current alert source could not be reached. No safety conclusion is implied.</p>
+            <button type="button" class="alert-feed-retry mt-2 text-[8px] uppercase tracking-wider font-bold text-zinc-400 hover:text-white">Retry</button>
           </div>`;
         document.getElementById('d-alerts-box').innerHTML = msg;
         document.getElementById('m-alerts-box').innerHTML = msg;
@@ -1495,6 +1499,10 @@
       document.getElementById('m-alerts-box').innerHTML = html;
       showTab('alerts');
     }
+
+    document.addEventListener('click', event => {
+      if (event.target.closest('.alert-feed-retry') && activeAlertCity) loadAlerts(activeAlertCity);
+    });
 
     // ── LOCATE ME SERVICE ──
     function locateMe() {
