@@ -1374,6 +1374,8 @@
       if (!from || !to) return;
       
       const btn = document.getElementById(p + '-go-btn');
+      routeAbortController?.abort();
+      routeAbortController = new AbortController();
       setRouteLoadingState(true, 'Finding locations…', p);
       clearRouteState(true);
 
