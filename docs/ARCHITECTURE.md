@@ -141,3 +141,5 @@ The map requests intelligence for the active geographic viewport rather than att
 - AI-generated route guidance is explanatory output, not a substitute for verified road records.
 
 - Future ingestion workers should write normalized observations before public publication.
+
+- Change detection should produce provenance metadata before entering the approved observation lifecycle.
