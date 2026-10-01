@@ -337,7 +337,7 @@
   </footer>
 
   <!-- Leaflet Scripts -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>\n    <!-- TensorFlow.js: CNN inference runtime for satellite-image enhancement -->\n    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js"></script>
   
   <script>
     // ── CITIES INTEL DATA ──
@@ -555,7 +555,7 @@
     // ── HEXAGONAL ROAD INTELLIGENCE GRID ──
     // Visual hex cells replace the old square-cell presentation.
     // Cells are rendered in screen space so the hexagons stay perfectly regular.
-    let hexGridLayer = L.layerGroup().addTo(map);
+    let hexGridLayer = L.layerGroup();
     let hexGridTimer = null;
 
     function clearHexGrid() {
@@ -613,8 +613,7 @@
       }, 80);
     }
 
-    map.on('zoomend moveend', redrawHexGrid);
-    redrawHexGrid();
+    // Hex grid is kept in code for internal geospatial analysis, but is never rendered to end users.
 
     // ── VERIFIED ROAD OBSERVATIONS ──
     let observationLayers = [];
