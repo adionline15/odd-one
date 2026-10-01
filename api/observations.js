@@ -120,12 +120,12 @@ export default async function handler(req, res) {
           p_limit: limit
         })
       });
-      res.setHeader('X-Odd-One-API', 'observations-v4');
-      return json(res, 200, { api_version: 'observations-v4', observations: Array.isArray(data) ? data : [] });
+      res.setHeader('X-Odd-One-API', 'observations-v5');
+      return json(res, 200, { api_version: 'observations-v5', observations: Array.isArray(data) ? data : [] });
     } catch (error) {
       if (error.code === 'NOT_CONFIGURED') {
         console.error('[observations] Supabase is not configured');
-        return json(res, 503, { api_version: 'observations-v4', error: 'Observation service is not configured' });
+        return json(res, 503, { api_version: 'observations-v5', error: 'Observation service is not configured' });
       }
       console.error('[observations] Supabase GET failed', {
         name: error.name || 'Error',
@@ -135,9 +135,10 @@ export default async function handler(req, res) {
         body: error.upstreamBody || 'no upstream response body'
       });
       return json(res, 502, {
-        api_version: 'observations-v4',
+        api_version: 'observations-v5',
         error: 'Observation service unavailable',
         stage,
+        config: (() => { const cfg = getConfig(); let host = ''; try { host = new URL(cfg.url).host; } catch {} return { url_set: Boolean(cfg.url), key_set: Boolean(cfg.key), host }; })(),
         reason: error.name === 'TimeoutError' || error.name === 'AbortError'
           ? 'timeout'
           : error.status
