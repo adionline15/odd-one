@@ -24,8 +24,8 @@ function json(res, status, body) {
 
 function getConfig() {
   return {
-    url: (process.env.SUPABASE_URL || '').trim().replace(/\/+$/, ''),
-    key: (process.env.SUPABASE_SECRET_KEY || '').trim()
+    url: (process.env.SUPABASE_URL || '').trim().replace(/^['"]|['"]$/g, '').replace(/\/+$/, ''),
+    key: (process.env.SUPABASE_SECRET_KEY || '').trim().replace(/^['"]|['"]$/g, '')
   };
 }
 
@@ -37,15 +37,23 @@ async function supabaseRequest(path, options = {}) {
     throw error;
   }
 
-  const response = await fetch(`${url}/rest/v1/${path}`, {
-    ...options,
-    headers: {
-      apikey: key,
-      'Content-Type': 'application/json',
-      ...(options.headers || {})
-    },
-    signal: AbortSignal.timeout(10000)
-  });
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 10000);
+  let response;
+  try {
+    response = await fetch(`${url}/rest/v1/${path}`, {
+      ...options,
+      headers: {
+        apikey: key,
+        Authorization: `Bearer ${key}`,
+        'Content-Type': 'application/json',
+        ...(options.headers || {})
+      },
+      signal: controller.signal
+    });
+  } finally {
+    clearTimeout(timeout);
+  }
 
   const text = await response.text();
   let data = null;
