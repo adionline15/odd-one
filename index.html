@@ -1250,8 +1250,12 @@
       return core;
     }
 
-    function setRouteLoadingState(loading, message = 'Calculate Route →') {
-      document.querySelectorAll('[id$="-go-btn"]').forEach(btn => {
+    function setRouteLoadingState(loading, message = 'Calculate Route →', activePrefix = null) {
+      const buttons = activePrefix
+        ? [document.getElementById(activePrefix + '-go-btn')].filter(Boolean)
+        : Array.from(document.querySelectorAll('[id$="-go-btn"]'));
+
+      buttons.forEach(btn => {
         btn.disabled = loading;
         btn.textContent = loading ? 'Calculating…' : message;
       });
@@ -1279,15 +1283,14 @@
       if (!from || !to) return;
       
       const btn = document.getElementById(p + '-go-btn');
-      setRouteLoadingState(true, 'Finding locations…');
+      setRouteLoadingState(true, 'Finding locations…', p);
       clearRouteState(true);
 
       const fc = CITIES[from] || await geocodePlace(from);
       const tc = CITIES[to] || await geocodePlace(to);
       if (!fc || !tc) {
         clearRouteState();
-        setRouteLoadingState(false);
-        document.getElementById(p + '-go-btn').textContent = 'Calculate Route →';
+        setRouteLoadingState(false, 'Calculate Route →', p);
         document.getElementById(p + '-route-out').innerHTML = `
           <div class="text-rose-500 text-xs mt-3 p-3 bg-rose-500/10 border border-rose-500/20 rounded-xl">
             One or both locations could not be found. Try a city, district, PIN code or full place name in India.
