@@ -1107,6 +1107,7 @@
         refreshObservationSourceOptions();
         applyObservationFilters();
         renderTemporalChangeIntelligence(observations);
+        loadObservationSummary(bounds, requestId);
         lastObservationLoadAt = new Date();
         setObservationLoadMeta();
         setObservationLayerStatus(observations.length ? 'live' : 'empty');
