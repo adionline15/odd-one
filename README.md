@@ -212,3 +212,5 @@ All rights reserved unless a separate license is added to this repository.
 - AI output is not presented as verified observation data unless it enters the approved lifecycle.
 
 - Routing and observation intelligence are separate data products.
+
+- News feed data is contextual and should not be treated as road verification.
