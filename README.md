@@ -116,14 +116,14 @@ Secrets must be configured in Vercel, never committed to Git.
 
 ## Production MVP boundary
 
-The next product layer is:
+The next production layer is:
 
-1. connect Supabase/PostGIS
-2. add authenticated observation submission
-3. render approved observations on the map
-4. build reviewer/admin workflow
-5. add API documentation
-6. add monitoring, rate limiting, backups, and audit logs
+1. add authenticated observation submission
+2. build reviewer/admin workflow
+3. add API documentation and generated contract tests
+4. add monitoring, rate limiting, backups, and audit logs
+5. build ingestion and temporal change-detection pipelines
+6. review external provider licensing and attribution for production scale
 
 ## Repository structure
 
