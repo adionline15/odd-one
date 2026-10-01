@@ -2,7 +2,7 @@
 
 **India road intelligence — MVP**
 
-Odd-One.in is a map-first prototype for discovering road conditions, route information, and local road alerts. The current MVP combines an OpenStreetMap base map, OSRM routing, Google News road-alert extraction, an optional Gemini-powered route guide, and the foundation for verified road observations.
+Odd-One.in is a map-first road-intelligence prototype for verified observations, route information, and local road alerts. The interface distinguishes verified data from estimates and unavailable sources. The current MVP combines an OpenStreetMap base map, OSRM routing, Google News road-alert extraction, an optional Gemini-powered route guide, and the foundation for verified road observations.
 
 ## Current MVP
 
