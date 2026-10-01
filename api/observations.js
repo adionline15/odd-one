@@ -174,7 +174,7 @@ export default async function handler(req, res) {
     const lat = Number(body.lat);
     const lon = Number(body.lon);
     const observationType = typeof body.observation_type === 'string' ? body.observation_type : '';
-    const source = typeof body.source === 'string' ? body.source : 'user';
+    const source = typeof body.source === 'string' ? body.source.trim().toLowerCase() : 'user';
     const observedAt = typeof body.observed_at === 'string' ? body.observed_at : '';
     const confidence = Number(body.confidence);
     const metadata = body.metadata && typeof body.metadata === 'object' && !Array.isArray(body.metadata)
