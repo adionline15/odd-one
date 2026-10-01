@@ -124,3 +124,4 @@ The map requests intelligence for the active geographic viewport rather than att
 - observed_at describes observation time; submitted_at describes ingestion time.
 - Approval controls public visibility; it does not manufacture missing metadata.
 - Fallback routing is a degraded estimate and remains visually distinct from provider-backed routing.
+- External geocoding, routing, imagery, and news providers are treated as replaceable upstream dependencies.
