@@ -66,6 +66,10 @@ create index if not exists observations_approved_observed_at
   on public.observations (observed_at desc)
   where status = 'approved';
 
+create index if not exists observations_approved_type_observed_at
+  on public.observations (observation_type, observed_at desc)
+  where status = 'approved';
+
 create index if not exists observations_source_status
   on public.observations (source, status);
 
