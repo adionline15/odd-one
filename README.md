@@ -192,3 +192,4 @@ All rights reserved unless a separate license is added to this repository.
 - Unavailable means the service could not provide data; it does not mean the area is safe or empty.
 - No data means no approved observations were returned for the active viewport.
 - Awaiting data means a product capability exists but the required verified temporal dataset is not present.
+- Approximate route output must remain visibly distinct from provider-backed routing.
