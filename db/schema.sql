@@ -73,6 +73,9 @@ create index if not exists observations_reviewed_at
   on public.observations (reviewed_at desc)
   where reviewed_at is not null;
 
+create index if not exists observations_submitted_at
+  on public.observations (submitted_at desc);
+
 alter table public.observations enable row level security;
 
 drop policy if exists "approved observations are public" on public.observations;
