@@ -123,3 +123,4 @@ The map requests intelligence for the active geographic viewport rather than att
 - Confidence is a normalized score supplied by the observation pipeline; it is not a guarantee of correctness.
 - observed_at describes observation time; submitted_at describes ingestion time.
 - Approval controls public visibility; it does not manufacture missing metadata.
+- Fallback routing is a degraded estimate and remains visually distinct from provider-backed routing.
