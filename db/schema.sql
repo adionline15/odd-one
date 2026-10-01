@@ -128,6 +128,14 @@ begin
     raise exception 'Invalid confidence';
   end if;
 
+  if jsonb_typeof(coalesce(p_metadata, '{}'::jsonb)) <> 'object' then
+    raise exception 'Observation metadata must be an object';
+  end if;
+
+  if octet_length(coalesce(p_metadata, '{}'::jsonb)::text) > 8000 then
+    raise exception 'Observation metadata is too large';
+  end if;
+
   insert into public.observations (
     location,
     observation_type,
