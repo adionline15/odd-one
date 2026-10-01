@@ -87,6 +87,9 @@ jobs:
       - name: Check news endpoint
         run: test -f api/news.js
 
+      - name: Check tile endpoint
+        run: test -f api/tiles.js
+
       - name: Check patch formatting
         run: git diff --check
 
