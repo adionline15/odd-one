@@ -76,6 +76,9 @@ create index if not exists observations_reviewed_at
 create index if not exists observations_submitted_at
   on public.observations (submitted_at desc);
 
+create index if not exists observations_metadata_gin
+  on public.observations using gin (metadata);
+
 alter table public.observations enable row level security;
 
 drop policy if exists "approved observations are public" on public.observations;
