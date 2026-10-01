@@ -195,3 +195,4 @@ All rights reserved unless a separate license is added to this repository.
 - Approximate route output must remain visibly distinct from provider-backed routing.
 - Third-party map and imagery attribution must remain visible where provider terms require it.
 - External geocoding is triggered by explicit search actions rather than continuous autocomplete.
+- A single observation response is capped to keep viewport reads bounded.
