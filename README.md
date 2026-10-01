@@ -172,3 +172,9 @@ Before production traffic:
 ## License
 
 All rights reserved unless a separate license is added to this repository.
+
+
+### Data trust principles
+
+- Never invent road observations, alerts, historical change, or confidence.
+- Clearly label verified observations, estimates, unavailable services, and awaiting data.
