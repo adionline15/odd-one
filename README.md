@@ -206,3 +206,5 @@ All rights reserved unless a separate license is added to this repository.
 - Only reviewed approved observations become public.
 
 - Temporal change fields remain optional until verified temporal data is ingested.
+
+- Satellite imagery provides visual context; it is not automatically a verified road event.
