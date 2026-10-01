@@ -12,7 +12,7 @@ export default async function handler(req, res) {
   res.setHeader('Content-Type', 'application/json; charset=utf-8');
   res.setHeader('Vary', 'Accept-Encoding');
 
-  const city = typeof req.query?.city === 'string' ? req.query.city.trim() : '';
+  const city = typeof req.query?.city === 'string' ? req.query.city.trim().replace(/\s+/g, ' ') : '';
   if (city.length > 80) return res.status(400).json({ error: 'Invalid city parameter' });
   if (!city || !CITY_PATTERN.test(city)) {
     return res.status(400).json({ error: 'Invalid city parameter' });
