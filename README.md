@@ -190,3 +190,4 @@ All rights reserved unless a separate license is added to this repository.
 - Source labels are descriptive provenance, not independent proof.
 - Confidence is shown as a score and should be read with source and timestamp context.
 - Unavailable means the service could not provide data; it does not mean the area is safe or empty.
+- No data means no approved observations were returned for the active viewport.
