@@ -110,6 +110,10 @@ Every intelligence item should be traceable to:
 This provenance model is the foundation for scaling beyond a visual prototype.
 
 
+## Stale response handling
+
+Viewport requests carry client-side request identity so an older response cannot overwrite a newer map state.
+
 ## Viewport-first loading
 
 The map requests intelligence for the active geographic viewport rather than attempting an unbounded India-wide observation payload.
