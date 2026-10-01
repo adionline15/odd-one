@@ -41,9 +41,6 @@
     #map {
       background-color: #050505;
     }
-    .map-dark .leaflet-tile-pane {
-      filter: invert(1) hue-rotate(180deg) brightness(1.05) saturate(0.65);
-    }
     .leaflet-control-attribution {
       display: none !important;
     }
@@ -546,11 +543,14 @@
 
     // Initialize Map Instance
     map = L.map('map', { zoomControl: false, attributionControl: true }).setView([22, 78], 5);
-    document.getElementById('map').classList.add('map-dark');
     L.control.zoom({ position: 'bottomleft' }).addTo(map);
 
     // Initial tile layer setup
-    tile = L.tileLayer('/api/tiles?z={z}&x={x}&y={y}', { maxZoom: 19 }).addTo(map);
+    tile = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      maxZoom: 19,
+      subdomains: 'abcd',
+      attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
+    }).addTo(map);
     setTimeout(() => map.invalidateSize(), 300);
 
     // ── HEXAGONAL ROAD INTELLIGENCE GRID ──
@@ -567,6 +567,7 @@
       clearTimeout(hexGridTimer);
       hexGridTimer = setTimeout(() => {
         if (!map || !hexGridLayer) return;
+        if (map.getZoom() < 7) { clearHexGrid(); return; }
 
         const size = Math.max(30, Math.min(44, 30 + (map.getZoom() - 5) * 1.6));
         const width = map.getSize().x;
@@ -602,7 +603,7 @@
             polygons.push(L.polygon(vertices, {
               color: '#ffffff',
               weight: 0.7,
-              opacity: 0.16,
+              opacity: 0.09,
               fill: false,
               interactive: false
             }));
@@ -712,8 +713,11 @@
         document.getElementById('btn-map').classList.remove('on');
         document.getElementById('btn-map').querySelector('span').classList.replace('bg-white', 'bg-zinc-600');
       } else {
-        document.getElementById('map').classList.add('map-dark');
-        tile = L.tileLayer('/api/tiles?z={z}&x={x}&y={y}', { maxZoom: 19 }).addTo(map);
+        tile = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+          maxZoom: 19,
+          subdomains: 'abcd',
+          attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
+        }).addTo(map);
         document.getElementById('btn-map').classList.add('on');
         document.getElementById('btn-map').querySelector('span').classList.replace('bg-zinc-600', 'bg-white');
         document.getElementById('btn-sat').classList.remove('on');
