@@ -115,6 +115,14 @@ Successful observation reads return API version `observations-v6` and include `c
 | `/api/observation-summary?minLat=...&minLon=...&maxLat=...&maxLon=...` | GET | Approved observation counts by type and source |
 | `/api/observations` | POST | Submit a pending observation when explicitly enabled |
 
+### Observation summary example
+
+```text
+GET /api/observation-summary?minLat=28&minLon=77&maxLat=29&maxLon=78
+```
+
+The summary is derived only from approved observations and is viewport-scoped.
+
 ## Environment variables
 
 See `.env.example`.
