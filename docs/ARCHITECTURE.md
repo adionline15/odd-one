@@ -76,7 +76,7 @@ source → ingest → validate → pending → review → approved → publish
                                       └──────────► rejected
 ```
 
-Public endpoints should read from approved observations only.
+Public endpoints should read from approved observations only. Aggregations must apply the same approved-only boundary before returning product metrics.
 
 ## 5. Request boundaries
 
