@@ -88,6 +88,7 @@ export default async function handler(req, res) {
     const maxLon = Number(q.maxLon);
     const requestedLimit = Number(q.limit || 500);
     const limit = Number.isInteger(requestedLimit) ? Math.min(requestedLimit, 500) : 500;
+    const cacheSeconds = 15;
 
     if (
       !validCoordinate(minLat, -90, 90) ||
@@ -122,6 +123,7 @@ export default async function handler(req, res) {
         })
       });
       const observations = Array.isArray(data) ? data : [];
+      res.setHeader('Cache-Control', `public, max-age=${cacheSeconds}, s-maxage=${cacheSeconds}, stale-while-revalidate=30`);
       res.setHeader('X-Odd-One-API', 'observations-v6');
       res.setHeader('X-Odd-One-Observation-Count', String(observations.length));
       return json(res, 200, {
