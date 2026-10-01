@@ -94,7 +94,7 @@ The summary endpoint aggregates only approved observations already stored in Pos
 
 ## 7. Freshness model
 
-Road intelligence is time-bound data, not a timeless map attribute. Every observation carries observed_at, while the UI separately tracks the latest successful viewport load. Cached reads therefore reduce duplicate work without changing the underlying observation timestamps.
+Road intelligence is time-bound data, not a timeless map attribute. Every observation carries observed_at, while the UI separately tracks the latest successful viewport load. Temporal metadata is treated as provenance, not proof of a change unless the observation source supports that claim. Cached reads therefore reduce duplicate work without changing the underlying observation timestamps.
 
 ## 8. Product rule
 
