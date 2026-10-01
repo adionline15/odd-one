@@ -94,6 +94,10 @@
     }
 
     .route-endpoint-label { display:flex; align-items:center; gap:7px; white-space:nowrap; padding:5px 8px; border:1px solid rgba(39,39,42,.9); border-radius:999px; background:rgba(5,5,5,.9); backdrop-filter:blur(10px); box-shadow:0 8px 24px rgba(0,0,0,.45); font-family:'JetBrains Mono',monospace; font-size:8px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#e4e4e7; }
+    .road-intel-selected { filter: drop-shadow(0 0 8px rgba(255,255,255,.8)); }
+    .road-intel-tooltip { background:#09090b !important; border:1px solid #27272a !important; color:#e4e4e7 !important; box-shadow:0 8px 20px rgba(0,0,0,.45) !important; }
+    .road-intel-tooltip:before { border-top-color:#27272a !important; }
+
     .route-endpoint-dot { width:7px; height:7px; border-radius:50%; flex:none; box-shadow:0 0 0 4px rgba(255,255,255,.08); }
     .route-endpoint-label.start .route-endpoint-dot { background:#3b82f6; }
     .route-endpoint-label.end .route-endpoint-dot { background:#ef4444; }
@@ -735,7 +739,19 @@
     function clearObservationLayers() {
       observationLayers.forEach(layer => map.removeLayer(layer));
       observationLayers = [];
+      selectedObservationLayer = null;
       document.getElementById('road-intel-overlay')?.classList.add('hidden');
+    }
+
+    function selectObservationLayer(layer) {
+      if (selectedObservationLayer && selectedObservationLayer !== layer) {
+        selectedObservationLayer.setStyle({ weight: 2, opacity: 1, fillOpacity: 0.88 });
+        selectedObservationLayer.getElement()?.classList.remove('road-intel-selected');
+      }
+      selectedObservationLayer = layer;
+      layer.setStyle({ weight: 3.5, opacity: 1, fillOpacity: 1 });
+      layer.bringToFront();
+      layer.getElement()?.classList.add('road-intel-selected');
     }
 
       function observationPresentation(type) {
@@ -774,6 +790,8 @@
       }
 
     let observationRecords = [];
+    let selectedObservationLayer = null;
+
 
     function applyObservationFilters() {
       const typeValues = Array.from(document.querySelectorAll('.obs-filter-type')).map(el => el.value);
@@ -936,6 +954,7 @@
 
           layer.on('click', event => {
             L.DomEvent.stopPropagation(event);
+            selectObservationLayer(layer);
             showRoadIntelligence(observation, presentation, confidence, confidenceText, source, observedAt);
           });
 
@@ -976,6 +995,12 @@
 
     // Manual Point Select Popup
     map.on('click', e => {
+      if (selectedObservationLayer) {
+        selectedObservationLayer.setStyle({ weight: 2, opacity: 1, fillOpacity: 0.88 });
+        selectedObservationLayer.getElement()?.classList.remove('road-intel-selected');
+        selectedObservationLayer = null;
+      }
+      document.getElementById('road-intel-overlay')?.classList.add('hidden');
       const lat = e.latlng.lat.toFixed(5), lng = e.latlng.lng.toFixed(5);
       L.popup().setLatLng(e.latlng)
         .setContent(`<div class="space-y-1">
