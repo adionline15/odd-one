@@ -68,6 +68,13 @@ Observation
 └── reviewed_by
 ```
 
+### Map and search behavior
+
+- The map renders the current road-intelligence layer from approved observations.
+- Local city search is handled in the browser for known Indian locations.
+- External Nominatim search is only triggered by an explicit user search action.
+- Route calculation uses OSRM when available; the UI labels the fallback route as approximate.
+
 ### Supabase setup
 
 The database layer uses Supabase Postgres + PostGIS. Supabase documents PostGIS as the geospatial layer for indexed point/polygon queries and recommends keeping the extension outside the `public` schema. citeturn1search0
