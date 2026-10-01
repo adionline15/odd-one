@@ -139,3 +139,5 @@ The map requests intelligence for the active geographic viewport rather than att
 - Satellite imagery is a visualization source and does not itself create verified observations.
 
 - AI-generated route guidance is explanatory output, not a substitute for verified road records.
+
+- Future ingestion workers should write normalized observations before public publication.
