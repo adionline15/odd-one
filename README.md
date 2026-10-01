@@ -208,3 +208,5 @@ All rights reserved unless a separate license is added to this repository.
 - Temporal change fields remain optional until verified temporal data is ingested.
 
 - Satellite imagery provides visual context; it is not automatically a verified road event.
+
+- AI output is not presented as verified observation data unless it enters the approved lifecycle.
