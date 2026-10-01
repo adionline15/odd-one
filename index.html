@@ -1000,7 +1000,14 @@
         const response = await fetch('/api/observations?' + params.toString(), {
           headers: { 'Accept': 'application/json' }
         });
-        if (!response.ok) throw new Error('Observation API request failed');
+        if (!response.ok) {
+          let detail = 'Observation API request failed';
+          try {
+            const errorPayload = await response.json();
+            if (errorPayload.error) detail = errorPayload.error;
+          } catch {}
+          throw new Error(detail);
+        }
         const payload = await response.json();
         if (payload.api_version !== 'observations-v6') {
           throw new Error('Unsupported observation API version');
