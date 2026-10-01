@@ -121,8 +121,14 @@ export default async function handler(req, res) {
           p_limit: limit
         })
       });
-      res.setHeader('X-Odd-One-API', 'observations-v5');
-      return json(res, 200, { api_version: 'observations-v5', observations: Array.isArray(data) ? data : [] });
+      const observations = Array.isArray(data) ? data : [];
+      res.setHeader('X-Odd-One-API', 'observations-v6');
+      res.setHeader('X-Odd-One-Observation-Count', String(observations.length));
+      return json(res, 200, {
+        api_version: 'observations-v6',
+        count: observations.length,
+        observations
+      });
     } catch (error) {
       if (error.code === 'NOT_CONFIGURED') {
         console.error('[observations] Supabase is not configured');
