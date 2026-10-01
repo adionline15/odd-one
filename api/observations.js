@@ -142,20 +142,14 @@ export default async function handler(req, res) {
         body: error.upstreamBody || 'no upstream response body'
       });
       return json(res, 502, {
-        api_version: 'observations-v5',
+        api_version: 'observations-v6',
         error: 'Observation service unavailable',
         stage,
-        config: (() => { const cfg = getConfig(); let host = ''; try { host = new URL(cfg.url).host; } catch {} return { url_set: Boolean(cfg.url), key_set: Boolean(cfg.key), host }; })(),
         reason: error.name === 'TimeoutError' || error.name === 'AbortError'
           ? 'timeout'
           : error.status
             ? `upstream_${error.status}`
-            : 'network',
-        debug: error.status ? undefined : {
-          name: error.name || 'Error',
-          message: error.message || 'unknown error',
-          cause: error.cause?.code || error.cause?.message || undefined
-        }
+            : 'network'
       });
     }
   }
