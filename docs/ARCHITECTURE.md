@@ -131,3 +131,5 @@ The map requests intelligence for the active geographic viewport rather than att
 - Observation reads return `observations-v6`.
 
 - Observation summaries return `observation-summary-v1`.
+
+- Route source distinguishes provider-backed and approximate output.
