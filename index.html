@@ -582,6 +582,20 @@
           </div>
         </div>
       </div>
+      <div class="border border-zinc-800/60 rounded-xl bg-zinc-900/20 overflow-hidden">
+        <div class="px-4 py-3 border-b border-zinc-800/60 flex items-center justify-between">
+          <div><p class="text-[9px] uppercase tracking-[0.18em] text-zinc-500 font-bold">Observation filters</p><p class="text-xs text-zinc-200 mt-1">Control the verified road layer</p></div>
+          <span class="font-mono-lux text-[8px] text-zinc-500"><span class="obs-visible-count">0</span> VISIBLE</span>
+        </div>
+        <div class="p-4 space-y-3">
+          <div class="grid grid-cols-2 gap-2">
+            <label class="block"><span class="text-[8px] uppercase tracking-wider text-zinc-600 font-bold">Type</span><select class="obs-filter-type mt-1 w-full bg-zinc-950 border border-zinc-800 rounded-lg px-2.5 py-2 text-[10px] text-zinc-300 focus:outline-none focus:border-zinc-600"><option value="all">All types</option><option value="construction">Construction</option><option value="missing">Missing road</option><option value="new">Newly detected</option><option value="widen">Widening</option><option value="surface">Surface condition</option></select></label>
+            <label class="block"><span class="text-[8px] uppercase tracking-wider text-zinc-600 font-bold">Source</span><select class="obs-filter-source mt-1 w-full bg-zinc-950 border border-zinc-800 rounded-lg px-2.5 py-2 text-[10px] text-zinc-300 focus:outline-none focus:border-zinc-600"><option value="all">All sources</option></select></label>
+          </div>
+          <label class="block"><div class="flex items-center justify-between"><span class="text-[8px] uppercase tracking-wider text-zinc-600 font-bold">Minimum confidence</span><span class="font-mono-lux text-[9px] text-zinc-400"><span class="obs-filter-confidence-value">0%</span></span></div><input class="obs-filter-confidence mt-2 w-full accent-cyan-400" type="range" min="0" max="100" step="5" value="0"></label>
+          <button type="button" class="obs-filter-reset w-full bg-zinc-950 border border-zinc-800 rounded-lg py-2 text-[9px] uppercase tracking-wider font-bold text-zinc-500 hover:text-white hover:border-zinc-700 transition-colors">Reset filters</button>
+        </div>
+      </div>
       <div class="bg-zinc-900/30 border border-zinc-800/60 rounded-xl p-4 text-[10px] text-zinc-500 leading-relaxed">
         <p class="font-semibold text-zinc-300 mb-1">Coverage integrity</p>
         Road-data completeness is not yet measured by this prototype. Metrics will appear only after verified road observations are connected.
@@ -713,6 +727,56 @@
         overlay.classList.remove('hidden');
       }
 
+    let observationRecords = [];
+
+    function applyObservationFilters() {
+      const typeValues = Array.from(document.querySelectorAll('.obs-filter-type')).map(el => el.value);
+      const sourceValues = Array.from(document.querySelectorAll('.obs-filter-source')).map(el => el.value);
+      const confidenceValues = Array.from(document.querySelectorAll('.obs-filter-confidence')).map(el => Number(el.value));
+      const typeFilter = typeValues.find(Boolean) || 'all';
+      const sourceFilter = sourceValues.find(Boolean) || 'all';
+      const minConfidence = confidenceValues.length ? Math.max(...confidenceValues) : 0;
+      let visible = 0;
+      observationRecords.forEach(record => {
+        const matchesType = typeFilter === 'all' || record.typeKey.includes(typeFilter);
+        const matchesSource = sourceFilter === 'all' || record.source.toLowerCase() === sourceFilter.toLowerCase();
+        const matchesConfidence = !Number.isFinite(record.confidence) || record.confidence >= minConfidence / 100;
+        const show = matchesType && matchesSource && matchesConfidence;
+        record.layer.setStyle({ opacity: show ? 1 : 0, fillOpacity: show ? 0.88 : 0 });
+        if (show) visible++;
+      });
+      document.querySelectorAll('.obs-visible-count').forEach(el => { el.textContent = String(visible); });
+      document.querySelectorAll('.obs-filter-confidence-value').forEach(label => { label.textContent = (confidenceValues.length ? Math.max(...confidenceValues) : 0) + '%'; });
+    }
+
+    function bindObservationFilters() {
+      document.querySelectorAll('.obs-filter-type, .obs-filter-source, .obs-filter-confidence').forEach(el => {
+        el.addEventListener('input', () => {
+          const value = el.value;
+          const selector = el.classList.contains('obs-filter-type') ? '.obs-filter-type' : el.classList.contains('obs-filter-source') ? '.obs-filter-source' : '.obs-filter-confidence';
+          document.querySelectorAll(selector).forEach(other => { other.value = value; });
+          applyObservationFilters();
+        });
+      });
+      document.querySelectorAll('.obs-filter-reset').forEach(button => {
+        button.addEventListener('click', () => {
+          document.querySelectorAll('.obs-filter-type').forEach(el => { el.value = 'all'; });
+          document.querySelectorAll('.obs-filter-source').forEach(el => { el.value = 'all'; });
+          document.querySelectorAll('.obs-filter-confidence').forEach(el => { el.value = '0'; });
+          applyObservationFilters();
+        });
+      });
+    }
+
+    function refreshObservationSourceOptions() {
+      const sources = [...new Set(observationRecords.map(record => record.source).filter(Boolean))].sort();
+      document.querySelectorAll('.obs-filter-source').forEach(select => {
+        const current = select.value;
+        select.innerHTML = '<option value="all">All sources</option>' + sources.map(source => '<option value="' + escapeHTML(source) + '">' + escapeHTML(source) + '</option>').join('');
+        select.value = sources.includes(current) ? current : 'all';
+      });
+    }
+
     async function loadObservationsInView() {
       const bounds = map.getBounds();
       const params = new URLSearchParams({
@@ -730,6 +794,7 @@
         if (!response.ok) throw new Error('Observation API request failed');
         const payload = await response.json();
         clearObservationLayers();
+        observationRecords = [];
 
         (Array.isArray(payload.observations) ? payload.observations : []).forEach(observation => {
           const lat = Number(observation.latitude);
@@ -760,7 +825,10 @@
             <p class="text-[11px] text-zinc-400">Observed: <span class="text-zinc-200">${observedAt}</span></p>
           </div>`);
           observationLayers.push(layer);
+          observationRecords.push({ layer, typeKey: String(rawType).toLowerCase(), source, confidence });
         });
+        refreshObservationSourceOptions();
+        applyObservationFilters();
       } catch (error) {
         console.warn('[observations] Could not load road observations', error);
       }
@@ -841,6 +909,7 @@
       observationLoadTimer = setTimeout(loadObservationsInView, 250);
     }
 
+    bindObservationFilters();
     map.on('moveend', scheduleObservationLoad);
     loadObservationsInView();
 
