@@ -93,6 +93,11 @@
       color: #ffffff !important;
     }
 
+    .route-endpoint-label { display:flex; align-items:center; gap:7px; white-space:nowrap; padding:5px 8px; border:1px solid rgba(39,39,42,.9); border-radius:999px; background:rgba(5,5,5,.9); backdrop-filter:blur(10px); box-shadow:0 8px 24px rgba(0,0,0,.45); font-family:'JetBrains Mono',monospace; font-size:8px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#e4e4e7; }
+    .route-endpoint-dot { width:7px; height:7px; border-radius:50%; flex:none; box-shadow:0 0 0 4px rgba(255,255,255,.08); }
+    .route-endpoint-label.start .route-endpoint-dot { background:#3b82f6; }
+    .route-endpoint-label.end .route-endpoint-dot { background:#ef4444; }
+
     /* ── BOTTOM SHEET TRANSITION FOR MOBILE ── */
     .bottom-sheet {
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -177,6 +182,15 @@
             <span class="px-2 py-1 rounded-md border border-zinc-800 bg-zinc-900/70 text-[8px] uppercase tracking-wider text-zinc-400">AI / CV</span>
             <span class="px-2 py-1 rounded-md border border-zinc-800 bg-zinc-900/70 text-[8px] uppercase tracking-wider text-zinc-400">Road graph</span>
           </div>
+        </div>
+      </div>
+
+      <!-- Active route status -->
+      <div id="route-status-overlay" class="hidden absolute top-4 right-4 z-30 pointer-events-none">
+        <div class="bg-[#070707]/88 backdrop-blur-xl border border-cyan-400/20 rounded-xl px-4 py-3 shadow-2xl min-w-[210px]">
+          <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-300 animate-pulse shadow-[0_0_8px_rgba(34,211,238,.8)]"></span><span class="text-[8px] uppercase tracking-[0.18em] text-cyan-300 font-bold">Active route</span><span class="ml-auto font-mono-lux text-[7px] text-zinc-600">OSRM</span></div>
+          <p id="route-status-path" class="mt-2 text-[10px] text-white font-semibold truncate max-w-[230px]">Origin → Destination</p>
+          <div class="mt-1 flex items-center gap-3 text-[8px] uppercase tracking-wider text-zinc-500"><span id="route-status-distance">-- km</span><span class="text-zinc-800">/</span><span id="route-status-time">-- min</span></div>
         </div>
       </div>
 
@@ -1102,15 +1116,15 @@
       routeLines.forEach(l => map.removeLayer(l)); routeLines = [];
       markers.forEach(m => map.removeLayer(m)); markers = [];
 
-      // Start/End Marker divs
-      const mk = (c, borderCol) => L.marker(c, {
+      // Start/End markers stay above the highlighted corridor.
+      const mk = (c, label, kind) => L.marker(c, {
         icon: L.divIcon({
-          html: `<div style="width:12px;height:12px;background:#ffffff;border-radius:50%;border:2.5px solid ${borderCol};box-shadow:0 4px 10px rgba(0,0,0,0.5)"></div>`,
-          className: '', iconSize: [12, 12], iconAnchor: [6, 6]
-        })
+          html: '<div class="route-endpoint-label ' + kind + '"><span class="route-endpoint-dot"></span><span>' + escapeHTML(label) + '</span></div>',
+          className: '', iconSize: [0, 0], iconAnchor: [0, 16]
+        }),
+        zIndexOffset: 1000
       }).addTo(map);
-      
-      markers.push(mk(fc, '#3b82f6'), mk(tc, '#ef4444'));
+      markers.push(mk(fc, 'START', 'start'), mk(tc, 'DESTINATION', 'end'));
 
       let dist, time;
       try {
@@ -1129,6 +1143,12 @@
         const rl = drawRouteLine([fc, tc], true);
         map.fitBounds(rl.getBounds(), { padding: [70, 90] });
       }
+
+      const routeStatus = document.getElementById('route-status-overlay');
+      document.getElementById('route-status-path').textContent = from.toUpperCase() + ' → ' + to.toUpperCase();
+      document.getElementById('route-status-distance').textContent = dist + ' km';
+      document.getElementById('route-status-time').textContent = time + ' min';
+      routeStatus.classList.remove('hidden');
 
       // Do not manufacture road-coverage numbers. Verified observation data will populate this later.
       const pct = null;
