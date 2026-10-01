@@ -490,7 +490,7 @@
       map.removeLayer(tile);
       if (t === 'sat') {
         document.getElementById('map').classList.remove('map-dark');
-        tile = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        tile = L.tileLayer('/api/satellite?z={z}&x={x}&y={y}', {
           maxZoom: 19,
           maxNativeZoom: 19,
           attribution: '&copy; Esri, Maxar, Earthstar Geographics, and the GIS User Community'
