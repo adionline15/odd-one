@@ -299,6 +299,8 @@ as $
   order by count(*) desc;
 $;
 
+comment on function public.approved_observation_summary(double precision, double precision, double precision, double precision) is 'Aggregates approved observations by type and source inside a geographic viewport.';
+
 revoke execute on function public.approved_observation_summary(double precision, double precision, double precision, double precision) from public, anon, authenticated;
 grant execute on function public.approved_observation_summary(double precision, double precision, double precision, double precision) to service_role;
 
