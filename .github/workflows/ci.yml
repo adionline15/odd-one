@@ -75,6 +75,9 @@ jobs:
       - name: Check patch formatting
         run: git diff --check
 
+      - name: Check submission safety default
+        run: grep -q '^OBSERVATIONS_SUBMISSION_ENABLED=false' .env.example
+
       - name: Check for committed API keys
         shell: bash
         run: |
