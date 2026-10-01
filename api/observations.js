@@ -129,7 +129,7 @@ export default async function handler(req, res) {
       });
       const observations = Array.isArray(data) ? data : [];
       res.setHeader('Cache-Control', `public, max-age=${cacheSeconds}, s-maxage=${cacheSeconds}, stale-while-revalidate=30`);
-      res.setHeader('Vary', 'Accept-Encoding');
+      res.setHeader('Vary', 'Accept-Encoding, Origin');
       res.setHeader('X-Odd-One-API', 'observations-v6');
       res.setHeader('X-Odd-One-Observation-Count', String(observations.length));
       res.setHeader('X-Odd-One-Observation-Limit', String(limit));
