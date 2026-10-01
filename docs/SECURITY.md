@@ -76,3 +76,5 @@ Privileged Supabase credentials and AI provider keys remain server-side. Browser
 - Upstream response bodies are bounded before JSON parsing.
 
 - Observation metadata is bounded at API and database layers.
+
+- Observation reads reject unbounded geographic spans.
