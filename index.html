@@ -678,6 +678,41 @@
       observationLayers = [];
     }
 
+      function observationPresentation(type) {
+        const key = String(type || '').toLowerCase();
+        if (key.includes('construction')) return { label: 'Construction', color: '#f97316' };
+        if (key.includes('missing')) return { label: 'Missing road', color: '#fb7185' };
+        if (key.includes('new') || key.includes('detected')) return { label: 'Newly detected', color: '#34d399' };
+        if (key.includes('widen')) return { label: 'Widening', color: '#22d3ee' };
+        if (key.includes('surface') || key.includes('condition')) return { label: 'Surface condition', color: '#f59e0b' };
+        return { label: String(type || 'Road observation').replace(/_/g, ' '), color: '#f59e0b' };
+      }
+
+      function showRoadIntelligence(observation, presentation, confidence, confidenceText, source, observedAt) {
+        const overlay = document.getElementById('road-intel-overlay');
+        if (!overlay) return;
+        document.getElementById('road-intel-dot').style.backgroundColor = presentation.color;
+        document.getElementById('road-intel-type').textContent = presentation.label;
+        document.getElementById('road-intel-id').textContent = observation.id ? 'Verified observation' : 'Verified observation';
+        document.getElementById('road-intel-confidence').textContent = confidenceText;
+        document.getElementById('road-intel-confidence-value').textContent = confidenceText;
+        document.getElementById('road-intel-source').textContent = source;
+        document.getElementById('road-intel-observed').textContent = observedAt;
+        const bar = document.getElementById('road-intel-confidence-bar');
+        bar.style.width = Number.isFinite(confidence) ? `${Math.max(0, Math.min(100, confidence * 100))}%` : '0%';
+        bar.style.backgroundColor = presentation.color;
+        const note = document.getElementById('road-intel-note');
+        const rawNote = observation.metadata && observation.metadata.note;
+        if (rawNote) {
+          note.textContent = String(rawNote);
+          note.classList.remove('hidden');
+        } else {
+          note.textContent = '';
+          note.classList.add('hidden');
+        }
+        overlay.classList.remove('hidden');
+      }
+
     async function loadObservationsInView() {
       const bounds = map.getBounds();
       const params = new URLSearchParams({
@@ -723,6 +758,76 @@
             <p class="text-[11px] text-zinc-400">Source: <span class="text-zinc-200">${source}</span></p>
             <p class="text-[11px] text-zinc-400">Confidence: <span class="text-zinc-200">${confidenceText}</span></p>
             <p class="text-[11px] text-zinc-400">Observed: <span class="text-zinc-200">${observedAt}</span></p>
+          </div>`);
+          observationLayers.push(layer);
+        });
+      } catch (error) {
+        console.warn('[observations] Could not load road observations', error);
+      }
+    }
+
+    async function loadObservationsInView() {
+      const bounds = map.getBounds();
+      const params = new URLSearchParams({
+        minLat: bounds.getSouth().toFixed(6),
+        minLon: bounds.getWest().toFixed(6),
+        maxLat: bounds.getNorth().toFixed(6),
+        maxLon: bounds.getEast().toFixed(6),
+        limit: '500'
+      });
+
+      try {
+        const response = await fetch(`/api/observations?${params.toString()}`, {
+          headers: { 'Accept': 'application/json' }
+        });
+        if (!response.ok) throw new Error('Observation API request failed');
+        const payload = await response.json();
+        clearObservationLayers();
+
+        (Array.isArray(payload.observations) ? payload.observations : []).forEach(observation => {
+          const lat = Number(observation.latitude);
+          const lon = Number(observation.longitude);
+          if (!Number.isFinite(lat) || !Number.isFinite(lon)) return;
+
+          const rawType = observation.observation_type || 'observation';
+          const presentation = observationPresentation(rawType);
+          const confidence = Number(observation.confidence);
+          const confidenceText = Number.isFinite(confidence) ? `${Math.round(confidence * 100)}%` : 'N/A';
+          const source = String(observation.source || 'unknown');
+          const observedAt = observation.observed_at
+            ? new Date(observation.observed_at).toLocaleString('en-IN')
+            : 'N/A';
+
+          const radius = Number.isFinite(confidence)
+            ? 7 + Math.round(Math.max(0, Math.min(1, confidence)) * 4)
+            : 8;
+
+          const layer = L.circleMarker([lat, lon], {
+            radius,
+            weight: 2,
+            color: presentation.color,
+            fillColor: presentation.color,
+            fillOpacity: 0.88
+          }).addTo(map);
+
+          layer.bindTooltip(presentation.label, {
+            direction: 'top',
+            offset: [0, -7],
+            opacity: 0.9,
+            className: 'road-intel-tooltip'
+          });
+
+          layer.on('click', event => {
+            L.DomEvent.stopPropagation(event);
+            showRoadIntelligence(observation, presentation, confidence, confidenceText, source, observedAt);
+          });
+
+          layer.bindPopup(`<div class="space-y-1.5 min-w-[190px]">
+            <p class="text-[9px] uppercase tracking-wider text-zinc-500 font-bold">Verified Road Observation</p>
+            <p class="text-sm text-white font-semibold">${escapeHTML(presentation.label)}</p>
+            <p class="text-[11px] text-zinc-400">Source: <span class="text-zinc-200">${escapeHTML(source)}</span></p>
+            <p class="text-[11px] text-zinc-400">Confidence: <span class="text-zinc-200">${escapeHTML(confidenceText)}</span></p>
+            <p class="text-[11px] text-zinc-400">Observed: <span class="text-zinc-200">${escapeHTML(observedAt)}</span></p>
           </div>`);
           observationLayers.push(layer);
         });
