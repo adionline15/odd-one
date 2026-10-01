@@ -197,6 +197,9 @@ export default async function handler(req, res) {
     if (!observedAt || Number.isNaN(observedDate.getTime())) {
       return json(res, 400, { error: 'Invalid observed_at timestamp' });
     }
+    if (observedDate.getTime() > Date.now() + 300000) {
+      return json(res, 400, { error: 'observed_at cannot be in the future' });
+    }
 
     const metadataText = JSON.stringify(metadata);
     if (metadataText.length > 8000) {
