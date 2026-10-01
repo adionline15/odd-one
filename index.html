@@ -1428,28 +1428,22 @@
         const msg = `
           <div class="text-center py-12 text-zinc-500 space-y-1 bg-zinc-900/30 rounded-xl border border-zinc-900 p-5">
             <span class="text-2xl block">✓</span>
-            <p class="text-xs uppercase tracking-wider text-zinc-400 font-bold">Safe Corridor</p>
-            <p class="text-[11px] text-zinc-600">No major road blocks or alerts active right now</p>
+            <p class="text-xs uppercase tracking-wider text-zinc-400 font-bold">No alerts returned</p>
+            <p class="text-[11px] text-zinc-600">No alerts were returned for this location by the current feed.</p>
           </div>`;
         document.getElementById('d-alerts-box').innerHTML = msg;
         document.getElementById('m-alerts-box').innerHTML = msg;
         return;
       }
       
-      const types = [['HIGH', 'bg-rose-500/10 text-rose-400 border-rose-500/20'], ['MEDIUM', 'bg-amber-500/10 text-amber-400 border-amber-500/20'], ['LOW', 'bg-blue-500/10 text-blue-400 border-blue-500/20']];
-      
-      const html = alerts.map((a, i) => {
-        const typeIndex = i % 3;
-        const [badgeLabel, badgeClasses] = types[typeIndex];
-        return `
-          <div class="bg-zinc-900/40 hover:bg-zinc-900/60 border border-zinc-900 hover:border-zinc-800 rounded-xl p-4 transition-all space-y-2.5">
-            <div class="flex items-center justify-between">
-              <span class="text-[8px] font-bold tracking-widest uppercase border px-2 py-0.5 rounded-full ${badgeClasses}">${badgeLabel}</span>
-              <span class="text-[9px] text-zinc-600 font-semibold font-mono-lux">Just Now</span>
-            </div>
-            <p class="text-xs text-zinc-200 leading-snug">${escapeHTML(a)}</p>
-          </div>`;
-      }).join('');
+      const html = alerts.map(a => `
+        <div class="bg-zinc-900/40 hover:bg-zinc-900/60 border border-zinc-900 hover:border-zinc-800 rounded-xl p-4 transition-all space-y-2.5">
+          <div class="flex items-center justify-between">
+            <span class="text-[8px] font-bold tracking-widest uppercase border px-2 py-0.5 rounded-full bg-zinc-900 text-zinc-400 border-zinc-800">ALERT</span>
+            <span class="text-[9px] text-zinc-600 font-semibold font-mono-lux">LIVE FEED</span>
+          </div>
+          <p class="text-xs text-zinc-200 leading-snug">${escapeHTML(a)}</p>
+        </div>`).join('');
       
       document.getElementById('d-alerts-box').innerHTML = html;
       document.getElementById('m-alerts-box').innerHTML = html;
