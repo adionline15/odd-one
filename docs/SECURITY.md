@@ -80,3 +80,5 @@ Privileged Supabase credentials and AI provider keys remain server-side. Browser
 - Observation reads reject unbounded geographic spans.
 
 - Cache policy is explicit on public read endpoints.
+
+- Moderation fields are retained to support future audit workflows.
