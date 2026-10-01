@@ -299,6 +299,9 @@ as $
   order by count(*) desc;
 $;
 
+revoke execute on function public.approved_observation_summary(double precision, double precision, double precision, double precision) from public, anon, authenticated;
+grant execute on function public.approved_observation_summary(double precision, double precision, double precision, double precision) to service_role;
+
 create or replace function public.set_updated_at()
 returns trigger
 language plpgsql
