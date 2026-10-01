@@ -606,7 +606,7 @@
           <div class="flex items-center gap-2">
             <span class="obs-layer-dot w-1.5 h-1.5 rounded-full bg-zinc-600"></span>
             <span class="obs-layer-status font-mono-lux text-[8px] text-zinc-500">LOADING</span>
-            <span class="font-mono-lux text-[8px] text-zinc-500"><span class="obs-visible-count">0</span> VISIBLE</span>
+            <span class="font-mono-lux text-[8px] text-zinc-500"><span class="obs-visible-count">0</span> VISIBLE</span><button type="button" class="obs-layer-retry hidden text-[8px] uppercase tracking-wider font-bold text-zinc-400 hover:text-white transition-colors" title="Retry verified observation layer">RETRY</button>
           </div>
         </div>
         <div class="p-4 space-y-3">
@@ -829,7 +829,14 @@
       document.querySelectorAll('.obs-layer-dot').forEach(el => {
         el.className = 'obs-layer-dot w-1.5 h-1.5 rounded-full ' + config.dot;
       });
+      document.querySelectorAll('.obs-layer-retry').forEach(el => {
+        el.classList.toggle('hidden', state !== 'error');
+      });
     }
+
+    document.querySelectorAll('.obs-layer-retry').forEach(button => {
+      button.addEventListener('click', () => loadObservationsInView());
+    });
 
     function applyObservationFilters() {
       const typeValues = Array.from(document.querySelectorAll('.obs-filter-type')).map(el => el.value);
