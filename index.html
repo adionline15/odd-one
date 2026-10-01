@@ -41,8 +41,7 @@
     #map {
       background-color: #050505;
     }
-    .leaflet-tile-pane {
-      filter: invert(1) hue-rotate(180deg) brightness(1.05) saturate(0.65);
+    .map-dark .leaflet-tile-pane {
       filter: invert(1) hue-rotate(180deg) brightness(1.05) saturate(0.65);
     }
     .leaflet-control-attribution {
@@ -397,7 +396,8 @@
     const isMobile = () => window.innerWidth <= 640;
 
     // Initialize Map Instance
-    map = L.map('map', { zoomControl: false, attributionControl: false }).setView([22, 78], 5);
+    map = L.map('map', { zoomControl: false, attributionControl: true }).setView([22, 78], 5);
+    document.getElementById('map').classList.add('map-dark');
     L.control.zoom({ position: 'bottomleft' }).addTo(map);
 
     // Initial tile layer setup
@@ -489,12 +489,18 @@
     function setTile(t) {
       map.removeLayer(tile);
       if (t === 'sat') {
-        tile = L.tileLayer('https://server.https://api.maptiler.com/maps/satellite/{z}/{x}/{y}.jpg?key=6pBBkKOL0SJZhySKd057.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', { maxZoom: 19 }).addTo(map);
+        document.getElementById('map').classList.remove('map-dark');
+        tile = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+          maxZoom: 19,
+          maxNativeZoom: 19,
+          attribution: '&copy; Esri, Maxar, Earthstar Geographics, and the GIS User Community'
+        }).addTo(map);
         document.getElementById('btn-sat').classList.add('on');
         document.getElementById('btn-sat').querySelector('span').classList.replace('bg-zinc-600', 'bg-white');
         document.getElementById('btn-map').classList.remove('on');
         document.getElementById('btn-map').querySelector('span').classList.replace('bg-white', 'bg-zinc-600');
       } else {
+        document.getElementById('map').classList.add('map-dark');
         tile = L.tileLayer('/api/tiles?z={z}&x={x}&y={y}', { maxZoom: 19 }).addTo(map);
         document.getElementById('btn-map').classList.add('on');
         document.getElementById('btn-map').querySelector('span').classList.replace('bg-zinc-600', 'bg-white');
