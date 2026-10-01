@@ -95,12 +95,13 @@ export default async function handler(req, res) {
     }
 
     try {
+      let stage = 'connectivity';
       // First verify the PostgREST connection with a minimal, non-spatial query.
-      // This separates network/configuration failures from RPC/PostGIS failures.
       await supabaseRequest('observations?select=id&status=eq.approved&limit=1', {
         method: 'GET'
       });
 
+      stage = 'rpc';
       const data = await supabaseRequest('rpc/approved_observations_in_view', {
         method: 'POST',
         body: JSON.stringify({
@@ -111,22 +112,30 @@ export default async function handler(req, res) {
           p_limit: limit
         })
       });
-      res.setHeader('X-Odd-One-API', 'observations-v3');
-      return json(res, 200, { observations: Array.isArray(data) ? data : [] });
+      res.setHeader('X-Odd-One-API', 'observations-v4');
+      return json(res, 200, { api_version: 'observations-v4', observations: Array.isArray(data) ? data : [] });
     } catch (error) {
       if (error.code === 'NOT_CONFIGURED') {
         console.error('[observations] Supabase is not configured');
-        return json(res, 503, { error: 'Observation service is not configured' });
+        return json(res, 503, { api_version: 'observations-v4', error: 'Observation service is not configured' });
       }
       console.error('[observations] Supabase GET failed', {
         name: error.name || 'Error',
         message: error.message || 'unknown error',
-        name: error.name || 'Error',
-        message: error.message || 'unknown error',
         status: error.status || 0,
+        stage,
         body: error.upstreamBody || 'no upstream response body'
       });
-      return json(res, 502, { error: 'Observation service unavailable' });
+      return json(res, 502, {
+        api_version: 'observations-v4',
+        error: 'Observation service unavailable',
+        stage,
+        reason: error.name === 'TimeoutError' || error.name === 'AbortError'
+          ? 'timeout'
+          : error.status
+            ? `upstream_${error.status}`
+            : 'network'
+      });
     }
   }
 
