@@ -72,6 +72,9 @@ jobs:
       - name: Check database metadata contract
         run: grep -q "jsonb_typeof(metadata) = 'object'" db/schema.sql
 
+      - name: Check root tile proxy removal
+        run: test ! -f tiles.js
+
       - name: Check patch formatting
         run: git diff --check
 
