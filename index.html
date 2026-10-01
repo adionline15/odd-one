@@ -806,10 +806,24 @@
         const matchesSource = sourceFilter === 'all' || record.source.toLowerCase() === sourceFilter.toLowerCase();
         const matchesConfidence = !Number.isFinite(record.confidence) || record.confidence >= minConfidence / 100;
         const show = matchesType && matchesSource && matchesConfidence;
-        record.layer.setStyle({ opacity: show ? 1 : 0, fillOpacity: show ? 0.88 : 0 });
+
         if (show) {
+          const selected = selectedObservationLayer === record.layer;
+          record.layer.setStyle({
+            weight: selected ? 3.5 : 2,
+            opacity: 1,
+            fillOpacity: selected ? 1 : 0.88
+          });
+          record.layer.getElement()?.classList.toggle('road-intel-selected', selected);
           record.layer.bringToFront();
           visible++;
+        } else {
+          record.layer.setStyle({ opacity: 0, fillOpacity: 0 });
+          if (selectedObservationLayer === record.layer) {
+            selectedObservationLayer = null;
+            record.layer.getElement()?.classList.remove('road-intel-selected');
+            document.getElementById('road-intel-overlay')?.classList.add('hidden');
+          }
         }
       });
       document.querySelectorAll('.obs-visible-count').forEach(el => { el.textContent = String(visible); });
