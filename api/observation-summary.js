@@ -74,7 +74,7 @@ export default async function handler(req, res) {
       method: 'POST',
       body: JSON.stringify({ p_min_lat: minLat, p_min_lon: minLon, p_max_lat: maxLat, p_max_lon: maxLon })
     });
-    const rows = Array.isArray(data) ? data : [];
+    const rows = Array.isArray(data) ? data.filter(row => row && typeof row === 'object') : [];
     res.setHeader('Cache-Control', 'public, max-age=30, s-maxage=30, stale-while-revalidate=60');
     res.setHeader('Vary', 'Accept-Encoding, Origin');
     res.setHeader('X-Odd-One-API', 'observation-summary-v1');
