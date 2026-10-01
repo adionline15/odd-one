@@ -74,3 +74,5 @@ Privileged Supabase credentials and AI provider keys remain server-side. Browser
 - Superseded viewport requests are cancelled where supported.
 
 - Upstream response bodies are bounded before JSON parsing.
+
+- Observation metadata is bounded at API and database layers.
