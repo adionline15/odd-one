@@ -610,6 +610,37 @@
           <button type="button" class="obs-filter-reset w-full bg-zinc-950 border border-zinc-800 rounded-lg py-2 text-[9px] uppercase tracking-wider font-bold text-zinc-500 hover:text-white hover:border-zinc-700 transition-colors">Reset filters</button>
         </div>
       </div>
+      <div class="border border-zinc-800/60 rounded-xl bg-zinc-900/20 overflow-hidden">
+        <div class="px-4 py-3 border-b border-zinc-800/60 flex items-center justify-between">
+          <div>
+            <p class="text-[9px] uppercase tracking-[0.18em] text-zinc-500 font-bold">Road change intelligence</p>
+            <p class="text-xs text-zinc-200 mt-1">Temporal evidence only — no synthetic change data</p>
+          </div>
+          <span class="temporal-change-status font-mono-lux text-[8px] text-zinc-600">AWAITING DATA</span>
+        </div>
+        <div class="p-4 space-y-3">
+          <div class="flex items-center justify-between">
+            <div>
+              <p class="text-[9px] uppercase tracking-wider text-zinc-600 font-bold">Comparison window</p>
+              <p class="temporal-change-window text-[11px] text-zinc-300 mt-1">No verified temporal observations</p>
+            </div>
+            <span class="temporal-change-count font-serif-lux italic text-white text-lg">0</span>
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <div class="rounded-lg border border-zinc-800 bg-zinc-950/60 p-2.5">
+              <p class="text-[8px] uppercase tracking-wider text-zinc-600 font-bold">Change signals</p>
+              <p class="temporal-change-signals text-[10px] text-zinc-300 mt-1">0 verified</p>
+            </div>
+            <div class="rounded-lg border border-zinc-800 bg-zinc-950/60 p-2.5">
+              <p class="text-[8px] uppercase tracking-wider text-zinc-600 font-bold">Detection</p>
+              <p class="temporal-change-detection text-[10px] text-zinc-300 mt-1">Not available</p>
+            </div>
+          </div>
+          <p class="text-[9px] leading-relaxed text-zinc-600">
+            The timeline activates only when approved observations contain verified temporal metadata such as baseline/comparison years or a detection timestamp.
+          </p>
+        </div>
+      </div>
       <div class="bg-zinc-900/30 border border-zinc-800/60 rounded-xl p-4 text-[10px] text-zinc-500 leading-relaxed">
         <p class="font-semibold text-zinc-300 mb-1">Coverage integrity</p>
         Road-data completeness is not yet measured by this prototype. Metrics will appear only after verified road observations are connected.
@@ -848,6 +879,61 @@
       }
     }
 
+    function renderTemporalChangeIntelligence(observations) {
+      const records = Array.isArray(observations) ? observations : [];
+      const temporal = records.filter(observation => {
+        const metadata = observation && observation.metadata && typeof observation.metadata === 'object'
+          ? observation.metadata
+          : {};
+        return Boolean(
+          metadata.baseline_year ||
+          metadata.comparison_year ||
+          metadata.detected_at ||
+          metadata.change_type
+        );
+      });
+
+      const years = [...new Set(temporal.flatMap(observation => {
+        const metadata = observation.metadata || {};
+        return [metadata.baseline_year, metadata.comparison_year]
+          .map(Number)
+          .filter(Number.isFinite);
+      }))].sort((a, b) => a - b);
+
+      const changeTypes = [...new Set(temporal.map(observation => {
+        const metadata = observation.metadata || {};
+        return String(metadata.change_type || observation.observation_type || '').trim();
+      }).filter(Boolean))];
+
+      const detections = temporal
+        .map(observation => observation.metadata && observation.metadata.detected_at)
+        .filter(Boolean);
+
+      const status = temporal.length ? 'VERIFIED DATA' : 'AWAITING DATA';
+      const statusClass = temporal.length ? 'text-emerald-400' : 'text-zinc-600';
+      const window = years.length >= 2
+        ? years.join(' → ')
+        : years.length === 1
+          ? String(years[0]) + ' / comparison pending'
+          : 'No verified temporal observations';
+
+      document.querySelectorAll('.temporal-change-status').forEach(el => {
+        el.textContent = status;
+        el.classList.remove('text-emerald-400', 'text-zinc-600');
+        el.classList.add(statusClass);
+      });
+      document.querySelectorAll('.temporal-change-window').forEach(el => { el.textContent = window; });
+      document.querySelectorAll('.temporal-change-count').forEach(el => { el.textContent = String(temporal.length); });
+      document.querySelectorAll('.temporal-change-signals').forEach(el => {
+        el.textContent = changeTypes.length ? changeTypes.slice(0, 2).join(' · ') : '0 verified';
+      });
+      document.querySelectorAll('.temporal-change-detection').forEach(el => {
+        el.textContent = detections.length
+          ? new Date(detections[0]).toLocaleDateString('en-IN')
+          : 'Not available';
+      });
+    }
+
     async function loadObservationsInView() {
       const bounds = map.getBounds();
       const params = new URLSearchParams({
@@ -859,14 +945,16 @@
       });
 
       try {
-        const response = await fetch(`/api/observations?${params.toString()}`, {
+        const response = await fetch('/api/observations?' + params.toString(), {
           headers: { 'Accept': 'application/json' }
         });
         if (!response.ok) throw new Error('Observation API request failed');
         const payload = await response.json();
         clearObservationLayers();
+        observationRecords = [];
 
-        (Array.isArray(payload.observations) ? payload.observations : []).forEach(observation => {
+        const observations = Array.isArray(payload.observations) ? payload.observations : [];
+        observations.forEach(observation => {
           const lat = Number(observation.latitude);
           const lon = Number(observation.longitude);
           if (!Number.isFinite(lat) || !Number.isFinite(lon)) return;
@@ -874,7 +962,7 @@
           const rawType = observation.observation_type || 'observation';
           const presentation = observationPresentation(rawType);
           const confidence = Number(observation.confidence);
-          const confidenceText = Number.isFinite(confidence) ? `${Math.round(confidence * 100)}%` : 'N/A';
+          const confidenceText = Number.isFinite(confidence) ? Math.round(confidence * 100) + '%' : 'N/A';
           const source = String(observation.source || 'unknown');
           const observedAt = observation.observed_at
             ? new Date(observation.observed_at).toLocaleString('en-IN')
@@ -904,17 +992,29 @@
             showRoadIntelligence(observation, presentation, confidence, confidenceText, source, observedAt);
           });
 
-          layer.bindPopup(`<div class="space-y-1.5 min-w-[190px]">
-            <p class="text-[9px] uppercase tracking-wider text-zinc-500 font-bold">Verified Road Observation</p>
-            <p class="text-sm text-white font-semibold">${escapeHTML(presentation.label)}</p>
-            <p class="text-[11px] text-zinc-400">Source: <span class="text-zinc-200">${escapeHTML(source)}</span></p>
-            <p class="text-[11px] text-zinc-400">Confidence: <span class="text-zinc-200">${escapeHTML(confidenceText)}</span></p>
-            <p class="text-[11px] text-zinc-400">Observed: <span class="text-zinc-200">${escapeHTML(observedAt)}</span></p>
-          </div>`);
+          layer.bindPopup('<div class="space-y-1.5 min-w-[190px]">' +
+            '<p class="text-[9px] uppercase tracking-wider text-zinc-500 font-bold">Verified Road Observation</p>' +
+            '<p class="text-sm text-white font-semibold">' + escapeHTML(presentation.label) + '</p>' +
+            '<p class="text-[11px] text-zinc-400">Source: <span class="text-zinc-200">' + escapeHTML(source) + '</span></p>' +
+            '<p class="text-[11px] text-zinc-400">Confidence: <span class="text-zinc-200">' + escapeHTML(confidenceText) + '</span></p>' +
+            '<p class="text-[11px] text-zinc-400">Observed: <span class="text-zinc-200">' + escapeHTML(observedAt) + '</span></p>' +
+          '</div>');
+
           observationLayers.push(layer);
+          observationRecords.push({
+            layer,
+            typeKey: String(rawType).toLowerCase(),
+            source,
+            confidence
+          });
         });
+
+        refreshObservationSourceOptions();
+        applyObservationFilters();
+        renderTemporalChangeIntelligence(observations);
       } catch (error) {
         console.warn('[observations] Could not load road observations', error);
+        renderTemporalChangeIntelligence([]);
       }
     }
 
