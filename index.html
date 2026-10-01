@@ -1433,7 +1433,7 @@
       document.getElementById('route-status-path').textContent = from.toUpperCase() + ' → ' + to.toUpperCase();
       document.getElementById('route-status-distance').textContent = dist + ' km';
       document.getElementById('route-status-time').textContent = time + ' min';
-      document.getElementById('route-status-source').textContent = routeSource;
+      document.getElementById('route-status-source').textContent = routeSource === 'OSRM' ? 'OSRM · ROAD NETWORK' : 'APPROX · ESTIMATE';
       routeStatus.classList.remove('hidden');
 
       // Do not manufacture road-coverage numbers. Verified observation data will populate this later.
