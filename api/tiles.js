@@ -1,4 +1,4 @@
-const TILE_HOSTS = ['a', 'b', 'c'];
+const TILE_HOSTS = ['server.arcgisonline.com', 'services.arcgisonline.com'];
 
 function isValidTile(value, max) {
   if (!/^\d+$/.test(String(value))) return false;
@@ -17,30 +17,32 @@ export default async function handler(req, res) {
     return res.status(400).end();
   }
 
-  const host = TILE_HOSTS[Number(x) % TILE_HOSTS.length];
-  const tileUrl = `https://${host}.tile.openstreetmap.org/${z}/${x}/${y}.png`;
+  const zi = Number(z);
+  const xi = Number(x);
+  const yi = Number(y);
 
-  try {
-    const response = await fetch(tileUrl, {
-      headers: {
-        'User-Agent': 'OddOneIn/1.0 (https://www.odd-one.in)',
-        'Referer': 'https://www.odd-one.in',
-        'Accept': 'image/png,image/*'
-      },
-      signal: AbortSignal.timeout(5000)
-    });
+  for (const host of TILE_HOSTS) {
+    try {
+      const tileUrl = `https://${host}/ArcGIS/rest/services/World_Street_Map/MapServer/tile/${zi}/${yi}/${xi}`;
+      const response = await fetch(tileUrl, {
+        headers: {
+          'User-Agent': 'OddOneIn/1.0 (https://www.odd-one.in)',
+          'Referer': 'https://www.odd-one.in',
+          'Accept': 'image/jpeg,image/png,image/*'
+        },
+        signal: AbortSignal.timeout(5000)
+      });
 
-    if (!response.ok) {
-      return res.status(response.status).end();
-    }
+      if (!response.ok) continue;
 
-    const buffer = await response.arrayBuffer();
-    res.setHeader('Content-Type', 'image/png');
-    res.setHeader('Cache-Control', 's-maxage=86400, stale-while-revalidate=3600');
-    res.setHeader('X-Content-Type-Options', 'nosniff');
-
-    return res.send(Buffer.from(buffer));
-  } catch {
-    return res.status(502).end();
+      const buffer = await response.arrayBuffer();
+      res.setHeader('Content-Type', response.headers.get('content-type') || 'image/jpeg');
+      res.setHeader('Cache-Control', 's-maxage=86400, stale-while-revalidate=3600');
+      res.setHeader('X-Content-Type-Options', 'nosniff');
+      res.setHeader('X-Odd-One-Map', 'esri-world-street-map');
+      return res.send(Buffer.from(buffer));
+    } catch {}
   }
+
+  return res.status(502).end();
 }
