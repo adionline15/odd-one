@@ -84,6 +84,7 @@ comment on column public.observations.status is 'pending until reviewed; approve
 comment on column public.observations.observed_at is 'Timestamp when the road condition or map event was observed.';
 comment on column public.observations.submitted_at is 'Timestamp when the observation entered the system.';
 comment on column public.observations.confidence is 'Normalized confidence score from 0 to 1.';
+comment on column public.observations.source is 'Origin of the observation signal.';
 
 alter table public.observations enable row level security;
 
