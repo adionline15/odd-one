@@ -112,6 +112,7 @@ Successful observation reads return API version `observations-v6` and include `c
 | `/api/route-guide` | POST | Optional Gemini route guidance |
 | `/api/tiles/{z}/{x}/{y}` | GET | Server-side Esri World Street Map proxy |
 | `/api/observations?minLat=...&minLon=...&maxLat=...&maxLon=...` | GET | Approved observations in a map viewport |
+| `/api/observation-summary?minLat=...&minLon=...&maxLat=...&maxLon=...` | GET | Approved observation counts by type and source |
 | `/api/observations` | POST | Submit a pending observation when explicitly enabled |
 
 ## Environment variables
