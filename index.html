@@ -1094,6 +1094,7 @@
             '<p class="text-[11px] text-zinc-400">Source: <span class="text-zinc-200">' + escapeHTML(source) + '</span></p>' +
             '<p class="text-[11px] text-zinc-400">Confidence: <span class="text-zinc-200">' + escapeHTML(confidenceText) + '</span></p>' +
             '<p class="text-[11px] text-zinc-400">Observed: <span class="text-zinc-200">' + escapeHTML(observedAt) + '</span></p>' +
+             '<p class="text-[11px] text-zinc-400">Temporal signal: <span class="text-zinc-200">' + escapeHTML(observation.metadata?.change_type || 'Not provided') + '</span></p>' +
           '</div>');
 
           observationLayers.push(layer);
