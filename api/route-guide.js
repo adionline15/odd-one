@@ -26,8 +26,8 @@ export default async function handler(req, res) {
   }
 
   const body = req.body && typeof req.body === 'object' ? req.body : {};
-  const origin = cleanText(body.origin);
-  const dest = cleanText(body.dest);
+  const origin = cleanText(body.origin).replace(/[\r\n]+/g, ' ');
+  const dest = cleanText(body.dest).replace(/[\r\n]+/g, ' ');
   const langValue = typeof body.lang === 'string' ? body.lang.trim().toLowerCase() : '';
   const lang = ['en', 'hi', 'hinglish'].includes(langValue) ? langValue : 'en';
 
