@@ -127,3 +127,4 @@ The map requests intelligence for the active geographic viewport rather than att
 - External geocoding, routing, imagery, and news providers are treated as replaceable upstream dependencies.
 - The browser owns presentation and interaction state; privileged database access remains server-side.
 - Short caches reduce repeated reads but never rewrite source timestamps.
+- A provider failure should produce an unavailable state rather than fabricated replacement data.
