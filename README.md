@@ -200,3 +200,5 @@ All rights reserved unless a separate license is added to this repository.
 - Map reads are scoped to the current viewport.
 
 - Newer viewport requests take precedence over older responses.
+
+- A service error is distinct from an empty verified dataset.
