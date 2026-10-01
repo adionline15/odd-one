@@ -773,6 +773,7 @@
     // ── VERIFIED ROAD OBSERVATIONS ──
     let observationLayers = [];
     let observationLoadTimer = null;
+    let observationRequestId = 0;
 
     function clearObservationLayers() {
       observationLayers.forEach(layer => map.removeLayer(layer));
