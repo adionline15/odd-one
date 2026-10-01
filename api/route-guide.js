@@ -41,7 +41,7 @@ export default async function handler(req, res) {
   }
 
   const alerts = Array.isArray(body.alerts)
-    ? body.alerts.filter(item => typeof item === 'string').slice(0, MAX_ALERTS).map(item => item.slice(0, 160))
+    ? body.alerts.filter(item => typeof item === 'string').slice(0, MAX_ALERTS).map(item => item.trim().slice(0, 160)).filter(Boolean)
     : [];
 
   const langInstruction =
