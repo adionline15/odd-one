@@ -56,6 +56,7 @@ export default async function handler(req, res) {
   }
 
   const q = req.query || {};
+  if (JSON.stringify(q).length > 1000) return json(res, 413, { error: 'Query too large' });
   const minLat = Number(q.minLat);
   const minLon = Number(q.minLon);
   const maxLat = Number(q.maxLat);
