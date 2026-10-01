@@ -20,6 +20,7 @@
 - Observation records use a pending/approved/rejected lifecycle.
 - API responses set defensive content-type, framing, and referrer headers where applicable.
 - Summary responses use short-lived cache headers because they reflect changing approved data.
+- The frontend ignores stale observation responses and cancels superseded viewport requests.
 - Public observation reads are limited to approved records.
 
 ## Before enabling public submissions
