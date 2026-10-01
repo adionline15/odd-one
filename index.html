@@ -823,7 +823,7 @@
         bar.style.width = Number.isFinite(confidence) ? `${Math.max(0, Math.min(100, confidence * 100))}%` : '0%';
         bar.style.backgroundColor = presentation.color;
         const note = document.getElementById('road-intel-note');
-        const rawNote = observation.metadata && observation.metadata.note;
+        const rawNote = observation.metadata && typeof observation.metadata.note === 'string' ? observation.metadata.note.trim() : '';
         if (rawNote) {
           note.textContent = String(rawNote);
           note.classList.remove('hidden');
