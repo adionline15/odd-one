@@ -40,7 +40,7 @@ create table if not exists public.observations (
   submitted_at timestamptz not null default now(),
   confidence numeric(4,3) not null check (confidence >= 0 and confidence <= 1),
   status public.observation_status not null default 'pending',
-  metadata jsonb not null default '{}'::jsonb,
+  metadata jsonb not null default '{}'::jsonb check (jsonb_typeof(metadata) = 'object'),
   created_by uuid references auth.users(id),
   reviewed_by uuid references auth.users(id),
   reviewed_at timestamptz,
