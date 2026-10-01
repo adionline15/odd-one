@@ -812,7 +812,7 @@
           html: `<div style="width:12px;height:12px;background:#ffffff;border-radius:50%;border:2.5px solid #ef4444;box-shadow:0 0 0 4px rgba(239,68,68,0.25)"></div>`,
           className: '', iconSize: [12, 12], iconAnchor: [6, 6]
         })
-      }).addTo(map).bindPopup(`<b class="text-white">${name}</b>`).openPopup();
+      }).addTo(map);
     }
 
     function escapeHTML(value) {
@@ -1019,7 +1019,7 @@
             html: `<div style="width:14px;height:14px;background:#ffffff;border-radius:50%;border:2.5px solid #3b82f6;box-shadow:0 0 0 6px rgba(59,130,246,0.25)"></div>`,
             className: '', iconSize: [14, 14], iconAnchor: [7, 7]
           })
-        }).addTo(map).bindPopup('<b class="text-white">Active Location</b>').openPopup();
+        }).addTo(map);
         document.getElementById('btn-loc').innerText = '◎ Locate Me';
       }, () => {
         document.getElementById('btn-loc').innerText = '◎ Locate Me';
