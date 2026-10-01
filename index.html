@@ -1419,6 +1419,10 @@
           map.fitBounds(rl.getBounds(), { padding: [70, 90] });
         } else throw new Error();
       } catch (e) {
+        if (e?.name === 'AbortError') {
+          setRouteLoadingState(false, 'Calculate Route →', p);
+          return;
+        }
         routeSource = 'APPROX';
         dist = calcDist(fc, tc); time = Math.round(dist * 1.4);
         const rl = drawRouteLine([fc, tc], true);
