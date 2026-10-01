@@ -93,6 +93,9 @@ jobs:
       - name: Check satellite endpoint
         run: test -f api/satellite.js
 
+      - name: Check security documentation
+        run: grep -q 'Secret boundary' docs/SECURITY.md
+
       - name: Check patch formatting
         run: git diff --check
 
