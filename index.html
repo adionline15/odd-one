@@ -1157,7 +1157,7 @@
     }
 
     bindObservationFilters();
-    map.on('moveend', scheduleObservationLoad);
+    map.on('moveend', scheduleObservationLoad, { passive: true });
     loadObservationsInView();
 
     // Manual Point Select Popup
