@@ -75,6 +75,9 @@ jobs:
       - name: Check root tile proxy removal
         run: test ! -f tiles.js
 
+      - name: Check observation endpoint
+        run: test -f api/observations.js
+
       - name: Check patch formatting
         run: git diff --check
 
