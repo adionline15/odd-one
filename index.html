@@ -404,6 +404,76 @@
     tile = L.tileLayer('/api/tiles?z={z}&x={x}&y={y}', { maxZoom: 19 }).addTo(map);
     setTimeout(() => map.invalidateSize(), 300);
 
+    // ── VERIFIED ROAD OBSERVATIONS ──
+    let observationLayers = [];
+    let observationLoadTimer = null;
+
+    function clearObservationLayers() {
+      observationLayers.forEach(layer => map.removeLayer(layer));
+      observationLayers = [];
+    }
+
+    async function loadObservationsInView() {
+      const bounds = map.getBounds();
+      const params = new URLSearchParams({
+        minLat: bounds.getSouth().toFixed(6),
+        minLon: bounds.getWest().toFixed(6),
+        maxLat: bounds.getNorth().toFixed(6),
+        maxLon: bounds.getEast().toFixed(6),
+        limit: '500'
+      });
+
+      try {
+        const response = await fetch(`/api/observations?${params.toString()}`, {
+          headers: { 'Accept': 'application/json' }
+        });
+        if (!response.ok) throw new Error('Observation API request failed');
+        const payload = await response.json();
+        clearObservationLayers();
+
+        (Array.isArray(payload.observations) ? payload.observations : []).forEach(observation => {
+          const lat = Number(observation.latitude);
+          const lon = Number(observation.longitude);
+          if (!Number.isFinite(lat) || !Number.isFinite(lon)) return;
+
+          const type = escapeHTML(observation.observation_type || 'observation');
+          const source = escapeHTML(observation.source || 'unknown');
+          const confidence = Number(observation.confidence);
+          const confidenceText = Number.isFinite(confidence) ? `${Math.round(confidence * 100)}%` : 'N/A';
+          const observedAt = observation.observed_at
+            ? escapeHTML(new Date(observation.observed_at).toLocaleString('en-IN'))
+            : 'N/A';
+
+          const layer = L.circleMarker([lat, lon], {
+            radius: 7,
+            weight: 2,
+            color: '#ef4444',
+            fillColor: '#ef4444',
+            fillOpacity: 0.75
+          }).addTo(map);
+
+          layer.bindPopup(`<div class="space-y-1.5 min-w-[180px]">
+            <p class="text-[9px] uppercase tracking-wider text-zinc-500 font-bold">Verified Road Observation</p>
+            <p class="text-sm text-white font-semibold">${type.replace(/_/g, ' ')}</p>
+            <p class="text-[11px] text-zinc-400">Source: <span class="text-zinc-200">${source}</span></p>
+            <p class="text-[11px] text-zinc-400">Confidence: <span class="text-zinc-200">${confidenceText}</span></p>
+            <p class="text-[11px] text-zinc-400">Observed: <span class="text-zinc-200">${observedAt}</span></p>
+          </div>`);
+          observationLayers.push(layer);
+        });
+      } catch (error) {
+        console.warn('[observations] Could not load road observations', error);
+      }
+    }
+
+    function scheduleObservationLoad() {
+      clearTimeout(observationLoadTimer);
+      observationLoadTimer = setTimeout(loadObservationsInView, 250);
+    }
+
+    map.on('moveend', scheduleObservationLoad);
+    loadObservationsInView();
+
     // Manual Point Select Popup
     map.on('click', e => {
       const lat = e.latlng.lat.toFixed(5), lng = e.latlng.lng.toFixed(5);
