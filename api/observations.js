@@ -92,7 +92,7 @@ export default async function handler(req, res) {
     const requestedLimit = Number(q.limit || 500);
     const limit = Number.isInteger(requestedLimit) ? Math.min(requestedLimit, 500) : 500;
     const cacheSeconds = 15;
-    const maxViewportSpan = 20;
+    const maxViewportSpan = 60;
 
     if (
       !validCoordinate(minLat, -90, 90) ||
