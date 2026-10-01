@@ -1221,6 +1221,22 @@
       return core;
     }
 
+    function clearRouteState(clearOutput = false) {
+      routeLines.forEach(line => map.removeLayer(line));
+      routeLines = [];
+      markers.forEach(marker => map.removeLayer(marker));
+      markers = [];
+
+      document.getElementById('route-status-overlay')?.classList.add('hidden');
+      document.getElementById('stat-dist-val').textContent = '-- km';
+      document.getElementById('stat-time-val').textContent = '-- mins';
+      document.getElementById('stat-gap-val').textContent = 'N/A';
+
+      if (clearOutput) {
+        document.querySelectorAll('[id$="-route-out"]').forEach(el => { el.innerHTML = ''; });
+      }
+    }
+
     async function planRoute(p) {
       const from = document.getElementById(p + '-from').value.trim().toLowerCase();
       const to = document.getElementById(p + '-to').value.trim().toLowerCase();
@@ -1229,10 +1245,12 @@
       const btn = document.getElementById(p + '-go-btn');
       btn.disabled = true;
       btn.textContent = 'Finding locations...';
+      clearRouteState(true);
 
       const fc = CITIES[from] || await geocodePlace(from);
       const tc = CITIES[to] || await geocodePlace(to);
       if (!fc || !tc) {
+        clearRouteState();
         btn.disabled = false;
         btn.textContent = 'Calculate Route →';
         document.getElementById(p + '-route-out').innerHTML = `
