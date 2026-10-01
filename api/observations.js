@@ -90,7 +90,7 @@ export default async function handler(req, res) {
     const minLon = Number(q.minLon);
     const maxLat = Number(q.maxLat);
     const maxLon = Number(q.maxLon);
-    const requestedLimit = Number(q.limit || 500);
+    const requestedLimit = q.limit == null || q.limit === '' ? 500 : Number(q.limit);
     const limit = Number.isInteger(requestedLimit) ? Math.min(requestedLimit, 500) : 500;
     const cacheSeconds = 15;
     const maxViewportSpan = 60;
