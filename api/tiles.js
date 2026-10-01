@@ -39,6 +39,7 @@ export default async function handler(req, res) {
       res.setHeader('Content-Type', response.headers.get('content-type') || 'image/jpeg');
       res.setHeader('Cache-Control', 's-maxage=86400, stale-while-revalidate=3600');
       res.setHeader('X-Content-Type-Options', 'nosniff');
+      res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
       res.setHeader('X-Odd-One-Map', 'esri-world-street-map');
       return res.send(Buffer.from(buffer));
     } catch {}
