@@ -1221,6 +1221,13 @@
       return core;
     }
 
+    function setRouteLoadingState(loading, message = 'Calculate Route →') {
+      document.querySelectorAll('[id$="-go-btn"]').forEach(btn => {
+        btn.disabled = loading;
+        btn.textContent = loading ? 'Calculating…' : message;
+      });
+    }
+
     function clearRouteState(clearOutput = false) {
       routeLines.forEach(line => map.removeLayer(line));
       routeLines = [];
@@ -1243,16 +1250,15 @@
       if (!from || !to) return;
       
       const btn = document.getElementById(p + '-go-btn');
-      btn.disabled = true;
-      btn.textContent = 'Finding locations...';
+      setRouteLoadingState(true, 'Finding locations…');
       clearRouteState(true);
 
       const fc = CITIES[from] || await geocodePlace(from);
       const tc = CITIES[to] || await geocodePlace(to);
       if (!fc || !tc) {
         clearRouteState();
-        btn.disabled = false;
-        btn.textContent = 'Calculate Route →';
+        setRouteLoadingState(false);
+        document.getElementById(p + '-go-btn').textContent = 'Calculate Route →';
         document.getElementById(p + '-route-out').innerHTML = `
           <div class="text-rose-500 text-xs mt-3 p-3 bg-rose-500/10 border border-rose-500/20 rounded-xl">
             One or both locations could not be found. Try a city, district, PIN code or full place name in India.
@@ -1260,7 +1266,7 @@
         return;
       }
       
-      btn.textContent = 'Calculating Route...';
+      btn.textContent = 'Calculating Route…';
       
       routeLines.forEach(l => map.removeLayer(l)); routeLines = [];
       markers.forEach(m => map.removeLayer(m)); markers = [];
@@ -1309,7 +1315,7 @@
 
       const alerts = await fetchAlerts(from);
       const aiGuide = await getAIGuide(from, to, dist, time, alerts, pct);
-      btn.disabled = false; btn.textContent = 'Calculate Route →';
+      setRouteLoadingState(false);
 
       const html = `
         <!-- Floating-like Stat Boxes in Sidebar -->
