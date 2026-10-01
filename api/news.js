@@ -53,6 +53,7 @@ export default async function handler(req, res) {
       return title.split(' - ')[0].trim().substring(0, 120);
     }).filter(Boolean);
 
+    res.setHeader('X-Odd-One-News-Window', '7d');
     return res.status(200).json({ source: 'Google News RSS', window: '7d', count: alerts.length, alerts });
   } catch {
     return res.status(502).json({ error: 'Unable to fetch road alerts' });
