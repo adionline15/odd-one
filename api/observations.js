@@ -86,7 +86,8 @@ export default async function handler(req, res) {
     const minLon = Number(q.minLon);
     const maxLat = Number(q.maxLat);
     const maxLon = Number(q.maxLon);
-    const limit = Number(q.limit || 500);
+    const requestedLimit = Number(q.limit || 500);
+    const limit = Number.isInteger(requestedLimit) ? Math.min(requestedLimit, 500) : 500;
 
     if (
       !validCoordinate(minLat, -90, 90) ||
