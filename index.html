@@ -1083,6 +1083,7 @@
         lastObservationLoadAt = new Date();
         setObservationLoadMeta();
         setObservationLayerStatus(observations.length ? 'live' : 'empty');
+      document.querySelectorAll('.obs-layer-error').forEach(el => { el.textContent = ''; });
       } catch (error) {
         console.warn('[observations] Could not load road observations', error);
         clearObservationLayers();
