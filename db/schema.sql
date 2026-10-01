@@ -55,6 +55,10 @@ create index if not exists observations_location_gist
 create index if not exists observations_status_observed_at
   on public.observations (status, observed_at desc);
 
+create index if not exists observations_approved_location
+  on public.observations using gist (location)
+  where status = 'approved';
+
 create index if not exists observations_type_status
   on public.observations (observation_type, status);
 
