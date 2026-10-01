@@ -603,7 +603,11 @@
       <div class="border border-zinc-800/60 rounded-xl bg-zinc-900/20 overflow-hidden">
         <div class="px-4 py-3 border-b border-zinc-800/60 flex items-center justify-between">
           <div><p class="text-[9px] uppercase tracking-[0.18em] text-zinc-500 font-bold">Observation filters</p><p class="text-xs text-zinc-200 mt-1">Control the verified road layer</p></div>
-          <span class="font-mono-lux text-[8px] text-zinc-500"><span class="obs-visible-count">0</span> VISIBLE</span>
+          <div class="flex items-center gap-2">
+            <span class="obs-layer-dot w-1.5 h-1.5 rounded-full bg-zinc-600"></span>
+            <span class="obs-layer-status font-mono-lux text-[8px] text-zinc-500">LOADING</span>
+            <span class="font-mono-lux text-[8px] text-zinc-500"><span class="obs-visible-count">0</span> VISIBLE</span>
+          </div>
         </div>
         <div class="p-4 space-y-3">
           <div class="grid grid-cols-2 gap-2">
@@ -810,6 +814,23 @@
     let selectedObservationLayer = null;
 
 
+    function setObservationLayerStatus(state) {
+      const config = {
+        loading: { label: 'LOADING', dot: 'bg-amber-400', text: 'text-amber-400' },
+        live: { label: 'VERIFIED', dot: 'bg-emerald-400', text: 'text-emerald-400' },
+        empty: { label: 'NO DATA', dot: 'bg-zinc-600', text: 'text-zinc-500' },
+        error: { label: 'UNAVAILABLE', dot: 'bg-rose-400', text: 'text-rose-400' }
+      }[state] || { label: 'UNKNOWN', dot: 'bg-zinc-600', text: 'text-zinc-500' };
+
+      document.querySelectorAll('.obs-layer-status').forEach(el => {
+        el.textContent = config.label;
+        el.className = 'obs-layer-status font-mono-lux text-[8px] ' + config.text;
+      });
+      document.querySelectorAll('.obs-layer-dot').forEach(el => {
+        el.className = 'obs-layer-dot w-1.5 h-1.5 rounded-full ' + config.dot;
+      });
+    }
+
     function applyObservationFilters() {
       const typeValues = Array.from(document.querySelectorAll('.obs-filter-type')).map(el => el.value);
       const sourceValues = Array.from(document.querySelectorAll('.obs-filter-source')).map(el => el.value);
@@ -931,6 +952,7 @@
     }
 
     async function loadObservationsInView() {
+      setObservationLayerStatus('loading');
       const bounds = map.getBounds();
       const params = new URLSearchParams({
         minLat: bounds.getSouth().toFixed(6),
@@ -1009,9 +1031,15 @@
         refreshObservationSourceOptions();
         applyObservationFilters();
         renderTemporalChangeIntelligence(observations);
+        setObservationLayerStatus(observations.length ? 'live' : 'empty');
       } catch (error) {
         console.warn('[observations] Could not load road observations', error);
+        clearObservationLayers();
+        observationRecords = [];
+        refreshObservationSourceOptions();
+        applyObservationFilters();
         renderTemporalChangeIntelligence([]);
+        setObservationLayerStatus('error');
       }
     }
 
