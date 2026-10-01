@@ -45,6 +45,10 @@
 
 Client responses expose actionable safe errors without upstream credentials, database URLs, stack traces, or provider internals.
 
+## Payload limits
+
+Serverless endpoints should bound request and upstream response sizes before parsing or forwarding data.
+
 ## Secret boundary
 
 Privileged Supabase credentials and AI provider keys remain server-side. Browser code must use public, non-privileged endpoints.
