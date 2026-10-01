@@ -774,6 +774,7 @@
     let observationLayers = [];
     let observationLoadTimer = null;
     let observationRequestId = 0;
+    let observationAbortController = null;
 
     function clearObservationLayers() {
       observationLayers.forEach(layer => map.removeLayer(layer));
@@ -999,6 +1000,8 @@
 
     async function loadObservationsInView() {
       const requestId = ++observationRequestId;
+      observationAbortController?.abort();
+      observationAbortController = new AbortController();
       setObservationLayerStatus('loading');
       const bounds = map.getBounds();
       observationViewportKey = [
@@ -1018,7 +1021,8 @@
 
       try {
         const response = await fetch('/api/observations?' + params.toString(), {
-          headers: { 'Accept': 'application/json' }
+          headers: { 'Accept': 'application/json' },
+          signal: observationAbortController.signal
         });
         if (!response.ok) {
           let detail = 'Observation API request failed';
