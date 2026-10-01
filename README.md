@@ -204,3 +204,5 @@ All rights reserved unless a separate license is added to this repository.
 - A service error is distinct from an empty verified dataset.
 
 - Only reviewed approved observations become public.
+
+- Temporal change fields remain optional until verified temporal data is ingested.
