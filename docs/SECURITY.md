@@ -72,3 +72,5 @@ Privileged Supabase credentials and AI provider keys remain server-side. Browser
 - Retry controls are disabled while a recovery request is active.
 
 - Superseded viewport requests are cancelled where supported.
+
+- Upstream response bodies are bounded before JSON parsing.
