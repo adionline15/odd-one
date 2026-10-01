@@ -33,4 +33,5 @@
 - Add audit logs for moderation actions.
 - Add backup and restore tests.
 - Add monitoring and alerting.
-- Review third-party API terms and attribution requirements.
+- Review third-party API terms and attribution requirements before production scale.
+- Keep provider attribution visible wherever required by the selected map or geospatial provider.
