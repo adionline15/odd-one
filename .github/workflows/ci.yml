@@ -28,6 +28,7 @@ jobs:
           node --check api/route-guide.js
           node --check api/tiles.js
           node --check api/observations.js
+          node --check api/observation-summary.js
           python3 - <<'PY'
           import re
           import subprocess
