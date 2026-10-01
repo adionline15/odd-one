@@ -262,6 +262,43 @@ grant execute on function public.approved_observations_in_view(
   integer
 ) to service_role;
 
+create or replace function public.approved_observation_summary(
+  p_min_lat double precision,
+  p_min_lon double precision,
+  p_max_lat double precision,
+  p_max_lon double precision
+)
+returns table (
+  observation_type public.observation_type,
+  source public.observation_source,
+  observation_count bigint,
+  average_confidence numeric,
+  latest_observed_at timestamptz
+)
+language sql
+security definer
+set search_path = public, gis
+as $
+  select
+    o.observation_type,
+    o.source,
+    count(*)::bigint,
+    round(avg(o.confidence), 3),
+    max(o.observed_at)
+  from public.observations o
+  where o.status = 'approved'
+    and o.location operator(gis.&&)
+      gis.st_setsrid(
+        gis.st_makebox2d(
+          gis.st_point(p_min_lon, p_min_lat),
+          gis.st_point(p_max_lon, p_max_lat)
+        ),
+        4326
+      )::gis.geography
+  group by o.observation_type, o.source
+  order by count(*) desc;
+$;
+
 create or replace function public.set_updated_at()
 returns trigger
 language plpgsql
