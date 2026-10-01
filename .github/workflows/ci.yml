@@ -99,6 +99,9 @@ jobs:
       - name: Check architecture documentation
         run: grep -q 'Viewport-first loading' docs/ARCHITECTURE.md
 
+      - name: Check data trust documentation
+        run: grep -q 'Data trust principles' README.md
+
       - name: Check patch formatting
         run: git diff --check
 
