@@ -15,6 +15,7 @@
 - Dynamic alert/search text is HTML-escaped before insertion into the page.
 - Repository secrets and local environment files are ignored by Git.
 - Observation database credentials are server-side only.
+- Privileged observation RPC functions are executable only by the server-side service role.
 - Observation submission is disabled by default.
 - Observation records use a pending/approved/rejected lifecycle.
 - API responses set defensive content-type, framing, and referrer headers where applicable.
