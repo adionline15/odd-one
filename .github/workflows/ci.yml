@@ -90,6 +90,9 @@ jobs:
       - name: Check tile endpoint
         run: test -f api/tiles.js
 
+      - name: Check satellite endpoint
+        run: test -f api/satellite.js
+
       - name: Check patch formatting
         run: git diff --check
 
