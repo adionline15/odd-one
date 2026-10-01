@@ -119,3 +119,4 @@ Viewport requests carry client-side request identity so an older response cannot
 The map requests intelligence for the active geographic viewport rather than attempting an unbounded India-wide observation payload.
 
 - Summary groups describe returned approved observations; a group count is not a claim about total road coverage.
+- Observation source identifies the submitted signal origin and should not be interpreted as independent verification.
