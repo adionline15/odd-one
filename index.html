@@ -1038,6 +1038,7 @@
           throw new Error('Unsupported observation API version');
         }
         const returnedCount = Number.isFinite(Number(payload.count)) ? Number(payload.count) : (Array.isArray(payload.observations) ? payload.observations.length : 0);
+        document.querySelectorAll('.obs-view-note').forEach(el => { el.classList.toggle('hidden', payload.truncated === true); });
         clearObservationLayers();
         observationRecords = [];
 
