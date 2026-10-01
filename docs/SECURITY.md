@@ -61,3 +61,4 @@ Privileged Supabase credentials and AI provider keys remain server-side. Browser
 - Review notes are bounded to prevent oversized moderation payloads.
 - Read APIs use server-side privileged access while public clients never receive database keys.
 - Observation submission remains disabled by default until end-user identity binding is complete.
+- External requests should fail within bounded time instead of holding serverless execution indefinitely.
