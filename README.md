@@ -72,6 +72,8 @@ Observation
 
 ### Map and search behavior
 
+When OSRM is unavailable, the client uses an explicitly labelled approximate fallback; it must not be presented as verified road intelligence.
+
 - The map renders the current road-intelligence layer from approved observations.
 - Local city search is handled in the browser for known Indian locations.
 - External Nominatim search is only triggered by an explicit user search action.
