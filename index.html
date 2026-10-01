@@ -858,7 +858,14 @@
     }
 
     document.querySelectorAll('.obs-layer-retry').forEach(button => {
-      button.addEventListener('click', () => loadObservationsInView());
+      button.addEventListener('click', () => {
+        button.disabled = true;
+        button.textContent = 'RETRYING…';
+        loadObservationsInView().finally(() => {
+          button.disabled = false;
+          button.textContent = 'RETRY';
+        });
+      });
     });
 
     function applyObservationFilters() {
