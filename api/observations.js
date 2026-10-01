@@ -173,7 +173,7 @@ export default async function handler(req, res) {
     const body = req.body && typeof req.body === 'object' ? req.body : {};
     const lat = Number(body.lat);
     const lon = Number(body.lon);
-    const observationType = typeof body.observation_type === 'string' ? body.observation_type : '';
+    const observationType = typeof body.observation_type === 'string' ? body.observation_type.trim().toLowerCase() : '';
     const source = typeof body.source === 'string' ? body.source.trim().toLowerCase() : 'user';
     const observedAt = typeof body.observed_at === 'string' ? body.observed_at : '';
     const confidence = Number(body.confidence);
