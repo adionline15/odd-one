@@ -1372,7 +1372,14 @@
       const alertResult = await fetchAlerts(from);
       const alerts = alertResult.alerts;
       const aiGuide = await getAIGuide(from, to, dist, time, alerts, pct);
-      setRouteLoadingState(false);
+      setRouteLoadingState(false, 'Calculate Route →', p);
+
+      const alertNotice = alertResult.error
+        ? `<div class="bg-zinc-900/60 border border-zinc-800 rounded-xl p-3 mt-3">
+             <p class="text-[9px] uppercase tracking-wider text-zinc-400 font-bold">Local alert feed unavailable</p>
+             <p class="text-[10px] text-zinc-600 mt-1">Route calculation completed, but the alert source could not be reached.</p>
+           </div>`
+        : '';
 
       const html = `
         ${routeSource === 'APPROX' ? `
@@ -1380,6 +1387,8 @@
           <p class="text-[9px] uppercase tracking-wider text-amber-400 font-bold">Approximate route</p>
           <p class="text-[10px] text-zinc-500 mt-1">Routing service was unavailable, so distance and duration are estimates.</p>
         </div>` : ''}
+
+        ${alertNotice}
 
         <!-- Floating-like Stat Boxes in Sidebar -->
         <div class="grid grid-cols-3 gap-2 mt-4">
