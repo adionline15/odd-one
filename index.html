@@ -1002,6 +1002,9 @@
         });
         if (!response.ok) throw new Error('Observation API request failed');
         const payload = await response.json();
+        if (payload.api_version !== 'observations-v6') {
+          throw new Error('Unsupported observation API version');
+        }
         const returnedCount = Number.isFinite(Number(payload.count)) ? Number(payload.count) : (Array.isArray(payload.observations) ? payload.observations.length : 0);
         clearObservationLayers();
         observationRecords = [];
