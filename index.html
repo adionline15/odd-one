@@ -985,18 +985,23 @@
       const to = document.getElementById(p + '-to').value.trim().toLowerCase();
       if (!from || !to) return;
       
-      const fc = CITIES[from] || findClosest(from);
-      const tc = CITIES[to] || findClosest(to);
+      const btn = document.getElementById(p + '-go-btn');
+      btn.disabled = true;
+      btn.textContent = 'Finding locations...';
+
+      const fc = CITIES[from] || await geocodePlace(from);
+      const tc = CITIES[to] || await geocodePlace(to);
       if (!fc || !tc) {
+        btn.disabled = false;
+        btn.textContent = 'Calculate Route →';
         document.getElementById(p + '-route-out').innerHTML = `
           <div class="text-rose-500 text-xs mt-3 p-3 bg-rose-500/10 border border-rose-500/20 rounded-xl">
-            Location not recognized. Try typing: Dehradun, Delhi, Mumbai, Lucknow...
+            One or both locations could not be found. Try a city, district, PIN code or full place name in India.
           </div>`;
         return;
       }
       
-      const btn = document.getElementById(p + '-go-btn');
-      btn.disabled = true; btn.textContent = 'Calculating Route...';
+      btn.textContent = 'Calculating Route...';
       
       routeLines.forEach(l => map.removeLayer(l)); routeLines = [];
       markers.forEach(m => map.removeLayer(m)); markers = [];
@@ -1078,6 +1083,24 @@
         </div>`;
         
       document.getElementById(p + '-route-out').innerHTML = html;
+    }
+
+    async function geocodePlace(query) {
+      try {
+        const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query + ' India')}&format=jsonv2&limit=1&countrycodes=in&addressdetails=1`;
+        const response = await fetch(url, {
+          headers: { 'Accept-Language': 'en' }
+        });
+        if (!response.ok) return null;
+        const results = await response.json();
+        if (!Array.isArray(results) || !results.length) return null;
+        const lat = Number(results[0].lat);
+        const lon = Number(results[0].lon);
+        return Number.isFinite(lat) && Number.isFinite(lon) ? [lat, lon] : null;
+      } catch (error) {
+        console.warn('[router] Geocoding failed', error);
+        return null;
+      }
     }
 
     function findClosest(q) {
