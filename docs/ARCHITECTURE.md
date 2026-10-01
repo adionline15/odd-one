@@ -129,3 +129,5 @@ The map requests intelligence for the active geographic viewport rather than att
 - Short caches reduce repeated reads but never rewrite source timestamps.
 - A provider failure should produce an unavailable state rather than fabricated replacement data.
 - Observation reads return `observations-v6`.
+
+- Observation summaries return `observation-summary-v1`.
