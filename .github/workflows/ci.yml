@@ -96,6 +96,9 @@ jobs:
       - name: Check security documentation
         run: grep -q 'Secret boundary' docs/SECURITY.md
 
+      - name: Check architecture documentation
+        run: grep -q 'Viewport-first loading' docs/ARCHITECTURE.md
+
       - name: Check patch formatting
         run: git diff --check
 
