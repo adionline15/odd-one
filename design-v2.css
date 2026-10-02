@@ -622,3 +622,6 @@ body>footer{opacity:.9;}
 
 /* hero metadata */
 #intelligence-hero .font-mono-lux{letter-spacing:.16em;}
+
+/* hero chips radius */
+#intelligence-hero .mt-4 span{border-radius:8px!important;}
