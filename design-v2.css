@@ -343,3 +343,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* search focus */
 #s-input:focus-visible{box-shadow:0 0 0 3px rgba(34,211,238,.08)!important;}
+
+/* search suggestion */
+#sugg{border-color:rgba(255,255,255,.1)!important;}
