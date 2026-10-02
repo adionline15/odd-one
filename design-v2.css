@@ -5951,3 +5951,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 887 */
 #sidebar input{font-size:.86rem;}
+
+
+/* 888 */
+#sidebar input{line-height:1.35;}
