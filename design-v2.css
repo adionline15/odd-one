@@ -1448,3 +1448,5 @@ html.is-desktop footer{font-size:9px;}
  nav{z-index:1000;}
 
  #intelligence-hero{z-index:20;}
+
+ #map-intelligence-hud{z-index:500;}
