@@ -201,4 +201,5 @@
   ready(() => document.getElementById('sidebar')?.setAttribute('data-surface-version','v2'));
   ready(() => document.getElementById('sheet')?.setAttribute('data-surface-version','v2'));
   ready(() => document.getElementById('map-layer-controls')?.setAttribute('data-surface-version','v2'));
+  ready(() => document.getElementById('route-status-overlay')?.setAttribute('data-surface-version','v2'));
 })();
