@@ -5203,3 +5203,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 700 */
 .leaflet-popup-content a{text-decoration-thickness:1px;text-underline-offset:3px;}
+
+
+/* 701 */
+.route-endpoint-label{box-shadow:0 8px 18px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.04);}
