@@ -184,3 +184,6 @@ body>footer{color:#52525b!important;}
 
 /* alert title */
 #d-alerts-box>div p,#m-alerts-box>div p{line-height:1.5;}
+
+/* route fields */
+#sidebar input{font-size:12px!important;}
