@@ -6359,3 +6359,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 643 */
 #sidebar label{line-height:1.25;letter-spacing:.01em;}
+
+
+/* 644 */
+#sidebar .text-gray-400,#sidebar .text-gray-500{color:rgba(255,255,255,.48);}
