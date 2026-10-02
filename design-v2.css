@@ -1532,3 +1532,5 @@ html.is-desktop footer{font-size:9px;}
 @media(max-width:640px){.leaflet-control-layers{font-size:9px;}}
 
 @media(max-width:640px){.leaflet-control-attribution{font-size:7px;}}
+
+@media(max-width:640px){.leaflet-tooltip{font-size:9px;}}
