@@ -5607,3 +5607,7 @@ a[href]{cursor:pointer;}
 
 /* 801 */
 #generated-guide{padding:14px 15px;}
+
+
+/* 802 */
+#generated-guide h3,#generated-guide h4{color:#f1f5f9;letter-spacing:-.01em;}
