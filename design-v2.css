@@ -5211,3 +5211,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 702 */
 .route-endpoint-label{border-radius:8px;}
+
+
+/* 703 */
+.route-endpoint-label{padding:4px 7px;}
