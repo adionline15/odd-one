@@ -4187,3 +4187,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 485 */
 #observation-status-strip{backdrop-filter:blur(8px)}
+
+
+/* 486 */
+#observation-status-strip{border:1px solid rgba(255,255,255,.1)}
