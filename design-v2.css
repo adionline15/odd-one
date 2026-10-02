@@ -454,3 +454,6 @@ nav[aria-label="Primary navigation"] .font-mono-lux{font-size:7px!important;}
 
 /* search font */
 #s-input{font-family:'Plus Jakarta Sans',sans-serif!important;}
+
+/* search tracking */
+#s-input{letter-spacing:.01em;}
