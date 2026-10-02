@@ -424,3 +424,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* alert label */
 #d-alerts-box .text-rose-500,#m-alerts-box .text-rose-500{color:#fb7185!important;}
+
+/* provenance */
+.provenanceRow{color:#71717a;}
