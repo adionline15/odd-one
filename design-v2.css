@@ -2919,3 +2919,8 @@ nav[aria-label="Primary navigation"]{
 /* 158 — improve suggestion active state */
 .sugg-item:active{transform:translateX(1px) scale(.995);}
 
+
+
+/* 159 — refine card active feedback */
+.intel-card:active{transform:translateY(0) scale(.998);}
+
