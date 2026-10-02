@@ -3609,3 +3609,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 328 */
 @media (min-width:1101px){.intel-card h3,.intel-card h4{letter-spacing:-.015em}}
+
+
+/* 329 */
+@media (min-width:1101px){#desktop-stats-container{border-radius:14px}}
