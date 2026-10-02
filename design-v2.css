@@ -5367,3 +5367,7 @@ nav[aria-label="Primary navigation"] .brand{color:#f5f5f5;}
 
 /* 741 */
 @media(max-width:640px){#obs-status-state{font-size:.78rem;}}
+
+
+/* 742 */
+@media(max-width:640px){#route-status-overlay{max-width:calc(100vw - 24px);}}
