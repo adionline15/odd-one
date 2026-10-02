@@ -3361,3 +3361,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 266 */
 #sidebar input:focus{background:rgba(255,255,255,.04)}
+
+
+/* 267 */
+#sidebar input:focus{border-color:rgba(34,211,238,.42)}
