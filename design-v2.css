@@ -1126,3 +1126,5 @@ body>footer{background:#050505!important;border-color:rgba(255,255,255,.06)!impo
 .leaflet-control-attribution{border-radius:6px 0 0 0;}
 
 .leaflet-control-attribution{padding:3px 6px!important;}
+
+@media(max-width:640px){#map-layer-controls{bottom:58px!important;}}
