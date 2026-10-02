@@ -4609,3 +4609,7 @@ nav[aria-label="Primary navigation"] .font-mono-lux{opacity:.78;}
 
 /* 556 */
 .route-endpoint-label{background:rgba(7,7,9,.92)!important;border-color:rgba(255,255,255,.14)!important;box-shadow:0 16px 34px rgba(0,0,0,.56),inset 0 1px 0 rgba(255,255,255,.035)!important;}
+
+
+/* 557 */
+.road-intel-selected{filter:drop-shadow(0 0 8px rgba(255,255,255,.55)) drop-shadow(0 0 18px rgba(34,211,238,.2))!important;}
