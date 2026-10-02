@@ -2965,3 +2965,7 @@ nav[aria-label="Primary navigation"]{
 
 /* 167 */
 .route-endpoint-label{box-shadow:0 6px 18px rgba(0,0,0,.28)}
+
+
+/* 168 */
+.road-intel-tooltip{max-width:min(320px,calc(100vw - 32px));line-height:1.45}
