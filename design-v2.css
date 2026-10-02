@@ -6083,3 +6083,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 920 */
 @media(min-width:641px) and (max-width:1100px){.leaflet-popup-content-wrapper{max-width:340px;}}
+
+
+/* 921 */
+@media(min-width:641px) and (max-width:1100px){.route-endpoint-label{font-size:.68rem;}}
