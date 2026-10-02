@@ -3173,3 +3173,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 219 */
 #hero-data-boundary{margin-top:4px}
+
+
+/* 220 */
+#intelligence-hero strong,#intelligence-hero b{color:var(--oo-v2-text)}
