@@ -4657,3 +4657,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 568 */
 .provenanceRow{font-size:10px;letter-spacing:.025em;}
+
+
+/* 569 */
+#d-alerts-box .text-center,#m-alerts-box .text-center{background:rgba(255,255,255,.018);border:1px dashed rgba(255,255,255,.08);padding:18px 14px;}
