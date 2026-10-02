@@ -1650,3 +1650,5 @@ label{user-select:none;}
 img{max-width:100%;}
 
 svg{max-width:100%;}
+
+*,*::before,*::after{box-sizing:border-box;}
