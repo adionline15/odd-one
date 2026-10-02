@@ -1911,3 +1911,10 @@ nav[aria-label="Primary navigation"]{
 #sidebar input:focus{
   box-shadow:0 0 0 1px rgba(34,211,238,.28),0 8px 22px rgba(0,0,0,.18);
 }
+
+
+/* 027 — refine alert panel surface hierarchy */
+#d-alerts-box,#m-alerts-box{
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.03),0 12px 28px rgba(0,0,0,.12);
+  background-image:linear-gradient(180deg,rgba(255,255,255,.018),transparent 45%);
+}
