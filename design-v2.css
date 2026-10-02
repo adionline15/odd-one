@@ -3973,3 +3973,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 419 */
 @media (max-width:640px){#hero-data-boundary{margin-top:6px}}
+
+
+/* 420 */
+@media (max-width:640px){#hero-data-boundary{letter-spacing:.015em}}
