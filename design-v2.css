@@ -5187,3 +5187,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 696 */
 .leaflet-control-attribution a{color:rgba(255,255,255,.55)!important;}
+
+
+/* 697 */
+.leaflet-popup-content-wrapper{border:1px solid rgba(255,255,255,.07)!important;}
