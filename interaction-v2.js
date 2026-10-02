@@ -167,4 +167,5 @@
   ready(() => { const source=document.getElementById('route-status-source'); if(source)new MutationObserver(()=>source.dataset.provider=source.textContent.trim()).observe(source,{childList:true,characterData:true,subtree:true}); });
   ready(() => { const o=document.getElementById('route-status-overlay'); if(o)o.setAttribute('data-trust-model','provider-or-approximate'); });
   ready(() => { const o=document.getElementById('route-status-overlay'), s=document.getElementById('route-status-source'); if(!o||!s)return; const sync=()=>o.classList.toggle('provider-backed',!o.classList.contains('route-approx')); new MutationObserver(sync).observe(o,{attributes:true,attributeFilter:['class']}); sync(); });
+  ready(() => { const s=document.getElementById('route-status-source'); if(!s)return; s.dataset.sourceLabel=s.textContent.trim(); new MutationObserver(()=>s.dataset.sourceLabel=s.textContent.trim()).observe(s,{childList:true,characterData:true,subtree:true}); });
 })();
