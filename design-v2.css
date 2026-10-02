@@ -5771,3 +5771,7 @@ a[href]{cursor:pointer;}
 
 /* 842 */
 .alert-card{transition:transform .16s ease,border-color .16s ease,background-color .16s ease;}
+
+
+/* 843 */
+.alert-card:active{transform:translateY(0);}
