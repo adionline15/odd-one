@@ -4351,3 +4351,7 @@ nav[aria-label="Primary navigation"]{text-rendering:optimizeLegibility}
 
 /* 496 */
 nav[aria-label="Primary navigation"]{-webkit-font-smoothing:antialiased}
+
+
+/* 497 */
+#s-input{-webkit-font-smoothing:antialiased}
