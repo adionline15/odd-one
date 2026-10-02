@@ -262,3 +262,6 @@ body>footer{color:#52525b!important;}
 
 /* mobile stats */
 @media(max-width:640px){#desktop-stats-container>div{border-radius:13px!important;}}
+
+/* mobile stats opacity */
+@media(max-width:640px){#desktop-stats-container>div{background:rgba(5,5,5,.9)!important;}}
