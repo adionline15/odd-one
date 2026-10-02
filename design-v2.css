@@ -3965,3 +3965,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 417 */
 @media (max-width:640px){#observation-status-strip{box-shadow:0 7px 20px rgba(0,0,0,.14)}}
+
+
+/* 418 */
+@media (max-width:640px){#intelligence-hero .hero-accent{opacity:.9}}
