@@ -313,3 +313,6 @@ body>footer{color:#52525b!important;}
 
 /* desktop route overlay */
 @media(min-width:1101px){#route-status-overlay{right:18px!important;top:18px!important;}}
+
+/* desktop stats spacing */
+@media(min-width:1101px){#desktop-stats-container>div{gap:32px!important;}}
