@@ -3353,3 +3353,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 264 */
 .sugg-item:active{box-shadow:0 6px 18px rgba(0,0,0,.18)}
+
+
+/* 265 */
+.sugg-item:active{transform:scale(.995)}
