@@ -187,4 +187,5 @@
   ready(() => document.querySelectorAll('#d-from,#d-to,#m-from,#m-to').forEach(i=>i.addEventListener('input',()=>i.dataset.valid=i.value.trim()?'true':'false')));
   ready(() => document.querySelectorAll('#d-from,#d-to,#m-from,#m-to').forEach(i=>i.setAttribute('aria-invalid','false')));
   ready(() => document.querySelectorAll('#d-from,#d-to,#m-from,#m-to').forEach(i=>i.addEventListener('input',()=>i.setAttribute('aria-invalid','false'))));
+  ready(() => document.querySelectorAll('#d-from,#d-to,#m-from,#m-to').forEach(i=>i.setAttribute('aria-required','true')));
 })();
