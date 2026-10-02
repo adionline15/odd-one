@@ -4999,3 +4999,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 649 */
 #d-alerts-box .alert-card h4,#m-alerts-box .alert-card h4{font-weight:650;letter-spacing:-.005em;}
+
+
+/* 650 */
+#d-alerts-box .alert-card small,#m-alerts-box .alert-card small{color:rgba(255,255,255,.48);font-variant-numeric:tabular-nums;}
