@@ -4913,3 +4913,6 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 627 */
 #sidebar{box-shadow:-34px 0 90px rgba(0,0,0,.32),inset 1px 0 0 rgba(255,255,255,.025),inset 0 1px 0 rgba(255,255,255,.018)!important;}
+
+/* 628 */
+#sidebar .flex.border-b button{transition:color .18s ease,background-color .18s ease;}
