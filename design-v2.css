@@ -853,3 +853,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* sidebar handle */
 #toggle-btn{border-color:rgba(255,255,255,.09)!important;}
+
+/* sidebar handle hover */
+#toggle-btn:hover{background:#111114!important;color:#fff!important;}
