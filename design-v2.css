@@ -1062,3 +1062,5 @@ body>footer{background:#050505!important;border-color:rgba(255,255,255,.06)!impo
 #map-intelligence-hud .intel-card{backdrop-filter:blur(16px)!important;}
 
 #sidebar>.flex.border-b{padding-left:18px!important;padding-right:18px!important;}
+
+#sidebar .flex.border-b{gap:2px;}
