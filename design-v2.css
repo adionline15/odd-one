@@ -1706,3 +1706,7 @@ nav[aria-label="Primary navigation"] h1{font-weight:600!important;}
 
 /* refine hero chip spacing */
 #intelligence-hero .mt-4{margin-top:15px!important;}
+
+
+/* polish observation strip spacing */
+#observation-status-strip .intel-card{padding-left:15px!important;padding-right:15px!important;}
