@@ -301,3 +301,6 @@ body>footer{color:#52525b!important;}
 
 /* desktop sidebar */
 @media(min-width:1101px){#sidebar{width:348px!important;}}
+
+/* desktop sidebar padding */
+@media(min-width:1101px){#sidebar>.flex-1.overflow-y-auto{padding:20px!important;}}
