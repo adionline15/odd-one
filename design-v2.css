@@ -166,3 +166,6 @@ body>footer{color:#52525b!important;}
 
 /* sidebar shadow */
 #sidebar{box-shadow:-28px 0 80px rgba(0,0,0,.28)!important;}
+
+/* sidebar content */
+#sidebar>.flex-1.overflow-y-auto{padding-left:18px!important;padding-right:18px!important;}
