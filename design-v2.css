@@ -4697,3 +4697,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 577 */
 .route-endpoint-label{padding:5px 8px!important;line-height:1.15;}
+
+
+/* 578 */
+.route-endpoint-label{text-transform:uppercase;letter-spacing:.15em!important;font-weight:650;}
