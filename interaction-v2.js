@@ -97,4 +97,8 @@
     b.setAttribute('role','button'); b.setAttribute('tabindex','0'); b.setAttribute('aria-label','Toggle intelligence sidebar');
     b.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleSidebar();}});
   });
+  ready(() => {
+    const sync=()=>{ const active=document.querySelector('.tab-pane.on')?.id||''; const name=active.includes('route')?'Routing':active.includes('data')?'Data':'Alerts'; document.title='Odd-One.in — '+name+' Intelligence'; };
+    document.querySelectorAll('[data-nav-tab]').forEach(b=>b.addEventListener('click',()=>setTimeout(sync,0))); sync();
+  });
 })();
