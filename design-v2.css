@@ -259,3 +259,6 @@ body>footer{color:#52525b!important;}
 
 /* mobile route status width */
 @media(max-width:640px){#route-status-overlay>div{min-width:190px!important;}}
+
+/* mobile stats */
+@media(max-width:640px){#desktop-stats-container>div{border-radius:13px!important;}}
