@@ -1662,3 +1662,5 @@ body{width:100%;}
 input,textarea{user-select:text;}
 
 button{user-select:none;}
+
+#sidebar,#sheet,#intelligence-hero,#map-intelligence-hud{isolation:isolate;}
