@@ -748,3 +748,6 @@ nav[aria-label="Primary navigation"]{background:rgba(5,5,5,.98)!important;}
 
 /* search token */
 #sugg{background:rgba(9,9,11,.98)!important;}
+
+/* accent token */
+#hero-data-boundary>span:first-child{background:var(--oo-v2-cyan)!important;}
