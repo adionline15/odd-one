@@ -400,3 +400,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* provider badge */
 #route-status-overlay:not(.route-approx) #route-status-source{color:#67e8f9!important;}
+
+/* route path */
+#route-status-path{letter-spacing:.01em;}
