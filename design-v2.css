@@ -2847,3 +2847,9 @@ nav[aria-label="Primary navigation"]{
 #sidebar label{
   letter-spacing:.008em;
 }
+
+
+/* 146 — improve sidebar label hierarchy */
+#sidebar label{
+  color:rgba(255,255,255,.68);
+}
