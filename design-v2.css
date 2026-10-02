@@ -403,3 +403,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* route path */
 #route-status-path{letter-spacing:.01em;}
+
+/* route metrics */
+#route-status-distance,#route-status-time{font-variant-numeric:tabular-nums;}
