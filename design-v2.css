@@ -577,3 +577,6 @@ body>footer{opacity:.9;}
 
 /* route result padding */
 [id$="-route-out"] .grid>div{padding:12px!important;}
+
+/* route result labels */
+[id$="-route-out"] .grid p:last-child{letter-spacing:.12em!important;}
