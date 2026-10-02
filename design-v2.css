@@ -5463,3 +5463,7 @@ nav[aria-label="Primary navigation"] .brand{color:#f5f5f5;}
 
 /* 765 */
 @media(min-width:1101px){.leaflet-control-zoom{margin-right:12px!important;margin-top:12px!important;}}
+
+
+/* 766 */
+@media(min-width:1101px){.leaflet-control-attribution{margin-right:8px!important;margin-bottom:8px!important;}}
