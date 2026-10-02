@@ -82,4 +82,8 @@
     const sync=()=>{ const s=state.textContent.trim().toLowerCase(); strip.dataset.state=s.includes('error')?'error':s.includes('live')?'live':s.includes('await')?'awaiting':s.includes('empty')?'empty':s.includes('unavailable')?'unavailable':'loading'; };
     new MutationObserver(sync).observe(state,{childList:true,characterData:true,subtree:true}); sync();
   });
+  ready(() => {
+    const footer=document.querySelector('body>footer'); if(!footer) return;
+    footer.innerHTML=footer.innerHTML.replace(/©\s*\d{4}/,'© '+new Date().getFullYear());
+  });
 })();
