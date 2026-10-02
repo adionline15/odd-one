@@ -5007,3 +5007,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 651 */
 #d-alerts-box .alert-card+.alert-card,#m-alerts-box .alert-card+.alert-card{border-top-color:rgba(255,255,255,.055);}
+
+
+/* 652 */
+#d-alerts-box .alert-card:hover,#m-alerts-box .alert-card:hover{border-color:rgba(255,255,255,.12);}
