@@ -2853,3 +2853,9 @@ nav[aria-label="Primary navigation"]{
 #sidebar label{
   color:rgba(255,255,255,.68);
 }
+
+
+/* 147 — refine alert heading tracking */
+#d-alerts-box h3,#m-alerts-box h3{
+  letter-spacing:-.012em;
+}
