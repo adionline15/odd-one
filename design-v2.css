@@ -3817,3 +3817,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 380 */
 @media (min-width:641px) and (max-width:1100px){.intel-card{padding:17px}}
+
+
+/* 381 */
+@media (max-width:640px){nav[aria-label="Primary navigation"] a{opacity:.92}}
