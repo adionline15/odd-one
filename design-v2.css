@@ -6099,3 +6099,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 924 */
 @media(min-width:641px) and (max-width:1100px){#map-command-deck{gap:6px;}}
+
+
+/* 925 */
+@media(min-width:1101px){.map-compass span{color:rgba(245,245,245,.72);}}
