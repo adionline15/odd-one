@@ -207,4 +207,5 @@
   ready(() => { const m=getMap(); if(!m)return; const z=document.getElementById('map-hud-zoom'); if(z)z.textContent='Z'+m.getZoom(); });
   ready(() => { const m=getMap(); if(!m)return; const s=document.getElementById('map-hud-scope'); if(s){const c=m.getCenter();s.dataset.center=c.lat.toFixed(2)+','+c.lng.toFixed(2);}});
   ready(() => { const m=document.getElementById('map'); if(m)m.title='Interactive road intelligence map — search, route, or change layers.'; });
+  ready(() => document.getElementById('sheet')?.addEventListener('transitionend',()=>getMap()?.invalidateSize?.({pan:false})));
 })();
