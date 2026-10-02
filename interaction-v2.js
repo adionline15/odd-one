@@ -138,4 +138,5 @@
   ready(() => document.getElementById('obs-status-count')?.setAttribute('aria-label','Approved observation count')); 
   ready(() => { const el=document.getElementById('obs-status-count'); if(!el)return; new MutationObserver(()=>{el.dataset.numeric=/^\d/.test(el.textContent.trim())?'true':'false';}).observe(el,{childList:true,characterData:true,subtree:true}); });
   ready(() => { const box=document.getElementById('stats-content'); if(!box)return; new MutationObserver(()=>box.dataset.ready=box.textContent.trim()?'true':'false').observe(box,{childList:true,subtree:true}); });
+  ready(() => document.querySelectorAll('[data-nav-tab="route"]').forEach(b=>b.addEventListener('click',()=>setTimeout(()=>document.getElementById(window.innerWidth<=640?'m-from':'d-from')?.focus(),120))));
 })();
