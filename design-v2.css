@@ -6407,3 +6407,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 986 */
 #sidebar button:disabled{opacity:.48;cursor:not-allowed;transform:none!important;filter:none;}
+
+
+/* 987 */
+#route-status-overlay{display:grid;gap:8px;}
