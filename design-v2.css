@@ -3629,3 +3629,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 333 */
 @media (min-width:1101px){#desktop-stats-container [data-value]{font-variant-numeric:tabular-nums;letter-spacing:-.02em}}
+
+
+/* 334 */
+@media (min-width:1101px){#desktop-stats-container small{letter-spacing:.03em}}
