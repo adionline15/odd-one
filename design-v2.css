@@ -4189,3 +4189,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 473 */
 .road-intel-tooltip{font-size:.8rem}
+
+
+/* 474 */
+.road-intel-tooltip{letter-spacing:.002em}
