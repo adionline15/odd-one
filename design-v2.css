@@ -5735,3 +5735,7 @@ a[href]{cursor:pointer;}
 
 /* 833 */
 #d-go-btn:hover,#m-go-btn:hover{transform:translateY(-1px);}
+
+
+/* 834 */
+#d-go-btn:active,#m-go-btn:active{transform:translateY(0) scale(.985);}
