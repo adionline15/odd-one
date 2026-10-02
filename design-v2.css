@@ -1420,3 +1420,5 @@ html.is-mobile #search-wrap{width:calc(100vw - 24px)!important;}
 html.is-tablet #search-wrap{width:min(420px,calc(100vw - 32px))!important;}
 
 html.is-desktop #search-wrap{width:420px!important;}
+
+html.is-mobile footer{font-size:8px;}
