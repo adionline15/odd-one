@@ -5867,3 +5867,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{padding-inline:9px;}
 
 /* 866 */
 nav[aria-label="Primary navigation"] .brand{display:flex;align-items:center;gap:8px;}
+
+
+/* 867 */
+@media(min-width:1101px){nav[aria-label="Primary navigation"] .brand{font-size:1.02rem;}}
