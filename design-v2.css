@@ -2997,3 +2997,7 @@ nav[aria-label="Primary navigation"]{
 
 /* 175 */
 #map-layer-controls button:focus-visible{outline:2px solid var(--oo-v2-accent);outline-offset:2px}
+
+
+/* 176 */
+#map-intelligence-hud :focus-visible{outline:2px solid var(--oo-v2-accent);outline-offset:2px}
