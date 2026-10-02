@@ -4753,3 +4753,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 591 */
 @media(min-width:1101px){#map-layer-controls{padding:6px!important;gap:6px!important;}}
+
+
+/* 592 */
+@media(min-width:1101px){#map-layer-controls button{height:36px;min-width:118px!important;}}
