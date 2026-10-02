@@ -4195,3 +4195,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 487 */
 #observation-status-strip{box-shadow:0 8px 24px rgba(0,0,0,.15)}
+
+
+/* 488 */
+#s-input{border-color:rgba(255,255,255,.1)}
