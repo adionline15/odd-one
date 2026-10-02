@@ -364,3 +364,5 @@ document.documentElement.dataset.controlsPhase='ready';
 document.documentElement.dataset.contentPhase='ready';
 
 document.querySelectorAll('[role="tab"]').forEach(el=>el.addEventListener('click',()=>document.documentElement.dataset.lastTab=el.textContent.trim()));
+
+document.querySelectorAll('#d-go-btn,#m-go-btn').forEach(el=>el.addEventListener('click',()=>document.documentElement.dataset.routeAction='requested'));
