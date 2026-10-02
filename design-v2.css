@@ -4029,3 +4029,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 433 */
 @media (max-width:640px){#m-go-btn:focus-visible{outline-offset:2px}}
+
+
+/* 434 */
+@media (max-width:640px){#s-input::placeholder{font-size:.88rem}}
