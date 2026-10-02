@@ -5891,3 +5891,7 @@ nav[aria-label="Primary navigation"] .text-xs{letter-spacing:.04em;}
 
 /* 872 */
 footer{border-top:1px solid rgba(255,255,255,.055);background:rgba(5,5,7,.72);}
+
+
+/* 873 */
+footer{padding-block:12px;}
