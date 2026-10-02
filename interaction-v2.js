@@ -212,4 +212,5 @@
   ready(() => document.getElementById('route-status-source')?.setAttribute('aria-label','Routing source')); 
   ready(() => document.getElementById('obs-status-state')?.setAttribute('aria-label','Observation service state'));
   ready(() => document.getElementById('obs-status-dot')?.setAttribute('aria-hidden','true'));
+  ready(() => document.querySelector('#s-input + span')?.setAttribute('aria-hidden','true'));
 })();
