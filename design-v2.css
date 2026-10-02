@@ -2817,3 +2817,9 @@ nav[aria-label="Primary navigation"]{
   border-color:rgba(255,255,255,.15);
   box-shadow:0 10px 26px rgba(0,0,0,.12);
 }
+
+
+/* 141 — refine hero metadata hover lift */
+#hero-data-boundary:hover{
+  transform:translateY(-1px);
+}
