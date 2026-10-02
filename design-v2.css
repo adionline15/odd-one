@@ -3177,3 +3177,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 220 */
 #intelligence-hero strong,#intelligence-hero b{color:var(--oo-v2-text)}
+
+
+/* 221 */
+#observation-status-strip{border-color:rgba(255,255,255,.1)}
