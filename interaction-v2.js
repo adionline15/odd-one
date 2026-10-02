@@ -119,4 +119,5 @@
   ready(() => { const box=document.getElementById('route-status-overlay'); if(!box)return; new MutationObserver(()=>box.dataset.visible=box.classList.contains('hidden')?'false':'true').observe(box,{attributes:true,attributeFilter:['class']}); });
   ready(() => document.getElementById('route-status-overlay')?.setAttribute('aria-label','Current route status')); 
   ready(() => { const input=document.getElementById('s-input'); if(!input)return; input.addEventListener('input',()=>input.setAttribute('aria-busy','false')); });
+  ready(() => { const input=document.getElementById('s-input'), list=document.getElementById('sugg'); if(!input||!list)return; new MutationObserver(()=>{const n=list.querySelectorAll('.sugg-item').length; input.setAttribute('aria-describedby',n?'search-result-count':'');}).observe(list,{childList:true,subtree:true}); });
 })();
