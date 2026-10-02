@@ -2810,3 +2810,10 @@ nav[aria-label="Primary navigation"]{
 #hero-data-boundary{
   transition:border-color .18s ease,box-shadow .18s ease;
 }
+
+
+/* 140 — improve hero metadata hover */
+#hero-data-boundary:hover{
+  border-color:rgba(255,255,255,.15);
+  box-shadow:0 10px 26px rgba(0,0,0,.12);
+}
