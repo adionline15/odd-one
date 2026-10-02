@@ -1634,3 +1634,5 @@ html[data-keyboard="true"] button:focus-visible{outline-width:2px;}
 html[data-reduced-motion="true"] *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important;}
 
 html.is-offline #map-intelligence-hud{opacity:.86;}
+
+html.is-online #map-intelligence-hud{opacity:.98;}
