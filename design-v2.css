@@ -1038,3 +1038,5 @@ body>footer{background:#050505!important;border-color:rgba(255,255,255,.06)!impo
 #intelligence-hero .mt-4 span:hover{background:rgba(255,255,255,.045)!important;}
 
 #intelligence-hero .mt-4 span{transition:background-color .16s ease,border-color .16s ease;}
+
+#intelligence-hero .intel-kicker{margin-bottom:7px;}
