@@ -3337,3 +3337,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 260 */
 .intel-card{background:rgba(10,10,12,.72)}
+
+
+/* 261 */
+.intel-card:hover{transform:translateY(-1px)}
