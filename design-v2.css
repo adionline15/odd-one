@@ -4215,3 +4215,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 492 */
 #intelligence-hero{border-color:rgba(255,255,255,.08)}
+
+
+/* 493 */
+#intelligence-hero{border-radius:18px}
