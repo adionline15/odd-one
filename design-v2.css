@@ -2324,3 +2324,10 @@ nav[aria-label="Primary navigation"]{
   border:1px solid rgba(255,255,255,.10);
 }
 
+
+
+/* 076 — improve endpoint label contrast */
+.route-endpoint-label{
+  text-shadow:0 1px 8px rgba(0,0,0,.55);
+}
+
