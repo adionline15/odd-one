@@ -1088,3 +1088,5 @@ body>footer{background:#050505!important;border-color:rgba(255,255,255,.06)!impo
 #d-go-btn:active,#m-go-btn:active{transform:translateY(1px) scale(.995)!important;}
 
 [id$="-route-out"] .grid>div{border-color:rgba(255,255,255,.075)!important;}
+
+[id$="-route-out"] .grid>div{background:rgba(255,255,255,.018)!important;}
