@@ -2684,3 +2684,11 @@ nav[aria-label="Primary navigation"]{
     letter-spacing:-.028em;
   }
 }
+
+
+/* 122 — improve desktop hero paragraph measure */
+@media (min-width:1101px){
+  #intelligence-hero p{
+    max-width:48rem;
+  }
+}
