@@ -4021,3 +4021,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 431 */
 @media (max-width:640px){#m-go-btn{box-shadow:0 8px 22px rgba(0,0,0,.2)}}
+
+
+/* 432 */
+@media (max-width:640px){#m-go-btn:hover{filter:brightness(1.03)}}
