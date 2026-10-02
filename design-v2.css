@@ -4323,3 +4323,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 489 */
 nav[aria-label="Primary navigation"]{text-rendering:optimizeLegibility}
+
+
+/* 490 */
+#s-input{text-rendering:optimizeLegibility}
