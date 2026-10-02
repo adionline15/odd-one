@@ -169,4 +169,5 @@
   ready(() => { const o=document.getElementById('route-status-overlay'), s=document.getElementById('route-status-source'); if(!o||!s)return; const sync=()=>o.classList.toggle('provider-backed',!o.classList.contains('route-approx')); new MutationObserver(sync).observe(o,{attributes:true,attributeFilter:['class']}); sync(); });
   ready(() => { const s=document.getElementById('route-status-source'); if(!s)return; s.dataset.sourceLabel=s.textContent.trim(); new MutationObserver(()=>s.dataset.sourceLabel=s.textContent.trim()).observe(s,{childList:true,characterData:true,subtree:true}); });
   ready(() => document.querySelectorAll('[id$="-route-out"]').forEach(el=>el.dataset.guidanceTrust='generated-unverified'));
+  ready(() => ['d-alerts-box','m-alerts-box'].forEach(id=>document.getElementById(id)?.setAttribute('data-provenance','current-feed')));
 })();
