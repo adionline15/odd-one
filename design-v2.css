@@ -5511,3 +5511,7 @@ a[href]{cursor:pointer;}
 
 /* 777 */
 .provenanceRow .text-xs{color:rgba(255,255,255,.52);}
+
+
+/* 778 */
+.provenanceRow{padding:8px 10px;}
