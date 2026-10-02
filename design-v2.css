@@ -1094,3 +1094,5 @@ body>footer{background:#050505!important;border-color:rgba(255,255,255,.06)!impo
 [id$="-route-out"] .grid>div:hover{background:rgba(255,255,255,.028)!important;}
 
 #d-alerts-box>div:hover,#m-alerts-box>div:hover{border-color:rgba(255,255,255,.13)!important;}
+
+#d-alerts-box>div,#m-alerts-box>div{background:rgba(10,10,12,.72)!important;}
