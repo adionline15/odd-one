@@ -292,3 +292,6 @@ body>footer{color:#52525b!important;}
 
 /* desktop hero */
 @media(min-width:1101px){#intelligence-hero{max-width:430px;}}
+
+/* desktop hero padding */
+@media(min-width:1101px){#intelligence-hero>div{padding:20px!important;}}
