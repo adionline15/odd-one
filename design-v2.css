@@ -6019,3 +6019,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 904 */
 @media(max-width:640px){#map-intelligence-hud{box-shadow:0 16px 36px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.03);}}
+
+
+/* 905 */
+@media(max-width:640px){.map-layer-switcher{border-radius:12px;}}
