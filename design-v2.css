@@ -94,3 +94,6 @@ nav[aria-label="Primary navigation"] button[onclick*="showTab('route')"]{border-
 
 /* progressive */
 #map-layer-controls{gap:4px;}
+
+/* progressive */
+#map-intelligence-hud .intel-kicker{letter-spacing:.18em;}
