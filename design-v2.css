@@ -1244,3 +1244,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  .leaflet-popup-tip{background:#0b0b0d;}
 
  .leaflet-popup-close-button{opacity:.65;}
+
+ .leaflet-popup-close-button:hover{opacity:1;}
