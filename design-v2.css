@@ -5555,3 +5555,7 @@ a[href]{cursor:pointer;}
 
 /* 788 */
 .empty-state svg{opacity:.72;}
+
+
+/* 789 */
+.loading-state{background:rgba(255,255,255,.016);border-radius:14px;}
