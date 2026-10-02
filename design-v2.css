@@ -3089,3 +3089,7 @@ nav[aria-label="Primary navigation"]{
 
 /* 198 */
 @media (min-width:1101px){#route-status-overlay{padding:12px 14px}}
+
+
+/* 199 */
+@media (min-width:1101px){.route-endpoint-label{padding:5px 8px}}
