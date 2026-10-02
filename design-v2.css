@@ -2859,3 +2859,9 @@ nav[aria-label="Primary navigation"]{
 #d-alerts-box h3,#m-alerts-box h3{
   letter-spacing:-.012em;
 }
+
+
+/* 148 — improve alert metadata contrast */
+#d-alerts-box small,#m-alerts-box small{
+  color:rgba(255,255,255,.52);
+}
