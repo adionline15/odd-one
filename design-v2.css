@@ -3633,3 +3633,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 334 */
 @media (min-width:1101px){#desktop-stats-container small{letter-spacing:.03em}}
+
+
+/* 335 */
+@media (min-width:1101px){#intelligence-hero .hero-accent{margin-top:6px}}
