@@ -1646,3 +1646,5 @@ body{letter-spacing:0;}
 button,input{font-family:inherit;}
 
 label{user-select:none;}
+
+img{max-width:100%;}
