@@ -4197,3 +4197,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 475 */
 .road-intel-selected{opacity:.94}
+
+
+/* 476 */
+.road-intel-selected{transition:opacity .18s ease,filter .18s ease}
