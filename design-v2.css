@@ -5363,3 +5363,7 @@ nav[aria-label="Primary navigation"] .brand{color:#f5f5f5;}
 
 /* 740 */
 @media(max-width:640px){#observation-status-strip{margin-inline:8px;}}
+
+
+/* 741 */
+@media(max-width:640px){#obs-status-state{font-size:.78rem;}}
