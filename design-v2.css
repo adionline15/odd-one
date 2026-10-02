@@ -3949,3 +3949,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 413 */
 @media (max-width:640px){#desktop-stats-container{border:1px solid rgba(255,255,255,.09)}}
+
+
+/* 414 */
+@media (max-width:640px){#desktop-stats-container{font-size:.82rem}}
