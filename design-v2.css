@@ -2877,3 +2877,9 @@ nav[aria-label="Primary navigation"]{
 #map-layer-controls button[aria-pressed="true"]{
   box-shadow:0 0 14px rgba(34,211,238,.08);
 }
+
+
+/* 151 — refine desktop map HUD radius */
+@media (min-width:1101px){
+  #map-intelligence-hud{border-radius:12px;}
+}
