@@ -2056,3 +2056,12 @@ nav[aria-label="Primary navigation"]{
     border-radius:14px;
   }
 }
+
+
+/* 044 — refine mobile sidebar field spacing */
+@media (max-width:640px){
+  #sidebar input{
+    min-height:44px;
+    padding-inline:13px;
+  }
+}
