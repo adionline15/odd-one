@@ -5107,3 +5107,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 676 */
 .map-deck-btn{min-height:36px;}
+
+
+/* 677 */
+.map-deck-btn{border-radius:10px;}
