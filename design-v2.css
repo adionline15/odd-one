@@ -502,3 +502,6 @@ body>footer{opacity:.9;}
 
 /* zoom controls */
 .leaflet-control-zoom a{width:32px!important;height:32px!important;line-height:32px!important;}
+
+/* zoom typography */
+.leaflet-control-zoom a{font-size:15px!important;font-weight:500;}
