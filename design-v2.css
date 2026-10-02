@@ -3293,3 +3293,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 249 */
 .route-endpoint-label{letter-spacing:.005em}
+
+
+/* 250 */
+.road-intel-tooltip{border:1px solid rgba(255,255,255,.1)}
