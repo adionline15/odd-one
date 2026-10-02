@@ -1362,3 +1362,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  #d-alerts-box>div p,#m-alerts-box>div p{line-height:1.4;}
 
  #d-alerts-box>div small,#m-alerts-box>div small{font-size:8px;}
+
+ #dp-data .intel-card{border-radius:12px!important;}
