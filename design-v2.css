@@ -2083,3 +2083,12 @@ nav[aria-label="Primary navigation"]{
     padding:12px;
   }
 }
+
+
+/* 047 — improve mobile hero rhythm */
+@media (max-width:640px){
+  #intelligence-hero{
+    padding-top:18px;
+    padding-bottom:18px;
+  }
+}
