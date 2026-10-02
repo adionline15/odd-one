@@ -817,3 +817,6 @@ nav[aria-label="Primary navigation"]{z-index:100!important;}
 
 /* route highlight */
 [id$="-route-out"]>div::before{content:"";display:block;height:1px;background:linear-gradient(90deg,rgba(34,211,238,.12),transparent);margin:-1px 0 10px;}
+
+/* data highlight */
+#dp-data>.intel-card::before{background:linear-gradient(90deg,rgba(34,211,238,.16),transparent);}
