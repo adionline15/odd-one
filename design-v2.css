@@ -6267,3 +6267,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 966 */
 #route-status-source{border:1px solid rgba(34,211,238,.1);}
+
+
+/* 967 */
+.alert-card{border-radius:12px;}
