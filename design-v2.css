@@ -820,3 +820,6 @@ nav[aria-label="Primary navigation"]{z-index:100!important;}
 
 /* data highlight */
 #dp-data>.intel-card::before{background:linear-gradient(90deg,rgba(34,211,238,.16),transparent);}
+
+/* sheet highlight */
+#sheet::before{content:"";position:absolute;left:24px;right:24px;top:0;height:1px;background:rgba(255,255,255,.08);}
