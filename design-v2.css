@@ -871,3 +871,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* stats region */
 #stats-content{padding-top:2px;}
+
+/* stats rows */
+#stats-content>div{border-radius:13px;}
