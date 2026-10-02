@@ -1474,3 +1474,5 @@ html.is-desktop footer{font-size:9px;}
  @media(min-width:641px) and (max-width:1100px){#map{min-height:100vh;}}
 
  @media(max-width:640px){#map-intelligence-hud{gap:6px;}}
+
+ @media(max-width:640px){#map-intelligence-hud .intel-value{font-size:12px!important;}}
