@@ -5723,3 +5723,7 @@ a[href]{cursor:pointer;}
 
 /* 830 */
 #sidebar .route-control-group:focus-within{border-color:rgba(34,211,238,.13);}
+
+
+/* 831 */
+#d-go-btn,#m-go-btn{border-radius:11px!important;}
