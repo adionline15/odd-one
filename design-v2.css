@@ -4049,3 +4049,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 438 */
 @media (max-width:640px){nav[aria-label="Primary navigation"] a{transition:opacity .16s ease,color .16s ease}}
+
+
+/* 439 */
+@media (max-width:640px){#map-intelligence-hud{font-size:.78rem}}
