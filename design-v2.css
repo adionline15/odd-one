@@ -952,3 +952,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* active map control */
 #map-layer-controls button.on{color:#fff!important;border-color:rgba(255,255,255,.16)!important;}
+
+/* satellite control */
+#btn-sat.on{box-shadow:0 0 0 1px rgba(255,255,255,.04),0 12px 30px rgba(0,0,0,.32);}
