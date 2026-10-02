@@ -77,6 +77,21 @@
 
     :focus-visible { outline: 2px solid #e4e4e7; outline-offset: 2px; }
 
+    /* ── ODD-ONE DESIGN SYSTEM ── */
+    :root {
+      --oo-bg: #050505;
+      --oo-surface: #0a0a0a;
+      --oo-panel: rgba(10,10,10,.88);
+      --oo-border: rgba(63,63,70,.55);
+      --oo-muted: #71717a;
+      --oo-text: #f4f4f5;
+      --oo-accent: #22d3ee;
+      --oo-radius: 14px;
+    }
+    .intel-card { background:linear-gradient(180deg,rgba(24,24,27,.72),rgba(9,9,11,.92)); border:1px solid var(--oo-border); border-radius:var(--oo-radius); box-shadow:0 18px 50px rgba(0,0,0,.28); }
+    .intel-kicker { font-family:'JetBrains Mono',monospace; font-size:8px; letter-spacing:.16em; text-transform:uppercase; color:var(--oo-muted); }
+    .intel-value { font-family:'Playfair Display',Georgia,serif; font-style:italic; color:var(--oo-text); }
+
     /* ── LEAFLET POPUP & CONTROL CUSTOMIZATION ── */
     .leaflet-popup-content-wrapper {
       background: #0a0a0a !important;
