@@ -2563,3 +2563,11 @@ nav[aria-label="Primary navigation"]{
     box-shadow:0 0 0 1px rgba(34,211,238,.28),0 10px 26px rgba(0,0,0,.16);
   }
 }
+
+
+/* 107 — refine desktop hero boundary shadow */
+@media (min-width:1101px){
+  #hero-data-boundary{
+    box-shadow:0 8px 24px rgba(0,0,0,.10);
+  }
+}
