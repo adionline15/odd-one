@@ -5235,3 +5235,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 708 */
 #map-command-deck,#map-intelligence-hud,#route-status-overlay{z-index:500!important;}
+
+
+/* 709 */
+#map-intelligence-hud{pointer-events:auto;}
