@@ -6403,3 +6403,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 985 */
 #sidebar input:hover{border-color:rgba(255,255,255,.14)!important;background:rgba(255,255,255,.025)!important;}
+
+
+/* 986 */
+#sidebar button:disabled{opacity:.48;cursor:not-allowed;transform:none!important;filter:none;}
