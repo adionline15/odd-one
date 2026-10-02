@@ -787,3 +787,6 @@ html[data-viewport="mobile"] #map-intelligence-hud{display:none!important;}
 
 /* mobile footer hide */
 @media(max-width:640px){body>footer .hidden{display:none!important;}}
+
+/* tablet footer */
+@media(min-width:641px) and (max-width:1100px){body>footer{height:36px!important;}}
