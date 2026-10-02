@@ -1654,3 +1654,5 @@ svg{max-width:100%;}
 *,*::before,*::after{box-sizing:border-box;}
 
 html{min-width:320px;}
+
+html,body{height:100%;}
