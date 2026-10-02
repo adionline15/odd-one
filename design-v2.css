@@ -3477,3 +3477,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 295 */
 @media (min-width:1101px){#intelligence-hero{max-width:1120px}}
+
+
+/* 296 */
+@media (min-width:1101px){#intelligence-hero h1{max-width:15ch}}
