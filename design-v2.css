@@ -982,3 +982,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* final observation */
 #observation-status-strip .intel-card{background:rgba(7,7,9,.86)!important;}
+
+/* final hud */
+#map-intelligence-hud .intel-card{background:rgba(7,7,9,.84)!important;}
