@@ -3421,3 +3421,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 281 */
 @media (min-width:641px) and (max-width:1100px){#s-input{min-height:42px}}
+
+
+/* 282 */
+@media (min-width:641px) and (max-width:1100px){#d-go-btn{min-height:42px}}
