@@ -1616,3 +1616,5 @@ html.is-desktop footer{font-size:9px;}
 @media(max-width:640px){#dp-data .space-y-4{gap:8px!important;}}
 
 @media(max-width:640px){#dp-route .space-y-4{gap:9px!important;}}
+
+html[data-route-interaction="selected"] #dp-route{border-color:rgba(34,211,238,.12)!important;}
