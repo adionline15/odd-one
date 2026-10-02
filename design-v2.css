@@ -2889,3 +2889,8 @@ nav[aria-label="Primary navigation"]{
 @media (min-width:1101px){
   #map-intelligence-hud{border-color:rgba(255,255,255,.11);}
 }
+
+
+/* 153 — refine route status text contrast */
+#route-status-overlay{color:rgba(255,255,255,.88);}
+
