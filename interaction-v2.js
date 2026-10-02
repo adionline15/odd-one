@@ -180,4 +180,5 @@
   ready(() => { const p=document.getElementById('dp-data'); if(p)p.dataset.surface='data'; });
   ready(() => document.querySelectorAll('#d-from,#d-to,#m-from,#m-to').forEach(i=>i.addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById(i.id.startsWith('d-')?'d-go-btn':'m-go-btn')?.click();})));
   ready(() => document.querySelectorAll('#d-from,#d-to,#m-from,#m-to').forEach(i=>i.setAttribute('autocomplete','off')));
+  ready(() => document.querySelectorAll('#d-from,#d-to,#m-from,#m-to').forEach(i=>i.setAttribute('spellcheck','false')));
 })();
