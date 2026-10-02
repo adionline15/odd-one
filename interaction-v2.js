@@ -117,4 +117,5 @@
   });
   ready(() => document.addEventListener('keydown',e=>{if(e.key==='Escape'&&window.innerWidth<=640&&document.getElementById('sheet')?.classList.contains('open'))toggleSheet?.();}));
   ready(() => { const box=document.getElementById('route-status-overlay'); if(!box)return; new MutationObserver(()=>box.dataset.visible=box.classList.contains('hidden')?'false':'true').observe(box,{attributes:true,attributeFilter:['class']}); });
+  ready(() => document.getElementById('route-status-overlay')?.setAttribute('aria-label','Current route status')); 
 })();
