@@ -2126,3 +2126,11 @@ nav[aria-label="Primary navigation"]{
     min-height:46px;
   }
 }
+
+
+/* 052 — improve map HUD compactness */
+@media (max-width:1100px){
+  #map-intelligence-hud{
+    max-width:calc(100vw - 28px);
+  }
+}
