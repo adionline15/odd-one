@@ -258,3 +258,5 @@ document.querySelector('nav')?.setAttribute('aria-label','Primary navigation');
 document.querySelector('#search-wrap')?.setAttribute('role','search');
 
 document.querySelector('#s-input')?.setAttribute('aria-label','Search India road intelligence');
+
+document.querySelectorAll('#sidebar input').forEach((el,i)=>el.setAttribute('aria-label',el.getAttribute('aria-label')||`Route input ${i+1}`));
