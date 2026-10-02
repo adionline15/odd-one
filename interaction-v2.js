@@ -246,4 +246,5 @@
   ready(() => document.documentElement.setAttribute('data-odd-one-ui','intelligence-v2'));
   ready(() => window.addEventListener('orientationchange',()=>setTimeout(()=>getMap()?.invalidateSize?.({pan:false}),250),{passive:true}));
   ready(() => document.getElementById('s-input')?.setAttribute('aria-controls','sugg'));
+  ready(() => document.body.setAttribute('data-progressive-ui','enabled'));
 })();
