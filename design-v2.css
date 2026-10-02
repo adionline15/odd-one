@@ -1476,3 +1476,5 @@ html.is-desktop footer{font-size:9px;}
  @media(max-width:640px){#map-intelligence-hud{gap:6px;}}
 
  @media(max-width:640px){#map-intelligence-hud .intel-value{font-size:12px!important;}}
+
+ @media(max-width:640px){#observation-status-strip{font-size:9px;}}
