@@ -4137,3 +4137,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 460 */
 @media (min-width:641px) and (max-width:1100px){nav[aria-label="Primary navigation"] a:hover{opacity:1}}
+
+
+/* 461 */
+@media (min-width:641px){#d-alerts-box .intel-card,#m-alerts-box .intel-card{transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}}
