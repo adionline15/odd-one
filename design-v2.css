@@ -2002,3 +2002,14 @@ nav[aria-label="Primary navigation"]{
 #route-status-overlay strong{
   letter-spacing:-.01em;
 }
+
+
+/* 038 — improve intelligence card hover depth */
+.intel-card{
+  transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;
+}
+.intel-card:hover{
+  transform:translateY(-1px);
+  border-color:rgba(255,255,255,.13);
+  box-shadow:0 10px 24px rgba(0,0,0,.14);
+}
