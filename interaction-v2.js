@@ -134,4 +134,5 @@
   ready(() => { const l=document.getElementById('sugg'); if(!l)return; new MutationObserver(()=>l.setAttribute('aria-hidden',l.classList.contains('hidden')?'true':'false')).observe(l,{attributes:true,attributeFilter:['class']}); });
   ready(() => { const p=document.getElementById('route-status-path'); if(p) p.title=p.textContent; });
   ready(() => { const p=document.getElementById('route-status-path'); if(!p)return; new MutationObserver(()=>p.title=p.textContent).observe(p,{childList:true,characterData:true,subtree:true}); });
+  ready(() => { document.getElementById('route-status-distance')?.setAttribute('aria-label','Route distance'); document.getElementById('route-status-time')?.setAttribute('aria-label','Estimated route time'); });
 })();
