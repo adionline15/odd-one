@@ -5691,3 +5691,7 @@ a[href]{cursor:pointer;}
 
 /* 822 */
 @media(min-width:1101px){#sidebar .route-control-group{gap:8px;}}
+
+
+/* 823 */
+@media(min-width:641px) and (max-width:1100px){#sidebar .route-control-group{gap:7px;}}
