@@ -4866,3 +4866,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 615 */
 #observation-status-strip{border-radius:13px;}
+
+
+/* 616 */
+#obs-status-state{font-weight:600;letter-spacing:.015em;}
