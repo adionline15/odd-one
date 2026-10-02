@@ -2823,3 +2823,9 @@ nav[aria-label="Primary navigation"]{
 #hero-data-boundary:hover{
   transform:translateY(-1px);
 }
+
+
+/* 142 — improve observation status transition */
+#observation-status-strip{
+  transition:border-color .18s ease,box-shadow .18s ease,background-color .18s ease;
+}
