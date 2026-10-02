@@ -1006,3 +1006,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* final controls */
 #map-layer-controls{background:rgba(5,5,5,.82)!important;}
+
+/* final footer */
+body>footer{background:#050505!important;border-color:rgba(255,255,255,.06)!important;}
