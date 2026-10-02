@@ -3373,3 +3373,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 269 */
 #s-input:focus{border-color:rgba(34,211,238,.42)}
+
+
+/* 270 */
+#s-input:focus{box-shadow:0 0 0 3px rgba(34,211,238,.08)}
