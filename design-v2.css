@@ -769,3 +769,6 @@ html[data-viewport="mobile"] #map-intelligence-hud{display:none!important;}
 
 /* mobile observation */
 @media(max-width:640px){#observation-status-strip{display:none!important;}}
+
+/* tablet observation */
+@media(min-width:641px) and (max-width:1100px){#observation-status-strip{left:14px!important;}}
