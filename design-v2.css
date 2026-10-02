@@ -4457,3 +4457,7 @@ nav[aria-label="Primary navigation"]{-webkit-font-smoothing:antialiased}
 
 /* 519 */
 #map-layer-controls{padding:5px!important;gap:5px!important;box-shadow:0 20px 48px rgba(0,0,0,.36),inset 0 1px 0 rgba(255,255,255,.035)!important;}
+
+
+/* 520 */
+#map-layer-controls button:focus-visible{box-shadow:0 0 0 3px rgba(34,211,238,.1),inset 0 0 0 1px rgba(34,211,238,.35);outline:none!important;}
