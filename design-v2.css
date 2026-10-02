@@ -4987,3 +4987,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 646 */
 #sidebar::-webkit-scrollbar-thumb{background:rgba(255,255,255,.14);border-radius:999px;}
+
+
+/* 647 */
+#sidebar::-webkit-scrollbar-track{background:transparent;}
