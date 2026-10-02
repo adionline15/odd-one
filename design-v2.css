@@ -379,3 +379,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* loading state */
 #observation-status-strip[data-state="loading"] #obs-status-dot{box-shadow:0 0 0 5px rgba(245,158,11,.07),0 0 10px rgba(245,158,11,.18)!important;}
+
+/* live state */
+#observation-status-strip[data-state="live"] #obs-status-dot{box-shadow:0 0 0 5px rgba(52,211,153,.07),0 0 10px rgba(52,211,153,.18)!important;}
