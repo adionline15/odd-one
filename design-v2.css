@@ -2953,3 +2953,7 @@ nav[aria-label="Primary navigation"]{
 
 /* 164 */
 #sheet::before{background:rgba(255,255,255,.22);box-shadow:0 1px 8px rgba(0,0,0,.35)}
+
+
+/* 165 */
+#sheet{padding-bottom:max(16px,env(safe-area-inset-bottom))}
