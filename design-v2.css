@@ -145,3 +145,6 @@ body>footer{color:#52525b!important;}
 
 /* map hud */
 #map-intelligence-hud .intel-card{min-width:224px;}
+
+/* map hud padding */
+#map-intelligence-hud .intel-card{padding:14px 15px;}
