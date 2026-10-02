@@ -3029,3 +3029,7 @@ nav[aria-label="Primary navigation"]{
 
 /* 183 */
 @media (max-width:640px){#m-alerts-box{line-height:1.45}}
+
+
+/* 184 */
+@media (max-width:640px){.route-endpoint-label{font-size:.72rem}}
