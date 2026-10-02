@@ -1330,3 +1330,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  #observation-status-strip{max-width:100%;}
 
  #observation-status-strip{overflow:hidden;}
+
+ #map-intelligence-hud{max-width:calc(100% - 24px);}
