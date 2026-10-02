@@ -2184,3 +2184,11 @@ nav[aria-label="Primary navigation"]{
     margin:10px;
   }
 }
+
+
+/* 059 — improve tablet card hover */
+@media (min-width:641px) and (max-width:1100px){
+  .intel-card:hover{
+    transform:translateY(-1px);
+  }
+}
