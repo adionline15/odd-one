@@ -5067,3 +5067,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 666 */
 #map-intelligence-hud .intel-value{text-align:right;font-variant-numeric:tabular-nums;}
+
+
+/* 667 */
+#map-intelligence-hud .intel-kicker{line-height:1.2;}
