@@ -727,3 +727,6 @@ body>footer{opacity:.9;}
 
 /* border token */
 .intel-card{border-color:var(--oo-v2-line)!important;}
+
+/* raised surface */
+#sidebar input,#s-input{background:var(--oo-v2-surface-raised)!important;}
