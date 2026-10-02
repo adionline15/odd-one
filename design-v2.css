@@ -73,3 +73,6 @@ nav[aria-label="Primary navigation"] button[onclick*="showTab('route')"]{font-we
 
 /* progressive */
 nav[aria-label="Primary navigation"] button[onclick*="showTab('route')"]{border-radius:999px!important;}
+
+/* progressive */
+#sidebar>.flex.border-b{border-color:var(--oo-v2-line)!important;}
