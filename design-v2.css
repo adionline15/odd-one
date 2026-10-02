@@ -2496,3 +2496,11 @@ nav[aria-label="Primary navigation"]{
   min-width:36px;
   min-height:36px;
 }
+
+
+/* 099 — refine mobile route overlay shadow */
+@media (max-width:640px){
+  #route-status-overlay{
+    box-shadow:0 12px 28px rgba(0,0,0,.24);
+  }
+}
