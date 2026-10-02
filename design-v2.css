@@ -3525,3 +3525,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 307 */
 @media (min-width:1101px){#d-go-btn{min-height:46px}}
+
+
+/* 308 */
+@media (min-width:1101px){#d-go-btn:hover{box-shadow:0 10px 26px rgba(0,0,0,.22)}}
