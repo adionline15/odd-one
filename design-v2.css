@@ -250,3 +250,6 @@ body>footer{color:#52525b!important;}
 
 /* mobile map controls */
 @media(max-width:640px){#map-layer-controls{right:12px!important;bottom:62px!important;}}
+
+/* mobile map control width */
+@media(max-width:640px){#map-layer-controls button{min-width:100px!important;}}
