@@ -3237,3 +3237,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 235 */
 #sidebar input:hover{border-color:rgba(255,255,255,.16)}
+
+
+/* 236 */
+#d-go-btn:active,#m-go-btn:active{transform:translateY(1px) scale(.99)}
