@@ -69,6 +69,20 @@ jobs:
           grep -q "api_version: 'observations-v6'" api/observations.js
           grep -q "api_version: 'observation-summary-v1'" api/observation-summary.js
 
+      - name: Check intelligence API contracts
+        run: |
+          test -f "api/observations/[id].js"
+          test -f api/observation-stats.js
+          test -f api/road-change.js
+          test -f api/observation-quality.js
+          grep -q "observation-detail-v1" "api/observations/[id].js"
+          grep -q "observation-stats-v1" api/observation-stats.js
+          grep -q "road-change-v1" api/road-change.js
+          grep -q "observation-quality-v1" api/observation-quality.js
+          grep -q "approved_observation_detail" db/schema.sql
+          grep -q "approved_observation_stats" db/schema.sql
+          grep -q "approved_road_change_in_view" db/schema.sql
+
       - name: Check database metadata contract
         run: grep -q "jsonb_typeof(metadata) = 'object'" db/schema.sql
 
