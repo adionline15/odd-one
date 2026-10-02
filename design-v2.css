@@ -3093,3 +3093,7 @@ nav[aria-label="Primary navigation"]{
 
 /* 199 */
 @media (min-width:1101px){.route-endpoint-label{padding:5px 8px}}
+
+
+/* 200 */
+@media (min-width:1101px){.road-intel-tooltip{box-shadow:0 14px 36px rgba(0,0,0,.34)}}
