@@ -862,3 +862,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* data header */
 #dp-data>.intel-card .intel-kicker{color:#8b8b93!important;}
+
+/* data value */
+#dp-data>.intel-card .intel-value{font-size:22px!important;}
