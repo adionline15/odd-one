@@ -3713,3 +3713,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 354 */
 @media (min-width:1101px){#d-alerts-box h3{line-height:1.2}}
+
+
+/* 355 */
+@media (min-width:1101px){#sidebar input:focus{box-shadow:0 0 0 3px rgba(34,211,238,.07)}}
