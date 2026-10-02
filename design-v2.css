@@ -2641,3 +2641,11 @@ nav[aria-label="Primary navigation"]{
     letter-spacing:.01em;
   }
 }
+
+
+/* 117 — refine desktop stats border */
+@media (min-width:1101px){
+  #desktop-stats-container{
+    border-color:rgba(255,255,255,.10);
+  }
+}
