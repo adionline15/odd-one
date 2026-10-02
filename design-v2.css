@@ -625,3 +625,6 @@ body>footer{opacity:.9;}
 
 /* hero chips radius */
 #intelligence-hero .mt-4 span{border-radius:8px!important;}
+
+/* hero chip text */
+#intelligence-hero .mt-4 span{font-weight:600;}
