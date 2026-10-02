@@ -5671,3 +5671,7 @@ a[href]{cursor:pointer;}
 
 /* 817 */
 @media(min-width:1101px){#d-alerts-box{gap:7px;}}
+
+
+/* 818 */
+@media(min-width:1101px){#d-alerts-box{max-width:380px;}}
