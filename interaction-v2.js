@@ -272,3 +272,5 @@ window.addEventListener('resize',()=>document.documentElement.dataset.oddOneView
 window.addEventListener('online',()=>document.documentElement.dataset.oddOneNetwork='online');
 
 window.addEventListener('offline',()=>document.documentElement.dataset.oddOneNetwork='offline');
+
+if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.dataset.reducedMotion='true';
