@@ -3833,3 +3833,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 384 */
 @media (max-width:640px){#s-input{box-shadow:0 7px 20px rgba(0,0,0,.12)}}
+
+
+/* 385 */
+@media (max-width:640px){#intelligence-hero h1{font-weight:700}}
