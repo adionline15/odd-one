@@ -3249,3 +3249,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 238 */
 #d-go-btn:disabled,#m-go-btn:disabled{opacity:.5;cursor:not-allowed}
+
+
+/* 239 */
+#map-intelligence-hud{color:var(--oo-v2-text)}
