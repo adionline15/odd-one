@@ -102,11 +102,16 @@ export default async function handler(req, res) {
       !validCoordinate(maxLon, -180, 180) ||
       minLat >= maxLat ||
       minLon >= maxLon ||
+      maxLat - minLat > maxViewportSpan ||
+      maxLon - minLon > maxViewportSpan ||
       !Number.isInteger(limit) ||
       limit < 1 ||
       limit > 500
     ) {
-      return json(res, 400, { error: 'Invalid map bounds' });
+      return json(res, 400, {
+        error: 'Invalid map bounds',
+        max_span: maxViewportSpan
+      });
     }
 
     let stage = 'connectivity';
