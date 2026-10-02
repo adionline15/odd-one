@@ -1560,3 +1560,5 @@ html.is-desktop footer{font-size:9px;}
 @media(max-width:640px){#search-suggestions button{padding:10px 12px!important;}}
 
 @media(max-width:640px){nav{border-radius:0!important;}}
+
+@media(max-width:640px){#intelligence-hero{margin-left:0;margin-right:0;}}
