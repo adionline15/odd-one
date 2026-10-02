@@ -3805,3 +3805,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 377 */
 @media (min-width:641px) and (max-width:1100px){.road-intel-selected{filter:drop-shadow(0 0 5px rgba(34,211,238,.2))}}
+
+
+/* 378 */
+@media (min-width:641px) and (max-width:1100px){.sugg-item{border-radius:11px}}
