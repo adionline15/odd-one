@@ -1754,3 +1754,7 @@ nav[aria-label="Primary navigation"] h1{font-weight:600!important;}
 
 /* tighten desktop navigation spacing */
 nav[aria-label="Primary navigation"]{padding-left:22px!important;padding-right:22px!important;}
+
+
+/* improve navigation logo hierarchy */
+nav[aria-label="Primary navigation"] h1{font-weight:600!important;}
