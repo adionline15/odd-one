@@ -120,4 +120,5 @@
   ready(() => document.getElementById('route-status-overlay')?.setAttribute('aria-label','Current route status')); 
   ready(() => { const input=document.getElementById('s-input'); if(!input)return; input.addEventListener('input',()=>input.setAttribute('aria-busy','false')); });
   ready(() => { const input=document.getElementById('s-input'), list=document.getElementById('sugg'); if(!input||!list)return; new MutationObserver(()=>{const n=list.querySelectorAll('.sugg-item').length; input.setAttribute('aria-describedby',n?'search-result-count':'');}).observe(list,{childList:true,subtree:true}); });
+  ready(() => { const input=document.getElementById('s-input'); if(!input)return; const s=document.createElement('span'); s.id='search-result-count'; s.className='sr-only'; s.setAttribute('aria-live','polite'); input.parentElement?.appendChild(s); const list=document.getElementById('sugg'); if(list)new MutationObserver(()=>{s.textContent=list.querySelectorAll('.sugg-item').length+' search suggestions';}).observe(list,{childList:true,subtree:true}); });
 })();
