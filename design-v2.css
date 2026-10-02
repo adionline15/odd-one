@@ -2394,3 +2394,11 @@ nav[aria-label="Primary navigation"]{
     min-height:42px;
   }
 }
+
+
+/* 085 — refine desktop search proportions */
+@media (min-width:1101px){
+  #s-input{
+    min-width:280px;
+  }
+}
