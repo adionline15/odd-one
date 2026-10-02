@@ -2784,3 +2784,9 @@ nav[aria-label="Primary navigation"]{
 #s-input{
   caret-color:var(--oo-v2-accent);
 }
+
+
+/* 136 — improve search selection contrast */
+#s-input::selection{
+  background:rgba(34,211,238,.24);
+}
