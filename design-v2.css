@@ -544,3 +544,6 @@ body>footer{opacity:.9;}
 
 /* sheet border */
 #sheet{border-color:rgba(255,255,255,.1)!important;}
+
+/* sheet backdrop */
+#sheet{backdrop-filter:blur(22px)!important;}
