@@ -2092,3 +2092,12 @@ nav[aria-label="Primary navigation"]{
     padding-bottom:18px;
   }
 }
+
+
+/* 048 — strengthen mobile hero boundary */
+@media (max-width:640px){
+  #hero-data-boundary{
+    border-radius:14px;
+    padding-inline:14px;
+  }
+}
