@@ -421,3 +421,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* alert severity */
 .bg-rose-500\/10{background:rgba(244,63,94,.055)!important;}
+
+/* alert label */
+#d-alerts-box .text-rose-500,#m-alerts-box .text-rose-500{color:#fb7185!important;}
