@@ -6035,3 +6035,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 908 */
 @media(max-width:640px){.map-scale-label{font-size:.62rem;padding:2px 6px;}}
+
+
+/* 909 */
+@media(max-width:640px){.leaflet-control-zoom{border-radius:10px!important;}}
