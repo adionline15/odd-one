@@ -324,3 +324,5 @@ document.querySelector('#search-wrap')?.setAttribute('data-rendered','true');
 document.querySelector('#map')?.setAttribute('data-rendered','true');
 
 document.documentElement.dataset.surfaceReady='true';
+
+new IntersectionObserver(e=>e[0]&&document.documentElement.classList.toggle('hero-visible',e[0].isIntersecting)).observe(document.querySelector('#intelligence-hero')||document.documentElement);
