@@ -643,3 +643,6 @@ body>footer{opacity:.9;}
 
 /* observation backdrop */
 #observation-status-strip .intel-card{backdrop-filter:blur(18px)!important;}
+
+/* observation typography */
+#observation-status-strip{font-variant-numeric:tabular-nums;}
