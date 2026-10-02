@@ -3701,3 +3701,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 351 */
 @media (min-width:1101px){#sidebar{scrollbar-width:thin}}
+
+
+/* 352 */
+@media (min-width:1101px){#sidebar{overflow-x:hidden}}
