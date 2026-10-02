@@ -61,3 +61,6 @@ nav[aria-label="Primary navigation"] .font-mono-lux{color:#66666f!important;}
 
 /* progressive */
 #s-input{background:rgba(17,17,20,.82)!important;}
+
+/* progressive */
+#s-input{border-color:rgba(255,255,255,.12)!important;}
