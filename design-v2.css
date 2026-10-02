@@ -3189,3 +3189,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 223 */
 #observation-status-strip strong{color:var(--oo-v2-text)}
+
+
+/* 224 */
+#sidebar{transition:background-color .2s ease,border-color .2s ease}
