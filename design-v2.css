@@ -5751,3 +5751,7 @@ a[href]{cursor:pointer;}
 
 /* 837 */
 .intel-card:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.09);}
+
+
+/* 838 */
+.intel-card{transition:transform .18s ease,border-color .18s ease,background-color .18s ease;}
