@@ -2756,3 +2756,11 @@ nav[aria-label="Primary navigation"]{
     padding-inline:4px;
   }
 }
+
+
+/* 132 — improve desktop nav muted text */
+@media (min-width:1101px){
+  nav[aria-label="Primary navigation"] a:not([aria-current="page"]){
+    color:rgba(255,255,255,.70);
+  }
+}
