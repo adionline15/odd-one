@@ -2047,3 +2047,12 @@ nav[aria-label="Primary navigation"]{
     max-width:calc(100vw - 16px);
   }
 }
+
+
+/* 043 — improve mobile route CTA touch target */
+@media (max-width:640px){
+  #m-go-btn{
+    min-height:48px;
+    border-radius:14px;
+  }
+}
