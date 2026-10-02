@@ -2865,3 +2865,9 @@ nav[aria-label="Primary navigation"]{
 #d-alerts-box small,#m-alerts-box small{
   color:rgba(255,255,255,.52);
 }
+
+
+/* 149 — refine map control backdrop */
+#map-layer-controls{
+  backdrop-filter:blur(8px);
+}
