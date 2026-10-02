@@ -160,3 +160,6 @@ body>footer{color:#52525b!important;}
 
 /* desktop stat divider */
 #desktop-stats-container .w-px{background:rgba(255,255,255,.08)!important;}
+
+/* sidebar rail */
+#sidebar{border-left-color:rgba(255,255,255,.08)!important;}
