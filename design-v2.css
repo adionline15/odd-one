@@ -268,3 +268,6 @@ body>footer{color:#52525b!important;}
 
 /* mobile tabs */
 @media(max-width:640px){#sheet .flex.border-b button{height:48px;}}
+
+/* tablet nav */
+@media(min-width:641px) and (max-width:1100px){nav[aria-label="Primary navigation"]{height:64px!important;}}
