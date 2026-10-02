@@ -6287,3 +6287,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 971 */
 .alert-body{color:rgba(255,255,255,.64);}
+
+
+/* 972 */
+.alert-card small{line-height:1.25;}
