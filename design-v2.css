@@ -940,3 +940,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* tab hover */
 #sidebar .flex.border-b button:hover,#sheet .flex.border-b button:hover{background:rgba(255,255,255,.025);}
+
+/* sidebar thumb */
+#sidebar ::-webkit-scrollbar-thumb{background:#303038;}
