@@ -1596,3 +1596,5 @@ html.is-desktop footer{font-size:9px;}
 @media(min-width:1101px){#sidebar label{letter-spacing:.045em;}}
 
 @media(max-width:640px){#sheet [role="tab"]{min-height:38px;}}
+
+@media(min-width:641px) and (max-width:1100px){#sidebar [role="tab"]{min-height:36px;}}
