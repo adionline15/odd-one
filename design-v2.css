@@ -3885,3 +3885,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 397 */
 @media (max-width:640px){#map-layer-controls{border-radius:12px}}
+
+
+/* 398 */
+@media (max-width:640px){#map-layer-controls button{border-radius:9px}}
