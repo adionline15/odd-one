@@ -115,4 +115,5 @@
     const sync=()=>toggle.setAttribute('aria-expanded',sheet.classList.contains('open')?'true':'false');
     new MutationObserver(sync).observe(sheet,{attributes:true,attributeFilter:['class']}); sync();
   });
+  ready(() => document.addEventListener('keydown',e=>{if(e.key==='Escape'&&window.innerWidth<=640&&document.getElementById('sheet')?.classList.contains('open'))toggleSheet?.();}));
 })();
