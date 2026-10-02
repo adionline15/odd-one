@@ -3233,3 +3233,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 234 */
 #sidebar input{background:rgba(255,255,255,.028)}
+
+
+/* 235 */
+#sidebar input:hover{border-color:rgba(255,255,255,.16)}
