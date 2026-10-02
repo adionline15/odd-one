@@ -308,3 +308,5 @@ window.addEventListener('resize',()=>{document.documentElement.classList.toggle(
 window.addEventListener('online',()=>document.documentElement.classList.add('is-online'));
 
 window.addEventListener('offline',()=>document.documentElement.classList.remove('is-online'));
+
+document.querySelector('#s-input')?.addEventListener('input',()=>document.querySelector('#search-wrap')?.setAttribute('data-search-active','true'));
