@@ -5643,3 +5643,7 @@ a[href]{cursor:pointer;}
 
 /* 810 */
 @media(max-width:640px){.intel-card .intel-value{font-size:.95rem;}}
+
+
+/* 811 */
+@media(max-width:640px){.intel-card .intel-kicker{font-size:.64rem;}}
