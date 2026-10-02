@@ -4924,3 +4924,6 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 630 */
 #sidebar input{box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 8px 20px rgba(0,0,0,.12)!important;}
+
+/* 631 */
+#sidebar .border-b{border-color:rgba(255,255,255,.065)!important;}
