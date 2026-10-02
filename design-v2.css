@@ -3057,3 +3057,7 @@ nav[aria-label="Primary navigation"]{
 
 /* 190 */
 @media (min-width:641px) and (max-width:1100px){#map-intelligence-hud{max-width:min(360px,calc(100vw - 32px))}}
+
+
+/* 191 */
+@media (min-width:1101px){.intel-card h3,.intel-card h4{margin-bottom:8px}}
