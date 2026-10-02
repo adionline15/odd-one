@@ -2716,3 +2716,13 @@ nav[aria-label="Primary navigation"]{
 #sidebar{
   scrollbar-color:rgba(255,255,255,.20) transparent;
 }
+
+
+/* 127 — refine sidebar scrollbar width */
+#sidebar::-webkit-scrollbar{
+  width:5px;
+}
+#sidebar::-webkit-scrollbar-thumb{
+  background:rgba(255,255,255,.18);
+  border-radius:999px;
+}
