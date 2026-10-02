@@ -392,3 +392,5 @@ document.documentElement.dataset.surfaceTimestamp=String(Date.now());
 document.documentElement.dataset.viewportTimestamp=String(Date.now());
 
 document.documentElement.dataset.a11yPhase='active';
+
+document.documentElement.dataset.routePhase='ready';
