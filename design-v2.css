@@ -5851,3 +5851,7 @@ a[href]{cursor:pointer;}
 
 /* 862 */
 @media(min-width:1101px){nav[aria-label="Primary navigation"] a{transition:color .16s ease,background-color .16s ease;}}
+
+
+/* 863 */
+nav[aria-label="Primary navigation"] a[aria-current="page"]{background:rgba(255,255,255,.025);border-radius:9px;}
