@@ -242,4 +242,5 @@
   ready(() => document.getElementById('observation-status-strip')?.setAttribute('data-public-boundary','approved-only'));
   ready(() => document.getElementById('route-status-overlay')?.setAttribute('data-fallback-boundary','explicit'));
   ready(() => document.getElementById('btn-sat')?.setAttribute('data-context-only','true'));
+  ready(() => { const s=document.getElementById('sheet'); if(s)s.setAttribute('aria-label','Road intelligence panel'); });
 })();
