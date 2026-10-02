@@ -266,3 +266,5 @@ document.querySelector('#map')?.setAttribute('aria-label','Interactive India roa
 document.querySelector('#sidebar')?.setAttribute('aria-label','Road intelligence panel');
 
 document.querySelector('#sheet')?.setAttribute('aria-label','Mobile road intelligence panel');
+
+window.addEventListener('resize',()=>document.documentElement.dataset.oddOneViewport=window.innerWidth<641?'mobile':window.innerWidth<1101?'tablet':'desktop',{passive:true});
