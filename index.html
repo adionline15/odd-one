@@ -228,6 +228,8 @@ button{transition:background-color .18s ease,border-color .18s ease,transform .1
 .provenanceRow{border-top:1px solid rgba(63,63,70,.45);padding-top:9px;margin-top:9px}
 
 #obs-status-dot{box-shadow:0 0 0 4px rgba(34,211,238,.05)}
+
+nav[aria-label="Primary navigation"]{position:relative}nav[aria-label="Primary navigation"]::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:linear-gradient(90deg,transparent,rgba(34,211,238,.12),transparent);pointer-events:none}
 </style>
 </head>
 <body class="h-screen w-full flex flex-col justify-between">
