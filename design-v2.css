@@ -1542,3 +1542,5 @@ html.is-desktop footer{font-size:9px;}
 @media(max-width:640px){#search-suggestions{max-height:42vh;overflow:auto;}}
 
 @media(max-width:640px){#sheet .sheet-handle{width:38px;}}
+
+@media(max-width:640px){#sheet{padding-bottom:max(12px,env(safe-area-inset-bottom));}}
