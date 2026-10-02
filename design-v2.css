@@ -6115,3 +6115,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 928 */
 @media(min-width:1101px){.leaflet-control-zoom a:hover{color:#fff!important;}}
+
+
+/* 929 */
+@media(min-width:1101px){.leaflet-popup-content{font-size:.78rem;}}
