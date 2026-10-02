@@ -5491,3 +5491,7 @@ button:not(:disabled){cursor:pointer;}
 
 /* 772 */
 button:disabled{cursor:not-allowed;}
+
+
+/* 773 */
+a[href]{cursor:pointer;}
