@@ -4171,3 +4171,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 481 */
 #route-status-overlay{background:rgba(8,8,10,.9)}
+
+
+/* 482 */
+#route-status-overlay{backdrop-filter:blur(10px)}
