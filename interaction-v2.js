@@ -57,4 +57,10 @@
     };
     window.addEventListener('load', update, {once:true});
   });
+  ready(() => {
+    const mapEl=document.getElementById('map');
+    if(!mapEl || !window.ResizeObserver) return;
+    const ro=new ResizeObserver(()=>window.map?.invalidateSize?.({pan:false}));
+    ro.observe(mapEl);
+  });
 })();
