@@ -112,3 +112,6 @@ body>footer{color:#52525b!important;}
 
 /* hero boundary spacing */
 #hero-data-boundary{letter-spacing:.18em;}
+
+/* hero boundary dot */
+#hero-data-boundary>span:first-child{box-shadow:0 0 8px rgba(255,255,255,.08);}
