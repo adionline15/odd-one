@@ -1331,7 +1331,7 @@ body>footer{letter-spacing:.08em!important}
         lastObservationLoadAt = new Date();
         setObservationLoadMeta();
         setObservationLayerStatus(observations.length ? 'live' : 'empty');
-        document.querySelectorAll('.obs-summary-count').forEach(el => { if (!observations.length) el.textContent = '· NO VERIFIED DATA'; });
+        document.querySelectorAll('.obs-summary-count').forEach(el => { if (!observations.length) el.textContent = '· NO VERIFIED OBSERVATIONS'; });
       document.querySelectorAll('.obs-layer-error').forEach(el => { el.textContent = ''; });
       } catch (error) {
         if (requestId !== observationRequestId) return;
