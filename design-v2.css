@@ -6231,3 +6231,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 957 */
 #map-intelligence-hud .intel-kicker{opacity:.9;}
+
+
+/* 958 */
+#map-intelligence-hud .intel-card+.intel-card{border-top:1px solid rgba(255,255,255,.04);padding-top:12px;}
