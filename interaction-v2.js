@@ -280,3 +280,5 @@ document.documentElement.dataset.oddOneViewport=window.innerWidth<641?'mobile':w
 document.documentElement.dataset.oddOneNetwork=navigator.onLine?'online':'offline';
 
 document.documentElement.lang=document.documentElement.lang||'en';
+
+document.addEventListener('focusin',e=>e.target?.setAttribute('data-focus-visible','true'));
