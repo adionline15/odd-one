@@ -262,3 +262,5 @@ document.querySelector('#s-input')?.setAttribute('aria-label','Search India road
 document.querySelectorAll('#sidebar input').forEach((el,i)=>el.setAttribute('aria-label',el.getAttribute('aria-label')||`Route input ${i+1}`));
 
 document.querySelector('#map')?.setAttribute('aria-label','Interactive India road intelligence map');
+
+document.querySelector('#sidebar')?.setAttribute('aria-label','Road intelligence panel');
