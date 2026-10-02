@@ -176,4 +176,5 @@
   ready(() => document.getElementById('map')?.setAttribute('role','application'));
   ready(() => document.querySelector('nav[aria-label="Primary navigation"]')?.setAttribute('role','navigation'));
   ready(() => { const p=document.getElementById('dp-alerts'); if(p)p.dataset.surface='alerts'; });
+  ready(() => { const p=document.getElementById('dp-route'); if(p)p.dataset.surface='routing'; });
 })();
