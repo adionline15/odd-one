@@ -5595,3 +5595,7 @@ a[href]{cursor:pointer;}
 
 /* 798 */
 #route-notice{padding:11px 13px;}
+
+
+/* 799 */
+#route-notice{color:rgba(255,255,255,.65);line-height:1.45;}
