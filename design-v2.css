@@ -802,3 +802,6 @@ nav[aria-label="Primary navigation"]{z-index:100!important;}
 
 /* controls z */
 #map-layer-controls{z-index:46!important;}
+
+/* sheet z */
+#sheet{z-index:90!important;}
