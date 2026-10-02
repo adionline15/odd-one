@@ -589,3 +589,6 @@ body>footer{opacity:.9;}
 
 /* alert notice */
 [id$="-route-out"] .bg-zinc-900\/60{border-color:rgba(255,255,255,.08)!important;}
+
+/* generated guide */
+[id$="-route-out"] .bg-gradient-to-br{border-color:rgba(255,255,255,.08)!important;}
