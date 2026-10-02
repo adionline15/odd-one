@@ -5623,3 +5623,7 @@ a[href]{cursor:pointer;}
 
 /* 805 */
 #generated-guide a{text-underline-offset:3px;text-decoration-thickness:1px;}
+
+
+/* 806 */
+#generated-guide strong{color:#e5e7eb;font-weight:650;}
