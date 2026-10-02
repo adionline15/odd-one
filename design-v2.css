@@ -532,3 +532,6 @@ body>footer{opacity:.9;}
 
 /* layer shadow */
 #map-layer-controls{box-shadow:0 24px 55px rgba(0,0,0,.4)!important;}
+
+/* layer button radius */
+#map-layer-controls button{border-radius:11px!important;}
