@@ -245,4 +245,5 @@
   ready(() => { const s=document.getElementById('sheet'); if(s)s.setAttribute('aria-label','Road intelligence panel'); });
   ready(() => document.documentElement.setAttribute('data-odd-one-ui','intelligence-v2'));
   ready(() => window.addEventListener('orientationchange',()=>setTimeout(()=>getMap()?.invalidateSize?.({pan:false}),250),{passive:true}));
+  ready(() => document.getElementById('s-input')?.setAttribute('aria-controls','sugg'));
 })();
