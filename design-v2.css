@@ -1096,3 +1096,5 @@ body>footer{background:#050505!important;border-color:rgba(255,255,255,.06)!impo
 #d-alerts-box>div:hover,#m-alerts-box>div:hover{border-color:rgba(255,255,255,.13)!important;}
 
 #d-alerts-box>div,#m-alerts-box>div{background:rgba(10,10,12,.72)!important;}
+
+#map-layer-controls{box-shadow:0 22px 60px rgba(0,0,0,.46)!important;}
