@@ -88,4 +88,8 @@
   });
   ready(() => document.documentElement.dataset.motion=window.matchMedia('(prefers-reduced-motion: reduce)').matches?'reduced':'full');
   ready(() => window.addEventListener('resize',()=>setTimeout(()=>window.map?.invalidateSize?.({pan:false}),180),{passive:true}));
+  ready(() => {
+    const sync=()=>['map','sat'].forEach(k=>document.getElementById('btn-'+k)?.setAttribute('aria-pressed',document.getElementById('btn-'+k)?.classList.contains('on')?'true':'false'));
+    ['btn-map','btn-sat'].forEach(id=>document.getElementById(id)?.addEventListener('click',()=>setTimeout(sync,0))); sync();
+  });
 })();
