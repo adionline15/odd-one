@@ -943,3 +943,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* sidebar thumb */
 #sidebar ::-webkit-scrollbar-thumb{background:#303038;}
+
+/* sheet thumb */
+#sheet ::-webkit-scrollbar-thumb{background:#303038;}
