@@ -5039,3 +5039,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 659 */
 #obs-status-count{background:rgba(255,255,255,.025);padding:3px 7px;border-radius:7px;}
+
+
+/* 660 */
+#obs-status-dot{width:7px;height:7px;flex:0 0 7px;}
