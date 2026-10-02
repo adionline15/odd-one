@@ -5815,3 +5815,7 @@ a[href]{cursor:pointer;}
 
 /* 853 */
 @media(max-width:640px){#sugg{max-width:calc(100vw - 24px);}}
+
+
+/* 854 */
+@media(max-width:640px){.sugg-item{font-size:.82rem;}}
