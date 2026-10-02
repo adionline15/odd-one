@@ -205,3 +205,6 @@ body>footer{color:#52525b!important;}
 
 /* data scope */
 #stats-scope-label{color:#71717a!important;}
+
+/* data copy */
+#dp-data>.intel-card p{max-width:34rem;}
