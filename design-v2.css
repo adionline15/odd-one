@@ -4705,3 +4705,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 579 */
 .map-deck-icon{box-shadow:inset 0 0 0 1px rgba(255,255,255,.2),0 0 8px rgba(0,0,0,.18);}
+
+
+/* 580 */
+.map-deck-btn.active .sat-icon{box-shadow:inset 0 0 0 1px rgba(0,0,0,.18),0 0 8px rgba(34,211,238,.1);}
