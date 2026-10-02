@@ -6047,3 +6047,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 911 */
 @media(max-width:640px){.leaflet-popup-content-wrapper{box-shadow:0 14px 32px rgba(0,0,0,.28)!important;}}
+
+
+/* 912 */
+@media(max-width:640px){.route-endpoint-label{font-size:.64rem;padding:3px 6px;}}
