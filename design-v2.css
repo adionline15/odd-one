@@ -3853,3 +3853,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 389 */
 @media (max-width:640px){#m-alerts-box .intel-card{border-radius:13px}}
+
+
+/* 390 */
+@media (max-width:640px){#m-alerts-box .intel-card{padding:14px}}
