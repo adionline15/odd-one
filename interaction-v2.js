@@ -342,3 +342,5 @@ window.addEventListener('resize',()=>{clearTimeout(window.__oddOneResizeTimer);w
 document.querySelector('#s-input')?.addEventListener('focus',()=>document.documentElement.dataset.searchFocus='true');
 
 document.querySelector('#s-input')?.addEventListener('blur',()=>document.documentElement.dataset.searchFocus='false');
+
+document.querySelectorAll('#sidebar input').forEach(el=>el.addEventListener('focus',()=>el.setAttribute('data-route-focus','true')));
