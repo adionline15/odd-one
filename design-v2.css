@@ -3857,3 +3857,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 390 */
 @media (max-width:640px){#m-alerts-box .intel-card{padding:14px}}
+
+
+/* 391 */
+@media (max-width:640px){#sidebar input{box-shadow:0 5px 16px rgba(0,0,0,.12)}}
