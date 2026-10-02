@@ -4295,3 +4295,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 482 */
 #observation-status-strip{background:rgba(8,8,10,.6)}
+
+
+/* 483 */
+#observation-status-strip{backdrop-filter:blur(8px)}
