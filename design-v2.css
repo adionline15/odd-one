@@ -5987,3 +5987,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 896 */
 #sidebar .border-b{box-shadow:inset 0 -1px 0 rgba(255,255,255,.018);}
+
+
+/* 897 */
+@media(max-width:640px){#route-status-overlay{font-size:.78rem;}}
