@@ -3049,3 +3049,7 @@ nav[aria-label="Primary navigation"]{
 
 /* 188 */
 @media (min-width:641px) and (max-width:1100px){#d-alerts-box{gap:12px}}
+
+
+/* 189 */
+@media (min-width:641px) and (max-width:1100px){.route-endpoint-label{font-size:.76rem}}
