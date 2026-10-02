@@ -2571,3 +2571,11 @@ nav[aria-label="Primary navigation"]{
     box-shadow:0 8px 24px rgba(0,0,0,.10);
   }
 }
+
+
+/* 108 — improve desktop observation strip contrast */
+@media (min-width:1101px){
+  #observation-status-strip{
+    border-color:rgba(255,255,255,.10);
+  }
+}
