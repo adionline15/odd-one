@@ -4157,3 +4157,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 465 */
 .sugg-item:hover{border-color:rgba(255,255,255,.13)}
+
+
+/* 466 */
+.sugg-item:hover{background:rgba(255,255,255,.035)}
