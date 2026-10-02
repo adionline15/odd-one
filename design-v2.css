@@ -253,3 +253,6 @@ body>footer{color:#52525b!important;}
 
 /* mobile map control width */
 @media(max-width:640px){#map-layer-controls button{min-width:100px!important;}}
+
+/* mobile route status */
+@media(max-width:640px){#route-status-overlay{right:12px!important;top:12px!important;}}
