@@ -3689,3 +3689,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 348 */
 @media (min-width:1101px){#sidebar h2,#sidebar h3{letter-spacing:-.015em}}
+
+
+/* 349 */
+@media (min-width:1101px){#sidebar h2,#sidebar h3{line-height:1.2}}
