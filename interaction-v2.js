@@ -211,4 +211,5 @@
   ready(() => document.getElementById('toggle-btn')?.addEventListener('click',()=>setTimeout(()=>getMap()?.invalidateSize?.({pan:false}),340)));
   ready(() => document.getElementById('route-status-source')?.setAttribute('aria-label','Routing source')); 
   ready(() => document.getElementById('obs-status-state')?.setAttribute('aria-label','Observation service state'));
+  ready(() => document.getElementById('obs-status-dot')?.setAttribute('aria-hidden','true'));
 })();
