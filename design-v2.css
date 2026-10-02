@@ -1416,3 +1416,5 @@ html.is-tablet #map-intelligence-hud{max-width:calc(100% - 32px);}
 html.is-desktop #map-intelligence-hud{max-width:460px;}
 
 html.is-mobile #search-wrap{width:calc(100vw - 24px)!important;}
+
+html.is-tablet #search-wrap{width:min(420px,calc(100vw - 32px))!important;}
