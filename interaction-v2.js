@@ -163,4 +163,5 @@
   ready(() => document.querySelector('body>footer')?.setAttribute('data-providers','leaflet,nominatim,osrm,gemini'));
   ready(() => { const sync=()=>document.documentElement.dataset.viewport=window.innerWidth<641?'mobile':window.innerWidth<1101?'tablet':'desktop'; window.addEventListener('resize',sync,{passive:true}); sync(); });
   ready(() => { const sync=()=>document.body.dataset.viewport=document.documentElement.dataset.viewport||'desktop'; window.addEventListener('resize',sync,{passive:true}); sync(); });
+  ready(() => { const s=document.getElementById('sheet'); if(s)new MutationObserver(()=>s.setAttribute('aria-label',s.classList.contains('open')?'Expanded intelligence panel':'Collapsed intelligence panel')).observe(s,{attributes:true,attributeFilter:['class']}); });
 })();
