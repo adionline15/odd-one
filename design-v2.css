@@ -4153,3 +4153,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 464 */
 @media (min-width:641px){#d-alerts-box .intel-card:hover,#m-alerts-box .intel-card:hover{transform:translateY(-1px)}}
+
+
+/* 465 */
+.sugg-item:hover{border-color:rgba(255,255,255,.13)}
