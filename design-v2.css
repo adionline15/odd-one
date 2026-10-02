@@ -4367,3 +4367,8 @@ nav[aria-label="Primary navigation"]{-webkit-font-smoothing:antialiased}
 
 /* 500 */
 @media (prefers-reduced-motion:reduce){nav[aria-label="Primary navigation"] a,#s-input,#sidebar input,.sugg-item,.intel-card{transition:none!important}}
+
+
+/* 501 */
+#map-command-deck{filter:drop-shadow(0 18px 38px rgba(0,0,0,.22));}
+.map-layer-switcher{box-shadow:0 18px 46px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.045);}
