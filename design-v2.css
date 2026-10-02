@@ -1370,3 +1370,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  #dp-data .space-y-4{gap:10px!important;}
 
  #dp-data .intel-muted{font-size:9px;}
+
+ #dp-data .intel-value{font-variant-numeric:tabular-nums;}
