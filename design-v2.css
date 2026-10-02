@@ -388,3 +388,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* awaiting state */
 #observation-status-strip[data-state="awaiting"] #obs-status-dot{background:#a1a1aa!important;box-shadow:0 0 0 5px rgba(161,161,170,.06)!important;}
+
+/* empty state */
+#observation-status-strip[data-state="empty"] #obs-status-dot{background:#71717a!important;box-shadow:0 0 0 5px rgba(113,113,122,.06)!important;}
