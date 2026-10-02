@@ -5703,3 +5703,7 @@ a[href]{cursor:pointer;}
 
 /* 825 */
 .route-endpoint-label{font-size:.7rem;font-weight:650;}
+
+
+/* 826 */
+.route-endpoint-label{color:#f1f5f9;background:rgba(7,7,9,.82);border:1px solid rgba(255,255,255,.08);}
