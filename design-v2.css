@@ -4890,3 +4890,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 621 */
 #map-intelligence-hud{border-radius:14px;}
+
+
+/* 622 */
+#map-intelligence-hud{box-shadow:0 20px 48px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.035);}
