@@ -4701,3 +4701,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 578 */
 .route-endpoint-label{text-transform:uppercase;letter-spacing:.15em!important;font-weight:650;}
+
+
+/* 579 */
+.map-deck-icon{box-shadow:inset 0 0 0 1px rgba(255,255,255,.2),0 0 8px rgba(0,0,0,.18);}
