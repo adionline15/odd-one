@@ -2710,3 +2710,9 @@ nav[aria-label="Primary navigation"]{
 #observation-status-strip{
   box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 8px 22px rgba(0,0,0,.10);
 }
+
+
+/* 126 — improve sidebar scrollbar contrast */
+#sidebar{
+  scrollbar-color:rgba(255,255,255,.20) transparent;
+}
