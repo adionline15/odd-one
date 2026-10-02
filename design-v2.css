@@ -3241,3 +3241,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 236 */
 #d-go-btn:active,#m-go-btn:active{transform:translateY(1px) scale(.99)}
+
+
+/* 237 */
+#d-go-btn:focus-visible,#m-go-btn:focus-visible{outline:2px solid var(--oo-v2-accent);outline-offset:3px}
