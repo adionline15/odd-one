@@ -796,3 +796,6 @@ nav[aria-label="Primary navigation"]{z-index:100!important;}
 
 /* sidebar z */
 #sidebar{z-index:50!important;}
+
+/* overlay z */
+#route-status-overlay{z-index:45!important;}
