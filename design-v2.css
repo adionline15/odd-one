@@ -4017,3 +4017,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 430 */
 @media (max-width:640px){#sidebar input{background:rgba(255,255,255,.03)}}
+
+
+/* 431 */
+@media (max-width:640px){#m-go-btn{box-shadow:0 8px 22px rgba(0,0,0,.2)}}
