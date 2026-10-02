@@ -4133,3 +4133,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 459 */
 @media (min-width:641px) and (max-width:1100px){nav[aria-label="Primary navigation"] a[aria-current="page"]{font-weight:650}}
+
+
+/* 460 */
+@media (min-width:641px) and (max-width:1100px){nav[aria-label="Primary navigation"] a:hover{opacity:1}}
