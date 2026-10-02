@@ -264,3 +264,5 @@ document.querySelectorAll('#sidebar input').forEach((el,i)=>el.setAttribute('ari
 document.querySelector('#map')?.setAttribute('aria-label','Interactive India road intelligence map');
 
 document.querySelector('#sidebar')?.setAttribute('aria-label','Road intelligence panel');
+
+document.querySelector('#sheet')?.setAttribute('aria-label','Mobile road intelligence panel');
