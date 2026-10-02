@@ -4749,3 +4749,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 590 */
 #map-scale-wrap{filter:drop-shadow(0 8px 20px rgba(0,0,0,.18));}
+
+
+/* 591 */
+@media(min-width:1101px){#map-layer-controls{padding:6px!important;gap:6px!important;}}
