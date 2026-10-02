@@ -115,3 +115,6 @@ body>footer{color:#52525b!important;}
 
 /* hero boundary dot */
 #hero-data-boundary>span:first-child{box-shadow:0 0 8px rgba(255,255,255,.08);}
+
+/* hero width */
+#intelligence-hero{max-width:min(430px,calc(100vw - 40px));}
