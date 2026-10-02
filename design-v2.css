@@ -685,3 +685,6 @@ body>footer{opacity:.9;}
 
 /* reduced pane */
 @media(prefers-reduced-motion:reduce){.tab-pane{animation:none!important;}}
+
+/* data loading */
+#stats-content .animate-spin{opacity:.7;}
