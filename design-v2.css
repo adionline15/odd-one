@@ -322,3 +322,6 @@ body>footer{color:#52525b!important;}
 
 /* desktop nav */
 @media(min-width:1101px){nav[aria-label="Primary navigation"]{height:66px!important;}}
+
+/* button hover */
+button:hover:not(:disabled){transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease;}
