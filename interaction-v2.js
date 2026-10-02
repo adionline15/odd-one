@@ -209,4 +209,5 @@
   ready(() => { const m=document.getElementById('map'); if(m)m.title='Interactive road intelligence map — search, route, or change layers.'; });
   ready(() => document.getElementById('sheet')?.addEventListener('transitionend',()=>getMap()?.invalidateSize?.({pan:false})));
   ready(() => document.getElementById('toggle-btn')?.addEventListener('click',()=>setTimeout(()=>getMap()?.invalidateSize?.({pan:false}),340)));
+  ready(() => document.getElementById('route-status-source')?.setAttribute('aria-label','Routing source')); 
 })();
