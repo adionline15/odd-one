@@ -5811,3 +5811,7 @@ a[href]{cursor:pointer;}
 
 /* 852 */
 @media(max-width:640px){#s-input{box-shadow:0 10px 24px rgba(0,0,0,.16)!important;}}
+
+
+/* 853 */
+@media(max-width:640px){#sugg{max-width:calc(100vw - 24px);}}
