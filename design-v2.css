@@ -5027,3 +5027,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 656 */
 #desktop-stats-container>div+div{border-left:1px solid rgba(255,255,255,.055);padding-left:16px;}
+
+
+/* 657 */
+#desktop-stats-container>div{transition:background-color .18s ease,transform .18s ease;}
