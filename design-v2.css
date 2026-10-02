@@ -1102,3 +1102,5 @@ body>footer{background:#050505!important;border-color:rgba(255,255,255,.06)!impo
 #map-layer-controls{border-color:rgba(255,255,255,.095)!important;}
 
 #map-layer-controls button{height:34px!important;}
+
+#map-layer-controls button{font-size:8px!important;}
