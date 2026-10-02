@@ -356,3 +356,5 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')document.documentEle
 document.addEventListener('keydown',e=>{if(e.key==='Enter')document.documentElement.dataset.lastKey='enter';});
 
 document.documentElement.dataset.interactionHeartbeat='ready';
+
+document.documentElement.dataset.runtimePhase='interactive';
