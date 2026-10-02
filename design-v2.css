@@ -1076,3 +1076,5 @@ body>footer{background:#050505!important;border-color:rgba(255,255,255,.06)!impo
 #dp-data .space-y-4{row-gap:14px!important;}
 
 #sidebar input{border-color:rgba(255,255,255,.08)!important;}
+
+#sidebar input{background:rgba(17,17,20,.72)!important;}
