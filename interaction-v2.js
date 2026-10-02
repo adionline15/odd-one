@@ -314,3 +314,5 @@ document.querySelector('#s-input')?.addEventListener('input',()=>document.queryS
 document.querySelector('#s-input')?.addEventListener('blur',()=>document.querySelector('#search-wrap')?.removeAttribute('data-search-active'));
 
 document.querySelector('#intelligence-hero')?.setAttribute('data-rendered','true');
+
+document.querySelector('#sidebar')?.setAttribute('data-rendered','true');
