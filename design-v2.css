@@ -1488,3 +1488,5 @@ html.is-desktop footer{font-size:9px;}
  @media(min-width:641px) and (max-width:1100px){#sidebar{border-radius:16px 0 0 16px;}}
 
  @media(min-width:1101px){#sidebar{border-radius:18px 0 0 18px;}}
+
+ @media(min-width:641px) and (max-width:1100px){#intelligence-hero>div{border-radius:16px!important;}}
