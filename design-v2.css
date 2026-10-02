@@ -5583,3 +5583,7 @@ a[href]{cursor:pointer;}
 
 /* 795 */
 .alert-body{line-height:1.45;}
+
+
+/* 796 */
+.alert-title{letter-spacing:-.005em;}
