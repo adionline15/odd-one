@@ -3385,3 +3385,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 272 */
 @media (max-width:640px){#m-go-btn{min-height:44px}}
+
+
+/* 273 */
+@media (max-width:640px){nav[aria-label="Primary navigation"] a{padding:8px 4px}}
