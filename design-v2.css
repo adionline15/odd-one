@@ -157,3 +157,6 @@ body>footer{color:#52525b!important;}
 
 /* desktop stats */
 #desktop-stats-container>div{padding-left:30px!important;padding-right:30px!important;}
+
+/* desktop stat divider */
+#desktop-stats-container .w-px{background:rgba(255,255,255,.08)!important;}
