@@ -2118,3 +2118,11 @@ nav[aria-label="Primary navigation"]{
     padding-inline:14px;
   }
 }
+
+
+/* 051 — refine tablet route CTA */
+@media (min-width:641px) and (max-width:1100px){
+  #d-go-btn,#m-go-btn{
+    min-height:46px;
+  }
+}
