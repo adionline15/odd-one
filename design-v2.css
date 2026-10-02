@@ -1442,3 +1442,5 @@ html.is-desktop footer{font-size:9px;}
  #intelligence-hero>div{backdrop-filter:blur(14px);}
 
  #search-wrap{backdrop-filter:blur(18px)!important;}
+
+ footer{backdrop-filter:blur(10px);}
