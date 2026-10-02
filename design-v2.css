@@ -2217,3 +2217,11 @@ nav[aria-label="Primary navigation"]{
     max-width:42rem;
   }
 }
+
+
+/* 063 — refine mobile observation text contrast */
+@media (max-width:640px){
+  #observation-status-strip{
+    color:rgba(255,255,255,.86);
+  }
+}
