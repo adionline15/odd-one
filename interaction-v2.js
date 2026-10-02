@@ -131,4 +131,5 @@
   ready(() => { const m=document.getElementById('map'); if(!m)return; m.addEventListener('focus',()=>m.dataset.focused='true'); m.addEventListener('blur',()=>delete m.dataset.focused); });
   ready(() => document.querySelectorAll('#d-from,#m-from').forEach(input=>input.addEventListener('keydown',e=>{if(e.key==='Enter'){const id=input.id.replace('-from','-to');document.getElementById(id)?.focus();}}));
   ready(() => document.getElementById('s-input')?.addEventListener('blur',()=>document.getElementById('sugg')?.setAttribute('aria-hidden','true')));
+  ready(() => { const l=document.getElementById('sugg'); if(!l)return; new MutationObserver(()=>l.setAttribute('aria-hidden',l.classList.contains('hidden')?'true':'false')).observe(l,{attributes:true,attributeFilter:['class']}); });
 })();
