@@ -1742,3 +1742,7 @@ nav[aria-label="Primary navigation"] h1{font-weight:600!important;}
 
 /* improve map layer active state */
 #map-layer-controls button[aria-pressed="true"]{border-color:rgba(34,211,238,.3)!important;background:rgba(34,211,238,.06)!important;}
+
+
+/* refine desktop stats typography */
+#desktop-stats-container p:last-child{letter-spacing:-.015em!important;}
