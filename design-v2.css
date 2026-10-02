@@ -898,3 +898,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* route focus */
 #sidebar input:focus{border-color:rgba(161,161,170,.55)!important;}
+
+/* route placeholder */
+#sidebar input::placeholder{color:#52525b!important;}
