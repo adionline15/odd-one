@@ -5755,3 +5755,7 @@ a[href]{cursor:pointer;}
 
 /* 838 */
 .intel-card{transition:transform .18s ease,border-color .18s ease,background-color .18s ease;}
+
+
+/* 839 */
+.intel-card:active{transform:translateY(0);}
