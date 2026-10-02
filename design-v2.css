@@ -3821,3 +3821,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 381 */
 @media (max-width:640px){nav[aria-label="Primary navigation"] a{opacity:.92}}
+
+
+/* 382 */
+@media (max-width:640px){nav[aria-label="Primary navigation"] a[aria-current="page"]{font-weight:650}}
