@@ -3357,3 +3357,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 265 */
 .sugg-item:active{transform:scale(.995)}
+
+
+/* 266 */
+#sidebar input:focus{background:rgba(255,255,255,.04)}
