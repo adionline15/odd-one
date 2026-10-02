@@ -2402,3 +2402,11 @@ nav[aria-label="Primary navigation"]{
     min-width:280px;
   }
 }
+
+
+/* 086 — improve desktop hero metadata spacing */
+@media (min-width:1101px){
+  #hero-data-boundary{
+    gap:12px;
+  }
+}
