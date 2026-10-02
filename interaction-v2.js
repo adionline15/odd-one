@@ -270,3 +270,5 @@ document.querySelector('#sheet')?.setAttribute('aria-label','Mobile road intelli
 window.addEventListener('resize',()=>document.documentElement.dataset.oddOneViewport=window.innerWidth<641?'mobile':window.innerWidth<1101?'tablet':'desktop',{passive:true});
 
 window.addEventListener('online',()=>document.documentElement.dataset.oddOneNetwork='online');
+
+window.addEventListener('offline',()=>document.documentElement.dataset.oddOneNetwork='offline');
