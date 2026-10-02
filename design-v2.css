@@ -373,3 +373,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* map control active */
 #map-layer-controls button:active{transform:scale(.98);}
+
+/* map control focus */
+#map-layer-controls button:focus-visible{border-color:rgba(34,211,238,.35)!important;}
