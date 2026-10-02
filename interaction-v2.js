@@ -332,3 +332,5 @@ new IntersectionObserver(e=>e[0]&&document.documentElement.classList.toggle('sid
 new IntersectionObserver(e=>e[0]&&document.documentElement.classList.toggle('sheet-visible',e[0].isIntersecting)).observe(document.querySelector('#sheet')||document.documentElement);
 
 if(document.readyState==='complete')document.documentElement.dataset.documentReady='true';
+
+window.addEventListener('load',()=>document.documentElement.dataset.documentReady='true',{once:true});
