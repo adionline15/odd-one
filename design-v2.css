@@ -3625,3 +3625,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 332 */
 @media (min-width:1101px){#desktop-stats-container{backdrop-filter:blur(10px)}}
+
+
+/* 333 */
+@media (min-width:1101px){#desktop-stats-container [data-value]{font-variant-numeric:tabular-nums;letter-spacing:-.02em}}
