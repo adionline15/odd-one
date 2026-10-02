@@ -142,3 +142,6 @@ body>footer{color:#52525b!important;}
 
 /* observation state */
 #obs-status-state{color:#71717a!important;}
+
+/* map hud */
+#map-intelligence-hud .intel-card{min-width:224px;}
