@@ -1206,3 +1206,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
 *::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.2);}
 
  .intel-card{border-color:rgba(255,255,255,.09);}
+
+ .intel-card{background:rgba(10,10,12,.76);}
