@@ -4850,3 +4850,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 611 */
 #route-status-source{font-weight:700;letter-spacing:.14em;}
+
+
+/* 612 */
+#route-status-distance,#route-status-time{font-size:1.02em;}
