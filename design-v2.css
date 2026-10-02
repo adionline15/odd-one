@@ -6243,3 +6243,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 960 */
 #route-status-overlay{background:rgba(7,7,9,.84)!important;}
+
+
+/* 961 */
+#route-status-overlay{border:1px solid rgba(255,255,255,.07)!important;}
