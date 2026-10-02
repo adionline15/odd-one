@@ -1324,3 +1324,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  #intelligence-hero .mt-4{flex-wrap:wrap;}
 
  #intelligence-hero .mt-4{gap:6px;}
+
+ #observation-status-strip{gap:8px;}
