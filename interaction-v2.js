@@ -388,3 +388,5 @@ document.addEventListener('click',e=>{if(e.target.closest?.('#dp-route'))documen
 document.documentElement.dataset.interactionTimestamp=String(Date.now());
 
 document.documentElement.dataset.surfaceTimestamp=String(Date.now());
+
+document.documentElement.dataset.viewportTimestamp=String(Date.now());
