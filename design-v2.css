@@ -100,3 +100,6 @@ nav[aria-label="Primary navigation"] button[onclick*="showTab('route')"]{border-
 
 /* progressive */
 #observation-status-strip .intel-card{border-color:rgba(255,255,255,.11)!important;}
+
+/* progressive */
+#desktop-stats-container .intel-kicker{letter-spacing:.17em;}
