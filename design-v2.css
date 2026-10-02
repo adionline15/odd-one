@@ -139,3 +139,6 @@ body>footer{color:#52525b!important;}
 
 /* observation count */
 #obs-status-count{font-weight:600;}
+
+/* observation state */
+#obs-status-state{color:#71717a!important;}
