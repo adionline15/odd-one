@@ -124,4 +124,5 @@
   ready(() => document.getElementById('btn-loc')?.addEventListener('click',e=>{e.currentTarget.setAttribute('aria-busy','true');setTimeout(()=>e.currentTarget.setAttribute('aria-busy','false'),2500);}));
   ready(() => { const b=document.getElementById('btn-loc'); if(!b)return; const text=new MutationObserver(()=>{if(!/Locating/i.test(b.textContent))b.setAttribute('aria-busy','false');}); text.observe(b,{childList:true,characterData:true,subtree:true}); });
   ready(() => { const hud=document.getElementById('map-hud-scope'); if(!hud||!window.map)return; const sync=()=>{const c=map.getCenter(); hud.dataset.center=c.lat.toFixed(2)+','+c.lng.toFixed(2);}; window.addEventListener('load',sync,{once:true}); });
+  ready(() => document.getElementById('map')?.setAttribute('aria-describedby','map-interaction-note')); 
 })();
