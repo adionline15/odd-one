@@ -6427,3 +6427,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 991 */
 #map-intelligence-hud .intel-card{min-width:76px;}
+
+
+/* 992 */
+#map-intelligence-hud .intel-card+.intel-card{border-top-color:rgba(255,255,255,.055);}
