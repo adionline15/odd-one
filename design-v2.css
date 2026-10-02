@@ -6175,3 +6175,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 943 */
 .map-layer-switcher button{border-radius:9px;}
+
+
+/* 944 */
+.map-layer-switcher button{padding:7px 9px;}
