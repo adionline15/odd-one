@@ -499,3 +499,6 @@ body>footer{opacity:.9;}
 
 /* popup close hover */
 .leaflet-popup-close-button:hover{color:#fff!important;}
+
+/* zoom controls */
+.leaflet-control-zoom a{width:32px!important;height:32px!important;line-height:32px!important;}
