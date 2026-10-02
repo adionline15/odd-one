@@ -3309,3 +3309,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 253 */
 .road-intel-selected{transition:opacity .2s ease,filter .2s ease}
+
+
+/* 254 */
+.road-intel-selected{filter:drop-shadow(0 0 5px rgba(34,211,238,.22))}
