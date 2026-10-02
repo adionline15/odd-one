@@ -5455,3 +5455,7 @@ nav[aria-label="Primary navigation"] .brand{color:#f5f5f5;}
 
 /* 763 */
 @media(min-width:1101px){.map-compass{width:46px;height:46px;}}
+
+
+/* 764 */
+@media(min-width:1101px){#map-scale-wrap{margin-left:10px;}}
