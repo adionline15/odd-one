@@ -4203,3 +4203,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 489 */
 #s-input{background:rgba(10,10,12,.72)}
+
+
+/* 490 */
+#s-input{backdrop-filter:blur(10px)}
