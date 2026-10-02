@@ -724,3 +724,6 @@ body>footer{opacity:.9;}
 
 /* surface token */
 .intel-card{background-color:var(--oo-v2-surface)!important;}
+
+/* border token */
+.intel-card{border-color:var(--oo-v2-line)!important;}
