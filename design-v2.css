@@ -2899,3 +2899,8 @@ nav[aria-label="Primary navigation"]{
 /* 154 — improve route status muted text */
 #route-status-overlay small{color:rgba(255,255,255,.52);}
 
+
+
+/* 155 — refine endpoint label radius */
+.route-endpoint-label{border-radius:8px;}
+
