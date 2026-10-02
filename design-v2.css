@@ -2168,3 +2168,11 @@ nav[aria-label="Primary navigation"]{
     box-shadow:0 8px 20px rgba(0,0,0,.12);
   }
 }
+
+
+/* 057 — improve mobile HUD border */
+@media (max-width:640px){
+  #map-intelligence-hud{
+    border-color:rgba(255,255,255,.12);
+  }
+}
