@@ -5063,3 +5063,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 665 */
 #map-intelligence-hud .intel-card:hover{background:rgba(255,255,255,.018);}
+
+
+/* 666 */
+#map-intelligence-hud .intel-value{text-align:right;font-variant-numeric:tabular-nums;}
