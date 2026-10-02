@@ -4387,3 +4387,8 @@ nav[aria-label="Primary navigation"]{-webkit-font-smoothing:antialiased}
 /* 504 */
 #s-input{box-shadow:0 10px 30px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.035);}
 #s-input:focus{border-color:rgba(34,211,238,.24)!important;background:rgba(12,12,15,.88)!important;}
+
+
+/* 505 */
+#s-input:hover{transform:translateY(-1px);}
+@media(prefers-reduced-motion:reduce){#s-input:hover{transform:none;}}
