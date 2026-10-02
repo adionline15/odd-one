@@ -298,3 +298,5 @@ document.documentElement.classList.toggle('is-online',navigator.onLine);
 document.documentElement.classList.toggle('is-offline',!navigator.onLine);
 
 document.documentElement.dataset.keyboard='false';
+
+document.addEventListener('keydown',e=>{if(e.key==='Tab')document.documentElement.dataset.keyboard='true';});
