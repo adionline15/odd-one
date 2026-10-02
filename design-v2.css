@@ -2267,3 +2267,11 @@ nav[aria-label="Primary navigation"]{
     padding-inline:14px;
   }
 }
+
+
+/* 069 — refine tablet sidebar border */
+@media (min-width:641px) and (max-width:1100px){
+  #sidebar{
+    border-right-color:rgba(255,255,255,.10);
+  }
+}
