@@ -1452,3 +1452,5 @@ html.is-desktop footer{font-size:9px;}
  #map-intelligence-hud{z-index:500;}
 
  #observation-status-strip{z-index:500;}
+
+ #sidebar{z-index:900;}
