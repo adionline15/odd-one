@@ -2425,3 +2425,10 @@ nav[aria-label="Primary navigation"]{
   outline:1px solid rgba(255,255,255,.025);
   outline-offset:-1px;
 }
+
+
+/* 089 — refine layer control active state */
+#map-layer-controls button[aria-pressed="true"]{
+  border-color:rgba(34,211,238,.28);
+  background:rgba(34,211,238,.07);
+}
