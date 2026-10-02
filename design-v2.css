@@ -682,3 +682,6 @@ body>footer{opacity:.9;}
 
 /* pane animation */
 @keyframes oo-pane-in{from{opacity:.72;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}
+
+/* reduced pane */
+@media(prefers-reduced-motion:reduce){.tab-pane{animation:none!important;}}
