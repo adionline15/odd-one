@@ -312,3 +312,5 @@ window.addEventListener('offline',()=>document.documentElement.classList.remove(
 document.querySelector('#s-input')?.addEventListener('input',()=>document.querySelector('#search-wrap')?.setAttribute('data-search-active','true'));
 
 document.querySelector('#s-input')?.addEventListener('blur',()=>document.querySelector('#search-wrap')?.removeAttribute('data-search-active'));
+
+document.querySelector('#intelligence-hero')?.setAttribute('data-rendered','true');
