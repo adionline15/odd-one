@@ -3197,3 +3197,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 225 */
 #sidebar input{border-radius:12px}
+
+
+/* 226 */
+#sidebar input{line-height:1.4}
