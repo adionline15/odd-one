@@ -5687,3 +5687,7 @@ a[href]{cursor:pointer;}
 
 /* 821 */
 @media(max-width:640px){#m-alerts-box .alert-card{padding:10px 11px;}}
+
+
+/* 822 */
+@media(min-width:1101px){#sidebar .route-control-group{gap:8px;}}
