@@ -243,4 +243,5 @@
   ready(() => document.getElementById('route-status-overlay')?.setAttribute('data-fallback-boundary','explicit'));
   ready(() => document.getElementById('btn-sat')?.setAttribute('data-context-only','true'));
   ready(() => { const s=document.getElementById('sheet'); if(s)s.setAttribute('aria-label','Road intelligence panel'); });
+  ready(() => document.documentElement.setAttribute('data-odd-one-ui','intelligence-v2'));
 })();
