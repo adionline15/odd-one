@@ -2732,3 +2732,10 @@ nav[aria-label="Primary navigation"]{
 #sidebar input::placeholder{
   color:rgba(255,255,255,.40);
 }
+
+
+/* 129 — refine route field disabled state */
+#sidebar input:disabled{
+  opacity:.55;
+  cursor:not-allowed;
+}
