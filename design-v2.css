@@ -3121,3 +3121,7 @@ nav[aria-label="Primary navigation"]{
 
 /* 206 */
 @media (max-width:640px){#route-status-overlay{border-radius:14px}}
+
+
+/* 207 */
+@media (max-width:640px){#map-intelligence-hud{backdrop-filter:blur(10px)}}
