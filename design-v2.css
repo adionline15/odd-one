@@ -3717,3 +3717,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 355 */
 @media (min-width:1101px){#sidebar input:focus{box-shadow:0 0 0 3px rgba(34,211,238,.07)}}
+
+
+/* 356 */
+@media (min-width:1101px){#sidebar input{transition:border-color .18s ease,background-color .18s ease,box-shadow .18s ease}}
