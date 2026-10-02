@@ -4045,3 +4045,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 437 */
 @media (max-width:640px){nav[aria-label="Primary navigation"] a[aria-current="page"]{text-underline-offset:4px}}
+
+
+/* 438 */
+@media (max-width:640px){nav[aria-label="Primary navigation"] a{transition:opacity .16s ease,color .16s ease}}
