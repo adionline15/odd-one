@@ -52,3 +52,6 @@ button:focus-visible,input:focus-visible{scroll-margin:24px;}
 #sheet{isolation:isolate;}
 /* 020 */
 body>footer{z-index:40;}
+
+/* progressive */
+.oo-brand-rhythm{letter-spacing:-.055em;}
