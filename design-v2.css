@@ -559,3 +559,6 @@ body>footer{opacity:.9;}
 
 /* mobile content */
 #sheet>.flex-1.overflow-y-auto{padding:15px!important;}
+
+/* mobile route fields */
+#sheet input{height:44px!important;}
