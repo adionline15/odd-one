@@ -240,4 +240,5 @@
   ready(() => { const sync=()=>document.querySelectorAll('[data-nav-tab]').forEach(b=>b.setAttribute('aria-current',b.classList.contains('active')?'page':'false')); document.querySelectorAll('[data-nav-tab]').forEach(b=>b.addEventListener('click',()=>setTimeout(sync,0))); sync(); });
   ready(() => { const m=getMap(); if(m?.on)m.on('zoomend moveend',()=>document.body.dataset.mapViewport='updated'); });
   ready(() => document.getElementById('observation-status-strip')?.setAttribute('data-public-boundary','approved-only'));
+  ready(() => document.getElementById('route-status-overlay')?.setAttribute('data-fallback-boundary','explicit'));
 })();
