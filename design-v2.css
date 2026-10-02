@@ -5051,3 +5051,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 662 */
 #observation-status-strip[data-state="loading"] #obs-status-dot{box-shadow:0 0 0 3px rgba(245,158,11,.07);}
+
+
+/* 663 */
+#observation-status-strip[data-state="unavailable"] #obs-status-dot{box-shadow:0 0 0 3px rgba(239,68,68,.06);}
