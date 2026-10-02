@@ -213,4 +213,5 @@
   ready(() => document.getElementById('obs-status-state')?.setAttribute('aria-label','Observation service state'));
   ready(() => document.getElementById('obs-status-dot')?.setAttribute('aria-hidden','true'));
   ready(() => document.querySelector('#s-input + span')?.setAttribute('aria-hidden','true'));
+  ready(() => document.querySelector('#intelligence-hero .bg-emerald-400')?.setAttribute('aria-hidden','true'));
 })();
