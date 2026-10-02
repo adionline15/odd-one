@@ -991,3 +991,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* final stats */
 #desktop-stats-container>div{background:rgba(5,5,5,.88)!important;}
+
+/* final sidebar */
+#sidebar{background:rgba(5,5,5,.985)!important;}
