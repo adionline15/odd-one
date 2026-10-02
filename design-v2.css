@@ -1278,3 +1278,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  #s-input::placeholder{color:#6f6f77;}
 
  #s-input:focus{outline:none;}
+
+ #search-suggestions{border-radius:12px!important;overflow:hidden;}
