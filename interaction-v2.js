@@ -223,4 +223,5 @@
   ready(() => document.querySelectorAll('button').forEach(b=>{if(/PLAN ROUTE/i.test(b.textContent))b.setAttribute('aria-label','Open route planner');}));
   ready(() => document.querySelectorAll('button').forEach(b=>{if(/^ROUTE$/i.test(b.textContent.trim()))b.setAttribute('aria-label','Open route planner');}));
   ready(() => { const b=document.querySelector('nav h1')?.parentElement; if(b){b.setAttribute('role','button');b.setAttribute('tabindex','0');b.setAttribute('aria-label','Return to India map view');b.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();b.click();}});}});
+  ready(() => { const b=document.querySelector('nav h1')?.parentElement; if(b)b.addEventListener('focus',()=>b.dataset.focused='true'); });
 })();
