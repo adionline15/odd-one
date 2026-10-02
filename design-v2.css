@@ -3321,3 +3321,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 256 */
 .sugg-item{padding-block:10px}
+
+
+/* 257 */
+.sugg-item{transition:background-color .16s ease,border-color .16s ease,transform .16s ease}
