@@ -6223,3 +6223,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 955 */
 #map-intelligence-hud{backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);}
+
+
+/* 956 */
+#map-intelligence-hud .intel-value{line-height:1.1;}
