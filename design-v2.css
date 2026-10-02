@@ -6103,3 +6103,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 925 */
 @media(min-width:1101px){.map-compass span{color:rgba(245,245,245,.72);}}
+
+
+/* 926 */
+@media(min-width:1101px){.map-scale-label{color:rgba(245,245,245,.62);}}
