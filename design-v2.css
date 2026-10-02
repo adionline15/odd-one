@@ -178,3 +178,6 @@ body>footer{color:#52525b!important;}
 
 /* alert radius */
 #d-alerts-box>div,#m-alerts-box>div{border-radius:14px!important;}
+
+/* alert padding */
+#d-alerts-box>div,#m-alerts-box>div{padding:15px!important;}
