@@ -466,3 +466,6 @@ nav[aria-label="Primary navigation"] .font-mono-lux{font-size:7px!important;}
 
 /* alert body */
 #d-alerts-box p,#m-alerts-box p{letter-spacing:.005em;}
+
+/* route field text */
+#sidebar input{letter-spacing:.005em;}
