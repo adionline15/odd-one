@@ -159,4 +159,5 @@
   ready(() => document.querySelectorAll('[id$="-route-out"]').forEach(el=>el.setAttribute('role','region')));
   ready(() => document.querySelectorAll('[id$="-route-out"]').forEach(el=>el.setAttribute('aria-label','Calculated route intelligence')));
   ready(() => document.getElementById('stats-content')?.setAttribute('role','region'));
+  ready(() => document.getElementById('stats-content')?.setAttribute('aria-label','Approved observation statistics'));
 })();
