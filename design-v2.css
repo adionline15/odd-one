@@ -3073,3 +3073,7 @@ nav[aria-label="Primary navigation"]{
 
 /* 194 */
 @media (min-width:1101px){#sidebar input{background:rgba(255,255,255,.035)}}
+
+
+/* 195 */
+@media (min-width:1101px){#d-alerts-box .intel-card{transition:transform .2s ease,box-shadow .2s ease}}
