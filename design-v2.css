@@ -4420,3 +4420,7 @@ nav[aria-label="Primary navigation"]{-webkit-font-smoothing:antialiased}
 
 /* 511 */
 .intel-card{box-shadow:0 12px 34px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.025);}
+
+
+/* 512 */
+@media(min-width:641px){.intel-card:hover{border-color:rgba(255,255,255,.15);box-shadow:0 16px 38px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.035);}}
