@@ -1084,3 +1084,5 @@ body>footer{background:#050505!important;border-color:rgba(255,255,255,.06)!impo
 #d-go-btn,#m-go-btn{min-height:42px!important;}
 
 #d-go-btn,#m-go-btn{transition:transform .16s ease,box-shadow .16s ease,opacity .16s ease;}
+
+#d-go-btn:active,#m-go-btn:active{transform:translateY(1px) scale(.995)!important;}
