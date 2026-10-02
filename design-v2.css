@@ -496,3 +496,6 @@ body>footer{opacity:.9;}
 
 /* popup close */
 .leaflet-popup-close-button{color:#71717a!important;font-size:18px!important;}
+
+/* popup close hover */
+.leaflet-popup-close-button:hover{color:#fff!important;}
