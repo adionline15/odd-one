@@ -694,3 +694,6 @@ body>footer{opacity:.9;}
 
 /* amber radius */
 .bg-amber-500\/10{border-radius:12px!important;}
+
+/* dark notice radius */
+.bg-zinc-900\/60{border-radius:12px!important;}
