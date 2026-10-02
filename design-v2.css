@@ -5875,3 +5875,7 @@ nav[aria-label="Primary navigation"] .brand{display:flex;align-items:center;gap:
 
 /* 868 */
 @media(min-width:641px) and (max-width:1100px){nav[aria-label="Primary navigation"] .brand{font-size:1rem;}}
+
+
+/* 869 */
+@media(max-width:640px){nav[aria-label="Primary navigation"] .brand{font-size:.95rem;}}
