@@ -157,4 +157,5 @@
   ready(() => document.getElementById('m-alerts-box')?.setAttribute('role','region'));
   ready(() => document.getElementById('m-alerts-box')?.setAttribute('aria-label','Current road alert feed'));
   ready(() => document.querySelectorAll('[id$="-route-out"]').forEach(el=>el.setAttribute('role','region')));
+  ready(() => document.querySelectorAll('[id$="-route-out"]').forEach(el=>el.setAttribute('aria-label','Calculated route intelligence')));
 })();
