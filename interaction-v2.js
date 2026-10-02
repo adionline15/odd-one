@@ -286,3 +286,5 @@ document.addEventListener('focusin',e=>e.target?.setAttribute('data-focus-visibl
 document.addEventListener('focusout',e=>e.target?.removeAttribute('data-focus-visible'));
 
 document.documentElement.dataset.interactionVersion='v2';
+
+document.documentElement.classList.toggle('is-mobile',window.innerWidth<641);
