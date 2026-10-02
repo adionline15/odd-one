@@ -4005,3 +4005,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 427 */
 @media (max-width:640px){#sidebar label{letter-spacing:.025em}}
+
+
+/* 428 */
+@media (max-width:640px){#sidebar input{font-size:.9rem}}
