@@ -350,3 +350,5 @@ document.querySelectorAll('#sidebar input').forEach(el=>el.addEventListener('blu
 document.addEventListener('click',e=>{const b=e.target.closest?.('[data-tab]');if(b)document.documentElement.dataset.activePanel=b.dataset.tab;});
 
 document.addEventListener('click',e=>{if(e.target.closest?.('#sheet-toggle'))document.documentElement.dataset.sheetInteraction='toggle';});
+
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.documentElement.dataset.lastKey='escape';});
