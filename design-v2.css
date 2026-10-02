@@ -5863,3 +5863,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{padding-inline:9px;}
 
 /* 865 */
 @media(max-width:640px){nav[aria-label="Primary navigation"] a[aria-current="page"]{padding-inline:8px;}}
+
+
+/* 866 */
+nav[aria-label="Primary navigation"] .brand{display:flex;align-items:center;gap:8px;}
