@@ -4474,3 +4474,7 @@ nav[aria-label="Primary navigation"]{-webkit-font-smoothing:antialiased}
 
 /* 523 */
 #d-alerts-box .intel-card,#m-alerts-box .intel-card{background:linear-gradient(145deg,rgba(17,17,20,.88),rgba(9,9,11,.82));}
+
+
+/* 524 */
+@media(min-width:641px){#d-alerts-box .intel-card:hover,#m-alerts-box .intel-card:hover{transform:translateY(-2px);}}
