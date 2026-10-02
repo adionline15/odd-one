@@ -3789,3 +3789,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 373 */
 @media (min-width:641px) and (max-width:1100px){#map-layer-controls{border-radius:13px}}
+
+
+/* 374 */
+@media (min-width:641px) and (max-width:1100px){#map-layer-controls button{min-width:34px;min-height:34px}}
