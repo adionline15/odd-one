@@ -4637,3 +4637,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 563 */
 .skip-link{border:1px solid rgba(0,0,0,.12);border-radius:10px;padding:9px 12px;}
+
+
+/* 564 */
+:focus-visible{outline:2px solid rgba(34,211,238,.72)!important;box-shadow:0 0 0 3px rgba(34,211,238,.08);}
