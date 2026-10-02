@@ -1674,3 +1674,7 @@ button{user-select:none;}
 .intel-card{overflow:hidden;}
 
 #dp-route{overflow:hidden;}
+
+
+/* tighten desktop navigation spacing */
+nav[aria-label="Primary navigation"]{padding-left:22px!important;padding-right:22px!important;}
