@@ -2512,3 +2512,11 @@ nav[aria-label="Primary navigation"]{
     border-radius:14px;
   }
 }
+
+
+/* 101 — refine mobile layer controls */
+@media (max-width:640px){
+  #map-layer-controls{
+    border-radius:10px;
+  }
+}
