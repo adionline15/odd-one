@@ -4991,3 +4991,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 647 */
 #sidebar::-webkit-scrollbar-track{background:transparent;}
+
+
+/* 648 */
+#d-alerts-box .alert-card,#m-alerts-box .alert-card{padding:12px 13px;}
