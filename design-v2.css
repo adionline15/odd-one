@@ -4870,3 +4870,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 616 */
 #obs-status-state{font-weight:600;letter-spacing:.015em;}
+
+
+/* 617 */
+#obs-status-count{font-variant-numeric:tabular-nums;line-height:1;}
