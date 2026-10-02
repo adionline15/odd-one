@@ -6107,3 +6107,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 926 */
 @media(min-width:1101px){.map-scale-label{color:rgba(245,245,245,.62);}}
+
+
+/* 927 */
+@media(min-width:1101px){.leaflet-control-zoom a{color:#e4e4e7!important;}}
