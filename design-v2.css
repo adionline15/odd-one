@@ -1726,3 +1726,7 @@ nav[aria-label="Primary navigation"] h1{font-weight:600!important;}
 
 /* improve route field contrast */
 #sidebar input{background:#111114!important;}
+
+
+/* refine route CTA tracking */
+#d-go-btn,#m-go-btn{letter-spacing:.035em!important;}
