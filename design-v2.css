@@ -4525,3 +4525,7 @@ nav[aria-label="Primary navigation"] h1{font-weight:650;letter-spacing:-.055em;t
 
 /* 535 */
 nav[aria-label="Primary navigation"] .font-mono-lux{opacity:.78;}
+
+
+/* 536 */
+@media(max-width:640px){nav[aria-label="Primary navigation"]{padding-left:12px!important;padding-right:12px!important;gap:8px;box-shadow:0 10px 28px rgba(0,0,0,.22);}}
