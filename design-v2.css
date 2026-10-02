@@ -1110,3 +1110,5 @@ body>footer{background:#050505!important;border-color:rgba(255,255,255,.06)!impo
 .leaflet-control-zoom{box-shadow:0 16px 38px rgba(0,0,0,.4)!important;}
 
 .leaflet-control-zoom a{border-color:rgba(255,255,255,.08)!important;}
+
+.leaflet-control-zoom a{background:rgba(5,5,5,.82)!important;color:#b4b4bc!important;}
