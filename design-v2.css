@@ -604,3 +604,6 @@ body>footer{opacity:.9;}
 
 /* map bottom contrast */
 #map{position:absolute;}
+
+/* hero shadow */
+#intelligence-hero>div{box-shadow:0 22px 60px rgba(0,0,0,.38)!important;}
