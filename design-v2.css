@@ -355,3 +355,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* suggestion typography */
 .sugg-item{font-size:11px!important;}
+
+/* suggestion focus */
+.sugg-item:focus-visible{background:rgba(255,255,255,.06)!important;}
