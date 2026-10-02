@@ -3009,3 +3009,7 @@ nav[aria-label="Primary navigation"]{
 
 /* 178 */
 #sidebar input::selection{background:rgba(34,211,238,.28);color:#fff}
+
+
+/* 179 */
+#observation-status-strip{overflow-wrap:anywhere}
