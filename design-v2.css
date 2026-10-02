@@ -1196,3 +1196,5 @@ button{transition:background-color .16s ease,border-color .16s ease,opacity .16s
 a{transition:color .16s ease,opacity .16s ease;}
 
 input{transition:border-color .16s ease,box-shadow .16s ease,background-color .16s ease;}
+
+::selection{background:rgba(34,211,238,.18);color:#fff;}
