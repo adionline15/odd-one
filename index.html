@@ -1874,9 +1874,22 @@ body>footer{letter-spacing:.08em!important}
     });
 
     // ── LOCATE ME SERVICE ──
+    function setLocateButtonState(state) {
+      const button = document.getElementById('btn-loc');
+      if (!button) return;
+      const busy = state === 'loading';
+      button.setAttribute('aria-busy', String(busy));
+      button.setAttribute('aria-pressed', state === 'active' ? 'true' : 'false');
+      button.classList.toggle('active', state === 'active');
+      button.title = busy ? 'Locating your position…' : state === 'active' ? 'Location centered' : 'Locate me';
+    }
+
     function locateMe() {
-      if (!navigator.geolocation) return;
-      document.getElementById('btn-loc').innerText = 'Locating...';
+      if (!navigator.geolocation) {
+        setLocateButtonState('idle');
+        return;
+      }
+      setLocateButtonState('loading');
       navigator.geolocation.getCurrentPosition(pos => {
         const c = [pos.coords.latitude, pos.coords.longitude];
         map.flyTo(c, 15);
@@ -1887,10 +1900,10 @@ body>footer{letter-spacing:.08em!important}
             className: '', iconSize: [14, 14], iconAnchor: [7, 7]
           })
         }).addTo(map);
-        document.getElementById('btn-loc').innerText = '◎ Locate Me';
+        setLocateButtonState('active');
       }, () => {
-        document.getElementById('btn-loc').innerText = '◎ Locate Me';
-      });
+        setLocateButtonState('idle');
+      }, { enableHighAccuracy: true, timeout: 8000, maximumAge: 60000 });
     }
 
     // ── SIDEBAR CONTROLS ──
