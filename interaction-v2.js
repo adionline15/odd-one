@@ -144,4 +144,5 @@
   ready(() => { const root=document.documentElement; const sync=()=>{root.dataset.section=(document.querySelector('.tab-pane.on')?.id||'').replace(/^[dm]p?-?/,'')||'alerts';}; document.querySelectorAll('[data-nav-tab]').forEach(b=>b.addEventListener('click',()=>setTimeout(sync,0))); sync(); });
   ready(() => { const source=document.getElementById('route-status-source'); if(!source)return; source.setAttribute('aria-live','polite'); });
   ready(() => { const box=document.getElementById('route-status-overlay'); if(!box)return; const sync=()=>box.setAttribute('data-trust',box.classList.contains('route-approx')?'approximate':'provider'); new MutationObserver(sync).observe(box,{attributes:true,attributeFilter:['class']}); sync(); });
+  ready(() => { const s=document.getElementById('sheet'); if(!s)return; new MutationObserver(()=>s.dataset.mode=s.classList.contains('open')?'expanded':'collapsed').observe(s,{attributes:true,attributeFilter:['class']}); });
 })();
