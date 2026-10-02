@@ -352,3 +352,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* suggestion spacing */
 .sugg-item{padding:10px 11px!important;}
+
+/* suggestion typography */
+.sugg-item{font-size:11px!important;}
