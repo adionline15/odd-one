@@ -1875,3 +1875,9 @@ nav[aria-label="Primary navigation"]{
 #s-input:focus::placeholder{
   color:rgba(255,255,255,.30);
 }
+
+
+/* 022 — add subtle hero entrance depth */
+#intelligence-hero{
+  box-shadow:0 18px 50px rgba(0,0,0,.14);
+}
