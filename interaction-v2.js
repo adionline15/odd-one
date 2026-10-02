@@ -188,4 +188,5 @@
   ready(() => document.querySelectorAll('#d-from,#d-to,#m-from,#m-to').forEach(i=>i.setAttribute('aria-invalid','false')));
   ready(() => document.querySelectorAll('#d-from,#d-to,#m-from,#m-to').forEach(i=>i.addEventListener('input',()=>i.setAttribute('aria-invalid','false'))));
   ready(() => document.querySelectorAll('#d-from,#d-to,#m-from,#m-to').forEach(i=>i.setAttribute('aria-required','true')));
+  ready(() => { const o=document.getElementById('route-status-overlay'); if(o)o.dataset.routingMode='network'; });
 })();
