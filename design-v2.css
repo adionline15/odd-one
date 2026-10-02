@@ -3037,3 +3037,7 @@ nav[aria-label="Primary navigation"]{
 
 /* 185 */
 @media (max-width:640px){.road-intel-tooltip{max-width:calc(100vw - 24px)}}
+
+
+/* 186 */
+@media (max-width:640px){#desktop-stats-container{gap:10px}}
