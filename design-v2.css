@@ -571,3 +571,6 @@ body>footer{opacity:.9;}
 
 /* mobile data cards */
 #mp-data .intel-card{border-radius:14px!important;}
+
+/* route result radius */
+[id$="-route-out"] .grid>div{border-radius:13px!important;}
