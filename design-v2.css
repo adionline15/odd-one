@@ -4193,3 +4193,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 474 */
 .road-intel-tooltip{letter-spacing:.002em}
+
+
+/* 475 */
+.road-intel-selected{opacity:.94}
