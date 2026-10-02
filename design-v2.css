@@ -2790,3 +2790,11 @@ nav[aria-label="Primary navigation"]{
 #s-input::selection{
   background:rgba(34,211,238,.24);
 }
+
+
+/* 137 — refine desktop nav shadow */
+@media (min-width:1101px){
+  nav[aria-label="Primary navigation"]{
+    box-shadow:0 1px 0 rgba(255,255,255,.055),0 14px 36px rgba(0,0,0,.18);
+  }
+}
