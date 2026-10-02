@@ -4438,3 +4438,8 @@ nav[aria-label="Primary navigation"]{-webkit-font-smoothing:antialiased}
 /* 515 */
 #route-status-overlay{box-shadow:0 20px 54px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.035);}
 #route-status-path{color:rgba(245,245,245,.9);}
+
+
+/* 516 */
+#route-status-distance,#route-status-time{font-weight:650;letter-spacing:-.015em;}
+#route-status-overlay .text-zinc-500{color:#71717a!important;}
