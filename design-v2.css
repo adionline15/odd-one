@@ -5563,3 +5563,7 @@ a[href]{cursor:pointer;}
 
 /* 790 */
 .loading-state{color:rgba(255,255,255,.62);}
+
+
+/* 791 */
+.error-state{background:rgba(239,68,68,.035);border:1px solid rgba(239,68,68,.11);border-radius:14px;}
