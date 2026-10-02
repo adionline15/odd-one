@@ -4757,3 +4757,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 592 */
 @media(min-width:1101px){#map-layer-controls button{height:36px;min-width:118px!important;}}
+
+
+/* 593 */
+@media(min-width:641px) and (max-width:1100px){#map-command-deck{gap:6px;}.map-deck-icon-btn{width:40px;height:40px;}}
