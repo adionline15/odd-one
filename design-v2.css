@@ -913,3 +913,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* sidebar scroll */
 #sidebar>.flex-1.overflow-y-auto{scrollbar-gutter:stable;}
+
+/* data trust */
+#dp-data [data-trust="approved-only"]{position:relative;}
