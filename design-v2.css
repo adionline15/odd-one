@@ -3621,3 +3621,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 331 */
 @media (min-width:1101px){#desktop-stats-container{border:1px solid rgba(255,255,255,.09)}}
+
+
+/* 332 */
+@media (min-width:1101px){#desktop-stats-container{backdrop-filter:blur(10px)}}
