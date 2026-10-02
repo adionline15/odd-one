@@ -319,3 +319,6 @@ body>footer{color:#52525b!important;}
 
 /* desktop footer */
 @media(min-width:1101px){body>footer{height:38px!important;}}
+
+/* desktop nav */
+@media(min-width:1101px){nav[aria-label="Primary navigation"]{height:66px!important;}}
