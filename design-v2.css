@@ -1578,3 +1578,5 @@ html.is-desktop footer{font-size:9px;}
 @media(max-width:640px){.leaflet-control-zoom{box-shadow:0 12px 28px rgba(0,0,0,.45)!important;}}
 
 @media(max-width:640px){.leaflet-control-layers{box-shadow:0 14px 34px rgba(0,0,0,.48);}}
+
+@media(max-width:640px){#m-go-btn{box-shadow:0 10px 24px rgba(0,0,0,.35)!important;}}
