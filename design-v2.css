@@ -127,3 +127,6 @@ body>footer{color:#52525b!important;}
 
 /* hero paragraph */
 #intelligence-hero p{max-width:360px;}
+
+/* hero chips */
+#intelligence-hero .mt-4 span{border-color:rgba(255,255,255,.08)!important;}
