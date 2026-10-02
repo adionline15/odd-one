@@ -6339,3 +6339,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 638 */
 #sidebar .space-y-3>button:hover,#sidebar .space-y-4>button:hover{transform:translateY(-1px);}
+
+
+/* 639 */
+#sidebar .flex.border-b button[aria-selected="true"]{background:rgba(255,255,255,.045);}
