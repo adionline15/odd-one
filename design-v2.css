@@ -3741,3 +3741,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 361 */
 @media (min-width:641px) and (max-width:1100px){nav[aria-label="Primary navigation"]{gap:12px}}
+
+
+/* 362 */
+@media (min-width:641px) and (max-width:1100px){nav[aria-label="Primary navigation"] a{opacity:.9}}
