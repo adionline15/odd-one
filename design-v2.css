@@ -5963,3 +5963,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 890 */
 #sidebar input{border-color:rgba(255,255,255,.07)!important;}
+
+
+/* 891 */
+#sidebar input:hover{border-color:rgba(255,255,255,.1)!important;}
