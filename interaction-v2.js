@@ -316,3 +316,5 @@ document.querySelector('#s-input')?.addEventListener('blur',()=>document.querySe
 document.querySelector('#intelligence-hero')?.setAttribute('data-rendered','true');
 
 document.querySelector('#sidebar')?.setAttribute('data-rendered','true');
+
+document.querySelector('#sheet')?.setAttribute('data-rendered','true');
