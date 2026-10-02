@@ -1468,3 +1468,5 @@ html.is-desktop footer{font-size:9px;}
  #map{min-height:320px;}
 
  @media(max-width:640px){#map{min-height:100vh;}}
+
+ @media(min-width:1101px){#map{min-height:100vh;}}
