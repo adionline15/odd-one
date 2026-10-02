@@ -384,3 +384,5 @@ document.addEventListener('click',e=>{if(e.target.closest?.('#d-alerts-box>div,#
 document.addEventListener('click',e=>{if(e.target.closest?.('#dp-data'))document.documentElement.dataset.dataInteraction='selected';});
 
 document.addEventListener('click',e=>{if(e.target.closest?.('#dp-route'))document.documentElement.dataset.routeInteraction='selected';});
+
+document.documentElement.dataset.interactionTimestamp=String(Date.now());
