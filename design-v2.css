@@ -2316,3 +2316,11 @@ nav[aria-label="Primary navigation"]{
   border-color:rgba(34,211,238,.16);
 }
 
+
+
+/* 075 — refine route endpoint labels */
+.route-endpoint-label{
+  box-shadow:0 6px 16px rgba(0,0,0,.20);
+  border:1px solid rgba(255,255,255,.10);
+}
+
