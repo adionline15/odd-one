@@ -5575,3 +5575,7 @@ a[href]{cursor:pointer;}
 
 /* 793 */
 .alert-severity-marker{width:7px;height:7px;border-radius:50%;flex:0 0 7px;}
+
+
+/* 794 */
+.alert-severity-marker{align-self:flex-start;margin-top:5px;}
