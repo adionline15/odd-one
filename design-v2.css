@@ -1558,3 +1558,5 @@ html.is-desktop footer{font-size:9px;}
 @media(min-width:1101px){[id$="-route-out"] .grid{grid-template-columns:repeat(3,1fr);}}
 
 @media(max-width:640px){#search-suggestions button{padding:10px 12px!important;}}
+
+@media(max-width:640px){nav{border-radius:0!important;}}
