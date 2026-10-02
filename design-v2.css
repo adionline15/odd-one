@@ -3213,3 +3213,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 229 */
 #d-alerts-box small,#m-alerts-box small{line-height:1.4}
+
+
+/* 230 */
+#d-alerts-box .intel-card,#m-alerts-box .intel-card{border-radius:14px}
