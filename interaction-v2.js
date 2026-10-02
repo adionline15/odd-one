@@ -195,4 +195,5 @@
   ready(() => document.querySelector('body>footer')?.setAttribute('role','contentinfo'));
   ready(() => document.getElementById('s-input')?.setAttribute('role','searchbox'));
   ready(() => document.getElementById('sugg')?.setAttribute('role','listbox'));
+  ready(() => document.getElementById('s-input')?.setAttribute('data-search-mode','explicit'));
 })();
