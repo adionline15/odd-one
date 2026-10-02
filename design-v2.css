@@ -5123,3 +5123,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 680 */
 .map-deck-icon-btn{border-radius:10px;}
+
+
+/* 681 */
+.map-deck-icon-btn:focus-visible{box-shadow:0 0 0 2px rgba(34,211,238,.18),0 8px 20px rgba(0,0,0,.2);}
