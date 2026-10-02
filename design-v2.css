@@ -1898,3 +1898,10 @@ nav[aria-label="Primary navigation"]{
 #observation-status-strip span{
   letter-spacing:.01em;
 }
+
+
+/* 025 — refine sidebar edge definition */
+#sidebar{
+  border-right-color:rgba(255,255,255,.11);
+  box-shadow:12px 0 34px rgba(0,0,0,.12);
+}
