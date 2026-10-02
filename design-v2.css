@@ -3729,3 +3729,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 358 */
 @media (min-width:1101px){#d-go-btn{letter-spacing:.015em}}
+
+
+/* 359 */
+@media (min-width:1101px){#d-go-btn:hover{transform:translateY(-1px)}}
