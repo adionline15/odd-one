@@ -2973,3 +2973,7 @@ nav[aria-label="Primary navigation"]{
 
 /* 169 */
 #desktop-stats-container{font-variant-numeric:tabular-nums}
+
+
+/* 170 */
+#desktop-stats-container{gap:clamp(12px,1.5vw,24px)}
