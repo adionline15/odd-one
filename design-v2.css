@@ -649,3 +649,6 @@ body>footer{opacity:.9;}
 
 /* numeric state */
 #obs-status-count[data-numeric="false"]{color:#71717a!important;}
+
+/* route trust state */
+#route-status-overlay[data-trust="approximate"]{filter:none;}
