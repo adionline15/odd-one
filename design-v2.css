@@ -5819,3 +5819,7 @@ a[href]{cursor:pointer;}
 
 /* 854 */
 @media(max-width:640px){.sugg-item{font-size:.82rem;}}
+
+
+/* 855 */
+@media(min-width:641px) and (max-width:1100px){#s-input{border-radius:12px!important;}}
