@@ -889,3 +889,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* alert feed label */
 #d-alerts-box .font-mono-lux,#m-alerts-box .font-mono-lux{font-size:7px!important;letter-spacing:.12em;}
+
+/* alert hover */
+#d-alerts-box>div:hover,#m-alerts-box>div:hover{transform:translateY(-2px)!important;}
