@@ -1186,3 +1186,5 @@ button:disabled{cursor:not-allowed!important;}
  #observation-status-strip{pointer-events:none;}
 
  #sidebar{isolation:isolate;}
+
+ #sheet{isolation:isolate;}
