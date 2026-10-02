@@ -6063,3 +6063,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 915 */
 @media(max-width:640px){#map::after{box-shadow:inset 0 0 55px rgba(0,0,0,.18);}}
+
+
+/* 916 */
+@media(max-width:640px){#map-command-deck{gap:5px;}}
