@@ -784,3 +784,6 @@ html[data-viewport="mobile"] #map-intelligence-hud{display:none!important;}
 
 /* mobile footer gaps */
 @media(max-width:640px){body>footer .flex{gap:8px!important;overflow:hidden;white-space:nowrap;}}
+
+/* mobile footer hide */
+@media(max-width:640px){body>footer .hidden{display:none!important;}}
