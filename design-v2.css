@@ -2883,3 +2883,9 @@ nav[aria-label="Primary navigation"]{
 @media (min-width:1101px){
   #map-intelligence-hud{border-radius:12px;}
 }
+
+
+/* 152 — improve desktop map HUD border */
+@media (min-width:1101px){
+  #map-intelligence-hud{border-color:rgba(255,255,255,.11);}
+}
