@@ -3461,3 +3461,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 291 */
 @media (min-width:1101px){nav[aria-label="Primary navigation"]{column-gap:18px}}
+
+
+/* 292 */
+@media (min-width:1101px){nav[aria-label="Primary navigation"] a[aria-current="page"]{font-weight:650}}
