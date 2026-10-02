@@ -3669,3 +3669,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 343 */
 @media (min-width:1101px){nav[aria-label="Primary navigation"] a{opacity:.88}}
+
+
+/* 344 */
+@media (min-width:1101px){nav[aria-label="Primary navigation"] a[aria-current="page"]{opacity:1}}
