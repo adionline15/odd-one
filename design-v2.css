@@ -76,3 +76,6 @@ nav[aria-label="Primary navigation"] button[onclick*="showTab('route')"]{border-
 
 /* progressive */
 #sidebar>.flex.border-b{border-color:var(--oo-v2-line)!important;}
+
+/* progressive */
+#sidebar .flex.border-b button{letter-spacing:.16em!important;}
