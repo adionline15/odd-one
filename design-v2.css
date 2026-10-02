@@ -334,3 +334,6 @@ button:active:not(:disabled){transform:translateY(1px); }
 
 /* nav hover */
 nav[aria-label="Primary navigation"] .nav-intel-btn:hover{background:rgba(255,255,255,.05)!important;}
+
+/* nav active */
+nav[aria-label="Primary navigation"] .nav-intel-btn.active::after{content:"";position:absolute;inset:auto 12px -1px;height:1px;background:rgba(34,211,238,.35);}
