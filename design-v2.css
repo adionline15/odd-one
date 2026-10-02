@@ -3329,3 +3329,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 258 */
 .sugg-item:focus-visible{outline:2px solid var(--oo-v2-accent);outline-offset:2px}
+
+
+/* 259 */
+.intel-card{border-color:rgba(255,255,255,.09)}
