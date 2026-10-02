@@ -1164,3 +1164,5 @@ button:disabled{cursor:not-allowed!important;}
  body{background:#050506;}
 
  body{-webkit-font-smoothing:antialiased;}
+
+ body{text-rendering:optimizeLegibility;}
