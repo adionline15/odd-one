@@ -2432,3 +2432,10 @@ nav[aria-label="Primary navigation"]{
   border-color:rgba(34,211,238,.28);
   background:rgba(34,211,238,.07);
 }
+
+
+/* 090 — improve route overlay status badge */
+#route-status-overlay [data-status]{
+  letter-spacing:.025em;
+  text-transform:uppercase;
+}
