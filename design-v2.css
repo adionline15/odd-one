@@ -2692,3 +2692,9 @@ nav[aria-label="Primary navigation"]{
     max-width:48rem;
   }
 }
+
+
+/* 123 — refine hero data badge radius */
+#hero-data-boundary{
+  border-radius:12px;
+}
