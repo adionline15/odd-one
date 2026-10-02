@@ -883,3 +883,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* stats hover */
 #stats-content>div:hover{border-color:rgba(255,255,255,.12)!important;}
+
+/* alert badges */
+#d-alerts-box .rounded-full,#m-alerts-box .rounded-full{border-color:rgba(255,255,255,.07)!important;}
