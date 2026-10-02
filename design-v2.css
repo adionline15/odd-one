@@ -3409,3 +3409,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 278 */
 @media (max-width:640px){.intel-card{box-shadow:0 8px 24px rgba(0,0,0,.18)}}
+
+
+/* 279 */
+@media (max-width:640px){.intel-card:hover{transform:none}}
