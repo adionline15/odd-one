@@ -3917,3 +3917,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 405 */
 @media (max-width:640px){.road-intel-selected{filter:drop-shadow(0 0 4px rgba(34,211,238,.18))}}
+
+
+/* 406 */
+@media (max-width:640px){.sugg-item:active{transform:scale(.992)}}
