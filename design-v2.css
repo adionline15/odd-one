@@ -793,3 +793,6 @@ html[data-viewport="mobile"] #map-intelligence-hud{display:none!important;}
 
 /* nav z */
 nav[aria-label="Primary navigation"]{z-index:100!important;}
+
+/* sidebar z */
+#sidebar{z-index:50!important;}
