@@ -3813,3 +3813,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 379 */
 @media (min-width:641px) and (max-width:1100px){.intel-card{border-radius:14px}}
+
+
+/* 380 */
+@media (min-width:641px) and (max-width:1100px){.intel-card{padding:17px}}
