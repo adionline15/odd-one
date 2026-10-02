@@ -5915,3 +5915,7 @@ footer a:hover{color:#f1f5f9;}
 
 /* 878 */
 @media(min-width:641px) and (max-width:1100px){footer{padding-inline:16px;}}
+
+
+/* 879 */
+@media(min-width:1101px){footer{padding-inline:20px;}}
