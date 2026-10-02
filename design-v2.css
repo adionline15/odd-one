@@ -5899,3 +5899,7 @@ footer{padding-block:12px;}
 
 /* 874 */
 footer{color:rgba(255,255,255,.46);font-size:.72rem;}
+
+
+/* 875 */
+footer a{color:rgba(255,255,255,.58);text-underline-offset:3px;}
