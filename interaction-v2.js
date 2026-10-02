@@ -348,3 +348,5 @@ document.querySelectorAll('#sidebar input').forEach(el=>el.addEventListener('foc
 document.querySelectorAll('#sidebar input').forEach(el=>el.addEventListener('blur',()=>el.removeAttribute('data-route-focus')));
 
 document.addEventListener('click',e=>{const b=e.target.closest?.('[data-tab]');if(b)document.documentElement.dataset.activePanel=b.dataset.tab;});
+
+document.addEventListener('click',e=>{if(e.target.closest?.('#sheet-toggle'))document.documentElement.dataset.sheetInteraction='toggle';});
