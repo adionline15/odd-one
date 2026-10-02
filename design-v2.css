@@ -3485,3 +3485,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 297 */
 @media (min-width:1101px){#observation-status-strip{padding:11px 16px}}
+
+
+/* 298 */
+@media (min-width:1101px){#observation-status-strip{box-shadow:0 8px 24px rgba(0,0,0,.16)}}
