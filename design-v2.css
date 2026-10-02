@@ -1831,3 +1831,15 @@ nav[aria-label="Primary navigation"] h1{font-weight:600!important;}
     box-shadow:0 0 12px rgba(34,211,238,.28);
   }
 }
+
+
+/* 017 — improve desktop navigation hover lift */
+@media (min-width:1101px){
+  nav[aria-label="Primary navigation"] a{
+    transition:transform .18s ease,color .18s ease,text-shadow .18s ease;
+  }
+  nav[aria-label="Primary navigation"] a:hover{
+    transform:translateY(-1px);
+    text-shadow:0 0 14px rgba(255,255,255,.10);
+  }
+}
