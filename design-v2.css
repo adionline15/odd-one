@@ -835,3 +835,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* stats position */
 #desktop-stats-container>div{position:relative;overflow:hidden;}
+
+/* popup highlight */
+.leaflet-popup-content-wrapper::before{content:"";display:block;height:1px;background:linear-gradient(90deg,rgba(34,211,238,.12),transparent);}
