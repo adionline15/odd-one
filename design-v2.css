@@ -5247,3 +5247,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 711 */
 #map{background:linear-gradient(180deg,#070709,#050507);background-color:#070709;}
+
+
+/* 712 */
+#route-status-overlay strong{color:#f5f5f5;}
