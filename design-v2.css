@@ -3465,3 +3465,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 292 */
 @media (min-width:1101px){nav[aria-label="Primary navigation"] a[aria-current="page"]{font-weight:650}}
+
+
+/* 293 */
+@media (min-width:1101px){#s-input{min-height:46px}}
