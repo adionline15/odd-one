@@ -6391,3 +6391,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 982 */
 #sidebar .space-y-3,#sidebar .space-y-4{gap:10px;}
+
+
+/* 983 */
+#sidebar label{display:block;font-size:.68rem;font-weight:650;color:rgba(255,255,255,.68);text-transform:uppercase;}
