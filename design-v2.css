@@ -3201,3 +3201,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 226 */
 #sidebar input{line-height:1.4}
+
+
+/* 227 */
+#d-go-btn,#m-go-btn{font-weight:650}
