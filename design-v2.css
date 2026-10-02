@@ -610,3 +610,6 @@ body>footer{opacity:.9;}
 
 /* hero radius */
 #intelligence-hero>div{border-radius:20px!important;}
+
+/* hero backdrop */
+#intelligence-hero>div{backdrop-filter:blur(20px)!important;}
