@@ -5179,3 +5179,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 694 */
 .leaflet-control-attribution{background:rgba(5,5,7,.62)!important;border-radius:7px 0 0 0;}
+
+
+/* 695 */
+.leaflet-control-attribution{padding:4px 7px!important;}
