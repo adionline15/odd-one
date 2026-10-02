@@ -2949,3 +2949,7 @@ nav[aria-label="Primary navigation"]{
 
 /* 163 */
 .intel-card h3,.intel-card h4{font-weight:650;letter-spacing:-.01em}
+
+
+/* 164 */
+#sheet::before{background:rgba(255,255,255,.22);box-shadow:0 1px 8px rgba(0,0,0,.35)}
