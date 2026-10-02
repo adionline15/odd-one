@@ -5827,3 +5827,7 @@ a[href]{cursor:pointer;}
 
 /* 856 */
 @media(min-width:641px) and (max-width:1100px){#sugg{max-width:420px;}}
+
+
+/* 857 */
+@media(min-width:1101px){nav[aria-label="Primary navigation"]{padding-inline:18px;}}
