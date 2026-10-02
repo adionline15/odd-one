@@ -2904,3 +2904,8 @@ nav[aria-label="Primary navigation"]{
 /* 155 — refine endpoint label radius */
 .route-endpoint-label{border-radius:8px;}
 
+
+
+/* 156 — improve endpoint label backdrop */
+.route-endpoint-label{backdrop-filter:blur(6px);}
+
