@@ -2829,3 +2829,9 @@ nav[aria-label="Primary navigation"]{
 #observation-status-strip{
   transition:border-color .18s ease,box-shadow .18s ease,background-color .18s ease;
 }
+
+
+/* 143 — refine observation status hover */
+#observation-status-strip:hover{
+  border-color:rgba(255,255,255,.13);
+}
