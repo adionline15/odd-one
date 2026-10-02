@@ -1272,3 +1272,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  #search-wrap{box-shadow:0 18px 44px rgba(0,0,0,.42)!important;}
 
  #search-wrap{background:rgba(8,8,10,.88)!important;}
+
+ #search-wrap{border-color:rgba(255,255,255,.1)!important;}
