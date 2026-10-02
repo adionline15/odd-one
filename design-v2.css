@@ -859,3 +859,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* sheet handle hover */
 #sheet-toggle:hover span{background:#52525b!important;}
+
+/* data header */
+#dp-data>.intel-card .intel-kicker{color:#8b8b93!important;}
