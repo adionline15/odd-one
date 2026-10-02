@@ -760,3 +760,6 @@ html[data-viewport="tablet"] #intelligence-hero{max-width:380px;}
 
 /* mobile mode */
 html[data-viewport="mobile"] #map-intelligence-hud{display:none!important;}
+
+/* mobile chips */
+@media(max-width:640px){#intelligence-hero .mt-4{gap:5px!important;}}
