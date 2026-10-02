@@ -3137,3 +3137,7 @@ nav[aria-label="Primary navigation"]{
 
 /* 210 */
 @media (max-width:640px){.road-intel-tooltip{line-height:1.5}}
+
+
+/* 211 */
+nav[aria-label="Primary navigation"] a{padding-block:6px}
