@@ -374,3 +374,5 @@ document.querySelectorAll('[role="tab"]').forEach(el=>el.addEventListener('keydo
 document.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')document.documentElement.dataset.lastActionKey=e.key;});
 
 document.addEventListener('focusout',e=>{if(e.target?.matches?.('#d-from,#d-to,#m-from,#m-to'))document.documentElement.dataset.routeFocus='idle';});
+
+document.addEventListener('focusin',e=>{if(e.target?.matches?.('#d-from,#d-to,#m-from,#m-to'))document.documentElement.dataset.routeFocus='active';});
