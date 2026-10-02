@@ -2038,3 +2038,12 @@ nav[aria-label="Primary navigation"]{
   border-color:rgba(255,255,255,.13);
   line-height:1.4;
 }
+
+
+/* 042 — add responsive map HUD breathing room */
+@media (max-width:640px){
+  #map-intelligence-hud{
+    margin:8px;
+    max-width:calc(100vw - 16px);
+  }
+}
