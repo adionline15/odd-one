@@ -1012,3 +1012,6 @@ body>footer{background:#050505!important;border-color:rgba(255,255,255,.06)!impo
 
 /* final scrollbar */
 ::-webkit-scrollbar-thumb{background:#303038!important;}
+
+/* final selection */
+::selection{background:rgba(34,211,238,.18)!important;}
