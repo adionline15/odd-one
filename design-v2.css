@@ -5743,3 +5743,7 @@ a[href]{cursor:pointer;}
 
 /* 835 */
 #d-go-btn:disabled,#m-go-btn:disabled{box-shadow:none!important;transform:none;}
+
+
+/* 836 */
+#d-go-btn,#m-go-btn{font-weight:650;letter-spacing:.005em;}
