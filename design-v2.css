@@ -4279,3 +4279,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 478 */
 #map-layer-controls{border:1px solid rgba(255,255,255,.1)}
+
+
+/* 479 */
+#route-status-overlay{background:rgba(8,8,10,.88)}
