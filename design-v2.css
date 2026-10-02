@@ -5803,3 +5803,7 @@ a[href]{cursor:pointer;}
 
 /* 850 */
 @media(min-width:1101px){#d-go-btn,#m-go-btn{min-height:42px;}}
+
+
+/* 851 */
+@media(max-width:640px){#s-input{border-radius:12px!important;}}
