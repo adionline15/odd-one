@@ -2547,3 +2547,11 @@ nav[aria-label="Primary navigation"]{
     font-size:11px;
   }
 }
+
+
+/* 105 — refine mobile selected road glow */
+@media (max-width:640px){
+  .road-intel-selected{
+    filter:drop-shadow(0 0 5px rgba(34,211,238,.25));
+  }
+}
