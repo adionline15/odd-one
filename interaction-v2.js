@@ -39,4 +39,7 @@
       e.preventDefault(); document.getElementById('s-input')?.focus();
     }
   }));
+  ready(() => document.getElementById('s-input')?.addEventListener('keydown', e => {
+    if(e.key==='Escape'){ e.currentTarget.blur(); document.getElementById('sugg')?.classList.add('hidden'); }
+  }));
 })();
