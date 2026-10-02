@@ -4239,3 +4239,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 498 */
 #hero-data-boundary{border-color:rgba(255,255,255,.08)}
+
+
+/* 499 */
+#hero-data-boundary{border-radius:10px}
