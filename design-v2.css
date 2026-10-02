@@ -130,3 +130,6 @@ body>footer{color:#52525b!important;}
 
 /* hero chips */
 #intelligence-hero .mt-4 span{border-color:rgba(255,255,255,.08)!important;}
+
+/* observation strip */
+#observation-status-strip{top:138px!important;}
