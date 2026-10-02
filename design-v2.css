@@ -1316,3 +1316,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  #intelligence-hero{margin-top:2px;}
 
  #intelligence-hero{margin-bottom:2px;}
+
+ #intelligence-hero{min-width:0;}
