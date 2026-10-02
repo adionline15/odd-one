@@ -3873,3 +3873,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 394 */
 @media (max-width:640px){#m-go-btn{letter-spacing:.01em}}
+
+
+/* 395 */
+@media (max-width:640px){#map-intelligence-hud{border-color:rgba(255,255,255,.1)}}
