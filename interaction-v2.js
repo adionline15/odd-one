@@ -142,4 +142,5 @@
   ready(() => document.addEventListener('keydown',e=>{if(e.key==='r'&&!e.ctrlKey&&!e.metaKey&&!['INPUT','TEXTAREA'].includes(document.activeElement?.tagName)){showTab?.('route');setTimeout(()=>document.getElementById(window.innerWidth<=640?'m-from':'d-from')?.focus(),80);}}));
   ready(() => document.addEventListener('keydown',e=>{if(e.key==='Escape'&&['INPUT','TEXTAREA'].includes(document.activeElement?.tagName))document.activeElement.blur();}));
   ready(() => { const root=document.documentElement; const sync=()=>{root.dataset.section=(document.querySelector('.tab-pane.on')?.id||'').replace(/^[dm]p?-?/,'')||'alerts';}; document.querySelectorAll('[data-nav-tab]').forEach(b=>b.addEventListener('click',()=>setTimeout(sync,0))); sync(); });
+  ready(() => { const source=document.getElementById('route-status-source'); if(!source)return; source.setAttribute('aria-live','polite'); });
 })();
