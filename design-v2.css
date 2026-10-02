@@ -1072,3 +1072,5 @@ body>footer{background:#050505!important;border-color:rgba(255,255,255,.06)!impo
 #d-alerts-box,#m-alerts-box{display:grid;gap:8px;}
 
 #dp-route .space-y-4{row-gap:16px!important;}
+
+#dp-data .space-y-4{row-gap:14px!important;}
