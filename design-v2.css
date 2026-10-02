@@ -1396,3 +1396,5 @@ html.is-online #search-wrap{border-color:rgba(255,255,255,.1)!important;}
 html.is-offline #search-wrap{opacity:.82;}
 
 html[data-keyboard="true"] :focus-visible{outline-offset:4px!important;}
+
+html.hero-visible #intelligence-hero>div{opacity:1;}
