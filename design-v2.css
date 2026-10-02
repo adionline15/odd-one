@@ -2748,3 +2748,11 @@ nav[aria-label="Primary navigation"]{
   cursor:not-allowed;
   transform:none;
 }
+
+
+/* 131 — refine desktop nav item spacing */
+@media (min-width:1101px){
+  nav[aria-label="Primary navigation"] a{
+    padding-inline:4px;
+  }
+}
