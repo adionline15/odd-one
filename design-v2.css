@@ -5335,3 +5335,7 @@ nav[aria-label="Primary navigation"] .brand{color:#f5f5f5;}
 
 /* 733 */
 #sheet .p-4{padding:16px!important;}
+
+
+/* 734 */
+@media(max-width:640px){#sidebar input{min-height:42px;}}
