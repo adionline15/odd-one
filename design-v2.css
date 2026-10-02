@@ -409,3 +409,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* stat values */
 #desktop-stats-container p:last-child{font-variant-numeric:tabular-nums;}
+
+/* unavailable stat */
+#stat-gap-val{font-family:'JetBrains Mono',monospace!important;font-size:10px!important;}
