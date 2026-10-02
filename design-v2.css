@@ -3297,3 +3297,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 250 */
 .road-intel-tooltip{border:1px solid rgba(255,255,255,.1)}
+
+
+/* 251 */
+.road-intel-tooltip{padding:10px 12px}
