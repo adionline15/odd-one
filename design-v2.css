@@ -4733,3 +4733,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 586 */
 .leaflet-popup-close-button:hover{background:rgba(255,255,255,.06);box-shadow:inset 0 1px 0 rgba(255,255,255,.04);}
+
+
+/* 587 */
+.leaflet-popup-tip{box-shadow:0 10px 24px rgba(0,0,0,.18);}
