@@ -2649,3 +2649,14 @@ nav[aria-label="Primary navigation"]{
     border-color:rgba(255,255,255,.10);
   }
 }
+
+
+/* 118 — improve desktop stats hover */
+@media (min-width:1101px){
+  #desktop-stats-container{
+    transition:border-color .18s ease,box-shadow .18s ease;
+  }
+  #desktop-stats-container:hover{
+    border-color:rgba(255,255,255,.13);
+  }
+}
