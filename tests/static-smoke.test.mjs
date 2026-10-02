@@ -84,3 +84,11 @@ test('environment template contains placeholders only', () => {
   assert.doesNotMatch(env, /SUPABASE_SECRET_KEY=\S+/);
   assert.doesNotMatch(env, /GEMINI_API_KEY=\S+/);
 });
+
+test('map exposes live viewport context', () => {
+  const html = read('index.html');
+  assert.match(html, /id="map-live-context"/);
+  assert.match(html, /id="map-zoom-value"/);
+  assert.match(html, /function updateMapContext\(\)/);
+  assert.match(html, /map\.on\('zoomend', updateMapContext/);
+});
