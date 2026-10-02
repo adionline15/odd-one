@@ -227,6 +227,15 @@
         </div>
       </div>
 
+      <div id="observation-status-strip" class="absolute top-[132px] left-4 z-20 pointer-events-none hidden sm:block">
+        <div class="intel-card px-3 py-2 flex items-center gap-3 backdrop-blur-xl">
+          <span id="obs-status-dot" class="w-1.5 h-1.5 rounded-full bg-zinc-500"></span>
+          <span class="intel-kicker">Road observations</span>
+          <span id="obs-status-count" class="font-mono-lux text-[9px] text-zinc-300">--</span>
+          <span id="obs-status-state" class="font-mono-lux text-[8px] text-zinc-600">LOADING</span>
+        </div>
+      </div>
+
       <!-- Active route status -->
       <div id="route-status-overlay" class="hidden absolute top-4 right-4 z-30 pointer-events-none">
         <div class="bg-[#070707]/88 backdrop-blur-xl border border-cyan-400/20 rounded-xl px-4 py-3 shadow-2xl min-w-[210px]">
