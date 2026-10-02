@@ -1484,3 +1484,5 @@ html.is-desktop footer{font-size:9px;}
  @media(max-width:640px){#sidebar{width:100%;max-width:100%;}}
 
  @media(max-width:640px){#search-wrap{border-radius:11px!important;}}
+
+ @media(min-width:641px) and (max-width:1100px){#sidebar{border-radius:16px 0 0 16px;}}
