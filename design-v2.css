@@ -2764,3 +2764,11 @@ nav[aria-label="Primary navigation"]{
     color:rgba(255,255,255,.70);
   }
 }
+
+
+/* 133 — refine nav active glow */
+@media (min-width:1101px){
+  nav[aria-label="Primary navigation"] a[aria-current="page"]{
+    text-shadow:0 0 16px rgba(34,211,238,.13);
+  }
+}
