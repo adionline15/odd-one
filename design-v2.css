@@ -1046,3 +1046,5 @@ body>footer{background:#050505!important;border-color:rgba(255,255,255,.06)!impo
 #intelligence-hero p{margin-bottom:0!important;}
 
 #observation-status-strip .intel-card{border-radius:14px!important;}
+
+#observation-status-strip .intel-card{padding:11px 13px!important;}
