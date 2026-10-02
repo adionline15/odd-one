@@ -1348,3 +1348,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  #sheet{overflow-x:hidden;}
 
  #sheet .overflow-y-auto{scrollbar-gutter:stable;}
+
+ [id$="-route-out"]{overflow:hidden;}
