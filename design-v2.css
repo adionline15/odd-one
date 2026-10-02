@@ -4717,3 +4717,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 582 */
 .map-deck-btn{letter-spacing:.095em;}
+
+
+/* 583 */
+.map-deck-icon-btn{font-weight:650;text-shadow:0 1px 8px rgba(0,0,0,.25);}
