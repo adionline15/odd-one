@@ -3605,3 +3605,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 327 */
 @media (min-width:1101px){.intel-card p{max-width:60ch}}
+
+
+/* 328 */
+@media (min-width:1101px){.intel-card h3,.intel-card h4{letter-spacing:-.015em}}
