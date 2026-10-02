@@ -4951,3 +4951,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 637 */
 #sidebar .flex.border-b button[aria-selected="true"]{color:#f1f5f9;font-weight:650;}
+
+
+/* 638 */
+#sidebar .flex.border-b{gap:2px;}
