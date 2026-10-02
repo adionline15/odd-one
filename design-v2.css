@@ -520,3 +520,6 @@ body>footer{opacity:.9;}
 
 /* selected road */
 .road-intel-selected{filter:drop-shadow(0 0 7px rgba(255,255,255,.7)) drop-shadow(0 0 16px rgba(34,211,238,.16))!important;}
+
+/* road tooltip */
+.road-intel-tooltip{border-radius:9px!important;}
