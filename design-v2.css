@@ -3997,3 +3997,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 425 */
 @media (max-width:640px){#sheet::before{border-radius:999px}}
+
+
+/* 426 */
+@media (max-width:640px){#sidebar label{font-size:.76rem}}
