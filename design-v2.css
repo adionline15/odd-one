@@ -109,3 +109,6 @@ body>footer{color:#52525b!important;}
 
 /* hero boundary */
 #hero-data-boundary{opacity:.9;}
+
+/* hero boundary spacing */
+#hero-data-boundary{letter-spacing:.18em;}
