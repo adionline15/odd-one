@@ -385,3 +385,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* error state */
 #observation-status-strip[data-state="error"] #obs-status-dot{box-shadow:0 0 0 5px rgba(251,113,133,.07),0 0 10px rgba(251,113,133,.18)!important;}
+
+/* awaiting state */
+#observation-status-strip[data-state="awaiting"] #obs-status-dot{background:#a1a1aa!important;box-shadow:0 0 0 5px rgba(161,161,170,.06)!important;}
