@@ -2587,3 +2587,11 @@ nav[aria-label="Primary navigation"]{
     background-image:linear-gradient(180deg,rgba(255,255,255,.012),transparent 35%);
   }
 }
+
+
+/* 110 — improve desktop sidebar input hover */
+@media (min-width:1101px){
+  #sidebar input:hover{
+    border-color:rgba(255,255,255,.15);
+  }
+}
