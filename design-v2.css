@@ -1905,3 +1905,9 @@ nav[aria-label="Primary navigation"]{
   border-right-color:rgba(255,255,255,.11);
   box-shadow:12px 0 34px rgba(0,0,0,.12);
 }
+
+
+/* 026 — improve sidebar input focus depth */
+#sidebar input:focus{
+  box-shadow:0 0 0 1px rgba(34,211,238,.28),0 8px 22px rgba(0,0,0,.18);
+}
