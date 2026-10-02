@@ -5927,3 +5927,7 @@ a.skip-link{background:#0a0a0c;color:#f5f5f5;border:1px solid rgba(255,255,255,.
 
 /* 881 */
 a.skip-link{box-shadow:0 12px 26px rgba(0,0,0,.28);}
+
+
+/* 882 */
+a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
