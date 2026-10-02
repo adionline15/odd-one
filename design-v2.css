@@ -1636,3 +1636,5 @@ html[data-reduced-motion="true"] *{animation-duration:.01ms!important;animation-
 html.is-offline #map-intelligence-hud{opacity:.86;}
 
 html.is-online #map-intelligence-hud{opacity:.98;}
+
+html.is-mobile.is-offline #search-wrap{opacity:.78;}
