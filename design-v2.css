@@ -5283,3 +5283,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 720 */
 #s-input:focus{box-shadow:0 0 0 1px rgba(34,211,238,.14),0 12px 28px rgba(0,0,0,.18)!important;}
+
+
+/* 721 */
+#s-input::placeholder{color:rgba(255,255,255,.42);}
