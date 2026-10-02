@@ -3041,3 +3041,7 @@ nav[aria-label="Primary navigation"]{
 
 /* 186 */
 @media (max-width:640px){#desktop-stats-container{gap:10px}}
+
+
+/* 187 */
+@media (min-width:641px) and (max-width:1100px){.intel-card{padding:18px}}
