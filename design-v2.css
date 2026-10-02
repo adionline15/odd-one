@@ -5431,3 +5431,7 @@ nav[aria-label="Primary navigation"] .brand{color:#f5f5f5;}
 
 /* 757 */
 @media(min-width:1101px){#s-input{min-width:320px;}}
+
+
+/* 758 */
+@media(min-width:1101px){#s-input{box-shadow:0 12px 28px rgba(0,0,0,.14)!important;}}
