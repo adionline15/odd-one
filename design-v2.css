@@ -1400,3 +1400,5 @@ html[data-keyboard="true"] :focus-visible{outline-offset:4px!important;}
 html.hero-visible #intelligence-hero>div{opacity:1;}
 
 html.sidebar-visible #sidebar{opacity:1;}
+
+html.sheet-visible #sheet{opacity:1;}
