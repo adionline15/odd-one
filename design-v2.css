@@ -4315,3 +4315,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 487 */
 #intelligence-hero p{letter-spacing:.002em}
+
+
+/* 488 */
+#intelligence-hero h1{text-rendering:optimizeLegibility}
