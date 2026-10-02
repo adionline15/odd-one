@@ -1178,3 +1178,5 @@ button:disabled{cursor:not-allowed!important;}
  #map{contain:layout paint;}
 
  #intelligence-hero{isolation:isolate;}
+
+ #intelligence-hero{overflow:clip;}
