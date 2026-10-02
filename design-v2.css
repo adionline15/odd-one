@@ -5763,3 +5763,7 @@ a[href]{cursor:pointer;}
 
 /* 840 */
 .provenanceRow:hover{background:rgba(255,255,255,.025);}
+
+
+/* 841 */
+.provenanceRow{transition:background-color .16s ease;}
