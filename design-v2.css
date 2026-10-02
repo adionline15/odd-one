@@ -5619,3 +5619,7 @@ a[href]{cursor:pointer;}
 
 /* 804 */
 #generated-guide li+li{margin-top:6px;}
+
+
+/* 805 */
+#generated-guide a{text-underline-offset:3px;text-decoration-thickness:1px;}
