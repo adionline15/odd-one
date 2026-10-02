@@ -3257,3 +3257,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 240 */
 #map-intelligence-hud small{color:var(--oo-v2-muted)}
+
+
+/* 241 */
+#map-layer-controls button{border-radius:10px}
