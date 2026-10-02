@@ -1104,3 +1104,5 @@ body>footer{background:#050505!important;border-color:rgba(255,255,255,.06)!impo
 #map-layer-controls button{height:34px!important;}
 
 #map-layer-controls button{font-size:8px!important;}
+
+#map-layer-controls button.on{box-shadow:inset 0 1px 0 rgba(255,255,255,.05)!important;}
