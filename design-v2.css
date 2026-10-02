@@ -1254,3 +1254,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  .leaflet-control-attribution{opacity:.72;}
 
  .leaflet-control{font-family:inherit;}
+
+ .leaflet-control-zoom{border-radius:9px;overflow:hidden;}
