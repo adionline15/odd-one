@@ -3577,3 +3577,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 320 */
 @media (min-width:1101px){.road-intel-tooltip{color:rgba(245,245,245,.92)}}
+
+
+/* 321 */
+@media (min-width:1101px){.road-intel-selected{filter:drop-shadow(0 0 6px rgba(34,211,238,.25))}}
