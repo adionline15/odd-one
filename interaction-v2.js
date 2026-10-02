@@ -194,4 +194,5 @@
   ready(() => { const a=document.getElementById('d-alerts-box'); if(a)a.dataset.context='news-context-not-verification'; });
   ready(() => document.querySelector('body>footer')?.setAttribute('role','contentinfo'));
   ready(() => document.getElementById('s-input')?.setAttribute('role','searchbox'));
+  ready(() => document.getElementById('sugg')?.setAttribute('role','listbox'));
 })();
