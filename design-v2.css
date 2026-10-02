@@ -4205,3 +4205,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 477 */
 #map-intelligence-hud{border-color:rgba(255,255,255,.1)}
+
+
+/* 478 */
+#map-intelligence-hud{box-shadow:0 12px 34px rgba(0,0,0,.2)}
