@@ -172,3 +172,6 @@ body>footer{color:#52525b!important;}
 
 /* sidebar tabs */
 #sidebar .flex.border-b button{color:#66666f;}
+
+/* sidebar active */
+#sidebar .flex.border-b button.border-white{color:#f5f5f5!important;}
