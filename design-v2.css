@@ -4673,3 +4673,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 571 */
 [id$="-route-out"] .bg-amber-500\/10{box-shadow:inset 0 1px 0 rgba(245,158,11,.08),0 8px 22px rgba(0,0,0,.12);}
+
+
+/* 572 */
+[id$="-route-out"] .bg-amber-500\/10{letter-spacing:.005em;line-height:1.5;}
