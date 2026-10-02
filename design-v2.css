@@ -1170,3 +1170,5 @@ button:disabled{cursor:not-allowed!important;}
  body{overflow:hidden;}
 
  main{isolation:isolate;}
+
+ #map{inset:0;}
