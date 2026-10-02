@@ -5843,3 +5843,7 @@ a[href]{cursor:pointer;}
 
 /* 860 */
 @media(max-width:640px){nav[aria-label="Primary navigation"] a{min-height:40px;display:flex;align-items:center;}}
+
+
+/* 861 */
+@media(min-width:641px) and (max-width:1100px){nav[aria-label="Primary navigation"] a{min-height:38px;display:flex;align-items:center;}}
