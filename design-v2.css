@@ -1702,3 +1702,7 @@ nav[aria-label="Primary navigation"] h1{font-weight:600!important;}
 
 /* improve hero paragraph readability */
 #intelligence-hero p{line-height:1.65!important;}
+
+
+/* refine hero chip spacing */
+#intelligence-hero .mt-4{margin-top:15px!important;}
