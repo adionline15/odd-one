@@ -4741,3 +4741,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 588 */
 .leaflet-control-attribution{background:rgba(5,5,7,.52)!important;border:1px solid rgba(255,255,255,.06);border-radius:7px;padding:2px 5px!important;backdrop-filter:blur(8px);}
+
+
+/* 589 */
+.leaflet-control-attribution{font-size:8px!important;letter-spacing:.02em;}
