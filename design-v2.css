@@ -211,3 +211,6 @@ body>footer{color:#52525b!important;}
 
 /* mobile sheet */
 #sheet{border-radius:20px 20px 0 0!important;}
+
+/* sheet handle */
+#sheet-toggle span{background:#3f3f46!important;}
