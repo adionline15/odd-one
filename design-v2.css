@@ -469,3 +469,6 @@ nav[aria-label="Primary navigation"] .font-mono-lux{font-size:7px!important;}
 
 /* route field text */
 #sidebar input{letter-spacing:.005em;}
+
+/* footer */
+body>footer{font-family:'JetBrains Mono',monospace!important;}
