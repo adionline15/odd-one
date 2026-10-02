@@ -358,3 +358,5 @@ document.addEventListener('keydown',e=>{if(e.key==='Enter')document.documentElem
 document.documentElement.dataset.interactionHeartbeat='ready';
 
 document.documentElement.dataset.runtimePhase='interactive';
+
+document.documentElement.dataset.controlsPhase='ready';
