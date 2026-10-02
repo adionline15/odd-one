@@ -5599,3 +5599,7 @@ a[href]{cursor:pointer;}
 
 /* 799 */
 #route-notice{color:rgba(255,255,255,.65);line-height:1.45;}
+
+
+/* 800 */
+#generated-guide{background:rgba(255,255,255,.018);border:1px solid rgba(255,255,255,.06);border-radius:14px;}
