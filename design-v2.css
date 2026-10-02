@@ -2143,3 +2143,12 @@ nav[aria-label="Primary navigation"]{
     margin-inline:12px;
   }
 }
+
+
+/* 054 — improve mobile tooltip readability */
+@media (max-width:640px){
+  .road-intel-tooltip{
+    max-width:calc(100vw - 32px);
+    font-size:12px;
+  }
+}
