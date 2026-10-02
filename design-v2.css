@@ -2611,3 +2611,11 @@ nav[aria-label="Primary navigation"]{
     box-shadow:0 12px 26px rgba(0,0,0,.16);
   }
 }
+
+
+/* 113 — refine desktop route field focus */
+@media (min-width:1101px){
+  #sidebar input:focus{
+    border-color:rgba(34,211,238,.30);
+  }
+}
