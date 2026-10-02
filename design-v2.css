@@ -5119,3 +5119,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 679 */
 .map-deck-btn:not(.active):hover{background:rgba(255,255,255,.035);color:#d4d4d8;}
+
+
+/* 680 */
+.map-deck-icon-btn{border-radius:10px;}
