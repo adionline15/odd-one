@@ -354,6 +354,34 @@ comment on function public.approved_observation_summary(double precision, double
 revoke execute on function public.approved_observation_summary(double precision, double precision, double precision, double precision) from public, anon, authenticated;
 grant execute on function public.approved_observation_summary(double precision, double precision, double precision, double precision) to service_role;
 
+create or replace function public.approved_observation_stats()
+returns table (
+  observation_count bigint,
+  source_count bigint,
+  type_count bigint,
+  average_confidence numeric,
+  latest_observed_at timestamptz
+)
+language sql
+security definer
+set search_path = public
+as $
+  select
+    count(*)::bigint,
+    count(distinct o.source)::bigint,
+    count(distinct o.observation_type)::bigint,
+    round(avg(o.confidence), 3),
+    max(o.observed_at)
+  from public.observations o
+  where o.status = 'approved';
+$;
+
+comment on function public.approved_observation_stats()
+  is 'Returns aggregate statistics for approved observations only.';
+
+revoke execute on function public.approved_observation_stats() from public, anon, authenticated;
+grant execute on function public.approved_observation_stats() to service_role;
+
 create or replace function public.set_updated_at()
 returns trigger
 language plpgsql
