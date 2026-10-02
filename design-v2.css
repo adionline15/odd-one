@@ -3661,3 +3661,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 341 */
 @media (min-width:1101px){#observation-status-strip{font-size:.84rem}}
+
+
+/* 342 */
+@media (min-width:1101px){#observation-status-strip{letter-spacing:.005em}}
