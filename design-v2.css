@@ -3397,3 +3397,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 275 */
 @media (max-width:640px){#intelligence-hero p{line-height:1.55}}
+
+
+/* 276 */
+@media (max-width:640px){#observation-status-strip{border-radius:12px}}
