@@ -3033,3 +3033,7 @@ nav[aria-label="Primary navigation"]{
 
 /* 184 */
 @media (max-width:640px){.route-endpoint-label{font-size:.72rem}}
+
+
+/* 185 */
+@media (max-width:640px){.road-intel-tooltip{max-width:calc(100vw - 24px)}}
