@@ -91,3 +91,6 @@ nav[aria-label="Primary navigation"] button[onclick*="showTab('route')"]{border-
 
 /* progressive */
 #map-layer-controls button{font-weight:600!important;}
+
+/* progressive */
+#map-layer-controls{gap:4px;}
