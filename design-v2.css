@@ -1865,3 +1865,13 @@ nav[aria-label="Primary navigation"]{
   border-color:rgba(255,255,255,.16);
   background-color:rgba(255,255,255,.035);
 }
+
+
+/* 021 — refine search placeholder hierarchy */
+#s-input::placeholder{
+  color:rgba(255,255,255,.42);
+  transition:color .18s ease;
+}
+#s-input:focus::placeholder{
+  color:rgba(255,255,255,.30);
+}
