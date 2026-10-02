@@ -2378,3 +2378,11 @@ nav[aria-label="Primary navigation"]{
 #sidebar hr{
   border-color:rgba(255,255,255,.07);
 }
+
+
+/* 083 — refine desktop alert card padding */
+@media (min-width:1101px){
+  #d-alerts-box .intel-card{
+    padding:14px;
+  }
+}
