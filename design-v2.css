@@ -5579,3 +5579,7 @@ a[href]{cursor:pointer;}
 
 /* 794 */
 .alert-severity-marker{align-self:flex-start;margin-top:5px;}
+
+
+/* 795 */
+.alert-body{line-height:1.45;}
