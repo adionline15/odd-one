@@ -1730,3 +1730,7 @@ nav[aria-label="Primary navigation"] h1{font-weight:600!important;}
 
 /* refine route CTA tracking */
 #d-go-btn,#m-go-btn{letter-spacing:.035em!important;}
+
+
+/* improve map HUD separation */
+#map-intelligence-hud .intel-card{border-color:rgba(34,211,238,.12)!important;}
