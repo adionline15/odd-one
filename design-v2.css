@@ -6435,3 +6435,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 993 */
 #map-intelligence-hud .intel-value{font-variant-numeric:tabular-nums;letter-spacing:-.015em;}
+
+
+/* 994 */
+@media(max-width:640px){#route-status-overlay{padding:10px 11px;gap:6px;}}
