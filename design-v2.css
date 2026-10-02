@@ -4009,3 +4009,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 428 */
 @media (max-width:640px){#sidebar input{font-size:.9rem}}
+
+
+/* 429 */
+@media (max-width:640px){#sidebar input{border-color:rgba(255,255,255,.11)}}
