@@ -2555,3 +2555,11 @@ nav[aria-label="Primary navigation"]{
     filter:drop-shadow(0 0 5px rgba(34,211,238,.25));
   }
 }
+
+
+/* 106 — improve desktop search focus ring */
+@media (min-width:1101px){
+  #s-input:focus{
+    box-shadow:0 0 0 1px rgba(34,211,238,.28),0 10px 26px rgba(0,0,0,.16);
+  }
+}
