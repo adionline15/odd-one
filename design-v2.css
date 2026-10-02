@@ -4491,3 +4491,7 @@ nav[aria-label="Primary navigation"]{-webkit-font-smoothing:antialiased}
 
 /* 527 */
 #sugg{box-shadow:0 30px 76px rgba(0,0,0,.62),inset 0 1px 0 rgba(255,255,255,.035)!important;}
+
+
+/* 528 */
+.sugg-item:hover{background:rgba(255,255,255,.045)!important;color:#f4f4f5;transform:translateX(1px);}
