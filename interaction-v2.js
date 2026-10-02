@@ -250,3 +250,5 @@
 })();
 
 document.documentElement.dataset.oddOneViewport='ready';
+
+document.documentElement.dataset.oddOneMap='ready';
