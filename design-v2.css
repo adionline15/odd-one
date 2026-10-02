@@ -5791,3 +5791,7 @@ a[href]{cursor:pointer;}
 
 /* 847 */
 @media(max-width:640px){#d-go-btn,#m-go-btn{min-height:44px;}}
+
+
+/* 848 */
+@media(max-width:640px){#sidebar .route-control-group{border-radius:12px;padding:7px;}}
