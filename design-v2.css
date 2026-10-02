@@ -901,3 +901,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* route placeholder */
 #sidebar input::placeholder{color:#52525b!important;}
+
+/* route selection */
+#sidebar input::selection{background:rgba(34,211,238,.2);color:#fff;}
