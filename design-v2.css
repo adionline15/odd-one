@@ -1342,3 +1342,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  #sidebar{overflow-x:hidden;}
 
  #sidebar .overflow-y-auto{scrollbar-gutter:stable;}
+
+ #sheet{min-width:0;}
