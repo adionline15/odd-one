@@ -1003,6 +1003,36 @@
       });
     }
 
+    async function loadRoadChangesInView() {
+      const bounds = map.getBounds();
+      const params = new URLSearchParams({
+        minLat: bounds.getSouth().toFixed(6),
+        minLon: bounds.getWest().toFixed(6),
+        maxLat: bounds.getNorth().toFixed(6),
+        maxLon: bounds.getEast().toFixed(6)
+      });
+      try {
+        const response = await fetch('/api/road-change?' + params.toString(), {
+          headers: { 'Accept': 'application/json' }
+        });
+        if (!response.ok) throw new Error('Road change API request failed');
+        const payload = await response.json();
+        if (payload.api_version !== 'road-change-v1') throw new Error('Unsupported road change API version');
+        const changes = Array.isArray(payload.changes) ? payload.changes : [];
+        renderTemporalChangeIntelligence(changes.map(change => ({
+          observation_type: change.observation_type,
+          metadata: {
+            baseline_year: change.baseline_year,
+            comparison_year: change.comparison_year,
+            detected_at: change.detected_at,
+            change_type: change.change_type
+          }
+        })));
+      } catch (error) {
+        renderTemporalChangeIntelligence([]);
+      }
+    }
+
     async function loadObservationsInView() {
       const requestId = ++observationRequestId;
       observationAbortController?.abort();
@@ -1109,6 +1139,7 @@
         refreshObservationSourceOptions();
         applyObservationFilters();
         renderTemporalChangeIntelligence(observations);
+        loadRoadChangesInView();
         loadObservationSummary(bounds, requestId);
         lastObservationLoadAt = new Date();
         setObservationLoadMeta();
