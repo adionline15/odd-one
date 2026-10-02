@@ -70,3 +70,6 @@ nav[aria-label="Primary navigation"] .font-mono-lux{color:#66666f!important;}
 
 /* progressive */
 nav[aria-label="Primary navigation"] button[onclick*="showTab('route')"]{font-weight:700!important;}
+
+/* progressive */
+nav[aria-label="Primary navigation"] button[onclick*="showTab('route')"]{border-radius:999px!important;}
