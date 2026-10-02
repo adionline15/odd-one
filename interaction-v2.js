@@ -21,4 +21,8 @@
     navButtons.forEach(btn => btn.addEventListener('click', () => requestAnimationFrame(syncNavState)));
     syncNavState();
   });
+  ready(() => {
+    document.querySelectorAll('[data-nav-tab]').forEach(btn => btn.setAttribute('role','tab'));
+    ['dt-alerts','dt-route','dt-data','mt-alerts','mt-route','mt-data'].forEach(id => document.getElementById(id)?.setAttribute('role','tab'));
+  });
 })();
