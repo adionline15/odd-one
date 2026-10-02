@@ -247,3 +247,6 @@ body>footer{color:#52525b!important;}
 
 /* mobile boundary */
 @media(max-width:640px){#hero-data-boundary{display:none;}}
+
+/* mobile map controls */
+@media(max-width:640px){#map-layer-controls{right:12px!important;bottom:62px!important;}}
