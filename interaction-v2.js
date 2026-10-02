@@ -232,4 +232,5 @@
   ready(() => document.getElementById('btn-loc')?.setAttribute('role','button'));
   ready(() => { const m=document.getElementById('map'); const sync=()=>{if(m)m.dataset.layer=(document.getElementById('btn-sat')?.classList.contains('on')?'sat':'map');}; ['btn-map','btn-sat'].forEach(id=>document.getElementById(id)?.addEventListener('click',()=>setTimeout(sync,0))); sync(); });
   ready(() => ['d-alerts-box','m-alerts-box'].forEach(id=>{const el=document.getElementById(id); if(el)el.dataset.feedFreshness='current-feed';}));
+  ready(() => document.querySelectorAll('[id$="-route-out"],#stats-content').forEach(el=>el.dataset.missingDataPolicy='no-data-is-not-safe-or-empty'));
 })();
