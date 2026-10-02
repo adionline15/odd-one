@@ -3545,3 +3545,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 312 */
 @media (min-width:1101px){#map-layer-controls{border-radius:14px}}
+
+
+/* 313 */
+@media (min-width:1101px){#map-layer-controls button{min-width:34px;min-height:34px}}
