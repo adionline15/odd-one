@@ -5535,3 +5535,7 @@ a[href]{cursor:pointer;}
 
 /* 783 */
 .intel-card .intel-kicker{margin-bottom:4px;}
+
+
+/* 784 */
+.empty-state{background:rgba(255,255,255,.018);border:1px solid rgba(255,255,255,.06);border-radius:14px;}
