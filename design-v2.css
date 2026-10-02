@@ -1234,3 +1234,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  #sidebar .grid>div{border-radius:10px;}
 
  #sidebar .grid>div{padding:10px!important;}
+
+ .leaflet-tooltip{font-size:10px;}
