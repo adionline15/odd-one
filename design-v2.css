@@ -4629,3 +4629,7 @@ nav[aria-label="Primary navigation"] .font-mono-lux{opacity:.78;}
 
 /* 561 */
 body>footer{letter-spacing:.08em;text-shadow:0 1px 8px rgba(0,0,0,.28);}
+
+
+/* 562 */
+body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72);backdrop-filter:blur(12px);}
