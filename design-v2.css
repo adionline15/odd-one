@@ -4299,3 +4299,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 483 */
 #observation-status-strip{backdrop-filter:blur(8px)}
+
+
+/* 484 */
+#hero-data-boundary{opacity:.86}
