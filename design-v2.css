@@ -1358,3 +1358,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  #d-alerts-box>div,#m-alerts-box>div{padding:11px!important;}
 
  #d-alerts-box>div h4,#m-alerts-box>div h4{line-height:1.25;}
+
+ #d-alerts-box>div p,#m-alerts-box>div p{line-height:1.4;}
