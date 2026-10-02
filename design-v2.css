@@ -4601,3 +4601,7 @@ nav[aria-label="Primary navigation"] .font-mono-lux{opacity:.78;}
 
 /* 554 */
 .leaflet-control-scale-line{box-shadow:0 6px 18px rgba(0,0,0,.18);text-shadow:0 1px 8px rgba(0,0,0,.35);}
+
+
+/* 555 */
+.leaflet-control-zoom{border-radius:11px;overflow:hidden;box-shadow:0 14px 34px rgba(0,0,0,.32)!important;}
