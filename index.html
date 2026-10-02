@@ -510,6 +510,9 @@ body>footer{letter-spacing:.08em!important}
     <div id="map-scale-wrap" class="absolute bottom-6 left-5 z-20 pointer-events-none">
       <div class="map-scale-label">India road intelligence · live viewport</div>
     </div>
+    <div id="map-live-context" class="absolute top-5 left-1/2 -translate-x-1/2 z-30" aria-live="polite">
+      <span class="map-context-pill">VIEWPORT <strong id="map-zoom-value">5</strong></span>
+    </div>
 
   </main>
 
@@ -847,6 +850,12 @@ body>footer{letter-spacing:.08em!important}
     map = L.map('map', { zoomControl: false, attributionControl: true, preferCanvas: true }).setView([22, 78], 5);
     L.control.zoom({ position: 'bottomleft' }).addTo(map);
     L.control.scale({ position: 'bottomleft', imperial: false, maxWidth: 120 }).addTo(map);
+
+    function updateMapContext() {
+      const zoom = map.getZoom();
+      const el = document.getElementById('map-zoom-value');
+      if (el) el.textContent = String(zoom);
+    }
 
     function resetMapView() {
       map.flyTo([22, 78], 5, { duration: 0.9 });
@@ -1417,6 +1426,8 @@ body>footer{letter-spacing:.08em!important}
 
     bindObservationFilters();
     map.on('moveend', scheduleObservationLoad, { passive: true });
+    map.on('zoomend', updateMapContext, { passive: true });
+    updateMapContext();
     loadObservationsInView();
 
     // Manual Point Select Popup
