@@ -5651,3 +5651,7 @@ a[href]{cursor:pointer;}
 
 /* 812 */
 @media(max-width:640px){.provenanceRow{padding:7px 9px;}}
+
+
+/* 813 */
+@media(max-width:640px){.empty-state{padding:16px;}}
