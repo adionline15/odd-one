@@ -1120,3 +1120,5 @@ body>footer{background:#050505!important;border-color:rgba(255,255,255,.06)!impo
 .leaflet-popup-content-wrapper{font-size:11px;}
 
 .leaflet-popup-close-button{padding:8px 10px!important;}
+
+.leaflet-control-attribution{background:rgba(5,5,5,.58)!important;}
