@@ -868,3 +868,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* data scope */
 #stats-scope-label{background:rgba(255,255,255,.025);}
+
+/* stats region */
+#stats-content{padding-top:2px;}
