@@ -4429,3 +4429,7 @@ nav[aria-label="Primary navigation"]{-webkit-font-smoothing:antialiased}
 /* 513 */
 #observation-status-strip{box-shadow:0 10px 28px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.035);}
 #obs-status-count{letter-spacing:-.01em;}
+
+
+/* 514 */
+#observation-status-strip[data-state="live"] #obs-status-dot{box-shadow:0 0 0 5px rgba(52,211,153,.08),0 0 14px rgba(52,211,153,.25)!important;}
