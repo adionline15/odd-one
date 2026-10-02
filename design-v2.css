@@ -4141,3 +4141,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 461 */
 @media (min-width:641px){#d-alerts-box .intel-card,#m-alerts-box .intel-card{transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}}
+
+
+/* 462 */
+@media (min-width:641px){#d-alerts-box .intel-card:hover,#m-alerts-box .intel-card:hover{border-color:rgba(255,255,255,.14)}}
