@@ -2483,3 +2483,9 @@ nav[aria-label="Primary navigation"]{
     padding:10px 12px;
   }
 }
+
+
+/* 097 — refine layer control radius */
+#map-layer-controls{
+  border-radius:12px;
+}
