@@ -5255,3 +5255,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 713 */
 #route-status-overlay .route-metric{gap:6px;}
+
+
+/* 714 */
+#route-status-overlay .route-metric+.route-metric{border-left:1px solid rgba(255,255,255,.06);padding-left:10px;}
