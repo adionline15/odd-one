@@ -2306,3 +2306,13 @@ nav[aria-label="Primary navigation"]{
   letter-spacing:-.015em;
 }
 
+
+
+/* 074 — improve map HUD hover response */
+#map-intelligence-hud{
+  transition:border-color .18s ease,box-shadow .18s ease;
+}
+#map-intelligence-hud:hover{
+  border-color:rgba(34,211,238,.16);
+}
+
