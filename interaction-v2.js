@@ -205,4 +205,5 @@
   ready(() => { const m=getMap(); if(m?.on)m.on('zoomend',()=>{const z=document.getElementById('map-hud-zoom');if(z)z.textContent='Z'+m.getZoom();}); });
   ready(() => { const m=getMap(); if(m?.on)m.on('moveend',()=>{const s=document.getElementById('map-hud-scope');if(s){const c=m.getCenter();s.dataset.center=c.lat.toFixed(2)+','+c.lng.toFixed(2);}}); });
   ready(() => { const m=getMap(); if(!m)return; const z=document.getElementById('map-hud-zoom'); if(z)z.textContent='Z'+m.getZoom(); });
+  ready(() => { const m=getMap(); if(!m)return; const s=document.getElementById('map-hud-scope'); if(s){const c=m.getCenter();s.dataset.center=c.lat.toFixed(2)+','+c.lng.toFixed(2);}});
 })();
