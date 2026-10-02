@@ -619,3 +619,6 @@ body>footer{opacity:.9;}
 
 /* hero dot */
 #intelligence-hero .bg-emerald-400{box-shadow:0 0 9px rgba(52,211,153,.32);}
+
+/* hero metadata */
+#intelligence-hero .font-mono-lux{letter-spacing:.16em;}
