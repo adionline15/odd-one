@@ -4931,3 +4931,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 632 */
 #sidebar h2,#sidebar h3{letter-spacing:-.01em;}
+
+
+/* 633 */
+#sidebar input::placeholder{color:rgba(255,255,255,.38);}
