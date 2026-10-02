@@ -613,3 +613,6 @@ body>footer{opacity:.9;}
 
 /* hero backdrop */
 #intelligence-hero>div{backdrop-filter:blur(20px)!important;}
+
+/* hero border glow */
+#intelligence-hero>div{border-top-color:rgba(255,255,255,.13)!important;}
