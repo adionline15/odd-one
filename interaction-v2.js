@@ -49,4 +49,12 @@
     window.addEventListener('load', update, {once:true});
     document.getElementById('map')?.addEventListener('wheel', () => setTimeout(update,120), {passive:true});
   });
+  ready(() => {
+    const update = () => {
+      if(!window.map?.getZoom) return;
+      const z=map.getZoom(), el=document.getElementById('map-hud-scope');
+      if(el) el.textContent = z<6 ? 'India · regional scope' : z<9 ? 'India · corridor scope' : 'India · local scope';
+    };
+    window.addEventListener('load', update, {once:true});
+  });
 })();
