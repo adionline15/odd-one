@@ -360,3 +360,5 @@ document.documentElement.dataset.interactionHeartbeat='ready';
 document.documentElement.dataset.runtimePhase='interactive';
 
 document.documentElement.dataset.controlsPhase='ready';
+
+document.documentElement.dataset.contentPhase='ready';
