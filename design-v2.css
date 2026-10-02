@@ -5323,3 +5323,7 @@ nav[aria-label="Primary navigation"] .brand{color:#f5f5f5;}
 
 /* 730 */
 #sheet-toggle{box-shadow:0 5px 14px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.04);}
+
+
+/* 731 */
+#sheet-toggle{border-radius:999px;}
