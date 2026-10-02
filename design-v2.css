@@ -4101,3 +4101,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 451 */
 @media (min-width:641px) and (max-width:1100px){#d-go-btn:hover{transform:translateY(-1px)}}
+
+
+/* 452 */
+@media (min-width:641px) and (max-width:1100px){#d-go-btn:hover{filter:brightness(1.03)}}
