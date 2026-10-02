@@ -4251,3 +4251,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 471 */
 .road-intel-tooltip{background:rgba(8,8,10,.9)}
+
+
+/* 472 */
+.road-intel-tooltip{backdrop-filter:blur(10px)}
