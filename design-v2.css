@@ -331,3 +331,6 @@ button:active:not(:disabled){transform:translateY(1px); }
 
 /* reduced motion */
 @media(prefers-reduced-motion:reduce){button:active:not(:disabled){transform:none;}}
+
+/* nav hover */
+nav[aria-label="Primary navigation"] .nav-intel-btn:hover{background:rgba(255,255,255,.05)!important;}
