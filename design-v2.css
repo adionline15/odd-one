@@ -3969,3 +3969,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 418 */
 @media (max-width:640px){#intelligence-hero .hero-accent{opacity:.9}}
+
+
+/* 419 */
+@media (max-width:640px){#hero-data-boundary{margin-top:6px}}
