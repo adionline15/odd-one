@@ -2074,3 +2074,12 @@ nav[aria-label="Primary navigation"]{
     padding-block:10px;
   }
 }
+
+
+/* 046 — refine mobile alert spacing */
+@media (max-width:640px){
+  #d-alerts-box,#m-alerts-box{
+    border-radius:14px;
+    padding:12px;
+  }
+}
