@@ -330,3 +330,5 @@ new IntersectionObserver(e=>e[0]&&document.documentElement.classList.toggle('her
 new IntersectionObserver(e=>e[0]&&document.documentElement.classList.toggle('sidebar-visible',e[0].isIntersecting)).observe(document.querySelector('#sidebar')||document.documentElement);
 
 new IntersectionObserver(e=>e[0]&&document.documentElement.classList.toggle('sheet-visible',e[0].isIntersecting)).observe(document.querySelector('#sheet')||document.documentElement);
+
+if(document.readyState==='complete')document.documentElement.dataset.documentReady='true';
