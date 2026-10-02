@@ -2364,3 +2364,11 @@ nav[aria-label="Primary navigation"]{
   outline-offset:3px;
 }
 
+
+
+/* 081 — refine desktop sidebar heading */
+@media (min-width:1101px){
+  #sidebar h2,#sidebar h3{
+    letter-spacing:-.015em;
+  }
+}
