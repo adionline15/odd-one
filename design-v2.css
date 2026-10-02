@@ -4424,3 +4424,8 @@ nav[aria-label="Primary navigation"]{-webkit-font-smoothing:antialiased}
 
 /* 512 */
 @media(min-width:641px){.intel-card:hover{border-color:rgba(255,255,255,.15);box-shadow:0 16px 38px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.035);}}
+
+
+/* 513 */
+#observation-status-strip{box-shadow:0 10px 28px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.035);}
+#obs-status-count{letter-spacing:-.01em;}
