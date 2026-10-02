@@ -1582,3 +1582,5 @@ html.is-desktop footer{font-size:9px;}
 @media(max-width:640px){#m-go-btn{box-shadow:0 10px 24px rgba(0,0,0,.35)!important;}}
 
 @media(min-width:641px){#d-go-btn{box-shadow:0 12px 28px rgba(0,0,0,.32)!important;}}
+
+@media(max-width:640px){#sheet input{border-radius:9px!important;}}
