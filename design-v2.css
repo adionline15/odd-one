@@ -5011,3 +5011,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 652 */
 #d-alerts-box .alert-card:hover,#m-alerts-box .alert-card:hover{border-color:rgba(255,255,255,.12);}
+
+
+/* 653 */
+#desktop-stats-container{font-variant-numeric:tabular-nums;}
