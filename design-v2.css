@@ -5615,3 +5615,7 @@ a[href]{cursor:pointer;}
 
 /* 803 */
 #generated-guide p{color:rgba(255,255,255,.62);line-height:1.5;}
+
+
+/* 804 */
+#generated-guide li+li{margin-top:6px;}
