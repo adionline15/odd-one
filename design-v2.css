@@ -163,3 +163,6 @@ body>footer{color:#52525b!important;}
 
 /* sidebar rail */
 #sidebar{border-left-color:rgba(255,255,255,.08)!important;}
+
+/* sidebar shadow */
+#sidebar{box-shadow:-28px 0 80px rgba(0,0,0,.28)!important;}
