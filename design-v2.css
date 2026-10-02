@@ -1750,3 +1750,7 @@ nav[aria-label="Primary navigation"] h1{font-weight:600!important;}
 
 /* improve route status hierarchy */
 #route-status-path{font-weight:500!important;color:#e4e4e7!important;}
+
+
+/* tighten desktop navigation spacing */
+nav[aria-label="Primary navigation"]{padding-left:22px!important;padding-right:22px!important;}
