@@ -34,4 +34,9 @@
     }));
     document.querySelectorAll('.tab-pane').forEach(el => observer.observe(el,{attributes:true,attributeFilter:['class']}));
   });
+  ready(() => document.addEventListener('keydown', e => {
+    if(e.key==='/' && !['INPUT','TEXTAREA'].includes(document.activeElement?.tagName)){
+      e.preventDefault(); document.getElementById('s-input')?.focus();
+    }
+  }));
 })();
