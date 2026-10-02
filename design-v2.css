@@ -1388,3 +1388,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  #search-status{color:#85858d;}
 
  #search-status{margin-top:6px;}
+
+html[data-surface-ready="true"] #map{opacity:1;}
