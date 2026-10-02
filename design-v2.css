@@ -6387,3 +6387,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 }
 .map-context-pill strong { color: rgba(255,255,255,.95); font-variant-numeric: tabular-nums; }
 @media (max-width: 640px) { .map-context-pill { padding: 6px 9px; font-size: 8px; } }
+
+
+/* 982 */
+#sidebar .space-y-3,#sidebar .space-y-4{gap:10px;}
