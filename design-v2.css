@@ -1190,3 +1190,5 @@ button:disabled{cursor:not-allowed!important;}
  #sheet{isolation:isolate;}
 
 .intel-card{transition:border-color .16s ease,background-color .16s ease,box-shadow .16s ease;}
+
+button{transition:background-color .16s ease,border-color .16s ease,opacity .16s ease,transform .16s ease;}
