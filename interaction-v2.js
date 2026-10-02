@@ -227,4 +227,5 @@
   ready(() => document.querySelector('nav h1')?.setAttribute('data-brand','odd-one'));
   ready(() => { const b=document.getElementById('toggle-btn'); if(b)b.title='Toggle intelligence sidebar'; });
   ready(() => { const b=document.getElementById('sheet-toggle'); if(b)b.title='Expand or collapse intelligence panel'; });
+  ready(() => { const b=document.getElementById('sheet-toggle'),s=document.getElementById('sheet'); if(!b||!s)return; const sync=()=>b.title=s.classList.contains('open')?'Collapse intelligence panel':'Expand intelligence panel'; new MutationObserver(sync).observe(s,{attributes:true,attributeFilter:['class']}); sync(); });
 })();
