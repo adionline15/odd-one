@@ -6187,3 +6187,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 946 */
 .map-layer-switcher button.active{background:rgba(34,211,238,.07);color:#e5e7eb;}
+
+
+/* 947 */
+#obs-status-state{background:rgba(255,255,255,.018);border-radius:7px;padding:3px 6px;}
