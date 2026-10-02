@@ -955,3 +955,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* satellite control */
 #btn-sat.on{box-shadow:0 0 0 1px rgba(255,255,255,.04),0 12px 30px rgba(0,0,0,.32);}
+
+/* control gap */
+#map-layer-controls{gap:5px!important;}
