@@ -1810,3 +1810,24 @@ nav[aria-label="Primary navigation"] h1{font-weight:600!important;}
 
 /* improve map HUD separation */
 #map-intelligence-hud .intel-card{border-color:rgba(34,211,238,.12)!important;}
+
+
+/* 016 — refine desktop navigation active-state clarity */
+@media (min-width:1101px){
+  nav[aria-label="Primary navigation"] a[aria-current="page"]{
+    position:relative;
+    text-shadow:0 0 18px rgba(34,211,238,.16);
+  }
+  nav[aria-label="Primary navigation"] a[aria-current="page"]::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    bottom:-9px;
+    width:18px;
+    height:2px;
+    transform:translateX(-50%);
+    border-radius:999px;
+    background:var(--oo-v2-accent);
+    box-shadow:0 0 12px rgba(34,211,238,.28);
+  }
+}
