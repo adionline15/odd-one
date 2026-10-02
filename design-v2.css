@@ -2798,3 +2798,9 @@ nav[aria-label="Primary navigation"]{
     box-shadow:0 1px 0 rgba(255,255,255,.055),0 14px 36px rgba(0,0,0,.18);
   }
 }
+
+
+/* 138 — improve hero title selection */
+#intelligence-hero h1::selection{
+  background:rgba(34,211,238,.20);
+}
