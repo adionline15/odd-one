@@ -5559,3 +5559,7 @@ a[href]{cursor:pointer;}
 
 /* 789 */
 .loading-state{background:rgba(255,255,255,.016);border-radius:14px;}
+
+
+/* 790 */
+.loading-state{color:rgba(255,255,255,.62);}
