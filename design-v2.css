@@ -2101,3 +2101,12 @@ nav[aria-label="Primary navigation"]{
     padding-inline:14px;
   }
 }
+
+
+/* 049 — refine mobile observation strip */
+@media (max-width:640px){
+  #observation-status-strip{
+    min-height:42px;
+    padding-inline:12px;
+  }
+}
