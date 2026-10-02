@@ -1698,3 +1698,7 @@ nav[aria-label="Primary navigation"] h1{font-weight:600!important;}
 
 /* strengthen hero metadata */
  #intelligence-hero .font-mono-lux{color:#71717a!important;}
+
+
+/* improve hero paragraph readability */
+#intelligence-hero p{line-height:1.65!important;}
