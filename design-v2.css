@@ -616,3 +616,6 @@ body>footer{opacity:.9;}
 
 /* hero border glow */
 #intelligence-hero>div{border-top-color:rgba(255,255,255,.13)!important;}
+
+/* hero dot */
+#intelligence-hero .bg-emerald-400{box-shadow:0 0 9px rgba(52,211,153,.32);}
