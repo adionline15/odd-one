@@ -5403,3 +5403,7 @@ nav[aria-label="Primary navigation"] .brand{color:#f5f5f5;}
 
 /* 750 */
 @media(min-width:641px) and (max-width:1100px){#map-command-deck{gap:6px;}}
+
+
+/* 751 */
+@media(min-width:641px) and (max-width:1100px){.map-layer-switcher{gap:4px;}}
