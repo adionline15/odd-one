@@ -4347,3 +4347,7 @@ nav[aria-label="Primary navigation"]{text-rendering:optimizeLegibility}
 
 /* 495 */
 .intel-card{-webkit-font-smoothing:antialiased}
+
+
+/* 496 */
+nav[aria-label="Primary navigation"]{-webkit-font-smoothing:antialiased}
