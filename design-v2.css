@@ -628,3 +628,6 @@ body>footer{opacity:.9;}
 
 /* hero chip text */
 #intelligence-hero .mt-4 span{font-weight:600;}
+
+/* hero copy opacity */
+#intelligence-hero p{opacity:.9;}
