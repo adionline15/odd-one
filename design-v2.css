@@ -1210,3 +1210,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  .intel-card{background:rgba(10,10,12,.76);}
 
  .intel-card{border-radius:14px;}
+
+ .intel-kicker{letter-spacing:.14em;}
