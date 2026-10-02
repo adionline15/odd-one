@@ -4041,3 +4041,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 436 */
 @media (max-width:640px){#s-input::selection{background:rgba(34,211,238,.3)}}
+
+
+/* 437 */
+@media (max-width:640px){nav[aria-label="Primary navigation"] a[aria-current="page"]{text-underline-offset:4px}}
