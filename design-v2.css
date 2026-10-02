@@ -1516,3 +1516,5 @@ html.is-desktop footer{font-size:9px;}
 @media(max-width:640px){footer{padding-left:10px!important;padding-right:10px!important;}}
 
 @media(min-width:641px) and (max-width:1100px){footer{padding-left:14px!important;padding-right:14px!important;}}
+
+@media(min-width:1101px){footer{padding-left:18px!important;padding-right:18px!important;}}
