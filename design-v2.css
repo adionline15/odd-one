@@ -307,3 +307,6 @@ body>footer{color:#52525b!important;}
 
 /* desktop controls */
 @media(min-width:1101px){#map-layer-controls{right:16px!important;bottom:24px!important;}}
+
+/* desktop control width */
+@media(min-width:1101px){#map-layer-controls button{min-width:116px!important;}}
