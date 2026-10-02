@@ -5543,3 +5543,7 @@ a[href]{cursor:pointer;}
 
 /* 785 */
 .empty-state{padding:20px;}
+
+
+/* 786 */
+.empty-state p{color:rgba(255,255,255,.55);line-height:1.5;}
