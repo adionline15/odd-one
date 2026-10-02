@@ -66,4 +66,9 @@
   ready(() => {
     ['d-go-btn','m-go-btn'].forEach(id => document.getElementById(id)?.addEventListener('click', e => e.currentTarget.setAttribute('aria-busy','true')));
   });
+  ready(() => {
+    const restore=()=>['d-go-btn','m-go-btn'].forEach(id=>document.getElementById(id)?.setAttribute('aria-busy','false'));
+    const observer=new MutationObserver(restore);
+    document.querySelectorAll('[id$="-route-out"]').forEach(el=>observer.observe(el,{childList:true,subtree:true}));
+  });
 })();
