@@ -1052,3 +1052,5 @@ body>footer{background:#050505!important;border-color:rgba(255,255,255,.06)!impo
 #observation-status-strip .intel-card{line-height:1.3;}
 
 #map-intelligence-hud .intel-card{border-radius:14px!important;}
+
+#map-intelligence-hud .intel-card{border-color:rgba(255,255,255,.105)!important;}
