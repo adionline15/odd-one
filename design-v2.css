@@ -847,3 +847,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* cta highlight */
 #d-go-btn,#m-go-btn{box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 14px 30px rgba(0,0,0,.26)!important;}
+
+/* cta hover */
+#d-go-btn:hover,#m-go-btn:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 18px 36px rgba(0,0,0,.34)!important;}
