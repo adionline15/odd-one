@@ -1434,3 +1434,5 @@ html.is-desktop footer{font-size:9px;}
  #map-intelligence-hud{opacity:.98;}
 
  #observation-status-strip{opacity:.98;}
+
+ .intel-card{backdrop-filter:blur(14px);}
