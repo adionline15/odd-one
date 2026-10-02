@@ -805,3 +805,6 @@ nav[aria-label="Primary navigation"]{z-index:100!important;}
 
 /* sheet z */
 #sheet{z-index:90!important;}
+
+/* card highlight */
+.intel-card{position:relative;overflow:hidden;}
