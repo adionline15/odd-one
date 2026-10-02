@@ -1258,3 +1258,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  .leaflet-control-zoom{border-radius:9px;overflow:hidden;}
 
  .leaflet-control-zoom a{height:30px;line-height:30px;}
+
+ .leaflet-control-layers{border-radius:10px;}
