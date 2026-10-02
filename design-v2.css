@@ -5519,3 +5519,7 @@ a[href]{cursor:pointer;}
 
 /* 779 */
 .provenanceRow+.provenanceRow{margin-top:5px;}
+
+
+/* 780 */
+.intel-card{border-radius:12px;}
