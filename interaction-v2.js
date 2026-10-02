@@ -140,4 +140,5 @@
   ready(() => { const box=document.getElementById('stats-content'); if(!box)return; new MutationObserver(()=>box.dataset.ready=box.textContent.trim()?'true':'false').observe(box,{childList:true,subtree:true}); });
   ready(() => document.querySelectorAll('[data-nav-tab="route"]').forEach(b=>b.addEventListener('click',()=>setTimeout(()=>document.getElementById(window.innerWidth<=640?'m-from':'d-from')?.focus(),120))));
   ready(() => document.addEventListener('keydown',e=>{if(e.key==='r'&&!e.ctrlKey&&!e.metaKey&&!['INPUT','TEXTAREA'].includes(document.activeElement?.tagName)){showTab?.('route');setTimeout(()=>document.getElementById(window.innerWidth<=640?'m-from':'d-from')?.focus(),80);}}));
+  ready(() => document.addEventListener('keydown',e=>{if(e.key==='Escape'&&['INPUT','TEXTAREA'].includes(document.activeElement?.tagName))document.activeElement.blur();}));
 })();
