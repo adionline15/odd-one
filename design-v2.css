@@ -4466,3 +4466,7 @@ nav[aria-label="Primary navigation"]{-webkit-font-smoothing:antialiased}
 /* 521 */
 #desktop-stats-container>div{box-shadow:0 18px 42px rgba(0,0,0,.2),inset 0 1px 0 rgba(255,255,255,.03);}
 #desktop-stats-container p:last-child{letter-spacing:-.012em;}
+
+
+/* 522 */
+#desktop-stats-container .w-px{opacity:.7;box-shadow:0 0 8px rgba(255,255,255,.025);}
