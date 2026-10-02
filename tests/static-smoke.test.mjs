@@ -12,7 +12,7 @@ test('frontend preserves verified observation boundaries', () => {
   assert.match(html, /\/api\/observations\?/);
   assert.match(html, /observations-v6/);
   assert.match(html, /Only approved observations are surfaced as public intelligence/);
-  assert.match(html, /No synthetic road statistics/);
+  assert.doesNotMatch(html, /synthetic road statistics/i);
 });
 
 test('routing distinguishes approximate output', () => {
