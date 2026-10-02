@@ -3281,3 +3281,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 246 */
 #route-status-overlay small{color:var(--oo-v2-muted)}
+
+
+/* 247 */
+#route-status-overlay [class*="badge"]{border-radius:999px}
