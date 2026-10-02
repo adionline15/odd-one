@@ -6219,3 +6219,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 954 */
 #map-intelligence-hud{background:rgba(7,7,9,.82)!important;}
+
+
+/* 955 */
+#map-intelligence-hud{backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);}
