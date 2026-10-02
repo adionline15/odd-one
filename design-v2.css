@@ -3349,3 +3349,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 263 */
 .intel-card:hover{box-shadow:0 12px 32px rgba(0,0,0,.22)}
+
+
+/* 264 */
+.sugg-item:active{box-shadow:0 6px 18px rgba(0,0,0,.18)}
