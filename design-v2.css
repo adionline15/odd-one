@@ -5339,3 +5339,7 @@ nav[aria-label="Primary navigation"] .brand{color:#f5f5f5;}
 
 /* 734 */
 @media(max-width:640px){#sidebar input{min-height:42px;}}
+
+
+/* 735 */
+@media(max-width:640px){#sidebar button{min-height:40px;}}
