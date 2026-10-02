@@ -3261,3 +3261,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 241 */
 #map-layer-controls button{border-radius:10px}
+
+
+/* 242 */
+#map-layer-controls button{transition:background-color .18s ease,border-color .18s ease,transform .18s ease}
