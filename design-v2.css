@@ -931,3 +931,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* search transition */
 #s-input{transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease;}
+
+/* input transition */
+#sidebar input{transition:border-color .18s ease,box-shadow .18s ease;}
