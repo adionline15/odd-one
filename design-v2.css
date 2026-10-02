@@ -6143,3 +6143,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 935 */
 #map-command-deck{padding:5px;}
+
+
+/* 936 */
+.map-deck-btn.active{box-shadow:inset 0 1px 0 rgba(255,255,255,.045),0 6px 14px rgba(0,0,0,.16);}
