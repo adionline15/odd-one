@@ -1572,3 +1572,5 @@ html.is-desktop footer{font-size:9px;}
 @media(min-width:1101px){#map-intelligence-hud .intel-card{border-radius:15px!important;}}
 
 @media(min-width:641px) and (max-width:1100px){#observation-status-strip .intel-card{border-radius:13px!important;}}
+
+@media(min-width:1101px){#observation-status-strip .intel-card{border-radius:15px!important;}}
