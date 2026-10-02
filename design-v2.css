@@ -4331,3 +4331,7 @@ nav[aria-label="Primary navigation"]{text-rendering:optimizeLegibility}
 
 /* 491 */
 .intel-card:focus-visible{outline:2px solid var(--oo-v2-accent);outline-offset:3px}
+
+
+/* 492 */
+#route-status-overlay :focus-visible{outline:2px solid var(--oo-v2-accent);outline-offset:2px}
