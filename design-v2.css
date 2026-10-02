@@ -2595,3 +2595,11 @@ nav[aria-label="Primary navigation"]{
     border-color:rgba(255,255,255,.15);
   }
 }
+
+
+/* 111 — refine desktop alert hover lift */
+@media (min-width:1101px){
+  #d-alerts-box .intel-card:hover{
+    transform:translateY(-2px);
+  }
+}
