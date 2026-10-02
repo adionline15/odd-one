@@ -5327,3 +5327,7 @@ nav[aria-label="Primary navigation"] .brand{color:#f5f5f5;}
 
 /* 731 */
 #sheet-toggle{border-radius:999px;}
+
+
+/* 732 */
+#sheet-toggle:focus-visible{box-shadow:0 0 0 2px rgba(34,211,238,.18),0 5px 14px rgba(0,0,0,.22);}
