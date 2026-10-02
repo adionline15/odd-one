@@ -3809,3 +3809,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 378 */
 @media (min-width:641px) and (max-width:1100px){.sugg-item{border-radius:11px}}
+
+
+/* 379 */
+@media (min-width:641px) and (max-width:1100px){.intel-card{border-radius:14px}}
