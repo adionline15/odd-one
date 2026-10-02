@@ -5419,3 +5419,7 @@ nav[aria-label="Primary navigation"] .brand{color:#f5f5f5;}
 
 /* 754 */
 @media(min-width:641px) and (max-width:1100px){.leaflet-popup-content{max-width:300px;}}
+
+
+/* 755 */
+@media(min-width:1101px){#sidebar{width:380px;}}
