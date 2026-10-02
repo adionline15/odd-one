@@ -334,3 +334,5 @@ new IntersectionObserver(e=>e[0]&&document.documentElement.classList.toggle('she
 if(document.readyState==='complete')document.documentElement.dataset.documentReady='true';
 
 window.addEventListener('load',()=>document.documentElement.dataset.documentReady='true',{once:true});
+
+window.addEventListener('resize',()=>document.documentElement.dataset.mapResize='pending',{passive:true});
