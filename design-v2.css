@@ -3909,3 +3909,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 403 */
 @media (max-width:640px){.road-intel-tooltip{border-color:rgba(255,255,255,.11)}}
+
+
+/* 404 */
+@media (max-width:640px){.road-intel-tooltip{box-shadow:0 12px 30px rgba(0,0,0,.28)}}
