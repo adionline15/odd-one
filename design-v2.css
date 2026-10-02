@@ -5655,3 +5655,7 @@ a[href]{cursor:pointer;}
 
 /* 813 */
 @media(max-width:640px){.empty-state{padding:16px;}}
+
+
+/* 814 */
+@media(max-width:640px){.error-state{padding:13px;}}
