@@ -1300,3 +1300,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  #brand-mark{color:#f4f4f5;}
 
  nav .text-zinc-500{color:#777780!important;}
+
+ nav{border-bottom-color:rgba(255,255,255,.07)!important;}
