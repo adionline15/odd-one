@@ -1690,3 +1690,7 @@ nav[aria-label="Primary navigation"] h1{font-weight:600!important;}
 
 /* improve search focus visibility */
 #s-input:focus{border-color:rgba(34,211,238,.34)!important;}
+
+
+/* refine hero vertical rhythm */
+#intelligence-hero>div{padding-top:19px!important;padding-bottom:19px!important;}
