@@ -1734,3 +1734,7 @@ nav[aria-label="Primary navigation"] h1{font-weight:600!important;}
 
 /* improve map HUD separation */
 #map-intelligence-hud .intel-card{border-color:rgba(34,211,238,.12)!important;}
+
+
+/* refine map layer control contrast */
+#map-layer-controls{border-color:rgba(113,113,122,.32)!important;}
