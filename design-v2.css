@@ -829,3 +829,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* hud highlight */
 #map-intelligence-hud .intel-card::before{background:linear-gradient(90deg,rgba(34,211,238,.16),transparent);}
+
+/* stats highlight */
+#desktop-stats-container>div::before{content:"";position:absolute;left:20px;right:20px;top:0;height:1px;background:rgba(255,255,255,.07);}
