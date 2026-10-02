@@ -340,3 +340,5 @@ window.addEventListener('resize',()=>document.documentElement.dataset.mapResize=
 window.addEventListener('resize',()=>{clearTimeout(window.__oddOneResizeTimer);window.__oddOneResizeTimer=setTimeout(()=>document.documentElement.dataset.mapResize='settled',180);},{passive:true});
 
 document.querySelector('#s-input')?.addEventListener('focus',()=>document.documentElement.dataset.searchFocus='true');
+
+document.querySelector('#s-input')?.addEventListener('blur',()=>document.documentElement.dataset.searchFocus='false');
