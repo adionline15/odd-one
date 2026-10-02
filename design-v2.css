@@ -4777,3 +4777,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 597 */
 @media(max-width:640px){.leaflet-control-zoom a{width:34px!important;height:34px!important;line-height:34px!important;}}
+
+
+/* 598 */
+@media(max-width:640px){.leaflet-popup-content{margin:12px 14px!important;font-size:11px;}.leaflet-popup-content-wrapper{border-radius:13px!important;}}
