@@ -1176,3 +1176,5 @@ button:disabled{cursor:not-allowed!important;}
  #map{background:#08080a;}
 
  #map{contain:layout paint;}
+
+ #intelligence-hero{isolation:isolate;}
