@@ -895,3 +895,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* alert transition */
 #d-alerts-box>div,#m-alerts-box>div{transition:transform .18s ease,border-color .18s ease,background-color .18s ease;}
+
+/* route focus */
+#sidebar input:focus{border-color:rgba(161,161,170,.55)!important;}
