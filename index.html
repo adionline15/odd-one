@@ -282,7 +282,7 @@ body>footer{letter-spacing:.08em!important}
         <span class="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-500 text-sm pointer-events-none">⌕</span>
         
         <!-- Nominatim & Local Suggestions -->
-        <div id="sugg" class="absolute top-full left-0 right-0 bg-zinc-950 border border-zinc-800 rounded-xl mt-2 shadow-2xl z-[2000] overflow-y-auto max-h-60 hidden"></div>
+        <div id="sugg" role="listbox" aria-label="Search suggestions" aria-live="polite" class="absolute top-full left-0 right-0 bg-zinc-950 border border-zinc-800 rounded-xl mt-2 shadow-2xl z-[2000] overflow-y-auto max-h-60 hidden"></div>
       </div>
       
       <!-- Mobile Routing Button Trigger -->
@@ -1433,7 +1433,10 @@ body>footer{letter-spacing:.08em!important}
 
     si.addEventListener('input', function() {
       const q = this.value.trim();
-      if (q.length < 2) { sg.style.display = 'none'; return; }
+      if (q.length < 2) { sg.style.display = 'none'; sg.innerHTML = ''; si.removeAttribute('aria-busy'); return; }
+      si.setAttribute('aria-busy', 'true');
+      sg.innerHTML = '<div class="px-4 py-3 text-[9px] uppercase tracking-wider text-zinc-600">Searching local index…</div>';
+      sg.style.display = 'block';
 
       const local = Object.keys(CITIES).filter(c => c.includes(q.toLowerCase())).slice(0, 3);
       const localHTML = local.map(c => `
@@ -1445,10 +1448,12 @@ body>footer{letter-spacing:.08em!important}
 
       if (local.length) {
         sg.innerHTML = localHTML;
+        si.removeAttribute('aria-busy');
         sg.style.display = 'block';
       } else {
         sg.innerHTML = `
           <div class="px-4 py-3 text-[10px] text-zinc-600">Press Enter to search this place.</div>`;
+        si.removeAttribute('aria-busy');
         sg.style.display = 'block';
       }
     });
