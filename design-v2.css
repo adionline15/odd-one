@@ -370,3 +370,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* map control hover */
 #map-layer-controls button:hover{background:rgba(255,255,255,.06)!important;}
+
+/* map control active */
+#map-layer-controls button:active{transform:scale(.98);}
