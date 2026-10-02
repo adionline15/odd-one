@@ -3561,3 +3561,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 316 */
 @media (min-width:1101px){#route-status-overlay{line-height:1.42}}
+
+
+/* 317 */
+@media (min-width:1101px){.route-endpoint-label{box-shadow:0 8px 22px rgba(0,0,0,.32)}}
