@@ -92,4 +92,9 @@
     const sync=()=>['map','sat'].forEach(k=>document.getElementById('btn-'+k)?.setAttribute('aria-pressed',document.getElementById('btn-'+k)?.classList.contains('on')?'true':'false'));
     ['btn-map','btn-sat'].forEach(id=>document.getElementById(id)?.addEventListener('click',()=>setTimeout(sync,0))); sync();
   });
+  ready(() => {
+    const b=document.getElementById('toggle-btn'), s=document.getElementById('sidebar'); if(!b||!s) return;
+    b.setAttribute('role','button'); b.setAttribute('tabindex','0'); b.setAttribute('aria-label','Toggle intelligence sidebar');
+    b.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggleSidebar();}});
+  });
 })();
