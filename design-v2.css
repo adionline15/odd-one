@@ -6031,3 +6031,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 907 */
 @media(max-width:640px){.map-compass{box-shadow:0 10px 24px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.03)!important;}}
+
+
+/* 908 */
+@media(max-width:640px){.map-scale-label{font-size:.62rem;padding:2px 6px;}}
