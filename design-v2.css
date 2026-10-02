@@ -592,3 +592,6 @@ body>footer{opacity:.9;}
 
 /* generated guide */
 [id$="-route-out"] .bg-gradient-to-br{border-color:rgba(255,255,255,.08)!important;}
+
+/* map vignette */
+#map::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:400;box-shadow:inset 0 0 120px rgba(0,0,0,.16);}
