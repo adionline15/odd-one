@@ -187,3 +187,6 @@ body>footer{color:#52525b!important;}
 
 /* route fields */
 #sidebar input{font-size:12px!important;}
+
+/* route field radius */
+#sidebar input{border-radius:11px!important;}
