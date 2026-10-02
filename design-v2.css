@@ -1188,3 +1188,5 @@ button:disabled{cursor:not-allowed!important;}
  #sidebar{isolation:isolate;}
 
  #sheet{isolation:isolate;}
+
+.intel-card{transition:border-color .16s ease,background-color .16s ease,box-shadow .16s ease;}
