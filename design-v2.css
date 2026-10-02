@@ -3069,3 +3069,7 @@ nav[aria-label="Primary navigation"]{
 
 /* 193 */
 @media (min-width:1101px){#sidebar label{letter-spacing:.025em}}
+
+
+/* 194 */
+@media (min-width:1101px){#sidebar input{background:rgba(255,255,255,.035)}}
