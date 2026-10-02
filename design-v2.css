@@ -6227,3 +6227,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 956 */
 #map-intelligence-hud .intel-value{line-height:1.1;}
+
+
+/* 957 */
+#map-intelligence-hud .intel-kicker{opacity:.9;}
