@@ -1550,3 +1550,5 @@ html.is-desktop footer{font-size:9px;}
 @media(max-width:640px){[id$="-route-out"] .grid{grid-template-columns:1fr 1fr;}}
 
 @media(max-width:640px){[id$="-data-out"] .grid{grid-template-columns:1fr 1fr;}}
+
+@media(max-width:640px){#m-alerts-box>div{min-height:72px;}}
