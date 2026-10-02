@@ -4589,3 +4589,7 @@ nav[aria-label="Primary navigation"] .font-mono-lux{opacity:.78;}
 
 /* 551 */
 @media(min-width:1101px){#d-go-btn:hover{transform:translateY(-2px);filter:brightness(1.05);box-shadow:0 16px 36px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.16);}}
+
+
+/* 552 */
+@media(min-width:1101px){#map-command-deck{gap:7px;}.map-deck-icon-btn{width:44px;height:44px;}}
