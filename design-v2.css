@@ -325,3 +325,6 @@ body>footer{color:#52525b!important;}
 
 /* button hover */
 button:hover:not(:disabled){transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease;}
+
+/* button active */
+button:active:not(:disabled){transform:translateY(1px); }
