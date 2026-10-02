@@ -42,4 +42,11 @@
   ready(() => document.getElementById('s-input')?.addEventListener('keydown', e => {
     if(e.key==='Escape'){ e.currentTarget.blur(); document.getElementById('sugg')?.classList.add('hidden'); }
   }));
+  ready(() => {
+    const update = () => {
+      if(window.map?.getZoom){ const el=document.getElementById('map-hud-zoom'); if(el) el.textContent='Z'+map.getZoom(); }
+    };
+    window.addEventListener('load', update, {once:true});
+    document.getElementById('map')?.addEventListener('wheel', () => setTimeout(update,120), {passive:true});
+  });
 })();
