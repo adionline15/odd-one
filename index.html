@@ -1201,6 +1201,7 @@
 
         refreshObservationSourceOptions();
         applyObservationFilters();
+        updateObservationStatus(observations.length, observations.length ? 'READY' : 'NO DATA');
         renderTemporalChangeIntelligence(observations);
         loadRoadChangesInView();
         loadObservationSummary(bounds, requestId);
