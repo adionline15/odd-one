@@ -391,3 +391,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* empty state */
 #observation-status-strip[data-state="empty"] #obs-status-dot{background:#71717a!important;box-shadow:0 0 0 5px rgba(113,113,122,.06)!important;}
+
+/* unavailable state */
+#observation-status-strip[data-state="unavailable"] #obs-status-dot{background:#f59e0b!important;box-shadow:0 0 0 5px rgba(245,158,11,.06)!important;}
