@@ -3437,3 +3437,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 285 */
 @media (min-width:641px) and (max-width:1100px){#observation-status-strip{padding:10px 14px}}
+
+
+/* 286 */
+@media (min-width:641px) and (max-width:1100px){#observation-status-strip{border-radius:13px}}
