@@ -3449,3 +3449,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 288 */
 @media (min-width:641px) and (max-width:1100px){.intel-card:hover{transform:translateY(-1px)}}
+
+
+/* 289 */
+@media (min-width:641px) and (max-width:1100px){#route-status-overlay{padding:11px 13px}}
