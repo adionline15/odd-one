@@ -3581,3 +3581,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 321 */
 @media (min-width:1101px){.road-intel-selected{filter:drop-shadow(0 0 6px rgba(34,211,238,.25))}}
+
+
+/* 322 */
+@media (min-width:1101px){.road-intel-selected{opacity:.96}}
