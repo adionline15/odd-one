@@ -583,3 +583,6 @@ body>footer{opacity:.9;}
 
 /* route result values */
 [id$="-route-out"] .grid p:first-child{font-variant-numeric:tabular-nums;}
+
+/* route result gap */
+[id$="-route-out"] .grid{gap:7px!important;}
