@@ -1758,3 +1758,7 @@ nav[aria-label="Primary navigation"]{padding-left:22px!important;padding-right:2
 
 /* improve navigation logo hierarchy */
 nav[aria-label="Primary navigation"] h1{font-weight:600!important;}
+
+
+/* refine search surface contrast */
+#s-input{background:rgba(20,20,23,.88)!important;}
