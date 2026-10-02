@@ -2489,3 +2489,10 @@ nav[aria-label="Primary navigation"]{
 #map-layer-controls{
   border-radius:12px;
 }
+
+
+/* 098 — improve layer control spacing */
+#map-layer-controls button{
+  min-width:36px;
+  min-height:36px;
+}
