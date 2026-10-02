@@ -652,3 +652,6 @@ body>footer{opacity:.9;}
 
 /* route trust state */
 #route-status-overlay[data-trust="approximate"]{filter:none;}
+
+/* route provider state */
+#route-status-overlay[data-trust="provider"]{filter:none;}
