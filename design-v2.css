@@ -1412,3 +1412,5 @@ html[data-surface-ready="true"] #intelligence-hero,html[data-surface-ready="true
 html.is-mobile #map-intelligence-hud{max-width:calc(100% - 18px);}
 
 html.is-tablet #map-intelligence-hud{max-width:calc(100% - 32px);}
+
+html.is-desktop #map-intelligence-hud{max-width:460px;}
