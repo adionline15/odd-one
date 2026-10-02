@@ -5243,3 +5243,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 710 */
 #map::after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 90px rgba(0,0,0,.22);z-index:350;}
+
+
+/* 711 */
+#map{background:linear-gradient(180deg,#070709,#050507);background-color:#070709;}
