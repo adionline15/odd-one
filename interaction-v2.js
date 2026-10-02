@@ -170,4 +170,5 @@
   ready(() => { const s=document.getElementById('route-status-source'); if(!s)return; s.dataset.sourceLabel=s.textContent.trim(); new MutationObserver(()=>s.dataset.sourceLabel=s.textContent.trim()).observe(s,{childList:true,characterData:true,subtree:true}); });
   ready(() => document.querySelectorAll('[id$="-route-out"]').forEach(el=>el.dataset.guidanceTrust='generated-unverified'));
   ready(() => ['d-alerts-box','m-alerts-box'].forEach(id=>document.getElementById(id)?.setAttribute('data-provenance','current-feed')));
+  ready(() => document.getElementById('dp-data')?.setAttribute('data-provenance','approved-observations'));
 })();
