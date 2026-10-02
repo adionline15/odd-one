@@ -4641,3 +4641,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 564 */
 :focus-visible{outline:2px solid rgba(34,211,238,.72)!important;box-shadow:0 0 0 3px rgba(34,211,238,.08);}
+
+
+/* 565 */
+#dp-data>.intel-card h3,#mp-data .intel-card h3{letter-spacing:-.018em;line-height:1.2;}
