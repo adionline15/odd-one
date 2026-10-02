@@ -4259,3 +4259,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 473 */
 .road-intel-tooltip small{color:rgba(245,245,245,.65)}
+
+
+/* 474 */
+.road-intel-selected{transition:opacity .18s ease,filter .18s ease}
