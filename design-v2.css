@@ -85,3 +85,6 @@ nav[aria-label="Primary navigation"] button[onclick*="showTab('route')"]{border-
 
 /* progressive */
 #sidebar input{box-shadow:inset 0 1px 0 rgba(255,255,255,.025)!important;}
+
+/* progressive */
+#d-go-btn:focus-visible,#m-go-btn:focus-visible{box-shadow:0 0 0 3px rgba(34,211,238,.12)!important;}
