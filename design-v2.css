@@ -1746,3 +1746,7 @@ nav[aria-label="Primary navigation"] h1{font-weight:600!important;}
 
 /* refine desktop stats typography */
 #desktop-stats-container p:last-child{letter-spacing:-.015em!important;}
+
+
+/* improve route status hierarchy */
+#route-status-path{font-weight:500!important;color:#e4e4e7!important;}
