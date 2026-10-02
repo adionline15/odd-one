@@ -152,4 +152,5 @@
   ready(() => { const o=document.getElementById('route-status-overlay'); if(o)o.dataset.product='routing'; });
   ready(() => { const s=document.getElementById('observation-status-strip'); if(s)s.dataset.product='approved-observations'; });
   ready(() => { const m=document.getElementById('map'); if(m)m.dataset.product='road-intelligence'; });
+  ready(() => document.getElementById('d-alerts-box')?.setAttribute('role','region'));
 })();
