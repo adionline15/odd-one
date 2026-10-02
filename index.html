@@ -485,17 +485,30 @@ body>footer{letter-spacing:.08em!important}
       </div>
     </div>
 
-    <!-- ── MAP LAYERS FLOATING CONTROLS (BOTTOM RIGHT) ── -->
-    <div id="map-layer-controls" role="group" aria-label="Map display controls" class="absolute bottom-16 sm:bottom-6 right-4 z-40 flex flex-col gap-2">
-      <button id="btn-map" aria-label="Show standard map layer" class="bg-black/80 hover:bg-zinc-900 text-zinc-300 hover:text-white border border-zinc-800 text-[10px] font-semibold tracking-wider uppercase px-4 py-2.5 rounded-full shadow-2xl transition-all cursor-pointer on flex items-center gap-1.5" onclick="setTile('map')">
-        <span class="w-1.5 h-1.5 rounded-full bg-white"></span> Map
+    <!-- ── MAP COMMAND DECK ── -->
+    <div id="map-command-deck" role="group" aria-label="Map display controls" class="absolute bottom-6 right-5 z-40 flex items-end gap-2">
+      <div class="map-layer-switcher" role="group" aria-label="Basemap">
+        <button id="btn-map" aria-label="Show standard map layer" aria-pressed="true" class="map-deck-btn active" onclick="setTile('map')">
+          <span class="map-deck-icon map-icon" aria-hidden="true"></span><span>Map</span>
+        </button>
+        <button id="btn-sat" aria-label="Show satellite imagery layer" aria-pressed="false" class="map-deck-btn" onclick="setTile('sat')">
+          <span class="map-deck-icon sat-icon" aria-hidden="true"></span><span>Satellite</span>
+        </button>
+      </div>
+      <button id="btn-loc" aria-label="Center map on my location" aria-pressed="false" class="map-deck-icon-btn" onclick="locateMe()" title="Locate me">
+        <span aria-hidden="true">⌖</span><span class="sr-only">Locate me</span>
       </button>
-      <button id="btn-sat" aria-label="Show satellite imagery layer" class="bg-black/80 hover:bg-zinc-900 text-zinc-300 hover:text-white border border-zinc-800 text-[10px] font-semibold tracking-wider uppercase px-4 py-2.5 rounded-full shadow-2xl transition-all cursor-pointer flex items-center gap-1.5" onclick="setTile('sat')">
-        <span class="w-1.5 h-1.5 rounded-full bg-zinc-600"></span> Satellite
+      <button id="btn-reset-view" aria-label="Reset map to India overview" class="map-deck-icon-btn" onclick="resetMapView()" title="Reset India view">
+        <span aria-hidden="true">⌂</span><span class="sr-only">Reset India view</span>
       </button>
-      <button id="btn-loc" aria-label="Center map on my location" class="bg-black/80 hover:bg-zinc-900 text-zinc-300 hover:text-white border border-zinc-800 text-[10px] font-semibold tracking-wider uppercase px-4 py-2.5 rounded-full shadow-2xl transition-all cursor-pointer flex items-center gap-1.5" onclick="locateMe()">
-        ◎ Locate Me
-      </button>
+    </div>
+
+    <div id="map-orientation" aria-hidden="true" class="absolute top-1/2 -translate-y-1/2 right-5 z-20 hidden sm:flex">
+      <div class="map-compass"><span>N</span><i></i></div>
+    </div>
+
+    <div id="map-scale-wrap" class="absolute bottom-6 left-5 z-20 pointer-events-none">
+      <div class="map-scale-label">India road intelligence · live viewport</div>
     </div>
 
   </main>
@@ -831,8 +844,14 @@ body>footer{letter-spacing:.08em!important}
     const isMobile = () => window.innerWidth <= 640;
 
     // Initialize Map Instance
-    map = L.map('map', { zoomControl: false, attributionControl: true }).setView([22, 78], 5);
+    map = L.map('map', { zoomControl: false, attributionControl: true, preferCanvas: true }).setView([22, 78], 5);
     L.control.zoom({ position: 'bottomleft' }).addTo(map);
+    L.control.scale({ position: 'bottomleft', imperial: false, maxWidth: 120 }).addTo(map);
+
+    function resetMapView() {
+      map.flyTo([22, 78], 5, { duration: 0.9 });
+      document.getElementById('map')?.focus({ preventScroll: true });
+    }
 
     // Initial tile layer setup
     tile = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
@@ -1410,19 +1429,19 @@ body>footer{letter-spacing:.08em!important}
           maxNativeZoom: 19,
           attribution: '&copy; Esri, Maxar, Earthstar Geographics, and the GIS User Community'
         }).addTo(map);
-        document.getElementById('btn-sat').classList.add('on');
-        document.getElementById('btn-sat').querySelector('span').classList.replace('bg-zinc-600', 'bg-white');
-        document.getElementById('btn-map').classList.remove('on');
-        document.getElementById('btn-map').querySelector('span').classList.replace('bg-white', 'bg-zinc-600');
+        document.getElementById('btn-sat').classList.add('active');
+        document.getElementById('btn-sat').setAttribute('aria-pressed', 'true');
+        document.getElementById('btn-map').classList.remove('active');
+        document.getElementById('btn-map').setAttribute('aria-pressed', 'false');
       } else {
         tile = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
           maxZoom: 19,
           attribution: '&copy; Esri, HERE, Garmin, USGS, Intermap, INCREMENT P, and the GIS User Community'
         }).addTo(map);
-        document.getElementById('btn-map').classList.add('on');
-        document.getElementById('btn-map').querySelector('span').classList.replace('bg-zinc-600', 'bg-white');
-        document.getElementById('btn-sat').classList.remove('on');
-        document.getElementById('btn-sat').querySelector('span').classList.replace('bg-white', 'bg-zinc-600');
+        document.getElementById('btn-map').classList.add('active');
+        document.getElementById('btn-map').setAttribute('aria-pressed', 'true');
+        document.getElementById('btn-sat').classList.remove('active');
+        document.getElementById('btn-sat').setAttribute('aria-pressed', 'false');
       }
     }
 
