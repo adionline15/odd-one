@@ -3937,3 +3937,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 410 */
 @media (max-width:640px){.intel-card p{color:rgba(245,245,245,.76)}}
+
+
+/* 411 */
+@media (max-width:640px){#desktop-stats-container{padding:10px 12px}}
