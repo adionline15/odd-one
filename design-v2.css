@@ -4517,3 +4517,7 @@ nav[aria-label="Primary navigation"] .nav-intel-btn.active::after{box-shadow:0 0
 /* 533 */
 nav[aria-label="Primary navigation"] .nav-intel-btn:hover{transform:translateY(-1px);}
 @media(prefers-reduced-motion:reduce){nav[aria-label="Primary navigation"] .nav-intel-btn:hover{transform:none;}}
+
+
+/* 534 */
+nav[aria-label="Primary navigation"] h1{font-weight:650;letter-spacing:-.055em;text-shadow:0 1px 18px rgba(255,255,255,.05);}
