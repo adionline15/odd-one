@@ -2475,3 +2475,11 @@ nav[aria-label="Primary navigation"]{
 #map-intelligence-hud{
   font-variant-numeric:tabular-nums;
 }
+
+
+/* 096 — improve desktop HUD padding */
+@media (min-width:1101px){
+  #map-intelligence-hud{
+    padding:10px 12px;
+  }
+}
