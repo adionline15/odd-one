@@ -306,3 +306,5 @@ document.addEventListener('pointerdown',()=>document.documentElement.dataset.key
 window.addEventListener('resize',()=>{document.documentElement.classList.toggle('is-mobile',window.innerWidth<641);document.documentElement.classList.toggle('is-tablet',window.innerWidth>=641&&window.innerWidth<1101);document.documentElement.classList.toggle('is-desktop',window.innerWidth>=1101);},{passive:true});
 
 window.addEventListener('online',()=>document.documentElement.classList.add('is-online'));
+
+window.addEventListener('offline',()=>document.documentElement.classList.remove('is-online'));
