@@ -1954,3 +1954,10 @@ nav[aria-label="Primary navigation"]{
   transform:translateY(1px) scale(.985);
   box-shadow:0 5px 14px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.12);
 }
+
+
+/* 032 — improve map HUD glass depth */
+#map-intelligence-hud{
+  box-shadow:0 14px 34px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.045);
+  backdrop-filter:blur(10px);
+}
