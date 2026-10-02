@@ -1444,3 +1444,5 @@ html.is-desktop footer{font-size:9px;}
  #search-wrap{backdrop-filter:blur(18px)!important;}
 
  footer{backdrop-filter:blur(10px);}
+
+ nav{z-index:1000;}
