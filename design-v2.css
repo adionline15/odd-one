@@ -3153,3 +3153,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 214 */
 #s-input{line-height:1.35}
+
+
+/* 215 */
+#s-input{caret-color:var(--oo-v2-accent)}
