@@ -132,4 +132,5 @@
   ready(() => document.querySelectorAll('#d-from,#m-from').forEach(input=>input.addEventListener('keydown',e=>{if(e.key==='Enter'){const id=input.id.replace('-from','-to');document.getElementById(id)?.focus();}}));
   ready(() => document.getElementById('s-input')?.addEventListener('blur',()=>document.getElementById('sugg')?.setAttribute('aria-hidden','true')));
   ready(() => { const l=document.getElementById('sugg'); if(!l)return; new MutationObserver(()=>l.setAttribute('aria-hidden',l.classList.contains('hidden')?'true':'false')).observe(l,{attributes:true,attributeFilter:['class']}); });
+  ready(() => { const p=document.getElementById('route-status-path'); if(p) p.title=p.textContent; });
 })();
