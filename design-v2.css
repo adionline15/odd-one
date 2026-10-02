@@ -5739,3 +5739,7 @@ a[href]{cursor:pointer;}
 
 /* 834 */
 #d-go-btn:active,#m-go-btn:active{transform:translateY(0) scale(.985);}
+
+
+/* 835 */
+#d-go-btn:disabled,#m-go-btn:disabled{box-shadow:none!important;transform:none;}
