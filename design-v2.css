@@ -934,3 +934,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* input transition */
 #sidebar input{transition:border-color .18s ease,box-shadow .18s ease;}
+
+/* tab transition */
+#sidebar .flex.border-b button,#sheet .flex.border-b button{transition:color .18s ease,background-color .18s ease,box-shadow .18s ease;}
