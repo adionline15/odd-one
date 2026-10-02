@@ -3989,3 +3989,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 423 */
 @media (max-width:640px){#sheet{background:rgba(5,5,5,.96)}}
+
+
+/* 424 */
+@media (max-width:640px){#sheet::before{width:38px}}
