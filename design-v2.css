@@ -445,3 +445,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* intel value tracking */
 .intel-value{letter-spacing:-.02em;}
+
+/* brand spacing */
+nav[aria-label="Primary navigation"] h1{word-spacing:-.04em;}
