@@ -4979,3 +4979,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 644 */
 #sidebar button:disabled{opacity:.48;filter:saturate(.7);}
+
+
+/* 645 */
+#sidebar{scrollbar-color:rgba(255,255,255,.16) transparent;scrollbar-width:thin;}
