@@ -6239,3 +6239,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 959 */
 @media(max-width:640px){#map-intelligence-hud{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);}}
+
+
+/* 960 */
+#route-status-overlay{background:rgba(7,7,9,.84)!important;}
