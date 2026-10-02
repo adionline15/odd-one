@@ -196,3 +196,6 @@ body>footer{color:#52525b!important;}
 
 /* route CTA typography */
 #d-go-btn,#m-go-btn{letter-spacing:.02em;}
+
+/* data card */
+#dp-data>.intel-card{border-radius:16px!important;}
