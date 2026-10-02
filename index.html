@@ -840,7 +840,11 @@
         return { label: String(type || 'Road observation').replace(/_/g, ' '), color: '#f59e0b' };
       }
 
-      async function enrichObservationProvenance(observation) {
+      function provenanceRow(label, value) {
+      return '<div class="flex items-center justify-between gap-4 py-2 border-b border-zinc-900 last:border-0"><span class="intel-kicker">'+escapeHTML(label)+'</span><span class="font-mono-lux text-[8px] text-zinc-300 text-right">'+escapeHTML(value ?? 'N/A')+'</span></div>';
+    }
+
+    async function enrichObservationProvenance(observation) {
         if (!observation || !observation.id) return;
         try {
           const response = await fetch('/api/observations/' + encodeURIComponent(String(observation.id)), {
