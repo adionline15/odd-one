@@ -265,3 +265,6 @@ body>footer{color:#52525b!important;}
 
 /* mobile stats opacity */
 @media(max-width:640px){#desktop-stats-container>div{background:rgba(5,5,5,.9)!important;}}
+
+/* mobile tabs */
+@media(max-width:640px){#sheet .flex.border-b button{height:48px;}}
