@@ -181,3 +181,6 @@ body>footer{color:#52525b!important;}
 
 /* alert padding */
 #d-alerts-box>div,#m-alerts-box>div{padding:15px!important;}
+
+/* alert title */
+#d-alerts-box>div p,#m-alerts-box>div p{line-height:1.5;}
