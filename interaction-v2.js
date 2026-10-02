@@ -254,3 +254,5 @@ document.documentElement.dataset.oddOneViewport='ready';
 document.documentElement.dataset.oddOneMap='ready';
 
 document.querySelector('nav')?.setAttribute('aria-label','Primary navigation');
+
+document.querySelector('#search-wrap')?.setAttribute('role','search');
