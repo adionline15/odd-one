@@ -3157,3 +3157,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 215 */
 #s-input{caret-color:var(--oo-v2-accent)}
+
+
+/* 216 */
+#s-input::placeholder{opacity:.62}
