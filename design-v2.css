@@ -5747,3 +5747,7 @@ a[href]{cursor:pointer;}
 
 /* 836 */
 #d-go-btn,#m-go-btn{font-weight:650;letter-spacing:.005em;}
+
+
+/* 837 */
+.intel-card:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.09);}
