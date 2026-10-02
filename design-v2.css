@@ -1184,3 +1184,5 @@ button:disabled{cursor:not-allowed!important;}
  #map-intelligence-hud{pointer-events:none;}
 
  #observation-status-strip{pointer-events:none;}
+
+ #sidebar{isolation:isolate;}
