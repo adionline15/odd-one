@@ -3905,3 +3905,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 402 */
 @media (max-width:640px){.route-endpoint-label{border:1px solid rgba(255,255,255,.1)}}
+
+
+/* 403 */
+@media (max-width:640px){.road-intel-tooltip{border-color:rgba(255,255,255,.11)}}
