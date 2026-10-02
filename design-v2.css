@@ -3953,3 +3953,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 414 */
 @media (max-width:640px){#desktop-stats-container{font-size:.82rem}}
+
+
+/* 415 */
+@media (max-width:640px){#desktop-stats-container{gap:8px}}
