@@ -1238,3 +1238,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  .leaflet-tooltip{font-size:10px;}
 
  .leaflet-tooltip{box-shadow:0 12px 30px rgba(0,0,0,.4);}
+
+ .leaflet-popup-content{margin:12px 14px;}
