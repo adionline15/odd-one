@@ -6275,3 +6275,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 968 */
 .alert-card{border-color:rgba(255,255,255,.065);}
+
+
+/* 969 */
+.alert-severity-marker{box-shadow:0 0 0 3px rgba(255,255,255,.025);}
