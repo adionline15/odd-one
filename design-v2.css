@@ -1422,3 +1422,5 @@ html.is-tablet #search-wrap{width:min(420px,calc(100vw - 32px))!important;}
 html.is-desktop #search-wrap{width:420px!important;}
 
 html.is-mobile footer{font-size:8px;}
+
+html.is-tablet footer{font-size:9px;}
