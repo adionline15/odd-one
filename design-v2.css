@@ -2209,3 +2209,11 @@ nav[aria-label="Primary navigation"]{
     line-height:1.05;
   }
 }
+
+
+/* 062 — improve mobile hero paragraph width */
+@media (max-width:640px){
+  #intelligence-hero p{
+    max-width:42rem;
+  }
+}
