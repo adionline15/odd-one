@@ -1264,3 +1264,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  .leaflet-control-layers{box-shadow:0 18px 40px rgba(0,0,0,.42);}
 
  .leaflet-control-layers{background:rgba(7,7,9,.86);}
+
+ .leaflet-control-layers{color:#c8c8ce;font-size:10px;}
