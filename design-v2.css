@@ -2291,3 +2291,11 @@ nav[aria-label="Primary navigation"]{
     letter-spacing:.01em;
   }
 }
+
+
+/* 072 — improve desktop stats value emphasis */
+@media (min-width:1101px){
+  #desktop-stats-container strong{
+    letter-spacing:-.02em;
+  }
+}
