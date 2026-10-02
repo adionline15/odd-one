@@ -349,3 +349,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* search suggestion shadow */
 #sugg{box-shadow:0 28px 70px rgba(0,0,0,.55)!important;}
+
+/* suggestion spacing */
+.sugg-item{padding:10px 11px!important;}
