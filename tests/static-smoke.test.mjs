@@ -28,6 +28,18 @@ test('observation APIs use approved-only paths', () => {
   assert.match(read('api/observation-summary.js'), /scope: 'approved'/);
 });
 
+test('map redesign exposes a coherent command deck and accessibility states', () => {
+  const html = read('index.html');
+  const css = read('design-v2.css');
+  assert.match(html, /id="map-command-deck"/);
+  assert.match(html, /id="btn-reset-view"/);
+  assert.match(html, /aria-pressed="true"/);
+  assert.match(html, /L\.control\.scale/);
+  assert.match(css, /\.map-layer-switcher/);
+  assert.match(css, /\.map-deck-btn\.active/);
+  assert.match(css, /\.map-compass/);
+});
+
 test('health endpoint is safe for public operational checks', () => {
   const api = read('api/health.js');
   assert.match(api, /api_version: 'health-v1'/);
