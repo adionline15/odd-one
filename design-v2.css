@@ -4089,3 +4089,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 448 */
 @media (min-width:641px) and (max-width:1100px){#sidebar input{font-size:.9rem}}
+
+
+/* 449 */
+@media (min-width:641px) and (max-width:1100px){#sidebar input:focus{box-shadow:0 0 0 3px rgba(34,211,238,.07)}}
