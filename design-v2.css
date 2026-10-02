@@ -3453,3 +3453,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 289 */
 @media (min-width:641px) and (max-width:1100px){#route-status-overlay{padding:11px 13px}}
+
+
+/* 290 */
+@media (min-width:641px) and (max-width:1100px){.road-intel-tooltip{padding:10px 12px}}
