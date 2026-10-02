@@ -4593,3 +4593,7 @@ nav[aria-label="Primary navigation"] .font-mono-lux{opacity:.78;}
 
 /* 552 */
 @media(min-width:1101px){#map-command-deck{gap:7px;}.map-deck-icon-btn{width:44px;height:44px;}}
+
+
+/* 553 */
+.map-compass{box-shadow:0 14px 34px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.035);color:#e4e4e7;}
