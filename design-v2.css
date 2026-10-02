@@ -478,3 +478,6 @@ body>footer{font-size:8px!important;}
 
 /* footer opacity */
 body>footer{opacity:.9;}
+
+/* popup typography */
+.leaflet-popup-content{line-height:1.55!important;}
