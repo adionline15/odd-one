@@ -442,3 +442,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* intel value */
 .intel-value{font-weight:500;}
+
+/* intel value tracking */
+.intel-value{letter-spacing:-.02em;}
