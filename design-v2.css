@@ -964,3 +964,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* locate control */
 #btn-loc{border-color:rgba(255,255,255,.07)!important;}
+
+/* mobile control shadow */
+@media(max-width:640px){#map-layer-controls{box-shadow:0 18px 48px rgba(0,0,0,.48)!important;}}
