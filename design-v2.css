@@ -6263,3 +6263,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 965 */
 #route-status-source{color:#a8eaf3;}
+
+
+/* 966 */
+#route-status-source{border:1px solid rgba(34,211,238,.1);}
