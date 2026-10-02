@@ -5423,3 +5423,7 @@ nav[aria-label="Primary navigation"] .brand{color:#f5f5f5;}
 
 /* 755 */
 @media(min-width:1101px){#sidebar{width:380px;}}
+
+
+/* 756 */
+@media(min-width:1101px){#sidebar{padding:20px!important;}}
