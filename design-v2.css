@@ -3505,3 +3505,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 302 */
 @media (min-width:1101px){#sidebar{padding:20px}}
+
+
+/* 303 */
+@media (min-width:1101px){#d-alerts-box{gap:14px}}
