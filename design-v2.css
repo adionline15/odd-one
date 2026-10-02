@@ -574,3 +574,6 @@ body>footer{opacity:.9;}
 
 /* route result radius */
 [id$="-route-out"] .grid>div{border-radius:13px!important;}
+
+/* route result padding */
+[id$="-route-out"] .grid>div{padding:12px!important;}
