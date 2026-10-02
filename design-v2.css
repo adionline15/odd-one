@@ -5167,3 +5167,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 691 */
 .leaflet-control-zoom{border-radius:11px!important;overflow:hidden;}
+
+
+/* 692 */
+.leaflet-control-zoom a:hover{background:rgba(255,255,255,.055)!important;}
