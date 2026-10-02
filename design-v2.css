@@ -121,3 +121,6 @@ body>footer{color:#52525b!important;}
 
 /* hero surface */
 #intelligence-hero>div{border-color:rgba(255,255,255,.1)!important;}
+
+/* hero headline */
+#intelligence-hero h2{font-weight:500;}
