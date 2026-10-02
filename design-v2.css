@@ -2894,3 +2894,8 @@ nav[aria-label="Primary navigation"]{
 /* 153 — refine route status text contrast */
 #route-status-overlay{color:rgba(255,255,255,.88);}
 
+
+
+/* 154 — improve route status muted text */
+#route-status-overlay small{color:rgba(255,255,255,.52);}
+
