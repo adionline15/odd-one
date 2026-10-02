@@ -526,3 +526,6 @@ body>footer{opacity:.9;}
 
 /* road tooltip text */
 .road-intel-tooltip{font-family:'JetBrains Mono',monospace!important;}
+
+/* layer border */
+#map-layer-controls{border-color:rgba(255,255,255,.1)!important;}
