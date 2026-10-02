@@ -2804,3 +2804,9 @@ nav[aria-label="Primary navigation"]{
 #intelligence-hero h1::selection{
   background:rgba(34,211,238,.20);
 }
+
+
+/* 139 — refine hero metadata transition */
+#hero-data-boundary{
+  transition:border-color .18s ease,box-shadow .18s ease;
+}
