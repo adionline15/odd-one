@@ -4818,3 +4818,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 607 */
 .map-compass i{filter:drop-shadow(0 0 4px rgba(239,68,68,.18));}
+
+
+/* 608 */
+.map-scale-label{color:#85858e;background:rgba(5,5,7,.68);}
