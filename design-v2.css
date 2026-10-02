@@ -1286,3 +1286,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  #search-suggestions{border-color:rgba(255,255,255,.09)!important;}
 
  #search-suggestions button{min-height:38px!important;}
+
+ #search-suggestions button:hover{background:rgba(255,255,255,.04)!important;}
