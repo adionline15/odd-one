@@ -169,3 +169,6 @@ body>footer{color:#52525b!important;}
 
 /* sidebar content */
 #sidebar>.flex-1.overflow-y-auto{padding-left:18px!important;padding-right:18px!important;}
+
+/* sidebar tabs */
+#sidebar .flex.border-b button{color:#66666f;}
