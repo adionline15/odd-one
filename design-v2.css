@@ -814,3 +814,6 @@ nav[aria-label="Primary navigation"]{z-index:100!important;}
 
 /* alert highlight */
 #d-alerts-box>div::before,#m-alerts-box>div::before{content:"";display:block;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.08),transparent);margin:-1px 0 10px;}
+
+/* route highlight */
+[id$="-route-out"]>div::before{content:"";display:block;height:1px;background:linear-gradient(90deg,rgba(34,211,238,.12),transparent);margin:-1px 0 10px;}
