@@ -3109,3 +3109,7 @@ nav[aria-label="Primary navigation"]{
 
 /* 203 */
 @media (max-width:640px){.intel-card p{max-width:42ch}}
+
+
+/* 204 */
+@media (max-width:640px){#sidebar h2,#sidebar h3{letter-spacing:-.01em}}
