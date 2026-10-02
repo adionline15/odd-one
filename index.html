@@ -809,6 +809,32 @@
         return { label: String(type || 'Road observation').replace(/_/g, ' '), color: '#f59e0b' };
       }
 
+      async function enrichObservationProvenance(observation) {
+        if (!observation || !observation.id) return;
+        try {
+          const response = await fetch('/api/observations/' + encodeURIComponent(String(observation.id)), {
+            headers: { 'Accept': 'application/json' }
+          });
+          if (!response.ok) return;
+          const payload = await response.json();
+          if (payload.api_version !== 'observation-detail-v1' || !payload.observation) return;
+          const detail = payload.observation;
+          const overlay = document.getElementById('road-intel-overlay');
+          if (!overlay) return;
+          let review = document.getElementById('road-intel-review');
+          if (!review) {
+            review = document.createElement('p');
+            review.id = 'road-intel-review';
+            review.className = 'text-[10px] text-zinc-500 mt-2 pt-2 border-t border-zinc-800';
+            const note = document.getElementById('road-intel-note');
+            (note?.parentElement || overlay).appendChild(review);
+          }
+          review.textContent = detail.reviewed_at
+            ? 'Reviewed · ' + new Date(detail.reviewed_at).toLocaleString('en-IN')
+            : 'Verified record · review timestamp unavailable';
+        } catch {}
+      }
+
       function showRoadIntelligence(observation, presentation, confidence, confidenceText, source, observedAt) {
         const overlay = document.getElementById('road-intel-overlay');
         if (!overlay) return;
@@ -1116,6 +1142,7 @@
             L.DomEvent.stopPropagation(event);
             selectObservationLayer(layer);
             showRoadIntelligence(observation, presentation, confidence, confidenceText, source, observedAt);
+            enrichObservationProvenance(observation);
           });
 
           layer.bindPopup('<div class="space-y-1.5 min-w-[190px]">' +
