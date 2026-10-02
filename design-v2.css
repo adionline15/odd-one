@@ -2977,3 +2977,7 @@ nav[aria-label="Primary navigation"]{
 
 /* 170 */
 #desktop-stats-container{gap:clamp(12px,1.5vw,24px)}
+
+
+/* 171 */
+#d-alerts-box,#m-alerts-box{scrollbar-gutter:stable}
