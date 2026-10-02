@@ -136,3 +136,6 @@ body>footer{color:#52525b!important;}
 
 /* observation strip border */
 #observation-status-strip .intel-card{border-color:rgba(255,255,255,.12)!important;}
+
+/* observation count */
+#obs-status-count{font-weight:600;}
