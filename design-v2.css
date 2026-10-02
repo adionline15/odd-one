@@ -700,3 +700,6 @@ body>footer{opacity:.9;}
 
 /* token live */
 :root{--oo-v2-live:#34d399;}
+
+/* token warning */
+:root{--oo-v2-warning:#f59e0b;}
