@@ -5299,3 +5299,7 @@ nav[aria-label="Primary navigation"]{backdrop-filter:blur(16px);-webkit-backdrop
 
 /* 724 */
 nav[aria-label="Primary navigation"]{border-color:rgba(255,255,255,.065)!important;}
+
+
+/* 725 */
+nav[aria-label="Primary navigation"] a{letter-spacing:.005em;}
