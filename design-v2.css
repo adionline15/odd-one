@@ -2013,3 +2013,14 @@ nav[aria-label="Primary navigation"]{
   border-color:rgba(255,255,255,.13);
   box-shadow:0 10px 24px rgba(0,0,0,.14);
 }
+
+
+/* 039 — refine suggestion item interaction */
+.sugg-item{
+  transition:background-color .16s ease,border-color .16s ease,transform .16s ease;
+}
+.sugg-item:hover{
+  background:rgba(255,255,255,.035);
+  border-color:rgba(34,211,238,.16);
+  transform:translateX(2px);
+}
