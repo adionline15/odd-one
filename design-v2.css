@@ -2676,3 +2676,11 @@ nav[aria-label="Primary navigation"]{
     background-image:linear-gradient(180deg,rgba(255,255,255,.022),rgba(255,255,255,.008));
   }
 }
+
+
+/* 121 — refine desktop hero title tracking */
+@media (min-width:1101px){
+  #intelligence-hero h1{
+    letter-spacing:-.028em;
+  }
+}
