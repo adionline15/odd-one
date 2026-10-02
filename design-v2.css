@@ -1134,3 +1134,5 @@ body>footer{background:#050505!important;border-color:rgba(255,255,255,.06)!impo
 @media(max-width:640px){#intelligence-hero>div{border-radius:17px!important;}}
 
 @media(max-width:640px){#intelligence-hero h2{font-size:19px!important;line-height:1.08!important;}}
+
+@media(max-width:640px){#intelligence-hero p{line-height:1.45!important;}}
