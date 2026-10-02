@@ -2924,3 +2924,16 @@ nav[aria-label="Primary navigation"]{
 /* 159 — refine card active feedback */
 .intel-card:active{transform:translateY(0) scale(.998);}
 
+
+
+/* 160 — improve reduced motion consistency */
+@media (prefers-reduced-motion:reduce){
+  #hero-data-boundary,
+  #observation-status-strip,
+  #map-intelligence-hud,
+  .intel-card,
+  .sugg-item{
+    transition:none !important;
+    transform:none !important;
+  }
+}
