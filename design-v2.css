@@ -4581,3 +4581,7 @@ nav[aria-label="Primary navigation"] .font-mono-lux{opacity:.78;}
 
 /* 549 */
 @media(min-width:1101px){#sidebar h2,#sidebar h3{font-weight:620;letter-spacing:-.02em;}}
+
+
+/* 550 */
+@media(min-width:1101px){#sidebar input:focus{background:rgba(17,17,20,.92);border-color:rgba(34,211,238,.2);}}
