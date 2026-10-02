@@ -2778,3 +2778,9 @@ nav[aria-label="Primary navigation"]{
 #s-input{
   transition:border-color .18s ease,box-shadow .18s ease,background-color .18s ease;
 }
+
+
+/* 135 — refine search caret accent */
+#s-input{
+  caret-color:var(--oo-v2-accent);
+}
