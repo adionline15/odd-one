@@ -3473,3 +3473,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 294 */
 @media (min-width:1101px){#s-input{border-radius:13px}}
+
+
+/* 295 */
+@media (min-width:1101px){#intelligence-hero{max-width:1120px}}
