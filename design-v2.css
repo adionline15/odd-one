@@ -1628,3 +1628,5 @@ html[data-route-focus="active"] #sidebar input:focus{box-shadow:0 0 0 3px rgba(3
 html[data-search-focus="true"] #search-wrap{box-shadow:0 0 0 3px rgba(34,211,238,.035),0 18px 44px rgba(0,0,0,.42)!important;}
 
 html[data-tab-key-action="activated"] [role="tab"]:focus-visible{outline-offset:4px;}
+
+html[data-keyboard="true"] button:focus-visible{outline-width:2px;}
