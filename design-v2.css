@@ -4085,3 +4085,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 447 */
 @media (min-width:641px) and (max-width:1100px){#sidebar label{font-size:.78rem}}
+
+
+/* 448 */
+@media (min-width:641px) and (max-width:1100px){#sidebar input{font-size:.9rem}}
