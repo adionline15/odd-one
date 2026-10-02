@@ -979,3 +979,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* final hero muted */
 #intelligence-hero p{color:#8a8a92!important;}
+
+/* final observation */
+#observation-status-strip .intel-card{background:rgba(7,7,9,.86)!important;}
