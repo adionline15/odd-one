@@ -5591,3 +5591,7 @@ a[href]{cursor:pointer;}
 
 /* 797 */
 #route-notice{background:rgba(255,255,255,.018);border:1px solid rgba(255,255,255,.065);border-radius:13px;}
+
+
+/* 798 */
+#route-notice{padding:11px 13px;}
