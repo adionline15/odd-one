@@ -1000,3 +1000,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* final search */
 #s-input{background:rgba(17,17,20,.9)!important;}
+
+/* final popup */
+.leaflet-popup-content-wrapper{background:rgba(8,8,10,.99)!important;}
