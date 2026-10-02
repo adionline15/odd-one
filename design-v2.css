@@ -3345,3 +3345,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 262 */
 .intel-card:hover{border-color:rgba(255,255,255,.13)}
+
+
+/* 263 */
+.intel-card:hover{box-shadow:0 12px 32px rgba(0,0,0,.22)}
