@@ -1504,3 +1504,5 @@ html.is-desktop footer{font-size:9px;}
  @media(max-width:640px){nav{min-height:54px;}}
 
 @media(max-width:640px){nav{gap:8px;}}
+
+@media(max-width:640px){nav a{font-size:9px;}}
