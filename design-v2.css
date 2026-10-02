@@ -508,3 +508,6 @@ body>footer{opacity:.9;}
 
 /* attribution */
 .leaflet-control-attribution{opacity:.82;}
+
+/* attribution font */
+.leaflet-control-attribution{font-family:'JetBrains Mono',monospace!important;}
