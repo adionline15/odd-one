@@ -1888,3 +1888,13 @@ nav[aria-label="Primary navigation"]{
   border-color:rgba(255,255,255,.12);
   background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.012));
 }
+
+
+/* 024 — improve observation status readability */
+#observation-status-strip{
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035),0 10px 28px rgba(0,0,0,.10);
+}
+#observation-status-strip small,
+#observation-status-strip span{
+  letter-spacing:.01em;
+}
