@@ -2354,3 +2354,13 @@ nav[aria-label="Primary navigation"]{
   box-shadow:0 8px 24px rgba(0,0,0,.14);
 }
 
+
+
+/* 080 — strengthen primary focus consistency */
+#s-input:focus-visible,
+#sidebar input:focus-visible,
+#d-go-btn:focus-visible,
+#m-go-btn:focus-visible{
+  outline-offset:3px;
+}
+
