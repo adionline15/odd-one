@@ -1524,3 +1524,5 @@ html.is-desktop footer{font-size:9px;}
 @media(max-width:640px){.leaflet-popup-content{font-size:10px;}}
 
 @media(max-width:640px){.leaflet-control-zoom a{width:30px;}}
+
+@media(min-width:641px) and (max-width:1100px){.leaflet-control-zoom a{width:31px;}}
