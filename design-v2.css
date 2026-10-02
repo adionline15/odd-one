@@ -460,3 +460,6 @@ nav[aria-label="Primary navigation"] .font-mono-lux{font-size:7px!important;}
 
 /* sidebar labels */
 #sidebar label{letter-spacing:.14em!important;}
+
+/* sidebar label color */
+#sidebar label{color:#73737c!important;}
