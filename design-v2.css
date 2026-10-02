@@ -5935,3 +5935,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 883 */
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important;}}
+
+
+/* 884 */
+@media(prefers-reduced-motion:reduce){.intel-card:hover,#d-go-btn:hover,#m-go-btn:hover,.alert-card:hover{transform:none!important;}}
