@@ -775,3 +775,6 @@ html[data-viewport="mobile"] #map-intelligence-hud{display:none!important;}
 
 /* desktop observation */
 @media(min-width:1101px){#observation-status-strip{left:18px!important;}}
+
+/* tablet route status */
+@media(min-width:641px) and (max-width:1100px){#route-status-overlay{right:14px!important;}}
