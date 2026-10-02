@@ -1162,3 +1162,5 @@ button:disabled{cursor:not-allowed!important;}
 #sidebar,#sheet,#intelligence-hero,#map-intelligence-hud,#observation-status-strip{contain:paint;}
 
  body{background:#050506;}
+
+ body{-webkit-font-smoothing:antialiased;}
