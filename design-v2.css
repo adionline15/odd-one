@@ -2410,3 +2410,11 @@ nav[aria-label="Primary navigation"]{
     gap:12px;
   }
 }
+
+
+/* 087 — refine desktop observation strip radius */
+@media (min-width:1101px){
+  #observation-status-strip{
+    border-radius:12px;
+  }
+}
