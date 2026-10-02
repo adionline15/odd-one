@@ -3125,3 +3125,7 @@ nav[aria-label="Primary navigation"]{
 
 /* 207 */
 @media (max-width:640px){#map-intelligence-hud{backdrop-filter:blur(10px)}}
+
+
+/* 208 */
+@media (max-width:640px){#map-layer-controls{backdrop-filter:blur(10px)}}
