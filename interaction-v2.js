@@ -150,4 +150,5 @@
   ready(() => { const body=document.body; const sync=()=>body.dataset.intelligenceSection=document.documentElement.dataset.section||'alerts'; document.querySelectorAll('[data-nav-tab]').forEach(b=>b.addEventListener('click',()=>setTimeout(sync,0))); sync(); });
   ready(() => { const i=document.getElementById('s-input'); if(i)i.dataset.source='local-plus-geocoder'; });
   ready(() => { const o=document.getElementById('route-status-overlay'); if(o)o.dataset.product='routing'; });
+  ready(() => { const s=document.getElementById('observation-status-strip'); if(s)s.dataset.product='approved-observations'; });
 })();
