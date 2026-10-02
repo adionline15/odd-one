@@ -6007,3 +6007,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 901 */
 @media(max-width:640px){#observation-status-strip{border-radius:12px;}}
+
+
+/* 902 */
+@media(max-width:640px){#observation-status-strip{padding:8px 10px;}}
