@@ -367,3 +367,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* focus radius */
 :focus-visible{border-radius:6px;}
+
+/* map control hover */
+#map-layer-controls button:hover{background:rgba(255,255,255,.06)!important;}
