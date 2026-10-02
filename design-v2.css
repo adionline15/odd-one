@@ -394,3 +394,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* unavailable state */
 #observation-status-strip[data-state="unavailable"] #obs-status-dot{background:#f59e0b!important;box-shadow:0 0 0 5px rgba(245,158,11,.06)!important;}
+
+/* approx badge */
+#route-status-overlay.route-approx #route-status-source{color:#f59e0b!important;}
