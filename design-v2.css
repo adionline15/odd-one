@@ -3533,3 +3533,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 309 */
 @media (min-width:1101px){#map-intelligence-hud{padding:12px 14px}}
+
+
+/* 310 */
+@media (min-width:1101px){#map-intelligence-hud{border-radius:14px}}
