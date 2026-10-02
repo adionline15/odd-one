@@ -2909,3 +2909,8 @@ nav[aria-label="Primary navigation"]{
 /* 156 — improve endpoint label backdrop */
 .route-endpoint-label{backdrop-filter:blur(6px);}
 
+
+
+/* 157 — refine selected road opacity */
+.road-intel-selected{opacity:.96;}
+
