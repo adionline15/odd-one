@@ -5631,3 +5631,7 @@ a[href]{cursor:pointer;}
 
 /* 807 */
 @media(min-width:1101px){.intel-card{min-width:110px;}}
+
+
+/* 808 */
+@media(min-width:1101px){#map-intelligence-hud .intel-card{margin-bottom:6px;}}
