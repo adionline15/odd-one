@@ -3413,3 +3413,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 279 */
 @media (max-width:640px){.intel-card:hover{transform:none}}
+
+
+/* 280 */
+@media (max-width:640px){#m-go-btn:active{transform:scale(.985)}}
