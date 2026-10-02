@@ -2,6 +2,8 @@
 (function(){
   'use strict';
 
+  const getMap = () => (typeof map !== 'undefined' ? map : null);
+
   const ready = fn => document.readyState === 'loading'
     ? document.addEventListener('DOMContentLoaded', fn, { once:true })
     : fn();
@@ -44,14 +46,14 @@
   }));
   ready(() => {
     const update = () => {
-      if(window.map?.getZoom){ const el=document.getElementById('map-hud-zoom'); if(el) el.textContent='Z'+map.getZoom(); }
+      if(getMap()?.getZoom){ const el=document.getElementById('map-hud-zoom'); if(el) el.textContent='Z'+map.getZoom(); }
     };
     window.addEventListener('load', update, {once:true});
     document.getElementById('map')?.addEventListener('wheel', () => setTimeout(update,120), {passive:true});
   });
   ready(() => {
     const update = () => {
-      if(!window.map?.getZoom) return;
+      if(!getMap()?.getZoom) return;
       const z=map.getZoom(), el=document.getElementById('map-hud-scope');
       if(el) el.textContent = z<6 ? 'India · regional scope' : z<9 ? 'India · corridor scope' : 'India · local scope';
     };
@@ -60,7 +62,7 @@
   ready(() => {
     const mapEl=document.getElementById('map');
     if(!mapEl || !window.ResizeObserver) return;
-    const ro=new ResizeObserver(()=>window.map?.invalidateSize?.({pan:false}));
+    const ro=new ResizeObserver(()=>getMap()?.invalidateSize?.({pan:false}));
     ro.observe(mapEl);
   });
   ready(() => {
@@ -87,7 +89,7 @@
     footer.innerHTML=footer.innerHTML.replace(/©\s*\d{4}/,'© '+new Date().getFullYear());
   });
   ready(() => document.documentElement.dataset.motion=window.matchMedia('(prefers-reduced-motion: reduce)').matches?'reduced':'full');
-  ready(() => window.addEventListener('resize',()=>setTimeout(()=>window.map?.invalidateSize?.({pan:false}),180),{passive:true}));
+  ready(() => window.addEventListener('resize',()=>setTimeout(()=>getMap()?.invalidateSize?.({pan:false}),180),{passive:true}));
   ready(() => {
     const sync=()=>['map','sat'].forEach(k=>document.getElementById('btn-'+k)?.setAttribute('aria-pressed',document.getElementById('btn-'+k)?.classList.contains('on')?'true':'false'));
     ['btn-map','btn-sat'].forEach(id=>document.getElementById(id)?.addEventListener('click',()=>setTimeout(sync,0))); sync();
@@ -123,7 +125,7 @@
   ready(() => { const input=document.getElementById('s-input'); if(!input)return; const s=document.createElement('span'); s.id='search-result-count'; s.className='sr-only'; s.setAttribute('aria-live','polite'); input.parentElement?.appendChild(s); const list=document.getElementById('sugg'); if(list)new MutationObserver(()=>{s.textContent=list.querySelectorAll('.sugg-item').length+' search suggestions';}).observe(list,{childList:true,subtree:true}); });
   ready(() => document.getElementById('btn-loc')?.addEventListener('click',e=>{e.currentTarget.setAttribute('aria-busy','true');setTimeout(()=>e.currentTarget.setAttribute('aria-busy','false'),2500);}));
   ready(() => { const b=document.getElementById('btn-loc'); if(!b)return; const text=new MutationObserver(()=>{if(!/Locating/i.test(b.textContent))b.setAttribute('aria-busy','false');}); text.observe(b,{childList:true,characterData:true,subtree:true}); });
-  ready(() => { const hud=document.getElementById('map-hud-scope'); if(!hud||!window.map)return; const sync=()=>{const c=map.getCenter(); hud.dataset.center=c.lat.toFixed(2)+','+c.lng.toFixed(2);}; window.addEventListener('load',sync,{once:true}); });
+  ready(() => { const hud=document.getElementById('map-hud-scope'); if(!hud||!getMap())return; const sync=()=>{const c=map.getCenter(); hud.dataset.center=c.lat.toFixed(2)+','+c.lng.toFixed(2);}; window.addEventListener('load',sync,{once:true}); });
   ready(() => document.getElementById('map')?.setAttribute('aria-describedby','map-interaction-note')); 
   ready(() => { if(document.getElementById('map-interaction-note'))return; const n=document.createElement('p'); n.id='map-interaction-note'; n.className='sr-only'; n.textContent='Interactive road intelligence map. Use search, route, and map layer controls to explore.'; document.body.appendChild(n); });
   ready(() => { const m=document.getElementById('map'); if(!m)return; m.addEventListener('focus',()=>m.dataset.focused='true'); m.addEventListener('blur',()=>delete m.dataset.focused); });
