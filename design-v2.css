@@ -1,0 +1,54 @@
+/* Odd-One Design System v2 — progressive intelligence surface */
+
+:root{
+  --oo-v2-bg:#050505;
+  --oo-v2-surface:#0a0a0c;
+  --oo-v2-surface-raised:#111114;
+  --oo-v2-line:rgba(255,255,255,.09);
+  --oo-v2-line-strong:rgba(255,255,255,.14);
+  --oo-v2-text:#f5f5f5;
+  --oo-v2-muted:#8b8b93;
+  --oo-v2-accent:#22d3ee;
+  --oo-v2-radius:16px;
+}
+
+/* 001 */
+#map{isolation:isolate;}
+/* 002 */
+main{background:var(--oo-v2-bg);}
+/* 003 */
+nav[aria-label="Primary navigation"]{isolation:isolate;}
+/* 004 */
+nav[aria-label="Primary navigation"] .font-serif-lux{white-space:nowrap;}
+/* 005 */
+#s-input{caret-color:var(--oo-v2-accent);}
+/* 006 */
+#sugg{overflow-wrap:anywhere;}
+/* 007 */
+#sidebar{isolation:isolate;}
+/* 008 */
+#map-layer-controls{isolation:isolate;}
+/* 009 */
+.leaflet-control-attribution{z-index:500!important;}
+/* 010 */
+.leaflet-popup-content-wrapper{backdrop-filter:blur(18px);}
+/* 011 */
+#route-status-overlay{pointer-events:none;}
+/* 012 */
+#route-status-overlay button{pointer-events:auto;}
+/* 013 */
+button:focus-visible,input:focus-visible{scroll-margin:24px;}
+/* 014 */
+.intel-kicker{color:var(--oo-v2-muted);}
+/* 015 */
+.provenanceRow{border-color:var(--oo-v2-line);}
+/* 016 */
+#desktop-stats-container{z-index:30;}
+/* 017 */
+#observation-status-strip{z-index:31;}
+/* 018 */
+#map-intelligence-hud{z-index:31;}
+/* 019 */
+#sheet{isolation:isolate;}
+/* 020 */
+body>footer{z-index:40;}
