@@ -5271,3 +5271,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 717 */
 .sugg-item{padding:10px 12px;}
+
+
+/* 718 */
+.sugg-item:hover,.sugg-item[aria-selected="true"]{background:rgba(255,255,255,.04);color:#f5f5f5;}
