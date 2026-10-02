@@ -5639,3 +5639,7 @@ a[href]{cursor:pointer;}
 
 /* 809 */
 @media(min-width:641px) and (max-width:1100px){.intel-card{min-width:96px;}}
+
+
+/* 810 */
+@media(max-width:640px){.intel-card .intel-value{font-size:.95rem;}}
