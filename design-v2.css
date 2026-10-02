@@ -1562,3 +1562,5 @@ html.is-desktop footer{font-size:9px;}
 @media(max-width:640px){nav{border-radius:0!important;}}
 
 @media(max-width:640px){#intelligence-hero{margin-left:0;margin-right:0;}}
+
+@media(max-width:640px){#map-intelligence-hud .intel-card{border-radius:12px!important;}}
