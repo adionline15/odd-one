@@ -463,3 +463,6 @@ nav[aria-label="Primary navigation"] .font-mono-lux{font-size:7px!important;}
 
 /* sidebar label color */
 #sidebar label{color:#73737c!important;}
+
+/* alert body */
+#d-alerts-box p,#m-alerts-box p{letter-spacing:.005em;}
