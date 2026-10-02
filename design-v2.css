@@ -1622,3 +1622,5 @@ html[data-route-interaction="selected"] #dp-route{border-color:rgba(34,211,238,.
 html[data-data-interaction="selected"] #dp-data{border-color:rgba(34,211,238,.12)!important;}
 
 html[data-alert-interaction="selected"] #d-alerts-box>div,html[data-alert-interaction="selected"] #m-alerts-box>div{transition:none;}
+
+html[data-route-focus="active"] #sidebar input:focus{box-shadow:0 0 0 3px rgba(34,211,238,.045)!important;}
