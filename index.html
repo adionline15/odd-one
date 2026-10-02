@@ -939,7 +939,9 @@ body>footer{letter-spacing:.08em!important}
     let observationRequestId = 0;
     let observationAbortController = null;
     let observationSummaryRequestId = 0;
+    let observationSummaryAbortController = null;
     let roadChangeRequestId = 0;
+    let roadChangeAbortController = null;
     let lastLoadedObservationViewportKey = '';
     let routeAbortController = null;
 
@@ -1216,6 +1218,8 @@ body>footer{letter-spacing:.08em!important}
 
     async function loadRoadChangesInView() {
       const requestId = ++roadChangeRequestId;
+      roadChangeAbortController?.abort();
+      roadChangeAbortController = new AbortController();
       const bounds = map.getBounds();
       const params = new URLSearchParams({
         minLat: bounds.getSouth().toFixed(6),
@@ -1225,7 +1229,8 @@ body>footer{letter-spacing:.08em!important}
       });
       try {
         const response = await fetch('/api/road-change?' + params.toString(), {
-          headers: { 'Accept': 'application/json' }
+          headers: { 'Accept': 'application/json' },
+          signal: roadChangeAbortController.signal
         });
         if (!response.ok) throw new Error('Road change API request failed');
         const payload = await response.json();
@@ -1384,6 +1389,8 @@ body>footer{letter-spacing:.08em!important}
 
     async function loadObservationSummary(bounds, requestId) {
       const summaryId = ++observationSummaryRequestId;
+      observationSummaryAbortController?.abort();
+      observationSummaryAbortController = new AbortController();
       const params = new URLSearchParams({
         minLat: bounds.getSouth().toFixed(6),
         minLon: bounds.getWest().toFixed(6),
@@ -1391,7 +1398,10 @@ body>footer{letter-spacing:.08em!important}
         maxLon: bounds.getEast().toFixed(6)
       });
       try {
-        const response = await fetch('/api/observation-summary?' + params.toString(), { headers: { 'Accept': 'application/json' } });
+        const response = await fetch('/api/observation-summary?' + params.toString(), {
+          headers: { 'Accept': 'application/json' },
+          signal: observationSummaryAbortController.signal
+        });
         if (!response.ok || summaryId !== observationSummaryRequestId || requestId !== observationRequestId) return;
         const payload = await response.json();
         if (payload.api_version !== 'observation-summary-v1') return;
