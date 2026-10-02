@@ -6443,3 +6443,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 995 */
 @media(max-width:640px){#map-intelligence-hud .intel-card{padding:11px 12px;min-width:0;}}
+
+
+/* 996 */
+@media(max-width:640px){.map-deck-btn{min-height:34px;}.map-deck-icon-btn{min-width:34px;}}
