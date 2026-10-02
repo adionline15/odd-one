@@ -1500,3 +1500,5 @@ html.is-desktop footer{font-size:9px;}
  @media(max-width:640px){.intel-card{padding:10px;}}
 
  @media(max-width:640px){button{min-height:40px;}}
+
+ @media(max-width:640px){nav{min-height:54px;}}
