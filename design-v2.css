@@ -535,3 +535,6 @@ body>footer{opacity:.9;}
 
 /* layer button radius */
 #map-layer-controls button{border-radius:11px!important;}
+
+/* layer button tracking */
+#map-layer-controls button{letter-spacing:.09em!important;}
