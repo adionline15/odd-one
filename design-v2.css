@@ -970,3 +970,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* final hero shadow */
 #intelligence-hero>div{box-shadow:0 26px 70px rgba(0,0,0,.42)!important;}
+
+/* final hero border */
+#intelligence-hero>div{border-color:rgba(255,255,255,.105)!important;}
