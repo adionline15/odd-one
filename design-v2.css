@@ -4161,3 +4161,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 466 */
 .sugg-item:hover{background:rgba(255,255,255,.035)}
+
+
+/* 467 */
+.sugg-item:hover{transform:translateY(-1px)}
