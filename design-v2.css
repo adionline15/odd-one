@@ -1328,3 +1328,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  #observation-status-strip{gap:8px;}
 
  #observation-status-strip{max-width:100%;}
+
+ #observation-status-strip{overflow:hidden;}
