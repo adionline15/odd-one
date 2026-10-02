@@ -2633,3 +2633,11 @@ nav[aria-label="Primary navigation"]{
     border-radius:12px;
   }
 }
+
+
+/* 116 — improve desktop CTA letter spacing */
+@media (min-width:1101px){
+  #d-go-btn{
+    letter-spacing:.01em;
+  }
+}
