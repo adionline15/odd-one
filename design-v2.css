@@ -6011,3 +6011,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 902 */
 @media(max-width:640px){#observation-status-strip{padding:8px 10px;}}
+
+
+/* 903 */
+@media(max-width:640px){#map-intelligence-hud{border-radius:12px;}}
