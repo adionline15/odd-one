@@ -298,3 +298,6 @@ body>footer{color:#52525b!important;}
 
 /* desktop hero headline */
 @media(min-width:1101px){#intelligence-hero h2{font-size:28px!important;}}
+
+/* desktop sidebar */
+@media(min-width:1101px){#sidebar{width:348px!important;}}
