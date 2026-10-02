@@ -288,3 +288,5 @@ document.addEventListener('focusout',e=>e.target?.removeAttribute('data-focus-vi
 document.documentElement.dataset.interactionVersion='v2';
 
 document.documentElement.classList.toggle('is-mobile',window.innerWidth<641);
+
+document.documentElement.classList.toggle('is-tablet',window.innerWidth>=641&&window.innerWidth<1101);
