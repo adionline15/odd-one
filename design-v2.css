@@ -739,3 +739,6 @@ body>footer{opacity:.9;}
 
 /* nav token */
 nav[aria-label="Primary navigation"]{background:rgba(5,5,5,.98)!important;}
+
+/* control token */
+#map-layer-controls{background:rgba(5,5,5,.8)!important;}
