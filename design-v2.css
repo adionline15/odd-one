@@ -4263,3 +4263,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 474 */
 .road-intel-selected{transition:opacity .18s ease,filter .18s ease}
+
+
+/* 475 */
+#map-intelligence-hud{background:rgba(8,8,10,.78)}
