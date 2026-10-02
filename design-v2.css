@@ -5547,3 +5547,7 @@ a[href]{cursor:pointer;}
 
 /* 786 */
 .empty-state p{color:rgba(255,255,255,.55);line-height:1.5;}
+
+
+/* 787 */
+.empty-state h3{color:#f1f5f9;font-weight:650;letter-spacing:-.01em;}
