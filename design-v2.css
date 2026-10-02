@@ -949,3 +949,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* control contrast */
 #map-layer-controls button{color:#b4b4bc!important;}
+
+/* active map control */
+#map-layer-controls button.on{color:#fff!important;border-color:rgba(255,255,255,.16)!important;}
