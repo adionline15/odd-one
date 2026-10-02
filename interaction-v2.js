@@ -398,3 +398,5 @@ document.documentElement.dataset.routePhase='ready';
 document.documentElement.dataset.searchPhase='ready';
 
 document.documentElement.dataset.mapPhase='ready';
+
+document.documentElement.dataset.interactionPhase='ready';
