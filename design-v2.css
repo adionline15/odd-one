@@ -4693,3 +4693,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 576 */
 #d-alerts-box .intel-card p,#m-alerts-box .intel-card p{line-height:1.52;}
+
+
+/* 577 */
+.route-endpoint-label{padding:5px 8px!important;line-height:1.15;}
