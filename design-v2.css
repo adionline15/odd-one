@@ -6451,3 +6451,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 997 */
 @media(max-width:640px){#sidebar input:focus,.map-deck-btn:focus-visible,.map-deck-icon-btn:focus-visible{outline-offset:2px;}}
+
+
+/* 998 */
+@media(prefers-reduced-motion:reduce){#sidebar .space-y-3>button:hover,#sidebar .space-y-4>button:hover{transform:none;}.map-deck-btn,.map-deck-icon-btn,#sidebar button{transition:none!important;}}
