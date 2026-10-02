@@ -433,3 +433,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* mono labels */
 .intel-kicker{font-size:8px!important;}
+
+/* mono tracking */
+.intel-kicker{letter-spacing:.17em!important;}
