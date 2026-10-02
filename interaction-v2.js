@@ -386,3 +386,5 @@ document.addEventListener('click',e=>{if(e.target.closest?.('#dp-data'))document
 document.addEventListener('click',e=>{if(e.target.closest?.('#dp-route'))document.documentElement.dataset.routeInteraction='selected';});
 
 document.documentElement.dataset.interactionTimestamp=String(Date.now());
+
+document.documentElement.dataset.surfaceTimestamp=String(Date.now());
