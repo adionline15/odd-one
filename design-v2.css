@@ -1068,3 +1068,5 @@ body>footer{background:#050505!important;border-color:rgba(255,255,255,.06)!impo
 #sidebar .flex.border-b button{padding-left:10px!important;padding-right:10px!important;}
 
 #sidebar .flex.border-b button.border-white{background:rgba(255,255,255,.025);}
+
+#d-alerts-box,#m-alerts-box{display:grid;gap:8px;}
