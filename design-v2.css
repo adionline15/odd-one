@@ -4363,3 +4363,7 @@ nav[aria-label="Primary navigation"]{-webkit-font-smoothing:antialiased}
 
 /* 499 */
 @media (prefers-reduced-motion:reduce){.intel-card:hover,.sugg-item:hover,#d-go-btn:hover,#m-go-btn:hover{transform:none!important}}
+
+
+/* 500 */
+@media (prefers-reduced-motion:reduce){nav[aria-label="Primary navigation"] a,#s-input,#sidebar input,.sugg-item,.intel-card{transition:none!important}}
