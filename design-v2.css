@@ -2914,3 +2914,8 @@ nav[aria-label="Primary navigation"]{
 /* 157 — refine selected road opacity */
 .road-intel-selected{opacity:.96;}
 
+
+
+/* 158 — improve suggestion active state */
+.sugg-item:active{transform:translateX(1px) scale(.995);}
+
