@@ -4081,3 +4081,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 446 */
 @media (min-width:641px) and (max-width:1100px){#observation-status-strip{box-shadow:0 7px 22px rgba(0,0,0,.14)}}
+
+
+/* 447 */
+@media (min-width:641px) and (max-width:1100px){#sidebar label{font-size:.78rem}}
