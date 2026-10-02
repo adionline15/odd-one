@@ -4231,3 +4231,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 496 */
 #intelligence-hero p{max-width:62ch}
+
+
+/* 497 */
+#intelligence-hero [class*="meta"]{color:rgba(245,245,245,.72)}
