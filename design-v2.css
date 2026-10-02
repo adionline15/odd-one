@@ -328,3 +328,6 @@ button:hover:not(:disabled){transition:transform .18s ease,box-shadow .18s ease,
 
 /* button active */
 button:active:not(:disabled){transform:translateY(1px); }
+
+/* reduced motion */
+@media(prefers-reduced-motion:reduce){button:active:not(:disabled){transform:none;}}
