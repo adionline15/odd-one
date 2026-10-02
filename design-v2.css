@@ -5379,3 +5379,7 @@ nav[aria-label="Primary navigation"] .brand{color:#f5f5f5;}
 
 /* 744 */
 @media(max-width:640px){#map-intelligence-hud{max-width:calc(100vw - 24px);}}
+
+
+/* 745 */
+@media(max-width:640px){#map-intelligence-hud .intel-card{padding:12px 13px;}}
