@@ -493,3 +493,6 @@ body>footer{opacity:.9;}
 
 /* popup radius */
 .leaflet-popup-content-wrapper{border-radius:14px!important;}
+
+/* popup close */
+.leaflet-popup-close-button{color:#71717a!important;font-size:18px!important;}
