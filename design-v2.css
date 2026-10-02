@@ -712,3 +712,6 @@ body>footer{opacity:.9;}
 
 /* live token */
 #observation-status-strip[data-state="live"] #obs-status-dot{background:var(--oo-v2-live)!important;}
+
+/* warning token */
+#observation-status-strip[data-state="loading"] #obs-status-dot{background:var(--oo-v2-warning)!important;}
