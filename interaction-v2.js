@@ -216,4 +216,5 @@
   ready(() => document.querySelector('#intelligence-hero .bg-emerald-400')?.setAttribute('aria-hidden','true'));
   ready(() => document.querySelectorAll('#map-layer-controls button span').forEach(s=>s.setAttribute('aria-hidden','true')));
   ready(() => document.querySelector('.route-status-dot')?.setAttribute('aria-hidden','true'));
+  ready(() => document.querySelector('nav[aria-label="Primary navigation"] .text-zinc-800')?.setAttribute('aria-hidden','true'));
 })();
