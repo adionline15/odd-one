@@ -709,3 +709,6 @@ body>footer{opacity:.9;}
 
 /* token cyan */
 :root{--oo-v2-cyan:#22d3ee;}
+
+/* live token */
+#observation-status-strip[data-state="live"] #obs-status-dot{background:var(--oo-v2-live)!important;}
