@@ -5787,3 +5787,7 @@ a[href]{cursor:pointer;}
 
 /* 846 */
 #route-notice strong,#generated-guide strong{color:#e5e7eb;}
+
+
+/* 847 */
+@media(max-width:640px){#d-go-btn,#m-go-btn{min-height:44px;}}
