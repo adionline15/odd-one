@@ -658,3 +658,6 @@ body>footer{opacity:.9;}
 
 /* sheet expanded */
 #sheet[data-mode="expanded"]{box-shadow:0 -34px 90px rgba(0,0,0,.58)!important;}
+
+/* sheet collapsed */
+#sheet[data-mode="collapsed"]{box-shadow:0 -16px 45px rgba(0,0,0,.32)!important;}
