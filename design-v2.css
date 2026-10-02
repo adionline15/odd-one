@@ -406,3 +406,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* route metrics */
 #route-status-distance,#route-status-time{font-variant-numeric:tabular-nums;}
+
+/* stat values */
+#desktop-stats-container p:last-child{font-variant-numeric:tabular-nums;}
