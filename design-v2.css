@@ -3657,3 +3657,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 340 */
 @media (min-width:1101px){#hero-data-boundary{color:rgba(245,245,245,.7)}}
+
+
+/* 341 */
+@media (min-width:1101px){#observation-status-strip{font-size:.84rem}}
