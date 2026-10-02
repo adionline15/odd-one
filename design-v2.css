@@ -3521,3 +3521,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 306 */
 @media (min-width:1101px){#sidebar input{font-size:.92rem}}
+
+
+/* 307 */
+@media (min-width:1101px){#d-go-btn{min-height:46px}}
