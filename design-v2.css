@@ -1284,3 +1284,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  #search-suggestions{box-shadow:0 24px 70px rgba(0,0,0,.62)!important;}
 
  #search-suggestions{border-color:rgba(255,255,255,.09)!important;}
+
+ #search-suggestions button{min-height:38px!important;}
