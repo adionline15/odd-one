@@ -25,4 +25,13 @@
     document.querySelectorAll('[data-nav-tab]').forEach(btn => btn.setAttribute('role','tab'));
     ['dt-alerts','dt-route','dt-data','mt-alerts','mt-route','mt-data'].forEach(id => document.getElementById(id)?.setAttribute('role','tab'));
   });
+  ready(() => {
+    const observer = new MutationObserver(() => requestAnimationFrame(() => {
+      document.querySelectorAll('[data-nav-tab]').forEach(btn => {
+        const active = btn.classList.contains('active');
+        btn.setAttribute('aria-current', active ? 'page' : 'false');
+      });
+    }));
+    document.querySelectorAll('.tab-pane').forEach(el => observer.observe(el,{attributes:true,attributeFilter:['class']}));
+  });
 })();
