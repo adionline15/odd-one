@@ -2455,3 +2455,11 @@ nav[aria-label="Primary navigation"]{
     border-color:rgba(255,255,255,.095);
   }
 }
+
+
+/* 093 — refine desktop suggestion density */
+@media (min-width:1101px){
+  .sugg-item{
+    padding-block:9px;
+  }
+}
