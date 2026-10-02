@@ -5647,3 +5647,7 @@ a[href]{cursor:pointer;}
 
 /* 811 */
 @media(max-width:640px){.intel-card .intel-kicker{font-size:.64rem;}}
+
+
+/* 812 */
+@media(max-width:640px){.provenanceRow{padding:7px 9px;}}
