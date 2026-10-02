@@ -5499,3 +5499,7 @@ a[href]{cursor:pointer;}
 
 /* 774 */
 .intel-value,#obs-status-count,#route-status-distance,#route-status-time{font-variant-numeric:tabular-nums lining-nums;}
+
+
+/* 775 */
+.intel-card,.provenanceRow{overflow-wrap:anywhere;}
