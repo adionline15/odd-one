@@ -1082,3 +1082,5 @@ body>footer{background:#050505!important;border-color:rgba(255,255,255,.06)!impo
 #sidebar input:focus{box-shadow:0 0 0 3px rgba(255,255,255,.035)!important;}
 
 #d-go-btn,#m-go-btn{min-height:42px!important;}
+
+#d-go-btn,#m-go-btn{transition:transform .16s ease,box-shadow .16s ease,opacity .16s ease;}
