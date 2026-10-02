@@ -966,6 +966,8 @@ body>footer{letter-spacing:.08em!important}
             review = document.createElement('p');
             review.id = 'road-intel-review';
             review.className = 'text-[10px] text-zinc-500 mt-2 pt-2 border-t border-zinc-800';
+            review.setAttribute('aria-live', 'polite');
+            review.textContent = 'Loading provenance…';
             const note = document.getElementById('road-intel-note');
             (note?.parentElement || overlay).appendChild(review);
           }
