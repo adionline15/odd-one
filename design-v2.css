@@ -4173,3 +4173,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 469 */
 .route-endpoint-label{background:rgba(8,8,10,.86)}
+
+
+/* 470 */
+.route-endpoint-label{backdrop-filter:blur(8px)}
