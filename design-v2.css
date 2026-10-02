@@ -3113,3 +3113,7 @@ nav[aria-label="Primary navigation"]{
 
 /* 204 */
 @media (max-width:640px){#sidebar h2,#sidebar h3{letter-spacing:-.01em}}
+
+
+/* 205 */
+@media (max-width:640px){#route-status-overlay{padding:10px 12px}}
