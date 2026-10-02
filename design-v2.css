@@ -1168,3 +1168,5 @@ button:disabled{cursor:not-allowed!important;}
  body{text-rendering:optimizeLegibility;}
 
  body{overflow:hidden;}
+
+ main{isolation:isolate;}
