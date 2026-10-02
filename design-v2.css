@@ -4199,3 +4199,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 488 */
 #s-input{border-color:rgba(255,255,255,.1)}
+
+
+/* 489 */
+#s-input{background:rgba(10,10,12,.72)}
