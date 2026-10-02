@@ -1142,3 +1142,5 @@ body>footer{background:#050505!important;border-color:rgba(255,255,255,.06)!impo
 @media(max-width:640px){#sheet{border-radius:18px 18px 0 0!important;}}
 
 @media(max-width:640px){#sheet #m-go-btn{border-radius:10px!important;}}
+
+@media(max-width:640px){#sheet input{font-size:11px!important;}}
