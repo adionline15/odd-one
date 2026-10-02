@@ -1150,3 +1150,5 @@ body>footer{background:#050505!important;border-color:rgba(255,255,255,.06)!impo
 @media(min-width:641px) and (max-width:1100px){#sidebar{box-shadow:-22px 0 60px rgba(0,0,0,.32)!important;}}
 
 :focus-visible{outline:2px solid rgba(34,211,238,.72)!important;outline-offset:3px!important;}
+
+button:disabled{cursor:not-allowed!important;}
