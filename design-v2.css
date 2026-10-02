@@ -1128,3 +1128,5 @@ body>footer{background:#050505!important;border-color:rgba(255,255,255,.06)!impo
 .leaflet-control-attribution{padding:3px 6px!important;}
 
 @media(max-width:640px){#map-layer-controls{bottom:58px!important;}}
+
+@media(max-width:640px){#intelligence-hero>div{box-shadow:0 18px 50px rgba(0,0,0,.4)!important;}}
