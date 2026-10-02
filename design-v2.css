@@ -529,3 +529,6 @@ body>footer{opacity:.9;}
 
 /* layer border */
 #map-layer-controls{border-color:rgba(255,255,255,.1)!important;}
+
+/* layer shadow */
+#map-layer-controls{box-shadow:0 24px 55px rgba(0,0,0,.4)!important;}
