@@ -4916,3 +4916,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 628 */
 #sidebar .flex.border-b button{transition:color .18s ease,background-color .18s ease;}
+
+
+/* 629 */
+#sidebar .flex.border-b button:hover{color:#e4e4e7;background:rgba(255,255,255,.025);}
