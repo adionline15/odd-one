@@ -87,4 +87,5 @@
     footer.innerHTML=footer.innerHTML.replace(/©\s*\d{4}/,'© '+new Date().getFullYear());
   });
   ready(() => document.documentElement.dataset.motion=window.matchMedia('(prefers-reduced-motion: reduce)').matches?'reduced':'full');
+  ready(() => window.addEventListener('resize',()=>setTimeout(()=>window.map?.invalidateSize?.({pan:false}),180),{passive:true}));
 })();
