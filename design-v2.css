@@ -892,3 +892,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* alert hover */
 #d-alerts-box>div:hover,#m-alerts-box>div:hover{transform:translateY(-2px)!important;}
+
+/* alert transition */
+#d-alerts-box>div,#m-alerts-box>div{transition:transform .18s ease,border-color .18s ease,background-color .18s ease;}
