@@ -457,3 +457,6 @@ nav[aria-label="Primary navigation"] .font-mono-lux{font-size:7px!important;}
 
 /* search tracking */
 #s-input{letter-spacing:.01em;}
+
+/* sidebar labels */
+#sidebar label{letter-spacing:.14em!important;}
