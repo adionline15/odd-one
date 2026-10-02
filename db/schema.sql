@@ -271,6 +271,47 @@ grant execute on function public.approved_observations_in_view(
   integer
 ) to service_role;
 
+create or replace function public.approved_observation_detail(p_id uuid)
+returns table (
+  id uuid,
+  latitude double precision,
+  longitude double precision,
+  observation_type public.observation_type,
+  source public.observation_source,
+  observed_at timestamptz,
+  submitted_at timestamptz,
+  confidence numeric,
+  metadata jsonb,
+  reviewed_at timestamptz,
+  review_note text
+)
+language sql
+security definer
+set search_path = public, gis
+as $
+  select
+    o.id,
+    gis.st_y(o.location::gis.geometry),
+    gis.st_x(o.location::gis.geometry),
+    o.observation_type,
+    o.source,
+    o.observed_at,
+    o.submitted_at,
+    o.confidence,
+    o.metadata,
+    o.reviewed_at,
+    o.review_note
+  from public.observations o
+  where o.id = p_id
+    and o.status = 'approved';
+$;
+
+comment on function public.approved_observation_detail(uuid)
+  is 'Returns one approved observation with provenance and review metadata.';
+
+revoke execute on function public.approved_observation_detail(uuid) from public, anon, authenticated;
+grant execute on function public.approved_observation_detail(uuid) to service_role;
+
 create or replace function public.approved_observation_summary(
   p_min_lat double precision,
   p_min_lon double precision,
