@@ -2969,3 +2969,7 @@ nav[aria-label="Primary navigation"]{
 
 /* 168 */
 .road-intel-tooltip{max-width:min(320px,calc(100vw - 32px));line-height:1.45}
+
+
+/* 169 */
+#desktop-stats-container{font-variant-numeric:tabular-nums}
