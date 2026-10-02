@@ -4478,3 +4478,7 @@ nav[aria-label="Primary navigation"]{-webkit-font-smoothing:antialiased}
 
 /* 524 */
 @media(min-width:641px){#d-alerts-box .intel-card:hover,#m-alerts-box .intel-card:hover{transform:translateY(-2px);}}
+
+
+/* 525 */
+[id$="-route-out"] .grid>div{box-shadow:inset 0 1px 0 rgba(255,255,255,.025),0 8px 22px rgba(0,0,0,.14);}
