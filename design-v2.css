@@ -88,3 +88,6 @@ nav[aria-label="Primary navigation"] button[onclick*="showTab('route')"]{border-
 
 /* progressive */
 #d-go-btn:focus-visible,#m-go-btn:focus-visible{box-shadow:0 0 0 3px rgba(34,211,238,.12)!important;}
+
+/* progressive */
+#map-layer-controls button{font-weight:600!important;}
