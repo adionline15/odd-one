@@ -4025,3 +4025,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 432 */
 @media (max-width:640px){#m-go-btn:hover{filter:brightness(1.03)}}
+
+
+/* 433 */
+@media (max-width:640px){#m-go-btn:focus-visible{outline-offset:2px}}
