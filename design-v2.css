@@ -4397,3 +4397,8 @@ nav[aria-label="Primary navigation"]{-webkit-font-smoothing:antialiased}
 /* 506 */
 #intelligence-hero h1{line-height:1.04;max-width:14ch;}
 #intelligence-hero p{color:rgba(245,245,245,.68);}
+
+
+/* 507 */
+#intelligence-hero .hero-accent{filter:drop-shadow(0 0 10px rgba(34,211,238,.12));}
+#hero-data-boundary>span:last-child{color:rgba(245,245,245,.56);}
