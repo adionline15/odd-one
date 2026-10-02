@@ -199,3 +199,6 @@ body>footer{color:#52525b!important;}
 
 /* data card */
 #dp-data>.intel-card{border-radius:16px!important;}
+
+/* data card border */
+#dp-data>.intel-card{border-color:rgba(255,255,255,.1)!important;}
