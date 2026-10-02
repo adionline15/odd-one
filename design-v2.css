@@ -3901,3 +3901,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 401 */
 @media (max-width:640px){.route-endpoint-label{padding:4px 7px}}
+
+
+/* 402 */
+@media (max-width:640px){.route-endpoint-label{border:1px solid rgba(255,255,255,.1)}}
