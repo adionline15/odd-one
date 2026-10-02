@@ -808,3 +808,6 @@ nav[aria-label="Primary navigation"]{z-index:100!important;}
 
 /* card highlight */
 .intel-card{position:relative;overflow:hidden;}
+
+/* card hairline */
+.intel-card::before{content:"";position:absolute;left:14px;right:14px;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);pointer-events:none;}
