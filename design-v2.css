@@ -655,3 +655,6 @@ body>footer{opacity:.9;}
 
 /* route provider state */
 #route-status-overlay[data-trust="provider"]{filter:none;}
+
+/* sheet expanded */
+#sheet[data-mode="expanded"]{box-shadow:0 -34px 90px rgba(0,0,0,.58)!important;}
