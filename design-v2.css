@@ -5159,3 +5159,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 689 */
 .leaflet-control-zoom a{border-color:rgba(255,255,255,.065)!important;}
+
+
+/* 690 */
+.leaflet-control-zoom a{font-weight:650;}
