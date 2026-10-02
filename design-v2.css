@@ -697,3 +697,6 @@ body>footer{opacity:.9;}
 
 /* dark notice radius */
 .bg-zinc-900\/60{border-radius:12px!important;}
+
+/* token live */
+:root{--oo-v2-live:#34d399;}
