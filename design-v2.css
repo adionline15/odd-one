@@ -4790,3 +4790,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 /* 600 */
 #map{background:#070709;}
 #map-command-deck,.map-layer-switcher,.map-deck-icon-btn,.map-compass,#route-status-overlay,#observation-status-strip{isolation:isolate;}
+
+
+/* 601 */
+#map-command-deck{border-color:rgba(255,255,255,.08);}
