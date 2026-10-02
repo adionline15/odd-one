@@ -1881,3 +1881,10 @@ nav[aria-label="Primary navigation"]{
 #intelligence-hero{
   box-shadow:0 18px 50px rgba(0,0,0,.14);
 }
+
+
+/* 023 — strengthen hero boundary contrast */
+#hero-data-boundary{
+  border-color:rgba(255,255,255,.12);
+  background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.012));
+}
