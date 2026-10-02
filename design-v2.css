@@ -439,3 +439,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* mono opacity */
 .intel-kicker{opacity:.92;}
+
+/* intel value */
+.intel-value{font-weight:500;}
