@@ -568,3 +568,6 @@ body>footer{opacity:.9;}
 
 /* mobile alert cards */
 #m-alerts-box>div{min-height:92px;}
+
+/* mobile data cards */
+#mp-data .intel-card{border-radius:14px!important;}
