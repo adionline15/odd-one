@@ -1438,3 +1438,5 @@ html.is-desktop footer{font-size:9px;}
  .intel-card{backdrop-filter:blur(14px);}
 
  #sidebar,#sheet{backdrop-filter:blur(18px);}
+
+ #intelligence-hero>div{backdrop-filter:blur(14px);}
