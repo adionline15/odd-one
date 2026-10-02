@@ -586,3 +586,6 @@ body>footer{opacity:.9;}
 
 /* route result gap */
 [id$="-route-out"] .grid{gap:7px!important;}
+
+/* alert notice */
+[id$="-route-out"] .bg-zinc-900\/60{border-color:rgba(255,255,255,.08)!important;}
