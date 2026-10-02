@@ -101,4 +101,8 @@
     const sync=()=>{ const active=document.querySelector('.tab-pane.on')?.id||''; const name=active.includes('route')?'Routing':active.includes('data')?'Data':'Alerts'; document.title='Odd-One.in — '+name+' Intelligence'; };
     document.querySelectorAll('[data-nav-tab]').forEach(b=>b.addEventListener('click',()=>setTimeout(sync,0))); sync();
   });
+  ready(() => {
+    const sync=()=>['alerts','route','data'].forEach(k=>document.getElementById('dt-'+k)?.setAttribute('aria-selected',document.getElementById('dt-'+k)?.classList.contains('border-white')?'true':'false'));
+    document.querySelectorAll('#dt-alerts,#dt-route,#dt-data').forEach(b=>b.addEventListener('click',()=>setTimeout(sync,0))); sync();
+  });
 })();
