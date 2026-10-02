@@ -3645,3 +3645,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 337 */
 @media (min-width:1101px){#intelligence-hero [class*="meta"]{opacity:.9}}
+
+
+/* 338 */
+@media (min-width:1101px){#intelligence-hero [class*="meta"]{gap:10px}}
