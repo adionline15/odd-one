@@ -5659,3 +5659,7 @@ a[href]{cursor:pointer;}
 
 /* 814 */
 @media(max-width:640px){.error-state{padding:13px;}}
+
+
+/* 815 */
+@media(max-width:640px){#route-notice{padding:10px 11px;}}
