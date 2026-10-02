@@ -5303,3 +5303,7 @@ nav[aria-label="Primary navigation"]{border-color:rgba(255,255,255,.065)!importa
 
 /* 725 */
 nav[aria-label="Primary navigation"] a{letter-spacing:.005em;}
+
+
+/* 726 */
+nav[aria-label="Primary navigation"] a[aria-current="page"]{font-weight:650;}
