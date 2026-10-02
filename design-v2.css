@@ -6155,3 +6155,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 938 */
 .map-deck-icon-btn{width:36px;height:36px;}
+
+
+/* 939 */
+.map-deck-icon-btn{display:grid;place-items:center;}
