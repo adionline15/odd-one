@@ -2871,3 +2871,9 @@ nav[aria-label="Primary navigation"]{
 #map-layer-controls{
   backdrop-filter:blur(8px);
 }
+
+
+/* 150 — improve map control active glow */
+#map-layer-controls button[aria-pressed="true"]{
+  box-shadow:0 0 14px rgba(34,211,238,.08);
+}
