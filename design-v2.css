@@ -505,3 +505,6 @@ body>footer{opacity:.9;}
 
 /* zoom typography */
 .leaflet-control-zoom a{font-size:15px!important;font-weight:500;}
+
+/* attribution */
+.leaflet-control-attribution{opacity:.82;}
