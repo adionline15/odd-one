@@ -3405,3 +3405,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 277 */
 @media (max-width:640px){#observation-status-strip{padding:10px 12px}}
+
+
+/* 278 */
+@media (max-width:640px){.intel-card{box-shadow:0 8px 24px rgba(0,0,0,.18)}}
