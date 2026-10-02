@@ -4470,3 +4470,7 @@ nav[aria-label="Primary navigation"]{-webkit-font-smoothing:antialiased}
 
 /* 522 */
 #desktop-stats-container .w-px{opacity:.7;box-shadow:0 0 8px rgba(255,255,255,.025);}
+
+
+/* 523 */
+#d-alerts-box .intel-card,#m-alerts-box .intel-card{background:linear-gradient(145deg,rgba(17,17,20,.88),rgba(9,9,11,.82));}
