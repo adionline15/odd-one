@@ -3149,3 +3149,7 @@ nav[aria-label="Primary navigation"] a{transition:color .18s ease,opacity .18s e
 
 /* 213 */
 nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thickness:2px;text-underline-offset:5px}
+
+
+/* 214 */
+#s-input{line-height:1.35}
