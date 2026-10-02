@@ -988,3 +988,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* final route */
 #route-status-overlay>div{background:rgba(7,7,9,.92)!important;}
+
+/* final stats */
+#desktop-stats-container>div{background:rgba(5,5,5,.88)!important;}
