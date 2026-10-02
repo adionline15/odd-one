@@ -1372,3 +1372,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  #dp-data .intel-muted{font-size:9px;}
 
  #dp-data .intel-value{font-variant-numeric:tabular-nums;}
+
+ #dp-data .intel-kicker{font-size:7px!important;}
