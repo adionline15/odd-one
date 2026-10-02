@@ -6043,3 +6043,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 910 */
 @media(max-width:640px){.leaflet-popup-content-wrapper{max-width:calc(100vw - 40px);}}
+
+
+/* 911 */
+@media(max-width:640px){.leaflet-popup-content-wrapper{box-shadow:0 14px 32px rgba(0,0,0,.28)!important;}}
