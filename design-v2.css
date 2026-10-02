@@ -214,3 +214,6 @@ body>footer{color:#52525b!important;}
 
 /* sheet handle */
 #sheet-toggle span{background:#3f3f46!important;}
+
+/* mobile nav */
+@media(max-width:640px){nav[aria-label="Primary navigation"]{height:58px!important;}}
