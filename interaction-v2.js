@@ -310,3 +310,5 @@ window.addEventListener('online',()=>document.documentElement.classList.add('is-
 window.addEventListener('offline',()=>document.documentElement.classList.remove('is-online'));
 
 document.querySelector('#s-input')?.addEventListener('input',()=>document.querySelector('#search-wrap')?.setAttribute('data-search-active','true'));
+
+document.querySelector('#s-input')?.addEventListener('blur',()=>document.querySelector('#search-wrap')?.removeAttribute('data-search-active'));
