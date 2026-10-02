@@ -2338,3 +2338,11 @@ nav[aria-label="Primary navigation"]{
   transition:filter .18s ease,opacity .18s ease;
 }
 
+
+
+/* 078 — improve suggestion focus state */
+.sugg-item:focus-visible{
+  outline:2px solid rgba(34,211,238,.60);
+  outline-offset:2px;
+}
+
