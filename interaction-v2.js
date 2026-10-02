@@ -172,4 +172,5 @@
   ready(() => ['d-alerts-box','m-alerts-box'].forEach(id=>document.getElementById(id)?.setAttribute('data-provenance','current-feed')));
   ready(() => document.getElementById('dp-data')?.setAttribute('data-provenance','approved-observations'));
   ready(() => document.getElementById('s-input')?.setAttribute('data-geocoder','explicit-search-only'));
+  ready(() => document.getElementById('sidebar')?.setAttribute('role','complementary'));
 })();
