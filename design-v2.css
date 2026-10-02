@@ -3301,3 +3301,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 251 */
 .road-intel-tooltip{padding:10px 12px}
+
+
+/* 252 */
+.road-intel-tooltip{border-radius:12px}
