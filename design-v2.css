@@ -1402,3 +1402,5 @@ html.hero-visible #intelligence-hero>div{opacity:1;}
 html.sidebar-visible #sidebar{opacity:1;}
 
 html.sheet-visible #sheet{opacity:1;}
+
+#search-wrap[data-search-active="true"]{border-color:rgba(34,211,238,.2)!important;}
