@@ -5975,3 +5975,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 893 */
 #sidebar .section-title{font-weight:650;letter-spacing:.01em;}
+
+
+/* 894 */
+#sidebar .section-subtitle{color:rgba(255,255,255,.48);line-height:1.4;}
