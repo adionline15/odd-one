@@ -320,3 +320,5 @@ document.querySelector('#sidebar')?.setAttribute('data-rendered','true');
 document.querySelector('#sheet')?.setAttribute('data-rendered','true');
 
 document.querySelector('#search-wrap')?.setAttribute('data-rendered','true');
+
+document.querySelector('#map')?.setAttribute('data-rendered','true');
