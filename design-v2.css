@@ -3193,3 +3193,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 224 */
 #sidebar{transition:background-color .2s ease,border-color .2s ease}
+
+
+/* 225 */
+#sidebar input{border-radius:12px}
