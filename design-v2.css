@@ -811,3 +811,6 @@ nav[aria-label="Primary navigation"]{z-index:100!important;}
 
 /* card hairline */
 .intel-card::before{content:"";position:absolute;left:14px;right:14px;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);pointer-events:none;}
+
+/* alert highlight */
+#d-alerts-box>div::before,#m-alerts-box>div::before{content:"";display:block;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.08),transparent);margin:-1px 0 10px;}
