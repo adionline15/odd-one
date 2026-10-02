@@ -6071,3 +6071,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 917 */
 @media(min-width:641px) and (max-width:1100px){.map-compass{width:44px;height:44px;}}
+
+
+/* 918 */
+@media(min-width:641px) and (max-width:1100px){.map-scale-label{font-size:.68rem;}}
