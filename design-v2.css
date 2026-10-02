@@ -511,3 +511,6 @@ body>footer{opacity:.9;}
 
 /* attribution font */
 .leaflet-control-attribution{font-family:'JetBrains Mono',monospace!important;}
+
+/* route endpoint */
+.route-endpoint-label{font-size:7px!important;letter-spacing:.14em!important;}
