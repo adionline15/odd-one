@@ -1382,3 +1382,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  #dp-route label{font-size:8px!important;}
 
  #dp-route .text-zinc-500{line-height:1.4;}
+
+ #search-status{font-size:9px;}
