@@ -946,3 +946,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* sheet thumb */
 #sheet ::-webkit-scrollbar-thumb{background:#303038;}
+
+/* control contrast */
+#map-layer-controls button{color:#b4b4bc!important;}
