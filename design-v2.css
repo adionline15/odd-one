@@ -5699,3 +5699,7 @@ a[href]{cursor:pointer;}
 
 /* 824 */
 @media(max-width:640px){#sidebar .route-control-group{gap:8px;}}
+
+
+/* 825 */
+.route-endpoint-label{font-size:.7rem;font-weight:650;}
