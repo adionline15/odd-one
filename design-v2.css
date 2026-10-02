@@ -4109,3 +4109,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 453 */
 @media (min-width:641px) and (max-width:1100px){#s-input:focus{box-shadow:0 0 0 3px rgba(34,211,238,.07)}}
+
+
+/* 454 */
+@media (min-width:641px) and (max-width:1100px){#s-input:hover{box-shadow:0 9px 24px rgba(0,0,0,.15)}}
