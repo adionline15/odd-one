@@ -5759,3 +5759,7 @@ a[href]{cursor:pointer;}
 
 /* 839 */
 .intel-card:active{transform:translateY(0);}
+
+
+/* 840 */
+.provenanceRow:hover{background:rgba(255,255,255,.025);}
