@@ -730,3 +730,6 @@ body>footer{opacity:.9;}
 
 /* raised surface */
 #sidebar input,#s-input{background:var(--oo-v2-surface-raised)!important;}
+
+/* sidebar token */
+#sidebar{background:var(--oo-v2-bg)!important;}
