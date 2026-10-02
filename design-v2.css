@@ -1266,3 +1266,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  .leaflet-control-layers{background:rgba(7,7,9,.86);}
 
  .leaflet-control-layers{color:#c8c8ce;font-size:10px;}
+
+ #search-wrap{border-radius:12px!important;}
