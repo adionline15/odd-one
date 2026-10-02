@@ -1306,3 +1306,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  nav{backdrop-filter:blur(18px);}
 
  footer{font-size:9px;}
+
+ footer{opacity:.76;}
