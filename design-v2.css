@@ -2739,3 +2739,12 @@ nav[aria-label="Primary navigation"]{
   opacity:.55;
   cursor:not-allowed;
 }
+
+
+/* 130 — improve CTA disabled state */
+#d-go-btn:disabled,#m-go-btn:disabled{
+  opacity:.55;
+  filter:saturate(.65);
+  cursor:not-allowed;
+  transform:none;
+}
