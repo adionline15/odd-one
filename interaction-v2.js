@@ -236,4 +236,5 @@
   ready(() => document.getElementById('btn-sat')?.setAttribute('data-trust','visual-context'));
   ready(() => document.querySelectorAll('[id$="-route-out"]').forEach(el=>el.dataset.aiGuidancePolicy='generated-not-verified'));
   ready(() => { const s=document.getElementById('route-status-source'); if(s)s.hidden=false; });
+  ready(() => document.body.setAttribute('data-intelligence-ui','v2-progressive'));
 })();
