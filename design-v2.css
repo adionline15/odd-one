@@ -2030,3 +2030,11 @@ nav[aria-label="Primary navigation"]{
 .road-intel-selected{
   filter:drop-shadow(0 0 7px rgba(34,211,238,.28));
 }
+
+
+/* 041 — refine road intelligence tooltip readability */
+.road-intel-tooltip{
+  box-shadow:0 10px 24px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.04);
+  border-color:rgba(255,255,255,.13);
+  line-height:1.4;
+}
