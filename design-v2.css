@@ -3569,3 +3569,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 318 */
 @media (min-width:1101px){.route-endpoint-label{border:1px solid rgba(255,255,255,.1)}}
+
+
+/* 319 */
+@media (min-width:1101px){.road-intel-tooltip{border-radius:13px}}
