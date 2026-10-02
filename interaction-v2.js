@@ -182,4 +182,5 @@
   ready(() => document.querySelectorAll('#d-from,#d-to,#m-from,#m-to').forEach(i=>i.setAttribute('autocomplete','off')));
   ready(() => document.querySelectorAll('#d-from,#d-to,#m-from,#m-to').forEach(i=>i.setAttribute('spellcheck','false')));
   ready(() => { const m=document.getElementById('map'); if(m)m.dataset.layer='map'; });
+  ready(() => { const m=document.getElementById('map'); if(!m)return; ['map','sat'].forEach(k=>document.getElementById('btn-'+k)?.addEventListener('click',()=>{m.dataset.layer=k;})); });
 })();
