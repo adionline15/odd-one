@@ -4963,3 +4963,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 640 */
 #sidebar label{color:rgba(245,245,245,.72);font-size:.72rem;letter-spacing:.055em;text-transform:uppercase;}
+
+
+/* 641 */
+#sidebar input{caret-color:#22d3ee;}
