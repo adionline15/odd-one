@@ -5079,3 +5079,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 669 */
 #route-status-distance,#route-status-time{font-variant-numeric:tabular-nums;}
+
+
+/* 670 */
+#route-status-source{background:rgba(34,211,238,.055);padding:3px 7px;border-radius:7px;}
