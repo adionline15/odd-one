@@ -766,3 +766,6 @@ html[data-viewport="mobile"] #map-intelligence-hud{display:none!important;}
 
 /* mobile chip padding */
 @media(max-width:640px){#intelligence-hero .mt-4 span{padding:6px 7px!important;}}
+
+/* mobile observation */
+@media(max-width:640px){#observation-status-strip{display:none!important;}}
