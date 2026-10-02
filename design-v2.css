@@ -910,3 +910,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* cta busy */
 #d-go-btn[aria-busy="true"],#m-go-btn[aria-busy="true"]{opacity:.72;}
+
+/* sidebar scroll */
+#sidebar>.flex-1.overflow-y-auto{scrollbar-gutter:stable;}
