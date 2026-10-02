@@ -1710,3 +1710,7 @@ nav[aria-label="Primary navigation"] h1{font-weight:600!important;}
 
 /* polish observation strip spacing */
 #observation-status-strip .intel-card{padding-left:15px!important;padding-right:15px!important;}
+
+
+/* refine sidebar tab density */
+#sidebar .flex.border-b button{font-size:9px!important;}
