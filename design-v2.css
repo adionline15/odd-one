@@ -5971,3 +5971,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 892 */
 #sidebar label{margin-bottom:5px;display:block;}
+
+
+/* 893 */
+#sidebar .section-title{font-weight:650;letter-spacing:.01em;}
