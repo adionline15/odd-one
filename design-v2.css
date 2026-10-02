@@ -1018,3 +1018,6 @@ body>footer{background:#050505!important;border-color:rgba(255,255,255,.06)!impo
 
 /* final focus */
 :focus-visible{outline-color:rgba(34,211,238,.8)!important;}
+
+/* final reduced motion */
+@media(prefers-reduced-motion:reduce){#intelligence-hero>div{transform:none!important;}}
