@@ -3005,3 +3005,7 @@ nav[aria-label="Primary navigation"]{
 
 /* 177 */
 #s-input::selection{background:rgba(34,211,238,.28);color:#fff}
+
+
+/* 178 */
+#sidebar input::selection{background:rgba(34,211,238,.28);color:#fff}
