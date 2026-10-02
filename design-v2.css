@@ -5239,3 +5239,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 709 */
 #map-intelligence-hud{pointer-events:auto;}
+
+
+/* 710 */
+#map::after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 90px rgba(0,0,0,.22);z-index:350;}
