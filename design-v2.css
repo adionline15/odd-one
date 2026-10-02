@@ -3977,3 +3977,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 420 */
 @media (max-width:640px){#hero-data-boundary{letter-spacing:.015em}}
+
+
+/* 421 */
+@media (max-width:640px){#sheet{border-top-color:rgba(255,255,255,.12)}}
