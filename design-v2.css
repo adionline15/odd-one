@@ -4057,3 +4057,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 440 */
 @media (max-width:640px){#map-layer-controls{box-shadow:0 10px 26px rgba(0,0,0,.22)}}
+
+
+/* 441 */
+@media (min-width:641px) and (max-width:1100px){#desktop-stats-container{border-radius:13px}}
