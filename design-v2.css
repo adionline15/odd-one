@@ -3097,3 +3097,7 @@ nav[aria-label="Primary navigation"]{
 
 /* 200 */
 @media (min-width:1101px){.road-intel-tooltip{box-shadow:0 14px 36px rgba(0,0,0,.34)}}
+
+
+/* 201 */
+@media (max-width:640px){.intel-card{padding:16px}}
