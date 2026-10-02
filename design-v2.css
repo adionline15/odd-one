@@ -1009,3 +1009,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* final footer */
 body>footer{background:#050505!important;border-color:rgba(255,255,255,.06)!important;}
+
+/* final scrollbar */
+::-webkit-scrollbar-thumb{background:#303038!important;}
