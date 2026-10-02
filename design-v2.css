@@ -2945,3 +2945,7 @@ nav[aria-label="Primary navigation"]{
 
 /* 162 */
 .intel-card p{line-height:1.58}
+
+
+/* 163 */
+.intel-card h3,.intel-card h4{font-weight:650;letter-spacing:-.01em}
