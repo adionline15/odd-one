@@ -5799,3 +5799,7 @@ a[href]{cursor:pointer;}
 
 /* 849 */
 @media(min-width:641px) and (max-width:1100px){#d-go-btn,#m-go-btn{min-height:42px;}}
+
+
+/* 850 */
+@media(min-width:1101px){#d-go-btn,#m-go-btn{min-height:42px;}}
