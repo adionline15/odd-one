@@ -736,3 +736,6 @@ body>footer{opacity:.9;}
 
 /* sheet token */
 #sheet{background:rgba(5,5,5,.97)!important;}
+
+/* nav token */
+nav[aria-label="Primary navigation"]{background:rgba(5,5,5,.98)!important;}
