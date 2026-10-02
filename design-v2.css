@@ -937,3 +937,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* tab transition */
 #sidebar .flex.border-b button,#sheet .flex.border-b button{transition:color .18s ease,background-color .18s ease,box-shadow .18s ease;}
+
+/* tab hover */
+#sidebar .flex.border-b button:hover,#sheet .flex.border-b button:hover{background:rgba(255,255,255,.025);}
