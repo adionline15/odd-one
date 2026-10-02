@@ -4073,3 +4073,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 444 */
 @media (min-width:641px) and (max-width:1100px){#desktop-stats-container{box-shadow:0 8px 24px rgba(0,0,0,.15)}}
+
+
+/* 445 */
+@media (min-width:641px) and (max-width:1100px){#observation-status-strip{font-size:.8rem}}
