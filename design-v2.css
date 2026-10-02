@@ -3993,3 +3993,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 424 */
 @media (max-width:640px){#sheet::before{width:38px}}
+
+
+/* 425 */
+@media (max-width:640px){#sheet::before{border-radius:999px}}
