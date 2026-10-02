@@ -706,3 +706,6 @@ body>footer{opacity:.9;}
 
 /* token error */
 :root{--oo-v2-error:#fb7185;}
+
+/* token cyan */
+:root{--oo-v2-cyan:#22d3ee;}
