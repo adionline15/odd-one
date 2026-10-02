@@ -688,3 +688,6 @@ body>footer{opacity:.9;}
 
 /* data loading */
 #stats-content .animate-spin{opacity:.7;}
+
+/* error radius */
+.bg-rose-500\/10{border-radius:12px!important;}
