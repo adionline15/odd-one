@@ -904,3 +904,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* route selection */
 #sidebar input::selection{background:rgba(34,211,238,.2);color:#fff;}
+
+/* cta disabled */
+#d-go-btn:disabled,#m-go-btn:disabled{background:#27272a!important;color:#71717a!important;}
