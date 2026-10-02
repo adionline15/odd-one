@@ -826,3 +826,6 @@ nav[aria-label="Primary navigation"]{z-index:100!important;}
 
 /* nav highlight */
 nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:18px;top:0;width:72px;height:1px;background:rgba(255,255,255,.1);}
+
+/* hud highlight */
+#map-intelligence-hud .intel-card::before{background:linear-gradient(90deg,rgba(34,211,238,.16),transparent);}
