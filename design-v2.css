@@ -5907,3 +5907,7 @@ footer a{color:rgba(255,255,255,.58);text-underline-offset:3px;}
 
 /* 876 */
 footer a:hover{color:#f1f5f9;}
+
+
+/* 877 */
+@media(max-width:640px){footer{padding-block:10px;padding-inline:12px;}}
