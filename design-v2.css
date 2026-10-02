@@ -1160,3 +1160,5 @@ button:disabled{cursor:not-allowed!important;}
 .text-zinc-500{color:#85858d!important;}
 
 #sidebar,#sheet,#intelligence-hero,#map-intelligence-hud,#observation-status-strip{contain:paint;}
+
+ body{background:#050506;}
