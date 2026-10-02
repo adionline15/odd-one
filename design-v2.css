@@ -490,3 +490,6 @@ body>footer{opacity:.9;}
 
 /* popup border */
 .leaflet-popup-content-wrapper{border-color:rgba(255,255,255,.12)!important;}
+
+/* popup radius */
+.leaflet-popup-content-wrapper{border-radius:14px!important;}
