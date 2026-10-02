@@ -3653,3 +3653,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 339 */
 @media (min-width:1101px){#hero-data-boundary{letter-spacing:.02em}}
+
+
+/* 340 */
+@media (min-width:1101px){#hero-data-boundary{color:rgba(245,245,245,.7)}}
