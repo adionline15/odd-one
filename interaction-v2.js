@@ -234,4 +234,5 @@
   ready(() => ['d-alerts-box','m-alerts-box'].forEach(id=>{const el=document.getElementById(id); if(el)el.dataset.feedFreshness='current-feed';}));
   ready(() => document.querySelectorAll('[id$="-route-out"],#stats-content').forEach(el=>el.dataset.missingDataPolicy='no-data-is-not-safe-or-empty'));
   ready(() => document.getElementById('btn-sat')?.setAttribute('data-trust','visual-context'));
+  ready(() => document.querySelectorAll('[id$="-route-out"]').forEach(el=>el.dataset.aiGuidancePolicy='generated-not-verified'));
 })();
