@@ -3769,3 +3769,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 368 */
 @media (min-width:641px) and (max-width:1100px){#sidebar{box-shadow:0 14px 38px rgba(0,0,0,.16)}}
+
+
+/* 369 */
+@media (min-width:641px) and (max-width:1100px){#d-go-btn{border-radius:12px}}
