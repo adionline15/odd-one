@@ -3593,3 +3593,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 324 */
 @media (min-width:1101px){.sugg-item{padding-inline:12px}}
+
+
+/* 325 */
+@media (min-width:1101px){.intel-card{border-radius:15px}}
