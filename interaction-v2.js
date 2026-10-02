@@ -352,3 +352,5 @@ document.addEventListener('click',e=>{const b=e.target.closest?.('[data-tab]');i
 document.addEventListener('click',e=>{if(e.target.closest?.('#sheet-toggle'))document.documentElement.dataset.sheetInteraction='toggle';});
 
 document.addEventListener('keydown',e=>{if(e.key==='Escape')document.documentElement.dataset.lastKey='escape';});
+
+document.addEventListener('keydown',e=>{if(e.key==='Enter')document.documentElement.dataset.lastKey='enter';});
