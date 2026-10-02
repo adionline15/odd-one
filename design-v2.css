@@ -4975,3 +4975,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 643 */
 #sidebar button{font-weight:600;}
+
+
+/* 644 */
+#sidebar button:disabled{opacity:.48;filter:saturate(.7);}
