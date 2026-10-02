@@ -4537,3 +4537,7 @@ nav[aria-label="Primary navigation"] .font-mono-lux{opacity:.78;}
 
 /* 538 */
 @media(max-width:640px){#sheet-toggle span{box-shadow:0 0 0 1px rgba(255,255,255,.04);width:42px!important;height:4px!important;}}
+
+
+/* 539 */
+@media(max-width:640px){#sheet>.flex-1.overflow-y-auto{padding:16px!important;gap:12px;}}
