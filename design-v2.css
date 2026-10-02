@@ -547,3 +547,6 @@ body>footer{opacity:.9;}
 
 /* sheet backdrop */
 #sheet{backdrop-filter:blur(22px)!important;}
+
+/* mobile tab border */
+#sheet .flex.border-b{border-color:rgba(255,255,255,.08)!important;}
