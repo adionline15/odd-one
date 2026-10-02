@@ -3733,3 +3733,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 359 */
 @media (min-width:1101px){#d-go-btn:hover{transform:translateY(-1px)}}
+
+
+/* 360 */
+@media (min-width:1101px){#d-go-btn:hover{filter:brightness(1.04)}}
