@@ -4613,3 +4613,7 @@ nav[aria-label="Primary navigation"] .font-mono-lux{opacity:.78;}
 
 /* 557 */
 .road-intel-selected{filter:drop-shadow(0 0 8px rgba(255,255,255,.55)) drop-shadow(0 0 18px rgba(34,211,238,.2))!important;}
+
+
+/* 558 */
+.road-intel-tooltip strong{color:#f4f4f5;font-weight:650;letter-spacing:-.01em;}.road-intel-tooltip small{letter-spacing:.04em;}
