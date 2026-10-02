@@ -192,4 +192,5 @@
   ready(() => { const o=document.getElementById('route-status-overlay'); if(o)o.dataset.fallbackPolicy='explicit-approximate'; });
   ready(() => { const s=document.getElementById('observation-status-strip'); if(s)s.dataset.publication='approved-only'; });
   ready(() => { const a=document.getElementById('d-alerts-box'); if(a)a.dataset.context='news-context-not-verification'; });
+  ready(() => document.querySelector('body>footer')?.setAttribute('role','contentinfo'));
 })();
