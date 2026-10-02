@@ -2346,3 +2346,11 @@ nav[aria-label="Primary navigation"]{
   outline-offset:2px;
 }
 
+
+
+/* 079 — refine intel card focus state */
+.intel-card:focus-within{
+  border-color:rgba(34,211,238,.18);
+  box-shadow:0 8px 24px rgba(0,0,0,.14);
+}
+
