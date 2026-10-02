@@ -6439,3 +6439,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 994 */
 @media(max-width:640px){#route-status-overlay{padding:10px 11px;gap:6px;}}
+
+
+/* 995 */
+@media(max-width:640px){#map-intelligence-hud .intel-card{padding:11px 12px;min-width:0;}}
