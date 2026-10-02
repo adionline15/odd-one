@@ -5351,3 +5351,7 @@ nav[aria-label="Primary navigation"] .brand{color:#f5f5f5;}
 
 /* 737 */
 @media(max-width:640px){#desktop-stats-container{padding:10px 12px;}}
+
+
+/* 738 */
+@media(max-width:640px){#desktop-stats-container{gap:8px;}}
