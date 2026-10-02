@@ -5719,3 +5719,7 @@ a[href]{cursor:pointer;}
 
 /* 829 */
 #sidebar .route-control-group{background:rgba(255,255,255,.012);}
+
+
+/* 830 */
+#sidebar .route-control-group:focus-within{border-color:rgba(34,211,238,.13);}
