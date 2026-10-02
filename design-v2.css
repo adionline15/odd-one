@@ -1218,3 +1218,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  .intel-value{font-weight:650;}
 
  .intel-muted{line-height:1.4;}
+
+ .intel-meta{gap:7px;}
