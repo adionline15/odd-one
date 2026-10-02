@@ -5507,3 +5507,7 @@ a[href]{cursor:pointer;}
 
 /* 776 */
 .provenanceRow{background:rgba(255,255,255,.018);border-radius:9px;}
+
+
+/* 777 */
+.provenanceRow .text-xs{color:rgba(255,255,255,.52);}
