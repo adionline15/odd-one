@@ -397,3 +397,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* approx badge */
 #route-status-overlay.route-approx #route-status-source{color:#f59e0b!important;}
+
+/* provider badge */
+#route-status-overlay:not(.route-approx) #route-status-source{color:#67e8f9!important;}
