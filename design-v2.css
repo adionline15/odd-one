@@ -5695,3 +5695,7 @@ a[href]{cursor:pointer;}
 
 /* 823 */
 @media(min-width:641px) and (max-width:1100px){#sidebar .route-control-group{gap:7px;}}
+
+
+/* 824 */
+@media(max-width:640px){#sidebar .route-control-group{gap:8px;}}
