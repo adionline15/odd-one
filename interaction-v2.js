@@ -110,4 +110,9 @@
     document.querySelectorAll('#mt-alerts,#mt-route,#mt-data').forEach(b=>b.addEventListener('click',()=>setTimeout(sync,0))); sync();
   });
   ready(() => document.querySelectorAll('[role="tab"]').forEach(tab=>tab.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight'].includes(e.key))return;const tabs=[...document.querySelectorAll('[role="tab"]')];const i=tabs.indexOf(e.currentTarget);tabs[(i+(e.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length]?.focus();})));
+  ready(() => {
+    const sheet=document.getElementById('sheet'), toggle=document.getElementById('sheet-toggle'); if(!sheet||!toggle)return;
+    const sync=()=>toggle.setAttribute('aria-expanded',sheet.classList.contains('open')?'true':'false');
+    new MutationObserver(sync).observe(sheet,{attributes:true,attributeFilter:['class']}); sync();
+  });
 })();
