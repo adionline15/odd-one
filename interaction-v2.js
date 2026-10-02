@@ -146,4 +146,5 @@
   ready(() => { const box=document.getElementById('route-status-overlay'); if(!box)return; const sync=()=>box.setAttribute('data-trust',box.classList.contains('route-approx')?'approximate':'provider'); new MutationObserver(sync).observe(box,{attributes:true,attributeFilter:['class']}); sync(); });
   ready(() => { const s=document.getElementById('sheet'); if(!s)return; new MutationObserver(()=>s.dataset.mode=s.classList.contains('open')?'expanded':'collapsed').observe(s,{attributes:true,attributeFilter:['class']}); });
   ready(() => { const b=document.getElementById('toggle-btn'); if(!b)return; const s=document.getElementById('sidebar'); new MutationObserver(()=>b.setAttribute('aria-expanded',s?.classList.contains('hidden')?'false':'true')).observe(s,{attributes:true,attributeFilter:['class']}); });
+  ready(() => ['btn-map','btn-sat'].forEach(id=>document.getElementById(id)?.addEventListener('click',()=>setTimeout(()=>document.getElementById('map')?.focus(),50))));
 })();
