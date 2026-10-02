@@ -3253,3 +3253,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 239 */
 #map-intelligence-hud{color:var(--oo-v2-text)}
+
+
+/* 240 */
+#map-intelligence-hud small{color:var(--oo-v2-muted)}
