@@ -1015,6 +1015,12 @@
       });
     }
 
+    function temporalStatusPill(state) {
+      const label = state === 'READY' ? 'VERIFIED' : state === 'AWAITING DATA' ? 'AWAITING DATA' : 'UNAVAILABLE';
+      const cls = state === 'READY' ? 'text-emerald-300 border-emerald-400/20 bg-emerald-400/5' : state === 'AWAITING DATA' ? 'text-amber-300 border-amber-400/20 bg-amber-400/5' : 'text-rose-300 border-rose-400/20 bg-rose-400/5';
+      return '<span class="px-2 py-1 rounded-full border text-[7px] font-bold tracking-[.16em] '+cls+'">'+label+'</span>';
+    }
+
     function renderTemporalChangeIntelligence(observations) {
       const records = Array.isArray(observations) ? observations : [];
       const temporal = records.filter(observation => {
