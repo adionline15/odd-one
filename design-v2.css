@@ -1576,3 +1576,5 @@ html.is-desktop footer{font-size:9px;}
 @media(min-width:1101px){#observation-status-strip .intel-card{border-radius:15px!important;}}
 
 @media(max-width:640px){.leaflet-control-zoom{box-shadow:0 12px 28px rgba(0,0,0,.45)!important;}}
+
+@media(max-width:640px){.leaflet-control-layers{box-shadow:0 14px 34px rgba(0,0,0,.48);}}
