@@ -3469,3 +3469,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 293 */
 @media (min-width:1101px){#s-input{min-height:46px}}
+
+
+/* 294 */
+@media (min-width:1101px){#s-input{border-radius:13px}}
