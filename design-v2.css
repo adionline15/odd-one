@@ -3841,3 +3841,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 386 */
 @media (max-width:640px){#intelligence-hero [class*="meta"]{gap:8px}}
+
+
+/* 387 */
+@media (max-width:640px){#sidebar{border-radius:14px}}
