@@ -4971,3 +4971,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 642 */
 #sidebar input::selection{background:rgba(34,211,238,.24);color:#fff;}
+
+
+/* 643 */
+#sidebar button{font-weight:600;}
