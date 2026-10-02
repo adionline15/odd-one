@@ -3493,3 +3493,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 299 */
 @media (min-width:1101px){#sidebar{border-radius:16px}}
+
+
+/* 300 */
+@media (min-width:1101px){#sidebar{box-shadow:0 18px 48px rgba(0,0,0,.18)}}
