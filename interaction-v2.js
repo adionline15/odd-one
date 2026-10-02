@@ -154,4 +154,5 @@
   ready(() => { const m=document.getElementById('map'); if(m)m.dataset.product='road-intelligence'; });
   ready(() => document.getElementById('d-alerts-box')?.setAttribute('role','region'));
   ready(() => document.getElementById('d-alerts-box')?.setAttribute('aria-label','Current road alert feed'));
+  ready(() => document.getElementById('m-alerts-box')?.setAttribute('role','region'));
 })();
