@@ -1198,3 +1198,5 @@ a{transition:color .16s ease,opacity .16s ease;}
 input{transition:border-color .16s ease,box-shadow .16s ease,background-color .16s ease;}
 
 ::selection{background:rgba(34,211,238,.18);color:#fff;}
+
+*::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:999px;}
