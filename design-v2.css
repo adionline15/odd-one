@@ -3737,3 +3737,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 360 */
 @media (min-width:1101px){#d-go-btn:hover{filter:brightness(1.04)}}
+
+
+/* 361 */
+@media (min-width:641px) and (max-width:1100px){nav[aria-label="Primary navigation"]{gap:12px}}
