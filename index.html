@@ -939,6 +939,7 @@ body>footer{letter-spacing:.08em!important}
     let observationRequestId = 0;
     let observationAbortController = null;
     let observationSummaryRequestId = 0;
+    let roadChangeRequestId = 0;
     let routeAbortController = null;
 
     function clearObservationLayers() {
@@ -1213,6 +1214,7 @@ body>footer{letter-spacing:.08em!important}
     }
 
     async function loadRoadChangesInView() {
+      const requestId = ++roadChangeRequestId;
       const bounds = map.getBounds();
       const params = new URLSearchParams({
         minLat: bounds.getSouth().toFixed(6),
@@ -1226,6 +1228,7 @@ body>footer{letter-spacing:.08em!important}
         });
         if (!response.ok) throw new Error('Road change API request failed');
         const payload = await response.json();
+        if (requestId !== roadChangeRequestId) return;
         if (payload.api_version !== 'road-change-v1') throw new Error('Unsupported road change API version');
         const changes = Array.isArray(payload.changes) ? payload.changes : [];
         renderTemporalChangeIntelligence(changes.map(change => ({
@@ -1238,6 +1241,7 @@ body>footer{letter-spacing:.08em!important}
           }
         })));
       } catch (error) {
+        if (requestId !== roadChangeRequestId) return;
         renderTemporalChangeIntelligence([]);
       }
     }
