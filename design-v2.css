@@ -3897,3 +3897,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 400 */
 @media (max-width:640px){#route-status-overlay{border-color:rgba(255,255,255,.11)}}
+
+
+/* 401 */
+@media (max-width:640px){.route-endpoint-label{padding:4px 7px}}
