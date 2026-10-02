@@ -3205,3 +3205,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 227 */
 #d-go-btn,#m-go-btn{font-weight:650}
+
+
+/* 228 */
+#d-go-btn,#m-go-btn{transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease}
