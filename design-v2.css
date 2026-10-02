@@ -427,3 +427,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* provenance */
 .provenanceRow{color:#71717a;}
+
+/* empty card */
+#d-alerts-box .text-center,#m-alerts-box .text-center{border-radius:14px!important;}
