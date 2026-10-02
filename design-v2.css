@@ -1464,3 +1464,5 @@ html.is-desktop footer{font-size:9px;}
  .leaflet-popup-pane{z-index:700;}
 
  .leaflet-tooltip-pane{z-index:650;}
+
+ #map{min-height:320px;}
