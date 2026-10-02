@@ -1180,3 +1180,5 @@ button:disabled{cursor:not-allowed!important;}
  #intelligence-hero{isolation:isolate;}
 
  #intelligence-hero{overflow:clip;}
+
+ #map-intelligence-hud{pointer-events:none;}
