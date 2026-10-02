@@ -1322,3 +1322,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  #intelligence-hero h2{overflow-wrap:anywhere;}
 
  #intelligence-hero .mt-4{flex-wrap:wrap;}
+
+ #intelligence-hero .mt-4{gap:6px;}
