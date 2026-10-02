@@ -2200,3 +2200,12 @@ nav[aria-label="Primary navigation"]{
     box-shadow:0 0 0 2px rgba(34,211,238,.16),0 8px 20px rgba(0,0,0,.16);
   }
 }
+
+
+/* 061 — refine mobile hero title spacing */
+@media (max-width:640px){
+  #intelligence-hero h1{
+    margin-bottom:10px;
+    line-height:1.05;
+  }
+}
