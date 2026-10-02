@@ -3693,3 +3693,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 349 */
 @media (min-width:1101px){#sidebar h2,#sidebar h3{line-height:1.2}}
+
+
+/* 350 */
+@media (min-width:1101px){#sidebar label{color:rgba(245,245,245,.68)}}
