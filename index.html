@@ -935,6 +935,16 @@
       });
     });
 
+    function updateObservationStatus(count, state='READY') {
+      const countEl = document.getElementById('obs-status-count');
+      const stateEl = document.getElementById('obs-status-state');
+      const dot = document.getElementById('obs-status-dot');
+      if (!countEl || !stateEl || !dot) return;
+      countEl.textContent = Number.isFinite(count) ? String(count) : '--';
+      stateEl.textContent = state;
+      dot.className = 'w-1.5 h-1.5 rounded-full ' + (state === 'READY' ? 'bg-emerald-400' : state === 'NO DATA' ? 'bg-amber-400' : 'bg-rose-400');
+    }
+
     function applyObservationFilters() {
       const typeValues = Array.from(document.querySelectorAll('.obs-filter-type')).map(el => el.value);
       const sourceValues = Array.from(document.querySelectorAll('.obs-filter-source')).map(el => el.value);
