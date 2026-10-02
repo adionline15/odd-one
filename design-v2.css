@@ -6423,3 +6423,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 990 */
 #route-status-path{line-height:1.45;max-width:38ch;}
+
+
+/* 991 */
+#map-intelligence-hud .intel-card{min-width:76px;}
