@@ -6331,3 +6331,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 636 */
 #sidebar .space-y-3>button,#sidebar .space-y-4>button{border-radius:12px;}
+
+
+/* 637 */
+#sidebar .space-y-3>button,#sidebar .space-y-4>button{font-weight:650;}
