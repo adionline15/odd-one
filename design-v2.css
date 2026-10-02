@@ -6003,3 +6003,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 900 */
 @media(max-width:640px){#route-status-distance,#route-status-time{font-size:.95rem;}}
+
+
+/* 901 */
+@media(max-width:640px){#observation-status-strip{border-radius:12px;}}
