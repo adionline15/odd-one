@@ -2234,3 +2234,11 @@ nav[aria-label="Primary navigation"]{
     border-top-color:rgba(255,255,255,.11);
   }
 }
+
+
+/* 065 — refine mobile route field radius */
+@media (max-width:640px){
+  #sidebar input{
+    border-radius:12px;
+  }
+}
