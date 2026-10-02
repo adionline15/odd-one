@@ -4729,3 +4729,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 585 */
 .leaflet-popup-close-button{width:28px!important;height:28px!important;display:grid!important;place-items:center;top:5px!important;right:5px!important;border-radius:8px;}
+
+
+/* 586 */
+.leaflet-popup-close-button:hover{background:rgba(255,255,255,.06);box-shadow:inset 0 1px 0 rgba(255,255,255,.04);}
