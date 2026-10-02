@@ -1152,3 +1152,5 @@ body>footer{background:#050505!important;border-color:rgba(255,255,255,.06)!impo
 :focus-visible{outline:2px solid rgba(34,211,238,.72)!important;outline-offset:3px!important;}
 
 button:disabled{cursor:not-allowed!important;}
+
+@media(prefers-reduced-motion:reduce){button:hover,#d-alerts-box>div:hover,#m-alerts-box>div:hover{transform:none!important;}}
