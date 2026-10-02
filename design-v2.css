@@ -5195,3 +5195,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 698 */
 .leaflet-popup-content-wrapper{box-shadow:0 18px 42px rgba(0,0,0,.3)!important;}
+
+
+/* 699 */
+.leaflet-popup-content{line-height:1.45;}
