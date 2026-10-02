@@ -6459,3 +6459,8 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 999 */
 @media(max-width:640px){#route-status-path{max-width:28ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}}
+
+
+/* 1000 */
+#map-command-deck,.map-layer-switcher,#map-intelligence-hud,#route-status-overlay,#observation-status-strip{will-change:auto;contain:layout paint;}
+@media(max-width:640px){#map-command-deck,.map-layer-switcher,#map-intelligence-hud,#route-status-overlay,#observation-status-strip{contain:layout paint;}}
