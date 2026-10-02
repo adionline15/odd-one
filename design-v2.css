@@ -2386,3 +2386,11 @@ nav[aria-label="Primary navigation"]{
     padding:14px;
   }
 }
+
+
+/* 084 — improve desktop route field height */
+@media (min-width:1101px){
+  #sidebar input{
+    min-height:42px;
+  }
+}
