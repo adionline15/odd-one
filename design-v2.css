@@ -3017,3 +3017,7 @@ nav[aria-label="Primary navigation"]{
 
 /* 180 */
 #observation-status-strip{line-height:1.45}
+
+
+/* 181 */
+@media (max-width:640px){#sheet::before{margin-bottom:10px}}
