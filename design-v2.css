@@ -1528,3 +1528,5 @@ html.is-desktop footer{font-size:9px;}
 @media(min-width:641px) and (max-width:1100px){.leaflet-control-zoom a{width:31px;}}
 
 @media(min-width:1101px){.leaflet-control-zoom a{width:32px;}}
+
+@media(max-width:640px){.leaflet-control-layers{font-size:9px;}}
