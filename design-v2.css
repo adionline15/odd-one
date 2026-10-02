@@ -5663,3 +5663,7 @@ a[href]{cursor:pointer;}
 
 /* 815 */
 @media(max-width:640px){#route-notice{padding:10px 11px;}}
+
+
+/* 816 */
+@media(max-width:640px){#generated-guide{padding:12px 13px;}}
