@@ -2372,3 +2372,9 @@ nav[aria-label="Primary navigation"]{
     letter-spacing:-.015em;
   }
 }
+
+
+/* 082 — improve sidebar section dividers */
+#sidebar hr{
+  border-color:rgba(255,255,255,.07);
+}
