@@ -2529,3 +2529,12 @@ nav[aria-label="Primary navigation"]{
     min-height:40px;
   }
 }
+
+
+/* 103 — refine mobile map HUD typography */
+@media (max-width:640px){
+  #map-intelligence-hud{
+    font-size:12px;
+    line-height:1.35;
+  }
+}
