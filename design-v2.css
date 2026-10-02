@@ -2110,3 +2110,11 @@ nav[aria-label="Primary navigation"]{
     padding-inline:12px;
   }
 }
+
+
+/* 050 — improve tablet sidebar spacing */
+@media (min-width:641px) and (max-width:1100px){
+  #sidebar{
+    padding-inline:14px;
+  }
+}
