@@ -185,4 +185,5 @@
   ready(() => { const m=document.getElementById('map'); if(!m)return; ['map','sat'].forEach(k=>document.getElementById('btn-'+k)?.addEventListener('click',()=>{m.dataset.layer=k;})); });
   ready(() => document.getElementById('search-result-count')?.setAttribute('aria-label','Search suggestion status'));
   ready(() => document.querySelectorAll('#d-from,#d-to,#m-from,#m-to').forEach(i=>i.addEventListener('input',()=>i.dataset.valid=i.value.trim()?'true':'false')));
+  ready(() => document.querySelectorAll('#d-from,#d-to,#m-from,#m-to').forEach(i=>i.setAttribute('aria-invalid','false')));
 })();
