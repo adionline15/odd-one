@@ -670,3 +670,6 @@ body>footer{opacity:.9;}
 
 /* route busy */
 #d-go-btn[aria-busy="true"],#m-go-btn[aria-busy="true"]{cursor:progress!important;}
+
+/* locate busy */
+#btn-loc[aria-busy="true"]{cursor:progress!important;opacity:.72;}
