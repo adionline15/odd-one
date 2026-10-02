@@ -137,4 +137,5 @@
   ready(() => { document.getElementById('route-status-distance')?.setAttribute('aria-label','Route distance'); document.getElementById('route-status-time')?.setAttribute('aria-label','Estimated route time'); });
   ready(() => document.getElementById('obs-status-count')?.setAttribute('aria-label','Approved observation count')); 
   ready(() => { const el=document.getElementById('obs-status-count'); if(!el)return; new MutationObserver(()=>{el.dataset.numeric=/^\d/.test(el.textContent.trim())?'true':'false';}).observe(el,{childList:true,characterData:true,subtree:true}); });
+  ready(() => { const box=document.getElementById('stats-content'); if(!box)return; new MutationObserver(()=>box.dataset.ready=box.textContent.trim()?'true':'false').observe(box,{childList:true,subtree:true}); });
 })();
