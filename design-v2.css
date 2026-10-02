@@ -2981,3 +2981,7 @@ nav[aria-label="Primary navigation"]{
 
 /* 171 */
 #d-alerts-box,#m-alerts-box{scrollbar-gutter:stable}
+
+
+/* 172 */
+#d-alerts-box,#m-alerts-box{scrollbar-width:thin}
