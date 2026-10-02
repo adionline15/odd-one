@@ -5859,3 +5859,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{background:rgba(255,
 
 /* 864 */
 nav[aria-label="Primary navigation"] a[aria-current="page"]{padding-inline:9px;}
+
+
+/* 865 */
+@media(max-width:640px){nav[aria-label="Primary navigation"] a[aria-current="page"]{padding-inline:8px;}}
