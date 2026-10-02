@@ -6195,3 +6195,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 948 */
 #observation-status-strip[data-state="live"] #obs-status-state{color:#b7f7d5;}
+
+
+/* 949 */
+#observation-status-strip[data-state="loading"] #obs-status-state{color:#f7d38a;}
