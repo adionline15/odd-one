@@ -3933,3 +3933,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 409 */
 @media (max-width:640px){.intel-card h3,.intel-card h4{line-height:1.25}}
+
+
+/* 410 */
+@media (max-width:640px){.intel-card p{color:rgba(245,245,245,.76)}}
