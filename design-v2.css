@@ -6319,3 +6319,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 979 */
 .error-state button{margin-top:9px;}
+
+
+/* 980 */
+.error-state button{border-radius:9px;}
