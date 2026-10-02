@@ -2619,3 +2619,9 @@ nav[aria-label="Primary navigation"]{
     border-color:rgba(34,211,238,.30);
   }
 }
+
+
+/* 114 — improve desktop route field transition */
+#sidebar input{
+  transition:border-color .18s ease,box-shadow .18s ease,background-color .18s ease;
+}
