@@ -244,3 +244,6 @@ body>footer{color:#52525b!important;}
 
 /* mobile hero copy */
 @media(max-width:640px){#intelligence-hero p{font-size:9px!important;}}
+
+/* mobile boundary */
+@media(max-width:640px){#hero-data-boundary{display:none;}}
