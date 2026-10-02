@@ -71,4 +71,9 @@
     const observer=new MutationObserver(restore);
     document.querySelectorAll('[id$="-route-out"]').forEach(el=>observer.observe(el,{childList:true,subtree:true}));
   });
+  ready(() => {
+    const sync=()=>{ const box=document.getElementById('route-status-overlay'), source=document.getElementById('route-status-source'); if(box&&source) box.dataset.source=source.textContent.includes('APPROX')?'approx':'provider'; };
+    const source=document.getElementById('route-status-source'); if(source) new MutationObserver(sync).observe(source,{childList:true,characterData:true,subtree:true});
+    sync();
+  });
 })();
