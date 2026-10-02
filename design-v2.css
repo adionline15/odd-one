@@ -133,3 +133,6 @@ body>footer{color:#52525b!important;}
 
 /* observation strip */
 #observation-status-strip{top:138px!important;}
+
+/* observation strip border */
+#observation-status-strip .intel-card{border-color:rgba(255,255,255,.12)!important;}
