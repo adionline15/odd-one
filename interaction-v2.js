@@ -197,4 +197,5 @@
   ready(() => document.getElementById('sugg')?.setAttribute('role','listbox'));
   ready(() => document.getElementById('s-input')?.setAttribute('data-search-mode','explicit'));
   ready(() => document.getElementById('intelligence-hero')?.setAttribute('data-surface-version','v2'));
+  ready(() => document.getElementById('map-intelligence-hud')?.setAttribute('data-surface-version','v2'));
 })();
