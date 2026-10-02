@@ -4243,3 +4243,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 499 */
 #hero-data-boundary{border-radius:10px}
+
+
+/* 500 */
+#hero-data-boundary{padding:8px 10px}
