@@ -4033,3 +4033,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 434 */
 @media (max-width:640px){#s-input::placeholder{font-size:.88rem}}
+
+
+/* 435 */
+@media (max-width:640px){#s-input{caret-color:var(--oo-v2-accent)}}
