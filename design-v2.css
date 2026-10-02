@@ -97,3 +97,6 @@ nav[aria-label="Primary navigation"] button[onclick*="showTab('route')"]{border-
 
 /* progressive */
 #map-intelligence-hud .intel-kicker{letter-spacing:.18em;}
+
+/* progressive */
+#observation-status-strip .intel-card{border-color:rgba(255,255,255,.11)!important;}
