@@ -721,3 +721,6 @@ body>footer{opacity:.9;}
 
 /* cyan token */
 #route-status-overlay:not(.route-approx) .route-status-dot{background:var(--oo-v2-cyan)!important;}
+
+/* surface token */
+.intel-card{background-color:var(--oo-v2-surface)!important;}
