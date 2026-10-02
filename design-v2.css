@@ -5003,3 +5003,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 650 */
 #d-alerts-box .alert-card small,#m-alerts-box .alert-card small{color:rgba(255,255,255,.48);font-variant-numeric:tabular-nums;}
+
+
+/* 651 */
+#d-alerts-box .alert-card+.alert-card,#m-alerts-box .alert-card+.alert-card{border-top-color:rgba(255,255,255,.055);}
