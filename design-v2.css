@@ -5059,3 +5059,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 664 */
 #map-intelligence-hud .intel-card{border-color:rgba(255,255,255,.065);}
+
+
+/* 665 */
+#map-intelligence-hud .intel-card:hover{background:rgba(255,255,255,.018);}
