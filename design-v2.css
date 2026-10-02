@@ -286,3 +286,6 @@ body>footer{color:#52525b!important;}
 
 /* tablet search */
 @media(min-width:641px) and (max-width:1100px){nav[aria-label="Primary navigation"] .max-w-md{max-width:360px!important;}}
+
+/* tablet hud */
+@media(min-width:769px) and (max-width:1100px){#map-intelligence-hud{display:none!important;}}
