@@ -5407,3 +5407,7 @@ nav[aria-label="Primary navigation"] .brand{color:#f5f5f5;}
 
 /* 751 */
 @media(min-width:641px) and (max-width:1100px){.map-layer-switcher{gap:4px;}}
+
+
+/* 752 */
+@media(min-width:641px) and (max-width:1100px){#map-intelligence-hud{max-width:360px;}}
