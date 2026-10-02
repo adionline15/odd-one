@@ -925,3 +925,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* trust marker mobile */
 @media(max-width:640px){#hero-data-boundary{font-size:6px!important;}}
+
+/* search shortcut */
+#s-input:focus{transform:translateY(-1px);}
