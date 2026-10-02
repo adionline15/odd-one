@@ -1770,3 +1770,7 @@ nav[aria-label="Primary navigation"] h1{font-weight:600!important;}
 
 /* refine hero vertical rhythm */
 #intelligence-hero>div{padding-top:19px!important;padding-bottom:19px!important;}
+
+
+/* strengthen hero metadata */
+#intelligence-hero .font-mono-lux{color:#71717a!important;}
