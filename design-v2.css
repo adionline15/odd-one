@@ -703,3 +703,6 @@ body>footer{opacity:.9;}
 
 /* token warning */
 :root{--oo-v2-warning:#f59e0b;}
+
+/* token error */
+:root{--oo-v2-error:#fb7185;}
