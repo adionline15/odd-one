@@ -448,3 +448,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* brand spacing */
 nav[aria-label="Primary navigation"] h1{word-spacing:-.04em;}
+
+/* nav metadata */
+nav[aria-label="Primary navigation"] .font-mono-lux{font-size:7px!important;}
