@@ -3509,3 +3509,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 303 */
 @media (min-width:1101px){#d-alerts-box{gap:14px}}
+
+
+/* 304 */
+@media (min-width:1101px){#d-alerts-box{overflow-x:hidden}}
