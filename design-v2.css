@@ -1250,3 +1250,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  .leaflet-marker-icon:focus{outline:2px solid rgba(34,211,238,.7);outline-offset:2px;}
 
  .leaflet-control-attribution{font-size:8px;}
+
+ .leaflet-control-attribution{opacity:.72;}
