@@ -3881,3 +3881,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 396 */
 @media (max-width:640px){#map-intelligence-hud{box-shadow:0 10px 28px rgba(0,0,0,.2)}}
+
+
+/* 397 */
+@media (max-width:640px){#map-layer-controls{border-radius:12px}}
