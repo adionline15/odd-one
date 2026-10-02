@@ -1630,3 +1630,5 @@ html[data-search-focus="true"] #search-wrap{box-shadow:0 0 0 3px rgba(34,211,238
 html[data-tab-key-action="activated"] [role="tab"]:focus-visible{outline-offset:4px;}
 
 html[data-keyboard="true"] button:focus-visible{outline-width:2px;}
+
+html[data-reduced-motion="true"] *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important;}
