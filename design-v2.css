@@ -5439,3 +5439,7 @@ nav[aria-label="Primary navigation"] .brand{color:#f5f5f5;}
 
 /* 759 */
 @media(min-width:1101px){#map-command-deck{gap:7px;}}
+
+
+/* 760 */
+@media(min-width:1101px){.map-layer-switcher{min-width:180px;}}
