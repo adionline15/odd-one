@@ -5611,3 +5611,7 @@ a[href]{cursor:pointer;}
 
 /* 802 */
 #generated-guide h3,#generated-guide h4{color:#f1f5f9;letter-spacing:-.01em;}
+
+
+/* 803 */
+#generated-guide p{color:rgba(255,255,255,.62);line-height:1.5;}
