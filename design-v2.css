@@ -2603,3 +2603,11 @@ nav[aria-label="Primary navigation"]{
     transform:translateY(-2px);
   }
 }
+
+
+/* 112 — improve desktop alert card glow */
+@media (min-width:1101px){
+  #d-alerts-box .intel-card:hover{
+    box-shadow:0 12px 26px rgba(0,0,0,.16);
+  }
+}
