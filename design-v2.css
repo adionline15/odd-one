@@ -4645,3 +4645,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 565 */
 #dp-data>.intel-card h3,#mp-data .intel-card h3{letter-spacing:-.018em;line-height:1.2;}
+
+
+/* 566 */
+#dp-data>.intel-card p,#mp-data .intel-card p{color:rgba(245,245,245,.7);line-height:1.6;}
