@@ -1030,3 +1030,5 @@ body>footer{background:#050505!important;border-color:rgba(255,255,255,.06)!impo
 #intelligence-hero>div{transform-origin:top left;}
 
 #intelligence-hero>div{backface-visibility:hidden;}
+
+#intelligence-hero>div{background-color:rgba(8,8,10,.88)!important;}
