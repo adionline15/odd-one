@@ -376,3 +376,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* map control focus */
 #map-layer-controls button:focus-visible{border-color:rgba(34,211,238,.35)!important;}
+
+/* loading state */
+#observation-status-strip[data-state="loading"] #obs-status-dot{box-shadow:0 0 0 5px rgba(245,158,11,.07),0 0 10px rgba(245,158,11,.18)!important;}
