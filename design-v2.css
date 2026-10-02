@@ -2418,3 +2418,10 @@ nav[aria-label="Primary navigation"]{
     border-radius:12px;
   }
 }
+
+
+/* 088 — improve map HUD edge clarity */
+#map-intelligence-hud{
+  outline:1px solid rgba(255,255,255,.025);
+  outline-offset:-1px;
+}
