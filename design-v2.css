@@ -1666,3 +1666,5 @@ button{user-select:none;}
 #sidebar,#sheet,#intelligence-hero,#map-intelligence-hud{isolation:isolate;}
 
 #map{overflow:hidden;}
+
+#intelligence-hero{overflow:hidden;}
