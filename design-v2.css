@@ -2225,3 +2225,12 @@ nav[aria-label="Primary navigation"]{
     color:rgba(255,255,255,.86);
   }
 }
+
+
+/* 064 — improve mobile sidebar separation */
+@media (max-width:640px){
+  #sidebar{
+    box-shadow:0 -12px 30px rgba(0,0,0,.20);
+    border-top-color:rgba(255,255,255,.11);
+  }
+}
