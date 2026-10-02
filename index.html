@@ -1012,7 +1012,7 @@ body>footer{letter-spacing:.08em!important}
         ? lastObservationLoadAt.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' })
         : '—';
       document.querySelectorAll('.obs-layer-meta').forEach(el => {
-        el.textContent = observationViewportKey ? `Verified viewport · ${stamp}` : 'Viewport · waiting';
+        el.textContent = observationViewportKey ? `Approved viewport · ${stamp}` : 'Viewport · waiting';
       });
     }
 
