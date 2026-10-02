@@ -922,3 +922,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* explicit boundary */
 #hero-data-boundary[data-trust="explicit"]{opacity:.8;}
+
+/* trust marker mobile */
+@media(max-width:640px){#hero-data-boundary{font-size:6px!important;}}
