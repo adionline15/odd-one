@@ -556,3 +556,6 @@ body>footer{opacity:.9;}
 
 /* mobile tab typography */
 #sheet .flex.border-b button{letter-spacing:.14em!important;}
+
+/* mobile content */
+#sheet>.flex-1.overflow-y-auto{padding:15px!important;}
