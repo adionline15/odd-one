@@ -5447,3 +5447,7 @@ nav[aria-label="Primary navigation"] .brand{color:#f5f5f5;}
 
 /* 761 */
 @media(min-width:1101px){#map-intelligence-hud{min-width:240px;}}
+
+
+/* 762 */
+@media(min-width:1101px){#route-status-overlay{min-width:300px;}}
