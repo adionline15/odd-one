@@ -5515,3 +5515,7 @@ a[href]{cursor:pointer;}
 
 /* 778 */
 .provenanceRow{padding:8px 10px;}
+
+
+/* 779 */
+.provenanceRow+.provenanceRow{margin-top:5px;}
