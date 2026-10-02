@@ -5031,3 +5031,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 657 */
 #desktop-stats-container>div{transition:background-color .18s ease,transform .18s ease;}
+
+
+/* 658 */
+#desktop-stats-container>div:hover{background:rgba(255,255,255,.018);transform:translateY(-1px);}
