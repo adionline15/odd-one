@@ -3217,3 +3217,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 230 */
 #d-alerts-box .intel-card,#m-alerts-box .intel-card{border-radius:14px}
+
+
+/* 231 */
+#d-alerts-box .intel-card h3,#m-alerts-box .intel-card h3{margin-bottom:6px}
