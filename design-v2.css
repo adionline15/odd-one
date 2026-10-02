@@ -1714,3 +1714,7 @@ nav[aria-label="Primary navigation"] h1{font-weight:600!important;}
 
 /* refine sidebar tab density */
 #sidebar .flex.border-b button{font-size:9px!important;}
+
+
+/* improve sidebar section rhythm */
+#sidebar>.flex-1.overflow-y-auto{padding-top:18px!important;}
