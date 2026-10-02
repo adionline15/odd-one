@@ -1100,3 +1100,5 @@ body>footer{background:#050505!important;border-color:rgba(255,255,255,.06)!impo
 #map-layer-controls{box-shadow:0 22px 60px rgba(0,0,0,.46)!important;}
 
 #map-layer-controls{border-color:rgba(255,255,255,.095)!important;}
+
+#map-layer-controls button{height:34px!important;}
