@@ -1642,3 +1642,5 @@ html.is-mobile.is-offline #search-wrap{opacity:.78;}
 html.is-mobile.is-online #search-wrap{opacity:1;}
 
 body{letter-spacing:0;}
+
+button,input{font-family:inherit;}
