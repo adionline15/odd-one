@@ -63,4 +63,7 @@
     const ro=new ResizeObserver(()=>window.map?.invalidateSize?.({pan:false}));
     ro.observe(mapEl);
   });
+  ready(() => {
+    ['d-go-btn','m-go-btn'].forEach(id => document.getElementById(id)?.addEventListener('click', e => e.currentTarget.setAttribute('aria-busy','true')));
+  });
 })();
