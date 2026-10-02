@@ -412,3 +412,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* unavailable stat */
 #stat-gap-val{font-family:'JetBrains Mono',monospace!important;font-size:10px!important;}
+
+/* route outputs */
+[id$="-route-out"]>div{border-color:rgba(255,255,255,.08)!important;}
