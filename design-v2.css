@@ -1612,3 +1612,5 @@ html.is-desktop footer{font-size:9px;}
 @media(min-width:641px) and (max-width:1100px){#d-alerts-box{gap:8px;}}
 
 @media(min-width:1101px){#d-alerts-box{gap:9px;}}
+
+@media(max-width:640px){#dp-data .space-y-4{gap:8px!important;}}
