@@ -6163,3 +6163,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 940 */
 .map-layer-switcher{padding:5px;}
+
+
+/* 941 */
+.map-layer-switcher{border-radius:13px;}
