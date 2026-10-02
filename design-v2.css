@@ -1368,3 +1368,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  #dp-data .intel-card{padding:12px!important;}
 
  #dp-data .space-y-4{gap:10px!important;}
+
+ #dp-data .intel-muted{font-size:9px;}
