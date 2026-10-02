@@ -1154,3 +1154,5 @@ body>footer{background:#050505!important;border-color:rgba(255,255,255,.06)!impo
 button:disabled{cursor:not-allowed!important;}
 
 @media(prefers-reduced-motion:reduce){button:hover,#d-alerts-box>div:hover,#m-alerts-box>div:hover{transform:none!important;}}
+
+.text-zinc-600{color:#686871!important;}
