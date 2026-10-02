@@ -1392,3 +1392,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
 html[data-surface-ready="true"] #map{opacity:1;}
 
 html.is-online #search-wrap{border-color:rgba(255,255,255,.1)!important;}
+
+html.is-offline #search-wrap{opacity:.82;}
