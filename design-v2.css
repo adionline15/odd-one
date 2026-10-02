@@ -2299,3 +2299,10 @@ nav[aria-label="Primary navigation"]{
     letter-spacing:-.02em;
   }
 }
+
+
+/* 073 — refine map HUD text hierarchy */
+#map-intelligence-hud strong{
+  letter-spacing:-.015em;
+}
+
