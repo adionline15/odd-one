@@ -3781,3 +3781,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 371 */
 @media (min-width:641px) and (max-width:1100px){#map-intelligence-hud{border-radius:13px}}
+
+
+/* 372 */
+@media (min-width:641px) and (max-width:1100px){#map-intelligence-hud{border-color:rgba(255,255,255,.1)}}
