@@ -235,3 +235,6 @@ body>footer{color:#52525b!important;}
 
 /* mobile hero width */
 @media(max-width:640px){#intelligence-hero{max-width:calc(100vw - 28px)!important;}}
+
+/* mobile hero padding */
+@media(max-width:640px){#intelligence-hero>div{padding:14px 15px!important;}}
