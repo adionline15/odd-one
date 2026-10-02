@@ -2192,3 +2192,11 @@ nav[aria-label="Primary navigation"]{
     transform:translateY(-1px);
   }
 }
+
+
+/* 060 — strengthen mobile search focus */
+@media (max-width:640px){
+  #s-input:focus{
+    box-shadow:0 0 0 2px rgba(34,211,238,.16),0 8px 20px rgba(0,0,0,.16);
+  }
+}
