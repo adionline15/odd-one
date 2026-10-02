@@ -484,3 +484,6 @@ body>footer{opacity:.9;}
 
 /* popup spacing */
 .leaflet-popup-content{margin:13px 15px!important;}
+
+/* popup shadow */
+.leaflet-popup-content-wrapper{box-shadow:0 28px 70px rgba(0,0,0,.62)!important;}
