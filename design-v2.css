@@ -733,3 +733,6 @@ body>footer{opacity:.9;}
 
 /* sidebar token */
 #sidebar{background:var(--oo-v2-bg)!important;}
+
+/* sheet token */
+#sheet{background:rgba(5,5,5,.97)!important;}
