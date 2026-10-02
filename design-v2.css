@@ -1738,3 +1738,7 @@ nav[aria-label="Primary navigation"] h1{font-weight:600!important;}
 
 /* refine map layer control contrast */
 #map-layer-controls{border-color:rgba(113,113,122,.32)!important;}
+
+
+/* improve map layer active state */
+#map-layer-controls button[aria-pressed="true"]{border-color:rgba(34,211,238,.3)!important;background:rgba(34,211,238,.06)!important;}
