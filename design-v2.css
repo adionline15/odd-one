@@ -3185,3 +3185,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 222 */
 #observation-status-strip{background:rgba(255,255,255,.025)}
+
+
+/* 223 */
+#observation-status-strip strong{color:var(--oo-v2-text)}
