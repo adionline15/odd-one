@@ -976,3 +976,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* final hero text */
 #intelligence-hero h2{color:#fafafa!important;}
+
+/* final hero muted */
+#intelligence-hero p{color:#8a8a92!important;}
