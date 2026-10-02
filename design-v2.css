@@ -6283,3 +6283,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 970 */
 .alert-title{margin-bottom:3px;}
+
+
+/* 971 */
+.alert-body{color:rgba(255,255,255,.64);}
