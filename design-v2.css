@@ -2152,3 +2152,11 @@ nav[aria-label="Primary navigation"]{
     font-size:12px;
   }
 }
+
+
+/* 055 — refine mobile card radius */
+@media (max-width:640px){
+  .intel-card{
+    border-radius:14px;
+  }
+}
