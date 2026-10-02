@@ -4725,3 +4725,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 584 */
 .map-deck-icon-btn:focus-visible{background:rgba(20,20,24,.94);box-shadow:0 0 0 3px rgba(34,211,238,.1),inset 0 0 0 1px rgba(34,211,238,.3);}
+
+
+/* 585 */
+.leaflet-popup-close-button{width:28px!important;height:28px!important;display:grid!important;place-items:center;top:5px!important;right:5px!important;border-radius:8px;}
