@@ -5991,3 +5991,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 897 */
 @media(max-width:640px){#route-status-overlay{font-size:.78rem;}}
+
+
+/* 898 */
+@media(max-width:640px){#route-status-overlay{padding:10px 11px;}}
