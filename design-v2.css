@@ -2134,3 +2134,12 @@ nav[aria-label="Primary navigation"]{
     max-width:calc(100vw - 28px);
   }
 }
+
+
+/* 053 — refine route overlay mobile width */
+@media (max-width:640px){
+  #route-status-overlay{
+    max-width:calc(100vw - 24px);
+    margin-inline:12px;
+  }
+}
