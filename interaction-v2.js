@@ -218,4 +218,5 @@
   ready(() => document.querySelector('.route-status-dot')?.setAttribute('aria-hidden','true'));
   ready(() => document.querySelector('nav[aria-label="Primary navigation"] .text-zinc-800')?.setAttribute('aria-hidden','true'));
   ready(() => document.getElementById('hero-data-boundary')?.setAttribute('data-trust','explicit'));
+  ready(() => document.querySelector('#dp-data .intel-card')?.setAttribute('data-trust','approved-only'));
 })();
