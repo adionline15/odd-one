@@ -251,6 +251,8 @@ body>footer{letter-spacing:.08em!important}
 
 .intel-card,.leaflet-popup-content-wrapper,#sugg{backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}@media(max-width:640px){#observation-status-strip{left:12px!important;right:12px!important}.intel-card{border-radius:13px}}
 
+#map-layer-controls{padding:6px;border:1px solid rgba(63,63,70,.62);border-radius:16px;background:rgba(5,5,5,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 18px 45px rgba(0,0,0,.34)}#map-layer-controls button{min-width:118px;justify-content:flex-start;border-radius:10px!important;background:rgba(10,10,10,.72)}#map-layer-controls button:hover{border-color:rgba(161,161,170,.45)}@media(max-width:640px){#map-layer-controls{padding:5px;border-radius:14px}#map-layer-controls button{min-width:104px;padding-top:9px;padding-bottom:9px}}
+
 #map{box-shadow:inset 0 0 120px rgba(0,0,0,.12)}.leaflet-container{font-family:'Plus Jakarta Sans',sans-serif}
 </style>
 </head>
@@ -480,7 +482,7 @@ body>footer{letter-spacing:.08em!important}
     </div>
 
     <!-- ── MAP LAYERS FLOATING CONTROLS (BOTTOM RIGHT) ── -->
-    <div class="absolute bottom-16 sm:bottom-6 right-4 z-40 flex flex-col gap-2">
+    <div id="map-layer-controls" aria-label="Map display controls" class="absolute bottom-16 sm:bottom-6 right-4 z-40 flex flex-col gap-2">
       <button id="btn-map" class="bg-black/80 hover:bg-zinc-900 text-zinc-300 hover:text-white border border-zinc-800 text-[10px] font-semibold tracking-wider uppercase px-4 py-2.5 rounded-full shadow-2xl transition-all cursor-pointer on flex items-center gap-1.5" onclick="setTile('map')">
         <span class="w-1.5 h-1.5 rounded-full bg-white"></span> Map
       </button>
