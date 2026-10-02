@@ -1660,3 +1660,5 @@ html,body{height:100%;}
 body{width:100%;}
 
 input,textarea{user-select:text;}
+
+button{user-select:none;}
