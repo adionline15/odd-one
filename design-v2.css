@@ -2447,3 +2447,11 @@ nav[aria-label="Primary navigation"]{
     border-radius:14px;
   }
 }
+
+
+/* 092 — improve desktop card border contrast */
+@media (min-width:1101px){
+  .intel-card{
+    border-color:rgba(255,255,255,.095);
+  }
+}
