@@ -3165,3 +3165,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 217 */
 #intelligence-hero h1{line-height:1.04}
+
+
+/* 218 */
+#intelligence-hero [class*="meta"]{align-items:center}
