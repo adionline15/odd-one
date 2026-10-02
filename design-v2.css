@@ -3601,3 +3601,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 326 */
 @media (min-width:1101px){.intel-card{padding:18px}}
+
+
+/* 327 */
+@media (min-width:1101px){.intel-card p{max-width:60ch}}
