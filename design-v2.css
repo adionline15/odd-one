@@ -634,3 +634,6 @@ body>footer{opacity:.9;}
 
 /* hero headline line */
 #intelligence-hero h2{line-height:1.04!important;}
+
+/* hero title balance */
+#intelligence-hero h2{max-width:390px;}
