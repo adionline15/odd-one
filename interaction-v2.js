@@ -282,3 +282,5 @@ document.documentElement.dataset.oddOneNetwork=navigator.onLine?'online':'offlin
 document.documentElement.lang=document.documentElement.lang||'en';
 
 document.addEventListener('focusin',e=>e.target?.setAttribute('data-focus-visible','true'));
+
+document.addEventListener('focusout',e=>e.target?.removeAttribute('data-focus-visible'));
