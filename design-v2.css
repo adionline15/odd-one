@@ -4287,3 +4287,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 480 */
 #route-status-overlay{backdrop-filter:blur(12px)}
+
+
+/* 481 */
+#observation-status-strip{border:1px solid rgba(255,255,255,.1)}
