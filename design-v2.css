@@ -4765,3 +4765,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 594 */
 @media(max-width:640px){#map-command-deck{filter:drop-shadow(0 12px 28px rgba(0,0,0,.25));}.map-layer-switcher{box-shadow:0 14px 34px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.035);}}
+
+
+/* 595 */
+@media(max-width:640px){.map-deck-btn{font-weight:700;letter-spacing:.07em;}.map-deck-icon-btn{box-shadow:0 10px 26px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.03);}}
