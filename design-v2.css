@@ -3861,3 +3861,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 391 */
 @media (max-width:640px){#sidebar input{box-shadow:0 5px 16px rgba(0,0,0,.12)}}
+
+
+/* 392 */
+@media (max-width:640px){#sidebar input:focus{box-shadow:0 0 0 3px rgba(34,211,238,.08)}}
