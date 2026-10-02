@@ -280,3 +280,6 @@ body>footer{color:#52525b!important;}
 
 /* tablet hero */
 @media(min-width:641px) and (max-width:1100px){#intelligence-hero{max-width:380px;}}
+
+/* tablet hero headline */
+@media(min-width:641px) and (max-width:1100px){#intelligence-hero h2{font-size:24px!important;}}
