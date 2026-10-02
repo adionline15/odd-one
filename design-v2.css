@@ -1406,3 +1406,5 @@ html.sheet-visible #sheet{opacity:1;}
 #search-wrap[data-search-active="true"]{border-color:rgba(34,211,238,.2)!important;}
 
 #sidebar [data-route-focus="true"]{border-color:rgba(34,211,238,.18)!important;}
+
+html[data-surface-ready="true"] #intelligence-hero,html[data-surface-ready="true"] #sidebar{visibility:visible;}
