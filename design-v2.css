@@ -4061,3 +4061,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 441 */
 @media (min-width:641px) and (max-width:1100px){#desktop-stats-container{border-radius:13px}}
+
+
+/* 442 */
+@media (min-width:641px) and (max-width:1100px){#desktop-stats-container{padding:11px 13px}}
