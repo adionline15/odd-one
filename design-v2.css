@@ -1843,3 +1843,9 @@ nav[aria-label="Primary navigation"] h1{font-weight:600!important;}
     text-shadow:0 0 14px rgba(255,255,255,.10);
   }
 }
+
+
+/* 018 — sharpen navigation bar separation */
+nav[aria-label="Primary navigation"]{
+  box-shadow:0 1px 0 rgba(255,255,255,.055),0 10px 32px rgba(0,0,0,.16);
+}
