@@ -667,3 +667,6 @@ body>footer{opacity:.9;}
 
 /* search active */
 #s-input[aria-busy="true"]{background:rgba(24,24,27,.9)!important;}
+
+/* route busy */
+#d-go-btn[aria-busy="true"],#m-go-btn[aria-busy="true"]{cursor:progress!important;}
