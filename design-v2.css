@@ -55,3 +55,6 @@ body>footer{z-index:40;}
 
 /* progressive */
 .oo-brand-rhythm{letter-spacing:-.055em;}
+
+/* progressive */
+nav[aria-label="Primary navigation"] .font-mono-lux{color:#66666f!important;}
