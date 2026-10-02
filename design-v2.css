@@ -1304,3 +1304,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  nav{border-bottom-color:rgba(255,255,255,.07)!important;}
 
  nav{backdrop-filter:blur(18px);}
+
+ footer{font-size:9px;}
