@@ -276,3 +276,5 @@ window.addEventListener('offline',()=>document.documentElement.dataset.oddOneNet
 if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.dataset.reducedMotion='true';
 
 document.documentElement.dataset.oddOneViewport=window.innerWidth<641?'mobile':window.innerWidth<1101?'tablet':'desktop';
+
+document.documentElement.dataset.oddOneNetwork=navigator.onLine?'online':'offline';
