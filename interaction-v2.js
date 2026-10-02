@@ -136,4 +136,5 @@
   ready(() => { const p=document.getElementById('route-status-path'); if(!p)return; new MutationObserver(()=>p.title=p.textContent).observe(p,{childList:true,characterData:true,subtree:true}); });
   ready(() => { document.getElementById('route-status-distance')?.setAttribute('aria-label','Route distance'); document.getElementById('route-status-time')?.setAttribute('aria-label','Estimated route time'); });
   ready(() => document.getElementById('obs-status-count')?.setAttribute('aria-label','Approved observation count')); 
+  ready(() => { const el=document.getElementById('obs-status-count'); if(!el)return; new MutationObserver(()=>{el.dataset.numeric=/^\d/.test(el.textContent.trim())?'true':'false';}).observe(el,{childList:true,characterData:true,subtree:true}); });
 })();
