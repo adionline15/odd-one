@@ -1166,3 +1166,5 @@ button:disabled{cursor:not-allowed!important;}
  body{-webkit-font-smoothing:antialiased;}
 
  body{text-rendering:optimizeLegibility;}
+
+ body{overflow:hidden;}
