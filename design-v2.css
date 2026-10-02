@@ -154,3 +154,6 @@ body>footer{color:#52525b!important;}
 
 /* route source */
 #route-status-source{letter-spacing:.12em;}
+
+/* desktop stats */
+#desktop-stats-container>div{padding-left:30px!important;padding-right:30px!important;}
