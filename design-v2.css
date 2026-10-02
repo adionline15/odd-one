@@ -2772,3 +2772,9 @@ nav[aria-label="Primary navigation"]{
     text-shadow:0 0 16px rgba(34,211,238,.13);
   }
 }
+
+
+/* 134 — improve search border transition */
+#s-input{
+  transition:border-color .18s ease,box-shadow .18s ease,background-color .18s ease;
+}
