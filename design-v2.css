@@ -358,3 +358,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* suggestion focus */
 .sugg-item:focus-visible{background:rgba(255,255,255,.06)!important;}
+
+/* skip link */
+.skip-link{background:#fff;color:#050505;box-shadow:0 12px 30px rgba(0,0,0,.35);}
