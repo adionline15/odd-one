@@ -1462,3 +1462,5 @@ html.is-desktop footer{font-size:9px;}
  .leaflet-control{z-index:600;}
 
  .leaflet-popup-pane{z-index:700;}
+
+ .leaflet-tooltip-pane{z-index:650;}
