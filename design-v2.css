@@ -1274,3 +1274,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  #search-wrap{background:rgba(8,8,10,.88)!important;}
 
  #search-wrap{border-color:rgba(255,255,255,.1)!important;}
+
+ #s-input::placeholder{color:#6f6f77;}
