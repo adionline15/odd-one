@@ -2065,3 +2065,12 @@ nav[aria-label="Primary navigation"]{
     padding-inline:13px;
   }
 }
+
+
+/* 045 — improve mobile suggestion list rhythm */
+@media (max-width:640px){
+  .sugg-item{
+    min-height:44px;
+    padding-block:10px;
+  }
+}
