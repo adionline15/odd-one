@@ -370,3 +370,5 @@ document.querySelectorAll('#d-go-btn,#m-go-btn').forEach(el=>el.addEventListener
 document.querySelector('#s-input')?.addEventListener('keydown',e=>{if(e.key==='Enter')document.documentElement.dataset.searchAction='submitted';});
 
 document.querySelectorAll('[role="tab"]').forEach(el=>el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')document.documentElement.dataset.tabKeyAction='activated';}));
+
+document.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')document.documentElement.dataset.lastActionKey=e.key;});
