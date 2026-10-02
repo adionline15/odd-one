@@ -3389,3 +3389,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 273 */
 @media (max-width:640px){nav[aria-label="Primary navigation"] a{padding:8px 4px}}
+
+
+/* 274 */
+@media (max-width:640px){#intelligence-hero h1{max-width:12ch}}
