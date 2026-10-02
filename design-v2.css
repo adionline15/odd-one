@@ -1602,3 +1602,5 @@ html.is-desktop footer{font-size:9px;}
 @media(min-width:1101px){#sidebar [role="tab"]{min-height:34px;}}
 
 @media(max-width:640px){#sheet [role="tab"]{font-size:9px;}}
+
+@media(min-width:641px) and (max-width:1100px){#sidebar [role="tab"]{font-size:9px;}}
