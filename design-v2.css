@@ -565,3 +565,6 @@ body>footer{opacity:.9;}
 
 /* mobile route CTA */
 #sheet #m-go-btn{height:44px!important;}
+
+/* mobile alert cards */
+#m-alerts-box>div{min-height:92px;}
