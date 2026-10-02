@@ -1280,3 +1280,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  #s-input:focus{outline:none;}
 
  #search-suggestions{border-radius:12px!important;overflow:hidden;}
+
+ #search-suggestions{box-shadow:0 24px 70px rgba(0,0,0,.62)!important;}
