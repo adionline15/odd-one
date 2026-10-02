@@ -354,3 +354,5 @@ document.addEventListener('click',e=>{if(e.target.closest?.('#sheet-toggle'))doc
 document.addEventListener('keydown',e=>{if(e.key==='Escape')document.documentElement.dataset.lastKey='escape';});
 
 document.addEventListener('keydown',e=>{if(e.key==='Enter')document.documentElement.dataset.lastKey='enter';});
+
+document.documentElement.dataset.interactionHeartbeat='ready';
