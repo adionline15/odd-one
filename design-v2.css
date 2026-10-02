@@ -4335,3 +4335,7 @@ nav[aria-label="Primary navigation"]{text-rendering:optimizeLegibility}
 
 /* 492 */
 #route-status-overlay :focus-visible{outline:2px solid var(--oo-v2-accent);outline-offset:2px}
+
+
+/* 493 */
+.route-endpoint-label{-webkit-font-smoothing:antialiased}
