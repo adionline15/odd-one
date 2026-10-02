@@ -2469,3 +2469,9 @@ nav[aria-label="Primary navigation"]{
 .route-endpoint-label{
   padding-inline:9px;
 }
+
+
+/* 095 — refine map HUD typography */
+#map-intelligence-hud{
+  font-variant-numeric:tabular-nums;
+}
