@@ -664,3 +664,6 @@ body>footer{opacity:.9;}
 
 /* focused map */
 #map[data-focused="true"]{outline:2px solid rgba(34,211,238,.18);outline-offset:-2px;}
+
+/* search active */
+#s-input[aria-busy="true"]{background:rgba(24,24,27,.9)!important;}
