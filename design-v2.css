@@ -3889,3 +3889,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 398 */
 @media (max-width:640px){#map-layer-controls button{border-radius:9px}}
+
+
+/* 399 */
+@media (max-width:640px){#route-status-overlay{box-shadow:0 14px 36px rgba(0,0,0,.25)}}
