@@ -3317,3 +3317,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 255 */
 .sugg-item{border-radius:12px}
+
+
+/* 256 */
+.sugg-item{padding-block:10px}
