@@ -208,3 +208,6 @@ body>footer{color:#52525b!important;}
 
 /* data copy */
 #dp-data>.intel-card p{max-width:34rem;}
+
+/* mobile sheet */
+#sheet{border-radius:20px 20px 0 0!important;}
