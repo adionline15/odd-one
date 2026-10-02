@@ -336,3 +336,5 @@ if(document.readyState==='complete')document.documentElement.dataset.documentRea
 window.addEventListener('load',()=>document.documentElement.dataset.documentReady='true',{once:true});
 
 window.addEventListener('resize',()=>document.documentElement.dataset.mapResize='pending',{passive:true});
+
+window.addEventListener('resize',()=>{clearTimeout(window.__oddOneResizeTimer);window.__oddOneResizeTimer=setTimeout(()=>document.documentElement.dataset.mapResize='settled',180);},{passive:true});
