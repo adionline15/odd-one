@@ -281,7 +281,7 @@ body>footer{letter-spacing:.08em!important}
     <!-- Search Engine -->
     <div class="flex items-center gap-2 sm:gap-4 flex-1 max-w-sm sm:max-w-md ml-4 sm:ml-0 relative">
       <div class="relative w-full">
-        <input type="text" id="s-input" enterkeyhint="search" aria-label="Search a city, district, PIN code or place" placeholder="Search Indian cities or coordinates..." autocomplete="off" autocorrect="off" spellcheck="false" class="bg-zinc-900 border border-zinc-800 rounded-full py-1.5 pl-4 pr-10 text-xs w-full text-zinc-200 focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600 transition-all">
+        <input type="text" id="s-input" enterkeyhint="search" aria-keyshortcuts="/" aria-label="Search a city, district, PIN code or place. Press slash to focus." placeholder="Search Indian cities or coordinates..." autocomplete="off" autocorrect="off" spellcheck="false" class="bg-zinc-900 border border-zinc-800 rounded-full py-1.5 pl-4 pr-10 text-xs w-full text-zinc-200 focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600 transition-all">
         <span class="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-500 text-sm pointer-events-none">⌕</span>
         
         <!-- Nominatim & Local Suggestions -->
@@ -1931,6 +1931,43 @@ body>footer{letter-spacing:.08em!important}
         });
       });
     }
+
+    // ── GLOBAL KEYBOARD SHORTCUTS ──
+    // Keep shortcuts intentionally small and discoverable: / = search, R = routing, L = location, Esc = dismiss.
+    document.addEventListener('keydown', event => {
+      const target = event.target;
+      const typing = target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable);
+
+      if (event.key === '/' && !typing) {
+        event.preventDefault();
+        si.focus();
+        si.select();
+        return;
+      }
+
+      if (event.key === 'Escape') {
+        sg.style.display = 'none';
+        si.removeAttribute('aria-busy');
+        document.getElementById('road-intel-overlay')?.classList.add('hidden');
+        if (isMobile() && sheetOpen) openSheetMid();
+        return;
+      }
+
+      if (typing || event.ctrlKey || event.metaKey || event.altKey) return;
+
+      if (event.key.toLowerCase() === 'r') {
+        event.preventDefault();
+        showTab('route');
+        if (isMobile()) openSheet();
+        const routeInput = document.getElementById(isMobile() ? 'm-from' : 'd-from');
+        routeInput?.focus();
+      }
+
+      if (event.key.toLowerCase() === 'l') {
+        event.preventDefault();
+        locateMe();
+      }
+    });
 
     // Initialize Default States
     loadAlerts('dehradun');
