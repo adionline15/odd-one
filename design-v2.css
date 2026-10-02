@@ -2504,3 +2504,11 @@ nav[aria-label="Primary navigation"]{
     box-shadow:0 12px 28px rgba(0,0,0,.24);
   }
 }
+
+
+/* 100 — improve mobile route overlay radius */
+@media (max-width:640px){
+  #route-status-overlay{
+    border-radius:14px;
+  }
+}
