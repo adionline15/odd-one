@@ -221,4 +221,5 @@
   ready(() => document.querySelector('#dp-data .intel-card')?.setAttribute('data-trust','approved-only'));
   ready(() => document.querySelectorAll('.bg-amber-500\\/10').forEach(el=>el.dataset.trust='approximate'));
   ready(() => document.querySelectorAll('button').forEach(b=>{if(/PLAN ROUTE/i.test(b.textContent))b.setAttribute('aria-label','Open route planner');}));
+  ready(() => document.querySelectorAll('button').forEach(b=>{if(/^ROUTE$/i.test(b.textContent.trim()))b.setAttribute('aria-label','Open route planner');}));
 })();
