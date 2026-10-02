@@ -364,3 +364,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* focus offset */
 :focus-visible{outline-offset:4px!important;}
+
+/* focus radius */
+:focus-visible{border-radius:6px;}
