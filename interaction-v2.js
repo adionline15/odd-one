@@ -126,4 +126,5 @@
   ready(() => { const hud=document.getElementById('map-hud-scope'); if(!hud||!window.map)return; const sync=()=>{const c=map.getCenter(); hud.dataset.center=c.lat.toFixed(2)+','+c.lng.toFixed(2);}; window.addEventListener('load',sync,{once:true}); });
   ready(() => document.getElementById('map')?.setAttribute('aria-describedby','map-interaction-note')); 
   ready(() => { if(document.getElementById('map-interaction-note'))return; const n=document.createElement('p'); n.id='map-interaction-note'; n.className='sr-only'; n.textContent='Interactive road intelligence map. Use search, route, and map layer controls to explore.'; document.body.appendChild(n); });
+  ready(() => { const m=document.getElementById('map'); if(!m)return; m.addEventListener('focus',()=>m.dataset.focused='true'); m.addEventListener('blur',()=>delete m.dataset.focused); });
 })();
