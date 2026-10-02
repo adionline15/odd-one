@@ -865,3 +865,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* data value */
 #dp-data>.intel-card .intel-value{font-size:22px!important;}
+
+/* data scope */
+#stats-scope-label{background:rgba(255,255,255,.025);}
