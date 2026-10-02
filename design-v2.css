@@ -5847,3 +5847,7 @@ a[href]{cursor:pointer;}
 
 /* 861 */
 @media(min-width:641px) and (max-width:1100px){nav[aria-label="Primary navigation"] a{min-height:38px;display:flex;align-items:center;}}
+
+
+/* 862 */
+@media(min-width:1101px){nav[aria-label="Primary navigation"] a{transition:color .16s ease,background-color .16s ease;}}
