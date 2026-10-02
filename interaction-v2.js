@@ -292,3 +292,5 @@ document.documentElement.classList.toggle('is-mobile',window.innerWidth<641);
 document.documentElement.classList.toggle('is-tablet',window.innerWidth>=641&&window.innerWidth<1101);
 
 document.documentElement.classList.toggle('is-desktop',window.innerWidth>=1101);
+
+document.documentElement.classList.toggle('is-online',navigator.onLine);
