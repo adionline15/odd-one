@@ -225,4 +225,5 @@
   ready(() => { const b=document.querySelector('nav h1')?.parentElement; if(b){b.setAttribute('role','button');b.setAttribute('tabindex','0');b.setAttribute('aria-label','Return to India map view');b.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();b.click();}});}});
   ready(() => { const b=document.querySelector('nav h1')?.parentElement; if(b)b.addEventListener('focus',()=>b.dataset.focused='true'); });
   ready(() => document.querySelector('nav h1')?.setAttribute('data-brand','odd-one'));
+  ready(() => { const b=document.getElementById('toggle-btn'); if(b)b.title='Toggle intelligence sidebar'; });
 })();
