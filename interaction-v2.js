@@ -241,4 +241,5 @@
   ready(() => { const m=getMap(); if(m?.on)m.on('zoomend moveend',()=>document.body.dataset.mapViewport='updated'); });
   ready(() => document.getElementById('observation-status-strip')?.setAttribute('data-public-boundary','approved-only'));
   ready(() => document.getElementById('route-status-overlay')?.setAttribute('data-fallback-boundary','explicit'));
+  ready(() => document.getElementById('btn-sat')?.setAttribute('data-context-only','true'));
 })();
