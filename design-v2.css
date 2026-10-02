@@ -5495,3 +5495,7 @@ button:disabled{cursor:not-allowed;}
 
 /* 773 */
 a[href]{cursor:pointer;}
+
+
+/* 774 */
+.intel-value,#obs-status-count,#route-status-distance,#route-status-time{font-variant-numeric:tabular-nums lining-nums;}
