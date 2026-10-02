@@ -1658,3 +1658,5 @@ html{min-width:320px;}
 html,body{height:100%;}
 
 body{width:100%;}
+
+input,textarea{user-select:text;}
