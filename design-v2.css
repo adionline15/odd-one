@@ -4013,3 +4013,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 429 */
 @media (max-width:640px){#sidebar input{border-color:rgba(255,255,255,.11)}}
+
+
+/* 430 */
+@media (max-width:640px){#sidebar input{background:rgba(255,255,255,.03)}}
