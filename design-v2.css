@@ -718,3 +718,6 @@ body>footer{opacity:.9;}
 
 /* error token */
 #observation-status-strip[data-state="error"] #obs-status-dot{background:var(--oo-v2-error)!important;}
+
+/* cyan token */
+#route-status-overlay:not(.route-approx) .route-status-dot{background:var(--oo-v2-cyan)!important;}
