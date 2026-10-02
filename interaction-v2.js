@@ -248,3 +248,5 @@
   ready(() => document.getElementById('s-input')?.setAttribute('aria-controls','sugg'));
   ready(() => document.body.setAttribute('data-progressive-ui','enabled'));
 })();
+
+document.documentElement.dataset.oddOneViewport='ready';
