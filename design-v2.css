@@ -5839,3 +5839,7 @@ a[href]{cursor:pointer;}
 
 /* 859 */
 @media(max-width:640px){nav[aria-label="Primary navigation"]{padding-inline:10px;}}
+
+
+/* 860 */
+@media(max-width:640px){nav[aria-label="Primary navigation"] a{min-height:40px;display:flex;align-items:center;}}
