@@ -241,7 +241,7 @@ body>footer{letter-spacing:.08em!important}
 
 .route-endpoint-label{border-color:rgba(113,113,122,.5)!important;background:rgba(5,5,5,.94)!important;box-shadow:0 10px 30px rgba(0,0,0,.42)!important}
 
-#route-status-overlay>div{border-color:rgba(34,211,238,.24)!important;background:rgba(5,5,5,.9)!important;box-shadow:0 18px 45px rgba(0,0,0,.3)}
+#route-status-overlay>div{border-color:rgba(34,211,238,.24)!important;background:rgba(5,5,5,.9)!important;box-shadow:0 18px 45px rgba(0,0,0,.3)}#route-status-overlay.route-approx>div{border-color:rgba(245,158,11,.28)!important}#route-status-overlay.route-approx .route-status-dot{background:#f59e0b!important;box-shadow:0 0 8px rgba(245,158,11,.55)!important}
 
 #d-alerts-box .text-rose-500,#m-alerts-box .text-rose-500{letter-spacing:.14em}
 
@@ -334,7 +334,7 @@ body>footer{letter-spacing:.08em!important}
       <!-- Active route status -->
       <div id="route-status-overlay" class="hidden absolute top-4 right-4 z-30 pointer-events-none">
         <div class="bg-[#070707]/88 backdrop-blur-xl border border-cyan-400/20 rounded-xl px-4 py-3 shadow-2xl min-w-[210px]">
-          <div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-300 animate-pulse shadow-[0_0_8px_rgba(34,211,238,.8)]"></span><span class="text-[8px] uppercase tracking-[0.18em] text-cyan-300 font-bold">Active route</span><span id="route-status-source" class="ml-auto font-mono-lux text-[7px] text-zinc-600">OSRM</span></div>
+          <div class="flex items-center gap-2"><span class="route-status-dot w-1.5 h-1 rounded-full bg-cyan-300 animate-pulse shadow-[0_0_8px_rgba(34,211,238,.8)]"></span><span class="text-[8px] uppercase tracking-[0.18em] text-cyan-300 font-bold">Active route</span><span id="route-status-source" class="ml-auto font-mono-lux text-[7px] text-zinc-600">OSRM</span></div>
           <p id="route-status-path" class="mt-2 text-[10px] text-white font-semibold truncate max-w-[230px]">Origin → Destination</p>
           <div class="mt-1 flex items-center gap-3 text-[8px] uppercase tracking-wider text-zinc-500"><span id="route-status-distance">-- km</span><span class="text-zinc-800">/</span><span id="route-status-time">-- min</span></div>
         </div>
@@ -1661,6 +1661,7 @@ body>footer{letter-spacing:.08em!important}
       document.getElementById('route-status-distance').textContent = dist + ' km';
       document.getElementById('route-status-time').textContent = time + ' min';
       document.getElementById('route-status-source').textContent = routeSource === 'OSRM' ? 'OSRM · ROAD NETWORK' : 'APPROX · ESTIMATE';
+      routeStatus.classList.toggle('route-approx', routeSource === 'APPROX');
       routeStatus.classList.remove('hidden');
 
       // Do not manufacture road-coverage numbers. Verified observation data will populate this later.
