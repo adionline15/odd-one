@@ -5627,3 +5627,7 @@ a[href]{cursor:pointer;}
 
 /* 806 */
 #generated-guide strong{color:#e5e7eb;font-weight:650;}
+
+
+/* 807 */
+@media(min-width:1101px){.intel-card{min-width:110px;}}
