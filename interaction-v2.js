@@ -177,4 +177,5 @@
   ready(() => document.querySelector('nav[aria-label="Primary navigation"]')?.setAttribute('role','navigation'));
   ready(() => { const p=document.getElementById('dp-alerts'); if(p)p.dataset.surface='alerts'; });
   ready(() => { const p=document.getElementById('dp-route'); if(p)p.dataset.surface='routing'; });
+  ready(() => { const p=document.getElementById('dp-data'); if(p)p.dataset.surface='data'; });
 })();
