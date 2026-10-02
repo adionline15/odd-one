@@ -4307,3 +4307,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 485 */
 #hero-data-boundary{line-height:1.4}
+
+
+/* 486 */
+#intelligence-hero [class*="meta"]{line-height:1.35}
