@@ -3101,3 +3101,7 @@ nav[aria-label="Primary navigation"]{
 
 /* 201 */
 @media (max-width:640px){.intel-card{padding:16px}}
+
+
+/* 202 */
+@media (max-width:640px){.intel-card h3,.intel-card h4{font-size:.94rem}}
