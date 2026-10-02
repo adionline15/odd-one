@@ -227,7 +227,7 @@ button{transition:background-color .18s ease,border-color .18s ease,transform .1
 
 .provenanceRow{border-top:1px solid rgba(63,63,70,.45);padding-top:9px;margin-top:9px}
 
-#obs-status-dot{box-shadow:0 0 0 4px rgba(34,211,238,.05)}
+#obs-status-dot{box-shadow:0 0 0 4px rgba(34,211,238,.05);transition:background-color .2s ease,box-shadow .2s ease}#observation-status-strip[data-state="loading"] #obs-status-dot{background:#f59e0b!important;box-shadow:0 0 0 4px rgba(245,158,11,.08)}#observation-status-strip[data-state="live"] #obs-status-dot{background:#34d399!important;box-shadow:0 0 0 4px rgba(52,211,153,.08)}#observation-status-strip[data-state="error"] #obs-status-dot{background:#fb7185!important;box-shadow:0 0 0 4px rgba(251,113,133,.08)}
 
 nav[aria-label="Primary navigation"]{position:relative}nav[aria-label="Primary navigation"]::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:linear-gradient(90deg,transparent,rgba(34,211,238,.12),transparent);pointer-events:none}
 
@@ -1016,6 +1016,7 @@ body>footer{letter-spacing:.08em!important}
 
 
     function setObservationLayerStatus(state) {
+      document.getElementById('observation-status-strip')?.setAttribute('data-state', state);
       const config = {
         loading: { label: 'LOADING', dot: 'bg-amber-400', text: 'text-amber-400' },
         live: { label: 'VERIFIED', dot: 'bg-emerald-400', text: 'text-emerald-400' },
