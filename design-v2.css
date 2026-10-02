@@ -4382,3 +4382,8 @@ nav[aria-label="Primary navigation"]{-webkit-font-smoothing:antialiased}
 /* 503 */
 .map-deck-btn:not(.active):hover{box-shadow:inset 0 0 0 1px rgba(255,255,255,.06);}
 .map-deck-icon-btn:hover{box-shadow:0 10px 28px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.04);}
+
+
+/* 504 */
+#s-input{box-shadow:0 10px 30px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.035);}
+#s-input:focus{border-color:rgba(34,211,238,.24)!important;background:rgba(12,12,15,.88)!important;}
