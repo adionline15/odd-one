@@ -3573,3 +3573,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 319 */
 @media (min-width:1101px){.road-intel-tooltip{border-radius:13px}}
+
+
+/* 320 */
+@media (min-width:1101px){.road-intel-tooltip{color:rgba(245,245,245,.92)}}
