@@ -907,3 +907,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* cta disabled */
 #d-go-btn:disabled,#m-go-btn:disabled{background:#27272a!important;color:#71717a!important;}
+
+/* cta busy */
+#d-go-btn[aria-busy="true"],#m-go-btn[aria-busy="true"]{opacity:.72;}
