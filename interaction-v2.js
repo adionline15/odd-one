@@ -196,4 +196,5 @@
   ready(() => document.getElementById('s-input')?.setAttribute('role','searchbox'));
   ready(() => document.getElementById('sugg')?.setAttribute('role','listbox'));
   ready(() => document.getElementById('s-input')?.setAttribute('data-search-mode','explicit'));
+  ready(() => document.getElementById('intelligence-hero')?.setAttribute('data-surface-version','v2'));
 })();
