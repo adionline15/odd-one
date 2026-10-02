@@ -361,3 +361,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* skip link */
 .skip-link{background:#fff;color:#050505;box-shadow:0 12px 30px rgba(0,0,0,.35);}
+
+/* focus offset */
+:focus-visible{outline-offset:4px!important;}
