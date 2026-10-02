@@ -2463,3 +2463,9 @@ nav[aria-label="Primary navigation"]{
     padding-block:9px;
   }
 }
+
+
+/* 094 — improve route endpoint spacing */
+.route-endpoint-label{
+  padding-inline:9px;
+}
