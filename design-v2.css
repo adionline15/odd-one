@@ -886,3 +886,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* alert badges */
 #d-alerts-box .rounded-full,#m-alerts-box .rounded-full{border-color:rgba(255,255,255,.07)!important;}
+
+/* alert feed label */
+#d-alerts-box .font-mono-lux,#m-alerts-box .font-mono-lux{font-size:7px!important;letter-spacing:.12em;}
