@@ -362,3 +362,5 @@ document.documentElement.dataset.runtimePhase='interactive';
 document.documentElement.dataset.controlsPhase='ready';
 
 document.documentElement.dataset.contentPhase='ready';
+
+document.querySelectorAll('[role="tab"]').forEach(el=>el.addEventListener('click',()=>document.documentElement.dataset.lastTab=el.textContent.trim()));
