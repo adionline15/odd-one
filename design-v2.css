@@ -4227,3 +4227,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 495 */
 #intelligence-hero h1{letter-spacing:-.03em}
+
+
+/* 496 */
+#intelligence-hero p{max-width:62ch}
