@@ -5947,3 +5947,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 886 */
 @media(forced-colors:active){button,input,.intel-card,.alert-card{border:1px solid CanvasText!important;}}
+
+
+/* 887 */
+#sidebar input{font-size:.86rem;}
