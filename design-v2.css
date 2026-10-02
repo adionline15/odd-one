@@ -580,3 +580,6 @@ body>footer{opacity:.9;}
 
 /* route result labels */
 [id$="-route-out"] .grid p:last-child{letter-spacing:.12em!important;}
+
+/* route result values */
+[id$="-route-out"] .grid p:first-child{font-variant-numeric:tabular-nums;}
