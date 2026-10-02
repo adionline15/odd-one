@@ -1228,3 +1228,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  #sidebar p{line-height:1.42;}
 
  #sidebar .border-white\/5{border-color:rgba(255,255,255,.07)!important;}
+
+ #sidebar .grid{column-gap:8px;}
