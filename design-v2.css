@@ -754,3 +754,6 @@ nav[aria-label="Primary navigation"]{background:rgba(5,5,5,.98)!important;}
 
 /* desktop mode */
 html[data-viewport="desktop"] #intelligence-hero{display:block;}
+
+/* tablet mode */
+html[data-viewport="tablet"] #intelligence-hero{max-width:380px;}
