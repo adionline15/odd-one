@@ -1968,3 +1968,14 @@ nav[aria-label="Primary navigation"]{
   box-shadow:0 10px 26px rgba(0,0,0,.20),inset 0 1px 0 rgba(255,255,255,.04);
   border-color:rgba(255,255,255,.12);
 }
+
+
+/* 034 — improve map layer control hover */
+#map-layer-controls button{
+  transition:background-color .18s ease,border-color .18s ease,transform .18s ease;
+}
+#map-layer-controls button:hover{
+  background-color:rgba(255,255,255,.055);
+  border-color:rgba(34,211,238,.22);
+  transform:translateY(-1px);
+}
