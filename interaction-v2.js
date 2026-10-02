@@ -230,4 +230,5 @@
   ready(() => { const b=document.getElementById('sheet-toggle'),s=document.getElementById('sheet'); if(!b||!s)return; const sync=()=>b.title=s.classList.contains('open')?'Collapse intelligence panel':'Expand intelligence panel'; new MutationObserver(sync).observe(s,{attributes:true,attributeFilter:['class']}); sync(); });
   ready(() => { document.getElementById('btn-map')?.setAttribute('role','button'); document.getElementById('btn-sat')?.setAttribute('role','button'); });
   ready(() => document.getElementById('btn-loc')?.setAttribute('role','button'));
+  ready(() => { const m=document.getElementById('map'); const sync=()=>{if(m)m.dataset.layer=(document.getElementById('btn-sat')?.classList.contains('on')?'sat':'map');}; ['btn-map','btn-sat'].forEach(id=>document.getElementById(id)?.addEventListener('click',()=>setTimeout(sync,0))); sync(); });
 })();
