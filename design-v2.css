@@ -1458,3 +1458,5 @@ html.is-desktop footer{font-size:9px;}
  #sheet{z-index:1000;}
 
  #search-wrap{z-index:950;}
+
+ .leaflet-control{z-index:600;}
