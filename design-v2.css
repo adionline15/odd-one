@@ -4685,3 +4685,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 574 */
 [id$="-route-out"] .bg-gradient-to-br h3{letter-spacing:-.018em;line-height:1.25;}
+
+
+/* 575 */
+#d-alerts-box .text-rose-500,#m-alerts-box .text-rose-500{font-weight:650;letter-spacing:.025em;}
