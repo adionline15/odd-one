@@ -763,3 +763,6 @@ html[data-viewport="mobile"] #map-intelligence-hud{display:none!important;}
 
 /* mobile chips */
 @media(max-width:640px){#intelligence-hero .mt-4{gap:5px!important;}}
+
+/* mobile chip padding */
+@media(max-width:640px){#intelligence-hero .mt-4 span{padding:6px 7px!important;}}
