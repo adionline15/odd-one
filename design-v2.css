@@ -646,3 +646,6 @@ body>footer{opacity:.9;}
 
 /* observation typography */
 #observation-status-strip{font-variant-numeric:tabular-nums;}
+
+/* numeric state */
+#obs-status-count[data-numeric="false"]{color:#71717a!important;}
