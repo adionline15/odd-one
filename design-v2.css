@@ -5679,3 +5679,7 @@ a[href]{cursor:pointer;}
 
 /* 819 */
 @media(min-width:641px) and (max-width:1100px){#d-alerts-box{gap:6px;}}
+
+
+/* 820 */
+@media(max-width:640px){#m-alerts-box{gap:6px;}}
