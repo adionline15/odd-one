@@ -232,3 +232,6 @@ body>footer{color:#52525b!important;}
 
 /* mobile hero offset */
 @media(max-width:640px){#intelligence-hero{top:14px!important;left:14px!important;}}
+
+/* mobile hero width */
+@media(max-width:640px){#intelligence-hero{max-width:calc(100vw - 28px)!important;}}
