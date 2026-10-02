@@ -3681,3 +3681,7 @@ nav[aria-label="Primary navigation"] a[aria-current="page"]{text-decoration-thic
 
 /* 346 */
 @media (min-width:1101px){#s-input{box-shadow:0 8px 24px rgba(0,0,0,.12)}}
+
+
+/* 347 */
+@media (min-width:1101px){#s-input:hover{box-shadow:0 10px 28px rgba(0,0,0,.16)}}
