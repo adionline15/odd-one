@@ -380,3 +380,5 @@ document.addEventListener('focusin',e=>{if(e.target?.matches?.('#d-from,#d-to,#m
 document.addEventListener('submit',e=>{if(e.target?.matches?.('#search-form'))document.documentElement.dataset.searchAction='submitted';});
 
 document.addEventListener('click',e=>{if(e.target.closest?.('#d-alerts-box>div,#m-alerts-box>div'))document.documentElement.dataset.alertInteraction='selected';});
+
+document.addEventListener('click',e=>{if(e.target.closest?.('#dp-data'))document.documentElement.dataset.dataInteraction='selected';});
