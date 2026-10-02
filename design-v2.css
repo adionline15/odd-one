@@ -1502,3 +1502,5 @@ html.is-desktop footer{font-size:9px;}
  @media(max-width:640px){button{min-height:40px;}}
 
  @media(max-width:640px){nav{min-height:54px;}}
+
+@media(max-width:640px){nav{gap:8px;}}
