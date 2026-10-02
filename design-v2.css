@@ -2579,3 +2579,11 @@ nav[aria-label="Primary navigation"]{
     border-color:rgba(255,255,255,.10);
   }
 }
+
+
+/* 109 — refine desktop sidebar surface */
+@media (min-width:1101px){
+  #sidebar{
+    background-image:linear-gradient(180deg,rgba(255,255,255,.012),transparent 35%);
+  }
+}
