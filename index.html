@@ -940,6 +940,7 @@ body>footer{letter-spacing:.08em!important}
     let observationAbortController = null;
     let observationSummaryRequestId = 0;
     let roadChangeRequestId = 0;
+    let lastLoadedObservationViewportKey = '';
     let routeAbortController = null;
 
     function clearObservationLayers() {
@@ -1258,6 +1259,7 @@ body>footer{letter-spacing:.08em!important}
         bounds.getNorth().toFixed(3),
         bounds.getEast().toFixed(3)
       ].join(',');
+      if (observationViewportKey === lastLoadedObservationViewportKey) return;
       setObservationLoadMeta();
       const params = new URLSearchParams({
         minLat: bounds.getSouth().toFixed(6),
@@ -1357,6 +1359,7 @@ body>footer{letter-spacing:.08em!important}
         loadRoadChangesInView();
         loadObservationSummary(bounds, requestId);
         lastObservationLoadAt = new Date();
+        lastLoadedObservationViewportKey = observationViewportKey;
         setObservationLoadMeta();
         setObservationLayerStatus(observations.length ? 'live' : 'empty');
         document.querySelectorAll('.obs-summary-count').forEach(el => { if (!observations.length) el.textContent = '· NO VERIFIED OBSERVATIONS'; });

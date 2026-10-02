@@ -44,6 +44,13 @@ test('map redesign exposes a coherent command deck and accessibility states', ()
   assert.match(css, /\.map-compass/);
 });
 
+test('observation viewport loads skip duplicate requests', () => {
+  const html = read('index.html');
+  assert.match(html, /let lastLoadedObservationViewportKey = ''/);
+  assert.match(html, /if \(observationViewportKey === lastLoadedObservationViewportKey\) return;/);
+  assert.match(html, /lastLoadedObservationViewportKey = observationViewportKey/);
+});
+
 test('map intelligence ignores stale road-change responses', () => {
   const html = read('index.html');
   assert.match(html, /let roadChangeRequestId = 0/);
