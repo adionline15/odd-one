@@ -2625,3 +2625,11 @@ nav[aria-label="Primary navigation"]{
 #sidebar input{
   transition:border-color .18s ease,box-shadow .18s ease,background-color .18s ease;
 }
+
+
+/* 115 — refine desktop CTA radius */
+@media (min-width:1101px){
+  #d-go-btn{
+    border-radius:12px;
+  }
+}
