@@ -430,3 +430,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* empty card */
 #d-alerts-box .text-center,#m-alerts-box .text-center{border-radius:14px!important;}
+
+/* mono labels */
+.intel-kicker{font-size:8px!important;}
