@@ -1376,3 +1376,5 @@ input{transition:border-color .16s ease,box-shadow .16s ease,background-color .1
  #dp-data .intel-kicker{font-size:7px!important;}
 
  #dp-route .intel-card{border-radius:12px!important;}
+
+ #dp-route .intel-card{padding:12px!important;}
