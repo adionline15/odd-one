@@ -2698,3 +2698,9 @@ nav[aria-label="Primary navigation"]{
 #hero-data-boundary{
   border-radius:12px;
 }
+
+
+/* 124 — improve hero badge text spacing */
+#hero-data-boundary{
+  letter-spacing:.012em;
+}
