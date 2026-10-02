@@ -973,3 +973,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* final hero border */
 #intelligence-hero>div{border-color:rgba(255,255,255,.105)!important;}
+
+/* final hero text */
+#intelligence-hero h2{color:#fafafa!important;}
