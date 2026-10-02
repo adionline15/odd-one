@@ -2726,3 +2726,9 @@ nav[aria-label="Primary navigation"]{
   background:rgba(255,255,255,.18);
   border-radius:999px;
 }
+
+
+/* 128 — improve route field placeholder */
+#sidebar input::placeholder{
+  color:rgba(255,255,255,.40);
+}
