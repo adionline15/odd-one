@@ -2835,3 +2835,9 @@ nav[aria-label="Primary navigation"]{
 #observation-status-strip:hover{
   border-color:rgba(255,255,255,.13);
 }
+
+
+/* 144 — improve sidebar heading contrast */
+#sidebar h2,#sidebar h3{
+  color:rgba(255,255,255,.92);
+}
