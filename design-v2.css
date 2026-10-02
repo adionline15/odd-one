@@ -5539,3 +5539,7 @@ a[href]{cursor:pointer;}
 
 /* 784 */
 .empty-state{background:rgba(255,255,255,.018);border:1px solid rgba(255,255,255,.06);border-radius:14px;}
+
+
+/* 785 */
+.empty-state{padding:20px;}
