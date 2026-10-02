@@ -916,3 +916,6 @@ nav[aria-label="Primary navigation"]::before{content:"";position:absolute;left:1
 
 /* data trust */
 #dp-data [data-trust="approved-only"]{position:relative;}
+
+/* data trust glow */
+#dp-data [data-trust="approved-only"]::after{content:"";position:absolute;right:14px;top:14px;width:5px;height:5px;border-radius:50%;background:rgba(52,211,153,.65);box-shadow:0 0 8px rgba(52,211,153,.2);}
