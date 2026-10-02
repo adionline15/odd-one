@@ -6255,3 +6255,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 963 */
 #route-status-overlay .route-label{color:rgba(255,255,255,.48);font-size:.64rem;letter-spacing:.045em;text-transform:uppercase;}
+
+
+/* 964 */
+#route-status-overlay .route-value{font-weight:650;color:#f1f5f9;}
