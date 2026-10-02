@@ -304,3 +304,5 @@ document.addEventListener('keydown',e=>{if(e.key==='Tab')document.documentElemen
 document.addEventListener('pointerdown',()=>document.documentElement.dataset.keyboard='false',{passive:true});
 
 window.addEventListener('resize',()=>{document.documentElement.classList.toggle('is-mobile',window.innerWidth<641);document.documentElement.classList.toggle('is-tablet',window.innerWidth>=641&&window.innerWidth<1101);document.documentElement.classList.toggle('is-desktop',window.innerWidth>=1101);},{passive:true});
+
+window.addEventListener('online',()=>document.documentElement.classList.add('is-online'));
