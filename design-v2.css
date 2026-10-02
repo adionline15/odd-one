@@ -5155,3 +5155,7 @@ body>footer{border-top:1px solid rgba(255,255,255,.05);background:rgba(5,5,5,.72
 
 /* 688 */
 .leaflet-control-zoom{box-shadow:0 14px 32px rgba(0,0,0,.25)!important;}
+
+
+/* 689 */
+.leaflet-control-zoom a{border-color:rgba(255,255,255,.065)!important;}
