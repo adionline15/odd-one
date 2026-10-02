@@ -220,3 +220,6 @@ body>footer{color:#52525b!important;}
 
 /* mobile logo */
 @media(max-width:640px){nav[aria-label="Primary navigation"] h1{font-size:18px!important;}}
+
+/* mobile search */
+@media(max-width:640px){nav[aria-label="Primary navigation"] .flex-1{max-width:none!important;}}
