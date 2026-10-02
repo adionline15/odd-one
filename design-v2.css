@@ -151,3 +151,6 @@ body>footer{color:#52525b!important;}
 
 /* route status */
 #route-status-overlay>div{border-radius:15px!important;}
+
+/* route source */
+#route-status-source{letter-spacing:.12em;}
