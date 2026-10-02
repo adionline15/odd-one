@@ -1798,3 +1798,7 @@ nav[aria-label="Primary navigation"] h1{font-weight:600!important;}
 
 /* refine alert hover feedback */
 #d-alerts-box>div:hover,#m-alerts-box>div:hover{box-shadow:0 18px 42px rgba(0,0,0,.24)!important;}
+
+
+/* improve route field contrast */
+#sidebar input{background:#111114!important;}
