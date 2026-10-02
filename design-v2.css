@@ -2538,3 +2538,12 @@ nav[aria-label="Primary navigation"]{
     line-height:1.35;
   }
 }
+
+
+/* 104 — improve mobile endpoint labels */
+@media (max-width:640px){
+  .route-endpoint-label{
+    padding-inline:8px;
+    font-size:11px;
+  }
+}
