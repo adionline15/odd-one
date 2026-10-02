@@ -1172,3 +1172,5 @@ button:disabled{cursor:not-allowed!important;}
  main{isolation:isolate;}
 
  #map{inset:0;}
+
+ #map{background:#08080a;}
