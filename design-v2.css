@@ -193,3 +193,6 @@ body>footer{color:#52525b!important;}
 
 /* route CTA */
 #d-go-btn,#m-go-btn{border-radius:11px!important;}
+
+/* route CTA typography */
+#d-go-btn,#m-go-btn{letter-spacing:.02em;}
