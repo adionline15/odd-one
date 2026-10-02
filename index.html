@@ -327,7 +327,7 @@ body>footer{letter-spacing:.08em!important}
         </div>
       </div>
 
-      <div id="map-intelligence-hud" class="absolute top-5 right-5 z-20 pointer-events-none hidden lg:block"><div class="intel-card px-3.5 py-3 backdrop-blur-xl"><div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-300 shadow-[0_0_10px_rgba(34,211,238,.65)]"></span><span class="intel-kicker">Map intelligence</span></div><div class="mt-2 flex items-end gap-2"><span class="intel-value text-lg">Viewport</span><span class="font-mono-lux text-[7px] text-zinc-600 uppercase">Live scope</span></div><div class="mt-1 font-mono-lux text-[7px] tracking-[.12em] text-zinc-600 uppercase">Approved observations only</div></div></div>
+      <div id="map-intelligence-hud" class="absolute top-5 right-5 z-20 pointer-events-none hidden lg:block"><div class="intel-card px-3.5 py-3 backdrop-blur-xl"><div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-300 shadow-[0_0_10px_rgba(34,211,238,.65)]"></span><span class="intel-kicker">Map intelligence</span></div><div class="mt-2 flex items-end gap-2"><span class="intel-value text-lg">Viewport</span><span id="map-hud-zoom" class="font-mono-lux text-[7px] text-zinc-600 uppercase">Z5</span></div><div id="map-hud-scope" class="mt-1 font-mono-lux text-[7px] tracking-[.12em] text-zinc-600 uppercase">India · live scope</div></div></div>
 
       <!-- Active route status -->
       <div id="route-status-overlay" class="hidden absolute top-4 right-4 z-30 pointer-events-none">
@@ -833,6 +833,16 @@ body>footer{letter-spacing:.08em!important}
       attribution: '&copy; Esri, HERE, Garmin, USGS, Intermap, INCREMENT P, and the GIS User Community'
     }).addTo(map);
     setTimeout(() => map.invalidateSize(), 300);
+    function updateMapIntelligenceHUD() {
+      const center = map.getCenter();
+      const zoom = map.getZoom();
+      const zoomEl = document.getElementById('map-hud-zoom');
+      const scopeEl = document.getElementById('map-hud-scope');
+      if (zoomEl) zoomEl.textContent = `Z${zoom}`;
+      if (scopeEl) scopeEl.textContent = `${center.lat.toFixed(2)}° N · ${center.lng.toFixed(2)}° E · verified scope`;
+    }
+    map.on('moveend zoomend', updateMapIntelligenceHUD);
+    updateMapIntelligenceHUD();
 
     // ── HEXAGONAL ROAD INTELLIGENCE GRID ──
     // Visual hex cells replace the old square-cell presentation.
