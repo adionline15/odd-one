@@ -105,4 +105,8 @@
     const sync=()=>['alerts','route','data'].forEach(k=>document.getElementById('dt-'+k)?.setAttribute('aria-selected',document.getElementById('dt-'+k)?.classList.contains('border-white')?'true':'false'));
     document.querySelectorAll('#dt-alerts,#dt-route,#dt-data').forEach(b=>b.addEventListener('click',()=>setTimeout(sync,0))); sync();
   });
+  ready(() => {
+    const sync=()=>['alerts','route','data'].forEach(k=>document.getElementById('mt-'+k)?.setAttribute('aria-selected',document.getElementById('mt-'+k)?.classList.contains('border-white')?'true':'false'));
+    document.querySelectorAll('#mt-alerts,#mt-route,#mt-data').forEach(b=>b.addEventListener('click',()=>setTimeout(sync,0))); sync();
+  });
 })();
