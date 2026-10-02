@@ -6455,3 +6455,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 998 */
 @media(prefers-reduced-motion:reduce){#sidebar .space-y-3>button:hover,#sidebar .space-y-4>button:hover{transform:none;}.map-deck-btn,.map-deck-icon-btn,#sidebar button{transition:none!important;}}
+
+
+/* 999 */
+@media(max-width:640px){#route-status-path{max-width:28ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}}
