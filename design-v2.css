@@ -295,3 +295,6 @@ body>footer{color:#52525b!important;}
 
 /* desktop hero padding */
 @media(min-width:1101px){#intelligence-hero>div{padding:20px!important;}}
+
+/* desktop hero headline */
+@media(min-width:1101px){#intelligence-hero h2{font-size:28px!important;}}
