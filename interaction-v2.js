@@ -378,3 +378,5 @@ document.addEventListener('focusout',e=>{if(e.target?.matches?.('#d-from,#d-to,#
 document.addEventListener('focusin',e=>{if(e.target?.matches?.('#d-from,#d-to,#m-from,#m-to'))document.documentElement.dataset.routeFocus='active';});
 
 document.addEventListener('submit',e=>{if(e.target?.matches?.('#search-form'))document.documentElement.dataset.searchAction='submitted';});
+
+document.addEventListener('click',e=>{if(e.target.closest?.('#d-alerts-box>div,#m-alerts-box>div'))document.documentElement.dataset.alertInteraction='selected';});
