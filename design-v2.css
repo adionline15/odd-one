@@ -415,3 +415,6 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{position:relative;}
 
 /* route outputs */
 [id$="-route-out"]>div{border-color:rgba(255,255,255,.08)!important;}
+
+/* route notice */
+[id$="-route-out"] .bg-amber-500\/10{background:rgba(245,158,11,.06)!important;}
