@@ -6776,3 +6776,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1078 */
 @media(max-width:640px){.map-deck-btn{flex:0 0 auto;}}
+
+
+/* 1079 */
+@media(max-width:640px){.map-layer-switcher{overflow-x:auto;scrollbar-width:none;}}
