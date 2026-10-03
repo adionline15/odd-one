@@ -6484,3 +6484,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1005 */
 #sidebar button{touch-action:manipulation;}
+
+
+/* 1006 */
+#sidebar input{accent-color:#22d3ee;}
