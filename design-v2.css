@@ -6652,3 +6652,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1047 */
 @media(forced-colors:active){#route-status-source{border-color:CanvasText!important;color:CanvasText!important;background:Canvas!important;}}
+
+
+/* 1048 */
+@media(forced-colors:active){.route-endpoint-label{background:Canvas;color:CanvasText;border-color:CanvasText;}}
