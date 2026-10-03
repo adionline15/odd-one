@@ -6680,3 +6680,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1054 */
 @media(prefers-reduced-transparency:reduce){.map-context-pill{backdrop-filter:none;-webkit-backdrop-filter:none;background:#09090b;}}
+
+
+/* 1055 */
+@media(prefers-reduced-motion:reduce){.map-deck-btn:hover,.map-deck-icon-btn:hover,.map-layer-switcher button:hover{transform:none!important;}}
