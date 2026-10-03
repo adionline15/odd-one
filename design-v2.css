@@ -6812,3 +6812,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1087 */
 @media(max-width:640px){#route-status-source{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}}
+
+
+/* 1088 */
+@media(max-width:640px){.map-context-pill{max-width:calc(100vw - 24px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}}
