@@ -6856,3 +6856,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1098 */
 @media(max-width:640px){footer{padding-bottom:calc(10px + env(safe-area-inset-bottom));}}
+
+
+/* 1099 */
+@media(max-width:640px){a.skip-link{max-width:calc(100vw - 24px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}}
