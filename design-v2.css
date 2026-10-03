@@ -6600,3 +6600,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1034 */
 .map-deck-btn:focus-visible,.map-deck-icon-btn:focus-visible{box-shadow:0 0 0 2px rgba(34,211,238,.22);}
+
+
+/* 1035 */
+.map-layer-switcher button:focus-visible{outline:2px solid rgba(34,211,238,.68);outline-offset:2px;}
