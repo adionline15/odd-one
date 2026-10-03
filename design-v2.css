@@ -6696,3 +6696,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1058 */
 @media(prefers-reduced-motion:reduce){#route-status-overlay,#map-intelligence-hud{scroll-behavior:auto!important;}}
+
+
+/* 1059 */
+@media(prefers-reduced-motion:reduce){.loading-state .spinner{animation:none!important;}}
