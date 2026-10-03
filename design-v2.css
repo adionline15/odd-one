@@ -6540,3 +6540,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1019 */
 #route-notice{overflow-wrap:anywhere;}
+
+
+/* 1020 */
+#generated-guide{overflow-wrap:anywhere;}
