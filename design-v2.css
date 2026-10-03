@@ -6732,3 +6732,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1067 */
 @media(max-width:640px){#sidebar input{min-height:44px;}}
+
+
+/* 1068 */
+@media(max-width:640px){#sidebar label{font-size:.7rem;}}
