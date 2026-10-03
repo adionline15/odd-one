@@ -6684,3 +6684,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1055 */
 @media(prefers-reduced-motion:reduce){.map-deck-btn:hover,.map-deck-icon-btn:hover,.map-layer-switcher button:hover{transform:none!important;}}
+
+
+/* 1056 */
+@media(prefers-reduced-motion:reduce){.intel-card,.provenanceRow,.alert-card{transition:none!important;}}
