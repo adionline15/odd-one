@@ -6676,3 +6676,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1053 */
 @media(prefers-reduced-transparency:reduce){#map-command-deck,#map-intelligence-hud,#route-status-overlay,#observation-status-strip,.map-layer-switcher{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:#09090b!important;}}
+
+
+/* 1054 */
+@media(prefers-reduced-transparency:reduce){.map-context-pill{backdrop-filter:none;-webkit-backdrop-filter:none;background:#09090b;}}
