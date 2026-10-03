@@ -6496,3 +6496,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1008 */
 #route-status-source{max-width:100%;}
+
+
+/* 1009 */
+#observation-status-strip{overflow:hidden;}
