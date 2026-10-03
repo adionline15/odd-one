@@ -6636,3 +6636,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1043 */
 #route-status-overlay a:focus-visible{outline:2px solid rgba(34,211,238,.68);outline-offset:2px;}
+
+
+/* 1044 */
+#generated-guide a:focus-visible{outline:2px solid rgba(34,211,238,.68);outline-offset:2px;}
