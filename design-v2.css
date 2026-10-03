@@ -6824,3 +6824,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1090 */
 @media(min-width:641px){#map-command-deck{max-width:min(70vw,760px);}}
+
+
+/* 1091 */
+@media(min-width:641px){.map-layer-switcher{max-width:min(36vw,420px);}}
