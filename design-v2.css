@@ -6488,3 +6488,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1006 */
 #sidebar input{accent-color:#22d3ee;}
+
+
+/* 1007 */
+#route-status-overlay{overflow-wrap:anywhere;}
