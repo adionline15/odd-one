@@ -6624,3 +6624,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1040 */
 #sidebar input:disabled{color:rgba(255,255,255,.42);}
+
+
+/* 1041 */
+#sidebar .route-control-group:has(input:disabled){opacity:.86;}
