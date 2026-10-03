@@ -6644,3 +6644,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1045 */
 @media(forced-colors:active){.map-deck-btn,.map-deck-icon-btn,.map-layer-switcher button{forced-color-adjust:auto;}}
+
+
+/* 1046 */
+@media(forced-colors:active){#route-status-overlay,#map-intelligence-hud,#observation-status-strip{background:Canvas!important;color:CanvasText!important;}}
