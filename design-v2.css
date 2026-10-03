@@ -6760,3 +6760,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1074 */
 @media(max-width:640px){#sidebar .space-y-3>button,#sidebar .space-y-4>button{min-height:44px;}}
+
+
+/* 1075 */
+@media(max-width:640px){#map-command-deck{overflow-x:auto;scrollbar-width:none;}}
