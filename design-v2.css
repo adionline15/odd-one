@@ -6840,3 +6840,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1094 */
 @media(min-width:1101px){#map-intelligence-hud{max-width:300px;}}
+
+
+/* 1095 */
+@media(min-width:641px) and (max-width:1100px){#route-status-overlay{max-width:calc(100vw - 32px);}}
