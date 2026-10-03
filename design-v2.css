@@ -6660,3 +6660,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1049 */
 @media(prefers-contrast:more){#map-command-deck,#map-intelligence-hud,#route-status-overlay,#observation-status-strip{border-width:2px;}}
+
+
+/* 1050 */
+@media(prefers-contrast:more){.map-deck-btn,.map-layer-switcher button{font-weight:750;}}
