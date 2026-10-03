@@ -6744,3 +6744,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1070 */
 @media(max-width:640px){#sidebar .flex.border-b{overflow-x:auto;scrollbar-width:none;}}
+
+
+/* 1071 */
+@media(max-width:640px){#sidebar .flex.border-b::-webkit-scrollbar{display:none;}}
