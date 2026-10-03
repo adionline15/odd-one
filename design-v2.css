@@ -6572,3 +6572,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1027 */
 @media(max-width:640px){#route-status-overlay{max-width:calc(100vw - 24px);}}
+
+
+/* 1028 */
+@media(max-width:640px){#observation-status-strip{max-width:calc(100vw - 24px);}}
