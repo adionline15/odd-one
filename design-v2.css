@@ -6820,3 +6820,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1089 */
 @media(max-width:640px){.road-intel-tooltip{overflow-wrap:anywhere;}}
+
+
+/* 1090 */
+@media(min-width:641px){#map-command-deck{max-width:min(70vw,760px);}}
