@@ -6704,3 +6704,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1060 */
 @media(max-width:640px){#sidebar{width:min(100vw,420px);}}
+
+
+/* 1061 */
+@media(max-width:640px){#sidebar{max-width:100vw;overflow-x:hidden;}}
