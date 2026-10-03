@@ -6552,3 +6552,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1022 */
 #generated-guide li::marker{color:rgba(34,211,238,.72);}
+
+
+/* 1023 */
+.route-endpoint-label{pointer-events:none;}
