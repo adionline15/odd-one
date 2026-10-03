@@ -6668,3 +6668,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1051 */
 @media(prefers-contrast:more){#sidebar input{border-width:2px!important;}}
+
+
+/* 1052 */
+@media(prefers-contrast:more){.intel-card .intel-kicker,#route-status-overlay .route-label{color:rgba(255,255,255,.72);}}
