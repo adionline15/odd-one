@@ -6800,3 +6800,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1084 */
 @media(max-width:640px){#map-intelligence-hud .intel-card{flex:0 0 auto;}}
+
+
+/* 1085 */
+@media(max-width:640px){#route-status-overlay{word-break:break-word;}}
