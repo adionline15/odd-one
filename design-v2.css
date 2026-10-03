@@ -6612,3 +6612,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1037 */
 #sidebar input:focus{box-shadow:0 0 0 3px rgba(34,211,238,.08);}
+
+
+/* 1038 */
+#sidebar input::placeholder{color:rgba(255,255,255,.34);}
