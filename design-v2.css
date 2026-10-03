@@ -6792,3 +6792,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1082 */
 @media(max-width:640px){#map-intelligence-hud{overflow-x:auto;scrollbar-width:none;}}
+
+
+/* 1083 */
+@media(max-width:640px){#map-intelligence-hud::-webkit-scrollbar{display:none;}}
