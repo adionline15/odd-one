@@ -6712,3 +6712,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1062 */
 @media(max-width:640px){#sidebar .route-control-group{width:100%;box-sizing:border-box;}}
+
+
+/* 1063 */
+@media(max-width:640px){#sidebar .route-control-group input{min-width:0;width:100%;}}
