@@ -6548,3 +6548,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1021 */
 #generated-guide ul,#generated-guide ol{padding-inline-start:1.2rem;}
+
+
+/* 1022 */
+#generated-guide li::marker{color:rgba(34,211,238,.72);}
