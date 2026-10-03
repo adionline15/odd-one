@@ -6628,3 +6628,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1041 */
 #sidebar .route-control-group:has(input:disabled){opacity:.86;}
+
+
+/* 1042 */
+#d-go-btn:focus-visible,#m-go-btn:focus-visible{outline:2px solid rgba(34,211,238,.75);outline-offset:3px;}
