@@ -6556,3 +6556,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1023 */
 .route-endpoint-label{pointer-events:none;}
+
+
+/* 1024 */
+.map-context-pill{pointer-events:none;}
