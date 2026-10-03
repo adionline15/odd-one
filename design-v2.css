@@ -6512,3 +6512,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1012 */
 #map-intelligence-hud .intel-card{overflow-wrap:anywhere;}
+
+
+/* 1013 */
+.alert-card{overflow-wrap:anywhere;}
