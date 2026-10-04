@@ -410,3 +410,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.getElementById('btn-map')?.setAttribute('title','Standard road map'));
 
   ready(() => document.getElementById('btn-sat')?.setAttribute('title','Satellite imagery'));
+
+  ready(() => document.getElementById('btn-reset-view')?.setAttribute('title','Reset to India overview'));
