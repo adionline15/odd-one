@@ -104,3 +104,5 @@ test('standard map control has a title',()=>assert.match(read('interaction-v2.js
 test('satellite control has a title',()=>assert.match(read('interaction-v2.js'),/btn-sat.*Satellite imagery/));
 
 test('reset control has a title',()=>assert.match(read('interaction-v2.js'),/btn-reset-view.*Reset to India overview/));
+
+test('location control has a title',()=>assert.match(read('interaction-v2.js'),/btn-loc.*Center on my location/));
