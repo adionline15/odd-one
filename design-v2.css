@@ -7180,3 +7180,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1179 */
 @media(max-width:640px){.road-intel-tooltip{box-shadow:0 12px 28px rgba(0,0,0,.28);}}
+
+
+/* 1180 */
+@media(max-width:640px){.road-intel-selected{filter:drop-shadow(0 0 5px rgba(34,211,238,.2));}}
