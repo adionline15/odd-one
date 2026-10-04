@@ -128,3 +128,5 @@ test('mobile origin uses address autocomplete',()=>assert.match(read('interactio
 test('mobile destination uses address autocomplete',()=>assert.match(read('interaction-v2.js'),/m-to.*autocomplete','street-address'/));
 
 test('route buttons are explicit buttons',()=>assert.match(read('interaction-v2.js'),/d-go-btn,#m-go-btn.*type','button'/));
+
+test('navigation tabs expose keyboard shortcuts',()=>assert.match(read('interaction-v2.js'),/data-nav-tab.*aria-keyshortcuts/));
