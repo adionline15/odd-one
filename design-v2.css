@@ -6884,3 +6884,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1105 */
 .map-deck-btn{border-radius:10px;}
+
+
+/* 1106 */
+.map-deck-btn{transition:background-color .18s ease,border-color .18s ease,transform .18s ease;}
