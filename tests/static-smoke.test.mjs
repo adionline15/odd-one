@@ -216,3 +216,5 @@ test('observations API still verifies approved connectivity first',()=>assert.ma
 test('observations API caps response size',()=>assert.match(read('api/observations.js'),/p_limit: limit/));
 
 test('observations API rejects oversized latitude span',()=>assert.match(read('api/observations.js'),/maxLat - minLat > OBSERVATIONS_MAX_VIEWPORT_SPAN/));
+
+test('observations API rejects oversized longitude span',()=>assert.match(read('api/observations.js'),/maxLon - minLon > OBSERVATIONS_MAX_VIEWPORT_SPAN/));
