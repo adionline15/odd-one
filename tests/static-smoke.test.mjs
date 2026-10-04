@@ -240,3 +240,5 @@ test('observations API uses stale while revalidate',()=>assert.match(read('api/o
 test('observations API varies on origin',()=>assert.match(read('api/observations.js'),/Vary.*Accept-Encoding, Origin/));
 
 test('observations API identifies its response version',()=>assert.match(read('api/observations.js'),/X-Odd-One-API.*observations-v6/));
+
+test('observations API reports response count',()=>assert.match(read('api/observations.js'),/X-Odd-One-Observation-Count/));
