@@ -418,3 +418,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.getElementById('map-orientation')?.setAttribute('role','img'));
 
   ready(() => document.getElementById('map-orientation')?.setAttribute('aria-label','Map orientation: north is up'));
+
+  ready(() => document.getElementById('map-scale-wrap')?.setAttribute('aria-label','Map scale and viewport context'));
