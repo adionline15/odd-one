@@ -188,3 +188,5 @@ test('map layer state records satellite',()=>assert.match(read('interaction-v2.j
 test('live context uses polite announcements',()=>assert.match(read('interaction-v2.js'),/map-live-context.*aria-live','polite'/));
 
 test('map stores current zoom state',()=>assert.match(read('interaction-v2.js'),/mapEl\.dataset\.zoom=String\(getMap\(\)\.getZoom\(\)\)/));
+
+test('map stores viewport center state',()=>assert.match(read('interaction-v2.js'),/mapEl\.dataset\.center=getMap\(\)\.getCenter\(\)/));
