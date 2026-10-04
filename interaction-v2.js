@@ -496,3 +496,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => {const mapEl=document.getElementById('map'); if(mapEl&&getMap()) mapEl.dataset.zoom=String(getMap().getZoom());});
 
   ready(() => {const mapEl=document.getElementById('map'); if(!mapEl||!getMap())return; getMap().on('zoomend',()=>mapEl.dataset.zoom=String(getMap().getZoom()));});
+
+  ready(() => {const mapEl=document.getElementById('map'); if(!mapEl||!getMap())return; getMap().on('moveend',()=>mapEl.dataset.center=getMap().getCenter().lat.toFixed(3)+','+getMap().getCenter().lng.toFixed(3));});
