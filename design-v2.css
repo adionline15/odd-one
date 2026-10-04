@@ -7264,3 +7264,88 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1200 */
 @media(min-width:1101px){#map-command-deck{box-shadow:0 16px 38px rgba(0,0,0,.22);}}
+
+
+/* Map-first visual hierarchy */
+@media(min-width:641px){
+  #intelligence-hero{max-width:360px!important;top:18px!important;left:18px!important;}
+  #intelligence-hero>div{padding:15px 16px!important;border-radius:16px!important;background:rgba(7,7,9,.72)!important;box-shadow:0 22px 70px rgba(0,0,0,.30)!important;}
+  #intelligence-hero h2{font-size:21px!important;line-height:1.02!important;}
+  #intelligence-hero p{font-size:9px!important;line-height:1.5!important;max-width:285px!important;margin-top:9px!important;}
+  #intelligence-hero .mt-4{margin-top:10px!important;}
+  #intelligence-hero .mt-3{margin-top:9px!important;}
+  #sidebar{width:292px!important;background:rgba(7,7,9,.82)!important;backdrop-filter:blur(24px) saturate(125%);border-left:1px solid rgba(255,255,255,.08)!important;box-shadow:-20px 0 70px rgba(0,0,0,.24)!important;}
+  #sidebar>div:first-child{background:rgba(8,8,10,.76)!important;border-bottom-color:rgba(255,255,255,.07)!important;}
+  #sidebar>.flex-1{padding:14px!important;}
+}
+
+
+/* Quiet telemetry: coordinates appear only after an actual pointer move */
+.map-coordinate-readout{display:none!important;}
+.map-coordinate-readout.has-value{display:flex!important;left:18px;right:auto;bottom:18px;transform:none;opacity:1!important;}
+#map-live-context .map-context-pill{gap:8px!important;padding:7px 10px!important;background:rgba(7,7,9,.76)!important;border-color:rgba(255,255,255,.11)!important;box-shadow:0 14px 38px rgba(0,0,0,.28)!important;}
+#map-live-context .map-context-pill:before{content:"";width:5px;height:5px;border-radius:50%;background:#34d399;box-shadow:0 0 10px rgba(52,211,153,.65);}
+@media(max-width:640px){.map-coordinate-readout.has-value{display:none!important;}}
+
+
+.map-hero-title-row{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;}.map-hero-index{font:600 7px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#52525b;padding-top:3px;}.map-hero-title-row h2{margin:0!important;}
+
+
+/* Premium layer control proportions */
+.map-layer-switcher{padding:5px!important;border-radius:17px!important;gap:4px!important;}.map-deck-btn{height:38px!important;padding:0 14px!important;border-radius:11px!important;font-size:8px!important;}.map-deck-icon-btn{width:40px;height:40px;border-radius:13px!important;display:grid;place-items:center;color:#8b8b93;font-size:14px;transition:transform .18s ease,color .18s ease,border-color .18s ease,background .18s ease;}.map-deck-icon-btn:hover{color:#fff;background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);transform:translateY(-1px);}
+
+
+/* Compact viewport intelligence HUD */
+#map-intelligence-hud{top:18px!important;right:18px!important;}.map-intelligence-hud,.map-intelligence-hud .intel-card{border-radius:14px!important;}#map-intelligence-hud .intel-card{min-width:180px!important;padding:10px 12px!important;background:rgba(7,7,9,.70)!important;border:1px solid rgba(255,255,255,.09)!important;box-shadow:0 18px 48px rgba(0,0,0,.25)!important;}#map-intelligence-hud .intel-value{font-size:14px!important;}.intel-kicker{font-size:7px!important;letter-spacing:.16em!important;}
+
+
+/* Verified observation marker language */
+.oo-observation-marker{filter:drop-shadow(0 0 5px rgba(255,255,255,.34)) drop-shadow(0 0 11px currentColor);transition:filter .18s ease,opacity .18s ease;}.oo-observation-marker:hover{filter:drop-shadow(0 0 6px rgba(255,255,255,.65)) drop-shadow(0 0 16px currentColor);}
+.oo-observation-marker.road-intel-selected{filter:drop-shadow(0 0 7px rgba(255,255,255,.9)) drop-shadow(0 0 20px currentColor)!important;}
+
+
+/* Floating route analytics */
+#desktop-stats-container>div{padding:11px 18px!important;gap:20px!important;border-radius:16px!important;background:rgba(7,7,9,.78)!important;border:1px solid rgba(255,255,255,.11)!important;box-shadow:0 20px 55px rgba(0,0,0,.32)!important;backdrop-filter:blur(22px) saturate(125%);}
+#desktop-stats-container p:first-child{font-size:7px!important;letter-spacing:.18em!important;color:#71717a!important;}#desktop-stats-container p:last-child{font-size:12px!important;}
+
+
+#route-status-overlay>div{background:rgba(7,7,9,.76)!important;border-color:rgba(34,211,238,.18)!important;box-shadow:0 20px 55px rgba(0,0,0,.30)!important;backdrop-filter:blur(22px) saturate(125%);padding:11px 13px!important;min-width:190px!important;}#route-status-path{font-size:9px!important;}#route-status-overlay .text-\[8px\]{font-size:7px!important;}
+
+
+/* Mobile map composition: keep the map visible instead of stacking desktop overlays. */
+@media(max-width:640px){
+  #intelligence-hero{
+    display:none!important;
+  }
+  #observation-status-strip{
+    display:none!important;
+  }
+  #map-intelligence-hud{
+    display:none!important;
+  }
+  #map-live-context{
+    top:12px!important;
+    max-width:calc(100vw - 24px);
+  }
+  #route-status-overlay{
+    left:12px!important;
+    right:12px!important;
+    top:auto!important;
+    bottom:112px!important;
+    max-width:none!important;
+    margin:0!important;
+  }
+  #route-status-overlay>div{
+    width:100%!important;
+    min-width:0!important;
+    box-sizing:border-box;
+    padding:10px 12px!important;
+    border-radius:14px!important;
+  }
+  #route-status-path{
+    max-width:none!important;
+  }
+  #map-scale-wrap{
+    display:none!important;
+  }
+}

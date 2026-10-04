@@ -192,3 +192,20 @@ test('map stores current zoom state',()=>assert.match(read('interaction-v2.js'),
 test('map stores viewport center state',()=>assert.match(read('interaction-v2.js'),/mapEl\.dataset\.center=getMap\(\)\.getCenter\(\)/));
 
 test('map has a useful interaction title',()=>assert.match(read('interaction-v2.js'),/Pan and zoom to explore verified road intelligence/));
+
+
+test('map hero uses compact intelligence copy',()=>assert.match(read('index.html'),/India, through the road layer/));
+test('map hero exposes section index',()=>assert.match(read('index.html'),/map-hero-index/));
+test('map cursor telemetry surface exists',()=>assert.match(read('index.html'),/map-coordinate-readout/));
+test('map cursor telemetry is local runtime',()=>assert.match(read('interaction-v2.js'),/map-coordinate-readout.*has-value/));
+test('observation markers use premium presentation class',()=>assert.match(read('index.html'),/oo-observation-marker/));
+test('map has cinematic frame',()=>assert.match(read('index.html'),/map-cinematic-frame/));
+test('map feedback toast is accessible',()=>assert.match(read('index.html'),/map-feedback-toast.*role="status"/));
+test('premium map controls have visual treatment',()=>assert.match(read('design-v2.css'),/Premium layer control proportions/));
+test('sidebar receives map-first glass treatment',()=>assert.match(read('design-v2.css'),/Map-first visual hierarchy/));
+test('route analytics receives floating treatment',()=>assert.match(read('design-v2.css'),/Floating route analytics/));
+
+
+test('mobile map hides desktop hero overlay',()=>assert.match(read('design-v2.css'),/Mobile map composition.*#intelligence-hero.*display:none/s));
+test('mobile map moves route status above controls',()=>assert.match(read('design-v2.css'),/Mobile map composition[\\s\\S]*#route-status-overlay[\\s\\S]*bottom:112px/));
+test('mobile map removes scale telemetry',()=>assert.match(read('design-v2.css'),/Mobile map composition[\\s\\S]*#map-scale-wrap[\\s\\S]*display:none/));

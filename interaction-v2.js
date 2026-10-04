@@ -502,3 +502,17 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.getElementById('map-live-context')?.setAttribute('aria-label','Live map viewport zoom'));
 
   ready(() => document.getElementById('map')?.setAttribute('title','Pan and zoom to explore verified road intelligence'));
+
+
+// Premium map telemetry: cursor coordinates stay local and disappear when the pointer leaves the map.
+ready(() => {
+  const mapInstance = getMap();
+  const readout = document.getElementById('map-coordinate-readout');
+  const value = document.getElementById('map-coordinate-value');
+  if (!mapInstance?.on || !readout || !value) return;
+  mapInstance.on('mousemove', event => {
+    value.textContent = event.latlng.lat.toFixed(4) + '°, ' + event.latlng.lng.toFixed(4) + '°';
+    readout.classList.add('has-value');
+  });
+  mapInstance.on('mouseout', () => readout.classList.remove('has-value'));
+});
