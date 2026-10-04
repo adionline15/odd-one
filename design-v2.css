@@ -7240,3 +7240,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1194 */
 @media(min-width:1101px){.route-endpoint-label{padding:5px 8px;}}
+
+
+/* 1195 */
+@media(min-width:1101px){.road-intel-tooltip{max-width:320px;}}
