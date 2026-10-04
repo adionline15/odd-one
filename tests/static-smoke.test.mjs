@@ -212,3 +212,5 @@ test('observations API uses the configured public limit constant',()=>assert.mat
 test('observations API still uses approved spatial RPC',()=>assert.match(read('api/observations.js'),/rpc\/approved_observations_in_view/));
 
 test('observations API still verifies approved connectivity first',()=>assert.match(read('api/observations.js'),/observations\?select=id&status=eq\.approved&limit=1/));
+
+test('observations API caps response size',()=>assert.match(read('api/observations.js'),/p_limit: limit/));
