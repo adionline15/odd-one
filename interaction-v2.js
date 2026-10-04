@@ -488,3 +488,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.getElementById('map')?.addEventListener('focus',e=>e.currentTarget.setAttribute('aria-label','Interactive road intelligence map; use keyboard shortcuts or map controls')));
 
   ready(() => document.getElementById('btn-map')?.addEventListener('click',()=>document.documentElement.dataset.mapLayer='map'));
+
+  ready(() => document.getElementById('btn-sat')?.addEventListener('click',()=>document.documentElement.dataset.mapLayer='sat'));
