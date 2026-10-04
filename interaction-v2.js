@@ -456,3 +456,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.getElementById('sheet-toggle')?.setAttribute('title','Open map intelligence panel'));
 
   ready(() => document.getElementById('toggle-btn')?.setAttribute('title','Toggle intelligence sidebar'));
+
+  ready(() => document.querySelectorAll('#dt-alerts,#dt-route,#dt-data').forEach(b=>b.setAttribute('role','tab')));
