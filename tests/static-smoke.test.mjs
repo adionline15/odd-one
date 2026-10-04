@@ -114,3 +114,5 @@ test('compass describes north orientation',()=>assert.match(read('interaction-v2
 test('map scale exposes context',()=>assert.match(read('interaction-v2.js'),/map-scale-wrap.*Map scale and viewport context/));
 
 test('live map context is a status',()=>assert.match(read('interaction-v2.js'),/map-live-context.*role','status'/));
+
+test('zoom value has an accessible label',()=>assert.match(read('interaction-v2.js'),/map-zoom-value.*Current map zoom/));
