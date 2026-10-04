@@ -7252,3 +7252,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1197 */
 @media(min-width:1101px){.road-intel-selected{filter:drop-shadow(0 0 7px rgba(34,211,238,.24));}}
+
+
+/* 1198 */
+@media(min-width:1101px){#map-intelligence-hud{max-width:320px;}}
