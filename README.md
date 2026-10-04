@@ -236,3 +236,8 @@ Viewport-dependent map intelligence uses request identity checks so a slower res
 ### Observation failure semantics
 
 A database/connectivity failure is different from an empty approved dataset. The API reports service failure explicitly instead of presenting an unavailable source as zero observations.
+
+
+### Observation security headers
+
+The observation endpoint sets JSON content type, MIME-sniffing protection, frame protection, and a strict referrer policy before processing requests.
