@@ -216,3 +216,8 @@ All rights reserved unless a separate license is added to this repository.
 - News feed data is contextual and should not be treated as road verification.
 
 - Provider failures remain visible rather than being silently converted into synthetic data.
+
+
+### Viewport request policy
+
+The public observation endpoint is intentionally viewport-scoped. Clients should request only the active map bounds and let map navigation drive subsequent reads.
