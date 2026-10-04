@@ -7136,3 +7136,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1168 */
 @media(max-width:640px){.map-layer-switcher{backdrop-filter:blur(10px);}}
+
+
+/* 1169 */
+@media(max-width:640px){.map-layer-switcher button{font-size:.78rem;}}
