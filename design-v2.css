@@ -6876,3 +6876,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1103 */
 @media(min-width:641px){#map-command-deck{backdrop-filter:blur(12px);}}
+
+
+/* 1104 */
+@media(min-width:641px){#map-command-deck{box-shadow:0 14px 34px rgba(0,0,0,.2);}}
