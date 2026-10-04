@@ -140,3 +140,5 @@ test('observation status is announced',()=>assert.match(read('interaction-v2.js'
 test('observation count is polite live content',()=>assert.match(read('interaction-v2.js'),/obs-status-count.*aria-live','polite'/));
 
 test('stats content is announced',()=>assert.match(read('interaction-v2.js'),/stats-content.*aria-live','polite'/));
+
+test('route status is announced',()=>assert.match(read('interaction-v2.js'),/route-status-overlay.*aria-live','polite'/));
