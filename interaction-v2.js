@@ -544,3 +544,24 @@ ready(() => {
     }
   });
 });
+
+
+// Desktop map shortcuts for fast exploration.
+ready(() => {
+  const mapInstance = getMap();
+  if (!mapInstance) return;
+  document.addEventListener('keydown', event => {
+    const target = event.target;
+    if (target?.matches?.('input, textarea, select, [contenteditable="true"]')) return;
+    if (event.key === '+' || event.key === '=') {
+      event.preventDefault();
+      mapInstance.zoomIn();
+    } else if (event.key === '-' || event.key === '_') {
+      event.preventDefault();
+      mapInstance.zoomOut();
+    } else if (event.key.toLowerCase() === 'r') {
+      event.preventDefault();
+      mapInstance.flyTo([22, 78], 5, { duration: 0.75 });
+    }
+  });
+});
