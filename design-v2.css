@@ -7152,3 +7152,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1172 */
 @media(max-width:640px){.map-context-pill{border-color:rgba(255,255,255,.11);}}
+
+
+/* 1173 */
+@media(max-width:640px){.map-context-pill{box-shadow:0 7px 18px rgba(0,0,0,.2);}}
