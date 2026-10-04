@@ -244,3 +244,5 @@ test('observations API identifies its response version',()=>assert.match(read('a
 test('observations API reports response count',()=>assert.match(read('api/observations.js'),/X-Odd-One-Observation-Count/));
 
 test('observations API reports response limit',()=>assert.match(read('api/observations.js'),/X-Odd-One-Observation-Limit/));
+
+test('observations API reports truncation metadata',()=>assert.match(read('api/observations.js'),/truncated: observations\.length >= limit/));
