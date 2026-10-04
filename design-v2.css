@@ -7084,3 +7084,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1155 */
 #map-intelligence-hud small{color:var(--oo-v2-muted);}
+
+
+/* 1156 */
+#map-intelligence-hud strong{color:var(--oo-v2-text);}
