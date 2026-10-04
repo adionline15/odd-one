@@ -206,3 +206,5 @@ test('observations API has a bounded upstream timeout',()=>assert.match(read('ap
 test('observations API centralizes security headers',()=>assert.match(read('api/observations.js'),/function setObservationSecurityHeaders/));
 
 test('observations API centralizes request timeout',()=>assert.match(read('api/observations.js'),/setTimeout\(\(\) => controller\.abort\(\), OBSERVATIONS_REQUEST_TIMEOUT_MS\)/));
+
+test('observations API uses the configured public limit constant',()=>assert.match(read('api/observations.js'),/Math\.min\(requestedLimit, OBSERVATIONS_MAX_LIMIT\)/));
