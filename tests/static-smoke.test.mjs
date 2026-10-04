@@ -98,3 +98,5 @@ test('map has an accessible region role',()=>assert.match(read('interaction-v2.j
 test('map is keyboard focusable',()=>assert.match(read('interaction-v2.js'),/getElementById\('map'\)\?\.setAttribute\('tabindex','0'\)/));
 
 test('map command deck has an accessible label',()=>assert.match(read('interaction-v2.js'),/map-command-deck.*aria-label/));
+
+test('standard map control has a title',()=>assert.match(read('interaction-v2.js'),/btn-map.*Standard road map/));
