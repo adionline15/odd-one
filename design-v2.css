@@ -7172,3 +7172,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1177 */
 @media(max-width:640px){.route-endpoint-label{font-weight:650;}}
+
+
+/* 1178 */
+@media(max-width:640px){.road-intel-tooltip{font-size:.78rem;}}
