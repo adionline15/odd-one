@@ -220,3 +220,5 @@ test('observations API rejects oversized latitude span',()=>assert.match(read('a
 test('observations API rejects oversized longitude span',()=>assert.match(read('api/observations.js'),/maxLon - minLon > OBSERVATIONS_MAX_VIEWPORT_SPAN/));
 
 test('observations API rejects inverted latitude bounds',()=>assert.match(read('api/observations.js'),/minLat >= maxLat/));
+
+test('observations API rejects inverted longitude bounds',()=>assert.match(read('api/observations.js'),/minLon >= maxLon/));
