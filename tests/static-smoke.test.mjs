@@ -238,3 +238,5 @@ test('observations API exposes a bounded cache window',()=>assert.match(read('ap
 test('observations API uses stale while revalidate',()=>assert.match(read('api/observations.js'),/stale-while-revalidate=30/));
 
 test('observations API varies on origin',()=>assert.match(read('api/observations.js'),/Vary.*Accept-Encoding, Origin/));
+
+test('observations API identifies its response version',()=>assert.match(read('api/observations.js'),/X-Odd-One-API.*observations-v6/));
