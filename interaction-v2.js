@@ -478,3 +478,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.addEventListener('keydown',e=>{if(e.key==='s'&&!e.ctrlKey&&!e.metaKey&&!['INPUT','TEXTAREA'].includes(document.activeElement?.tagName))document.getElementById('btn-sat')?.click();}));
 
   ready(() => document.addEventListener('keydown',e=>{if(e.key==='l'&&!e.ctrlKey&&!e.metaKey&&!['INPUT','TEXTAREA'].includes(document.activeElement?.tagName))document.getElementById('btn-loc')?.click();}));
+
+  ready(() => document.addEventListener('keydown',e=>{if(e.key==='0'&&!e.ctrlKey&&!e.metaKey&&!['INPUT','TEXTAREA'].includes(document.activeElement?.tagName))document.getElementById('btn-reset-view')?.click();}));
