@@ -224,3 +224,5 @@ test('observations API rejects inverted latitude bounds',()=>assert.match(read('
 test('observations API rejects inverted longitude bounds',()=>assert.match(read('api/observations.js'),/minLon >= maxLon/));
 
 test('observations API validates coordinate ranges',()=>assert.match(read('api/observations.js'),/validCoordinate\(minLat, -90, 90\)/));
+
+test('observations API returns JSON content type',()=>assert.match(read('api/observations.js'),/application\/json; charset=utf-8/));
