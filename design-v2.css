@@ -7289,3 +7289,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 
 .map-hero-title-row{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;}.map-hero-index{font:600 7px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#52525b;padding-top:3px;}.map-hero-title-row h2{margin:0!important;}
+
+
+/* Premium layer control proportions */
+.map-layer-switcher{padding:5px!important;border-radius:17px!important;gap:4px!important;}.map-deck-btn{height:38px!important;padding:0 14px!important;border-radius:11px!important;font-size:8px!important;}.map-deck-icon-btn{width:40px;height:40px;border-radius:13px!important;display:grid;place-items:center;color:#8b8b93;font-size:14px;transition:transform .18s ease,color .18s ease,border-color .18s ease,background .18s ease;}.map-deck-icon-btn:hover{color:#fff;background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.2);transform:translateY(-1px);}
