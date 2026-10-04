@@ -432,3 +432,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.getElementById('d-to')?.setAttribute('autocomplete','street-address'));
 
   ready(() => document.getElementById('m-from')?.setAttribute('autocomplete','street-address'));
+
+  ready(() => document.getElementById('m-to')?.setAttribute('autocomplete','street-address'));
