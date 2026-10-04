@@ -246,3 +246,5 @@ test('observations API reports response count',()=>assert.match(read('api/observ
 test('observations API reports response limit',()=>assert.match(read('api/observations.js'),/X-Odd-One-Observation-Limit/));
 
 test('observations API reports truncation metadata',()=>assert.match(read('api/observations.js'),/truncated: observations\.length >= limit/));
+
+test('observations API returns a structured service-unavailable response',()=>assert.match(read('api/observations.js'),/Observation service unavailable/));
