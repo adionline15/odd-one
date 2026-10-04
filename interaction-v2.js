@@ -422,3 +422,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.getElementById('map-scale-wrap')?.setAttribute('aria-label','Map scale and viewport context'));
 
   ready(() => document.getElementById('map-live-context')?.setAttribute('role','status'));
+
+  ready(() => document.getElementById('map-zoom-value')?.setAttribute('aria-label','Current map zoom'));
