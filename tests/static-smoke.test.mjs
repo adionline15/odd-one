@@ -176,3 +176,5 @@ test('zero activates reset view',()=>assert.match(read('interaction-v2.js'),/e\.
 test('contenteditable protects shortcuts',()=>assert.match(read('interaction-v2.js'),/isContentEditable/));
 
 test('tabs support Home navigation',()=>assert.match(read('interaction-v2.js'),/e\.key==='Home'/));
+
+test('tabs support End navigation',()=>assert.match(read('interaction-v2.js'),/e\.key==='End'/));
