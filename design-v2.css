@@ -6976,3 +6976,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1128 */
 .map-layer-switcher button[aria-pressed="true"]{color:#eaffff;background:rgba(34,211,238,.08);}
+
+
+/* 1129 */
+.map-layer-switcher button[aria-pressed="true"]{border-color:rgba(34,211,238,.2);}
