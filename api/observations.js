@@ -92,11 +92,7 @@ function validCoordinate(value, min, max) {
 }
 
 export default async function handler(req, res) {
-  res.setHeader('X-Content-Type-Options', 'nosniff');
-  res.setHeader('X-Frame-Options', 'DENY');
-  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
-  res.setHeader('Cache-Control', 'no-store');
-  res.setHeader('Content-Type', 'application/json; charset=utf-8');
+  setObservationSecurityHeaders(res);
 
   if (req.method === 'GET') {
     const q = req.query || {};
