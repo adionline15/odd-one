@@ -7196,3 +7196,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1183 */
 @media(min-width:1101px){#map-command-deck{gap:4px;}}
+
+
+/* 1184 */
+@media(min-width:1101px){.map-deck-btn{min-width:38px;}}
