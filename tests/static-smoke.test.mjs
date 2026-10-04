@@ -172,3 +172,5 @@ test('S activates satellite map',()=>assert.match(read('interaction-v2.js'),/e\.
 test('L activates location control',()=>assert.match(read('interaction-v2.js'),/e\.key==='l'.*btn-loc.*click/));
 
 test('zero activates reset view',()=>assert.match(read('interaction-v2.js'),/e\.key==='0'.*btn-reset-view.*click/));
+
+test('contenteditable protects shortcuts',()=>assert.match(read('interaction-v2.js'),/isContentEditable/));
