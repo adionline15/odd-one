@@ -408,3 +408,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.getElementById('map-command-deck')?.setAttribute('aria-label','Map controls'));
 
   ready(() => document.getElementById('btn-map')?.setAttribute('title','Standard road map'));
+
+  ready(() => document.getElementById('btn-sat')?.setAttribute('title','Satellite imagery'));
