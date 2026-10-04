@@ -428,3 +428,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.getElementById('s-input')?.setAttribute('autocomplete','off'));
 
   ready(() => document.getElementById('d-from')?.setAttribute('autocomplete','street-address'));
+
+  ready(() => document.getElementById('d-to')?.setAttribute('autocomplete','street-address'));
