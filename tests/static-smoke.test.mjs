@@ -108,3 +108,5 @@ test('reset control has a title',()=>assert.match(read('interaction-v2.js'),/btn
 test('location control has a title',()=>assert.match(read('interaction-v2.js'),/btn-loc.*Center on my location/));
 
 test('compass exposes an image role',()=>assert.match(read('interaction-v2.js'),/map-orientation.*role','img'/));
+
+test('compass describes north orientation',()=>assert.match(read('interaction-v2.js'),/Map orientation: north is up/));
