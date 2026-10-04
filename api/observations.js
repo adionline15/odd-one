@@ -1,4 +1,5 @@
 const OBSERVATIONS_API_VERSION = 'observations-v6';
+const OBSERVATIONS_MAX_LIMIT = 500;
 const TYPES = new Set([
   'missing_road',
   'new_road',
