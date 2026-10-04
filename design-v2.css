@@ -7256,3 +7256,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1198 */
 @media(min-width:1101px){#map-intelligence-hud{max-width:320px;}}
+
+
+/* 1199 */
+@media(min-width:1101px){#map-layer-controls{box-shadow:0 12px 30px rgba(0,0,0,.2);}}
