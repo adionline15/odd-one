@@ -198,3 +198,5 @@ test('observations API declares its version constant',()=>assert.match(read('api
 test('observations API has a bounded public limit',()=>assert.match(read('api/observations.js'),/OBSERVATIONS_MAX_LIMIT = 500/));
 
 test('observations API has a bounded viewport span',()=>assert.match(read('api/observations.js'),/OBSERVATIONS_MAX_VIEWPORT_SPAN = 60/));
+
+test('observations API has an explicit cache policy',()=>assert.match(read('api/observations.js'),/OBSERVATIONS_CACHE_SECONDS = 15/));
