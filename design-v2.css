@@ -6920,3 +6920,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1114 */
 .map-layer-switcher button{transition:background-color .18s ease,color .18s ease,transform .18s ease;}
+
+
+/* 1115 */
+.map-layer-switcher button:focus-visible{outline:2px solid var(--oo-v2-accent);outline-offset:2px;}
