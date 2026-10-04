@@ -7068,3 +7068,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1151 */
 #map-intelligence-hud{backdrop-filter:blur(12px);}
+
+
+/* 1152 */
+#map-intelligence-hud{border-radius:14px;}
