@@ -426,3 +426,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.getElementById('map-zoom-value')?.setAttribute('aria-label','Current map zoom'));
 
   ready(() => document.getElementById('s-input')?.setAttribute('autocomplete','off'));
+
+  ready(() => document.getElementById('d-from')?.setAttribute('autocomplete','street-address'));
