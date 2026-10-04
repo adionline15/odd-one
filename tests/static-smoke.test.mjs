@@ -156,3 +156,5 @@ test('mobile tabs have tab roles',()=>assert.match(read('interaction-v2.js'),/mt
 test('map shortcuts are documented',()=>assert.match(read('interaction-v2.js'),/map.*aria-keyshortcuts.*Escape/));
 
 test('map shortcut M is documented',()=>assert.match(read('interaction-v2.js'),/btn-map.*aria-keyshortcuts','M'/));
+
+test('satellite shortcut S is documented',()=>assert.match(read('interaction-v2.js'),/btn-sat.*aria-keyshortcuts','S'/));
