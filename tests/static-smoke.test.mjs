@@ -228,3 +228,5 @@ test('observations API validates coordinate ranges',()=>assert.match(read('api/o
 test('observations API returns JSON content type',()=>assert.match(read('api/observations.js'),/application\/json; charset=utf-8/));
 
 test('observations API denies framing',()=>assert.match(read('api/observations.js'),/X-Frame-Options.*DENY/));
+
+test('observations API prevents MIME sniffing',()=>assert.match(read('api/observations.js'),/X-Content-Type-Options.*nosniff/));
