@@ -500,3 +500,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => {const mapEl=document.getElementById('map'); if(!mapEl||!getMap())return; getMap().on('moveend',()=>mapEl.dataset.center=getMap().getCenter().lat.toFixed(3)+','+getMap().getCenter().lng.toFixed(3));});
 
   ready(() => document.getElementById('map-live-context')?.setAttribute('aria-label','Live map viewport zoom'));
+
+  ready(() => document.getElementById('map')?.setAttribute('title','Pan and zoom to explore verified road intelligence'));
