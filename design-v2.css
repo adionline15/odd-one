@@ -7040,3 +7040,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1144 */
 .road-intel-tooltip{border-color:rgba(255,255,255,.11);}
+
+
+/* 1145 */
+.road-intel-tooltip{border-radius:13px;}
