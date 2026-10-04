@@ -414,3 +414,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.getElementById('btn-reset-view')?.setAttribute('title','Reset to India overview'));
 
   ready(() => document.getElementById('btn-loc')?.setAttribute('title','Center on my location'));
+
+  ready(() => document.getElementById('map-orientation')?.setAttribute('role','img'));
