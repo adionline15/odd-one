@@ -106,3 +106,5 @@ test('satellite control has a title',()=>assert.match(read('interaction-v2.js'),
 test('reset control has a title',()=>assert.match(read('interaction-v2.js'),/btn-reset-view.*Reset to India overview/));
 
 test('location control has a title',()=>assert.match(read('interaction-v2.js'),/btn-loc.*Center on my location/));
+
+test('compass exposes an image role',()=>assert.match(read('interaction-v2.js'),/map-orientation.*role','img'/));
