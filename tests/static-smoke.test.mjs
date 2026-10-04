@@ -134,3 +134,5 @@ test('navigation tabs expose keyboard shortcuts',()=>assert.match(read('interact
 test('map exposes a role description',()=>assert.match(read('interaction-v2.js'),/map.*aria-roledescription','interactive map'/));
 
 test('route provider status has a title',()=>assert.match(read('interaction-v2.js'),/route-status-source.*Route provider status/));
+
+test('observation status is announced',()=>assert.match(read('interaction-v2.js'),/observation-status-strip.*role','status'/));
