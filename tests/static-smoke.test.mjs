@@ -232,3 +232,5 @@ test('observations API denies framing',()=>assert.match(read('api/observations.j
 test('observations API prevents MIME sniffing',()=>assert.match(read('api/observations.js'),/X-Content-Type-Options.*nosniff/));
 
 test('observations API restricts referrer leakage',()=>assert.match(read('api/observations.js'),/Referrer-Policy.*strict-origin-when-cross-origin/));
+
+test('observations API exposes a bounded cache window',()=>assert.match(read('api/observations.js'),/max-age=\$\{cacheSeconds\}/));
