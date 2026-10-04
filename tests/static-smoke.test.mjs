@@ -230,3 +230,5 @@ test('observations API returns JSON content type',()=>assert.match(read('api/obs
 test('observations API denies framing',()=>assert.match(read('api/observations.js'),/X-Frame-Options.*DENY/));
 
 test('observations API prevents MIME sniffing',()=>assert.match(read('api/observations.js'),/X-Content-Type-Options.*nosniff/));
+
+test('observations API restricts referrer leakage',()=>assert.match(read('api/observations.js'),/Referrer-Policy.*strict-origin-when-cross-origin/));
