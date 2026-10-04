@@ -25,7 +25,7 @@ test('observation APIs use approved-only paths', () => {
   assert.match(read('api/observations.js'), /status=eq\.approved/);
   const observationsApi = read('api/observations.js');
   assert.match(observationsApi, /approved_observations_in_view/);
-  assert.match(observationsApi, /maxViewportSpan = 60/);
+  assert.match(observationsApi, /OBSERVATIONS_MAX_VIEWPORT_SPAN = 60/);
   assert.match(observationsApi, /maxLat - minLat > maxViewportSpan/);
   assert.match(observationsApi, /maxLon - minLon > maxViewportSpan/);
   assert.match(read('api/observation-summary.js'), /approved_observation_summary/);
