@@ -214,3 +214,5 @@ test('observations API still uses approved spatial RPC',()=>assert.match(read('a
 test('observations API still verifies approved connectivity first',()=>assert.match(read('api/observations.js'),/observations\?select=id&status=eq\.approved&limit=1/));
 
 test('observations API caps response size',()=>assert.match(read('api/observations.js'),/p_limit: limit/));
+
+test('observations API rejects oversized latitude span',()=>assert.match(read('api/observations.js'),/maxLat - minLat > OBSERVATIONS_MAX_VIEWPORT_SPAN/));
