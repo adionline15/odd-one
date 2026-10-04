@@ -241,3 +241,8 @@ A database/connectivity failure is different from an empty approved dataset. The
 ### Observation security headers
 
 The observation endpoint sets JSON content type, MIME-sniffing protection, frame protection, and a strict referrer policy before processing requests.
+
+
+### Upstream timeout policy
+
+Supabase requests made by the observation API have a bounded timeout. This prevents a slow upstream dependency from holding a serverless invocation indefinitely.
