@@ -174,3 +174,5 @@ test('L activates location control',()=>assert.match(read('interaction-v2.js'),/
 test('zero activates reset view',()=>assert.match(read('interaction-v2.js'),/e\.key==='0'.*btn-reset-view.*click/));
 
 test('contenteditable protects shortcuts',()=>assert.match(read('interaction-v2.js'),/isContentEditable/));
+
+test('tabs support Home navigation',()=>assert.match(read('interaction-v2.js'),/e\.key==='Home'/));
