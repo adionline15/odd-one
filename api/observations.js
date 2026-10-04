@@ -1,3 +1,17 @@
+const OBSERVATIONS_API_VERSION = 'observations-v6';
+const OBSERVATIONS_MAX_LIMIT = 500;
+const OBSERVATIONS_MAX_VIEWPORT_SPAN = 60;
+const OBSERVATIONS_CACHE_SECONDS = 15;
+const OBSERVATIONS_REQUEST_TIMEOUT_MS = 10000;
+
+function setObservationSecurityHeaders(res) {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  res.setHeader('Cache-Control', 'no-store');
+  res.setHeader('Content-Type', 'application/json; charset=utf-8');
+}
+
 const TYPES = new Set([
   'missing_road',
   'new_road',
@@ -38,7 +52,7 @@ async function supabaseRequest(path, options = {}) {
   }
 
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 10000);
+  const timeout = setTimeout(() => controller.abort(), OBSERVATIONS_REQUEST_TIMEOUT_MS);
   let response;
   try {
     response = await fetch(`${url}/rest/v1/${path}`, {
@@ -78,11 +92,7 @@ function validCoordinate(value, min, max) {
 }
 
 export default async function handler(req, res) {
-  res.setHeader('X-Content-Type-Options', 'nosniff');
-  res.setHeader('X-Frame-Options', 'DENY');
-  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
-  res.setHeader('Cache-Control', 'no-store');
-  res.setHeader('Content-Type', 'application/json; charset=utf-8');
+  setObservationSecurityHeaders(res);
 
   if (req.method === 'GET') {
     const q = req.query || {};
@@ -91,9 +101,8 @@ export default async function handler(req, res) {
     const maxLat = Number(q.maxLat);
     const maxLon = Number(q.maxLon);
     const requestedLimit = q.limit == null || q.limit === '' ? 500 : Number(q.limit);
-    const limit = Number.isInteger(requestedLimit) ? Math.min(requestedLimit, 500) : 500;
-    const cacheSeconds = 15;
-    const maxViewportSpan = 60;
+    const limit = Number.isInteger(requestedLimit) ? Math.min(requestedLimit, OBSERVATIONS_MAX_LIMIT) : OBSERVATIONS_MAX_LIMIT;
+    const cacheSeconds = OBSERVATIONS_CACHE_SECONDS;
 
     if (
       !validCoordinate(minLat, -90, 90) ||
@@ -102,15 +111,15 @@ export default async function handler(req, res) {
       !validCoordinate(maxLon, -180, 180) ||
       minLat >= maxLat ||
       minLon >= maxLon ||
-      maxLat - minLat > maxViewportSpan ||
-      maxLon - minLon > maxViewportSpan ||
+      maxLat - minLat > OBSERVATIONS_MAX_VIEWPORT_SPAN ||
+      maxLon - minLon > OBSERVATIONS_MAX_VIEWPORT_SPAN ||
       !Number.isInteger(limit) ||
       limit < 1 ||
       limit > 500
     ) {
       return json(res, 400, {
         error: 'Invalid map bounds',
-        max_span: maxViewportSpan
+        max_span: OBSERVATIONS_MAX_VIEWPORT_SPAN
       });
     }
 

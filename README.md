@@ -216,3 +216,53 @@ All rights reserved unless a separate license is added to this repository.
 - News feed data is contextual and should not be treated as road verification.
 
 - Provider failures remain visible rather than being silently converted into synthetic data.
+
+
+### Viewport request policy
+
+The public observation endpoint is intentionally viewport-scoped. Clients should request only the active map bounds and let map navigation drive subsequent reads.
+
+
+### Observation response caching
+
+Successful viewport reads advertise a short shared-cache window. The frontend must still treat newer viewport requests as authoritative when users pan or zoom quickly.
+
+
+### Stale response protection
+
+Viewport-dependent map intelligence uses request identity checks so a slower response from an older viewport cannot overwrite a newer map state.
+
+
+### Observation failure semantics
+
+A database/connectivity failure is different from an empty approved dataset. The API reports service failure explicitly instead of presenting an unavailable source as zero observations.
+
+
+### Observation security headers
+
+The observation endpoint sets JSON content type, MIME-sniffing protection, frame protection, and a strict referrer policy before processing requests.
+
+
+### Upstream timeout policy
+
+Supabase requests made by the observation API have a bounded timeout. This prevents a slow upstream dependency from holding a serverless invocation indefinitely.
+
+
+### Response-size policy
+
+Observation reads are capped at 500 records. A response that reaches the requested limit reports `truncated` so clients can distinguish a full result from a bounded result.
+
+
+### Map exploration strategy
+
+Large geographic areas should be explored by moving and zooming the map. This keeps requests aligned with the user's active viewport and avoids unbounded geographic queries.
+
+
+### Verified-data boundary
+
+Public observation reads use the approved observation path. Pending, rejected, or otherwise unapproved records must not become visible through the map intelligence layer.
+
+
+### Reliability validation
+
+Changes to the observation API should be accompanied by static smoke contracts covering bounds, limits, approved-only reads, response metadata, and public error behavior.

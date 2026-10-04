@@ -25,9 +25,9 @@ test('observation APIs use approved-only paths', () => {
   assert.match(read('api/observations.js'), /status=eq\.approved/);
   const observationsApi = read('api/observations.js');
   assert.match(observationsApi, /approved_observations_in_view/);
-  assert.match(observationsApi, /maxViewportSpan = 60/);
-  assert.match(observationsApi, /maxLat - minLat > maxViewportSpan/);
-  assert.match(observationsApi, /maxLon - minLon > maxViewportSpan/);
+  assert.match(observationsApi, /OBSERVATIONS_MAX_VIEWPORT_SPAN = 60/);
+  assert.match(observationsApi, /maxLat - minLat > OBSERVATIONS_MAX_VIEWPORT_SPAN/);
+  assert.match(observationsApi, /maxLon - minLon > OBSERVATIONS_MAX_VIEWPORT_SPAN/);
   assert.match(read('api/observation-summary.js'), /approved_observation_summary/);
   assert.match(read('api/observation-summary.js'), /scope: 'approved'/);
 });
@@ -192,3 +192,63 @@ test('map stores current zoom state',()=>assert.match(read('interaction-v2.js'),
 test('map stores viewport center state',()=>assert.match(read('interaction-v2.js'),/mapEl\.dataset\.center=getMap\(\)\.getCenter\(\)/));
 
 test('map has a useful interaction title',()=>assert.match(read('interaction-v2.js'),/Pan and zoom to explore verified road intelligence/));
+
+test('observations API declares its version constant',()=>assert.match(read('api/observations.js'),/OBSERVATIONS_API_VERSION = 'observations-v6'/));
+
+test('observations API has a bounded public limit',()=>assert.match(read('api/observations.js'),/OBSERVATIONS_MAX_LIMIT = 500/));
+
+test('observations API has a bounded viewport span',()=>assert.match(read('api/observations.js'),/OBSERVATIONS_MAX_VIEWPORT_SPAN = 60/));
+
+test('observations API has an explicit cache policy',()=>assert.match(read('api/observations.js'),/OBSERVATIONS_CACHE_SECONDS = 15/));
+
+test('observations API has a bounded upstream timeout',()=>assert.match(read('api/observations.js'),/OBSERVATIONS_REQUEST_TIMEOUT_MS = 10000/));
+
+test('observations API centralizes security headers',()=>assert.match(read('api/observations.js'),/function setObservationSecurityHeaders/));
+
+test('observations API centralizes request timeout',()=>assert.match(read('api/observations.js'),/setTimeout\(\(\) => controller\.abort\(\), OBSERVATIONS_REQUEST_TIMEOUT_MS\)/));
+
+test('observations API uses the configured public limit constant',()=>assert.match(read('api/observations.js'),/Math\.min\(requestedLimit, OBSERVATIONS_MAX_LIMIT\)/));
+
+test('observations API still uses approved spatial RPC',()=>assert.match(read('api/observations.js'),/rpc\/approved_observations_in_view/));
+
+test('observations API still verifies approved connectivity first',()=>assert.match(read('api/observations.js'),/observations\?select=id&status=eq\.approved&limit=1/));
+
+test('observations API caps response size',()=>assert.match(read('api/observations.js'),/p_limit: limit/));
+
+test('observations API rejects oversized latitude span',()=>assert.match(read('api/observations.js'),/maxLat - minLat > OBSERVATIONS_MAX_VIEWPORT_SPAN/));
+
+test('observations API rejects oversized longitude span',()=>assert.match(read('api/observations.js'),/maxLon - minLon > OBSERVATIONS_MAX_VIEWPORT_SPAN/));
+
+test('observations API rejects inverted latitude bounds',()=>assert.match(read('api/observations.js'),/minLat >= maxLat/));
+
+test('observations API rejects inverted longitude bounds',()=>assert.match(read('api/observations.js'),/minLon >= maxLon/));
+
+test('observations API validates coordinate ranges',()=>assert.match(read('api/observations.js'),/validCoordinate\(minLat, -90, 90\)/));
+
+test('observations API returns JSON content type',()=>assert.match(read('api/observations.js'),/application\/json; charset=utf-8/));
+
+test('observations API denies framing',()=>assert.match(read('api/observations.js'),/X-Frame-Options.*DENY/));
+
+test('observations API prevents MIME sniffing',()=>assert.match(read('api/observations.js'),/X-Content-Type-Options.*nosniff/));
+
+test('observations API restricts referrer leakage',()=>assert.match(read('api/observations.js'),/Referrer-Policy.*strict-origin-when-cross-origin/));
+
+test('observations API exposes a bounded cache window',()=>assert.match(read('api/observations.js'),/max-age=\$\{cacheSeconds\}/));
+
+test('observations API uses stale while revalidate',()=>assert.match(read('api/observations.js'),/stale-while-revalidate=30/));
+
+test('observations API varies on origin',()=>assert.match(read('api/observations.js'),/Vary.*Accept-Encoding, Origin/));
+
+test('observations API identifies its response version',()=>assert.match(read('api/observations.js'),/X-Odd-One-API.*observations-v6/));
+
+test('observations API reports response count',()=>assert.match(read('api/observations.js'),/X-Odd-One-Observation-Count/));
+
+test('observations API reports response limit',()=>assert.match(read('api/observations.js'),/X-Odd-One-Observation-Limit/));
+
+test('observations API reports truncation metadata',()=>assert.match(read('api/observations.js'),/truncated: observations\.length >= limit/));
+
+test('observations API returns a structured service-unavailable response',()=>assert.match(read('api/observations.js'),/Observation service unavailable/));
+
+test('observations API distinguishes missing configuration',()=>assert.match(read('api/observations.js'),/Observation service is not configured/));
+
+test('observations API keeps upstream response bodies out of public errors',()=>assert.match(read('api/observations.js'),/error: 'Observation service unavailable'/));
