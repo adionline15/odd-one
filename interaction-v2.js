@@ -442,3 +442,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.getElementById('map')?.setAttribute('aria-roledescription','interactive map'));
 
   ready(() => document.getElementById('route-status-source')?.setAttribute('title','Route provider status'));
+
+  ready(() => document.getElementById('observation-status-strip')?.setAttribute('role','status'));
