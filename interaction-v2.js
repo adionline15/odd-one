@@ -452,3 +452,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.getElementById('route-status-overlay')?.setAttribute('aria-live','polite'));
 
   ready(() => document.getElementById('btn-loc')?.setAttribute('aria-live','polite'));
+
+  ready(() => document.getElementById('sheet-toggle')?.setAttribute('title','Open map intelligence panel'));
