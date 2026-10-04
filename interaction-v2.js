@@ -404,3 +404,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.getElementById('map')?.setAttribute('role','region'));
 
   ready(() => document.getElementById('map')?.setAttribute('tabindex','0'));
+
+  ready(() => document.getElementById('map-command-deck')?.setAttribute('aria-label','Map controls'));
