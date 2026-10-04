@@ -474,3 +474,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.addEventListener('keydown',e=>{if(e.key==='k'&&(e.ctrlKey||e.metaKey)&&!['INPUT','TEXTAREA'].includes(document.activeElement?.tagName)){e.preventDefault();document.getElementById('s-input')?.focus();}}));
 
   ready(() => document.addEventListener('keydown',e=>{if(e.key==='m'&&!e.ctrlKey&&!e.metaKey&&!['INPUT','TEXTAREA'].includes(document.activeElement?.tagName))document.getElementById('btn-map')?.click();}));
+
+  ready(() => document.addEventListener('keydown',e=>{if(e.key==='s'&&!e.ctrlKey&&!e.metaKey&&!['INPUT','TEXTAREA'].includes(document.activeElement?.tagName))document.getElementById('btn-sat')?.click();}));
