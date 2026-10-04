@@ -236,3 +236,5 @@ test('observations API restricts referrer leakage',()=>assert.match(read('api/ob
 test('observations API exposes a bounded cache window',()=>assert.match(read('api/observations.js'),/max-age=\$\{cacheSeconds\}/));
 
 test('observations API uses stale while revalidate',()=>assert.match(read('api/observations.js'),/stale-while-revalidate=30/));
+
+test('observations API varies on origin',()=>assert.match(read('api/observations.js'),/Vary.*Accept-Encoding, Origin/));
