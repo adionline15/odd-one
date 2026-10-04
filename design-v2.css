@@ -7160,3 +7160,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1174 */
 @media(max-width:640px){#route-status-source{max-width:calc(100vw - 48px);}}
+
+
+/* 1175 */
+@media(max-width:640px){#route-status-overlay{gap:8px;}}
