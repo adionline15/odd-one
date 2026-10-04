@@ -502,3 +502,84 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.getElementById('map-live-context')?.setAttribute('aria-label','Live map viewport zoom'));
 
   ready(() => document.getElementById('map')?.setAttribute('title','Pan and zoom to explore verified road intelligence'));
+
+
+// Premium map cursor telemetry: visual context only, never persisted.
+ready(() => {
+  const mapEl = document.getElementById('map');
+  const readout = document.getElementById('map-coordinate-readout');
+  const value = document.getElementById('map-coordinate-value');
+  const mapInstance = getMap();
+  if (!mapEl || !readout || !value || !mapInstance?.on) return;
+  mapInstance.on('mousemove', e => {
+    value.textContent = e.latlng.lat.toFixed(4) + '°, ' + e.latlng.lng.toFixed(4) + '°';
+    readout.classList.add('has-value');
+  });
+  mapInstance.on('mouseout', () => readout.classList.remove('has-value'));
+  mapInstance.on('zoomend', () => {
+    const zoom = Math.round(mapInstance.getZoom() * 10) / 10;
+    const el = document.getElementById('map-zoom-value');
+    if (el) el.textContent = 'Z' + zoom;
+  });
+});
+
+
+// Premium compass interaction: return to the canonical north-up India frame.
+ready(() => {
+  const compass = document.getElementById('map-orientation');
+  const mapInstance = getMap();
+  if (!compass || !mapInstance) return;
+  compass.setAttribute('role', 'button');
+  compass.setAttribute('tabindex', '0');
+  compass.setAttribute('title', 'Reset to north-up India view');
+  const reset = () => {
+    mapInstance.flyTo([22, 78], 5, { duration: 0.75 });
+    mapInstance.getContainer()?.focus({ preventScroll: true });
+  };
+  compass.addEventListener('click', reset);
+  compass.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      reset();
+    }
+  });
+});
+
+
+// Desktop map shortcuts for fast exploration.
+ready(() => {
+  const mapInstance = getMap();
+  if (!mapInstance) return;
+  document.addEventListener('keydown', event => {
+    const target = event.target;
+    if (target?.matches?.('input, textarea, select, [contenteditable="true"]')) return;
+    if (event.key === '+' || event.key === '=') {
+      event.preventDefault();
+      mapInstance.zoomIn();
+    } else if (event.key === '-' || event.key === '_') {
+      event.preventDefault();
+      mapInstance.zoomOut();
+    } else if (event.key.toLowerCase() === 'r') {
+      event.preventDefault();
+      mapInstance.flyTo([22, 78], 5, { duration: 0.75 });
+    }
+  });
+});
+
+
+// Premium map feedback: acknowledge intentional viewport actions without blocking the map.
+ready(() => {
+  const toast = document.getElementById('map-feedback-toast');
+  if (!toast) return;
+  let timer;
+  const show = label => {
+    toast.textContent = label;
+    toast.classList.add('show');
+    clearTimeout(timer);
+    timer = setTimeout(() => toast.classList.remove('show'), 900);
+  };
+  document.getElementById('btn-map')?.addEventListener('click', () => show('Standard map'));
+  document.getElementById('btn-sat')?.addEventListener('click', () => show('Satellite imagery'));
+  document.getElementById('btn-loc')?.addEventListener('click', () => show('Finding your location'));
+  document.getElementById('btn-reset-view')?.addEventListener('click', () => show('India overview'));
+});
