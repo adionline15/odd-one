@@ -170,3 +170,5 @@ test('M activates standard map',()=>assert.match(read('interaction-v2.js'),/e\.k
 test('S activates satellite map',()=>assert.match(read('interaction-v2.js'),/e\.key==='s'.*btn-sat.*click/));
 
 test('L activates location control',()=>assert.match(read('interaction-v2.js'),/e\.key==='l'.*btn-loc.*click/));
+
+test('zero activates reset view',()=>assert.match(read('interaction-v2.js'),/e\.key==='0'.*btn-reset-view.*click/));
