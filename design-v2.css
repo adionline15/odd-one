@@ -6877,3 +6877,11 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 @keyframes oo-map-pulse{0%,100%{opacity:.72;transform:scale(.9)}50%{opacity:1;transform:scale(1)}}
 @media(max-width:640px){#map-coordinate-readout{display:none}#map-cinematic-frame{box-shadow:inset 0 0 70px rgba(0,0,0,.13)}#map-live-context{top:10px!important}.map-live-dot{width:4px;height:4px}}
 @media(prefers-reduced-motion:reduce){.map-live-dot{animation:none}}
+
+
+/* Interactive compass affordance */
+#map-orientation{pointer-events:auto;}
+#map-orientation .map-compass{cursor:pointer;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease;}
+#map-orientation .map-compass:hover{transform:scale(1.06);border-color:rgba(255,255,255,.24);box-shadow:0 16px 38px rgba(0,0,0,.38),0 0 20px rgba(34,211,238,.06);}
+#map-orientation:focus-visible{outline:2px solid rgba(34,211,238,.75);outline-offset:5px;border-radius:50%;}
+@media(prefers-reduced-motion:reduce){#map-orientation .map-compass{transition:none}.map-live-dot{animation:none}}
