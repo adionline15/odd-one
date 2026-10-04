@@ -92,3 +92,5 @@ test('map exposes live viewport context', () => {
   assert.match(html, /function updateMapContext\(\)/);
   assert.match(html, /map\.on\('zoomend', updateMapContext/);
 });
+
+test('map has an accessible region role',()=>assert.match(read('interaction-v2.js'),/getElementById\('map'\)\?\.setAttribute\('role','region'\)/));
