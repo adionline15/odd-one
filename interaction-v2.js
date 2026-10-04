@@ -470,3 +470,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.getElementById('btn-loc')?.setAttribute('aria-keyshortcuts','L'));
 
   ready(() => document.getElementById('btn-reset-view')?.setAttribute('aria-keyshortcuts','0'));
+
+  ready(() => document.addEventListener('keydown',e=>{if(e.key==='k'&&(e.ctrlKey||e.metaKey)&&!['INPUT','TEXTAREA'].includes(document.activeElement?.tagName)){e.preventDefault();document.getElementById('s-input')?.focus();}}));
