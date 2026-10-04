@@ -112,3 +112,5 @@ test('compass exposes an image role',()=>assert.match(read('interaction-v2.js'),
 test('compass describes north orientation',()=>assert.match(read('interaction-v2.js'),/Map orientation: north is up/));
 
 test('map scale exposes context',()=>assert.match(read('interaction-v2.js'),/map-scale-wrap.*Map scale and viewport context/));
+
+test('live map context is a status',()=>assert.match(read('interaction-v2.js'),/map-live-context.*role','status'/));
