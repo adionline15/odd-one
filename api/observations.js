@@ -52,7 +52,7 @@ async function supabaseRequest(path, options = {}) {
   }
 
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 10000);
+  const timeout = setTimeout(() => controller.abort(), OBSERVATIONS_REQUEST_TIMEOUT_MS);
   let response;
   try {
     response = await fetch(`${url}/rest/v1/${path}`, {
