@@ -6964,3 +6964,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1125 */
 .map-deck-btn:hover{background:rgba(255,255,255,.045);border-color:rgba(255,255,255,.14);}
+
+
+/* 1126 */
+.map-deck-btn:active{background:rgba(255,255,255,.06);}
