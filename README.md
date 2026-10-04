@@ -256,3 +256,8 @@ Observation reads are capped at 500 records. A response that reaches the request
 ### Map exploration strategy
 
 Large geographic areas should be explored by moving and zooming the map. This keeps requests aligned with the user's active viewport and avoids unbounded geographic queries.
+
+
+### Verified-data boundary
+
+Public observation reads use the approved observation path. Pending, rejected, or otherwise unapproved records must not become visible through the map intelligence layer.
