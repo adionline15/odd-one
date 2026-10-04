@@ -438,3 +438,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.querySelectorAll('#d-go-btn,#m-go-btn').forEach(b=>b.setAttribute('type','button')));
 
   ready(() => document.querySelectorAll('[data-nav-tab]').forEach(b=>b.setAttribute('aria-keyshortcuts','ArrowLeft ArrowRight Home End')));
+
+  ready(() => document.getElementById('map')?.setAttribute('aria-roledescription','interactive map'));
