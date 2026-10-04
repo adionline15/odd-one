@@ -434,3 +434,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.getElementById('m-from')?.setAttribute('autocomplete','street-address'));
 
   ready(() => document.getElementById('m-to')?.setAttribute('autocomplete','street-address'));
+
+  ready(() => document.querySelectorAll('#d-go-btn,#m-go-btn').forEach(b=>b.setAttribute('type','button')));
