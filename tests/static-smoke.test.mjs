@@ -204,3 +204,8 @@ test('map feedback toast is accessible',()=>assert.match(read('index.html'),/map
 test('premium map controls have visual treatment',()=>assert.match(read('design-v2.css'),/Premium layer control proportions/));
 test('sidebar receives map-first glass treatment',()=>assert.match(read('design-v2.css'),/Map-first visual hierarchy/));
 test('route analytics receives floating treatment',()=>assert.match(read('design-v2.css'),/Floating route analytics/));
+
+
+test('mobile map hides desktop hero overlay',()=>assert.match(read('design-v2.css'),/Mobile map composition.*#intelligence-hero.*display:none/s));
+test('mobile map moves route status above controls',()=>assert.match(read('design-v2.css'),/Mobile map composition[\\s\\S]*#route-status-overlay[\\s\\S]*bottom:112px/));
+test('mobile map removes scale telemetry',()=>assert.match(read('design-v2.css'),/Mobile map composition[\\s\\S]*#map-scale-wrap[\\s\\S]*display:none/));
