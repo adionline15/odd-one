@@ -7148,3 +7148,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1171 */
 @media(max-width:640px){.map-context-pill{font-size:.74rem;padding:5px 9px;}}
+
+
+/* 1172 */
+@media(max-width:640px){.map-context-pill{border-color:rgba(255,255,255,.11);}}
