@@ -221,3 +221,8 @@ All rights reserved unless a separate license is added to this repository.
 ### Viewport request policy
 
 The public observation endpoint is intentionally viewport-scoped. Clients should request only the active map bounds and let map navigation drive subsequent reads.
+
+
+### Observation response caching
+
+Successful viewport reads advertise a short shared-cache window. The frontend must still treat newer viewport requests as authoritative when users pan or zoom quickly.
