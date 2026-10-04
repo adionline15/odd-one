@@ -6912,3 +6912,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1112 */
 .map-layer-switcher{box-shadow:0 10px 28px rgba(0,0,0,.18);}
+
+
+/* 1113 */
+.map-layer-switcher button{border-radius:9px;}
