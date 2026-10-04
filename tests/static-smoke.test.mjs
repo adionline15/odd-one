@@ -124,3 +124,5 @@ test('desktop origin uses address autocomplete',()=>assert.match(read('interacti
 test('desktop destination uses address autocomplete',()=>assert.match(read('interaction-v2.js'),/d-to.*autocomplete','street-address'/));
 
 test('mobile origin uses address autocomplete',()=>assert.match(read('interaction-v2.js'),/m-from.*autocomplete','street-address'/));
+
+test('mobile destination uses address autocomplete',()=>assert.match(read('interaction-v2.js'),/m-to.*autocomplete','street-address'/));
