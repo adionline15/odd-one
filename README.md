@@ -226,3 +226,8 @@ The public observation endpoint is intentionally viewport-scoped. Clients should
 ### Observation response caching
 
 Successful viewport reads advertise a short shared-cache window. The frontend must still treat newer viewport requests as authoritative when users pan or zoom quickly.
+
+
+### Stale response protection
+
+Viewport-dependent map intelligence uses request identity checks so a slower response from an older viewport cannot overwrite a newer map state.
