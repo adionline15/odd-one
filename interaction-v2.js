@@ -565,3 +565,21 @@ ready(() => {
     }
   });
 });
+
+
+// Premium map feedback: acknowledge intentional viewport actions without blocking the map.
+ready(() => {
+  const toast = document.getElementById('map-feedback-toast');
+  if (!toast) return;
+  let timer;
+  const show = label => {
+    toast.textContent = label;
+    toast.classList.add('show');
+    clearTimeout(timer);
+    timer = setTimeout(() => toast.classList.remove('show'), 900);
+  };
+  document.getElementById('btn-map')?.addEventListener('click', () => show('Standard map'));
+  document.getElementById('btn-sat')?.addEventListener('click', () => show('Satellite imagery'));
+  document.getElementById('btn-loc')?.addEventListener('click', () => show('Finding your location'));
+  document.getElementById('btn-reset-view')?.addEventListener('click', () => show('India overview'));
+});
