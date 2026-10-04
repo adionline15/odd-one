@@ -400,3 +400,105 @@ document.documentElement.dataset.searchPhase='ready';
 document.documentElement.dataset.mapPhase='ready';
 
 document.documentElement.dataset.interactionPhase='ready';
+
+  ready(() => document.getElementById('map')?.setAttribute('role','region'));
+
+  ready(() => document.getElementById('map')?.setAttribute('tabindex','0'));
+
+  ready(() => document.getElementById('map-command-deck')?.setAttribute('aria-label','Map controls'));
+
+  ready(() => document.getElementById('btn-map')?.setAttribute('title','Standard road map'));
+
+  ready(() => document.getElementById('btn-sat')?.setAttribute('title','Satellite imagery'));
+
+  ready(() => document.getElementById('btn-reset-view')?.setAttribute('title','Reset to India overview'));
+
+  ready(() => document.getElementById('btn-loc')?.setAttribute('title','Center on my location'));
+
+  ready(() => document.getElementById('map-orientation')?.setAttribute('role','img'));
+
+  ready(() => document.getElementById('map-orientation')?.setAttribute('aria-label','Map orientation: north is up'));
+
+  ready(() => document.getElementById('map-scale-wrap')?.setAttribute('aria-label','Map scale and viewport context'));
+
+  ready(() => document.getElementById('map-live-context')?.setAttribute('role','status'));
+
+  ready(() => document.getElementById('map-zoom-value')?.setAttribute('aria-label','Current map zoom'));
+
+  ready(() => document.getElementById('s-input')?.setAttribute('autocomplete','off'));
+
+  ready(() => document.getElementById('d-from')?.setAttribute('autocomplete','street-address'));
+
+  ready(() => document.getElementById('d-to')?.setAttribute('autocomplete','street-address'));
+
+  ready(() => document.getElementById('m-from')?.setAttribute('autocomplete','street-address'));
+
+  ready(() => document.getElementById('m-to')?.setAttribute('autocomplete','street-address'));
+
+  ready(() => document.querySelectorAll('#d-go-btn,#m-go-btn').forEach(b=>b.setAttribute('type','button')));
+
+  ready(() => document.querySelectorAll('[data-nav-tab]').forEach(b=>b.setAttribute('aria-keyshortcuts','ArrowLeft ArrowRight Home End')));
+
+  ready(() => document.getElementById('map')?.setAttribute('aria-roledescription','interactive map'));
+
+  ready(() => document.getElementById('route-status-source')?.setAttribute('title','Route provider status'));
+
+  ready(() => document.getElementById('observation-status-strip')?.setAttribute('role','status'));
+
+  ready(() => document.getElementById('obs-status-count')?.setAttribute('aria-live','polite'));
+
+  ready(() => document.getElementById('stats-content')?.setAttribute('aria-live','polite'));
+
+  ready(() => document.getElementById('route-status-overlay')?.setAttribute('aria-live','polite'));
+
+  ready(() => document.getElementById('btn-loc')?.setAttribute('aria-live','polite'));
+
+  ready(() => document.getElementById('sheet-toggle')?.setAttribute('title','Open map intelligence panel'));
+
+  ready(() => document.getElementById('toggle-btn')?.setAttribute('title','Toggle intelligence sidebar'));
+
+  ready(() => document.querySelectorAll('#dt-alerts,#dt-route,#dt-data').forEach(b=>b.setAttribute('role','tab')));
+
+  ready(() => document.querySelectorAll('#mt-alerts,#mt-route,#mt-data').forEach(b=>b.setAttribute('role','tab')));
+
+  ready(() => document.getElementById('map')?.setAttribute('aria-keyshortcuts','/ R L Escape'));
+
+  ready(() => document.getElementById('btn-map')?.setAttribute('aria-keyshortcuts','M'));
+
+  ready(() => document.getElementById('btn-sat')?.setAttribute('aria-keyshortcuts','S'));
+
+  ready(() => document.getElementById('btn-loc')?.setAttribute('aria-keyshortcuts','L'));
+
+  ready(() => document.getElementById('btn-reset-view')?.setAttribute('aria-keyshortcuts','0'));
+
+  ready(() => document.addEventListener('keydown',e=>{if(e.key==='k'&&(e.ctrlKey||e.metaKey)&&!['INPUT','TEXTAREA'].includes(document.activeElement?.tagName)){e.preventDefault();document.getElementById('s-input')?.focus();}}));
+
+  ready(() => document.addEventListener('keydown',e=>{if(e.key==='m'&&!e.ctrlKey&&!e.metaKey&&!['INPUT','TEXTAREA'].includes(document.activeElement?.tagName))document.getElementById('btn-map')?.click();}));
+
+  ready(() => document.addEventListener('keydown',e=>{if(e.key==='s'&&!e.ctrlKey&&!e.metaKey&&!['INPUT','TEXTAREA'].includes(document.activeElement?.tagName))document.getElementById('btn-sat')?.click();}));
+
+  ready(() => document.addEventListener('keydown',e=>{if(e.key==='l'&&!e.ctrlKey&&!e.metaKey&&!['INPUT','TEXTAREA'].includes(document.activeElement?.tagName))document.getElementById('btn-loc')?.click();}));
+
+  ready(() => document.addEventListener('keydown',e=>{if(e.key==='0'&&!e.ctrlKey&&!e.metaKey&&!['INPUT','TEXTAREA'].includes(document.activeElement?.tagName))document.getElementById('btn-reset-view')?.click();}));
+
+  ready(() => document.addEventListener('keydown',e=>{if(e.target?.isContentEditable&&e.key.length===1)e.stopPropagation();},true));
+
+  ready(() => document.querySelectorAll('[data-nav-tab]').forEach(b=>b.addEventListener('keydown',e=>{if(e.key==='Home')document.querySelector('[data-nav-tab]')?.focus();if(e.key==='End')document.querySelectorAll('[data-nav-tab]').item(document.querySelectorAll('[data-nav-tab]').length-1)?.focus();})));
+
+  ready(() => document.getElementById('map')?.addEventListener('focus',e=>e.currentTarget.setAttribute('aria-label','Interactive road intelligence map; use keyboard shortcuts or map controls')));
+
+  ready(() => document.getElementById('btn-map')?.addEventListener('click',()=>document.documentElement.dataset.mapLayer='map'));
+
+  ready(() => document.getElementById('btn-sat')?.addEventListener('click',()=>document.documentElement.dataset.mapLayer='sat'));
+
+  ready(() => document.getElementById('map-live-context')?.setAttribute('aria-live','polite'));
+
+  ready(() => {const mapEl=document.getElementById('map'); if(mapEl&&getMap()) mapEl.dataset.zoom=String(getMap().getZoom());});
+
+  ready(() => {const mapEl=document.getElementById('map'); if(!mapEl||!getMap())return; getMap().on('zoomend',()=>mapEl.dataset.zoom=String(getMap().getZoom()));});
+
+  ready(() => {const mapEl=document.getElementById('map'); if(!mapEl||!getMap())return; getMap().on('moveend',()=>mapEl.dataset.center=getMap().getCenter().lat.toFixed(3)+','+getMap().getCenter().lng.toFixed(3));});
+
+  ready(() => document.getElementById('map-live-context')?.setAttribute('aria-label','Live map viewport zoom'));
+
+  ready(() => document.getElementById('map')?.setAttribute('title','Pan and zoom to explore verified road intelligence'));

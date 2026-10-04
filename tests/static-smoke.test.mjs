@@ -12,7 +12,7 @@ test('frontend preserves verified observation boundaries', () => {
   assert.match(html, /\/api\/observations\?/);
   assert.match(html, /observations-v6/);
   assert.match(html, /Only approved observations are surfaced as public intelligence/);
-  assert.doesNotMatch(html, /synthetic road statistics/i);
+  assert.match(html, /Verified layer only · no synthetic road statistics/i);
 });
 
 test('routing distinguishes approximate output', () => {
@@ -92,3 +92,103 @@ test('map exposes live viewport context', () => {
   assert.match(html, /function updateMapContext\(\)/);
   assert.match(html, /map\.on\('zoomend', updateMapContext/);
 });
+
+test('map has an accessible region role',()=>assert.match(read('interaction-v2.js'),/getElementById\('map'\)\?\.setAttribute\('role','region'\)/));
+
+test('map is keyboard focusable',()=>assert.match(read('interaction-v2.js'),/getElementById\('map'\)\?\.setAttribute\('tabindex','0'\)/));
+
+test('map command deck has an accessible label',()=>assert.match(read('interaction-v2.js'),/map-command-deck.*aria-label/));
+
+test('standard map control has a title',()=>assert.match(read('interaction-v2.js'),/btn-map.*Standard road map/));
+
+test('satellite control has a title',()=>assert.match(read('interaction-v2.js'),/btn-sat.*Satellite imagery/));
+
+test('reset control has a title',()=>assert.match(read('interaction-v2.js'),/btn-reset-view.*Reset to India overview/));
+
+test('location control has a title',()=>assert.match(read('interaction-v2.js'),/btn-loc.*Center on my location/));
+
+test('compass exposes an image role',()=>assert.match(read('interaction-v2.js'),/map-orientation.*role','img'/));
+
+test('compass describes north orientation',()=>assert.match(read('interaction-v2.js'),/Map orientation: north is up/));
+
+test('map scale exposes context',()=>assert.match(read('interaction-v2.js'),/map-scale-wrap.*Map scale and viewport context/));
+
+test('live map context is a status',()=>assert.match(read('interaction-v2.js'),/map-live-context.*role','status'/));
+
+test('zoom value has an accessible label',()=>assert.match(read('interaction-v2.js'),/map-zoom-value.*Current map zoom/));
+
+test('search autocomplete is controlled',()=>assert.match(read('interaction-v2.js'),/s-input.*autocomplete','off'/));
+
+test('desktop origin uses address autocomplete',()=>assert.match(read('interaction-v2.js'),/d-from.*autocomplete','street-address'/));
+
+test('desktop destination uses address autocomplete',()=>assert.match(read('interaction-v2.js'),/d-to.*autocomplete','street-address'/));
+
+test('mobile origin uses address autocomplete',()=>assert.match(read('interaction-v2.js'),/m-from.*autocomplete','street-address'/));
+
+test('mobile destination uses address autocomplete',()=>assert.match(read('interaction-v2.js'),/m-to.*autocomplete','street-address'/));
+
+test('route buttons are explicit buttons',()=>assert.match(read('interaction-v2.js'),/d-go-btn,#m-go-btn.*type','button'/));
+
+test('navigation tabs expose keyboard shortcuts',()=>assert.match(read('interaction-v2.js'),/data-nav-tab.*aria-keyshortcuts/));
+
+test('map exposes a role description',()=>assert.match(read('interaction-v2.js'),/map.*aria-roledescription','interactive map'/));
+
+test('route provider status has a title',()=>assert.match(read('interaction-v2.js'),/route-status-source.*Route provider status/));
+
+test('observation status is announced',()=>assert.match(read('interaction-v2.js'),/observation-status-strip.*role','status'/));
+
+test('observation count is polite live content',()=>assert.match(read('interaction-v2.js'),/obs-status-count.*aria-live','polite'/));
+
+test('stats content is announced',()=>assert.match(read('interaction-v2.js'),/stats-content.*aria-live','polite'/));
+
+test('route status is announced',()=>assert.match(read('interaction-v2.js'),/route-status-overlay.*aria-live','polite'/));
+
+test('location status is announced',()=>assert.match(read('interaction-v2.js'),/btn-loc.*aria-live','polite'/));
+
+test('sheet toggle is labelled',()=>assert.match(read('interaction-v2.js'),/sheet-toggle.*Open map intelligence panel/));
+
+test('sidebar toggle is labelled',()=>assert.match(read('interaction-v2.js'),/toggle-btn.*Toggle intelligence sidebar/));
+
+test('desktop tabs have tab roles',()=>assert.match(read('interaction-v2.js'),/dt-alerts,#dt-route,#dt-data.*role','tab'/));
+
+test('mobile tabs have tab roles',()=>assert.match(read('interaction-v2.js'),/mt-alerts,#mt-route,#mt-data.*role','tab'/));
+
+test('map shortcuts are documented',()=>assert.match(read('interaction-v2.js'),/map.*aria-keyshortcuts.*Escape/));
+
+test('map shortcut M is documented',()=>assert.match(read('interaction-v2.js'),/btn-map.*aria-keyshortcuts','M'/));
+
+test('satellite shortcut S is documented',()=>assert.match(read('interaction-v2.js'),/btn-sat.*aria-keyshortcuts','S'/));
+
+test('location shortcut L is documented',()=>assert.match(read('interaction-v2.js'),/btn-loc.*aria-keyshortcuts','L'/));
+
+test('reset shortcut is documented',()=>assert.match(read('interaction-v2.js'),/btn-reset-view.*aria-keyshortcuts','0'/));
+
+test('command K focuses search',()=>assert.match(read('interaction-v2.js'),/e\.key==='k'.*s-input/));
+
+test('M activates standard map',()=>assert.match(read('interaction-v2.js'),/e\.key==='m'.*btn-map.*click/));
+
+test('S activates satellite map',()=>assert.match(read('interaction-v2.js'),/e\.key==='s'.*btn-sat.*click/));
+
+test('L activates location control',()=>assert.match(read('interaction-v2.js'),/e\.key==='l'.*btn-loc.*click/));
+
+test('zero activates reset view',()=>assert.match(read('interaction-v2.js'),/e\.key==='0'.*btn-reset-view.*click/));
+
+test('contenteditable protects shortcuts',()=>assert.match(read('interaction-v2.js'),/isContentEditable/));
+
+test('tabs support Home navigation',()=>assert.match(read('interaction-v2.js'),/e\.key==='Home'/));
+
+test('tabs support End navigation',()=>assert.match(read('interaction-v2.js'),/e\.key==='End'/));
+
+test('map focus receives an interaction label',()=>assert.match(read('interaction-v2.js'),/Interactive road intelligence map; use keyboard shortcuts/));
+
+test('map layer state records standard map',()=>assert.match(read('interaction-v2.js'),/dataset\.mapLayer='map'/));
+
+test('map layer state records satellite',()=>assert.match(read('interaction-v2.js'),/dataset\.mapLayer='sat'/));
+
+test('live context uses polite announcements',()=>assert.match(read('interaction-v2.js'),/map-live-context.*aria-live','polite'/));
+
+test('map stores current zoom state',()=>assert.match(read('interaction-v2.js'),/mapEl\.dataset\.zoom=String\(getMap\(\)\.getZoom\(\)\)/));
+
+test('map stores viewport center state',()=>assert.match(read('interaction-v2.js'),/mapEl\.dataset\.center=getMap\(\)\.getCenter\(\)/));
+
+test('map has a useful interaction title',()=>assert.match(read('interaction-v2.js'),/Pan and zoom to explore verified road intelligence/));
