@@ -126,3 +126,5 @@ test('desktop destination uses address autocomplete',()=>assert.match(read('inte
 test('mobile origin uses address autocomplete',()=>assert.match(read('interaction-v2.js'),/m-from.*autocomplete','street-address'/));
 
 test('mobile destination uses address autocomplete',()=>assert.match(read('interaction-v2.js'),/m-to.*autocomplete','street-address'/));
+
+test('route buttons are explicit buttons',()=>assert.match(read('interaction-v2.js'),/d-go-btn,#m-go-btn.*type','button'/));
