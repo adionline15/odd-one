@@ -7260,3 +7260,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1199 */
 @media(min-width:1101px){#map-layer-controls{box-shadow:0 12px 30px rgba(0,0,0,.2);}}
+
+
+/* 1200 */
+@media(min-width:1101px){#map-command-deck{box-shadow:0 16px 38px rgba(0,0,0,.22);}}
