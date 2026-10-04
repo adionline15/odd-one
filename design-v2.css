@@ -7020,3 +7020,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1139 */
 .route-endpoint-label{backdrop-filter:blur(8px);}
+
+
+/* 1140 */
+.route-endpoint-label{border-color:rgba(255,255,255,.12);}
