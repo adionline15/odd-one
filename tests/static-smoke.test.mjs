@@ -138,3 +138,5 @@ test('route provider status has a title',()=>assert.match(read('interaction-v2.j
 test('observation status is announced',()=>assert.match(read('interaction-v2.js'),/observation-status-strip.*role','status'/));
 
 test('observation count is polite live content',()=>assert.match(read('interaction-v2.js'),/obs-status-count.*aria-live','polite'/));
+
+test('stats content is announced',()=>assert.match(read('interaction-v2.js'),/stats-content.*aria-live','polite'/));
