@@ -160,3 +160,5 @@ test('map shortcut M is documented',()=>assert.match(read('interaction-v2.js'),/
 test('satellite shortcut S is documented',()=>assert.match(read('interaction-v2.js'),/btn-sat.*aria-keyshortcuts','S'/));
 
 test('location shortcut L is documented',()=>assert.match(read('interaction-v2.js'),/btn-loc.*aria-keyshortcuts','L'/));
+
+test('reset shortcut is documented',()=>assert.match(read('interaction-v2.js'),/btn-reset-view.*aria-keyshortcuts','0'/));
