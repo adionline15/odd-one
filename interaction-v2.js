@@ -492,3 +492,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.getElementById('btn-sat')?.addEventListener('click',()=>document.documentElement.dataset.mapLayer='sat'));
 
   ready(() => document.getElementById('map-live-context')?.setAttribute('aria-live','polite'));
+
+  ready(() => {const mapEl=document.getElementById('map'); if(mapEl&&getMap()) mapEl.dataset.zoom=String(getMap().getZoom());});
