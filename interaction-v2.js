@@ -436,3 +436,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.getElementById('m-to')?.setAttribute('autocomplete','street-address'));
 
   ready(() => document.querySelectorAll('#d-go-btn,#m-go-btn').forEach(b=>b.setAttribute('type','button')));
+
+  ready(() => document.querySelectorAll('[data-nav-tab]').forEach(b=>b.setAttribute('aria-keyshortcuts','ArrowLeft ArrowRight Home End')));
