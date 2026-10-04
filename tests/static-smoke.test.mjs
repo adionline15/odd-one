@@ -152,3 +152,5 @@ test('sidebar toggle is labelled',()=>assert.match(read('interaction-v2.js'),/to
 test('desktop tabs have tab roles',()=>assert.match(read('interaction-v2.js'),/dt-alerts,#dt-route,#dt-data.*role','tab'/));
 
 test('mobile tabs have tab roles',()=>assert.match(read('interaction-v2.js'),/mt-alerts,#mt-route,#mt-data.*role','tab'/));
+
+test('map shortcuts are documented',()=>assert.match(read('interaction-v2.js'),/map.*aria-keyshortcuts.*Escape/));
