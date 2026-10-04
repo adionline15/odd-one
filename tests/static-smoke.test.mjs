@@ -196,3 +196,5 @@ test('map has a useful interaction title',()=>assert.match(read('interaction-v2.
 test('observations API declares its version constant',()=>assert.match(read('api/observations.js'),/OBSERVATIONS_API_VERSION = 'observations-v6'/));
 
 test('observations API has a bounded public limit',()=>assert.match(read('api/observations.js'),/OBSERVATIONS_MAX_LIMIT = 500/));
+
+test('observations API has a bounded viewport span',()=>assert.match(read('api/observations.js'),/OBSERVATIONS_MAX_VIEWPORT_SPAN = 60/));
