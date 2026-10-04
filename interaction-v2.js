@@ -502,3 +502,23 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.getElementById('map-live-context')?.setAttribute('aria-label','Live map viewport zoom'));
 
   ready(() => document.getElementById('map')?.setAttribute('title','Pan and zoom to explore verified road intelligence'));
+
+
+// Premium map cursor telemetry: visual context only, never persisted.
+ready(() => {
+  const mapEl = document.getElementById('map');
+  const readout = document.getElementById('map-coordinate-readout');
+  const value = document.getElementById('map-coordinate-value');
+  const mapInstance = getMap();
+  if (!mapEl || !readout || !value || !mapInstance?.on) return;
+  mapInstance.on('mousemove', e => {
+    value.textContent = e.latlng.lat.toFixed(4) + '°, ' + e.latlng.lng.toFixed(4) + '°';
+    readout.classList.add('has-value');
+  });
+  mapInstance.on('mouseout', () => readout.classList.remove('has-value'));
+  mapInstance.on('zoomend', () => {
+    const zoom = Math.round(mapInstance.getZoom() * 10) / 10;
+    const el = document.getElementById('map-zoom-value');
+    if (el) el.textContent = 'Z' + zoom;
+  });
+});
