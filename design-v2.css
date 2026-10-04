@@ -7264,3 +7264,17 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1200 */
 @media(min-width:1101px){#map-command-deck{box-shadow:0 16px 38px rgba(0,0,0,.22);}}
+
+
+/* Map-first visual hierarchy */
+@media(min-width:641px){
+  #intelligence-hero{max-width:360px!important;top:18px!important;left:18px!important;}
+  #intelligence-hero>div{padding:15px 16px!important;border-radius:16px!important;background:rgba(7,7,9,.72)!important;box-shadow:0 22px 70px rgba(0,0,0,.30)!important;}
+  #intelligence-hero h2{font-size:21px!important;line-height:1.02!important;}
+  #intelligence-hero p{font-size:9px!important;line-height:1.5!important;max-width:285px!important;margin-top:9px!important;}
+  #intelligence-hero .mt-4{margin-top:10px!important;}
+  #intelligence-hero .mt-3{margin-top:9px!important;}
+  #sidebar{width:292px!important;background:rgba(7,7,9,.82)!important;backdrop-filter:blur(24px) saturate(125%);border-left:1px solid rgba(255,255,255,.08)!important;box-shadow:-20px 0 70px rgba(0,0,0,.24)!important;}
+  #sidebar>div:first-child{background:rgba(8,8,10,.76)!important;border-bottom-color:rgba(255,255,255,.07)!important;}
+  #sidebar>.flex-1{padding:14px!important;}
+}
