@@ -6956,3 +6956,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1123 */
 .map-deck-btn{font-weight:600;}
+
+
+/* 1124 */
+.map-deck-btn{letter-spacing:.005em;}
