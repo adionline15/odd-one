@@ -231,3 +231,8 @@ Successful viewport reads advertise a short shared-cache window. The frontend mu
 ### Stale response protection
 
 Viewport-dependent map intelligence uses request identity checks so a slower response from an older viewport cannot overwrite a newer map state.
+
+
+### Observation failure semantics
+
+A database/connectivity failure is different from an empty approved dataset. The API reports service failure explicitly instead of presenting an unavailable source as zero observations.
