@@ -7212,3 +7212,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1187 */
 @media(min-width:1101px){.map-context-pill{padding:6px 10px;}}
+
+
+/* 1188 */
+@media(min-width:1101px){.map-context-pill{font-size:.8rem;}}
