@@ -494,3 +494,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.getElementById('map-live-context')?.setAttribute('aria-live','polite'));
 
   ready(() => {const mapEl=document.getElementById('map'); if(mapEl&&getMap()) mapEl.dataset.zoom=String(getMap().getZoom());});
+
+  ready(() => {const mapEl=document.getElementById('map'); if(!mapEl||!getMap())return; getMap().on('zoomend',()=>mapEl.dataset.zoom=String(getMap().getZoom()));});
