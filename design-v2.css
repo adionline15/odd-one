@@ -6892,3 +6892,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1107 */
 .map-deck-btn:focus-visible{outline:2px solid var(--oo-v2-accent);outline-offset:2px;}
+
+
+/* 1108 */
+.map-deck-btn:active{transform:scale(.98);}
