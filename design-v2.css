@@ -7124,3 +7124,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1165 */
 @media(max-width:640px){.map-layer-switcher{padding:3px;}}
+
+
+/* 1166 */
+@media(max-width:640px){.map-layer-switcher{gap:3px;}}
