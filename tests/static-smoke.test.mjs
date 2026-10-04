@@ -242,3 +242,5 @@ test('observations API varies on origin',()=>assert.match(read('api/observations
 test('observations API identifies its response version',()=>assert.match(read('api/observations.js'),/X-Odd-One-API.*observations-v6/));
 
 test('observations API reports response count',()=>assert.match(read('api/observations.js'),/X-Odd-One-Observation-Count/));
+
+test('observations API reports response limit',()=>assert.match(read('api/observations.js'),/X-Odd-One-Observation-Limit/));
