@@ -102,8 +102,7 @@ export default async function handler(req, res) {
     const maxLon = Number(q.maxLon);
     const requestedLimit = q.limit == null || q.limit === '' ? 500 : Number(q.limit);
     const limit = Number.isInteger(requestedLimit) ? Math.min(requestedLimit, OBSERVATIONS_MAX_LIMIT) : OBSERVATIONS_MAX_LIMIT;
-    const cacheSeconds = 15;
-    const maxViewportSpan = 60;
+    const cacheSeconds = OBSERVATIONS_CACHE_SECONDS;
 
     if (
       !validCoordinate(minLat, -90, 90) ||
@@ -112,15 +111,15 @@ export default async function handler(req, res) {
       !validCoordinate(maxLon, -180, 180) ||
       minLat >= maxLat ||
       minLon >= maxLon ||
-      maxLat - minLat > maxViewportSpan ||
-      maxLon - minLon > maxViewportSpan ||
+      maxLat - minLat > OBSERVATIONS_MAX_VIEWPORT_SPAN ||
+      maxLon - minLon > OBSERVATIONS_MAX_VIEWPORT_SPAN ||
       !Number.isInteger(limit) ||
       limit < 1 ||
       limit > 500
     ) {
       return json(res, 400, {
         error: 'Invalid map bounds',
-        max_span: maxViewportSpan
+        max_span: OBSERVATIONS_MAX_VIEWPORT_SPAN
       });
     }
 
