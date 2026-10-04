@@ -7232,3 +7232,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1192 */
 @media(min-width:1101px){#route-status-overlay{padding:12px 14px;}}
+
+
+/* 1193 */
+@media(min-width:1101px){.route-endpoint-label{font-size:.74rem;}}
