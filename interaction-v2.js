@@ -416,3 +416,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.getElementById('btn-loc')?.setAttribute('title','Center on my location'));
 
   ready(() => document.getElementById('map-orientation')?.setAttribute('role','img'));
+
+  ready(() => document.getElementById('map-orientation')?.setAttribute('aria-label','Map orientation: north is up'));
