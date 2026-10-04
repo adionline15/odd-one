@@ -146,3 +146,5 @@ test('route status is announced',()=>assert.match(read('interaction-v2.js'),/rou
 test('location status is announced',()=>assert.match(read('interaction-v2.js'),/btn-loc.*aria-live','polite'/));
 
 test('sheet toggle is labelled',()=>assert.match(read('interaction-v2.js'),/sheet-toggle.*Open map intelligence panel/));
+
+test('sidebar toggle is labelled',()=>assert.match(read('interaction-v2.js'),/toggle-btn.*Toggle intelligence sidebar/));
