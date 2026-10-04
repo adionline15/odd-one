@@ -522,3 +522,25 @@ ready(() => {
     if (el) el.textContent = 'Z' + zoom;
   });
 });
+
+
+// Premium compass interaction: return to the canonical north-up India frame.
+ready(() => {
+  const compass = document.getElementById('map-orientation');
+  const mapInstance = getMap();
+  if (!compass || !mapInstance) return;
+  compass.setAttribute('role', 'button');
+  compass.setAttribute('tabindex', '0');
+  compass.setAttribute('title', 'Reset to north-up India view');
+  const reset = () => {
+    mapInstance.flyTo([22, 78], 5, { duration: 0.75 });
+    mapInstance.getContainer()?.focus({ preventScroll: true });
+  };
+  compass.addEventListener('click', reset);
+  compass.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      reset();
+    }
+  });
+});
