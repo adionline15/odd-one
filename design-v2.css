@@ -7307,3 +7307,6 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 /* Floating route analytics */
 #desktop-stats-container>div{padding:11px 18px!important;gap:20px!important;border-radius:16px!important;background:rgba(7,7,9,.78)!important;border:1px solid rgba(255,255,255,.11)!important;box-shadow:0 20px 55px rgba(0,0,0,.32)!important;backdrop-filter:blur(22px) saturate(125%);}
 #desktop-stats-container p:first-child{font-size:7px!important;letter-spacing:.18em!important;color:#71717a!important;}#desktop-stats-container p:last-child{font-size:12px!important;}
+
+
+#route-status-overlay>div{background:rgba(7,7,9,.76)!important;border-color:rgba(34,211,238,.18)!important;box-shadow:0 20px 55px rgba(0,0,0,.30)!important;backdrop-filter:blur(22px) saturate(125%);padding:11px 13px!important;min-width:190px!important;}#route-status-path{font-size:9px!important;}#route-status-overlay .text-\[8px\]{font-size:7px!important;}
