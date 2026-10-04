@@ -164,3 +164,5 @@ test('location shortcut L is documented',()=>assert.match(read('interaction-v2.j
 test('reset shortcut is documented',()=>assert.match(read('interaction-v2.js'),/btn-reset-view.*aria-keyshortcuts','0'/));
 
 test('command K focuses search',()=>assert.match(read('interaction-v2.js'),/e\.key==='k'.*s-input/));
+
+test('M activates standard map',()=>assert.match(read('interaction-v2.js'),/e\.key==='m'.*btn-map.*click/));
