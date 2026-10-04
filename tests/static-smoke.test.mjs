@@ -184,3 +184,5 @@ test('map focus receives an interaction label',()=>assert.match(read('interactio
 test('map layer state records standard map',()=>assert.match(read('interaction-v2.js'),/dataset\.mapLayer='map'/));
 
 test('map layer state records satellite',()=>assert.match(read('interaction-v2.js'),/dataset\.mapLayer='sat'/));
+
+test('live context uses polite announcements',()=>assert.match(read('interaction-v2.js'),/map-live-context.*aria-live','polite'/));
