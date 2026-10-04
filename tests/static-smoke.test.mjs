@@ -210,3 +210,5 @@ test('observations API centralizes request timeout',()=>assert.match(read('api/o
 test('observations API uses the configured public limit constant',()=>assert.match(read('api/observations.js'),/Math\.min\(requestedLimit, OBSERVATIONS_MAX_LIMIT\)/));
 
 test('observations API still uses approved spatial RPC',()=>assert.match(read('api/observations.js'),/rpc\/approved_observations_in_view/));
+
+test('observations API still verifies approved connectivity first',()=>assert.match(read('api/observations.js'),/observations\?select=id&status=eq\.approved&limit=1/));
