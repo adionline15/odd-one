@@ -446,3 +446,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.getElementById('observation-status-strip')?.setAttribute('role','status'));
 
   ready(() => document.getElementById('obs-status-count')?.setAttribute('aria-live','polite'));
+
+  ready(() => document.getElementById('stats-content')?.setAttribute('aria-live','polite'));
