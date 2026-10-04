@@ -200,3 +200,5 @@ test('observations API has a bounded public limit',()=>assert.match(read('api/ob
 test('observations API has a bounded viewport span',()=>assert.match(read('api/observations.js'),/OBSERVATIONS_MAX_VIEWPORT_SPAN = 60/));
 
 test('observations API has an explicit cache policy',()=>assert.match(read('api/observations.js'),/OBSERVATIONS_CACHE_SECONDS = 15/));
+
+test('observations API has a bounded upstream timeout',()=>assert.match(read('api/observations.js'),/OBSERVATIONS_REQUEST_TIMEOUT_MS = 10000/));
