@@ -6885,3 +6885,10 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 #map-orientation .map-compass:hover{transform:scale(1.06);border-color:rgba(255,255,255,.24);box-shadow:0 16px 38px rgba(0,0,0,.38),0 0 20px rgba(34,211,238,.06);}
 #map-orientation:focus-visible{outline:2px solid rgba(34,211,238,.75);outline-offset:5px;border-radius:50%;}
 @media(prefers-reduced-motion:reduce){#map-orientation .map-compass{transition:none}.map-live-dot{animation:none}}
+
+
+/* Transient map interaction feedback */
+.map-feedback-toast{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) translateY(8px);z-index:45;padding:8px 12px;border:1px solid rgba(255,255,255,.13);border-radius:999px;background:rgba(5,5,7,.84);backdrop-filter:blur(18px);box-shadow:0 18px 48px rgba(0,0,0,.36),inset 0 1px 0 rgba(255,255,255,.04);font:700 8px/1 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#e4e4e7;opacity:0;pointer-events:none;transition:opacity .18s ease,transform .18s ease;}
+.map-feedback-toast.show{opacity:1;transform:translate(-50%,-50%) translateY(0);}
+@media(max-width:640px){.map-feedback-toast{top:42%;font-size:7px}}
+@media(prefers-reduced-motion:reduce){.map-feedback-toast{transition:none}}
