@@ -468,3 +468,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.getElementById('btn-sat')?.setAttribute('aria-keyshortcuts','S'));
 
   ready(() => document.getElementById('btn-loc')?.setAttribute('aria-keyshortcuts','L'));
+
+  ready(() => document.getElementById('btn-reset-view')?.setAttribute('aria-keyshortcuts','0'));
