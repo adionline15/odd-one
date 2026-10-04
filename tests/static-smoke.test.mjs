@@ -116,3 +116,5 @@ test('map scale exposes context',()=>assert.match(read('interaction-v2.js'),/map
 test('live map context is a status',()=>assert.match(read('interaction-v2.js'),/map-live-context.*role','status'/));
 
 test('zoom value has an accessible label',()=>assert.match(read('interaction-v2.js'),/map-zoom-value.*Current map zoom/));
+
+test('search autocomplete is controlled',()=>assert.match(read('interaction-v2.js'),/s-input.*autocomplete','off'/));
