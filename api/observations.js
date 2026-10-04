@@ -4,6 +4,14 @@ const OBSERVATIONS_MAX_VIEWPORT_SPAN = 60;
 const OBSERVATIONS_CACHE_SECONDS = 15;
 const OBSERVATIONS_REQUEST_TIMEOUT_MS = 10000;
 
+function setObservationSecurityHeaders(res) {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  res.setHeader('Cache-Control', 'no-store');
+  res.setHeader('Content-Type', 'application/json; charset=utf-8');
+}
+
 const TYPES = new Set([
   'missing_road',
   'new_road',
