@@ -490,3 +490,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.getElementById('btn-map')?.addEventListener('click',()=>document.documentElement.dataset.mapLayer='map'));
 
   ready(() => document.getElementById('btn-sat')?.addEventListener('click',()=>document.documentElement.dataset.mapLayer='sat'));
+
+  ready(() => document.getElementById('map-live-context')?.setAttribute('aria-live','polite'));
