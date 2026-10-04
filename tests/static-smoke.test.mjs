@@ -148,3 +148,5 @@ test('location status is announced',()=>assert.match(read('interaction-v2.js'),/
 test('sheet toggle is labelled',()=>assert.match(read('interaction-v2.js'),/sheet-toggle.*Open map intelligence panel/));
 
 test('sidebar toggle is labelled',()=>assert.match(read('interaction-v2.js'),/toggle-btn.*Toggle intelligence sidebar/));
+
+test('desktop tabs have tab roles',()=>assert.match(read('interaction-v2.js'),/dt-alerts,#dt-route,#dt-data.*role','tab'/));
