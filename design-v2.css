@@ -7008,3 +7008,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1136 */
 #route-status-overlay{border-color:rgba(255,255,255,.11);}
+
+
+/* 1137 */
+.route-endpoint-label{font-weight:650;}
