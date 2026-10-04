@@ -6888,3 +6888,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1106 */
 .map-deck-btn{transition:background-color .18s ease,border-color .18s ease,transform .18s ease;}
+
+
+/* 1107 */
+.map-deck-btn:focus-visible{outline:2px solid var(--oo-v2-accent);outline-offset:2px;}
