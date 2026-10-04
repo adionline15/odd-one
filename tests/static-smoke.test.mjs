@@ -110,3 +110,5 @@ test('location control has a title',()=>assert.match(read('interaction-v2.js'),/
 test('compass exposes an image role',()=>assert.match(read('interaction-v2.js'),/map-orientation.*role','img'/));
 
 test('compass describes north orientation',()=>assert.match(read('interaction-v2.js'),/Map orientation: north is up/));
+
+test('map scale exposes context',()=>assert.match(read('interaction-v2.js'),/map-scale-wrap.*Map scale and viewport context/));
