@@ -100,3 +100,5 @@ test('map is keyboard focusable',()=>assert.match(read('interaction-v2.js'),/get
 test('map command deck has an accessible label',()=>assert.match(read('interaction-v2.js'),/map-command-deck.*aria-label/));
 
 test('standard map control has a title',()=>assert.match(read('interaction-v2.js'),/btn-map.*Standard road map/));
+
+test('satellite control has a title',()=>assert.match(read('interaction-v2.js'),/btn-sat.*Satellite imagery/));
