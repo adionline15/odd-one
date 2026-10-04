@@ -7297,3 +7297,8 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* Compact viewport intelligence HUD */
 #map-intelligence-hud{top:18px!important;right:18px!important;}.map-intelligence-hud,.map-intelligence-hud .intel-card{border-radius:14px!important;}#map-intelligence-hud .intel-card{min-width:180px!important;padding:10px 12px!important;background:rgba(7,7,9,.70)!important;border:1px solid rgba(255,255,255,.09)!important;box-shadow:0 18px 48px rgba(0,0,0,.25)!important;}#map-intelligence-hud .intel-value{font-size:14px!important;}.intel-kicker{font-size:7px!important;letter-spacing:.16em!important;}
+
+
+/* Verified observation marker language */
+.oo-observation-marker{filter:drop-shadow(0 0 5px rgba(255,255,255,.34)) drop-shadow(0 0 11px currentColor);transition:filter .18s ease,opacity .18s ease;}.oo-observation-marker:hover{filter:drop-shadow(0 0 6px rgba(255,255,255,.65)) drop-shadow(0 0 16px currentColor);}
+.oo-observation-marker.road-intel-selected{filter:drop-shadow(0 0 7px rgba(255,255,255,.9)) drop-shadow(0 0 20px currentColor)!important;}
