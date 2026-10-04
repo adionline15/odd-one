@@ -204,3 +204,5 @@ test('observations API has an explicit cache policy',()=>assert.match(read('api/
 test('observations API has a bounded upstream timeout',()=>assert.match(read('api/observations.js'),/OBSERVATIONS_REQUEST_TIMEOUT_MS = 10000/));
 
 test('observations API centralizes security headers',()=>assert.match(read('api/observations.js'),/function setObservationSecurityHeaders/));
+
+test('observations API centralizes request timeout',()=>assert.match(read('api/observations.js'),/setTimeout\(\(\) => controller\.abort\(\), OBSERVATIONS_REQUEST_TIMEOUT_MS\)/));
