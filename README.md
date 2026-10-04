@@ -261,3 +261,8 @@ Large geographic areas should be explored by moving and zooming the map. This ke
 ### Verified-data boundary
 
 Public observation reads use the approved observation path. Pending, rejected, or otherwise unapproved records must not become visible through the map intelligence layer.
+
+
+### Reliability validation
+
+Changes to the observation API should be accompanied by static smoke contracts covering bounds, limits, approved-only reads, response metadata, and public error behavior.
