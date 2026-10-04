@@ -194,3 +194,5 @@ test('map stores viewport center state',()=>assert.match(read('interaction-v2.js
 test('map has a useful interaction title',()=>assert.match(read('interaction-v2.js'),/Pan and zoom to explore verified road intelligence/));
 
 test('observations API declares its version constant',()=>assert.match(read('api/observations.js'),/OBSERVATIONS_API_VERSION = 'observations-v6'/));
+
+test('observations API has a bounded public limit',()=>assert.match(read('api/observations.js'),/OBSERVATIONS_MAX_LIMIT = 500/));
