@@ -6900,3 +6900,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1109 */
 .map-layer-switcher{border-radius:12px;}
+
+
+/* 1110 */
+.map-layer-switcher{border:1px solid rgba(255,255,255,.09);}
