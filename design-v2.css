@@ -7108,3 +7108,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1161 */
 @media(max-width:640px){.map-deck-btn{min-height:40px;}}
+
+
+/* 1162 */
+@media(max-width:640px){.map-deck-btn{padding-inline:11px;}}
