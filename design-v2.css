@@ -7286,3 +7286,6 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 #map-live-context .map-context-pill{gap:8px!important;padding:7px 10px!important;background:rgba(7,7,9,.76)!important;border-color:rgba(255,255,255,.11)!important;box-shadow:0 14px 38px rgba(0,0,0,.28)!important;}
 #map-live-context .map-context-pill:before{content:"";width:5px;height:5px;border-radius:50%;background:#34d399;box-shadow:0 0 10px rgba(52,211,153,.65);}
 @media(max-width:640px){.map-coordinate-readout.has-value{display:none!important;}}
+
+
+.map-hero-title-row{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;}.map-hero-index{font:600 7px/1 'JetBrains Mono',monospace;letter-spacing:.16em;color:#52525b;padding-top:3px;}.map-hero-title-row h2{margin:0!important;}
