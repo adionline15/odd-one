@@ -178,3 +178,5 @@ test('contenteditable protects shortcuts',()=>assert.match(read('interaction-v2.
 test('tabs support Home navigation',()=>assert.match(read('interaction-v2.js'),/e\.key==='Home'/));
 
 test('tabs support End navigation',()=>assert.match(read('interaction-v2.js'),/e\.key==='End'/));
+
+test('map focus receives an interaction label',()=>assert.match(read('interaction-v2.js'),/Interactive road intelligence map; use keyboard shortcuts/));
