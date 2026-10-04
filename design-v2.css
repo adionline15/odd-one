@@ -7302,3 +7302,8 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 /* Verified observation marker language */
 .oo-observation-marker{filter:drop-shadow(0 0 5px rgba(255,255,255,.34)) drop-shadow(0 0 11px currentColor);transition:filter .18s ease,opacity .18s ease;}.oo-observation-marker:hover{filter:drop-shadow(0 0 6px rgba(255,255,255,.65)) drop-shadow(0 0 16px currentColor);}
 .oo-observation-marker.road-intel-selected{filter:drop-shadow(0 0 7px rgba(255,255,255,.9)) drop-shadow(0 0 20px currentColor)!important;}
+
+
+/* Floating route analytics */
+#desktop-stats-container>div{padding:11px 18px!important;gap:20px!important;border-radius:16px!important;background:rgba(7,7,9,.78)!important;border:1px solid rgba(255,255,255,.11)!important;box-shadow:0 20px 55px rgba(0,0,0,.32)!important;backdrop-filter:blur(22px) saturate(125%);}
+#desktop-stats-container p:first-child{font-size:7px!important;letter-spacing:.18em!important;color:#71717a!important;}#desktop-stats-container p:last-child{font-size:12px!important;}
