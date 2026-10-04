@@ -462,3 +462,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.querySelectorAll('#mt-alerts,#mt-route,#mt-data').forEach(b=>b.setAttribute('role','tab')));
 
   ready(() => document.getElementById('map')?.setAttribute('aria-keyshortcuts','/ R L Escape'));
+
+  ready(() => document.getElementById('btn-map')?.setAttribute('aria-keyshortcuts','M'));
