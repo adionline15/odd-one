@@ -486,3 +486,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.querySelectorAll('[data-nav-tab]').forEach(b=>b.addEventListener('keydown',e=>{if(e.key==='Home')document.querySelector('[data-nav-tab]')?.focus();if(e.key==='End')document.querySelectorAll('[data-nav-tab]').item(document.querySelectorAll('[data-nav-tab]').length-1)?.focus();})));
 
   ready(() => document.getElementById('map')?.addEventListener('focus',e=>e.currentTarget.setAttribute('aria-label','Interactive road intelligence map; use keyboard shortcuts or map controls')));
+
+  ready(() => document.getElementById('btn-map')?.addEventListener('click',()=>document.documentElement.dataset.mapLayer='map'));
