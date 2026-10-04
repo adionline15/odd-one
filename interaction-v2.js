@@ -402,3 +402,5 @@ document.documentElement.dataset.mapPhase='ready';
 document.documentElement.dataset.interactionPhase='ready';
 
   ready(() => document.getElementById('map')?.setAttribute('role','region'));
+
+  ready(() => document.getElementById('map')?.setAttribute('tabindex','0'));
