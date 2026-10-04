@@ -7036,3 +7036,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1143 */
 .road-intel-tooltip{box-shadow:0 14px 34px rgba(0,0,0,.3);}
+
+
+/* 1144 */
+.road-intel-tooltip{border-color:rgba(255,255,255,.11);}
