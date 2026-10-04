@@ -246,3 +246,8 @@ The observation endpoint sets JSON content type, MIME-sniffing protection, frame
 ### Upstream timeout policy
 
 Supabase requests made by the observation API have a bounded timeout. This prevents a slow upstream dependency from holding a serverless invocation indefinitely.
+
+
+### Response-size policy
+
+Observation reads are capped at 500 records. A response that reaches the requested limit reports `truncated` so clients can distinguish a full result from a bounded result.
