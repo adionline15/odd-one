@@ -450,3 +450,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.getElementById('stats-content')?.setAttribute('aria-live','polite'));
 
   ready(() => document.getElementById('route-status-overlay')?.setAttribute('aria-live','polite'));
+
+  ready(() => document.getElementById('btn-loc')?.setAttribute('aria-live','polite'));
