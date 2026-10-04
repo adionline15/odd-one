@@ -400,3 +400,5 @@ document.documentElement.dataset.searchPhase='ready';
 document.documentElement.dataset.mapPhase='ready';
 
 document.documentElement.dataset.interactionPhase='ready';
+
+  ready(() => document.getElementById('map')?.setAttribute('role','region'));
