@@ -102,3 +102,5 @@ test('map command deck has an accessible label',()=>assert.match(read('interacti
 test('standard map control has a title',()=>assert.match(read('interaction-v2.js'),/btn-map.*Standard road map/));
 
 test('satellite control has a title',()=>assert.match(read('interaction-v2.js'),/btn-sat.*Satellite imagery/));
+
+test('reset control has a title',()=>assert.match(read('interaction-v2.js'),/btn-reset-view.*Reset to India overview/));
