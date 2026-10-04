@@ -6928,3 +6928,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1116 */
 .map-layer-switcher button:active{transform:scale(.98);}
+
+
+/* 1117 */
+.map-context-pill{border-radius:999px;}
