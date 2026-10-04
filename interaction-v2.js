@@ -454,3 +454,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.getElementById('btn-loc')?.setAttribute('aria-live','polite'));
 
   ready(() => document.getElementById('sheet-toggle')?.setAttribute('title','Open map intelligence panel'));
+
+  ready(() => document.getElementById('toggle-btn')?.setAttribute('title','Toggle intelligence sidebar'));
