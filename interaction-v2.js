@@ -424,3 +424,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.getElementById('map-live-context')?.setAttribute('role','status'));
 
   ready(() => document.getElementById('map-zoom-value')?.setAttribute('aria-label','Current map zoom'));
+
+  ready(() => document.getElementById('s-input')?.setAttribute('autocomplete','off'));
