@@ -7512,3 +7512,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1251 */
 #map-intelligence-hud .intel-card strong{font-variant-numeric:tabular-nums;}
+
+
+/* 1252 */
+#map-intelligence-hud .intel-card small{line-height:1.35;}
