@@ -7696,3 +7696,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1297 */
 @media(min-width:641px) and (max-width:1100px){#map-command-deck{max-width:calc(100vw - 32px);}}
+
+
+/* 1298 */
+@media(min-width:641px) and (max-width:1100px){.road-intel-tooltip{max-width:420px;}}
