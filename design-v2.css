@@ -7684,3 +7684,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1294 */
 @media(max-width:640px){#route-status-overlay{max-width:calc(100vw - 24px);}}
+
+
+/* 1295 */
+@media(max-width:640px){.route-endpoint-label{max-width:calc(100vw - 32px);}}
