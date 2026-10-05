@@ -7440,3 +7440,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1233 */
 #route-status-overlay button:disabled{cursor:not-allowed;opacity:.55;}
+
+
+/* 1234 */
+#route-status-path{overflow-wrap:anywhere;}
