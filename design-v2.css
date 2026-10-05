@@ -7400,3 +7400,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1223 */
 .map-context-pill{white-space:nowrap;}
+
+
+/* 1224 */
+.map-context-pill{overflow:hidden;}
