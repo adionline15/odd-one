@@ -7644,3 +7644,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1284 */
 @media(max-width:640px){#sidebar .section-subtitle{line-height:1.4;}}
+
+
+/* 1285 */
+@media(max-width:640px){#map-command-deck{padding-left:max(4px,env(safe-area-inset-left));}}
