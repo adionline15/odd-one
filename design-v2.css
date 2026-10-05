@@ -7548,3 +7548,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1260 */
 #observation-status-strip [role="status"]{line-height:1.4;}
+
+
+/* 1261 */
+#sidebar{overscroll-behavior:contain;}
