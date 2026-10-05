@@ -7452,3 +7452,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1236 */
 .route-endpoint-label{white-space:nowrap;}
+
+
+/* 1237 */
+.route-endpoint-label{max-width:min(240px,calc(100vw - 32px));}
