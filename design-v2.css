@@ -7480,3 +7480,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1243 */
 .road-intel-tooltip a{overflow-wrap:anywhere;}
+
+
+/* 1244 */
+.road-intel-tooltip a:focus-visible{outline:2px solid var(--oo-v2-accent);outline-offset:2px;}
