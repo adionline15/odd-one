@@ -7504,3 +7504,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1249 */
 #map-intelligence-hud .intel-card{min-width:0;}
+
+
+/* 1250 */
+#map-intelligence-hud .intel-card{overflow:hidden;}
