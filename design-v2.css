@@ -7708,3 +7708,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1300 */
 @media(prefers-reduced-motion:reduce){.map-deck-btn,.map-layer-switcher button,.road-intel-selected{transition:none!important;}}
+
+
+/* 1287 */
+@media(max-width:640px){#map-command-deck{scroll-padding-inline:8px;}}
