@@ -7392,3 +7392,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1221 */
 .map-layer-switcher button svg{width:1em;height:1em;}
+
+
+/* 1222 */
+.map-context-pill{display:inline-flex;align-items:center;max-width:100%;}
