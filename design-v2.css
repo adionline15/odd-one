@@ -7408,3 +7408,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1225 */
 .map-context-pill strong{font-weight:650;}
+
+
+/* 1226 */
+.map-context-pill svg{flex:0 0 auto;}
