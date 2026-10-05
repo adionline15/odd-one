@@ -7476,3 +7476,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1242 */
 .road-intel-tooltip strong{font-weight:650;}
+
+
+/* 1243 */
+.road-intel-tooltip a{overflow-wrap:anywhere;}
