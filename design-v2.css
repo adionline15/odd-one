@@ -7744,3 +7744,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1295 */
 @media(max-width:640px){.route-endpoint-label{max-width:calc(100vw - 32px);}}
+
+
+/* 1296 */
+@media(max-width:640px){.road-intel-tooltip{max-width:calc(100vw - 24px);}}
