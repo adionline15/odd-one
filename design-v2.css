@@ -7632,3 +7632,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1281 */
 @media(max-width:640px){#sidebar button{min-height:44px;}}
+
+
+/* 1282 */
+@media(max-width:640px){#sidebar select{min-height:44px;}}
