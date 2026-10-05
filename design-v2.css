@@ -7448,3 +7448,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1235 */
 #route-status-source{overflow-wrap:anywhere;}
+
+
+/* 1236 */
+.route-endpoint-label{white-space:nowrap;}
