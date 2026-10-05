@@ -7668,3 +7668,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1290 */
 @media(max-width:640px){.map-layer-switcher button{scroll-snap-align:start;}}
+
+
+/* 1291 */
+@media(max-width:640px){#map-intelligence-hud{max-width:calc(100vw - 24px);}}
