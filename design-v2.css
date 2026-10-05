@@ -8056,3 +8056,11 @@ button{
     background:var(--oo-apple-surface-solid)!important;
   }
 }
+
+
+/* APPLE HERO — editorial hierarchy */
+#intelligence-hero>div{max-width:430px!important;padding:22px 22px 20px!important;background:rgba(18,18,20,.68)!important;border:1px solid rgba(255,255,255,.09)!important;border-radius:22px!important;box-shadow:0 24px 70px rgba(0,0,0,.30)!important;-webkit-backdrop-filter:saturate(180%) blur(28px);backdrop-filter:saturate(180%) blur(28px)}
+#intelligence-hero h2{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif!important;font-style:normal!important;font-weight:600!important;font-size:clamp(25px,2.3vw,34px)!important;line-height:1.03!important;letter-spacing:-.045em!important;max-width:390px}
+#intelligence-hero p{font-size:11px!important;line-height:1.7!important;color:#8e8e93!important;max-width:350px!important}
+#intelligence-hero .rounded-md{border-radius:999px!important;background:rgba(255,255,255,.045)!important;border-color:rgba(255,255,255,.08)!important;padding:6px 9px!important;color:#a1a1a6!important}
+#hero-data-boundary{font-size:7px!important;color:#636366!important}
