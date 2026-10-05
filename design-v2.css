@@ -7340,3 +7340,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1219 */
 .map-layer-switcher button[aria-current="true"]{box-shadow:inset 0 -2px 0 var(--oo-v2-accent);}
+
+
+/* 1209 */
+.map-deck-btn:focus-visible{box-shadow:0 0 0 3px rgba(34,211,238,.18);}
