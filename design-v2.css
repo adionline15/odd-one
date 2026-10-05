@@ -7540,3 +7540,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1258 */
 #observation-status-strip button{min-height:36px;}
+
+
+/* 1259 */
+#observation-status-strip button:focus-visible{outline:2px solid var(--oo-v2-accent);outline-offset:2px;}
