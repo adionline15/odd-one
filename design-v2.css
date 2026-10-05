@@ -7312,3 +7312,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1212 */
 .map-deck-btn[aria-expanded="true"]{background:rgba(255,255,255,.055);}
+
+
+/* 1213 */
+.map-layer-switcher{isolation:isolate;}
