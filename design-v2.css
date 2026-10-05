@@ -8071,3 +8071,10 @@ nav[aria-label="Primary navigation"] .nav-intel-btn{color:#8e8e93!important;font
 nav[aria-label="Primary navigation"] .nav-intel-btn:hover{color:#f5f5f7!important;background:rgba(255,255,255,.06)!important}
 nav[aria-label="Primary navigation"] .nav-intel-btn.active{color:#f5f5f7!important;background:rgba(255,255,255,.08)!important;border-color:transparent!important;box-shadow:none!important}
 @media(max-width:768px){nav[aria-label="Primary navigation"]{height:58px!important;padding-left:14px!important;padding-right:14px!important}}
+
+
+#s-input{height:42px!important;border-radius:999px!important;padding-left:17px!important;padding-right:42px!important;background:rgba(28,28,30,.72)!important;border-color:rgba(255,255,255,.09)!important;font-size:11px!important;letter-spacing:-.005em}
+#s-input::placeholder{color:#7b7b80!important}
+#sugg{margin-top:8px!important;padding:6px!important;border-radius:16px!important;background:rgba(20,20,22,.92)!important;border:1px solid rgba(255,255,255,.09)!important;box-shadow:0 24px 70px rgba(0,0,0,.42)!important;-webkit-backdrop-filter:saturate(180%) blur(24px);backdrop-filter:saturate(180%) blur(24px)}
+.sugg-item{padding:11px 12px!important;border-radius:11px!important;color:#d1d1d6!important}
+.sugg-item:hover{background:rgba(255,255,255,.07)!important;color:#fff!important}
