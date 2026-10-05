@@ -7284,3 +7284,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1205 */
 #map-command-deck button[aria-current="true"]{box-shadow:inset 0 -2px 0 var(--oo-v2-accent);}
+
+
+/* 1206 */
+.map-deck-btn{white-space:nowrap;}
