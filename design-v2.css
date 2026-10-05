@@ -7616,3 +7616,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1277 */
 #sidebar .route-control-group input{min-width:0;}
+
+
+/* 1278 */
+#sidebar .route-control-group input{text-overflow:ellipsis;}
