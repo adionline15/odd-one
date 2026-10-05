@@ -7712,3 +7712,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1287 */
 @media(max-width:640px){#map-command-deck{scroll-padding-inline:8px;}}
+
+
+/* 1288 */
+@media(max-width:640px){.map-deck-btn{scroll-snap-align:start;}}
