@@ -7516,3 +7516,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1252 */
 #map-intelligence-hud .intel-card small{line-height:1.35;}
+
+
+/* 1253 */
+#map-intelligence-hud button{min-height:36px;}
