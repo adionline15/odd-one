@@ -8097,3 +8097,10 @@ nav[aria-label="Primary navigation"] .nav-intel-btn.active{color:#f5f5f7!importa
 .map-deck-btn[aria-pressed="true"]{background:#f5f5f7!important;color:#111113!important;border-color:transparent!important;box-shadow:0 5px 18px rgba(0,0,0,.20)!important}
 #map-layer-controls button{min-height:36px!important;background:transparent!important;border-color:transparent!important}
 #map-layer-controls button[aria-pressed="true"]{background:rgba(255,255,255,.09)!important;border-color:rgba(255,255,255,.08)!important}
+
+
+#sheet{border-radius:24px 24px 0 0!important;background:rgba(15,15,17,.92)!important;border:1px solid rgba(255,255,255,.08)!important;border-bottom:0!important;box-shadow:0 -24px 80px rgba(0,0,0,.42)!important}
+#sheet-toggle{padding-top:9px!important;padding-bottom:9px!important}
+#sheet-toggle span{background:#636366!important;transition:width .2s ease,background .2s ease}
+#sheet-toggle:hover span{width:42px!important;background:#8e8e93!important}
+@media(max-width:640px){#sheet{padding-bottom:env(safe-area-inset-bottom)!important}#sheet .flex.border-b{border-color:rgba(255,255,255,.06)!important}}
