@@ -8078,3 +8078,10 @@ nav[aria-label="Primary navigation"] .nav-intel-btn.active{color:#f5f5f7!importa
 #sugg{margin-top:8px!important;padding:6px!important;border-radius:16px!important;background:rgba(20,20,22,.92)!important;border:1px solid rgba(255,255,255,.09)!important;box-shadow:0 24px 70px rgba(0,0,0,.42)!important;-webkit-backdrop-filter:saturate(180%) blur(24px);backdrop-filter:saturate(180%) blur(24px)}
 .sugg-item{padding:11px 12px!important;border-radius:11px!important;color:#d1d1d6!important}
 .sugg-item:hover{background:rgba(255,255,255,.07)!important;color:#fff!important}
+
+
+#sidebar .section-subtitle{color:#8e8e93!important;font-size:9px!important;letter-spacing:.10em!important}
+#sidebar label{color:#6e6e73!important;font-size:8px!important;letter-spacing:.10em!important}
+#sidebar input,#sidebar select,#sidebar textarea{background:rgba(28,28,30,.66)!important;border-color:rgba(255,255,255,.08)!important;border-radius:13px!important}
+#sidebar input::placeholder,#sidebar textarea::placeholder{color:#636366!important}
+#d-go-btn,#m-go-btn{height:46px!important;border-radius:999px!important;background:#f5f5f7!important;color:#111113!important;font-size:11px!important;letter-spacing:.01em!important}
