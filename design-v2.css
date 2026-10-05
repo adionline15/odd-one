@@ -7764,3 +7764,295 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1300 */
 @media(prefers-reduced-motion:reduce){.map-deck-btn,.map-layer-switcher button,.road-intel-selected{transition:none!important;}}
+
+
+/* ─────────────────────────────────────────────────────────────
+   APPLE-INSPIRED UI POLISH — calm hierarchy, glass surfaces,
+   system typography, restrained motion, and generous spacing.
+   ───────────────────────────────────────────────────────────── */
+
+:root{
+  --oo-apple-bg:#050506;
+  --oo-apple-surface:rgba(28,28,30,.72);
+  --oo-apple-surface-solid:#1c1c1e;
+  --oo-apple-line:rgba(255,255,255,.10);
+  --oo-apple-line-soft:rgba(255,255,255,.06);
+  --oo-apple-text:#f5f5f7;
+  --oo-apple-secondary:#a1a1a6;
+  --oo-apple-tertiary:#6e6e73;
+  --oo-apple-blue:#2997ff;
+  --oo-apple-radius:18px;
+  --oo-apple-shadow:0 20px 60px rgba(0,0,0,.32);
+}
+
+body,
+button,
+input,
+textarea,
+select{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Arial,sans-serif!important;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+.font-serif-lux{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif!important;
+  font-style:normal!important;
+}
+
+.font-mono-lux{
+  font-family:"SF Mono","SFMono-Regular",ui-monospace,Menlo,Monaco,monospace!important;
+}
+
+nav[aria-label="Primary navigation"]{
+  background:rgba(5,5,6,.78)!important;
+  border-bottom:1px solid var(--oo-apple-line-soft)!important;
+  box-shadow:0 1px 0 rgba(255,255,255,.025),0 12px 40px rgba(0,0,0,.12);
+  -webkit-backdrop-filter:saturate(180%) blur(24px);
+  backdrop-filter:saturate(180%) blur(24px);
+}
+
+nav[aria-label="Primary navigation"] h1{
+  font-size:20px!important;
+  font-weight:600!important;
+  letter-spacing:-.035em!important;
+}
+
+nav[aria-label="Primary navigation"] .font-mono-lux{
+  color:var(--oo-apple-tertiary)!important;
+  letter-spacing:.11em!important;
+}
+
+#s-input{
+  height:40px!important;
+  border:1px solid var(--oo-apple-line)!important;
+  border-radius:12px!important;
+  background:rgba(28,28,30,.58)!important;
+  color:var(--oo-apple-text)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.035)!important;
+  -webkit-backdrop-filter:blur(18px);
+  backdrop-filter:blur(18px);
+}
+
+#s-input:focus{
+  border-color:rgba(41,151,255,.62)!important;
+  box-shadow:0 0 0 4px rgba(41,151,255,.12),inset 0 1px 0 rgba(255,255,255,.04)!important;
+}
+
+nav[aria-label="Primary navigation"] button[onclick*="showTab('route')"]{
+  min-width:84px;
+  height:38px;
+  border-radius:999px!important;
+  background:#f5f5f7!important;
+  color:#111113!important;
+  border:0!important;
+  font-size:11px!important;
+  font-weight:600!important;
+  letter-spacing:-.01em!important;
+  box-shadow:0 6px 22px rgba(0,0,0,.24)!important;
+}
+
+nav[aria-label="Primary navigation"] button[onclick*="showTab('route')"]:hover{
+  transform:translateY(-1px)!important;
+  background:#fff!important;
+  box-shadow:0 9px 28px rgba(0,0,0,.30)!important;
+}
+
+.intel-card{
+  background:var(--oo-apple-surface)!important;
+  border:1px solid var(--oo-apple-line)!important;
+  border-radius:var(--oo-apple-radius)!important;
+  box-shadow:var(--oo-apple-shadow)!important;
+  -webkit-backdrop-filter:saturate(180%) blur(22px);
+  backdrop-filter:saturate(180%) blur(22px);
+}
+
+.intel-kicker{
+  color:var(--oo-apple-tertiary)!important;
+  font-size:9px!important;
+  font-weight:600!important;
+  letter-spacing:.12em!important;
+}
+
+.intel-value{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif!important;
+  font-style:normal!important;
+  font-weight:600!important;
+  letter-spacing:-.035em;
+}
+
+#sidebar{
+  width:348px!important;
+  background:rgba(10,10,12,.84)!important;
+  border-left:1px solid var(--oo-apple-line-soft)!important;
+  box-shadow:-30px 0 80px rgba(0,0,0,.24)!important;
+  -webkit-backdrop-filter:saturate(180%) blur(28px);
+  backdrop-filter:saturate(180%) blur(28px);
+}
+
+#sidebar>.flex.border-b{
+  background:rgba(28,28,30,.38)!important;
+  border-bottom:1px solid var(--oo-apple-line-soft)!important;
+}
+
+#sidebar .flex.border-b button{
+  height:52px!important;
+  color:var(--oo-apple-tertiary)!important;
+  font-size:10px!important;
+  font-weight:600!important;
+  letter-spacing:.09em!important;
+}
+
+#sidebar .flex.border-b button.border-white{
+  color:var(--oo-apple-text)!important;
+  box-shadow:inset 0 -2px 0 var(--oo-apple-blue)!important;
+}
+
+#sidebar input,
+#sidebar select,
+#sidebar textarea{
+  border:1px solid var(--oo-apple-line)!important;
+  border-radius:12px!important;
+  background:rgba(28,28,30,.72)!important;
+  color:var(--oo-apple-text)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.025)!important;
+}
+
+#sidebar input:focus,
+#sidebar select:focus,
+#sidebar textarea:focus{
+  border-color:rgba(41,151,255,.55)!important;
+  box-shadow:0 0 0 4px rgba(41,151,255,.10)!important;
+}
+
+#d-go-btn,#m-go-btn{
+  min-height:44px;
+  border:0!important;
+  border-radius:12px!important;
+  background:#f5f5f7!important;
+  color:#111113!important;
+  font-weight:600!important;
+  box-shadow:0 8px 24px rgba(0,0,0,.22)!important;
+}
+
+#d-go-btn:hover,#m-go-btn:hover{
+  background:#fff!important;
+  transform:translateY(-1px);
+}
+
+#map-command-deck,
+#map-layer-controls,
+#map-intelligence-hud,
+#route-status-overlay>div,
+#observation-status-strip .intel-card,
+#desktop-stats-container>div{
+  border-color:var(--oo-apple-line)!important;
+  background:rgba(20,20,22,.72)!important;
+  box-shadow:0 18px 50px rgba(0,0,0,.28)!important;
+  -webkit-backdrop-filter:saturate(180%) blur(20px);
+  backdrop-filter:saturate(180%) blur(20px);
+}
+
+.map-deck-btn,
+.map-layer-switcher button{
+  color:#d1d1d6!important;
+  border-radius:12px!important;
+  font-weight:500!important;
+}
+
+.map-deck-btn:hover,
+.map-layer-switcher button:hover{
+  background:rgba(255,255,255,.07)!important;
+  color:#fff!important;
+}
+
+.map-deck-btn[aria-pressed="true"],
+.map-layer-switcher button[aria-pressed="true"]{
+  background:rgba(41,151,255,.14)!important;
+  border-color:rgba(41,151,255,.24)!important;
+  color:#fff!important;
+}
+
+#map-context-pill,
+.map-context-pill{
+  background:rgba(28,28,30,.74)!important;
+  border-color:var(--oo-apple-line)!important;
+}
+
+.leaflet-control-zoom{
+  overflow:hidden;
+  border:1px solid var(--oo-apple-line)!important;
+  border-radius:12px!important;
+  box-shadow:0 14px 36px rgba(0,0,0,.25)!important;
+}
+
+.leaflet-control-zoom a{
+  width:34px!important;
+  height:34px!important;
+  line-height:34px!important;
+  background:rgba(28,28,30,.78)!important;
+  color:#f5f5f7!important;
+  border-bottom:1px solid var(--oo-apple-line-soft)!important;
+  -webkit-backdrop-filter:blur(18px);
+  backdrop-filter:blur(18px);
+}
+
+.leaflet-control-attribution{
+  border:0!important;
+  border-radius:10px 0 0 0!important;
+  background:rgba(5,5,6,.65)!important;
+  color:#6e6e73!important;
+  -webkit-backdrop-filter:blur(12px);
+  backdrop-filter:blur(12px);
+}
+
+.route-endpoint-label,
+.road-intel-tooltip{
+  background:rgba(28,28,30,.88)!important;
+  border-color:var(--oo-apple-line)!important;
+  color:var(--oo-apple-text)!important;
+  box-shadow:0 16px 42px rgba(0,0,0,.34)!important;
+  -webkit-backdrop-filter:saturate(180%) blur(18px);
+  backdrop-filter:saturate(180%) blur(18px);
+}
+
+#sheet{
+  background:rgba(10,10,12,.88)!important;
+  border-color:var(--oo-apple-line-soft)!important;
+  -webkit-backdrop-filter:saturate(180%) blur(28px);
+  backdrop-filter:saturate(180%) blur(28px);
+}
+
+#sheet-toggle span{
+  width:36px!important;
+  height:5px!important;
+  border-radius:999px!important;
+  background:#636366!important;
+}
+
+button{
+  -webkit-tap-highlight-color:transparent;
+}
+
+@media(max-width:640px){
+  nav[aria-label="Primary navigation"] h1{font-size:18px!important;}
+  #sidebar{width:min(348px,calc(100vw - 12px))!important;}
+  .intel-card{border-radius:16px!important;}
+  #map-command-deck{border-radius:16px!important;}
+  #map-layer-controls{border-radius:14px!important;}
+}
+
+@media(prefers-reduced-transparency:reduce){
+  nav[aria-label="Primary navigation"],
+  #sidebar,
+  .intel-card,
+  #map-command-deck,
+  #map-layer-controls,
+  #map-intelligence-hud,
+  #route-status-overlay>div,
+  #sheet{
+    -webkit-backdrop-filter:none;
+    backdrop-filter:none;
+    background:var(--oo-apple-surface-solid)!important;
+  }
+}
