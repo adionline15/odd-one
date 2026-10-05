@@ -7368,3 +7368,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1215 */
 .map-layer-switcher button{touch-action:manipulation;}
+
+
+/* 1216 */
+.map-layer-switcher button:disabled{cursor:not-allowed;opacity:.55;}
