@@ -7320,3 +7320,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1214 */
 .map-layer-switcher button{white-space:nowrap;}
+
+
+/* 1215 */
+.map-layer-switcher button{touch-action:manipulation;}
