@@ -7396,3 +7396,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1222 */
 .map-context-pill{display:inline-flex;align-items:center;max-width:100%;}
+
+
+/* 1223 */
+.map-context-pill{white-space:nowrap;}
