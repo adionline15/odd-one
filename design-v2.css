@@ -7388,3 +7388,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1220 */
 .map-layer-switcher button svg{flex:0 0 auto;}
+
+
+/* 1221 */
+.map-layer-switcher button svg{width:1em;height:1em;}
