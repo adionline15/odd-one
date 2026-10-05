@@ -15,9 +15,9 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 
   <style>
-    /* Global Font Settings */
+    /* Global Font Settings — system-native typography is finalized in design-v2.css */
     body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
       margin: 0;
       height: 100%;
       background-color: #050505;
@@ -28,11 +28,12 @@
     }
 
     .font-serif-lux {
-      font-family: 'Playfair Display', Georgia, serif;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+      font-style: normal;
     }
 
     .font-mono-lux {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: "SF Mono", "SFMono-Regular", ui-monospace, Menlo, Monaco, monospace;
     }
 
     /* ── LEAFLET DARK MAP FILTER ── */
@@ -102,7 +103,7 @@
       border: 1px solid #27272a !important;
     }
     .leaflet-popup-content {
-      font-family: 'Plus Jakarta Sans', sans-serif !important;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif !important;
       font-size: 13px !important;
       padding: 6px 4px !important;
     }
