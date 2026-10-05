@@ -7652,3 +7652,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1286 */
 @media(max-width:640px){#map-command-deck{padding-right:max(4px,env(safe-area-inset-right));}}
+
+
+/* 1287 */
+@media(max-width:640px){#map-command-deck{scroll-padding-inline:8px;}}
