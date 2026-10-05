@@ -7292,3 +7292,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1207 */
 .map-deck-btn svg{flex:0 0 auto;}
+
+
+/* 1208 */
+.map-deck-btn svg{width:1em;height:1em;}
