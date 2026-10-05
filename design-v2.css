@@ -7584,3 +7584,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1269 */
 #sidebar textarea::placeholder{opacity:.72;}
+
+
+/* 1270 */
+#sidebar .section-subtitle{line-height:1.35;}
