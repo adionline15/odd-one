@@ -7436,3 +7436,7 @@ a.skip-link:focus{outline:2px solid rgba(34,211,238,.72);outline-offset:3px;}
 
 /* 1232 */
 #route-status-overlay button:focus-visible{outline:2px solid var(--oo-v2-accent);outline-offset:2px;}
+
+
+/* 1233 */
+#route-status-overlay button:disabled{cursor:not-allowed;opacity:.55;}
