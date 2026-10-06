@@ -1062,26 +1062,52 @@
       sg.style.display = 'block';
       si.removeAttribute('aria-busy');
 
-      // Only hit Nominatim after a short pause, and only when local results are absent.
-      if (!local.length && q.length >= 3) {
+      // Keep the local index fast, but always enrich it with live OSM search.
+      // This makes villages, hamlets, wards, localities, PIN codes and small towns
+      // searchable across India instead of limiting the product to CITIES.
+      if (q.length >= 3) {
         searchTimer = setTimeout(async () => {
           if (si.value.trim().toLowerCase() !== q) return;
           si.setAttribute('aria-busy', 'true');
           try {
-            const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q + ' India')}&format=json&limit=5&countrycodes=in`;
+            const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q)}&format=jsonv2&limit=7&countrycodes=in&addressdetails=1&namedetails=1`;
             const res = await fetch(url, { headers: { 'Accept-Language': 'en' } });
             if (!res.ok) throw new Error(`Search failed with ${res.status}`);
             const data = await res.json();
             if (si.value.trim().toLowerCase() !== q) return;
-            sg.innerHTML = data.length ? data.map(r => {
-              const safeName = r.display_name.split(',')[0];
+
+            const osm = Array.isArray(data) ? data : [];
+            const seen = new Set(local.map(name => name.toLowerCase()));
+            const rows = osm.filter(r => {
+              const key = `${r.lat},${r.lon}`;
+              if (seen.has(key)) return false;
+              seen.add(key);
+              return Number.isFinite(Number(r.lat)) && Number.isFinite(Number(r.lon));
+            }).slice(0, 7);
+
+            const osmHTML = rows.map(r => {
+              const parts = String(r.display_name || '').split(',').map(s => s.trim()).filter(Boolean);
+              const title = parts[0] || 'Location';
+              const context = parts.slice(1, 4).join(', ');
+              const kind = r.type || r.addresstype || 'place';
+              const safeName = escapeHTML(title);
               return `
-                <div class="sugg-item flex items-center gap-2.5 px-4 py-2.5 text-xs text-zinc-700 border-b border-black/5 cursor-pointer transition-colors" data-search-lat="${r.lat}" data-search-lon="${r.lon}" data-search-name="${escapeHTML(safeName)}">
+                <div class="sugg-item flex items-center gap-2.5 px-4 py-2.5 text-xs text-zinc-700 border-b border-black/5 cursor-pointer transition-colors" data-search-lat="${r.lat}" data-search-lon="${r.lon}" data-search-name="${safeName}">
                   <span class="text-zinc-400">⌖</span>
-                  <span class="truncate">${escapeHTML(r.display_name.split(',').slice(0, 2).join(', '))}</span>
+                  <span class="min-w-0 truncate">
+                    <span class="block truncate">${safeName}</span>
+                    <span class="block truncate text-[9px] text-zinc-400 mt-0.5">${escapeHTML(context || 'India')} · ${escapeHTML(kind)}</span>
+                  </span>
                   <span class="text-[9px] uppercase tracking-wider text-zinc-400 ml-auto font-bold">OSM</span>
                 </div>`;
-            }).join('') : '<div class="px-4 py-3 text-[10px] text-zinc-500">No matching location found.</div>';
+            }).join('');
+
+            if (osmHTML) {
+              const localBlock = localHTML ? `<div class="px-4 py-1.5 text-[8px] uppercase tracking-[.16em] text-zinc-400 font-bold">Quick matches</div>${localHTML}` : '';
+              sg.innerHTML = localBlock + `<div class="px-4 py-1.5 text-[8px] uppercase tracking-[.16em] text-zinc-400 font-bold">India locations</div>` + osmHTML;
+            } else if (!local.length) {
+              sg.innerHTML = '<div class="px-4 py-3 text-[10px] text-zinc-500">No matching location found in India.</div>';
+            }
           } catch (error) {
             if (error.name !== 'AbortError') console.warn('[search] Geocoding failed', error);
           } finally {
