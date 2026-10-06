@@ -152,7 +152,12 @@ The next production layer is:
 
 ## Repository structure
 
-- `index.html` — current web MVP
+- `index.html` — semantic page structure and product markup
+- `app.js` — application orchestration and route/alert/map state
+- `interaction-v2.js` — interaction and accessibility behavior
+- `index-base.css` — page-level base styles
+- `design-v2.css` — product design system and visual layers
+- `lib/observation-contract.mjs` — shared observation normalization/validation
 - `api/news.js` — road-alert API
 - `api/route-guide.js` — Gemini route-guide API
 - `api/tiles.js` — OSM tile proxy
@@ -162,6 +167,11 @@ The next production layer is:
 - `docs/ARCHITECTURE.md` — system architecture
 - `docs/SECURITY.md` — production security checklist
 - `oddone_rag.py` and older prototype HTML files — research/legacy experiments
+
+
+### Engineering quality gates
+
+The repository now separates page markup, application logic, base styles, and shared observation validation. CI runs unit tests and enforces frontend size budgets so the architecture cannot silently regress while features are added. Production smoke checks also validate the deployed HTML contract and health endpoint.
 
 ## Deployment
 
