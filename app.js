@@ -1292,6 +1292,12 @@
       }
       
       btn.textContent = 'Calculating Route…';
+
+      // Routing belongs to the detailed road map, not the Earth overview.
+      // Hand off before drawing the corridor so the route is immediately visible.
+      clearTimeout(earthTransitionTimer);
+      setEarthOverview(false);
+      map.invalidateSize({ pan: false });
       
       routeLines.forEach(l => map.removeLayer(l)); routeLines = [];
       markers.forEach(m => map.removeLayer(m)); markers = [];
