@@ -1539,6 +1539,12 @@
     }
 
     // ── SIDEBAR CONTROLS ──
+    function syncEarthViewport() {
+      const root = document.querySelector('main');
+      if (!root) return;
+      root.style.setProperty('--earth-right', (!isMobile() && sidebarOpen) ? '336px' : '0px');
+    }
+
     function toggleSidebar() {
       sidebarOpen = !sidebarOpen;
       const sidebar = document.getElementById('sidebar');
@@ -1553,6 +1559,7 @@
         toggle.innerText = '▶';
         toggle.style.left = '-24px';
       }
+      syncEarthViewport();
       setTimeout(() => map.invalidateSize(), 320);
     }
 
@@ -1575,20 +1582,26 @@
 
     // ── TAB SWITCH ENGINE ──
     function showTab(t) {
+      const valid = ['alerts', 'route', 'data'];
+      if (!valid.includes(t)) return;
+
       document.querySelectorAll('[data-nav-tab]').forEach(el => {
         const active = el.dataset.navTab === t;
-        el.classList.toggle('text-white', active);
-        el.classList.toggle('bg-zinc-900', active);
+        el.classList.toggle('active', active);
+        el.setAttribute('aria-current', active ? 'page' : 'false');
       });
+
       ['alerts', 'route', 'data'].forEach(x => {
         const on = x === t;
         ['dt', 'mt'].forEach(p => {
           const el = document.getElementById(p + '-' + x);
-          if (el) {
-            el.classList.toggle('text-white', on);
-            el.classList.toggle('text-zinc-500', !on);
-            el.classList.toggle('border-white', on);
-          }
+          if (!el) return;
+          el.classList.toggle('on', on);
+          el.classList.toggle('active', on);
+          el.classList.toggle('text-white', on);
+          el.classList.toggle('text-zinc-500', !on);
+          el.classList.toggle('border-white', on);
+          el.setAttribute('aria-selected', String(on));
         });
         ['dp', 'mp'].forEach(p => {
           const el = document.getElementById(p + '-' + x);
@@ -1635,4 +1648,6 @@
     });
 
     // Initialize Default States
+    syncEarthViewport();
+    window.addEventListener('resize', syncEarthViewport, { passive: true });
     loadAlerts('dehradun');
