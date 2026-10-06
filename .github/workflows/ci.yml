@@ -61,6 +61,9 @@ jobs:
       - name: Validate JSON
         run: node -e "JSON.parse(require('fs').readFileSync('vercel.json','utf8')); console.log('vercel.json OK')"
 
+      - name: Run unit tests
+        run: node --test tests/*.test.mjs
+
       - name: Check database summary contract
         run: grep -q 'approved_observation_summary' db/schema.sql
 
