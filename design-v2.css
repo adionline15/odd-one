@@ -9074,3 +9074,90 @@ main{--earth-right:336px;}
 nav[aria-label="Primary navigation"]{z-index:100!important;}
 @media(min-width:641px) and (max-width:1100px){main{--earth-right:310px;}}
 @media(max-width:640px){main{--earth-right:0px;}}
+
+
+/* ── Product polish pass: clearer hierarchy, calmer chrome ── */
+nav[aria-label="Primary navigation"]{
+  height:64px!important;
+  min-height:64px!important;
+  background:rgba(255,255,255,.96)!important;
+  border-bottom:1px solid rgba(0,0,0,.10)!important;
+  box-shadow:0 1px 0 rgba(255,255,255,.7),0 8px 24px rgba(0,0,0,.06)!important;
+  color:#1d1d1f!important;
+}
+nav[aria-label="Primary navigation"] h1{color:#111!important;text-shadow:none!important;}
+nav[aria-label="Primary navigation"] .nav-intel-btn{color:#6e6e73!important;}
+nav[aria-label="Primary navigation"] .nav-intel-btn:hover,
+nav[aria-label="Primary navigation"] .nav-intel-btn.active{color:#111!important;background:#f2f2f5!important;}
+nav[aria-label="Primary navigation"] input#s-input{background:#f7f7f8!important;color:#1d1d1f!important;border:1px solid rgba(0,0,0,.12)!important;box-shadow:inset 0 1px 2px rgba(0,0,0,.03)!important;}
+nav[aria-label="Primary navigation"] input#s-input::placeholder{color:#8a8a8f!important;}
+nav[aria-label="Primary navigation"] button[onclick*="showTab('route')"]{box-shadow:0 6px 16px rgba(0,113,227,.18)!important;}
+
+#intelligence-hero{top:22px!important;left:22px!important;max-width:420px!important;}
+#intelligence-hero>div{
+  background:rgba(255,255,255,.94)!important;
+  color:#1d1d1f!important;
+  border:1px solid rgba(0,0,0,.10)!important;
+  border-radius:20px!important;
+  padding:20px 22px!important;
+  box-shadow:0 18px 45px rgba(0,0,0,.14)!important;
+}
+#intelligence-hero h2{color:#1d1d1f!important;font-family:inherit!important;font-style:normal!important;font-weight:700!important;letter-spacing:-.045em!important;}
+#intelligence-hero p{color:#6e6e73!important;}
+#intelligence-hero .text-zinc-500{color:#6e6e73!important;}
+#intelligence-hero .text-zinc-600{color:#8a8a8f!important;}
+#intelligence-hero .border-zinc-800{border-color:rgba(0,0,0,.10)!important;background:#f5f5f7!important;color:#6e6e73!important;}
+
+#observation-status-strip{top:174px!important;left:22px!important;}
+#observation-status-strip .intel-card{
+  background:rgba(29,29,31,.92)!important;
+  border:1px solid rgba(255,255,255,.10)!important;
+  border-radius:13px!important;
+  box-shadow:0 12px 30px rgba(0,0,0,.16)!important;
+}
+
+#map-intelligence-hud{top:22px!important;right:22px!important;}
+#map-intelligence-hud .intel-card{
+  min-width:190px!important;
+  background:rgba(255,255,255,.94)!important;
+  color:#1d1d1f!important;
+  border:1px solid rgba(0,0,0,.10)!important;
+  border-radius:17px!important;
+  box-shadow:0 14px 35px rgba(0,0,0,.12)!important;
+}
+#map-intelligence-hud .intel-value{color:#1d1d1f!important;}
+#map-intelligence-hud .text-zinc-600{color:#7a7a80!important;}
+
+#sidebar{
+  width:336px!important;
+  background:rgba(250,250,252,.98)!important;
+  color:#1d1d1f!important;
+  border-left:1px solid rgba(0,0,0,.10)!important;
+  box-shadow:-12px 0 32px rgba(0,0,0,.10)!important;
+}
+#sidebar>div:first-child{background:#f3f3f5!important;border-bottom:1px solid rgba(0,0,0,.08)!important;}
+#sidebar>div:first-child button{color:#737378!important;}
+#sidebar>div:first-child button.active,#sidebar>div:first-child button.on{color:#1d1d1f!important;background:#fff!important;}
+#sidebar .tab-pane{color:#1d1d1f!important;}
+#sidebar .tab-pane .text-zinc-500,#sidebar .tab-pane .text-zinc-600{color:#6e6e73!important;}
+#sidebar .tab-pane .text-white{color:#1d1d1f!important;}
+#sidebar .tab-pane input,#sidebar .tab-pane select,#sidebar .tab-pane textarea{background:#fff!important;color:#1d1d1f!important;border-color:rgba(0,0,0,.12)!important;}
+
+#desktop-stats-container>div{
+  background:rgba(20,20,22,.94)!important;
+  border:1px solid rgba(255,255,255,.12)!important;
+  box-shadow:0 14px 35px rgba(0,0,0,.20)!important;
+  border-radius:18px!important;
+  padding:13px 24px!important;
+}
+#map-command-deck{bottom:20px!important;right:20px!important;}
+
+@media(max-width:1100px) and (min-width:641px){
+  #sidebar{width:310px!important;}
+  #intelligence-hero{max-width:390px!important;}
+}
+@media(max-width:640px){
+  #intelligence-hero{top:14px!important;left:14px!important;right:14px!important;max-width:none!important;}
+  #intelligence-hero>div{padding:16px!important;border-radius:16px!important;}
+  #observation-status-strip{top:150px!important;left:14px!important;}
+}
