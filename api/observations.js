@@ -1,22 +1,4 @@
-const TYPES = new Set([
-  'missing_road',
-  'new_road',
-  'road_closure',
-  'construction',
-  'surface_condition',
-  'access_restriction',
-  'map_mismatch'
-]);
-
-const SOURCES = new Set([
-  'user',
-  'dashcam',
-  'satellite',
-  'osm',
-  'government',
-  'news',
-  'ai'
-]);
+import { normalizeObservationInput } from '../lib/observation-contract.mjs';
 
 function json(res, status, body) {
   return res.status(status).json(body);
@@ -180,41 +162,21 @@ export default async function handler(req, res) {
       return json(res, 413, { error: 'Observation request too large' });
     }
 
-    const body = req.body && typeof req.body === 'object' ? req.body : {};
-    const lat = Number(body.lat);
-    const lon = Number(body.lon);
-    const observationType = typeof body.observation_type === 'string' ? body.observation_type.trim().toLowerCase() : '';
-    const source = typeof body.source === 'string' ? body.source.trim().toLowerCase() : 'user';
-    const observedAt = typeof body.observed_at === 'string' ? body.observed_at : '';
-    const confidence = Number(body.confidence);
-    const metadata = body.metadata && typeof body.metadata === 'object' && !Array.isArray(body.metadata)
-      ? body.metadata
-      : {};
-
-    if (
-      !validCoordinate(lat, -90, 90) ||
-      !validCoordinate(lon, -180, 180) ||
-      !TYPES.has(observationType) ||
-      !SOURCES.has(source) ||
-      !Number.isFinite(confidence) ||
-      confidence < 0 ||
-      confidence > 1
-    ) {
-      return json(res, 400, { error: 'Invalid observation payload' });
+    const normalized = normalizeObservationInput(req.body && typeof req.body === 'object' ? req.body : {});
+    if (!normalized.ok) {
+      return json(res, normalized.error.includes('too large') ? 413 : 400, { error: normalized.error });
     }
 
-    const observedDate = new Date(observedAt.slice(0, 64));
-    if (!observedAt || Number.isNaN(observedDate.getTime())) {
-      return json(res, 400, { error: 'Invalid observed_at timestamp' });
-    }
-    if (observedDate.getTime() > Date.now() + 300000) {
-      return json(res, 400, { error: 'observed_at cannot be in the future' });
-    }
-
-    const metadataText = JSON.stringify(metadata);
-    if (metadataText.length > 8000) {
-      return json(res, 413, { error: 'Observation metadata is too large' });
-    }
+    const {
+      lat,
+      lon,
+      observation_type: observationType,
+      source,
+      observed_at: observedAt,
+      confidence,
+      metadata
+    } = normalized.value;
+    const observedDate = new Date(observedAt);
 
     try {
       const data = await supabaseRequest('rpc/submit_observation', {
