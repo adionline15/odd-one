@@ -2,7 +2,7 @@
 <html lang="en" style="height: 100%; margin: 0;">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#f5f5f7" />
   <title>Odd-One.in — India Road Intelligence</title>
   
@@ -423,9 +423,9 @@ body>footer{letter-spacing:.08em!important}
       </div>
 
       <!-- Collapsible Sidebar Handle -->
-      <div id="toggle-btn" class="absolute top-1/2 -left-3 -translate-y-1/2 w-6 h-12 bg-zinc-950 border border-zinc-900 border-r-0 rounded-l-lg flex items-center justify-center text-zinc-500 text-[10px] cursor-pointer hover:text-white transition-all z-30" onclick="toggleSidebar()">
+      <button type="button" id="toggle-btn" aria-label="Toggle intelligence sidebar" aria-expanded="false" class="absolute top-1/2 -left-3 -translate-y-1/2 w-6 h-12 bg-zinc-950 border border-zinc-900 border-r-0 rounded-l-lg flex items-center justify-center text-zinc-500 text-[10px] cursor-pointer hover:text-white transition-all z-30" onclick="toggleSidebar()">
         ◀
-      </div>
+      </button>
     </aside>
 
     <!-- ── MOBILE BOTTOM SHEET (SHOWN ONLY ON SMALL SCREENS) ── -->
@@ -1938,6 +1938,7 @@ body>footer{letter-spacing:.08em!important}
       sidebarOpen = !sidebarOpen;
       const sidebar = document.getElementById('sidebar');
       const toggle = document.getElementById('toggle-btn');
+      toggle.setAttribute('aria-expanded', String(sidebarOpen));
       if (sidebarOpen) {
         sidebar.classList.remove('hidden');
         toggle.innerText = '◀';
