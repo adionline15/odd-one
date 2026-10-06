@@ -288,7 +288,7 @@ body>footer{letter-spacing:.08em!important}
     box-shadow:0 1px 4px rgba(0,0,0,.04)!important;
   }
   body>nav[aria-label="Primary navigation"] #s-input::placeholder{color:#8e8e93!important;}
-  body>nav[aria-label="Primary navigation"] button.sm\\:hidden{
+  body>nav[aria-label="Primary navigation"] button.sm\:hidden{
     height:38px!important;
     min-height:38px!important;
     padding:0 14px!important;
