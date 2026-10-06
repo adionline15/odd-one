@@ -246,17 +246,17 @@
     <!-- ── MAP COMMAND DECK ── -->
     <div id="map-command-deck" role="group" aria-label="Map display controls" class="absolute bottom-6 right-5 z-40 flex items-end gap-2">
       <div class="map-layer-switcher" role="group" aria-label="Basemap">
-        <button id="btn-map" aria-label="Show standard map layer" aria-pressed="true" class="map-deck-btn active" onclick="setTile('map')">
+        <button id="btn-map" aria-label="Show standard map layer" aria-pressed="true" class="map-deck-btn active" data-map-action="map">
           <span class="map-deck-icon map-icon" aria-hidden="true"></span><span>Map</span>
         </button>
-        <button id="btn-sat" aria-label="Show satellite imagery layer" aria-pressed="false" class="map-deck-btn" onclick="setTile('sat')">
+        <button id="btn-sat" aria-label="Show satellite imagery layer" aria-pressed="false" class="map-deck-btn" data-map-action="sat">
           <span class="map-deck-icon sat-icon" aria-hidden="true"></span><span>Satellite</span>
         </button>
       </div>
-      <button id="btn-loc" aria-label="Center map on my location" aria-pressed="false" class="map-deck-icon-btn" onclick="locateMe()" title="Locate me">
+      <button id="btn-loc" aria-label="Center map on my location" aria-pressed="false" class="map-deck-icon-btn" data-map-action="locate" title="Locate me">
         <span aria-hidden="true">⌖</span><span class="sr-only">Locate me</span>
       </button>
-      <button id="btn-reset-view" aria-label="Reset map to India overview" class="map-deck-icon-btn" onclick="resetMapView()" title="Reset India view">
+      <button id="btn-reset-view" aria-label="Reset map to India overview" class="map-deck-icon-btn" data-map-action="reset" title="Reset India view">
         <span aria-hidden="true">⌂</span><span class="sr-only">Reset India view</span>
       </button>
     </div>
