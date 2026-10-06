@@ -261,6 +261,10 @@
       </button>
     </div>
 
+
+    <!-- True 3D Earth overview. Detail navigation hands off to the Leaflet road map. -->
+    <div id="earth-globe" aria-label="Interactive 3D Earth overview"></div>
+
     <div id="map-orientation" aria-hidden="true" class="absolute top-1/2 -translate-y-1/2 right-5 z-20 hidden sm:flex">
       <div class="map-compass"><span>N</span><i></i></div>
     </div>
@@ -287,6 +291,8 @@
     <div>© 2026 ODD-ONE.IN • PRODUCTION REDESIGN</div>
   </footer>
 
+  <!-- Globe + Leaflet map engines -->
+  <script src="https://unpkg.com/globe.gl/dist/globe.gl.min.js"></script>
   <!-- Leaflet Scripts -->
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="/interaction-v2.js"></script>
