@@ -403,7 +403,7 @@
 
       if (earthGlobe) {
         earthGlobe.controls().autoRotate = false;
-        earthGlobe.pointOfView(target.lat || 0, 850);
+        earthGlobe.pointOfView({ lat: target.lat, lng: target.lng, altitude: 1.55 }, 850);
       }
 
       earthTransitionTimer = setTimeout(() => {
