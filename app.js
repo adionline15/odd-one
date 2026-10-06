@@ -1298,6 +1298,16 @@
       clearTimeout(earthTransitionTimer);
       setEarthOverview(false);
       map.invalidateSize({ pan: false });
+
+      // If the Earth was at world scale, reset the hidden Leaflet camera
+      // before adding route layers so fitBounds has a valid road-map viewport.
+      const currentZoom = map.getZoom();
+      const currentCenter = map.getCenter();
+      if (!Number.isFinite(currentZoom) || currentZoom <= 1 ||
+          !Number.isFinite(currentCenter?.lat) || !Number.isFinite(currentCenter?.lng)) {
+        map.setView([22, 78], 5, { animate: false });
+        map.invalidateSize({ pan: false });
+      }
       
       routeLines.forEach(l => map.removeLayer(l)); routeLines = [];
       markers.forEach(m => map.removeLayer(m)); markers = [];
@@ -1604,6 +1614,18 @@
     function showTab(t) {
       const valid = ['alerts', 'route', 'data'];
       if (!valid.includes(t)) return;
+
+      if (t === 'route') {
+        clearTimeout(earthTransitionTimer);
+        setEarthOverview(false);
+        map.invalidateSize({ pan: false });
+        const center = map.getCenter();
+        const zoom = map.getZoom();
+        if (!Number.isFinite(zoom) || zoom <= 1 ||
+            !Number.isFinite(center?.lat) || !Number.isFinite(center?.lng)) {
+          map.setView([22, 78], 5, { animate: false });
+        }
+      }
 
       document.querySelectorAll('[data-nav-tab]').forEach(el => {
         const active = el.dataset.navTab === t;
