@@ -323,6 +323,12 @@
     }
 
     function resetMapView() {
+      clearTimeout(earthTransitionTimer);
+      setEarthOverview(true);
+      if (earthGlobe) {
+        earthGlobe.controls().autoRotate = true;
+        earthGlobe.pointOfView({ lat: 22, lng: 78, altitude: 2.15 }, 900);
+      }
       map.flyTo([22, 78], 5, { duration: 0.9 });
       document.getElementById('map')?.focus({ preventScroll: true });
     }
@@ -343,14 +349,77 @@
     }
     map.on('moveend zoomend', updateMapIntelligenceHUD);
     updateMapIntelligenceHUD();
-    function updateGlobeOverview() {
-      const mapEl = document.getElementById('map');
-      if (!mapEl || !map) return;
-      mapEl.classList.toggle('globe-overview', map.getZoom() <= 4);
+    // ── TRUE EARTH OVERVIEW ──
+    // Keep Leaflet as the authoritative road/detail engine, but use a real
+    // WebGL globe for the world-scale entry state and location transitions.
+    const earthGlobeEl = document.getElementById('earth-globe');
+    let earthGlobe = null;
+    let earthOverviewActive = true;
+    let earthTransitionTimer = null;
+
+    function setEarthOverview(active) {
+      earthOverviewActive = active;
+      earthGlobeEl?.classList.toggle('is-visible', active);
+      earthGlobeEl?.setAttribute('aria-hidden', active ? 'false' : 'true');
+      document.getElementById('map')?.classList.toggle('globe-overview', false);
+      if (active) {
+        setTimeout(() => map?.invalidateSize(), 50);
+      }
     }
-    map.on('zoomend', updateGlobeOverview);
+
+    function initEarthGlobe() {
+      if (!earthGlobeEl || typeof window.Globe !== 'function') {
+        setEarthOverview(false);
+        return;
+      }
+      earthGlobe = window.Globe()(earthGlobeEl)
+        .backgroundColor('rgba(0,0,0,0)')
+        .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
+        .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
+        .showAtmosphere(true)
+        .atmosphereColor('#6aa9ff')
+        .atmosphereAltitude(0.14)
+        .enablePointerInteraction(true)
+        .width(earthGlobeEl.clientWidth)
+        .height(earthGlobeEl.clientHeight)
+        .pointOfView({ lat: 22, lng: 78, altitude: 2.15 }, 0);
+
+      earthGlobe.controls().autoRotate = true;
+      earthGlobe.controls().autoRotateSpeed = 0.28;
+      earthGlobe.controls().enableZoom = true;
+
+      const resizeGlobe = () => {
+        if (!earthGlobe || !earthGlobeEl) return;
+        earthGlobe.width(earthGlobeEl.clientWidth).height(earthGlobeEl.clientHeight);
+      };
+      window.addEventListener('resize', resizeGlobe, { passive: true });
+      setEarthOverview(true);
+    }
+
+    function showEarthThenZoom(coords, zoom, name) {
+      const target = { lat: Number(coords[0]), lng: Number(coords[1]) };
+      clearTimeout(earthTransitionTimer);
+      setEarthOverview(true);
+
+      if (earthGlobe) {
+        earthGlobe.controls().autoRotate = false;
+        earthGlobe.pointOfView(target.lat || 0, 850);
+      }
+
+      earthTransitionTimer = setTimeout(() => {
+        setEarthOverview(false);
+        map.invalidateSize();
+        map.flyTo(coords, zoom, { duration: 1.65, easeLinearity: 0.18 });
+        placeMarker(coords, name);
+      }, 900);
+    }
+
+    function updateGlobeOverview() {
+      if (earthOverviewActive) return;
+      document.getElementById('map')?.classList.remove('globe-overview');
+    }
     map.on('resize', updateGlobeOverview);
-    updateGlobeOverview();
+    setTimeout(initEarthGlobe, 0);
 
 
     // ── HEXAGONAL ROAD INTELLIGENCE GRID ──
@@ -1036,7 +1105,7 @@
     // ── PANNING & MARKERS ──
     function gotoCity(city) {
       const c = CITIES[city]; if (!c) return;
-      map.flyTo(c, 13, { duration: 1.2 });
+      showEarthThenZoom(c, 13, city);
       sg.style.display = 'none';
       si.value = city.charAt(0).toUpperCase() + city.slice(1); si.blur();
       placeMarker(c, si.value);
@@ -1046,7 +1115,7 @@
 
     function gotoCoords(lat, lon, name) {
       const c = [parseFloat(lat), parseFloat(lon)];
-      map.flyTo(c, 14, { duration: 1.2 });
+      showEarthThenZoom(c, 14, name);
       sg.style.display = 'none'; si.value = name; si.blur();
       placeMarker(c, name);
       loadAlerts(name);
