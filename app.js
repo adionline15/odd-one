@@ -348,6 +348,20 @@
       if (scopeEl) scopeEl.textContent = `${center.lat.toFixed(2)}° N · ${center.lng.toFixed(2)}° E · verified scope`;
     }
     map.on('moveend zoomend', updateMapIntelligenceHUD);
+
+    // World-scale fallback: once the road map reaches its global limit,
+    // return to the real 3D Earth instead of showing repeated flat worlds.
+    map.on('zoomend', () => {
+      if (!earthGlobe || !earthGlobeEl || !earthOverviewActive) {
+        if (earthGlobe && map.getZoom() <= 1) {
+          setEarthOverview(true);
+          earthGlobe.controls().autoRotate = true;
+          earthGlobe.pointOfView({ lat: 22, lng: 78, altitude: 2.15 }, 650);
+        }
+        return;
+      }
+    });
+
     updateMapIntelligenceHUD();
     // ── TRUE EARTH OVERVIEW ──
     // Keep Leaflet as the authoritative road/detail engine, but use a real
