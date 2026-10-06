@@ -1030,29 +1030,55 @@
     });
 
     si.addEventListener('input', function() {
-      const q = this.value.trim();
-      if (q.length < 2) { sg.style.display = 'none'; sg.innerHTML = ''; si.removeAttribute('aria-busy'); return; }
-      si.setAttribute('aria-busy', 'true');
-      sg.innerHTML = '<div class="px-4 py-3 text-[9px] uppercase tracking-wider text-zinc-600">Searching local index…</div>';
-      sg.style.display = 'block';
+      const q = this.value.trim().toLowerCase();
+      clearTimeout(searchTimer);
 
-      const local = Object.keys(CITIES).filter(c => c.includes(q.toLowerCase())).slice(0, 3);
+      if (q.length < 2) {
+        sg.style.display = 'none';
+        sg.innerHTML = '';
+        si.removeAttribute('aria-busy');
+        return;
+      }
+
+      // Local results render immediately so typing never waits on the network.
+      const local = Object.keys(CITIES).filter(c => c.includes(q)).slice(0, 5);
       const localHTML = local.map(c => `
-        <div class="sugg-item flex items-center gap-2.5 px-4 py-2.5 text-xs text-zinc-300 border-b border-zinc-900 cursor-pointer transition-colors" data-search-city="${c}">
-          <span class="text-rose-500">📍</span>
+        <div class="sugg-item flex items-center gap-2.5 px-4 py-2.5 text-xs text-zinc-700 border-b border-black/5 cursor-pointer transition-colors" data-search-city="${c}">
+          <span class="text-blue-500">●</span>
           <span>${c.charAt(0).toUpperCase() + c.slice(1)}</span>
-          <span class="text-[9px] uppercase tracking-wider text-zinc-600 ml-auto font-bold">Local Intel</span>
+          <span class="text-[9px] uppercase tracking-wider text-zinc-400 ml-auto font-bold">Local</span>
         </div>`).join('');
 
-      if (local.length) {
-        sg.innerHTML = localHTML;
-        si.removeAttribute('aria-busy');
-        sg.style.display = 'block';
-      } else {
-        sg.innerHTML = `
-          <div class="px-4 py-3 text-[10px] text-zinc-600">Press Enter to search this place.</div>`;
-        si.removeAttribute('aria-busy');
-        sg.style.display = 'block';
+      sg.innerHTML = localHTML || '<div class="px-4 py-3 text-[10px] text-zinc-500">Press Enter to search this place.</div>';
+      sg.style.display = 'block';
+      si.removeAttribute('aria-busy');
+
+      // Only hit Nominatim after a short pause, and only when local results are absent.
+      if (!local.length && q.length >= 3) {
+        searchTimer = setTimeout(async () => {
+          if (si.value.trim().toLowerCase() !== q) return;
+          si.setAttribute('aria-busy', 'true');
+          try {
+            const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q + ' India')}&format=json&limit=5&countrycodes=in`;
+            const res = await fetch(url, { headers: { 'Accept-Language': 'en' } });
+            if (!res.ok) throw new Error(`Search failed with ${res.status}`);
+            const data = await res.json();
+            if (si.value.trim().toLowerCase() !== q) return;
+            sg.innerHTML = data.length ? data.map(r => {
+              const safeName = r.display_name.split(',')[0];
+              return `
+                <div class="sugg-item flex items-center gap-2.5 px-4 py-2.5 text-xs text-zinc-700 border-b border-black/5 cursor-pointer transition-colors" data-search-lat="${r.lat}" data-search-lon="${r.lon}" data-search-name="${escapeHTML(safeName)}">
+                  <span class="text-zinc-400">⌖</span>
+                  <span class="truncate">${escapeHTML(r.display_name.split(',').slice(0, 2).join(', '))}</span>
+                  <span class="text-[9px] uppercase tracking-wider text-zinc-400 ml-auto font-bold">OSM</span>
+                </div>`;
+            }).join('') : '<div class="px-4 py-3 text-[10px] text-zinc-500">No matching location found.</div>';
+          } catch (error) {
+            if (error.name !== 'AbortError') console.warn('[search] Geocoding failed', error);
+          } finally {
+            if (si.value.trim().toLowerCase() === q) si.removeAttribute('aria-busy');
+          }
+        }, 280);
       }
     });
 
