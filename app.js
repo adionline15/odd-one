@@ -401,17 +401,26 @@
       clearTimeout(earthTransitionTimer);
       setEarthOverview(true);
 
+      // Cinematic navigation: settle on the destination first, then hand off
+      // to the detailed road map. The two engines overlap briefly so the
+      // transition feels like one continuous journey rather than a jump.
       if (earthGlobe) {
         earthGlobe.controls().autoRotate = false;
-        earthGlobe.pointOfView({ lat: target.lat, lng: target.lng, altitude: 1.55 }, 850);
+        earthGlobe.pointOfView(
+          { lat: target.lat, lng: target.lng, altitude: 1.85 },
+          1450
+        );
       }
 
       earthTransitionTimer = setTimeout(() => {
         setEarthOverview(false);
         map.invalidateSize();
-        map.flyTo(coords, zoom, { duration: 1.65, easeLinearity: 0.18 });
+        map.flyTo(coords, zoom, {
+          duration: 2.25,
+          easeLinearity: 0.12
+        });
         placeMarker(coords, name);
-      }, 900);
+      }, 1350);
     }
 
     function updateGlobeOverview() {
