@@ -1655,11 +1655,33 @@
       if (!button) return;
       event.preventDefault();
       event.stopPropagation();
+
       const action = button.dataset.mapAction;
-      if (action === 'map') setTile('map');
-      if (action === 'sat') setTile('sat');
-      if (action === 'locate') locateMe();
-      if (action === 'reset') resetMapView();
+
+      // The Earth overview sits above Leaflet, so changing a hidden tile layer
+      // would look like a dead button. Hand off to the detail map first.
+      const enterDetailMap = () => {
+        clearTimeout(earthTransitionTimer);
+        if (earthOverviewActive) {
+          setEarthOverview(false);
+          map.invalidateSize();
+        }
+      };
+
+      if (action === 'map' || action === 'sat') {
+        enterDetailMap();
+        setTile(action);
+        map.flyTo(map.getCenter(), Math.max(map.getZoom(), 5), { duration: 0.65 });
+      }
+
+      if (action === 'locate') {
+        enterDetailMap();
+        locateMe();
+      }
+
+      if (action === 'reset') {
+        resetMapView();
+      }
     });
 
     // Keep legacy inline integrations working as well.
