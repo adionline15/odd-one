@@ -1647,6 +1647,28 @@
       }
     });
 
+    // Reliable map-control binding: keep the command deck functional even if
+    // browser inline-handler behavior is restricted by CSP or cached markup.
+    const mapCommandDeck = document.getElementById('map-command-deck');
+    mapCommandDeck?.addEventListener('click', event => {
+      const button = event.target.closest('[data-map-action]');
+      if (!button) return;
+      event.preventDefault();
+      event.stopPropagation();
+      const action = button.dataset.mapAction;
+      if (action === 'map') setTile('map');
+      if (action === 'sat') setTile('sat');
+      if (action === 'locate') locateMe();
+      if (action === 'reset') resetMapView();
+    });
+
+    // Keep legacy inline integrations working as well.
+    window.setTile = setTile;
+    window.locateMe = locateMe;
+    window.resetMapView = resetMapView;
+    window.toggleSidebar = toggleSidebar;
+    window.showTab = showTab;
+
     // Initialize Default States
     syncEarthViewport();
     window.addEventListener('resize', syncEarthViewport, { passive: true });
