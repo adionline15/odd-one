@@ -1662,16 +1662,25 @@
       // would look like a dead button. Hand off to the detail map first.
       const enterDetailMap = () => {
         clearTimeout(earthTransitionTimer);
-        if (earthOverviewActive) {
-          setEarthOverview(false);
-          map.invalidateSize();
+        setEarthOverview(false);
+        map.invalidateSize({ pan: false });
+        // Never inherit the hidden/invalid Leaflet camera from the globe state.
+        // The detail engine always enters on the India overview.
+        const z = map.getZoom();
+        const center = map.getCenter();
+        const invalidCamera =
+          !Number.isFinite(z) || z < 3 ||
+          !Number.isFinite(center?.lat) || !Number.isFinite(center?.lng) ||
+          Math.abs(center.lat) > 90 || Math.abs(center.lng) > 180;
+
+        if (invalidCamera || earthOverviewActive) {
+          map.setView([22, 78], 5, { animate: false });
         }
       };
 
       if (action === 'map' || action === 'sat') {
         enterDetailMap();
         setTile(action);
-        map.flyTo(map.getCenter(), Math.max(map.getZoom(), 5), { duration: 0.65 });
       }
 
       if (action === 'locate') {
