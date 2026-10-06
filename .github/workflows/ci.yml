@@ -119,6 +119,18 @@ jobs:
       - name: Check data trust documentation
         run: grep -q 'Data trust principles' README.md
 
+      - name: Check frontend architecture budgets
+        shell: bash
+        run: |
+          set -euo pipefail
+          test `wc -c < index.html` -le 22000
+          test `wc -c < app.js` -le 75000
+          test `wc -c < index-base.css` -le 16000
+          test `wc -c < design-v2.css` -le 225000
+          ! grep -q '<script[^>]*>[^<][[:space:][:print:]]*</script>' index.html
+          ! grep -q '<style' index.html
+          echo "Frontend architecture budgets OK"
+
       - name: Check patch formatting
         run: git diff --check
 
