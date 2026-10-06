@@ -9056,3 +9056,21 @@ nav[aria-label="Primary navigation"] button[onclick*="showTab('route')"]{
   #sidebar{width:310px!important;}
   nav[aria-label="Primary navigation"] .flex.items-center.gap-2.sm\:gap-4.flex-1{max-width:430px!important;}
 }
+
+
+/* Final interaction pass: center the Earth in the usable map viewport and keep UI hit targets above it. */
+main{--earth-right:336px;}
+#earth-globe{right:var(--earth-right)!important;pointer-events:none!important;}
+#earth-globe canvas{pointer-events:none!important;}
+#sidebar{z-index:80!important;}
+#sidebar>div:first-child{position:relative;z-index:2!important;}
+#sidebar>div:first-child button{position:relative!important;z-index:3!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:5px!important;min-width:0!important;opacity:1!important;visibility:visible!important;}
+#sidebar>div:first-child button.active,
+#sidebar>div:first-child button.on{color:#1d1d1f!important;background:#fff!important;border-color:rgba(0,0,0,.12)!important;box-shadow:0 2px 9px rgba(0,0,0,.10)!important;}
+#sidebar>div:first-child button:not(.active):not(.on){color:#6e6e73!important;background:transparent!important;}
+#sidebar>div:first-child button .inline-block{flex:none!important;}
+#map-command-deck{z-index:90!important;pointer-events:auto!important;}
+#map-command-deck button{pointer-events:auto!important;cursor:pointer!important;}
+nav[aria-label="Primary navigation"]{z-index:100!important;}
+@media(min-width:641px) and (max-width:1100px){main{--earth-right:310px;}}
+@media(max-width:640px){main{--earth-right:0px;}}
