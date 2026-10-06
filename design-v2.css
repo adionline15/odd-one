@@ -8770,3 +8770,33 @@ body>footer{
     transform:none!important;
   }
 }
+
+
+/* Globe overview — circular Earth presentation without changing the road-map engine. */
+@media (min-width: 641px){
+  #map.globe-overview{
+    inset:50% auto auto 50%!important;
+    width:min(72vh,760px)!important;
+    height:min(72vh,760px)!important;
+    transform:translate(-50%,-50%)!important;
+    border-radius:50%!important;
+    overflow:hidden!important;
+    box-shadow:0 0 0 1px rgba(255,255,255,.12),0 28px 90px rgba(0,0,0,.38),inset 0 0 80px rgba(0,0,0,.22)!important;
+  }
+  #map.globe-overview .leaflet-control-container{display:none;}
+  #map.globe-overview::after{content:"";position:absolute;inset:0;border-radius:50%;pointer-events:none;z-index:800;box-shadow:inset -34px -20px 70px rgba(0,0,0,.25),inset 20px 12px 42px rgba(255,255,255,.045);}
+}
+@media (max-width:640px){
+  #map.globe-overview{
+    inset:50% auto auto 50%!important;
+    width:min(94vw,520px)!important;
+    height:min(94vw,520px)!important;
+    transform:translate(-50%,-50%)!important;
+    border-radius:50%!important;
+    overflow:hidden!important;
+    box-shadow:0 0 0 1px rgba(0,0,0,.08),0 22px 60px rgba(0,0,0,.18),inset 0 0 55px rgba(0,0,0,.16)!important;
+  }
+  #map.globe-overview .leaflet-control-container{display:none;}
+  #map.globe-overview::after{content:"";position:absolute;inset:0;border-radius:50%;pointer-events:none;z-index:800;box-shadow:inset -24px -14px 48px rgba(0,0,0,.20),inset 14px 10px 30px rgba(255,255,255,.06);}
+}
+#map.globe-transition{transition:width .45s ease,height .45s ease,transform .45s ease,border-radius .45s ease;}
