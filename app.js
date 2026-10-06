@@ -312,7 +312,7 @@
     const isMobile = () => window.innerWidth <= 640;
 
     // Initialize Map Instance
-    map = L.map('map', { zoomControl: false, attributionControl: true, preferCanvas: true, minZoom: 3, worldCopyJump: false }).setView([22, 78], 5);
+    map = L.map('map', { zoomControl: false, attributionControl: true, preferCanvas: true, minZoom: 1, worldCopyJump: false, maxBounds: [[-85, -180], [85, 180]], maxBoundsViscosity: 1 }).setView([22, 78], 5);
     L.control.zoom({ position: 'bottomleft' }).addTo(map);
     L.control.scale({ position: 'bottomleft', imperial: false, maxWidth: 120 }).addTo(map);
 
