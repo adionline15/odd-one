@@ -8800,3 +8800,44 @@ body>footer{
   #map.globe-overview::after{content:"";position:absolute;inset:0;border-radius:50%;pointer-events:none;z-index:800;box-shadow:inset -24px -14px 48px rgba(0,0,0,.20),inset 14px 10px 30px rgba(255,255,255,.06);}
 }
 #map.globe-transition{transition:width .45s ease,height .45s ease,transform .45s ease,border-radius .45s ease;}
+
+
+/* ─────────────────────────────────────────────────────────────
+   ODD-ONE TRUE EARTH OVERVIEW
+   Real WebGL sphere at world scale; Leaflet remains the detail map.
+   ───────────────────────────────────────────────────────────── */
+#earth-globe{
+  position:absolute;
+  inset:0;
+  z-index:15;
+  display:none;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 44%,rgba(45,105,180,.12),transparent 32%),
+    #02050a;
+  isolation:isolate;
+}
+#earth-globe.is-visible{display:block;}
+#earth-globe canvas{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  outline:none;
+}
+#earth-globe::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 50% 50%,transparent 37%,rgba(0,0,0,.20) 62%,rgba(0,0,0,.62) 100%),
+    linear-gradient(180deg,rgba(2,5,10,.12),transparent 35%,rgba(2,5,10,.22));
+  z-index:2;
+}
+#earth-globe[aria-hidden="true"]{display:none;}
+@media(max-width:640px){
+  #earth-globe::after{
+    background:
+      radial-gradient(circle at 50% 50%,transparent 35%,rgba(0,0,0,.18) 62%,rgba(0,0,0,.52) 100%);
+  }
+}
