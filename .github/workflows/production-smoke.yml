@@ -1,0 +1,35 @@
+name: Production smoke
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/30 * * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check production HTML
+        shell: bash
+        run: |
+          set -euo pipefail
+          url="https://www.odd-one.in/"
+          body="$(curl --fail --silent --show-error --location --max-time 20 "$url")"
+          printf '%s' "$body" | grep -q '<title>Odd-One.in'
+          printf '%s' "$body" | grep -q 'id="map"'
+          printf '%s' "$body" | grep -q 'aria-label="Primary navigation"'
+          printf '%s' "$body" | grep -q '/design-v2.css'
+          echo "Production HTML contract OK"
+
+      - name: Check production health endpoint
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --location --max-time 15 \
+            --retry 2 --retry-delay 2 \
+            "https://www.odd-one.in/api/health" \
+            -o /tmp/health.json
+          node -e "const fs=require('fs'); const d=JSON.parse(fs.readFileSync('/tmp/health.json','utf8')); if (!d || typeof d !== 'object') process.exit(1); console.log(JSON.stringify(d));"
