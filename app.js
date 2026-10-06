@@ -343,6 +343,15 @@
     }
     map.on('moveend zoomend', updateMapIntelligenceHUD);
     updateMapIntelligenceHUD();
+    function updateGlobeOverview() {
+      const mapEl = document.getElementById('map');
+      if (!mapEl || !map) return;
+      mapEl.classList.toggle('globe-overview', map.getZoom() <= 4);
+    }
+    map.on('zoomend', updateGlobeOverview);
+    map.on('resize', updateGlobeOverview);
+    updateGlobeOverview();
+
 
     // ── HEXAGONAL ROAD INTELLIGENCE GRID ──
     // Visual hex cells replace the old square-cell presentation.
