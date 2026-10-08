@@ -373,7 +373,6 @@
 
     function setEarthOverview(active) {
       earthOverviewActive = active;
-      if (!active) earthGlobe?.controls().autoRotate && null;
       earthGlobeEl?.classList.toggle('is-visible', active);
       earthGlobeEl?.setAttribute('aria-hidden', active ? 'false' : 'true');
       document.getElementById('map')?.classList.toggle('globe-overview', false);
