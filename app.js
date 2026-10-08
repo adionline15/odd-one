@@ -324,6 +324,7 @@
 
     function resetMapView() {
       clearTimeout(earthTransitionTimer);
+      earthTransitionLocked = true;
       setEarthOverview(true);
       if (earthGlobe) {
         earthGlobe.controls().autoRotate = true;
@@ -370,6 +371,7 @@
     let earthGlobe = null;
     let earthOverviewActive = true;
     let earthTransitionTimer = null;
+    let earthTransitionLocked = false;
 
     function setEarthOverview(active) {
       earthOverviewActive = active;
@@ -437,6 +439,7 @@
           easeLinearity: 0.12
         });
         placeMarker(coords, name);
+        earthTransitionLocked = false;
       }, 1350);
     }
 
