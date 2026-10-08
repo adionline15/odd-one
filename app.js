@@ -429,6 +429,7 @@
       earthTransitionTimer = setTimeout(() => {
         setEarthOverview(false);
         map.invalidateSize();
+        map.stop();
         map.flyTo(coords, zoom, {
           duration: 2.25,
           easeLinearity: 0.12
