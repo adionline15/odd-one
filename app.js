@@ -415,6 +415,7 @@
     }
 
     function showEarthThenZoom(coords, zoom, name) {
+      if (earthTransitionLocked) return;
       const target = { lat: Number(coords[0]), lng: Number(coords[1]) };
       clearTimeout(earthTransitionTimer);
       setEarthOverview(true);
