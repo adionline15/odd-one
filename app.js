@@ -425,6 +425,7 @@
       // transition feels like one continuous journey rather than a jump.
       if (earthGlobe) {
         earthGlobe.controls().autoRotate = false;
+        earthGlobe.controls().enableZoom = false;
         earthGlobe.pointOfView(
           { lat: target.lat, lng: target.lng, altitude: 1.85 },
           1450
@@ -433,6 +434,7 @@
 
       earthTransitionTimer = setTimeout(() => {
         setEarthOverview(false);
+        earthGlobe?.controls().enableZoom = true;
         map.invalidateSize();
         map.stop();
         map.flyTo(coords, zoom, {
