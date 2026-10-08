@@ -1564,7 +1564,7 @@
       setLocateButtonState('loading');
       navigator.geolocation.getCurrentPosition(pos => {
         const c = [pos.coords.latitude, pos.coords.longitude];
-        map.flyTo(c, 15);
+        showEarthThenZoom(c, 15, 'My location');
         if (locMarker) map.removeLayer(locMarker);
         locMarker = L.marker(c, {
           icon: L.divIcon({
