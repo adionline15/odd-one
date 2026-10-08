@@ -8818,6 +8818,19 @@ body>footer{
   isolation:isolate;
 }
 #earth-globe.is-visible{display:block;}
+#earth-globe.is-loading::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:3;
+  background:radial-gradient(circle,rgba(255,255,255,.06),transparent 42%);
+  animation:oo-earth-pulse 1.1s ease-in-out infinite alternate;
+  pointer-events:none;
+}
+@keyframes oo-earth-pulse{
+  from{opacity:.35}
+  to{opacity:.85}
+}
 #earth-globe canvas{
   display:block!important;
   width:100%!important;
