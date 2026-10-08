@@ -387,6 +387,7 @@
         setEarthOverview(false);
         return;
       }
+      earthGlobeEl.classList.add('is-loading');
       earthGlobe = window.Globe()(earthGlobeEl)
         .backgroundColor('rgba(0,0,0,0)')
         .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
@@ -409,6 +410,7 @@
       };
       window.addEventListener('resize', resizeGlobe, { passive: true });
       setEarthOverview(true);
+      setTimeout(() => earthGlobeEl.classList.remove('is-loading'), 900);
     }
 
     function showEarthThenZoom(coords, zoom, name) {
