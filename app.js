@@ -325,6 +325,7 @@
     function resetMapView() {
       clearTimeout(earthTransitionTimer);
       earthTransitionLocked = true;
+      earthTransitionLocked = false;
       setEarthOverview(true);
       if (earthGlobe) {
         earthGlobe.controls().autoRotate = true;
