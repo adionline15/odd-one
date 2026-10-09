@@ -427,3 +427,10 @@ test('route bounds account for the mobile sheet overlay', () => {
   assert.match(fit, /maxZoom: 13/);
   assert.equal((runtime.match(/fitRouteBounds\(rl\.getBounds\(\)\)/g) || []).length, 2);
 });
+
+test('manual Earth selection supersedes active route and location requests', () => {
+  const runtime = read('app.js');
+  const init = runtime.slice(runtime.indexOf('function initEarthGlobe'), runtime.indexOf('function showEarthThenZoom'));
+  assert.match(init, /earthGlobe\.onGlobeClick\([\s\S]*?locationRequestId \+= 1;[\s\S]*?cancelActiveRoute\(true\)/);
+  assert.match(init, /event\.key === 'Enter' \|\| event\.key === ' '[\s\S]*?locationRequestId \+= 1;[\s\S]*?cancelActiveRoute\(true\)/);
+});
