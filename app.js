@@ -834,7 +834,7 @@
         items[(index - 1 + items.length) % items.length].focus();
       } else if (event.key === 'Escape') {
         event.preventDefault();
-        sg.style.display = 'none';
+        setSuggestionsVisible(false);
         si.focus();
       }
     });
@@ -844,7 +844,7 @@
       clearTimeout(searchTimer);
 
       if (q.length < 2) {
-        sg.style.display = 'none';
+        setSuggestionsVisible(false);
         sg.innerHTML = '';
         si.removeAttribute('aria-busy');
         return;
@@ -919,7 +919,7 @@
     });
 
     si.addEventListener('keydown', async event => {
-      if (event.key === 'Escape') { sg.style.display = 'none'; si.removeAttribute('aria-busy'); return; }
+      if (event.key === 'Escape') { setSuggestionsVisible(false); si.removeAttribute('aria-busy'); return; }
       if (event.key === 'ArrowDown') {
         const first = sg.querySelector('.sugg-item');
         if (first) { event.preventDefault(); first.focus(); }
@@ -960,17 +960,17 @@
         }).join('');
         sg.innerHTML = nomHTML || `
           <div class="px-4 py-3 text-[10px] text-zinc-600">No matching location found.</div>`;
-        sg.style.display = 'block';
+        setSuggestionsVisible(true);
       } catch (error) {
         console.warn('[search] Geocoding failed', error);
         sg.innerHTML = `
           <div class="px-4 py-3 text-[10px] text-rose-400">Location search unavailable. Try again.</div>`;
-        sg.style.display = 'block';
+        setSuggestionsVisible(true);
       }
     });
 
     document.addEventListener('click', e => {
-      if (!si.contains(e.target)) sg.style.display = 'none';
+      if (!si.contains(e.target)) setSuggestionsVisible(false);
     });
 
     // ── PANNING & MARKERS ──
@@ -978,7 +978,7 @@
       const c = CITIES[city]; if (!c) return;
       locationRequestId += 1;
       showEarthThenZoom(c, 13, city);
-      sg.style.display = 'none';
+      setSuggestionsVisible(false);
       si.value = city.charAt(0).toUpperCase() + city.slice(1); si.blur();
       loadAlerts(city);
       if (isMobile()) { openSheetMid(); showTab('alerts'); } else showTab('alerts');
@@ -988,7 +988,7 @@
       const c = [parseFloat(lat), parseFloat(lon)];
       locationRequestId += 1;
       showEarthThenZoom(c, Math.max(5, Math.min(17, Number(zoom) || 14)), name);
-      sg.style.display = 'none'; si.value = name; si.blur();
+      setSuggestionsVisible(false); si.value = name; si.blur();
       loadAlerts(name);
       if (isMobile()) { openSheetMid(); showTab('alerts'); } else showTab('alerts');
     }
@@ -1479,7 +1479,7 @@
       }
 
       if (event.key === 'Escape') {
-        sg.style.display = 'none';
+        setSuggestionsVisible(false);
         si.removeAttribute('aria-busy');
         document.getElementById('road-intel-overlay')?.classList.add('hidden');
         if (isMobile() && sheetOpen) openSheetMid();
