@@ -414,5 +414,6 @@ test('changing the selected location cancels in-flight routing', () => {
   assert.match(cancel, /setRouteLoadingState\(false, 'Calculate Route →'\)/);
   assert.match(runtime, /function gotoCity\(city\) \{[^}]*cancelActiveRoute\(true\)/s);
   assert.match(runtime, /function gotoCoords\(lat, lon, name, zoom = 14\) \{[^}]*cancelActiveRoute\(true\)/s);
-  assert.match(runtime, /function locateMe\(\) \{[^}]*cancelActiveRoute\(true\)/s);
+  const locate = runtime.slice(runtime.indexOf('function locateMe'), runtime.indexOf('// ── SIDEBAR CONTROLS'));
+  assert.match(locate, /cancelActiveRoute\(true\)/);
 });
