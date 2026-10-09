@@ -325,7 +325,7 @@ test('route planning waits for Earth-to-origin handoff before fitting route', ()
 
 test('legacy RAG script requires an environment key instead of a placeholder', () => {
   const source = read('oddone_rag.py');
-  assert.match(source, /os\.environ\.get\('GEMINI_API_KEY'\)/);
+  assert.match(source, /os\.environ\.get\("GEMINI_API_KEY"\)/);
   assert.match(source, /if model is None:/);
   assert.doesNotMatch(source, /YOUR_KEY_HERE/);
 });
