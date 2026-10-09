@@ -32,6 +32,11 @@ jobs:
           node --check api/observations.js
           node --check api/observation-summary.js
           python3 - <<'PY'
+          from pathlib import Path
+          compile(Path("oddone_rag.py").read_text(encoding="utf-8"), "oddone_rag.py", "exec")
+          print("Legacy Python runtime syntax OK.")
+          PY
+          python3 - <<'PY'
           import re
           import subprocess
           from pathlib import Path
