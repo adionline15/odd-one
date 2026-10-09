@@ -259,3 +259,13 @@ test('location navigation falls back cleanly when WebGL Earth is unavailable', (
   assert.match(handoff, /map\.flyTo\(coords, zoom, \{ duration: 1\.2, easeLinearity: 0\.2 \}\)/);
   assert.match(handoff, /placeMarker\(coords, name, markerColor\)/);
 });
+
+test('WebGL initialization errors do not leave a blocking Earth overlay', () => {
+  const runtime = read('app.js');
+  const init = runtime.slice(runtime.indexOf('function initEarthGlobe'), runtime.indexOf('function showEarthThenZoom'));
+  assert.match(init, /try \{/);
+  assert.match(init, /catch \(error\)/);
+  assert.match(init, /earthGlobe = null/);
+  assert.match(init, /earthGlobeEl\.classList\.remove\('is-loading'\)/);
+  assert.match(init, /setEarthOverview\(false\)/);
+});
