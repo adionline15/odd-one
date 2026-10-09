@@ -11,7 +11,9 @@
     function updateMapContext() {
       const zoom = map.getZoom();
       const el = document.getElementById('map-zoom-value');
-      if (el) el.textContent = String(zoom);
+      const label = document.getElementById('map-context-label');
+      if (label) label.textContent = earthOverviewActive ? 'EARTH' : 'VIEWPORT';
+      if (el) el.textContent = earthOverviewActive ? '3D' : String(zoom);
     }
 
     function resetMapView() {
@@ -74,6 +76,7 @@
       }
       earthGlobeEl?.classList.toggle('is-visible', active);
       earthGlobeEl?.setAttribute('aria-hidden', active ? 'false' : 'true');
+      updateMapContext();
       document.getElementById('map')?.classList.toggle('globe-overview', false);
       if (active) {
         setTimeout(() => map?.invalidateSize(), 50);
