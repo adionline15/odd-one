@@ -114,6 +114,18 @@
       const transitionId = ++earthTransitionId;
       clearTimeout(earthTransitionTimer);
       const target = { lat: Number(coords[0]), lng: Number(coords[1]) };
+
+      // If WebGL or the globe bundle is unavailable, never show an empty
+      // globe layer: preserve the location search by falling back to Leaflet.
+      if (!earthGlobe) {
+        setEarthOverview(false);
+        map.invalidateSize();
+        map.stop();
+        map.flyTo(coords, zoom, { duration: 1.2, easeLinearity: 0.2 });
+        placeMarker(coords, name, markerColor);
+        return;
+      }
+
       setEarthOverview(true);
 
       // Cinematic navigation: settle on the destination first, then hand off
