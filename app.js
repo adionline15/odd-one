@@ -80,34 +80,42 @@
         setEarthOverview(false);
         return;
       }
-      earthGlobeEl.classList.add('is-loading');
-      earthGlobe = window.Globe()(earthGlobeEl)
-        .backgroundColor('rgba(0,0,0,0)')
-        .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
-        .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
-        .showAtmosphere(true)
-        .atmosphereColor('#6aa9ff')
-        .atmosphereAltitude(0.14)
-        .enablePointerInteraction(true)
-        .width(earthGlobeEl.clientWidth)
-        .height(earthGlobeEl.clientHeight)
-        .pointOfView({ lat: 22, lng: 78, altitude: 2.15 }, 0);
 
-      earthGlobe.controls().autoRotate = true;
-      earthGlobe.controls().autoRotateSpeed = 0.28;
-      earthGlobe.controls().enableZoom = true;
-      earthGlobe.onGlobeClick(({ lat, lng }) => {
-        if (!Number.isFinite(lat) || !Number.isFinite(lng)) return;
-        showEarthThenZoom([lat, lng], 13, 'Selected location');
-      });
+      try {
+        earthGlobeEl.classList.add('is-loading');
+        earthGlobe = window.Globe()(earthGlobeEl)
+          .backgroundColor('rgba(0,0,0,0)')
+          .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
+          .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
+          .showAtmosphere(true)
+          .atmosphereColor('#6aa9ff')
+          .atmosphereAltitude(0.14)
+          .enablePointerInteraction(true)
+          .width(earthGlobeEl.clientWidth)
+          .height(earthGlobeEl.clientHeight)
+          .pointOfView({ lat: 22, lng: 78, altitude: 2.15 }, 0);
 
-      const resizeGlobe = () => {
-        if (!earthGlobe || !earthGlobeEl) return;
-        earthGlobe.width(earthGlobeEl.clientWidth).height(earthGlobeEl.clientHeight);
-      };
-      window.addEventListener('resize', resizeGlobe, { passive: true });
-      setEarthOverview(true);
-      setTimeout(() => earthGlobeEl.classList.remove('is-loading'), 900);
+        earthGlobe.controls().autoRotate = true;
+        earthGlobe.controls().autoRotateSpeed = 0.28;
+        earthGlobe.controls().enableZoom = true;
+        earthGlobe.onGlobeClick(({ lat, lng }) => {
+          if (!Number.isFinite(lat) || !Number.isFinite(lng)) return;
+          showEarthThenZoom([lat, lng], 13, 'Selected location');
+        });
+
+        const resizeGlobe = () => {
+          if (!earthGlobe || !earthGlobeEl) return;
+          earthGlobe.width(earthGlobeEl.clientWidth).height(earthGlobeEl.clientHeight);
+        };
+        window.addEventListener('resize', resizeGlobe, { passive: true });
+        setEarthOverview(true);
+        setTimeout(() => earthGlobeEl.classList.remove('is-loading'), 900);
+      } catch (error) {
+        console.warn('[earth] WebGL globe unavailable; using the road map fallback.', error);
+        earthGlobe = null;
+        earthGlobeEl.classList.remove('is-loading');
+        setEarthOverview(false);
+      }
     }
 
     function showEarthThenZoom(coords, zoom, name, markerColor = '#ef4444') {
