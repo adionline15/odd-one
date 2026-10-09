@@ -65,6 +65,8 @@
     const earthGlobeEl = document.getElementById('earth-globe');
     let earthGlobe = null;
     let earthOverviewActive = true;
+    const EARTH_CAMERA_MS = 1350;
+    const DETAIL_FLY_MS = 2250;
     let earthTransitionTimer = null;
     let earthTransitionId = 0;
 
@@ -168,7 +170,7 @@
         earthGlobe.controls().enableZoom = false;
         earthGlobe.pointOfView(
           { lat: target.lat, lng: target.lng, altitude: 1.85 },
-          1450
+          EARTH_CAMERA_MS + 100
         );
       }
 
@@ -183,11 +185,11 @@
         // during the Earth-to-street handoff.
         map.setView(coords, Math.min(5, zoom), { animate: false });
         map.flyTo(coords, zoom, {
-          duration: 2.25,
+          duration: DETAIL_FLY_MS / 1000,
           easeLinearity: 0.12
         });
         placeMarker(coords, name, markerColor);
-      }, 1350);
+      }, EARTH_CAMERA_MS);
     }
 
     function updateGlobeOverview() {
@@ -1062,7 +1064,7 @@
       // Wait for the cinematic camera move to finish before fitting the route.
       if (earthGlobe) {
         showEarthThenZoom(fc, 7, from);
-        await new Promise(resolve => setTimeout(resolve, 3700));
+        await new Promise(resolve => setTimeout(resolve, EARTH_CAMERA_MS + DETAIL_FLY_MS + 100));
         if (requestId !== routeRequestId) return;
       } else {
         clearTimeout(earthTransitionTimer);
