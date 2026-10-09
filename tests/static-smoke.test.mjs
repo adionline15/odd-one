@@ -201,3 +201,29 @@ test('map stores current zoom state',()=>assert.match(read('interaction-v2.js'),
 test('map stores viewport center state',()=>assert.match(read('interaction-v2.js'),/mapEl\.dataset\.center=getMap\(\)\.getCenter\(\)/));
 
 test('map has a useful interaction title',()=>assert.match(read('interaction-v2.js'),/Pan and zoom to explore verified road intelligence/));
+
+test('Earth-to-location transitions cancel stale camera handoffs', () => {
+  const runtime = read('app.js');
+  assert.match(runtime, /let earthTransitionId = 0/);
+  assert.match(runtime, /const transitionId = \+\+earthTransitionId/);
+  assert.match(runtime, /if \(transitionId !== earthTransitionId\) return/);
+  assert.match(runtime, /earthTransitionId \+= 1;\s*setEarthOverview\(false\)/);
+});
+
+test('reset returns to Earth and invalidates pending location transitions', () => {
+  const runtime = read('app.js');
+  const reset = runtime.slice(runtime.indexOf('function resetMapView'), runtime.indexOf('// Initial tile layer setup'));
+  assert.match(reset, /clearTimeout\(earthTransitionTimer\)/);
+  assert.match(reset, /earthTransitionId \+= 1/);
+  assert.match(reset, /setEarthOverview\(true\)/);
+  assert.match(reset, /pointOfView\(\{ lat: 22, lng: 78, altitude: 2\.15 \}/);
+});
+
+test('location search hands off from Earth before detailed Leaflet zoom', () => {
+  const runtime = read('app.js');
+  const handoff = runtime.slice(runtime.indexOf('function showEarthThenZoom'), runtime.indexOf('function updateGlobeOverview'));
+  assert.ok(handoff.indexOf('setEarthOverview(false)') < handoff.indexOf('map.flyTo(coords, zoom'));
+  assert.match(handoff, /map\.setView\(coords, Math\.min\(5, zoom\), \{ animate: false \}\)/);
+  assert.match(runtime, /showEarthThenZoom\(c, 13, city\)/);
+  assert.match(runtime, /showEarthThenZoom\(c, 14, name\)/);
+});
