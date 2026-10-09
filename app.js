@@ -968,6 +968,9 @@
           className: '', iconSize: [12, 12], iconAnchor: [6, 6]
         })
       }).addTo(map);
+      const latLabel = Number(coords[0]).toFixed(5);
+      const lonLabel = Number(coords[1]).toFixed(5);
+      locMarker.bindPopup(`<div class="oo-location-popup"><strong>${escapeHTML(name)}</strong><div>${latLabel}, ${lonLabel}</div></div>`);
     }
 
     function escapeHTML(value) {
