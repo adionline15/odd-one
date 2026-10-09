@@ -799,13 +799,20 @@
     // ── SEARCH LOGIC & NOMINATIM INTEGRATION ──
     const si = document.getElementById('s-input');
     const sg = document.getElementById('sugg');
+    function setSuggestionsVisible(visible) {
+      if (!sg || !si) return;
+      sg.classList.toggle('hidden', !visible);
+      sg.style.display = visible ? 'block' : 'none';
+      sg.setAttribute('aria-hidden', String(!visible));
+      si.setAttribute('aria-expanded', String(visible));
+    }
     let searchTimer = null;
 
     function chooseSearchSuggestion(item) {
       if (!item) return;
       if (item.dataset.searchCity) gotoCity(item.dataset.searchCity);
       else if (item.dataset.searchLat && item.dataset.searchLon) gotoCoords(Number(item.dataset.searchLat), Number(item.dataset.searchLon), item.dataset.searchName || 'Selected location', Number(item.dataset.searchZoom) || 14);
-      sg.style.display = 'none';
+      setSuggestionsVisible(false);
     }
 
     sg.addEventListener('click', event => {
@@ -853,7 +860,7 @@
         </div>`).join('');
 
       sg.innerHTML = localHTML || '<div class="px-4 py-3 text-[10px] text-zinc-500">Press Enter to search this place.</div>';
-      sg.style.display = 'block';
+      setSuggestionsVisible(true);
       si.removeAttribute('aria-busy');
 
       // Keep the local index fast, but always enrich it with live OSM search.
