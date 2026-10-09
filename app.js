@@ -846,7 +846,7 @@
       // Local results render immediately so typing never waits on the network.
       const local = Object.keys(CITIES).filter(c => c.includes(q)).slice(0, 5);
       const localHTML = local.map(c => `
-        <div class="sugg-item flex items-center gap-2.5 px-4 py-2.5 text-xs text-zinc-700 border-b border-black/5 cursor-pointer transition-colors" data-search-city="${c}">
+        <div class="sugg-item flex items-center gap-2.5 px-4 py-2.5 text-xs text-zinc-700 border-b border-black/5 cursor-pointer transition-colors" role="option" tabindex="0" data-search-city="${c}">
           <span class="text-blue-500">●</span>
           <span>${c.charAt(0).toUpperCase() + c.slice(1)}</span>
           <span class="text-[9px] uppercase tracking-wider text-zinc-400 ml-auto font-bold">Local</span>
