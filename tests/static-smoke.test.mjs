@@ -303,3 +303,13 @@ test('Earth overview supports keyboard camera movement and selection', () => {
   assert.match(init, /event\.key === 'Enter' \|\| event\.key === ' '/);
   assert.match(init, /earthGlobe\.pointOfView\(next, 250\)/);
 });
+
+test('stale geolocation callbacks cannot override a newer map choice', () => {
+  const runtime = read('app.js');
+  assert.match(runtime, /let locationRequestId = 0/);
+  const locate = runtime.slice(runtime.indexOf('function locateMe'), runtime.indexOf('// ── SIDEBAR CONTROLS'));
+  assert.match(locate, /const requestId = \+\+locationRequestId/);
+  assert.match(locate, /if \(requestId !== locationRequestId\) return/g);
+  assert.match(runtime, /function gotoCity\(city\) \{\s*const c = CITIES\[city\]; if \(!c\) return;\s*locationRequestId \+= 1/);
+  assert.match(runtime, /function resetMapView\(\) \{\s*locationRequestId \+= 1/);
+});
