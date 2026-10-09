@@ -1099,7 +1099,7 @@
         }),
         zIndexOffset: 1000
       }).addTo(map);
-      markers.push(mk(fc, 'START', 'start'), mk(tc, 'DESTINATION', 'end'));
+      markers.push(mk(fc, from.toUpperCase(), 'start'), mk(tc, to.toUpperCase(), 'end'));
 
       let dist, time, routeSource = 'OSRM';
       try {
