@@ -16,8 +16,7 @@
 
     function resetMapView() {
       clearTimeout(earthTransitionTimer);
-      earthTransitionLocked = true;
-      earthTransitionLocked = false;
+      earthTransitionId += 1;
       setEarthOverview(true);
       if (earthGlobe) {
         earthGlobe.controls().autoRotate = true;
@@ -64,7 +63,7 @@
     let earthGlobe = null;
     let earthOverviewActive = true;
     let earthTransitionTimer = null;
-    let earthTransitionLocked = false;
+    let earthTransitionId = 0;
 
     function setEarthOverview(active) {
       earthOverviewActive = active;
@@ -108,9 +107,9 @@
     }
 
     function showEarthThenZoom(coords, zoom, name) {
-      if (earthTransitionLocked) return;
-      const target = { lat: Number(coords[0]), lng: Number(coords[1]) };
+      const transitionId = ++earthTransitionId;
       clearTimeout(earthTransitionTimer);
+      const target = { lat: Number(coords[0]), lng: Number(coords[1]) };
       setEarthOverview(true);
 
       // Cinematic navigation: settle on the destination first, then hand off
@@ -126,6 +125,7 @@
       }
 
       earthTransitionTimer = setTimeout(() => {
+        if (transitionId !== earthTransitionId) return;
         setEarthOverview(false);
         earthGlobe?.controls().enableZoom = true;
         map.invalidateSize();
@@ -139,7 +139,6 @@
           easeLinearity: 0.12
         });
         placeMarker(coords, name);
-        earthTransitionLocked = false;
       }, 1350);
     }
 
@@ -1002,6 +1001,7 @@
       // Routing belongs to the detailed road map, not the Earth overview.
       // Hand off before drawing the corridor so the route is immediately visible.
       clearTimeout(earthTransitionTimer);
+      earthTransitionId += 1;
       setEarthOverview(false);
       map.invalidateSize({ pan: false });
 
