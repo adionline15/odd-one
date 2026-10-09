@@ -403,8 +403,16 @@ test('Earth camera rejects invalid coordinates before cancelling valid transitio
 test('reset cancels active route work and clears stale route UI', () => {
   const runtime = read('app.js');
   const reset = runtime.slice(runtime.indexOf('function resetMapView'), runtime.indexOf('// Initial tile layer setup'));
-  assert.match(reset, /routeRequestId \+= 1/);
-  assert.match(reset, /routeAbortController\?\.abort\(\)/);
-  assert.match(reset, /setRouteLoadingState\(false, 'Calculate Route →'\)/);
-  assert.match(reset, /clearRouteState\(true\)/);
+  assert.match(reset, /cancelActiveRoute\(true\)/);
+});
+
+test('changing the selected location cancels in-flight routing', () => {
+  const runtime = read('app.js');
+  const cancel = runtime.slice(runtime.indexOf('function cancelActiveRoute'), runtime.indexOf('async function planRoute'));
+  assert.match(cancel, /routeRequestId \+= 1/);
+  assert.match(cancel, /routeAbortController\?\.abort\(\)/);
+  assert.match(cancel, /setRouteLoadingState\(false, 'Calculate Route →'\)/);
+  assert.match(runtime, /function gotoCity\(city\) \{[^}]*cancelActiveRoute\(true\)/s);
+  assert.match(runtime, /function gotoCoords\(lat, lon, name, zoom = 14\) \{[^}]*cancelActiveRoute\(true\)/s);
+  assert.match(runtime, /function locateMe\(\) \{[^}]*cancelActiveRoute\(true\)/s);
 });
