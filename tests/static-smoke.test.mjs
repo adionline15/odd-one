@@ -417,3 +417,13 @@ test('changing the selected location cancels in-flight routing', () => {
   const locate = runtime.slice(runtime.indexOf('function locateMe'), runtime.indexOf('// ── SIDEBAR CONTROLS'));
   assert.match(locate, /cancelActiveRoute\(true\)/);
 });
+
+test('route bounds account for the mobile sheet overlay', () => {
+  const runtime = read('app.js');
+  const fit = runtime.slice(runtime.indexOf('function fitRouteBounds'), runtime.indexOf('async function planRoute'));
+  assert.match(fit, /sheet\.getBoundingClientRect\(\)\.height \* 0\.72/);
+  assert.match(fit, /paddingTopLeft: mobile \? \[24, 72\]/);
+  assert.match(fit, /paddingBottomRight: mobile \? \[24, sheetHeight \+ 20\]/);
+  assert.match(fit, /maxZoom: 13/);
+  assert.equal((runtime.match(/fitRouteBounds\(rl\.getBounds\(\)\)/g) || []).length, 2);
+});
