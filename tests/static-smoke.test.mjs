@@ -341,3 +341,13 @@ test('map HUD labels Earth overview separately from road-map zoom', () => {
   assert.match(runtime, /el\.textContent = earthOverviewActive \? '3D' : String\(zoom\)/);
   assert.match(runtime, /updateMapContext\(\);\s*document\.getElementById\('map'\)/);
 });
+
+test('selected map markers expose a safe coordinate popup', () => {
+  const runtime = read('app.js');
+  const css = read('design-v2.css');
+  assert.match(runtime, /locMarker\.bindPopup\(/);
+  assert.match(runtime, /escapeHTML\(name\)/);
+  assert.match(runtime, /Number\(coords\[0\]\)\.toFixed\(5\)/);
+  assert.match(runtime, /Number\(coords\[1\]\)\.toFixed\(5\)/);
+  assert.match(css, /\.oo-location-popup/);
+});
