@@ -5,10 +5,10 @@ import time
 
 # API key environment variable se lo — GitHub pe kabhi hardcode mat karo
 import os
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+gemini_key = os.environ.get("GEMINI_API_KEY")
 model = None
-if GEMINI_API_KEY:
-    genai.configure(api_key=GEMINI_API_KEY)
+if gemini_key:
+    genai.configure(api_key=gemini_key)
     model = genai.GenerativeModel('gemini-2.5-flash')
 
 def get_alerts(city):
