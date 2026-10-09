@@ -18,6 +18,10 @@
 
     function resetMapView() {
       locationRequestId += 1;
+      routeRequestId += 1;
+      routeAbortController?.abort();
+      setRouteLoadingState(false, 'Calculate Route →');
+      clearRouteState(true);
       clearTimeout(earthTransitionTimer);
       earthTransitionId += 1;
       setEarthOverview(true);
