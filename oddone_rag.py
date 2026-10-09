@@ -5,10 +5,11 @@ import time
 
 # API key environment variable se lo — GitHub pe kabhi hardcode mat karo
 import os
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "YOUR_KEY_HERE")
-
-genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel('gemini-2.5-flash')
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+model = None
+if GEMINI_API_KEY:
+    genai.configure(api_key=GEMINI_API_KEY)
+    model = genai.GenerativeModel('gemini-2.5-flash')
 
 def get_alerts(city):
     alerts = []
@@ -49,6 +50,8 @@ def get_road_data(origin, destination):
     }
 
 def smart_rag_navigate(user_query, origin, destination):
+    if model is None:
+        return "AI route guidance is not configured. Set GEMINI_API_KEY in the environment and try again."
     road_info = get_road_data(origin, destination)
     origin_alerts = get_alerts(origin)
     dest_alerts = get_alerts(destination)
