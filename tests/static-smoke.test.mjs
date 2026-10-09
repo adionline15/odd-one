@@ -313,3 +313,12 @@ test('stale geolocation callbacks cannot override a newer map choice', () => {
   assert.match(runtime, /function gotoCity\(city\) \{\s*const c = CITIES\[city\]; if \(!c\) return;\s*locationRequestId \+= 1/);
   assert.match(runtime, /function resetMapView\(\) \{\s*locationRequestId \+= 1/);
 });
+
+test('route planning waits for Earth-to-origin handoff before fitting route', () => {
+  const runtime = read('app.js');
+  const route = runtime.slice(runtime.indexOf('async function planRoute'), runtime.indexOf('async function geocodePlace'));
+  assert.match(route, /showEarthThenZoom\(fc, 7, from\)/);
+  assert.match(route, /await new Promise\(resolve => setTimeout\(resolve, 3700\)\)/);
+  assert.match(route, /if \(requestId !== routeRequestId\) return/);
+  assert.ok(route.indexOf('await new Promise') < route.indexOf('map.fitBounds'));
+});
