@@ -252,6 +252,7 @@
     let roadChangeAbortController = null;
     let lastLoadedObservationViewportKey = '';
     let routeAbortController = null;
+    let routeRequestId = 0;
 
     function clearObservationLayers() {
       observationLayers.forEach(layer => map.removeLayer(layer));
@@ -1011,13 +1012,16 @@
       if (!from || !to) return;
       
       const btn = document.getElementById(p + '-go-btn');
+      const requestId = ++routeRequestId;
       routeAbortController?.abort();
       routeAbortController = new AbortController();
       setRouteLoadingState(true, 'Finding locations…', p);
       clearRouteState(true);
 
       const fc = CITIES[from] || await geocodePlace(from);
+      if (requestId !== routeRequestId) return;
       const tc = CITIES[to] || await geocodePlace(to);
+      if (requestId !== routeRequestId) return;
       if (!fc || !tc) {
         clearRouteState();
         setRouteLoadingState(false, 'Calculate Route →', p);
@@ -1074,7 +1078,7 @@
         } else throw new Error();
       } catch (e) {
         if (e?.name === 'AbortError') {
-          setRouteLoadingState(false, 'Calculate Route →', p);
+          if (requestId === routeRequestId) setRouteLoadingState(false, 'Calculate Route →', p);
           return;
         }
         routeSource = 'APPROX';
@@ -1100,8 +1104,10 @@
       document.getElementById('stat-gap-val').innerText = pct === null ? 'N/A' : `${pct}%`;
 
       const alertResult = await fetchAlerts(from);
+      if (requestId !== routeRequestId) return;
       const alerts = alertResult.alerts;
       const aiGuide = await getAIGuide(from, to, dist, time, alerts, pct);
+      if (requestId !== routeRequestId) return;
       setRouteLoadingState(false, 'Calculate Route →', p);
 
       const alertNotice = alertResult.error
