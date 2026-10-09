@@ -130,6 +130,10 @@
         earthGlobe?.controls().enableZoom = true;
         map.invalidateSize();
         map.stop();
+        // Start the detail engine at the selected region before zooming in.
+        // This prevents the hidden map from flashing its stale India-wide view
+        // during the Earth-to-street handoff.
+        map.setView(coords, Math.min(5, zoom), { animate: false });
         map.flyTo(coords, zoom, {
           duration: 2.25,
           easeLinearity: 0.12
