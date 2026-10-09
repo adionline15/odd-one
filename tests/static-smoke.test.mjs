@@ -227,3 +227,11 @@ test('location search hands off from Earth before detailed Leaflet zoom', () => 
   assert.match(runtime, /showEarthThenZoom\(c, 13, city\)/);
   assert.match(runtime, /showEarthThenZoom\(c, 14, name\)/);
 });
+
+test('location marker styling survives Earth-to-map handoff', () => {
+  const runtime = read('app.js');
+  assert.match(runtime, /function showEarthThenZoom\(coords, zoom, name, markerColor = '#ef4444'\)/);
+  assert.match(runtime, /placeMarker\(coords, name, markerColor\)/);
+  assert.match(runtime, /showEarthThenZoom\(c, 15, 'My location', '#3b82f6'\)/);
+  assert.match(runtime, /const markerRgb = markerColor === '#3b82f6'/);
+});
