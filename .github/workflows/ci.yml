@@ -24,6 +24,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          node --check app.js
+          node --check interaction-v2.js
           node --check api/news.js
           node --check api/route-guide.js
           node --check api/tiles.js
