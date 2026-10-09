@@ -111,6 +111,8 @@
         earthGlobe.controls().enableZoom = true;
         earthGlobe.onGlobeClick(({ lat, lng }) => {
           if (!Number.isFinite(lat) || !Number.isFinite(lng)) return;
+          locationRequestId += 1;
+          cancelActiveRoute(true);
           showEarthThenZoom([lat, lng], 13, 'Selected location');
         });
         earthGlobeEl.addEventListener('keydown', event => {
@@ -123,6 +125,8 @@
           else if (event.key === 'ArrowDown') next.lat = Math.max(-80, next.lat - 10);
           else if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();
+            locationRequestId += 1;
+            cancelActiveRoute(true);
             showEarthThenZoom([point.lat, point.lng], 13, 'Selected location');
             return;
           } else return;
