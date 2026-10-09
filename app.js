@@ -15,6 +15,7 @@
     }
 
     function resetMapView() {
+      locationRequestId += 1;
       clearTimeout(earthTransitionTimer);
       earthTransitionId += 1;
       setEarthOverview(true);
@@ -269,6 +270,7 @@
     let lastLoadedObservationViewportKey = '';
     let routeAbortController = null;
     let routeRequestId = 0;
+    let locationRequestId = 0;
 
     function clearObservationLayers() {
       observationLayers.forEach(layer => map.removeLayer(layer));
@@ -933,6 +935,7 @@
     // ── PANNING & MARKERS ──
     function gotoCity(city) {
       const c = CITIES[city]; if (!c) return;
+      locationRequestId += 1;
       showEarthThenZoom(c, 13, city);
       sg.style.display = 'none';
       si.value = city.charAt(0).toUpperCase() + city.slice(1); si.blur();
@@ -942,6 +945,7 @@
 
     function gotoCoords(lat, lon, name) {
       const c = [parseFloat(lat), parseFloat(lon)];
+      locationRequestId += 1;
       showEarthThenZoom(c, 14, name);
       sg.style.display = 'none'; si.value = name; si.blur();
       loadAlerts(name);
@@ -1028,6 +1032,7 @@
       if (!from || !to) return;
       
       const btn = document.getElementById(p + '-go-btn');
+      locationRequestId += 1;
       const requestId = ++routeRequestId;
       routeAbortController?.abort();
       routeAbortController = new AbortController();
@@ -1311,12 +1316,15 @@
         setLocateButtonState('idle');
         return;
       }
+      const requestId = ++locationRequestId;
       setLocateButtonState('loading');
       navigator.geolocation.getCurrentPosition(pos => {
+        if (requestId !== locationRequestId) return;
         const c = [pos.coords.latitude, pos.coords.longitude];
         showEarthThenZoom(c, 15, 'My location', '#3b82f6');
         setLocateButtonState('active');
       }, () => {
+        if (requestId !== locationRequestId) return;
         setLocateButtonState('idle');
       }, { enableHighAccuracy: true, timeout: 8000, maximumAge: 60000 });
     }
