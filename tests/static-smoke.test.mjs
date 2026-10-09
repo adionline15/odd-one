@@ -399,3 +399,12 @@ test('Earth camera rejects invalid coordinates before cancelling valid transitio
   assert.match(handoff, /Number\(coords\?\.\[0\]\)/);
   assert.match(handoff, /Number\(coords\?\.\[1\]\)/);
 });
+
+test('reset cancels active route work and clears stale route UI', () => {
+  const runtime = read('app.js');
+  const reset = runtime.slice(runtime.indexOf('function resetMapView'), runtime.indexOf('// Initial tile layer setup'));
+  assert.match(reset, /routeRequestId \+= 1/);
+  assert.match(reset, /routeAbortController\?\.abort\(\)/);
+  assert.match(reset, /setRouteLoadingState\(false, 'Calculate Route →'\)/);
+  assert.match(reset, /clearRouteState\(true\)/);
+});
