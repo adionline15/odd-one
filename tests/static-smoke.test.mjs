@@ -276,3 +276,10 @@ test('hidden Earth stops rendering rotation until reset', () => {
   const reset = runtime.slice(runtime.indexOf('function resetMapView'), runtime.indexOf('// Initial tile layer setup'));
   assert.match(reset, /earthGlobe\.controls\(\)\.autoRotate = true/);
 });
+
+test('returning to Earth restores zoom and rotation controls', () => {
+  const runtime = read('app.js');
+  const visibility = runtime.slice(runtime.indexOf('function setEarthOverview'), runtime.indexOf('function initEarthGlobe'));
+  assert.match(visibility, /earthGlobe\.controls\(\)\.autoRotate = active/);
+  assert.match(visibility, /if \(active\) earthGlobe\.controls\(\)\.enableZoom = true/);
+});
