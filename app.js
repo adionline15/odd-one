@@ -1082,6 +1082,20 @@
       if (clearOutput) clearRouteState(true);
     }
 
+    function fitRouteBounds(bounds) {
+      const mobile = isMobile();
+      const sheet = document.getElementById('sheet');
+      const sheetHeight = mobile && sheet
+        ? Math.min(360, Math.max(180, sheet.getBoundingClientRect().height * 0.72))
+        : 24;
+      map.fitBounds(bounds, {
+        paddingTopLeft: mobile ? [24, 72] : [48, 48],
+        paddingBottomRight: mobile ? [24, sheetHeight + 20] : [48, 48],
+        maxZoom: 13,
+        animate: true
+      });
+    }
+
     async function planRoute(p) {
       const from = document.getElementById(p + '-from').value.trim().toLowerCase();
       const to = document.getElementById(p + '-to').value.trim().toLowerCase();
@@ -1159,7 +1173,7 @@
           time = Math.round(route.duration / 60);
           const coords = route.geometry.coordinates.map(c => [c[1], c[0]]);
           const rl = drawRouteLine(coords);
-          map.fitBounds(rl.getBounds(), { padding: [70, 90] });
+          fitRouteBounds(rl.getBounds());
         } else throw new Error();
       } catch (e) {
         if (e?.name === 'AbortError') {
