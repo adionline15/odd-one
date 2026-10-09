@@ -272,7 +272,7 @@ test('WebGL initialization errors do not leave a blocking Earth overlay', () => 
 
 test('hidden Earth stops rendering rotation until reset', () => {
   const runtime = read('app.js');
-  assert.match(runtime, /if \(!active && earthGlobe\) earthGlobe\.controls\(\)\.autoRotate = false/);
+  assert.match(runtime, /earthGlobe\.controls\(\)\.autoRotate = active/);
   const reset = runtime.slice(runtime.indexOf('function resetMapView'), runtime.indexOf('// Initial tile layer setup'));
   assert.match(reset, /earthGlobe\.controls\(\)\.autoRotate = true/);
 });
