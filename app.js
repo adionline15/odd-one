@@ -1055,12 +1055,20 @@
       
       btn.textContent = 'Calculating Route…';
 
-      // Routing belongs to the detailed road map, not the Earth overview.
-      // Hand off before drawing the corridor so the route is immediately visible.
-      clearTimeout(earthTransitionTimer);
-      earthTransitionId += 1;
-      setEarthOverview(false);
-      map.invalidateSize({ pan: false });
+      // Route requests use the same Earth-to-region handoff as location search.
+      // Wait for the cinematic camera move to finish before fitting the route.
+      if (earthGlobe) {
+        showEarthThenZoom(fc, 7, from);
+        await new Promise(resolve => setTimeout(resolve, 3700));
+        if (requestId !== routeRequestId) return;
+      } else {
+        clearTimeout(earthTransitionTimer);
+        earthTransitionId += 1;
+        setEarthOverview(false);
+        map.invalidateSize({ pan: false });
+        map.stop();
+        map.flyTo(fc, 7, { duration: 1.2, easeLinearity: 0.2 });
+      }
 
       // If the Earth was at world scale, reset the hidden Leaflet camera
       // before adding route layers so fitBounds has a valid road-map viewport.
