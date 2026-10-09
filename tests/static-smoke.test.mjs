@@ -249,7 +249,7 @@ test('external geocoder results are escaped and coordinates validated', () => {
   assert.match(runtime, /const safeName = escapeHTML\(r\.display_name\.split\(','\)\[0\]\)/);
   assert.match(runtime, /const lat = Number\(r\.lat\)/);
   assert.match(runtime, /const lon = Number\(r\.lon\)/);
-  assert.match(runtime, /if \(!Number\.isFinite\(lat\) \|\| !Number\.isFinite\(lon\)\) return ''/);
+  assert.match(runtime, /if \(!Number\.isFinite\(lat\) \|\| !Number\.isFinite\(lon\) \|\| Math\.abs\(lat\) > 90 \|\| Math\.abs\(lon\) > 180\) return ''/);
 });
 
 test('location navigation falls back cleanly when WebGL Earth is unavailable', () => {
