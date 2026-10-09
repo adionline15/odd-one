@@ -379,3 +379,14 @@ test('location suggestions support keyboard selection and traversal', () => {
   assert.match(runtime, /items\[\(index - 1 \+ items\.length\) % items\.length\]\.focus\(\)/);
   assert.match(runtime, /function chooseSearchSuggestion\(item\)/);
 });
+
+test('search suggestions update visibility and combobox accessibility together', () => {
+  const html = read('index.html');
+  const runtime = read('app.js');
+  assert.match(html, /role="combobox" aria-haspopup="listbox" aria-controls="sugg" aria-expanded="false" aria-autocomplete="list"/);
+  const helper = runtime.slice(runtime.indexOf('function setSuggestionsVisible'), runtime.indexOf('let searchTimer'));
+  assert.match(helper, /classList\.toggle\('hidden', !visible\)/);
+  assert.match(helper, /setAttribute\('aria-hidden', String\(!visible\)\)/);
+  assert.match(helper, /setAttribute\('aria-expanded', String\(visible\)\)/);
+  assert.doesNotMatch(runtime.replace(helper, ''), /sg\.style\.display =/);
+});
