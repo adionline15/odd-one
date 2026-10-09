@@ -10,10 +10,12 @@ const read = file => fs.readFileSync(path.join(root, file), 'utf8');
 test('frontend preserves verified observation boundaries', () => {
   const html = read('index.html');
   const runtime = read('app.js');
-  assert.match(html, /\/api\/observations\?/);
-  assert.match(html, /observations-v6/);
-  assert.match(html, /Only approved observations are surfaced as public intelligence/);
-  assert.match(html, /Verified layer only · no synthetic road statistics/i);
+  // Runtime contracts belong to app.js after the inline script extraction.
+  assert.match(runtime, /\/api\/observations\?/);
+  assert.match(runtime, /observations-v6/);
+  // Publicly served observation records are restricted by the API contract.
+  assert.match(read('api/observations.js'), /approved_observations_in_view/);
+  assert.match(read('api/observation-summary.js'), /scope: 'approved'/);
 });
 
 test('routing distinguishes approximate output', () => {
