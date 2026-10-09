@@ -8802,3 +8802,23 @@ body>footer{
 #map.globe-transition{transition:width .45s ease,height .45s ease,transform .45s ease,border-radius .45s ease;}
 
 
+
+
+/* Selected location coordinate popup */
+.oo-location-popup{
+  display:grid;
+  gap:4px;
+  min-width:150px;
+  color:#1d1d1f;
+  font:500 12px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+.oo-location-popup strong{
+  font-size:13px;
+  font-weight:650;
+  overflow-wrap:anywhere;
+}
+.oo-location-popup div{
+  color:#6e6e73;
+  font:500 10px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-variant-numeric:tabular-nums;
+}
