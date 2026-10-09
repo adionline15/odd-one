@@ -368,3 +368,14 @@ test('geocoder search zoom respects country, state, district, and city scale', (
   assert.match(runtime, /gotoCoords\(lat, lon, name, zoom = 14\)/);
   assert.match(runtime, /Math\.max\(5, Math\.min\(17, Number\(zoom\) \|\| 14\)\)/);
 });
+
+test('location suggestions support keyboard selection and traversal', () => {
+  const runtime = read('app.js');
+  assert.match(runtime, /role="option" tabindex="0" data-search-city=/);
+  assert.match(runtime, /role="option" tabindex="0" data-search-lat=/);
+  assert.match(runtime, /sg\.addEventListener\('keydown'/);
+  assert.match(runtime, /event\.key === 'Enter' \|\| event\.key === ' '/);
+  assert.match(runtime, /items\[\(index \+ 1\) % items\.length\]\.focus\(\)/);
+  assert.match(runtime, /items\[\(index - 1 \+ items\.length\) % items\.length\]\.focus\(\)/);
+  assert.match(runtime, /function chooseSearchSuggestion\(item\)/);
+});
