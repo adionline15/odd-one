@@ -291,3 +291,15 @@ test('route calculation ignores stale geocoding and intelligence responses', () 
   assert.match(runtime, /if \(requestId !== routeRequestId\) return/);
   assert.match(runtime, /if \(requestId === routeRequestId\) setRouteLoadingState/);
 });
+
+test('Earth overview supports keyboard camera movement and selection', () => {
+  const runtime = read('app.js');
+  const init = runtime.slice(runtime.indexOf('function initEarthGlobe'), runtime.indexOf('function showEarthThenZoom'));
+  assert.match(init, /earthGlobeEl\.addEventListener\('keydown'/);
+  assert.match(init, /event\.key === 'ArrowLeft'/);
+  assert.match(init, /event\.key === 'ArrowRight'/);
+  assert.match(init, /event\.key === 'ArrowUp'/);
+  assert.match(init, /event\.key === 'ArrowDown'/);
+  assert.match(init, /event\.key === 'Enter' \|\| event\.key === ' '/);
+  assert.match(init, /earthGlobe\.pointOfView\(next, 250\)/);
+});
