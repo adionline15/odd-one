@@ -322,3 +322,10 @@ test('route planning waits for Earth-to-origin handoff before fitting route', ()
   assert.match(route, /if \(requestId !== routeRequestId\) return/);
   assert.ok(route.indexOf('await new Promise') < route.indexOf('map.fitBounds'));
 });
+
+test('legacy RAG script requires an environment key instead of a placeholder', () => {
+  const source = read('oddone_rag.py');
+  assert.match(source, /GEMINI_API_KEY = os\.environ\.get\('GEMINI_API_KEY'\)/);
+  assert.match(source, /if model is None:/);
+  assert.doesNotMatch(source, /YOUR_KEY_HERE/);
+});
