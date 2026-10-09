@@ -863,9 +863,12 @@
         if (!res.ok) throw new Error(`Search failed with ${res.status}`);
         const data = await res.json();
         const nomHTML = data.map(r => {
-          const safeName = r.display_name.split(',')[0].replace(/'/g, "\\'");
+          const safeName = escapeHTML(r.display_name.split(',')[0]);
+          const lat = Number(r.lat);
+          const lon = Number(r.lon);
+          if (!Number.isFinite(lat) || !Number.isFinite(lon)) return '';
           return `
-            <div class="sugg-item flex items-center gap-2.5 px-4 py-2.5 text-xs text-zinc-400 border-b border-zinc-900 cursor-pointer transition-colors" data-search-lat="${r.lat}" data-search-lon="${r.lon}" data-search-name="${safeName}">
+            <div class="sugg-item flex items-center gap-2.5 px-4 py-2.5 text-xs text-zinc-400 border-b border-zinc-900 cursor-pointer transition-colors" data-search-lat="${lat}" data-search-lon="${lon}" data-search-name="${safeName}">
               <span class="text-zinc-500">🔍</span>
               <span class="truncate">${escapeHTML(r.display_name.split(',').slice(0, 2).join(', '))}</span>
               <span class="text-[9px] uppercase tracking-wider text-zinc-600 ml-auto font-bold">OSM</span>
