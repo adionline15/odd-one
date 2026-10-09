@@ -250,3 +250,12 @@ test('external geocoder results are escaped and coordinates validated', () => {
   assert.match(runtime, /const lon = Number\(r\.lon\)/);
   assert.match(runtime, /if \(!Number\.isFinite\(lat\) \|\| !Number\.isFinite\(lon\)\) return ''/);
 });
+
+test('location navigation falls back cleanly when WebGL Earth is unavailable', () => {
+  const runtime = read('app.js');
+  const handoff = runtime.slice(runtime.indexOf('function showEarthThenZoom'), runtime.indexOf('function updateGlobeOverview'));
+  assert.match(handoff, /if \(!earthGlobe\)/);
+  assert.match(handoff, /setEarthOverview\(false\)/);
+  assert.match(handoff, /map\.flyTo\(coords, zoom, \{ duration: 1\.2, easeLinearity: 0\.2 \}\)/);
+  assert.match(handoff, /placeMarker\(coords, name, markerColor\)/);
+});
