@@ -434,3 +434,9 @@ test('manual Earth selection supersedes active route and location requests', () 
   assert.match(init, /earthGlobe\.onGlobeClick\([\s\S]*?locationRequestId \+= 1;[\s\S]*?cancelActiveRoute\(true\)/);
   assert.match(init, /event\.key === 'Enter' \|\| event\.key === ' '[\s\S]*?locationRequestId \+= 1;[\s\S]*?cancelActiveRoute\(true\)/);
 });
+
+test('reset clears the selected place marker from the detail map', () => {
+  const runtime = read('app.js');
+  const reset = runtime.slice(runtime.indexOf('function resetMapView'), runtime.indexOf('// Initial tile layer setup'));
+  assert.match(reset, /if \(locMarker\) \{\s*map\.removeLayer\(locMarker\);\s*locMarker = null;/);
+});
