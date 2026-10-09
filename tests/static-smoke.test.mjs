@@ -319,7 +319,9 @@ test('route planning waits for Earth-to-origin handoff before fitting route', ()
   const runtime = read('app.js');
   const route = runtime.slice(runtime.indexOf('async function planRoute'), runtime.indexOf('async function geocodePlace'));
   assert.match(route, /showEarthThenZoom\(fc, 7, from\)/);
-  assert.match(route, /await new Promise\(resolve => setTimeout\(resolve, 3700\)\)/);
+  assert.match(runtime, /const EARTH_CAMERA_MS = 1350/);
+  assert.match(runtime, /const DETAIL_FLY_MS = 2250/);
+  assert.match(route, /EARTH_CAMERA_MS \+ DETAIL_FLY_MS \+ 100/);
   assert.match(route, /if \(requestId !== routeRequestId\) return/);
   assert.ok(route.indexOf('await new Promise') < route.indexOf('map.fitBounds'));
 });
