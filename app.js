@@ -106,6 +106,22 @@
           if (!Number.isFinite(lat) || !Number.isFinite(lng)) return;
           showEarthThenZoom([lat, lng], 13, 'Selected location');
         });
+        earthGlobeEl.addEventListener('keydown', event => {
+          const point = earthGlobe?.pointOfView();
+          if (!point) return;
+          const next = { ...point };
+          if (event.key === 'ArrowLeft') next.lng -= 10;
+          else if (event.key === 'ArrowRight') next.lng += 10;
+          else if (event.key === 'ArrowUp') next.lat = Math.min(80, next.lat + 10);
+          else if (event.key === 'ArrowDown') next.lat = Math.max(-80, next.lat - 10);
+          else if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            showEarthThenZoom([point.lat, point.lng], 13, 'Selected location');
+            return;
+          } else return;
+          event.preventDefault();
+          earthGlobe.pointOfView(next, 250);
+        });
 
         const resizeGlobe = () => {
           if (!earthGlobe || !earthGlobeEl) return;
