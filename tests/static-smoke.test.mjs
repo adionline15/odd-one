@@ -357,3 +357,14 @@ test('route endpoints show the selected origin and destination names', () => {
   assert.match(runtime, /markers\.push\(mk\(fc, from\.toUpperCase\(\), 'start'\), mk\(tc, to\.toUpperCase\(\), 'end'\)\)/);
   assert.match(runtime, /escapeHTML\(label\)/);
 });
+
+test('geocoder search zoom respects country, state, district, and city scale', () => {
+  const runtime = read('app.js');
+  assert.match(runtime, /data-search-zoom="\$\{searchZoom\}"/);
+  assert.match(runtime, /\/country\/\.test\(placeType\) \? 5/);
+  assert.match(runtime, /\/state\|province\/\.test\(placeType\) \? 7/);
+  assert.match(runtime, /\/county\|district\/\.test\(placeType\) \? 9/);
+  assert.match(runtime, /\/city\|municipality\/\.test\(placeType\) \? 11/);
+  assert.match(runtime, /gotoCoords\(lat, lon, name, zoom = 14\)/);
+  assert.match(runtime, /Math\.max\(5, Math\.min\(17, Number\(zoom\) \|\| 14\)\)/);
+});
