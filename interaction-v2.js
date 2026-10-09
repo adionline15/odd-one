@@ -411,7 +411,7 @@ document.documentElement.dataset.interactionPhase='ready';
 
   ready(() => document.getElementById('btn-sat')?.setAttribute('title','Satellite imagery'));
 
-  ready(() => document.getElementById('btn-reset-view')?.setAttribute('title','Reset to India overview'));
+  ready(() => document.getElementById('btn-reset-view')?.setAttribute('title','Return to Earth overview'));
 
   ready(() => document.getElementById('btn-loc')?.setAttribute('title','Center on my location'));
 
