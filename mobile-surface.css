@@ -1,0 +1,185 @@
+/* Mobile product surface — intentionally simpler than desktop. */
+@media (max-width: 640px){
+  html,body{overflow:hidden!important;background:#f5f5f7!important;}
+
+  body>nav[aria-label="Primary navigation"]{
+    height:62px!important;
+    min-height:62px!important;
+    padding:0 12px!important;
+    gap:8px!important;
+    background:rgba(250,250,252,.94)!important;
+    color:#1d1d1f!important;
+    border-bottom:1px solid rgba(0,0,0,.08)!important;
+    box-shadow:0 1px 10px rgba(0,0,0,.06)!important;
+    z-index:1000!important;
+  }
+
+  body>nav[aria-label="Primary navigation"] .font-serif-lux{
+    color:#1d1d1f!important;
+    font-size:17px!important;
+    letter-spacing:-.055em!important;
+  }
+  body>nav[aria-label="Primary navigation"] .font-serif-lux .text-zinc-500{color:#86868b!important;}
+  body>nav[aria-label="Primary navigation"] .flex.items-baseline{min-width:max-content;}
+  body>nav[aria-label="Primary navigation"] .flex.items-center.gap-3{gap:8px!important;}
+  body>nav[aria-label="Primary navigation"] .flex-1{min-width:0!important;margin-left:0!important;gap:7px!important;}
+  body>nav[aria-label="Primary navigation"] #s-input{
+    height:38px!important;
+    min-width:0!important;
+    padding-left:14px!important;
+    padding-right:34px!important;
+    background:#fff!important;
+    color:#1d1d1f!important;
+    border:1px solid rgba(0,0,0,.10)!important;
+    box-shadow:0 1px 4px rgba(0,0,0,.04)!important;
+  }
+  body>nav[aria-label="Primary navigation"] #s-input::placeholder{color:#8e8e93!important;}
+  body>nav[aria-label="Primary navigation"] button.sm\:hidden{
+    height:38px!important;
+    min-height:38px!important;
+    padding:0 14px!important;
+    background:#0071e3!important;
+    color:#fff!important;
+    border:0!important;
+    border-radius:999px!important;
+    box-shadow:0 4px 12px rgba(0,113,227,.22)!important;
+  }
+
+  main{min-height:0!important;background:#f5f5f7!important;}
+  #map{position:absolute!important;inset:0!important;z-index:1!important;}
+  #intelligence-hero{display:none!important;}
+  #map-intelligence-hud,#observation-status-strip{display:none!important;}
+  #map-live-context{top:12px!important;z-index:20!important;}
+  .map-context-pill{
+    padding:6px 10px!important;
+    font-size:8px!important;
+    color:#6e6e73!important;
+    background:rgba(255,255,255,.88)!important;
+    border-color:rgba(0,0,0,.08)!important;
+    box-shadow:0 4px 16px rgba(0,0,0,.10)!important;
+    backdrop-filter:blur(16px)!important;
+  }
+  .map-context-pill strong{color:#1d1d1f!important;}
+
+  #sidebar{display:none!important;}
+
+  #sheet{
+    display:flex!important;
+    left:8px!important;
+    right:8px!important;
+    bottom:8px!important;
+    max-height:72vh!important;
+    height:auto!important;
+    transform:translateY(calc(100% - 54px))!important;
+    border-radius:20px!important;
+    background:rgba(255,255,255,.94)!important;
+    color:#1d1d1f!important;
+    border:1px solid rgba(0,0,0,.08)!important;
+    box-shadow:0 12px 45px rgba(0,0,0,.18)!important;
+    overflow:hidden!important;
+    z-index:950!important;
+  }
+  #sheet.open{transform:translateY(0)!important;}
+  #sheet-toggle{height:38px!important;padding:8px!important;min-height:38px!important;}
+  #sheet-toggle span{width:36px!important;height:4px!important;background:#c7c7cc!important;}
+  #sheet .flex.border-b{background:rgba(245,245,247,.72)!important;border-color:rgba(0,0,0,.07)!important;}
+  #sheet .flex.border-b button{
+    min-height:44px!important;
+    height:44px!important;
+    color:#86868b!important;
+    font-size:9px!important;
+    letter-spacing:.08em!important;
+  }
+  #sheet .flex.border-b button.border-white{
+    color:#1d1d1f!important;
+    box-shadow:inset 0 -2px 0 #0071e3!important;
+  }
+  #sheet>.flex-1.overflow-y-auto{
+    padding:14px!important;
+    color:#1d1d1f!important;
+  }
+  #sheet input{
+    height:44px!important;
+    background:#f5f5f7!important;
+    color:#1d1d1f!important;
+    border-color:rgba(0,0,0,.08)!important;
+  }
+  #sheet input::placeholder{color:#86868b!important;}
+  #sheet #m-go-btn{
+    height:44px!important;
+    background:#0071e3!important;
+    color:#fff!important;
+    border-radius:12px!important;
+  }
+
+  #map-command-deck{
+    right:12px!important;
+    left:12px!important;
+    bottom:76px!important;
+    justify-content:flex-end!important;
+    gap:7px!important;
+    z-index:80!important;
+    padding:5px!important;
+    border-radius:17px!important;
+    background:rgba(255,255,255,.90)!important;
+    border:1px solid rgba(0,0,0,.08)!important;
+    box-shadow:0 8px 28px rgba(0,0,0,.14)!important;
+    backdrop-filter:blur(18px)!important;
+  }
+  .map-layer-switcher{
+    min-width:0!important;
+    flex:1 1 auto!important;
+    max-width:none!important;
+    overflow:hidden!important;
+    background:#f1f1f3!important;
+    border:0!important;
+    border-radius:13px!important;
+  }
+  .map-layer-switcher .map-deck-btn{
+    min-width:0!important;
+    flex:1 1 0!important;
+    height:40px!important;
+    padding:0 10px!important;
+    color:#6e6e73!important;
+    font-size:9px!important;
+  }
+  .map-layer-switcher .map-deck-btn.active,
+  .map-layer-switcher .map-deck-btn[aria-pressed="true"]{
+    color:#1d1d1f!important;
+    background:#fff!important;
+    box-shadow:0 1px 5px rgba(0,0,0,.08)!important;
+  }
+  #map-command-deck .map-deck-icon-btn{
+    width:40px!important;
+    height:40px!important;
+    min-width:40px!important;
+    border-radius:12px!important;
+    background:#fff!important;
+    color:#1d1d1f!important;
+    border:1px solid rgba(0,0,0,.07)!important;
+    box-shadow:0 1px 5px rgba(0,0,0,.06)!important;
+  }
+
+  #route-status-overlay{
+    left:12px!important;
+    right:12px!important;
+    top:auto!important;
+    bottom:136px!important;
+    max-width:none!important;
+    min-width:0!important;
+  }
+  #route-status-overlay>div{
+    min-width:0!important;
+    width:100%!important;
+    background:rgba(255,255,255,.94)!important;
+    color:#1d1d1f!important;
+    border-color:rgba(0,0,0,.08)!important;
+    box-shadow:0 10px 30px rgba(0,0,0,.14)!important;
+    backdrop-filter:blur(18px)!important;
+  }
+  #route-status-path{color:#1d1d1f!important;}
+  #route-status-distance,#route-status-time{color:#6e6e73!important;}
+
+  body>footer{display:none!important;}
+  #map-scale-wrap{display:none!important;}
+}
