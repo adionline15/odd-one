@@ -235,3 +235,10 @@ test('location marker styling survives Earth-to-map handoff', () => {
   assert.match(runtime, /showEarthThenZoom\(c, 15, 'My location', '#3b82f6'\)/);
   assert.match(runtime, /const markerRgb = markerColor === '#3b82f6'/);
 });
+
+test('Earth globe clicks can navigate to a selected coordinate', () => {
+  const runtime = read('app.js');
+  assert.match(runtime, /earthGlobe\.onGlobeClick\(\(\{ lat, lng \}\) =>/);
+  assert.match(runtime, /showEarthThenZoom\(\[lat, lng\], 13, 'Selected location'\)/);
+  assert.match(runtime, /if \(!Number\.isFinite\(lat\) \|\| !Number\.isFinite\(lng\)\) return/);
+});
