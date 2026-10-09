@@ -242,3 +242,11 @@ test('Earth globe clicks can navigate to a selected coordinate', () => {
   assert.match(runtime, /showEarthThenZoom\(\[lat, lng\], 13, 'Selected location'\)/);
   assert.match(runtime, /if \(!Number\.isFinite\(lat\) \|\| !Number\.isFinite\(lng\)\) return/);
 });
+
+test('external geocoder results are escaped and coordinates validated', () => {
+  const runtime = read('app.js');
+  assert.match(runtime, /const safeName = escapeHTML\(r\.display_name\.split\(','\)\[0\]\)/);
+  assert.match(runtime, /const lat = Number\(r\.lat\)/);
+  assert.match(runtime, /const lon = Number\(r\.lon\)/);
+  assert.match(runtime, /if \(!Number\.isFinite\(lat\) \|\| !Number\.isFinite\(lon\)\) return ''/);
+});
