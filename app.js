@@ -96,6 +96,10 @@
       earthGlobe.controls().autoRotate = true;
       earthGlobe.controls().autoRotateSpeed = 0.28;
       earthGlobe.controls().enableZoom = true;
+      earthGlobe.onGlobeClick(({ lat, lng }) => {
+        if (!Number.isFinite(lat) || !Number.isFinite(lng)) return;
+        showEarthThenZoom([lat, lng], 13, 'Selected location');
+      });
 
       const resizeGlobe = () => {
         if (!earthGlobe || !earthGlobeEl) return;
