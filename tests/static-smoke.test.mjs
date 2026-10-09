@@ -351,3 +351,9 @@ test('selected map markers expose a safe coordinate popup', () => {
   assert.match(runtime, /Number\(coords\[1\]\)\.toFixed\(5\)/);
   assert.match(css, /\.oo-location-popup/);
 });
+
+test('route endpoints show the selected origin and destination names', () => {
+  const runtime = read('app.js');
+  assert.match(runtime, /markers\.push\(mk\(fc, from\.toUpperCase\(\), 'start'\), mk\(tc, to\.toUpperCase\(\), 'end'\)\)/);
+  assert.match(runtime, /escapeHTML\(label\)/);
+});
