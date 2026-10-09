@@ -805,7 +805,7 @@
       const item = event.target.closest('.sugg-item');
       if (!item) return;
       if (item.dataset.searchCity) gotoCity(item.dataset.searchCity);
-      else if (item.dataset.searchLat && item.dataset.searchLon) gotoCoords(Number(item.dataset.searchLat), Number(item.dataset.searchLon), item.dataset.searchName || 'Selected location');
+      else if (item.dataset.searchLat && item.dataset.searchLon) gotoCoords(Number(item.dataset.searchLat), Number(item.dataset.searchLon), item.dataset.searchName || 'Selected location', Number(item.dataset.searchZoom) || 14);
       sg.style.display = 'none';
     });
 
@@ -914,9 +914,15 @@
           const safeName = escapeHTML(r.display_name.split(',')[0]);
           const lat = Number(r.lat);
           const lon = Number(r.lon);
-          if (!Number.isFinite(lat) || !Number.isFinite(lon)) return '';
+          const placeType = String(r.addresstype || r.type || r.class || '').toLowerCase();
+          const searchZoom = /country/.test(placeType) ? 5
+            : /state|province/.test(placeType) ? 7
+            : /county|district/.test(placeType) ? 9
+            : /city|municipality/.test(placeType) ? 11
+            : /town|village|suburb|neighbourhood/.test(placeType) ? 12 : 14;
+          if (!Number.isFinite(lat) || !Number.isFinite(lon) || Math.abs(lat) > 90 || Math.abs(lon) > 180) return '';
           return `
-            <div class="sugg-item flex items-center gap-2.5 px-4 py-2.5 text-xs text-zinc-400 border-b border-zinc-900 cursor-pointer transition-colors" data-search-lat="${lat}" data-search-lon="${lon}" data-search-name="${safeName}">
+            <div class="sugg-item flex items-center gap-2.5 px-4 py-2.5 text-xs text-zinc-400 border-b border-zinc-900 cursor-pointer transition-colors" data-search-lat="${lat}" data-search-lon="${lon}" data-search-zoom="${searchZoom}" data-search-name="${safeName}">
               <span class="text-zinc-500">🔍</span>
               <span class="truncate">${escapeHTML(r.display_name.split(',').slice(0, 2).join(', '))}</span>
               <span class="text-[9px] uppercase tracking-wider text-zinc-600 ml-auto font-bold">OSM</span>
@@ -948,10 +954,10 @@
       if (isMobile()) { openSheetMid(); showTab('alerts'); } else showTab('alerts');
     }
 
-    function gotoCoords(lat, lon, name) {
+    function gotoCoords(lat, lon, name, zoom = 14) {
       const c = [parseFloat(lat), parseFloat(lon)];
       locationRequestId += 1;
-      showEarthThenZoom(c, 14, name);
+      showEarthThenZoom(c, Math.max(5, Math.min(17, Number(zoom) || 14)), name);
       sg.style.display = 'none'; si.value = name; si.blur();
       loadAlerts(name);
       if (isMobile()) { openSheetMid(); showTab('alerts'); } else showTab('alerts');
