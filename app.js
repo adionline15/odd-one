@@ -106,7 +106,7 @@
       setTimeout(() => earthGlobeEl.classList.remove('is-loading'), 900);
     }
 
-    function showEarthThenZoom(coords, zoom, name) {
+    function showEarthThenZoom(coords, zoom, name, markerColor = '#ef4444') {
       const transitionId = ++earthTransitionId;
       clearTimeout(earthTransitionTimer);
       const target = { lat: Number(coords[0]), lng: Number(coords[1]) };
@@ -138,7 +138,7 @@
           duration: 2.25,
           easeLinearity: 0.12
         });
-        placeMarker(coords, name);
+        placeMarker(coords, name, markerColor);
       }, 1350);
     }
 
@@ -888,7 +888,6 @@
       showEarthThenZoom(c, 13, city);
       sg.style.display = 'none';
       si.value = city.charAt(0).toUpperCase() + city.slice(1); si.blur();
-      placeMarker(c, si.value);
       loadAlerts(city);
       if (isMobile()) { openSheetMid(); showTab('alerts'); } else showTab('alerts');
     }
@@ -897,16 +896,18 @@
       const c = [parseFloat(lat), parseFloat(lon)];
       showEarthThenZoom(c, 14, name);
       sg.style.display = 'none'; si.value = name; si.blur();
-      placeMarker(c, name);
       loadAlerts(name);
       if (isMobile()) { openSheetMid(); showTab('alerts'); } else showTab('alerts');
     }
 
-    function placeMarker(coords, name) {
+    function placeMarker(coords, name, markerColor = '#ef4444') {
       if (locMarker) map.removeLayer(locMarker);
+      const markerRgb = markerColor === '#3b82f6' ? '59,130,246' : '239,68,68';
       locMarker = L.marker(coords, {
+        title: name,
+        alt: name,
         icon: L.divIcon({
-          html: `<div style="width:12px;height:12px;background:#ffffff;border-radius:50%;border:2.5px solid #ef4444;box-shadow:0 0 0 4px rgba(239,68,68,0.25)"></div>`,
+          html: `<div style="width:12px;height:12px;background:#ffffff;border-radius:50%;border:2.5px solid ${markerColor};box-shadow:0 0 0 4px rgba(${markerRgb},0.25)"></div>`,
           className: '', iconSize: [12, 12], iconAnchor: [6, 6]
         })
       }).addTo(map);
@@ -1260,14 +1261,7 @@
       setLocateButtonState('loading');
       navigator.geolocation.getCurrentPosition(pos => {
         const c = [pos.coords.latitude, pos.coords.longitude];
-        showEarthThenZoom(c, 15, 'My location');
-        if (locMarker) map.removeLayer(locMarker);
-        locMarker = L.marker(c, {
-          icon: L.divIcon({
-            html: `<div style="width:14px;height:14px;background:#ffffff;border-radius:50%;border:2.5px solid #3b82f6;box-shadow:0 0 0 6px rgba(59,130,246,0.25)"></div>`,
-            className: '', iconSize: [14, 14], iconAnchor: [7, 7]
-          })
-        }).addTo(map);
+        showEarthThenZoom(c, 15, 'My location', '#3b82f6');
         setLocateButtonState('active');
       }, () => {
         setLocateButtonState('idle');
