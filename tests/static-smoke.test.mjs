@@ -283,3 +283,11 @@ test('returning to Earth restores zoom and rotation controls', () => {
   assert.match(visibility, /earthGlobe\.controls\(\)\.autoRotate = active/);
   assert.match(visibility, /if \(active\) earthGlobe\.controls\(\)\.enableZoom = true/);
 });
+
+test('route calculation ignores stale geocoding and intelligence responses', () => {
+  const runtime = read('app.js');
+  assert.match(runtime, /let routeRequestId = 0/);
+  assert.match(runtime, /const requestId = \+\+routeRequestId/);
+  assert.match(runtime, /if \(requestId !== routeRequestId\) return/);
+  assert.match(runtime, /if \(requestId === routeRequestId\) setRouteLoadingState/);
+});
