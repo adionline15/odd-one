@@ -330,3 +330,12 @@ test('legacy RAG script requires an environment key instead of a placeholder', (
   assert.match(source, /if model is None:/);
   assert.doesNotMatch(source, /YOUR_KEY_HERE/);
 });
+
+test('map HUD labels Earth overview separately from road-map zoom', () => {
+  const html = read('index.html');
+  const runtime = read('app.js');
+  assert.match(html, /id="map-context-label"/);
+  assert.match(runtime, /label\.textContent = earthOverviewActive \? 'EARTH' : 'VIEWPORT'/);
+  assert.match(runtime, /el\.textContent = earthOverviewActive \? '3D' : String\(zoom\)/);
+  assert.match(runtime, /updateMapContext\(\);\s*document\.getElementById\('map'\)/);
+});
