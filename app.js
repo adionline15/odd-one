@@ -172,7 +172,7 @@
       earthTransitionTimer = setTimeout(() => {
         if (transitionId !== earthTransitionId) return;
         setEarthOverview(false);
-        earthGlobe?.controls().enableZoom = true;
+        if (earthGlobe) earthGlobe.controls().enableZoom = true;
         map.invalidateSize();
         map.stop();
         // Start the detail engine at the selected region before zooming in.
