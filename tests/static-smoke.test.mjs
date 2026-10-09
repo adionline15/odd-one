@@ -226,7 +226,7 @@ test('location search hands off from Earth before detailed Leaflet zoom', () => 
   assert.ok(handoff.indexOf('setEarthOverview(false)') < handoff.indexOf('map.flyTo(coords, zoom'));
   assert.match(handoff, /map\.setView\(coords, Math\.min\(5, zoom\), \{ animate: false \}\)/);
   assert.match(runtime, /showEarthThenZoom\(c, 13, city\)/);
-  assert.match(runtime, /showEarthThenZoom\(c, 14, name\)/);
+  assert.match(runtime, /showEarthThenZoom\(c, Math\.max\(5, Math\.min\(17, Number\(zoom\) \|\| 14\)\), name\)/);
 });
 
 test('location marker styling survives Earth-to-map handoff', () => {
