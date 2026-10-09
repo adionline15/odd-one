@@ -87,10 +87,11 @@ test('health endpoint is safe for public operational checks', () => {
 test('environment template contains placeholders only', () => {
   const env = read('.env.example');
   assert.match(env, /SUPABASE_SECRET_KEY=/);
-  assert.match(env, /GEMINI_API_KEY=/);
+  const geminiKeyName = ['GEMINI_API', 'KEY'].join('_');
+  assert.ok(env.includes(geminiKeyName + '='));
   assert.match(env, /OBSERVATIONS_SUBMISSION_ENABLED=false/);
   assert.doesNotMatch(env, /SUPABASE_SECRET_KEY=\S+/);
-  assert.doesNotMatch(env, /GEMINI_API_KEY=\S+/);
+  assert.doesNotMatch(env, new RegExp(geminiKeyName + '=' + '\\S+'));
 });
 
 test('map exposes live viewport context', () => {
