@@ -1067,7 +1067,7 @@
         setEarthOverview(false);
         map.invalidateSize({ pan: false });
         map.stop();
-        map.flyTo(fc, 7, { duration: 1.2, easeLinearity: 0.2 });
+        map.setView(fc, 7, { animate: false });
       }
 
       // If the Earth was at world scale, reset the hidden Leaflet camera
