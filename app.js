@@ -145,9 +145,11 @@
     }
 
     function showEarthThenZoom(coords, zoom, name, markerColor = '#ef4444') {
+      const target = { lat: Number(coords?.[0]), lng: Number(coords?.[1]) };
+      if (!Number.isFinite(target.lat) || !Number.isFinite(target.lng) ||
+          Math.abs(target.lat) > 90 || Math.abs(target.lng) > 180) return;
       const transitionId = ++earthTransitionId;
       clearTimeout(earthTransitionTimer);
-      const target = { lat: Number(coords[0]), lng: Number(coords[1]) };
 
       // If WebGL or the globe bundle is unavailable, never show an empty
       // globe layer: preserve the location search by falling back to Leaflet.
