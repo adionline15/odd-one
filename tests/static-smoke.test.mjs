@@ -9,6 +9,7 @@ const read = file => fs.readFileSync(path.join(root, file), 'utf8');
 
 test('frontend preserves verified observation boundaries', () => {
   const html = read('index.html');
+  const runtime = read('app.js');
   assert.match(html, /\/api\/observations\?/);
   assert.match(html, /observations-v6/);
   assert.match(html, /Only approved observations are surfaced as public intelligence/);
@@ -17,8 +18,9 @@ test('frontend preserves verified observation boundaries', () => {
 
 test('routing distinguishes approximate output', () => {
   const html = read('index.html');
-  assert.match(html, /APPROX/);
-  assert.match(html, /estimates, not verified road conditions/);
+  const runtime = read('app.js');
+  assert.match(runtime, /APPROX/);
+  assert.match(runtime, /estimates, not verified road conditions/);
 });
 
 test('observation APIs use approved-only paths', () => {
@@ -46,26 +48,29 @@ test('map redesign exposes a coherent command deck and accessibility states', ()
 
 test('map intelligence aborts superseded viewport requests', () => {
   const html = read('index.html');
-  assert.match(html, /let observationSummaryAbortController = null/);
-  assert.match(html, /observationSummaryAbortController\?\.abort\(\)/);
-  assert.match(html, /signal: observationSummaryAbortController\.signal/);
-  assert.match(html, /let roadChangeAbortController = null/);
-  assert.match(html, /roadChangeAbortController\?\.abort\(\)/);
-  assert.match(html, /signal: roadChangeAbortController\.signal/);
+  const runtime = read('app.js');
+  assert.match(runtime, /let observationSummaryAbortController = null/);
+  assert.match(runtime, /observationSummaryAbortController\?\.abort\(\)/);
+  assert.match(runtime, /signal: observationSummaryAbortController\.signal/);
+  assert.match(runtime, /let roadChangeAbortController = null/);
+  assert.match(runtime, /roadChangeAbortController\?\.abort\(\)/);
+  assert.match(runtime, /signal: roadChangeAbortController\.signal/);
 });
 
 test('observation viewport loads skip duplicate requests', () => {
   const html = read('index.html');
-  assert.match(html, /let lastLoadedObservationViewportKey = ''/);
-  assert.match(html, /if \(observationViewportKey === lastLoadedObservationViewportKey\) return;/);
-  assert.match(html, /lastLoadedObservationViewportKey = observationViewportKey/);
+  const runtime = read('app.js');
+  assert.match(runtime, /let lastLoadedObservationViewportKey = ''/);
+  assert.match(runtime, /if \(observationViewportKey === lastLoadedObservationViewportKey\) return;/);
+  assert.match(runtime, /lastLoadedObservationViewportKey = observationViewportKey/);
 });
 
 test('map intelligence ignores stale road-change responses', () => {
   const html = read('index.html');
-  assert.match(html, /let roadChangeRequestId = 0/);
-  assert.match(html, /const requestId = \+\+roadChangeRequestId/);
-  assert.match(html, /if \(requestId !== roadChangeRequestId\) return;/);
+  const runtime = read('app.js');
+  assert.match(runtime, /let roadChangeRequestId = 0/);
+  assert.match(runtime, /const requestId = \+\+roadChangeRequestId/);
+  assert.match(runtime, /if \(requestId !== roadChangeRequestId\) return;/);
 });
 
 test('health endpoint is safe for public operational checks', () => {
@@ -87,10 +92,11 @@ test('environment template contains placeholders only', () => {
 
 test('map exposes live viewport context', () => {
   const html = read('index.html');
+  const runtime = read('app.js');
   assert.match(html, /id="map-live-context"/);
   assert.match(html, /id="map-zoom-value"/);
-  assert.match(html, /function updateMapContext\(\)/);
-  assert.match(html, /map\.on\('zoomend', updateMapContext/);
+  assert.match(runtime, /function updateMapContext\(\)/);
+  assert.match(runtime, /map\.on\('zoomend', updateMapContext/);
 });
 
 test('map has an accessible region role',()=>assert.match(read('interaction-v2.js'),/getElementById\('map'\)\?\.setAttribute\('role','region'\)/));
