@@ -390,3 +390,12 @@ test('search suggestions update visibility and combobox accessibility together',
   assert.match(helper, /setAttribute\('aria-expanded', String\(visible\)\)/);
   assert.doesNotMatch(runtime.replace(helper, ''), /sg\.style\.display =/);
 });
+
+test('Earth camera rejects invalid coordinates before cancelling valid transitions', () => {
+  const runtime = read('app.js');
+  const handoff = runtime.slice(runtime.indexOf('function showEarthThenZoom'), runtime.indexOf('function updateGlobeOverview'));
+  assert.ok(handoff.indexOf('if (!Number.isFinite(target.lat)') < handoff.indexOf('const transitionId = ++earthTransitionId'));
+  assert.match(handoff, /Math\.abs\(target\.lat\) > 90 \|\| Math\.abs\(target\.lng\) > 180/);
+  assert.match(handoff, /Number\(coords\?\.\[0\]\)/);
+  assert.match(handoff, /Number\(coords\?\.\[1\]\)/);
+});
