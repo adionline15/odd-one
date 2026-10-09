@@ -19,6 +19,10 @@
     function resetMapView() {
       locationRequestId += 1;
       cancelActiveRoute(true);
+      if (locMarker) {
+        map.removeLayer(locMarker);
+        locMarker = null;
+      }
       clearTimeout(earthTransitionTimer);
       earthTransitionId += 1;
       setEarthOverview(true);
