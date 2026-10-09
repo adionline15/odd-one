@@ -18,10 +18,7 @@
 
     function resetMapView() {
       locationRequestId += 1;
-      routeRequestId += 1;
-      routeAbortController?.abort();
-      setRouteLoadingState(false, 'Calculate Route →');
-      clearRouteState(true);
+      cancelActiveRoute(true);
       clearTimeout(earthTransitionTimer);
       earthTransitionId += 1;
       setEarthOverview(true);
@@ -983,6 +980,7 @@
     function gotoCity(city) {
       const c = CITIES[city]; if (!c) return;
       locationRequestId += 1;
+      cancelActiveRoute(true);
       showEarthThenZoom(c, 13, city);
       setSuggestionsVisible(false);
       si.value = city.charAt(0).toUpperCase() + city.slice(1); si.blur();
@@ -993,6 +991,7 @@
     function gotoCoords(lat, lon, name, zoom = 14) {
       const c = [parseFloat(lat), parseFloat(lon)];
       locationRequestId += 1;
+      cancelActiveRoute(true);
       showEarthThenZoom(c, Math.max(5, Math.min(17, Number(zoom) || 14)), name);
       setSuggestionsVisible(false); si.value = name; si.blur();
       loadAlerts(name);
@@ -1074,6 +1073,13 @@
       if (clearOutput) {
         document.querySelectorAll('[id$="-route-out"]').forEach(el => { el.innerHTML = ''; });
       }
+    }
+
+    function cancelActiveRoute(clearOutput = true) {
+      routeRequestId += 1;
+      routeAbortController?.abort();
+      setRouteLoadingState(false, 'Calculate Route →');
+      if (clearOutput) clearRouteState(true);
     }
 
     async function planRoute(p) {
@@ -1375,6 +1381,7 @@
         return;
       }
       const requestId = ++locationRequestId;
+      cancelActiveRoute(true);
       setLocateButtonState('loading');
       navigator.geolocation.getCurrentPosition(pos => {
         if (requestId !== locationRequestId) return;
