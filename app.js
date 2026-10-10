@@ -164,6 +164,9 @@
       }
     }
 
+    // Start in the real 3D Earth overview; location searches hand off to Leaflet.
+    initEarthGlobe();
+
     function showEarthThenZoom(coords, zoom, name, markerColor = '#ef4444') {
       const target = { lat: Number(coords?.[0]), lng: Number(coords?.[1]) };
       if (!Number.isFinite(target.lat) || !Number.isFinite(target.lng) ||
