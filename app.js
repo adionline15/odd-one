@@ -279,6 +279,7 @@
     let observationLayers = [];
     let observationLoadTimer = null;
     let observationRequestId = 0;
+    let provenanceRequestId = 0;
     let observationAbortController = null;
     let observationSummaryRequestId = 0;
     let observationSummaryAbortController = null;
@@ -290,6 +291,7 @@
     let locationRequestId = 0;
 
     function clearObservationLayers() {
+      provenanceRequestId += 1;
       observationLayers.forEach(layer => map.removeLayer(layer));
       observationLayers = [];
       selectedObservationLayer = null;
@@ -323,12 +325,14 @@
 
     async function enrichObservationProvenance(observation) {
         if (!observation || !observation.id) return;
+        const requestId = ++provenanceRequestId;
         try {
           const response = await fetch('/api/observations/' + encodeURIComponent(String(observation.id)), {
             headers: { 'Accept': 'application/json' }
           });
           if (!response.ok) return;
           const payload = await response.json();
+          if (requestId !== provenanceRequestId) return;
           if (payload.api_version !== 'observation-detail-v1' || !payload.observation) return;
           const detail = payload.observation;
           const overlay = document.getElementById('road-intel-overlay');
