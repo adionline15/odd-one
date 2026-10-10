@@ -474,6 +474,17 @@ test('Earth navigation respects reduced-motion preferences', () => {
   assert.match(runtime, /autoRotate = !prefersReducedMotion/);
 });
 
+test('Earth overview never re-enables auto-rotation for reduced-motion users', () => {
+  const runtime = read('app.js');
+  const overview = runtime.slice(runtime.indexOf('function setEarthOverview'), runtime.indexOf('function initEarthGlobe'));
+  const reset = runtime.slice(runtime.indexOf('function resetMapView'), runtime.indexOf('// Initial tile layer setup'));
+  const worldFallback = runtime.slice(runtime.indexOf('// World-scale fallback'), runtime.indexOf('updateMapIntelligenceHUD();'));
+  assert.match(overview, /autoRotate = active && !prefersReducedMotion/);
+  assert.match(reset, /autoRotate = !prefersReducedMotion/);
+  assert.match(worldFallback, /autoRotate = !prefersReducedMotion/);
+  assert.doesNotMatch(overview + reset + worldFallback, /autoRotate = true/);
+});
+
 
 test('location search rejects excessively long queries before geocoding', () => {
   const runtime = read('app.js');
