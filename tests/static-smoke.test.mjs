@@ -535,5 +535,6 @@ test('interactive Earth visibility follows overview state for assistive technolo
   assert.match(globe, /aria-hidden="true"/);
   assert.match(globe, /tabindex="0"/);
   assert.match(visibility, /setAttribute\('aria-hidden', active \? 'false' : 'true'\)/);
+  assert.match(visibility, /setAttribute\('tabindex', active \? '0' : '-1'\)/);
   assert.match(visibility, /classList\.toggle\('is-visible', active\)/);
 });;
