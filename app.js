@@ -103,9 +103,11 @@
           .backgroundColor('rgba(0,0,0,0)')
           .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
           .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
+          .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
+          .globeCurvatureResolution(2)
           .showAtmosphere(true)
-          .atmosphereColor('#6aa9ff')
-          .atmosphereAltitude(0.14)
+          .atmosphereColor('#4f9dff')
+          .atmosphereAltitude(0.11)
           .enablePointerInteraction(true)
           .width(earthGlobeEl.clientWidth)
           .height(earthGlobeEl.clientHeight)
@@ -114,6 +116,9 @@
         earthGlobe.controls().autoRotate = !prefersReducedMotion;
         earthGlobe.controls().autoRotateSpeed = 0.28;
         earthGlobe.controls().enableZoom = true;
+        earthGlobe.onGlobeReady(() => {
+          earthGlobeEl.classList.remove('is-loading');
+        });
         earthGlobe.onGlobeClick(({ lat, lng }) => {
           if (!Number.isFinite(lat) || !Number.isFinite(lng)) return;
           locationRequestId += 1;
@@ -145,7 +150,7 @@
         };
         window.addEventListener('resize', resizeGlobe, { passive: true });
         setEarthOverview(true);
-        setTimeout(() => earthGlobeEl.classList.remove('is-loading'), 900);
+        setTimeout(() => earthGlobeEl.classList.remove('is-loading'), 7000);
       } catch (error) {
         console.warn('[earth] WebGL globe unavailable; using the road map fallback.', error);
         earthGlobe = null;
