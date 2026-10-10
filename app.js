@@ -818,6 +818,15 @@
       si.setAttribute('aria-expanded', String(visible));
     }
     let searchTimer = null;
+    let geocodeRequestId = 0;
+    let geocodeAbortController = null;
+
+    function cancelGeocodeSearch() {
+      geocodeRequestId += 1;
+      geocodeAbortController?.abort();
+      geocodeAbortController = null;
+      si?.removeAttribute('aria-busy');
+    }
 
     function chooseSearchSuggestion(item) {
       if (!item) return;
@@ -930,7 +939,11 @@
     });
 
     si.addEventListener('keydown', async event => {
-      if (event.key === 'Escape') { setSuggestionsVisible(false); si.removeAttribute('aria-busy'); return; }
+      if (event.key === 'Escape') {
+        cancelGeocodeSearch();
+        setSuggestionsVisible(false);
+        return;
+      }
       if (event.key === 'ArrowDown') {
         const first = sg.querySelector('.sugg-item');
         if (first) { event.preventDefault(); first.focus(); }
@@ -940,17 +953,33 @@
       const q = si.value.trim();
       if (!q) return;
 
+      cancelGeocodeSearch();
+      const requestId = geocodeRequestId;
+      const controller = new AbortController();
+      geocodeAbortController = controller;
+      si.setAttribute('aria-busy', 'true');
+
       const localMatch = Object.keys(CITIES).find(c => c === q.toLowerCase());
       if (localMatch) {
+        cancelGeocodeSearch();
         gotoCity(localMatch);
         return;
       }
 
       try {
         const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q + ' India')}&format=json&limit=4&countrycodes=in`;
-        const res = await fetch(url, { headers: { 'Accept-Language': 'en' } });
+        const timeoutId = setTimeout(() => controller.abort(), 8000);
+        let res;
+        try {
+          res = await fetch(url, { signal: controller.signal, headers: { 'Accept-Language': 'en' } });
+        } finally {
+          clearTimeout(timeoutId);
+        }
+        if (requestId !== geocodeRequestId) return;
         if (!res.ok) throw new Error(`Search failed with ${res.status}`);
         const data = await res.json();
+        if (requestId !== geocodeRequestId) return;
+        if (!Array.isArray(data)) throw new Error('Unexpected geocoder response');
         const nomHTML = data.map(r => {
           const safeName = escapeHTML(r.display_name.split(',')[0]);
           const lat = Number(r.lat);
@@ -969,14 +998,26 @@
               <span class="text-[9px] uppercase tracking-wider text-zinc-600 ml-auto font-bold">OSM</span>
             </div>`;
         }).join('');
+        if (requestId !== geocodeRequestId) return;
         sg.innerHTML = nomHTML || `
           <div class="px-4 py-3 text-[10px] text-zinc-600">No matching location found.</div>`;
         setSuggestionsVisible(true);
       } catch (error) {
-        console.warn('[search] Geocoding failed', error);
-        sg.innerHTML = `
-          <div class="px-4 py-3 text-[10px] text-rose-400">Location search unavailable. Try again.</div>`;
+        if (requestId !== geocodeRequestId) return;
+        if (error?.name === 'AbortError') {
+          sg.innerHTML = `
+            <div class="px-4 py-3 text-[10px] text-zinc-600">Search timed out. Try again.</div>`;
+        } else {
+          console.warn('[search] Geocoding failed', error);
+          sg.innerHTML = `
+            <div class="px-4 py-3 text-[10px] text-rose-400">Location search unavailable. Try again.</div>`;
+        }
         setSuggestionsVisible(true);
+      } finally {
+        if (requestId === geocodeRequestId) {
+          geocodeAbortController = null;
+          si.removeAttribute('aria-busy');
+        }
       }
     });
 
