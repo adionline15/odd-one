@@ -1,5 +1,5 @@
 /* Mobile product surface — intentionally simpler than desktop. */
-@media (max-width: 640px){
+@media (max-width: 767px){
   html,body{overflow:hidden!important;background:#f5f5f7!important;}
 
   body>nav[aria-label="Primary navigation"]{
