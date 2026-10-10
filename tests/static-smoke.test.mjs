@@ -545,3 +545,12 @@ test('3D Earth overview initializes on page load', () => {
   assert.equal(initCalls.length, 1, 'the real globe must be initialized exactly once');
   assert.match(runtime, /Start in the real 3D Earth overview/);
 });
+
+
+test('compact mobile map surface covers narrow tablet widths', () => {
+  const css = read('mobile-surface.css');
+  assert.match(css, /@media \(max-width: 767px\)\{/);
+  assert.match(css, /#sidebar\{display:none!important;\}/);
+  assert.match(css, /#sheet\{[\s\S]*?display:flex!important;/);
+  assert.match(css, /#map-command-deck\{[\s\S]*?bottom:76px!important;/);
+});
