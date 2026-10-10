@@ -453,3 +453,12 @@ test('location geocoding ignores stale responses and times out safely', () => {
   assert.match(search, /if \(error\?\.name === 'AbortError'\)/);
   assert.match(search, /si\.removeAttribute\('aria-busy'\)/);
 });
+
+
+test('Earth navigation respects reduced-motion preferences', () => {
+  const runtime = read('app.js');
+  assert.match(runtime, /window\.matchMedia\?\.\('\(prefers-reduced-motion: reduce\)'\)\?\.matches === true/);
+  assert.match(runtime, /EARTH_CAMERA_MS = prefersReducedMotion \? 450 : 1350/);
+  assert.match(runtime, /DETAIL_FLY_MS = prefersReducedMotion \? 900 : 2250/);
+  assert.match(runtime, /autoRotate = !prefersReducedMotion/);
+});
