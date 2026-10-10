@@ -30,7 +30,11 @@
         earthGlobe.controls().autoRotate = !prefersReducedMotion;
         earthGlobe.pointOfView({ lat: 22, lng: 78, altitude: 2.15 }, prefersReducedMotion ? 0 : 900);
       }
-      map.flyTo([22, 78], 5, { duration: 0.9 });
+      if (prefersReducedMotion) {
+        map.setView([22, 78], 5, { animate: false });
+      } else {
+        map.flyTo([22, 78], 5, { duration: 0.9 });
+      }
       document.getElementById('map')?.focus({ preventScroll: true });
     }
 
@@ -57,7 +61,7 @@
         if (earthGlobe && map.getZoom() <= 1) {
           setEarthOverview(true);
           earthGlobe.controls().autoRotate = !prefersReducedMotion;
-          earthGlobe.pointOfView({ lat: 22, lng: 78, altitude: 2.15 }, 650);
+          earthGlobe.pointOfView({ lat: 22, lng: 78, altitude: 2.15 }, prefersReducedMotion ? 0 : 650);
         }
         return;
       }
@@ -173,7 +177,23 @@
         setEarthOverview(false);
         map.invalidateSize();
         map.stop();
-        map.flyTo(coords, zoom, { duration: 1.2, easeLinearity: 0.2 });
+        if (prefersReducedMotion) {
+          map.setView(coords, zoom, { animate: false });
+        } else {
+          map.flyTo(coords, zoom, { duration: 1.2, easeLinearity: 0.2 });
+        }
+        placeMarker(coords, name, markerColor);
+        return;
+      }
+
+      // Reduced-motion users should reach the requested location without the
+      // globe camera sweep or delayed handoff.
+      if (prefersReducedMotion) {
+        setEarthOverview(false);
+        earthGlobe.controls().enableZoom = true;
+        map.invalidateSize();
+        map.stop();
+        map.setView(coords, zoom, { animate: false });
         placeMarker(coords, name, markerColor);
         return;
       }
