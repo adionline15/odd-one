@@ -27,7 +27,7 @@
       earthTransitionId += 1;
       setEarthOverview(true);
       if (earthGlobe) {
-        earthGlobe.controls().autoRotate = true;
+        earthGlobe.controls().autoRotate = !prefersReducedMotion;
         earthGlobe.pointOfView({ lat: 22, lng: 78, altitude: 2.15 }, prefersReducedMotion ? 0 : 900);
       }
       map.flyTo([22, 78], 5, { duration: 0.9 });
@@ -79,7 +79,7 @@
     function setEarthOverview(active) {
       earthOverviewActive = active;
       if (earthGlobe) {
-        earthGlobe.controls().autoRotate = active;
+        earthGlobe.controls().autoRotate = active && !prefersReducedMotion;
         if (active) earthGlobe.controls().enableZoom = true;
       }
       earthGlobeEl?.classList.toggle('is-visible', active);
