@@ -247,6 +247,18 @@ test('location marker styling survives Earth-to-map handoff', () => {
   assert.match(runtime, /const markerRgb = markerColor === '#3b82f6'/);
 });
 
+test('Earth globe uses a cinematic starfield and waits for globe readiness', () => {
+  const runtime = read('app.js');
+  const init = runtime.slice(runtime.indexOf('function initEarthGlobe'), runtime.indexOf('function showEarthThenZoom'));
+  assert.match(init, /globeImageUrl\('https:\/\/unpkg\.com\/three-globe\/example\/img\/earth-blue-marble\.jpg'\)/);
+  assert.match(init, /bumpImageUrl\('https:\/\/unpkg\.com\/three-globe\/example\/img\/earth-topology\.png'\)/);
+  assert.match(init, /backgroundImageUrl\('https:\/\/unpkg\.com\/three-globe\/example\/img\/night-sky\.png'\)/);
+  assert.match(init, /globeCurvatureResolution\(2\)/);
+  assert.match(init, /atmosphereAltitude\(0\.11\)/);
+  assert.match(init, /earthGlobe\.onGlobeReady\(\(\) => \{\s*earthGlobeEl\.classList\.remove\('is-loading'\)/);
+  assert.match(init, /setTimeout\(\(\) => earthGlobeEl\.classList\.remove\('is-loading'\), 7000\)/);
+});
+
 test('Earth globe clicks can navigate to a selected coordinate', () => {
   const runtime = read('app.js');
   assert.match(runtime, /earthGlobe\.onGlobeClick\(\(\{ lat, lng \}\) =>/);
