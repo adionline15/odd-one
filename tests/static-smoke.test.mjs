@@ -462,3 +462,12 @@ test('Earth navigation respects reduced-motion preferences', () => {
   assert.match(runtime, /DETAIL_FLY_MS = prefersReducedMotion \? 900 : 2250/);
   assert.match(runtime, /autoRotate = !prefersReducedMotion/);
 });
+
+
+test('location search rejects excessively long queries before geocoding', () => {
+  const runtime = read('app.js');
+  const search = runtime.slice(runtime.indexOf("si.addEventListener('keydown'"), runtime.indexOf("document.addEventListener('click', e =>"));
+  assert.match(search, /q\.length > 120/);
+  assert.match(search, /Search is too long\. Enter a place name under 120 characters\./);
+  assert.ok(search.indexOf('q.length > 120') < search.indexOf('fetch(url'));
+});
