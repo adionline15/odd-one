@@ -1240,7 +1240,8 @@
         routeSource = 'APPROX';
         dist = calcDist(fc, tc); time = Math.round(dist * 1.4);
         const rl = drawRouteLine([fc, tc], true);
-        map.fitBounds(rl.getBounds(), { padding: [70, 90] });
+        // Approximate routes must obey the same mobile-sheet safe area as OSRM routes.
+        fitRouteBounds(rl.getBounds());
       }
 
       const routeStatus = document.getElementById('route-status-overlay');
