@@ -244,6 +244,17 @@ test('Earth globe clicks can navigate to a selected coordinate', () => {
   assert.match(runtime, /if \(!Number\.isFinite\(lat\) \|\| !Number\.isFinite\(lng\)\) return/);
 });
 
+test('Earth globe canvas remains interactive above the map without covering controls', () => {
+  const styles = read('design-v3.css');
+  const interactionPass = styles.slice(
+    styles.indexOf('/* Final interaction pass: center the Earth'),
+    styles.indexOf('/* ── Product polish pass:')
+  );
+  assert.match(interactionPass, /#earth-globe\{right:var\(--earth-right\)!important;pointer-events:auto!important;\}/);
+  assert.match(interactionPass, /#earth-globe canvas\{pointer-events:auto!important;\}/);
+  assert.doesNotMatch(interactionPass, /#earth-globe(?: canvas)?\{[^}]*pointer-events:none!important;/);
+});
+
 test('external geocoder results are escaped and coordinates validated', () => {
   const runtime = read('app.js');
   assert.match(runtime, /const safeName = escapeHTML\(r\.display_name\.split\(','\)\[0\]\)/);
