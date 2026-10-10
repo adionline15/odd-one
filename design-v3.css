@@ -269,8 +269,8 @@ nav[aria-label="Primary navigation"] button[onclick*="showTab('route')"]{
 
 /* Final interaction pass: center the Earth in the usable map viewport and keep UI hit targets above it. */
 main{--earth-right:336px;}
-#earth-globe{right:var(--earth-right)!important;pointer-events:none!important;}
-#earth-globe canvas{pointer-events:none!important;}
+#earth-globe{right:var(--earth-right)!important;pointer-events:auto!important;}
+#earth-globe canvas{pointer-events:auto!important;}
 #sidebar{z-index:80!important;}
 #sidebar>div:first-child{position:relative;z-index:2!important;}
 #sidebar>div:first-child button{position:relative!important;z-index:3!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:5px!important;min-width:0!important;opacity:1!important;visibility:visible!important;}
