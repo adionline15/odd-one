@@ -323,7 +323,7 @@ test('route planning waits for Earth-to-origin handoff before fitting route', ()
   assert.match(runtime, /const DETAIL_FLY_MS = prefersReducedMotion \? 900 : 2250/);
   assert.match(route, /EARTH_CAMERA_MS \+ DETAIL_FLY_MS \+ 100/);
   assert.match(route, /if \(requestId !== routeRequestId\) return/);
-  assert.ok(route.indexOf('await new Promise') < route.indexOf('map.fitBounds'));
+  assert.ok(route.indexOf('await new Promise') < route.indexOf('routeLines.forEach(l => map.removeLayer(l))'));
 });
 
 test('legacy RAG script requires an environment key instead of a placeholder', () => {
