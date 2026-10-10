@@ -319,8 +319,8 @@ test('route planning waits for Earth-to-origin handoff before fitting route', ()
   const runtime = read('app.js');
   const route = runtime.slice(runtime.indexOf('async function planRoute'), runtime.indexOf('async function geocodePlace'));
   assert.match(route, /showEarthThenZoom\(fc, 7, from\)/);
-  assert.match(runtime, /const EARTH_CAMERA_MS = 1350/);
-  assert.match(runtime, /const DETAIL_FLY_MS = 2250/);
+  assert.match(runtime, /const EARTH_CAMERA_MS = prefersReducedMotion \? 450 : 1350/);
+  assert.match(runtime, /const DETAIL_FLY_MS = prefersReducedMotion \? 900 : 2250/);
   assert.match(route, /EARTH_CAMERA_MS \+ DETAIL_FLY_MS \+ 100/);
   assert.match(route, /if \(requestId !== routeRequestId\) return/);
   assert.ok(route.indexOf('await new Promise') < route.indexOf('map.fitBounds'));
@@ -425,7 +425,7 @@ test('route bounds account for the mobile sheet overlay', () => {
   assert.match(fit, /paddingTopLeft: mobile \? \[24, 72\]/);
   assert.match(fit, /paddingBottomRight: mobile \? \[24, sheetHeight \+ 20\]/);
   assert.match(fit, /maxZoom: 13/);
-  assert.equal((runtime.match(/fitRouteBounds\(rl\.getBounds\(\)\)/g) || []).length, 3);
+  assert.equal((runtime.match(/fitRouteBounds\(rl\.getBounds\(\)\)/g) || []).length, 2);
 });
 
 test('manual Earth selection supersedes active route and location requests', () => {
