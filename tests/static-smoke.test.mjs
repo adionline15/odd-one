@@ -538,3 +538,10 @@ test('interactive Earth visibility follows overview state for assistive technolo
   assert.match(visibility, /setAttribute\('tabindex', active \? '0' : '-1'\)/);
   assert.match(visibility, /classList\.toggle\('is-visible', active\)/);
 });
+
+test('3D Earth overview initializes on page load', () => {
+  const runtime = read('app.js');
+  const initCalls = runtime.match(/^\s*initEarthGlobe\(\);\s*$/gm) || [];
+  assert.equal(initCalls.length, 1, 'the real globe must be initialized exactly once');
+  assert.match(runtime, /Start in the real 3D Earth overview/);
+});
