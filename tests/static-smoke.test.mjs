@@ -554,3 +554,10 @@ test('compact mobile map surface covers narrow tablet widths', () => {
   assert.match(css, /#sheet\{[\s\S]*?display:flex!important;/);
   assert.match(css, /#map-command-deck\{[\s\S]*?bottom:76px!important;/);
 });
+
+test('desktop intelligence tabs stay compact and keep labels visible', () => {
+  const css = read('design-v3.css');
+  assert.match(css, /#sidebar > div\[role="tablist"\]\[aria-label="Road intelligence views"\] > button\{[\s\S]*?height:44px!important;[\s\S]*?align-items:center!important;[\s\S]*?white-space:nowrap!important;/);
+  assert.match(css, /#sidebar > div\[role="tablist"\]\[aria-label="Road intelligence views"\] > button\.on/);
+  assert.match(css, /@media \(max-width: 767px\)\{\s*#sidebar\{display:none!important;\}/);
+});
