@@ -56,7 +56,7 @@
       if (!earthGlobe || !earthGlobeEl || !earthOverviewActive) {
         if (earthGlobe && map.getZoom() <= 1) {
           setEarthOverview(true);
-          earthGlobe.controls().autoRotate = true;
+          earthGlobe.controls().autoRotate = !prefersReducedMotion;
           earthGlobe.pointOfView({ lat: 22, lng: 78, altitude: 2.15 }, 650);
         }
         return;
