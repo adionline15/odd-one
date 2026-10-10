@@ -440,3 +440,16 @@ test('reset clears the selected place marker from the detail map', () => {
   const reset = runtime.slice(runtime.indexOf('function resetMapView'), runtime.indexOf('// Initial tile layer setup'));
   assert.match(reset, /if \(locMarker\) \{\s*map\.removeLayer\(locMarker\);\s*locMarker = null;/);
 });
+
+
+test('location geocoding ignores stale responses and times out safely', () => {
+  const runtime = read('app.js');
+  const search = runtime.slice(runtime.indexOf("si.addEventListener('keydown'"), runtime.indexOf("document.addEventListener('click', e =>"));
+  assert.match(runtime, /let geocodeRequestId = 0;/);
+  assert.match(search, /cancelGeocodeSearch\(\);[\s\S]*?const requestId = geocodeRequestId/);
+  assert.match(search, /new AbortController\(\)/);
+  assert.match(search, /setTimeout\(\(\) => controller\.abort\(\), 8000\)/);
+  assert.match(search, /if \(requestId !== geocodeRequestId\) return;/);
+  assert.match(search, /if \(error\?\.name === 'AbortError'\)/);
+  assert.match(search, /si\.removeAttribute\('aria-busy'\)/);
+});
