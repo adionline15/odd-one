@@ -294,7 +294,7 @@ nav[aria-label="Primary navigation"]{
   box-shadow:0 1px 0 rgba(255,255,255,.7),0 8px 24px rgba(0,0,0,.06)!important;
   color:#1d1d1f!important;
 }
-nav[aria-label="Primary navigation"] h1{color:#111!important;text-shadow:none!important;}
+nav[aria-label="Primary navigation"] h1{color:#f8fafc!important;text-shadow:0 1px 18px rgba(255,255,255,.08)!important;-webkit-text-fill-color:#f8fafc!important;}nav[aria-label="Primary navigation"] h1 span{color:#a1a1aa!important;-webkit-text-fill-color:#a1a1aa!important;}
 nav[aria-label="Primary navigation"] .nav-intel-btn{color:#6e6e73!important;}
 nav[aria-label="Primary navigation"] .nav-intel-btn:hover,
 nav[aria-label="Primary navigation"] .nav-intel-btn.active{color:#111!important;background:#f2f2f5!important;}
