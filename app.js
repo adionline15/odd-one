@@ -84,6 +84,7 @@
       }
       earthGlobeEl?.classList.toggle('is-visible', active);
       earthGlobeEl?.setAttribute('aria-hidden', active ? 'false' : 'true');
+      earthGlobeEl?.setAttribute('tabindex', active ? '0' : '-1');
       updateMapContext();
       document.getElementById('map')?.classList.toggle('globe-overview', false);
       if (active) {
