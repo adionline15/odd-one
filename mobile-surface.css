@@ -183,3 +183,26 @@
   body>footer{display:none!important;}
   #map-scale-wrap{display:none!important;}
 }
+
+/* Brand contrast guard: keep the mobile wordmark legible over the dark cinematic header. */
+@media (max-width: 767px){
+  body > nav[aria-label="Primary navigation"]{
+    background:rgba(7,9,13,.96)!important;
+    color:#f8fafc!important;
+    border-bottom:1px solid rgba(148,163,184,.22)!important;
+    box-shadow:0 8px 28px rgba(0,0,0,.28)!important;
+  }
+  body > nav[aria-label="Primary navigation"] .font-serif-lux{
+    color:#f8fafc!important;
+    opacity:1!important;
+    text-shadow:0 1px 18px rgba(255,255,255,.08)!important;
+  }
+  body > nav[aria-label="Primary navigation"] .font-serif-lux span{
+    color:#a1a1aa!important;
+    opacity:1!important;
+  }
+  body > nav[aria-label="Primary navigation"] .font-serif-lux,
+  body > nav[aria-label="Primary navigation"] .font-serif-lux span{
+    -webkit-text-fill-color:currentColor!important;
+  }
+}
