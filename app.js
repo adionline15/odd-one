@@ -953,6 +953,13 @@
       if (event.key !== 'Enter') return;
       const q = si.value.trim();
       if (!q) return;
+      if (q.length > 120) {
+        cancelGeocodeSearch();
+        sg.innerHTML = `
+          <div class="px-4 py-3 text-[10px] text-rose-400">Search is too long. Enter a place name under 120 characters.</div>`;
+        setSuggestionsVisible(true);
+        return;
+      }
 
       cancelGeocodeSearch();
       const requestId = geocodeRequestId;
