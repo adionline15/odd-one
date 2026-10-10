@@ -524,3 +524,12 @@ test('approximate fallback routes use the mobile-safe route framing helper', () 
   assert.match(fallback, /fitRouteBounds\(rl\.getBounds\(\)\)/);
   assert.doesNotMatch(fallback, /map\.fitBounds\(rl\.getBounds\(\),\s*\{\s*padding:/);
 });
+
+test('interactive Earth is not hidden from assistive technology', () => {
+  const html = read('index.html');
+  const globe = html.match(/<div id="earth-globe"[^>]*>/)?.[0] || '';
+  assert.match(globe, /role="application"/);
+  assert.match(globe, /aria-label="Interactive 3D Earth overview/);
+  assert.match(globe, /tabindex="0"/);
+  assert.doesNotMatch(globe, /aria-hidden="true"/);
+});
