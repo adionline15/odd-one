@@ -562,6 +562,576 @@ test('desktop intelligence tabs stay compact and keep labels visible', () => {
   assert.match(css, /@media \(max-width: 767px\)\{\s*#sidebar\{display:none!important;\}/);
 });
 
+test('brand wordmark keeps strong contrast on dark headers', () => {
+  const css = read('design-v3.css');
+  assert.match(css, /nav\\[aria-label="Primary navigation"\\] h1\\{color:#f8fafc!important;/);
+  assert.match(css, /nav\\[aria-label="Primary navigation"\\] h1 span\\{color:#a1a1aa!important;/);
+});
+
+ort test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const read = file => fs.readFileSync(path.join(root, file), 'utf8');
+
+test('frontend preserves verified observation boundaries', () => {
+  const html = read('index.html');
+  const runtime = read('app.js');
+  // Runtime contracts belong to app.js after the inline script extraction.
+  assert.match(runtime, /\/api\/observations\?/);
+  assert.match(runtime, /observations-v6/);
+  // Publicly served observation records are restricted by the API contract.
+  assert.match(read('api/observations.js'), /approved_observations_in_view/);
+  assert.match(read('api/observation-summary.js'), /scope: 'approved'/);
+});
+
+test('routing distinguishes approximate output', () => {
+  const html = read('index.html');
+  const runtime = read('app.js');
+  assert.match(runtime, /APPROX/);
+  assert.match(runtime, /estimates, not verified road conditions/);
+});
+
+test('observation APIs use approved-only paths', () => {
+  assert.match(read('api/observations.js'), /status=eq\.approved/);
+  const observationsApi = read('api/observations.js');
+  assert.match(observationsApi, /approved_observations_in_view/);
+  assert.match(observationsApi, /maxViewportSpan = 60/);
+  assert.match(observationsApi, /maxLat - minLat > maxViewportSpan/);
+  assert.match(observationsApi, /maxLon - minLon > maxViewportSpan/);
+  assert.match(read('api/observation-summary.js'), /approved_observation_summary/);
+  assert.match(read('api/observation-summary.js'), /scope: 'approved'/);
+});
+
+test('map redesign exposes a coherent command deck and accessibility states', () => {
+  const html = read('index.html');
+  const runtime = read('app.js');
+  const css = read('design-v2.css');
+  assert.match(html, /id="map-command-deck"/);
+  assert.match(html, /id="btn-reset-view"/);
+  assert.match(html, /aria-pressed="true"/);
+  assert.match(runtime, /L\.control\.scale/);
+  assert.match(css, /\.map-layer-switcher/);
+  assert.match(css, /\.map-deck-btn\.active/);
+  assert.match(css, /\.map-compass/);
+});
+
+test('map intelligence aborts superseded viewport requests', () => {
+  const html = read('index.html');
+  const runtime = read('app.js');
+  assert.match(runtime, /let observationSummaryAbortController = null/);
+  assert.match(runtime, /observationSummaryAbortController\?\.abort\(\)/);
+  assert.match(runtime, /signal: observationSummaryAbortController\.signal/);
+  assert.match(runtime, /let roadChangeAbortController = null/);
+  assert.match(runtime, /roadChangeAbortController\?\.abort\(\)/);
+  assert.match(runtime, /signal: roadChangeAbortController\.signal/);
+});
+
+test('observation provenance ignores stale responses after selection changes or clearing', () => {
+  const runtime = read('app.js');
+  const clear = runtime.slice(runtime.indexOf('function clearObservationLayers'), runtime.indexOf('function selectObservationLayer'));
+  const enrich = runtime.slice(runtime.indexOf('async function enrichObservationProvenance'), runtime.indexOf('function showRoadIntelligence'));
+  assert.match(runtime, /let provenanceRequestId = 0/);
+  assert.match(clear, /provenanceRequestId \+= 1/);
+  assert.match(enrich, /const requestId = \+\+provenanceRequestId/);
+  assert.match(enrich, /const payload = await response\.json\(\);\s*if \(requestId !== provenanceRequestId\) return;/);
+});
+
+test('observation viewport loads skip duplicate requests', () => {
+  const html = read('index.html');
+  const runtime = read('app.js');
+  assert.match(runtime, /let lastLoadedObservationViewportKey = ''/);
+  assert.match(runtime, /if \(observationViewportKey === lastLoadedObservationViewportKey\) return;/);
+  assert.match(runtime, /lastLoadedObservationViewportKey = observationViewportKey/);
+});
+
+test('map intelligence ignores stale road-change responses', () => {
+  const html = read('index.html');
+  const runtime = read('app.js');
+  assert.match(runtime, /let roadChangeRequestId = 0/);
+  assert.match(runtime, /const requestId = \+\+roadChangeRequestId/);
+  assert.match(runtime, /if \(requestId !== roadChangeRequestId\) return;/);
+});
+
+test('health endpoint is safe for public operational checks', () => {
+  const api = read('api/health.js');
+  assert.match(api, /api_version: 'health-v1'/);
+  assert.match(api, /observation_database/);
+  assert.doesNotMatch(api, /response\.text/);
+  assert.doesNotMatch(api, /SUPABASE_SECRET_KEY[^\n]*json/);
+});
+
+test('environment template contains placeholders only', () => {
+  const env = read('.env.example');
+  assert.match(env, /SUPABASE_SECRET_KEY=/);
+  const geminiKeyName = ['GEMINI_API', 'KEY'].join('_');
+  assert.ok(env.includes(geminiKeyName + '='));
+  assert.match(env, /OBSERVATIONS_SUBMISSION_ENABLED=false/);
+  assert.doesNotMatch(env, /SUPABASE_SECRET_KEY=\S+/);
+  assert.doesNotMatch(env, new RegExp(geminiKeyName + '=' + '\\S+'));
+});
+
+test('map exposes live viewport context', () => {
+  const html = read('index.html');
+  const runtime = read('app.js');
+  assert.match(html, /id="map-live-context"/);
+  assert.match(html, /id="map-zoom-value"/);
+  assert.match(runtime, /function updateMapContext\(\)/);
+  assert.match(runtime, /map\.on\('zoomend', updateMapContext/);
+});
+
+test('map has an accessible region role',()=>assert.match(read('interaction-v2.js'),/getElementById\('map'\)\?\.setAttribute\('role','region'\)/));
+
+test('map is keyboard focusable',()=>assert.match(read('interaction-v2.js'),/getElementById\('map'\)\?\.setAttribute\('tabindex','0'\)/));
+
+test('map command deck has an accessible label',()=>assert.match(read('interaction-v2.js'),/map-command-deck.*aria-label/));
+
+test('standard map control has a title',()=>assert.match(read('interaction-v2.js'),/btn-map.*Standard road map/));
+
+test('satellite control has a title',()=>assert.match(read('interaction-v2.js'),/btn-sat.*Satellite imagery/));
+
+test('reset control has a title',()=>assert.match(read('interaction-v2.js'),/btn-reset-view.*Return to Earth overview/));
+
+test('location control has a title',()=>assert.match(read('interaction-v2.js'),/btn-loc.*Center on my location/));
+
+test('compass exposes an image role',()=>assert.match(read('interaction-v2.js'),/map-orientation.*role','img'/));
+
+test('compass describes north orientation',()=>assert.match(read('interaction-v2.js'),/Map orientation: north is up/));
+
+test('map scale exposes context',()=>assert.match(read('interaction-v2.js'),/map-scale-wrap.*Map scale and viewport context/));
+
+test('live map context is a status',()=>assert.match(read('interaction-v2.js'),/map-live-context.*role','status'/));
+
+test('zoom value has an accessible label',()=>assert.match(read('interaction-v2.js'),/map-zoom-value.*Current map zoom/));
+
+test('search autocomplete is controlled',()=>assert.match(read('interaction-v2.js'),/s-input.*autocomplete','off'/));
+
+test('desktop origin uses address autocomplete',()=>assert.match(read('interaction-v2.js'),/d-from.*autocomplete','street-address'/));
+
+test('desktop destination uses address autocomplete',()=>assert.match(read('interaction-v2.js'),/d-to.*autocomplete','street-address'/));
+
+test('mobile origin uses address autocomplete',()=>assert.match(read('interaction-v2.js'),/m-from.*autocomplete','street-address'/));
+
+test('mobile destination uses address autocomplete',()=>assert.match(read('interaction-v2.js'),/m-to.*autocomplete','street-address'/));
+
+test('route buttons are explicit buttons',()=>assert.match(read('interaction-v2.js'),/d-go-btn,#m-go-btn.*type','button'/));
+
+test('navigation tabs expose keyboard shortcuts',()=>assert.match(read('interaction-v2.js'),/data-nav-tab.*aria-keyshortcuts/));
+
+test('map exposes a role description',()=>assert.match(read('interaction-v2.js'),/map.*aria-roledescription','interactive map'/));
+
+test('route provider status has a title',()=>assert.match(read('interaction-v2.js'),/route-status-source.*Route provider status/));
+
+test('observation status is announced',()=>assert.match(read('interaction-v2.js'),/observation-status-strip.*role','status'/));
+
+test('observation count is polite live content',()=>assert.match(read('interaction-v2.js'),/obs-status-count.*aria-live','polite'/));
+
+test('stats content is announced',()=>assert.match(read('interaction-v2.js'),/stats-content.*aria-live','polite'/));
+
+test('route status is announced',()=>assert.match(read('interaction-v2.js'),/route-status-overlay.*aria-live','polite'/));
+
+test('location status is announced',()=>assert.match(read('interaction-v2.js'),/btn-loc.*aria-live','polite'/));
+
+test('sheet toggle is labelled',()=>assert.match(read('interaction-v2.js'),/sheet-toggle.*Open map intelligence panel/));
+
+test('sidebar toggle is labelled',()=>assert.match(read('interaction-v2.js'),/toggle-btn.*Toggle intelligence sidebar/));
+
+test('desktop tabs have tab roles',()=>assert.match(read('interaction-v2.js'),/dt-alerts,#dt-route,#dt-data.*role','tab'/));
+
+test('mobile tabs have tab roles',()=>assert.match(read('interaction-v2.js'),/mt-alerts,#mt-route,#mt-data.*role','tab'/));
+
+test('map shortcuts are documented',()=>assert.match(read('interaction-v2.js'),/map.*aria-keyshortcuts.*Escape/));
+
+test('map shortcut M is documented',()=>assert.match(read('interaction-v2.js'),/btn-map.*aria-keyshortcuts','M'/));
+
+test('satellite shortcut S is documented',()=>assert.match(read('interaction-v2.js'),/btn-sat.*aria-keyshortcuts','S'/));
+
+test('location shortcut L is documented',()=>assert.match(read('interaction-v2.js'),/btn-loc.*aria-keyshortcuts','L'/));
+
+test('reset shortcut is documented',()=>assert.match(read('interaction-v2.js'),/btn-reset-view.*aria-keyshortcuts','0'/));
+
+test('command K focuses search',()=>assert.match(read('interaction-v2.js'),/e\.key==='k'.*s-input/));
+
+test('M activates standard map',()=>assert.match(read('interaction-v2.js'),/e\.key==='m'.*btn-map.*click/));
+
+test('S activates satellite map',()=>assert.match(read('interaction-v2.js'),/e\.key==='s'.*btn-sat.*click/));
+
+test('L activates location control',()=>assert.match(read('interaction-v2.js'),/e\.key==='l'.*btn-loc.*click/));
+
+test('zero activates reset view',()=>assert.match(read('interaction-v2.js'),/e\.key==='0'.*btn-reset-view.*click/));
+
+test('contenteditable protects shortcuts',()=>assert.match(read('interaction-v2.js'),/isContentEditable/));
+
+test('tabs support Home navigation',()=>assert.match(read('interaction-v2.js'),/e\.key==='Home'/));
+
+test('tabs support End navigation',()=>assert.match(read('interaction-v2.js'),/e\.key==='End'/));
+
+test('map focus receives an interaction label',()=>assert.match(read('interaction-v2.js'),/Interactive road intelligence map; use keyboard shortcuts/));
+
+test('map layer state records standard map',()=>assert.match(read('interaction-v2.js'),/dataset\.mapLayer='map'/));
+
+test('map layer state records satellite',()=>assert.match(read('interaction-v2.js'),/dataset\.mapLayer='sat'/));
+
+test('live context uses polite announcements',()=>assert.match(read('interaction-v2.js'),/map-live-context.*aria-live','polite'/));
+
+test('map stores current zoom state',()=>assert.match(read('interaction-v2.js'),/mapEl\.dataset\.zoom=String\(getMap\(\)\.getZoom\(\)\)/));
+
+test('map stores viewport center state',()=>assert.match(read('interaction-v2.js'),/mapEl\.dataset\.center=getMap\(\)\.getCenter\(\)/));
+
+test('map has a useful interaction title',()=>assert.match(read('interaction-v2.js'),/Pan and zoom to explore verified road intelligence/));
+
+test('Earth-to-location transitions cancel stale camera handoffs', () => {
+  const runtime = read('app.js');
+  assert.match(runtime, /let earthTransitionId = 0/);
+  assert.match(runtime, /const transitionId = \+\+earthTransitionId/);
+  assert.match(runtime, /if \(transitionId !== earthTransitionId\) return/);
+  assert.match(runtime, /earthTransitionId \+= 1;\s*setEarthOverview\(false\)/);
+});
+
+test('reset returns to Earth and invalidates pending location transitions', () => {
+  const runtime = read('app.js');
+  const reset = runtime.slice(runtime.indexOf('function resetMapView'), runtime.indexOf('// Initial tile layer setup'));
+  assert.match(reset, /clearTimeout\(earthTransitionTimer\)/);
+  assert.match(reset, /earthTransitionId \+= 1/);
+  assert.match(reset, /setEarthOverview\(true\)/);
+  assert.match(reset, /pointOfView\(\{ lat: 22, lng: 78, altitude: 2\.15 \}/);
+});
+
+test('location search hands off from Earth before detailed Leaflet zoom', () => {
+  const runtime = read('app.js');
+  const handoff = runtime.slice(runtime.indexOf('function showEarthThenZoom'), runtime.indexOf('function updateGlobeOverview'));
+  assert.ok(handoff.indexOf('setEarthOverview(false)') < handoff.indexOf('map.flyTo(coords, zoom'));
+  assert.match(handoff, /map\.setView\(coords, Math\.min\(5, zoom\), \{ animate: false \}\)/);
+  assert.match(runtime, /showEarthThenZoom\(c, 13, city\)/);
+  assert.match(runtime, /showEarthThenZoom\(c, Math\.max\(5, Math\.min\(17, Number\(zoom\) \|\| 14\)\), name\)/);
+});
+
+test('location marker styling survives Earth-to-map handoff', () => {
+  const runtime = read('app.js');
+  assert.match(runtime, /function showEarthThenZoom\(coords, zoom, name, markerColor = '#ef4444'\)/);
+  assert.match(runtime, /placeMarker\(coords, name, markerColor\)/);
+  assert.match(runtime, /showEarthThenZoom\(c, 15, 'My location', '#3b82f6'\)/);
+  assert.match(runtime, /const markerRgb = markerColor === '#3b82f6'/);
+});
+
+test('Earth globe uses a cinematic starfield and waits for globe readiness', () => {
+  const runtime = read('app.js');
+  const init = runtime.slice(runtime.indexOf('function initEarthGlobe'), runtime.indexOf('function showEarthThenZoom'));
+  assert.match(init, /globeImageUrl\('https:\/\/unpkg\.com\/three-globe\/example\/img\/earth-blue-marble\.jpg'\)/);
+  assert.match(init, /bumpImageUrl\('https:\/\/unpkg\.com\/three-globe\/example\/img\/earth-topology\.png'\)/);
+  assert.match(init, /backgroundImageUrl\('https:\/\/unpkg\.com\/three-globe\/example\/img\/night-sky\.png'\)/);
+  assert.match(init, /globeCurvatureResolution\(2\)/);
+  assert.match(init, /atmosphereAltitude\(0\.11\)/);
+  assert.match(init, /earthGlobe\.onGlobeReady\(\(\) => \{\s*earthGlobeEl\.classList\.remove\('is-loading'\)/);
+  assert.match(init, /setTimeout\(\(\) => earthGlobeEl\.classList\.remove\('is-loading'\), 7000\)/);
+});
+
+test('Earth globe clicks can navigate to a selected coordinate', () => {
+  const runtime = read('app.js');
+  assert.match(runtime, /earthGlobe\.onGlobeClick\(\(\{ lat, lng \}\) =>/);
+  assert.match(runtime, /showEarthThenZoom\(\[lat, lng\], 13, 'Selected location'\)/);
+  assert.match(runtime, /if \(!Number\.isFinite\(lat\) \|\| !Number\.isFinite\(lng\)\) return/);
+});
+
+test('Earth globe canvas remains interactive above the map without covering controls', () => {
+  const styles = read('design-v3.css');
+  const interactionPass = styles.slice(
+    styles.indexOf('/* Final interaction pass: center the Earth'),
+    styles.indexOf('/* ── Product polish pass:')
+  );
+  assert.match(interactionPass, /#earth-globe\{right:var\(--earth-right\)!important;pointer-events:auto!important;\}/);
+  assert.match(interactionPass, /#earth-globe canvas\{pointer-events:auto!important;\}/);
+  assert.doesNotMatch(interactionPass, /#earth-globe(?: canvas)?\{[^}]*pointer-events:none!important;/);
+});
+
+test('external geocoder results are escaped and coordinates validated', () => {
+  const runtime = read('app.js');
+  assert.match(runtime, /const safeName = escapeHTML\(r\.display_name\.split\(','\)\[0\]\)/);
+  assert.match(runtime, /const lat = Number\(r\.lat\)/);
+  assert.match(runtime, /const lon = Number\(r\.lon\)/);
+  assert.match(runtime, /if \(!Number\.isFinite\(lat\) \|\| !Number\.isFinite\(lon\) \|\| Math\.abs\(lat\) > 90 \|\| Math\.abs\(lon\) > 180\) return ''/);
+});
+
+test('location navigation falls back cleanly when WebGL Earth is unavailable', () => {
+  const runtime = read('app.js');
+  const handoff = runtime.slice(runtime.indexOf('function showEarthThenZoom'), runtime.indexOf('function updateGlobeOverview'));
+  assert.match(handoff, /if \(!earthGlobe\)/);
+  assert.match(handoff, /setEarthOverview\(false\)/);
+  assert.match(handoff, /map\.flyTo\(coords, zoom, \{ duration: 1\.2, easeLinearity: 0\.2 \}\)/);
+  assert.match(handoff, /placeMarker\(coords, name, markerColor\)/);
+});
+
+test('WebGL initialization errors do not leave a blocking Earth overlay', () => {
+  const runtime = read('app.js');
+  const init = runtime.slice(runtime.indexOf('function initEarthGlobe'), runtime.indexOf('function showEarthThenZoom'));
+  assert.match(init, /try \{/);
+  assert.match(init, /catch \(error\)/);
+  assert.match(init, /earthGlobe = null/);
+  assert.match(init, /earthGlobeEl\.classList\.remove\('is-loading'\)/);
+  assert.match(init, /setEarthOverview\(false\)/);
+});
+
+test('hidden Earth stops rendering rotation until reset', () => {
+  const runtime = read('app.js');
+  assert.match(runtime, /earthGlobe\.controls\(\)\.autoRotate = active/);
+  const reset = runtime.slice(runtime.indexOf('function resetMapView'), runtime.indexOf('// Initial tile layer setup'));
+  assert.match(reset, /earthGlobe\.controls\(\)\.autoRotate = !prefersReducedMotion/);
+});
+
+test('returning to Earth restores zoom and rotation controls', () => {
+  const runtime = read('app.js');
+  const visibility = runtime.slice(runtime.indexOf('function setEarthOverview'), runtime.indexOf('function initEarthGlobe'));
+  assert.match(visibility, /earthGlobe\.controls\(\)\.autoRotate = active/);
+  assert.match(visibility, /if \(active\) earthGlobe\.controls\(\)\.enableZoom = true/);
+});
+
+test('route calculation ignores stale geocoding and intelligence responses', () => {
+  const runtime = read('app.js');
+  assert.match(runtime, /let routeRequestId = 0/);
+  assert.match(runtime, /const requestId = \+\+routeRequestId/);
+  assert.match(runtime, /if \(requestId !== routeRequestId\) return/);
+  assert.match(runtime, /if \(requestId === routeRequestId\) setRouteLoadingState/);
+});
+
+test('Earth overview supports keyboard camera movement and selection', () => {
+  const runtime = read('app.js');
+  const init = runtime.slice(runtime.indexOf('function initEarthGlobe'), runtime.indexOf('function showEarthThenZoom'));
+  assert.match(init, /earthGlobeEl\.addEventListener\('keydown'/);
+  assert.match(init, /event\.key === 'ArrowLeft'/);
+  assert.match(init, /event\.key === 'ArrowRight'/);
+  assert.match(init, /event\.key === 'ArrowUp'/);
+  assert.match(init, /event\.key === 'ArrowDown'/);
+  assert.match(init, /event\.key === 'Enter' \|\| event\.key === ' '/);
+  assert.match(init, /earthGlobe\.pointOfView\(next, 250\)/);
+});
+
+test('stale geolocation callbacks cannot override a newer map choice', () => {
+  const runtime = read('app.js');
+  assert.match(runtime, /let locationRequestId = 0/);
+  const locate = runtime.slice(runtime.indexOf('function locateMe'), runtime.indexOf('// ── SIDEBAR CONTROLS'));
+  assert.match(locate, /const requestId = \+\+locationRequestId/);
+  assert.match(locate, /if \(requestId !== locationRequestId\) return/g);
+  assert.match(runtime, /function gotoCity\(city\) \{\s*const c = CITIES\[city\]; if \(!c\) return;\s*locationRequestId \+= 1/);
+  assert.match(runtime, /function resetMapView\(\) \{\s*locationRequestId \+= 1/);
+});
+
+test('route planning waits for Earth-to-origin handoff before fitting route', () => {
+  const runtime = read('app.js');
+  const route = runtime.slice(runtime.indexOf('async function planRoute'), runtime.indexOf('async function geocodePlace'));
+  assert.match(route, /showEarthThenZoom\(fc, 7, from\)/);
+  assert.match(runtime, /const EARTH_CAMERA_MS = prefersReducedMotion \? 450 : 1350/);
+  assert.match(runtime, /const DETAIL_FLY_MS = prefersReducedMotion \? 900 : 2250/);
+  assert.match(route, /EARTH_CAMERA_MS \+ DETAIL_FLY_MS \+ 100/);
+  assert.match(route, /if \(requestId !== routeRequestId\) return/);
+  assert.ok(route.indexOf('await new Promise') < route.indexOf('routeLines.forEach(l => map.removeLayer(l))'));
+});
+
+test('legacy RAG script requires an environment key instead of a placeholder', () => {
+  const source = read('oddone_rag.py');
+  assert.match(source, /os\.environ\.get\("GEMINI_API_KEY"\)/);
+  assert.match(source, /if model is None:/);
+  assert.doesNotMatch(source, /YOUR_KEY_HERE/);
+});
+
+test('map HUD labels Earth overview separately from road-map zoom', () => {
+  const html = read('index.html');
+  const runtime = read('app.js');
+  assert.match(html, /id="map-context-label"/);
+  assert.match(runtime, /label\.textContent = earthOverviewActive \? 'EARTH' : 'VIEWPORT'/);
+  assert.match(runtime, /el\.textContent = earthOverviewActive \? '3D' : String\(zoom\)/);
+  assert.match(runtime, /updateMapContext\(\);\s*document\.getElementById\('map'\)/);
+});
+
+test('selected map markers expose a safe coordinate popup', () => {
+  const runtime = read('app.js');
+  const css = read('design-v2.css');
+  assert.match(runtime, /locMarker\.bindPopup\(/);
+  assert.match(runtime, /escapeHTML\(name\)/);
+  assert.match(runtime, /Number\(coords\[0\]\)\.toFixed\(5\)/);
+  assert.match(runtime, /Number\(coords\[1\]\)\.toFixed\(5\)/);
+  assert.match(css, /\.oo-location-popup/);
+});
+
+test('route endpoints show the selected origin and destination names', () => {
+  const runtime = read('app.js');
+  assert.match(runtime, /markers\.push\(mk\(fc, from\.toUpperCase\(\), 'start'\), mk\(tc, to\.toUpperCase\(\), 'end'\)\)/);
+  assert.match(runtime, /escapeHTML\(label\)/);
+});
+
+test('geocoder search zoom respects country, state, district, and city scale', () => {
+  const runtime = read('app.js');
+  assert.match(runtime, /data-search-zoom="\$\{searchZoom\}"/);
+  assert.match(runtime, /\/country\/\.test\(placeType\) \? 5/);
+  assert.match(runtime, /\/state\|province\/\.test\(placeType\) \? 7/);
+  assert.match(runtime, /\/county\|district\/\.test\(placeType\) \? 9/);
+  assert.match(runtime, /\/city\|municipality\/\.test\(placeType\) \? 11/);
+  assert.match(runtime, /gotoCoords\(lat, lon, name, zoom = 14\)/);
+  assert.match(runtime, /Math\.max\(5, Math\.min\(17, Number\(zoom\) \|\| 14\)\)/);
+});
+
+test('location suggestions support keyboard selection and traversal', () => {
+  const runtime = read('app.js');
+  assert.match(runtime, /role="option" tabindex="0" data-search-city=/);
+  assert.match(runtime, /role="option" tabindex="0" data-search-lat=/);
+  assert.match(runtime, /sg\.addEventListener\('keydown'/);
+  assert.match(runtime, /event\.key === 'Enter' \|\| event\.key === ' '/);
+  assert.match(runtime, /items\[\(index \+ 1\) % items\.length\]\.focus\(\)/);
+  assert.match(runtime, /items\[\(index - 1 \+ items\.length\) % items\.length\]\.focus\(\)/);
+  assert.match(runtime, /function chooseSearchSuggestion\(item\)/);
+});
+
+test('search suggestions update visibility and combobox accessibility together', () => {
+  const html = read('index.html');
+  const runtime = read('app.js');
+  assert.match(html, /role="combobox" aria-haspopup="listbox" aria-controls="sugg" aria-expanded="false" aria-autocomplete="list"/);
+  const helper = runtime.slice(runtime.indexOf('function setSuggestionsVisible'), runtime.indexOf('let searchTimer'));
+  assert.match(helper, /classList\.toggle\('hidden', !visible\)/);
+  assert.match(helper, /setAttribute\('aria-hidden', String\(!visible\)\)/);
+  assert.match(helper, /setAttribute\('aria-expanded', String\(visible\)\)/);
+  assert.doesNotMatch(runtime.replace(helper, ''), /sg\.style\.display =/);
+});
+
+test('Earth camera rejects invalid coordinates before cancelling valid transitions', () => {
+  const runtime = read('app.js');
+  const handoff = runtime.slice(runtime.indexOf('function showEarthThenZoom'), runtime.indexOf('function updateGlobeOverview'));
+  assert.ok(handoff.indexOf('if (!Number.isFinite(target.lat)') < handoff.indexOf('const transitionId = ++earthTransitionId'));
+  assert.match(handoff, /Math\.abs\(target\.lat\) > 90 \|\| Math\.abs\(target\.lng\) > 180/);
+  assert.match(handoff, /Number\(coords\?\.\[0\]\)/);
+  assert.match(handoff, /Number\(coords\?\.\[1\]\)/);
+});
+
+test('reset cancels active route work and clears stale route UI', () => {
+  const runtime = read('app.js');
+  const reset = runtime.slice(runtime.indexOf('function resetMapView'), runtime.indexOf('// Initial tile layer setup'));
+  assert.match(reset, /cancelActiveRoute\(true\)/);
+});
+
+test('changing the selected location cancels in-flight routing', () => {
+  const runtime = read('app.js');
+  const cancel = runtime.slice(runtime.indexOf('function cancelActiveRoute'), runtime.indexOf('async function planRoute'));
+  assert.match(cancel, /routeRequestId \+= 1/);
+  assert.match(cancel, /routeAbortController\?\.abort\(\)/);
+  assert.match(cancel, /setRouteLoadingState\(false, 'Calculate Route →'\)/);
+  assert.match(runtime, /function gotoCity\(city\) \{[^}]*cancelActiveRoute\(true\)/s);
+  assert.match(runtime, /function gotoCoords\(lat, lon, name, zoom = 14\) \{[^}]*cancelActiveRoute\(true\)/s);
+  const locate = runtime.slice(runtime.indexOf('function locateMe'), runtime.indexOf('// ── SIDEBAR CONTROLS'));
+  assert.match(locate, /cancelActiveRoute\(true\)/);
+});
+
+test('route bounds account for the mobile sheet overlay', () => {
+  const runtime = read('app.js');
+  const fit = runtime.slice(runtime.indexOf('function fitRouteBounds'), runtime.indexOf('async function planRoute'));
+  assert.match(fit, /sheet\.getBoundingClientRect\(\)\.height \* 0\.72/);
+  assert.match(fit, /paddingTopLeft: mobile \? \[24, 72\]/);
+  assert.match(fit, /paddingBottomRight: mobile \? \[24, sheetHeight \+ 20\]/);
+  assert.match(fit, /maxZoom: 13/);
+  assert.equal((runtime.match(/fitRouteBounds\(rl\.getBounds\(\)\)/g) || []).length, 2);
+});
+
+test('manual Earth selection supersedes active route and location requests', () => {
+  const runtime = read('app.js');
+  const init = runtime.slice(runtime.indexOf('function initEarthGlobe'), runtime.indexOf('function showEarthThenZoom'));
+  assert.match(init, /earthGlobe\.onGlobeClick\([\s\S]*?locationRequestId \+= 1;[\s\S]*?cancelActiveRoute\(true\)/);
+  assert.match(init, /event\.key === 'Enter' \|\| event\.key === ' '[\s\S]*?locationRequestId \+= 1;[\s\S]*?cancelActiveRoute\(true\)/);
+});
+
+test('reset clears the selected place marker from the detail map', () => {
+  const runtime = read('app.js');
+  const reset = runtime.slice(runtime.indexOf('function resetMapView'), runtime.indexOf('// Initial tile layer setup'));
+  assert.match(reset, /if \(locMarker\) \{\s*map\.removeLayer\(locMarker\);\s*locMarker = null;/);
+});
+
+
+test('location geocoding ignores stale responses and times out safely', () => {
+  const runtime = read('app.js');
+  const search = runtime.slice(runtime.indexOf("si.addEventListener('keydown'"), runtime.indexOf("document.addEventListener('click', e =>"));
+  assert.match(runtime, /let geocodeRequestId = 0;/);
+  assert.match(search, /cancelGeocodeSearch\(\);[\s\S]*?const requestId = geocodeRequestId/);
+  assert.match(search, /new AbortController\(\)/);
+  assert.match(search, /setTimeout\(\(\) => controller\.abort\(\), 8000\)/);
+  assert.match(search, /if \(requestId !== geocodeRequestId\) return;/);
+  assert.match(search, /if \(error\?\.name === 'AbortError'\)/);
+  assert.match(search, /si\.removeAttribute\('aria-busy'\)/);
+});
+
+
+test('Earth navigation respects reduced-motion preferences', () => {
+  const runtime = read('app.js');
+  assert.match(runtime, /window\.matchMedia\?\.\('\(prefers-reduced-motion: reduce\)'\)\?\.matches === true/);
+  assert.match(runtime, /EARTH_CAMERA_MS = prefersReducedMotion \? 450 : 1350/);
+  assert.match(runtime, /DETAIL_FLY_MS = prefersReducedMotion \? 900 : 2250/);
+  assert.match(runtime, /autoRotate = !prefersReducedMotion/);
+});
+
+test('Earth overview never re-enables auto-rotation for reduced-motion users', () => {
+  const runtime = read('app.js');
+  const overview = runtime.slice(runtime.indexOf('function setEarthOverview'), runtime.indexOf('function initEarthGlobe'));
+  const reset = runtime.slice(runtime.indexOf('function resetMapView'), runtime.indexOf('// Initial tile layer setup'));
+  const worldFallback = runtime.slice(runtime.indexOf('// World-scale fallback'), runtime.indexOf('updateMapIntelligenceHUD();'));
+  assert.match(overview, /autoRotate = active && !prefersReducedMotion/);
+  assert.match(reset, /autoRotate = !prefersReducedMotion/);
+  assert.match(worldFallback, /autoRotate = !prefersReducedMotion/);
+  assert.doesNotMatch(overview + reset + worldFallback, /autoRotate = true/);
+});
+
+
+test('location search rejects excessively long queries before geocoding', () => {
+  const runtime = read('app.js');
+  const search = runtime.slice(runtime.indexOf("si.addEventListener('keydown'"), runtime.indexOf("document.addEventListener('click', e =>"));
+  assert.match(search, /q\.length > 120/);
+  assert.match(search, /Search is too long\. Enter a place name under 120 characters\./);
+  assert.ok(search.indexOf('q.length > 120') < search.indexOf('fetch(url'));
+});
+
+
+test('approximate fallback routes use the mobile-safe route framing helper', () => {
+  const runtime = read('app.js');
+  const fallback = runtime.slice(runtime.indexOf("routeSource = 'APPROX'"), runtime.indexOf('const routeStatus ='));
+  assert.match(fallback, /drawRouteLine\(\[fc, tc\], true\)/);
+  assert.match(fallback, /fitRouteBounds\(rl\.getBounds\(\)\)/);
+  assert.doesNotMatch(fallback, /map\.fitBounds\(rl\.getBounds\(\),\s*\{\s*padding:/);
+});
+
+test('interactive Earth visibility follows overview state for assistive technology', () => {
+  const html = read('index.html');
+  const runtime = read('app.js');
+  const globe = html.match(/<div id="earth-globe"[^>]*>/)?.[0] || '';
+  const visibility = runtime.slice(runtime.indexOf('function setEarthOverview'), runtime.indexOf('function initEarthGlobe'));
+  assert.match(globe, /role="application"/);
+  assert.match(globe, /aria-label="Interactive 3D Earth overview/);
+  assert.match(globe, /aria-hidden="true"/);
+  assert.match(globe, /tabindex="-1"/);
+  assert.match(visibility, /setAttribute\('aria-hidden', active \? 'false' : 'true'\)/);
+  assert.match(visibility, /setAttribute\('tabindex', active \? '0' : '-1'\)/);
+  assert.match(visibility, /classList\.toggle\('is-visible', active\)/);
+});
+
+test('3D Earth overview initializes on page load', () => {
+  const runtime = read('app.js');
+  const initCalls = runtime.match(/^\s*initEarthGlobe\(\);\s*$/gm) || [];
+  assert.equal(initCalls.length, 1, 'the real globe must be initialized exactly once');
+  assert.match(runtime, /Start in the real 3D Earth overview/);
+});
+
+
+test('compact mobile map surface covers narrow tablet widths', () => {
+  const css = read('mobile-surface.css');
+  assert.match(css, /@media \(max-width: 767px\)\{/);
+  assert.match(css, /#sidebar\{display:none!important;\}/);
+  assert.match(css, /#sheet\{[\s\S]*?display:flex!important;/);
+  assert.match(css, /#map-command-deck\{[\s\S]*?bottom:76px!important;/);
+});
+
+test('desktop intelligence tabs stay compact and keep labels visible', () => {
+  const css = read('design-v3.css');
+  assert.match(css, /#sidebar > div\[role="tablist"\]\[aria-label="Road intelligence views"\] > button\{[\s\S]*?height:44px!important;[\s\S]*?align-items:center!important;[\s\S]*?white-space:nowrap!important;/);
+  assert.match(css, /#sidebar > div\[role="tablist"\]\[aria-label="Road intelligence views"\] > button\.on/);
+  assert.match(css, /@media \(max-width: 767px\)\{\s*#sidebar\{display:none!important;\}/);
+});
+
 test('mobile brand wordmark keeps strong contrast on the dark header', () => {
   const css = read('mobile-surface.css');
   const brand = css.slice(css.lastIndexOf('/* Brand contrast guard'));
