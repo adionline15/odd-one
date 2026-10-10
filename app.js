@@ -28,7 +28,7 @@
       setEarthOverview(true);
       if (earthGlobe) {
         earthGlobe.controls().autoRotate = true;
-        earthGlobe.pointOfView({ lat: 22, lng: 78, altitude: 2.15 }, 900);
+        earthGlobe.pointOfView({ lat: 22, lng: 78, altitude: 2.15 }, prefersReducedMotion ? 0 : 900);
       }
       map.flyTo([22, 78], 5, { duration: 0.9 });
       document.getElementById('map')?.focus({ preventScroll: true });
@@ -70,8 +70,9 @@
     const earthGlobeEl = document.getElementById('earth-globe');
     let earthGlobe = null;
     let earthOverviewActive = true;
-    const EARTH_CAMERA_MS = 1350;
-    const DETAIL_FLY_MS = 2250;
+    const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches === true;
+    const EARTH_CAMERA_MS = prefersReducedMotion ? 450 : 1350;
+    const DETAIL_FLY_MS = prefersReducedMotion ? 900 : 2250;
     let earthTransitionTimer = null;
     let earthTransitionId = 0;
 
@@ -110,7 +111,7 @@
           .height(earthGlobeEl.clientHeight)
           .pointOfView({ lat: 22, lng: 78, altitude: 2.15 }, 0);
 
-        earthGlobe.controls().autoRotate = true;
+        earthGlobe.controls().autoRotate = !prefersReducedMotion;
         earthGlobe.controls().autoRotateSpeed = 0.28;
         earthGlobe.controls().enableZoom = true;
         earthGlobe.onGlobeClick(({ lat, lng }) => {
