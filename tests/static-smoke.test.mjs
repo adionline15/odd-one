@@ -425,7 +425,7 @@ test('route bounds account for the mobile sheet overlay', () => {
   assert.match(fit, /paddingTopLeft: mobile \? \[24, 72\]/);
   assert.match(fit, /paddingBottomRight: mobile \? \[24, sheetHeight \+ 20\]/);
   assert.match(fit, /maxZoom: 13/);
-  assert.equal((runtime.match(/fitRouteBounds\(rl\.getBounds\(\)\)/g) || []).length, 2);
+  assert.equal((runtime.match(/fitRouteBounds\(rl\.getBounds\(\)\)/g) || []).length, 3);
 });
 
 test('manual Earth selection supersedes active route and location requests', () => {
@@ -470,4 +470,13 @@ test('location search rejects excessively long queries before geocoding', () => 
   assert.match(search, /q\.length > 120/);
   assert.match(search, /Search is too long\. Enter a place name under 120 characters\./);
   assert.ok(search.indexOf('q.length > 120') < search.indexOf('fetch(url'));
+});
+
+
+test('approximate fallback routes use the mobile-safe route framing helper', () => {
+  const runtime = read('app.js');
+  const fallback = runtime.slice(runtime.indexOf("routeSource = 'APPROX'"), runtime.indexOf('const routeStatus ='));
+  assert.match(fallback, /drawRouteLine\(\[fc, tc\], true\)/);
+  assert.match(fallback, /fitRouteBounds\(rl\.getBounds\(\)\)/);
+  assert.doesNotMatch(fallback, /map\.fitBounds\(rl\.getBounds\(\),\s*\{\s*padding:/);
 });
