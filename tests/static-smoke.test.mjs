@@ -60,6 +60,16 @@ test('map intelligence aborts superseded viewport requests', () => {
   assert.match(runtime, /signal: roadChangeAbortController\.signal/);
 });
 
+test('observation provenance ignores stale responses after selection changes or clearing', () => {
+  const runtime = read('app.js');
+  const clear = runtime.slice(runtime.indexOf('function clearObservationLayers'), runtime.indexOf('function selectObservationLayer'));
+  const enrich = runtime.slice(runtime.indexOf('async function enrichObservationProvenance'), runtime.indexOf('function showRoadIntelligence'));
+  assert.match(runtime, /let provenanceRequestId = 0/);
+  assert.match(clear, /provenanceRequestId \+= 1/);
+  assert.match(enrich, /const requestId = \+\+provenanceRequestId/);
+  assert.match(enrich, /const payload = await response\.json\(\);\s*if \(requestId !== provenanceRequestId\) return;/);
+});
+
 test('observation viewport loads skip duplicate requests', () => {
   const html = read('index.html');
   const runtime = read('app.js');
