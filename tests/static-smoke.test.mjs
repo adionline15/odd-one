@@ -561,3 +561,10 @@ test('desktop intelligence tabs stay compact and keep labels visible', () => {
   assert.match(css, /#sidebar > div\[role="tablist"\]\[aria-label="Road intelligence views"\] > button\.on/);
   assert.match(css, /@media \(max-width: 767px\)\{\s*#sidebar\{display:none!important;\}/);
 });
+
+test('mobile brand wordmark keeps strong contrast on the dark header', () => {
+  const css = read('mobile-surface.css');
+  const brand = css.slice(css.lastIndexOf('/* Brand contrast guard'));
+  assert.match(brand, /body > nav\[aria-label="Primary navigation"\] \.font-serif-lux\{[\s\S]*?color:#f8fafc!important;[\s\S]*?opacity:1!important;/);
+  assert.match(brand, /\.font-serif-lux span\{\s*color:#a1a1aa!important;\s*opacity:1!important;/);
+});
