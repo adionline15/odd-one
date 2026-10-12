@@ -114,6 +114,10 @@
     function setEarthOverview(active) {
       earthOverviewActive = active;
       if (earthGlobe) {
+        // The WebGL globe is expensive to keep rendering under the road map.
+        // Resume it only while visible so the detail map stays responsive.
+        if (active) earthGlobe.resumeAnimation?.();
+        else earthGlobe.pauseAnimation?.();
         earthGlobe.controls().autoRotate = active && !prefersReducedMotion;
         if (active) earthGlobe.controls().enableZoom = true;
       }
@@ -844,6 +848,38 @@
       document.getElementById('road-intel-overlay')?.classList.add('hidden');
       map.closePopup();
     });
+
+    
+    // Lightweight premium cursor accent: animate only on pointer events and
+    // only over controls, never over the draggable map or text inputs.
+    (() => {
+      if (window.matchMedia('(hover: none), (pointer: coarse)').matches ||
+          window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const cursor = document.createElement('div');
+      cursor.id = 'oo-cursor-accent';
+      cursor.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(cursor);
+      let frame = 0, x = -100, y = -100, target = null;
+      const interactive = 'button,a,[role="button"],[role="option"],.leaflet-control-zoom a,#toggle-btn';
+      window.addEventListener('pointermove', event => {
+        target = event.target instanceof Element ? event.target.closest(interactive) : null;
+        document.body.classList.toggle('oo-cursor-hover', Boolean(target));
+        x = event.clientX;
+        y = event.clientY;
+        if (frame) return;
+        frame = requestAnimationFrame(() => {
+          cursor.style.transform = `translate3d(${x}px,${y}px,0) translate(-50%,-50%)`;
+          frame = 0;
+        });
+      }, { passive: true });
+      window.addEventListener('pointerout', event => {
+        if (!event.relatedTarget) {
+          document.body.classList.remove('oo-cursor-hover');
+          cursor.style.opacity = '0';
+        }
+      }, { passive: true });
+      window.addEventListener('pointerover', () => { cursor.style.opacity = ''; }, { passive: true });
+    })();
 
     // ── MAP TILE LAYER SELECTION ──
     function setTile(t) {
