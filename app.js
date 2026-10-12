@@ -1134,9 +1134,7 @@
           className: '', iconSize: [12, 12], iconAnchor: [6, 6]
         })
       }).addTo(map);
-      const latLabel = Number(coords[0]).toFixed(5);
-      const lonLabel = Number(coords[1]).toFixed(5);
-      locMarker.bindPopup(`<div class="oo-location-popup"><strong>${escapeHTML(name)}</strong><div>${latLabel}, ${lonLabel}</div></div>`);
+      locMarker.bindPopup(`<div class="oo-location-popup"><strong>${escapeHTML(name)}</strong></div>`);
     }
 
     function escapeHTML(value) {
@@ -1220,7 +1218,7 @@
           pane: 'destination-highlights', riseOnHover: true, zIndexOffset: 900 + index
         });
         const photoUrl = getUttarakhandPhoto(place);
-        marker.bindPopup(`<div class="oo-destination-popup"><img class="oo-destination-photo" src="${photoUrl}" alt="Scenic preview for ${escapeHTML(place.name)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'"><span>UTTARAKHAND · DESTINATION</span><strong>${escapeHTML(place.name)}</strong><small>${escapeHTML(place.type)}</small><button type="button" data-oo-destination="${index}">Explore this place ↗</button></div>`);
+        marker.bindPopup(`<div class="oo-destination-popup oo-destination-image-only"><img class="oo-destination-photo" src="${photoUrl}" alt="${escapeHTML(place.name)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'"></div>`);
         marker.on('click', () => {
           if (map.getZoom() < 9) map.flyTo([place.lat, place.lng], 9, {duration: 1.25, easeLinearity: 0.22});
         });
