@@ -1236,7 +1236,8 @@
         });
         const photoUrl = getUttarakhandPhoto(place);
         marker.bindPopup(`<div class="oo-destination-popup oo-destination-image-only"><img class="oo-destination-photo" src="${photoUrl}" alt="${escapeHTML(place.name)} destination photo" loading="lazy" referrerpolicy="no-referrer"></div>`, {
-          closeButton: true, autoPan: true, keepInView: true
+          closeButton: true, autoPan: true, keepInView: true,
+          autoClose: false, closeOnClick: false, closeOnEscapeKey: true
         });
         marker.on('mouseover', () => {
           marker.openPopup();
