@@ -850,3 +850,59 @@ nav[aria-label="Primary navigation"] button[onclick*="showTab('route')"]{
     filter:none!important;
   }
 }
+
+
+/* ── Search suggestions: dark surface, readable high-contrast results ── */
+#sugg{
+  background:rgba(7,12,21,.98)!important;
+  color:#eef5ff!important;
+  border:1px solid rgba(93,181,255,.28)!important;
+  border-radius:14px!important;
+  padding:6px!important;
+  margin-top:8px!important;
+  box-shadow:0 18px 48px rgba(0,0,0,.52),0 0 0 1px rgba(22,135,255,.06)!important;
+  backdrop-filter:blur(18px)!important;
+  -webkit-backdrop-filter:blur(18px)!important;
+  max-height:min(320px,55vh)!important;
+  overflow-y:auto!important;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(93,181,255,.45) transparent;
+}
+#sugg .sugg-item{
+  display:flex!important;
+  align-items:center!important;
+  min-height:46px!important;
+  padding:11px 13px!important;
+  gap:10px!important;
+  color:#eef5ff!important;
+  background:transparent!important;
+  border:0!important;
+  border-bottom:1px solid rgba(190,215,245,.08)!important;
+  border-radius:9px!important;
+  font-size:12px!important;
+  line-height:1.4!important;
+  cursor:pointer!important;
+  transition:background .16s ease,border-color .16s ease!important;
+}
+#sugg .sugg-item:last-child{border-bottom:0!important;}
+#sugg .sugg-item:hover,#sugg .sugg-item:focus,#sugg .sugg-item[aria-selected="true"]{
+  background:rgba(22,135,255,.14)!important;
+  color:#fff!important;
+  outline:none!important;
+  box-shadow:inset 2px 0 0 #4da3ff!important;
+}
+#sugg .sugg-item .text-zinc-700,
+#sugg .sugg-item .text-zinc-800,
+#sugg .sugg-item .text-black{color:#eef5ff!important;}
+#sugg .sugg-item .text-zinc-400,
+#sugg .sugg-item .text-zinc-500,
+#sugg .sugg-item .text-zinc-600{color:#8fa5c0!important;}
+#sugg .sugg-item .text-blue-500,
+#sugg .sugg-item .text-blue-400{color:#62b7ff!important;}
+#sugg .sugg-item span{min-width:0;}
+#sugg .sugg-item span:not(.text-blue-500):not(.text-blue-400){overflow-wrap:anywhere;}
+@media(max-width:640px){
+  #sugg{max-height:46vh!important;border-radius:12px!important;padding:5px!important;}
+  #sugg .sugg-item{min-height:48px!important;padding:12px 11px!important;font-size:13px!important;}
+}
+@media(prefers-reduced-motion:reduce){#sugg .sugg-item{transition:none!important;}}
