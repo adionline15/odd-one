@@ -84,13 +84,11 @@
         </div>
       </div>
 
-      <div id="observation-status-strip" role="status" aria-live="polite" class="absolute top-[132px] left-4 z-20 pointer-events-none hidden sm:block">
-        <div class="intel-card px-3 py-2 flex items-center gap-3.5 backdrop-blur-xl">
-          <span id="obs-status-dot" class="w-1.5 h-1.5 rounded-full bg-zinc-500"></span>
-          <span class="intel-kicker">Approved observations</span>
-          <span id="obs-status-count" class="font-mono-lux text-[9px] text-zinc-300">--</span>
-          <span id="obs-status-state" data-state="loading" class="font-mono-lux text-[8px] text-zinc-600">LOADING</span>
-        </div>
+      <div id="observation-status-strip" role="status" aria-live="polite" data-state="loading" title="Status of approved road observations in the current map view">
+        <span id="obs-status-dot" aria-hidden="true"></span>
+        <span class="obs-status-label">Road observations</span>
+        <span id="obs-status-count">—</span>
+        <span id="obs-status-state" data-state="loading">Loading</span>
       </div>
 
       <div id="map-intelligence-hud" class="absolute top-5 right-5 z-20 pointer-events-none hidden lg:block"><div class="intel-card px-3.5 py-3 backdrop-blur-xl"><div class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-300 shadow-[0_0_10px_rgba(34,211,238,.65)]"></span><span class="intel-kicker font-semibold">Map intelligence</span></div><div class="mt-2 flex items-end gap-2"><span class="intel-value text-lg">Viewport</span><span id="map-hud-zoom" class="font-mono-lux text-[7px] text-zinc-600 uppercase">Z5</span></div><div id="map-hud-scope" class="mt-1 font-mono-lux text-[7px] tracking-[.12em] text-zinc-600 uppercase">India · live scope</div></div></div>
