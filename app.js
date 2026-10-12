@@ -118,6 +118,9 @@
         if (active) earthGlobe.controls().enableZoom = true;
       }
       earthGlobeEl?.classList.toggle('is-visible', active);
+      // Cross-fade the two renderers instead of letting the flat world map
+      // peek through around the globe during the handoff.
+      document.getElementById('map')?.classList.toggle('earth-mode', active);
       earthGlobeEl?.setAttribute('aria-hidden', active ? 'false' : 'true');
       earthGlobeEl?.setAttribute('tabindex', active ? '0' : '-1');
       updateMapContext();
