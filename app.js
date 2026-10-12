@@ -60,31 +60,41 @@
     // world limit, preserving the current camera center instead of snapping
     // to a hard-coded India view.
     let globeZoomHandoff = false;
+    let globeHandoffTimer = null;
     map.on('zoom', () => {
       if (!earthGlobe || !earthGlobeEl || globeZoomHandoff) return;
       const zoom = map.getZoom();
-      // Blend the globe in progressively at world scale instead of waiting
-      // for zoomend and swapping renderers in a single frame.
+      // Start the globe handoff at world scale, but do not reset its camera
+      // on every wheel tick. That repeated reset is what feels like a jump.
       if (zoom <= 2.5 && !earthOverviewActive) {
         const center = map.getCenter();
+        globeZoomHandoff = true;
         setEarthOverview(true);
         earthGlobe.controls().autoRotate = false;
+        earthGlobe.controls().enableZoom = false;
         earthGlobe.pointOfView(
-          { lat: center.lat, lng: center.lng, altitude: Math.max(1.6, 3.8 - zoom * 0.7) },
-          0
+          { lat: center.lat, lng: center.lng, altitude: Math.max(1.7, 1.6 + (2.5 - zoom) * 0.45) },
+          prefersReducedMotion ? 0 : 520
         );
       }
     });
     map.on('zoomend', () => {
       if (!earthGlobe || !earthGlobeEl) return;
-      if (!earthOverviewActive && map.getZoom() <= 1) {
+      if (earthOverviewActive && map.getZoom() <= 2.5) {
+        clearTimeout(globeHandoffTimer);
         const center = map.getCenter();
-        setEarthOverview(true);
-        earthGlobe.controls().autoRotate = !prefersReducedMotion;
+        // Keep the user's geographic focus. Never spin away to another
+        // continent just because the map reached its minimum zoom.
+        earthGlobe.controls().autoRotate = false;
+        earthGlobe.controls().enableZoom = true;
         earthGlobe.pointOfView(
-          { lat: center.lat, lng: center.lng, altitude: 2.15 },
-          prefersReducedMotion ? 0 : 900
+          { lat: center.lat, lng: center.lng, altitude: Math.max(1.7, 1.6 + (2.5 - map.getZoom()) * 0.45) },
+          prefersReducedMotion ? 0 : 420
         );
+        globeHandoffTimer = setTimeout(() => { globeZoomHandoff = false; }, 500);
+      } else if (map.getZoom() > 2.5 && earthOverviewActive) {
+        // Do not fight active map navigation by snapping the globe back.
+        globeZoomHandoff = false;
       }
     });
 
