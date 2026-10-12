@@ -1209,13 +1209,33 @@
       });
       uttarakhandHighlightLayer.addTo(map);
       uttarakhandHighlightBounds = L.latLngBounds(uttarakhandDestinations.map(p => [p.lat,p.lng]));
+      const syncDestinationLabels = () => {
+        map.getContainer().classList.toggle('destinations-detail', map.getZoom() >= 6);
+      };
+      map.on('zoomend', syncDestinationLabels);
+      syncDestinationLabels();
+
+      // A dedicated map control makes the complete Uttarakhand highlight set
+      // discoverable without requiring a user to know a specific place name.
+      const exploreControl = L.control({position:'topright'});
+      exploreControl.onAdd = () => {
+        const wrap = L.DomUtil.create('div','oo-uttarakhand-control');
+        const button = L.DomUtil.create('button','',wrap);
+        button.type = 'button';
+        button.innerHTML = '<span class="oo-control-pulse"></span> EXPLORE UTTARAKHAND';
+        button.setAttribute('aria-label','Show all highlighted Uttarakhand tourist destinations');
+        L.DomEvent.disableClickPropagation(wrap);
+        L.DomEvent.on(button,'click',showUttarakhandDestinations);
+        return wrap;
+      };
+      exploreControl.addTo(map);
     }
 
     function showUttarakhandDestinations() {
       initUttarakhandHighlights();
       if (uttarakhandHighlightBounds) {
         map.flyToBounds(uttarakhandHighlightBounds, {
-          paddingTopLeft: [40, 40], paddingBottomRight: [40, 40],
+          paddingTopLeft: [55, 55], paddingBottomRight: [55, 55],
           maxZoom: 7, duration: 1.8, easeLinearity: 0.2
         });
       }
