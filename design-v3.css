@@ -828,16 +828,10 @@ nav[aria-label="Primary navigation"] button[onclick*="showTab('route')"]{
     linear-gradient(180deg,rgba(5,15,30,.10),transparent 42%,rgba(5,15,30,.24));
   animation:oo-earth-camera-vignette 2.1s cubic-bezier(.22,.61,.36,1) both;
 }
-#earth-globe.is-transitioning canvas{
-  filter:drop-shadow(0 0 26px rgba(22,135,255,.10));
-}
-#map.earth-mode{
-  opacity:0!important;
-  filter:blur(2px) saturate(.9);
-}
-#map{
-  transition:opacity 650ms cubic-bezier(.22,.61,.36,1),filter 650ms cubic-bezier(.22,.61,.36,1);
-}
+/* Avoid full-canvas filters during camera handoff; opacity is GPU-cheaper. */
+#earth-globe.is-transitioning canvas{filter:none!important;}
+#map.earth-mode{opacity:0!important;filter:none!important;}
+#map{transition:opacity 420ms cubic-bezier(.22,.61,.36,1)!important;}
 @keyframes oo-earth-camera-vignette{
   0%{opacity:.45}
   35%{opacity:1}
@@ -906,3 +900,33 @@ nav[aria-label="Primary navigation"] button[onclick*="showTab('route')"]{
   #sugg .sugg-item{min-height:48px!important;padding:12px 11px!important;font-size:13px!important;}
 }
 @media(prefers-reduced-motion:reduce){#sugg .sugg-item{transition:none!important;}}
+
+
+/* ── Lightweight cursor accent ──
+   A small electric-blue ring appears over controls only; the native map
+   cursor and text-selection cursor remain untouched.
+*/
+#oo-cursor-accent{
+  position:fixed;
+  left:0;top:0;
+  z-index:99999;
+  width:17px;height:17px;
+  border:1px solid rgba(104,190,255,.95);
+  border-radius:50%;
+  background:rgba(22,135,255,.08);
+  box-shadow:0 0 0 3px rgba(22,135,255,.08),0 0 16px rgba(22,135,255,.18);
+  pointer-events:none;
+  opacity:0;
+  transition:opacity .12s ease,width .16s ease,height .16s ease,background .16s ease,border-color .16s ease;
+  will-change:transform;
+}
+body.oo-cursor-hover #oo-cursor-accent{opacity:1;}
+body.oo-cursor-hover #oo-cursor-accent{width:25px;height:25px;background:rgba(22,135,255,.12);border-color:#8acbff;}
+body.oo-cursor-hover button,
+body.oo-cursor-hover a,
+body.oo-cursor-hover [role="button"],
+body.oo-cursor-hover [role="option"],
+body.oo-cursor-hover .leaflet-control-zoom a,
+body.oo-cursor-hover #toggle-btn{cursor:none!important;}
+@media(hover:none),(pointer:coarse){#oo-cursor-accent{display:none!important;}}
+@media(prefers-reduced-motion:reduce){#oo-cursor-accent{display:none!important;}}
