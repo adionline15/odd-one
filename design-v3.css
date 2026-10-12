@@ -6,14 +6,24 @@
   position:absolute;
   inset:0;
   z-index:15;
-  display:none;
+  display:block;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
   overflow:hidden;
   background:
     radial-gradient(circle at 50% 44%,rgba(45,105,180,.12),transparent 32%),
     #02050a;
   isolation:isolate;
+  transition:opacity 420ms cubic-bezier(.22,.61,.36,1), visibility 0s linear 420ms;
+  will-change:opacity;
 }
-#earth-globe.is-visible{display:block;}
+#earth-globe.is-visible{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transition:opacity 420ms cubic-bezier(.22,.61,.36,1), visibility 0s;
+}
 #earth-globe.is-loading::before{
   content:"";
   position:absolute;
@@ -43,7 +53,7 @@
     linear-gradient(180deg,rgba(2,5,10,.12),transparent 35%,rgba(2,5,10,.22));
   z-index:2;
 }
-#earth-globe[aria-hidden="true"]{display:none;}
+#earth-globe[aria-hidden="true"]{pointer-events:none;}
 @media(max-width:640px){
   #earth-globe::after{
     background:
