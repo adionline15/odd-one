@@ -59,6 +59,22 @@
     // World-scale fallback: hand back to the globe only at the map's
     // world limit, preserving the current camera center instead of snapping
     // to a hard-coded India view.
+    let globeZoomHandoff = false;
+    map.on('zoom', () => {
+      if (!earthGlobe || !earthGlobeEl || globeZoomHandoff) return;
+      const zoom = map.getZoom();
+      // Blend the globe in progressively at world scale instead of waiting
+      // for zoomend and swapping renderers in a single frame.
+      if (zoom <= 2.5 && !earthOverviewActive) {
+        const center = map.getCenter();
+        setEarthOverview(true);
+        earthGlobe.controls().autoRotate = false;
+        earthGlobe.pointOfView(
+          { lat: center.lat, lng: center.lng, altitude: Math.max(1.6, 3.8 - zoom * 0.7) },
+          0
+        );
+      }
+    });
     map.on('zoomend', () => {
       if (!earthGlobe || !earthGlobeEl) return;
       if (!earthOverviewActive && map.getZoom() <= 1) {
