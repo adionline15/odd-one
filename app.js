@@ -152,14 +152,6 @@
           .height(earthGlobeEl.clientHeight)
           .pointOfView({ lat: 22, lng: 78, altitude: 2.15 }, 0);
 
-        // Decorative solar-system layer: visual only, never used as geographic data.
-        if (!earthGlobeEl.querySelector('.oo-solar-system')) {
-          const solar = document.createElement('div');
-          solar.className = 'oo-solar-system';
-          solar.setAttribute('aria-hidden', 'true');
-          solar.innerHTML = '<div class="oo-starfield"></div><div class="oo-orbit oo-orbit-a"><i class="oo-planet oo-mercury"></i></div><div class="oo-orbit oo-orbit-b"><i class="oo-planet oo-venus"></i></div><div class="oo-orbit oo-orbit-c"><i class="oo-planet oo-mars"></i></div><div class="oo-orbit oo-orbit-d"><i class="oo-planet oo-jupiter"></i></div><div class="oo-orbit oo-orbit-e"><i class="oo-planet oo-saturn"><b></b></i></div><div class="oo-orbit oo-orbit-f"><i class="oo-planet oo-ice"></i></div><div class="oo-solar-sun"></div>';
-          earthGlobeEl.appendChild(solar);
-        }
         earthGlobe.controls().autoRotate = !prefersReducedMotion;
         earthGlobe.controls().autoRotateSpeed = 0.42;
         earthGlobe.controls().enableZoom = true;
