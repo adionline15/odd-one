@@ -152,6 +152,14 @@
           .height(earthGlobeEl.clientHeight)
           .pointOfView({ lat: 22, lng: 78, altitude: 2.15 }, 0);
 
+        // Subtle animated orbital accents around Earth (purely decorative).
+        if (!earthGlobeEl.querySelector('.oo-earth-accents')) {
+          const accents = document.createElement('div');
+          accents.className = 'oo-earth-accents';
+          accents.setAttribute('aria-hidden', 'true');
+          accents.innerHTML = '<span class="oo-orbit-halo oo-halo-one"></span><span class="oo-orbit-halo oo-halo-two"></span><i class="oo-orbit-particle oo-particle-one"></i><i class="oo-orbit-particle oo-particle-two"></i><i class="oo-orbit-particle oo-particle-three"></i>';
+          earthGlobeEl.appendChild(accents);
+        }
         earthGlobe.controls().autoRotate = !prefersReducedMotion;
         earthGlobe.controls().autoRotateSpeed = 0.42;
         earthGlobe.controls().enableZoom = true;
