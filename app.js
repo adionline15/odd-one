@@ -1173,8 +1173,9 @@
       {name:'Patal Bhuvaneshwar',lat:29.6860,lng:80.0370,type:'Cave temple'},
       {name:'Jageshwar Temples',lat:29.6400,lng:79.8510,type:'Temple heritage'}
     ];
-    // Curated landscape previews for destination popups. These are illustrative
-    // photo previews (not claimed to be verified photos of each exact landmark).
+    // Use each destination's own Wikipedia thumbnail when available, with a
+    // landscape fallback while the unique image loads. This avoids repeating
+    // one fixed photo across every marker.
     const uttarakhandPhotoThemes = {
       mountain: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=760&q=82',
       lake: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=760&q=82',
@@ -1186,9 +1187,31 @@
       const type = place.type.toLowerCase();
       if (/lake|water/.test(type)) return uttarakhandPhotoThemes.lake;
       if (/wildlife|nature|forest|park/.test(type)) return uttarakhandPhotoThemes.forest;
-      if (/river|adventure/.test(type)) return uttarakhandPhotoThemes.mountain;
+      if (/river|adventure/.test(type)) return uttarakhandPhotoThemes.river;
       if (/heritage|temple|pilgrimage|culture/.test(type)) return uttarakhandPhotoThemes.heritage;
       return uttarakhandPhotoThemes.mountain;
+    }
+    async function loadDestinationPhoto(place, image) {
+      if (!image || image.dataset.photoLoaded === 'true' || image.dataset.photoLoading === 'true') return;
+      image.dataset.photoLoading = 'true';
+      try {
+        const title = place.name.replace(/ /g, '_');
+        const response = await fetch('https://en.wikipedia.org/api/rest_v1/page/summary/' + encodeURIComponent(title), {
+          headers: { 'Accept': 'application/json' }
+        });
+        if (!response.ok) return;
+        const data = await response.json();
+        const thumbnail = data.thumbnail?.source || data.originalimage?.source;
+        if (thumbnail && image.isConnected) {
+          image.src = thumbnail;
+          image.dataset.photoLoaded = 'true';
+          image.alt = place.name + ' destination photo';
+        }
+      } catch (error) {
+        // Keep the local themed fallback if the destination has no Wikipedia photo.
+      } finally {
+        image.dataset.photoLoading = 'false';
+      }
     }
 
     const uttarakhandHighlightLayer = L.layerGroup();
@@ -1212,7 +1235,18 @@
           pane: 'destination-highlights', riseOnHover: true, zIndexOffset: 900 + index
         });
         const photoUrl = getUttarakhandPhoto(place);
-        marker.bindPopup(`<div class="oo-destination-popup oo-destination-image-only"><img class="oo-destination-photo" src="${photoUrl}" alt="${escapeHTML(place.name)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'"></div>`);
+        marker.bindPopup(`<div class="oo-destination-popup oo-destination-image-only"><img class="oo-destination-photo" src="${photoUrl}" alt="${escapeHTML(place.name)} destination photo" loading="lazy" referrerpolicy="no-referrer"></div>`, {
+          closeButton: true, autoPan: true, keepInView: true
+        });
+        marker.on('mouseover', () => {
+          marker.openPopup();
+          const image = marker.getPopup()?.getElement()?.querySelector('.oo-destination-photo');
+          loadDestinationPhoto(place, image);
+        });
+        marker.on('popupopen', () => {
+          const image = marker.getPopup()?.getElement()?.querySelector('.oo-destination-photo');
+          loadDestinationPhoto(place, image);
+        });
         marker.on('click', () => {
           if (map.getZoom() < 9) map.flyTo([place.lat, place.lng], 9, {duration: 1.25, easeLinearity: 0.22});
         });
