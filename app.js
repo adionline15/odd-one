@@ -831,21 +831,15 @@
     updateMapContext();
     loadObservationsInView();
 
-    // Manual Point Select Popup
-    map.on('click', e => {
+    // Map background clicks should never expose raw coordinates to visitors.
+    map.on('click', () => {
       if (selectedObservationLayer) {
         selectedObservationLayer.setStyle({ weight: 2, opacity: 1, fillOpacity: 0.88 });
         selectedObservationLayer.getElement()?.classList.remove('road-intel-selected');
         selectedObservationLayer = null;
       }
       document.getElementById('road-intel-overlay')?.classList.add('hidden');
-      const lat = e.latlng.lat.toFixed(5), lng = e.latlng.lng.toFixed(5);
-      L.popup().setLatLng(e.latlng)
-        .setContent(`<div class="space-y-1">
-          <p class="text-[9px] uppercase tracking-wider text-zinc-500 font-bold">Selected Coordinate</p>
-          <p class="text-xs font-mono-lux text-white">${lat}, ${lng}</p>
-        </div>`)
-        .openOn(map);
+      map.closePopup();
     });
 
     // ── MAP TILE LAYER SELECTION ──
