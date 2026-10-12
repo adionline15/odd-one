@@ -691,3 +691,110 @@ body>nav[aria-label="Primary navigation"] .border-black\/10{border-color:rgba(22
 .leaflet-popup-content{margin:13px 15px!important;}
 .leaflet-popup-close-button{color:#c9d2c1!important;}
 .oo-location-popup div{display:none!important;}
+
+
+/* ── ODD-ONE MONOCHROME + ELECTRIC BLUE MAP THEME ── */
+:root{
+  --oo-night:#05070b;
+  --oo-panel:rgba(9,13,20,.96);
+  --oo-panel-border:rgba(160,190,220,.18);
+  --oo-muted:#9aa8ba;
+  --oo-green:#4da3ff;
+  --oo-blue:#1687ff;
+  --oo-blue-bright:#5db5ff;
+  --oo-white:#f5f8ff;
+}
+html,body{background:#05070b!important;color:var(--oo-white)!important;}
+#map{background:#080d16!important;}
+#map .leaflet-tile-pane{
+  filter:grayscale(1) brightness(.72) contrast(1.12);
+}
+#map .leaflet-control-attribution{
+  background:rgba(4,8,14,.86)!important;color:#a8b5c7!important;
+}
+#map .leaflet-control-attribution a{color:#65b5ff!important;}
+#map .leaflet-bar{
+  border:1px solid rgba(120,175,235,.28)!important;
+  box-shadow:0 8px 26px rgba(0,0,0,.34)!important;
+}
+#map .leaflet-bar a,
+#map .leaflet-bar a:hover{
+  background:#0b111c!important;color:#f4f8ff!important;border-color:rgba(120,175,235,.2)!important;
+}
+#map .leaflet-bar a:hover{background:#102844!important;color:#6fc0ff!important;}
+#map .leaflet-control-scale-line{
+  background:rgba(4,8,14,.8)!important;color:#eef5ff!important;border-color:#d6e5f8!important;
+}
+#map .leaflet-popup-content-wrapper,#map .leaflet-popup-tip{
+  background:rgba(7,12,21,.98)!important;
+  border-color:rgba(74,163,255,.34)!important;
+  box-shadow:0 14px 38px rgba(0,0,0,.48)!important;
+}
+#map .leaflet-popup-close-button{color:#c8d8ed!important;}
+nav[aria-label="Primary navigation"]{
+  background:rgba(5,8,14,.97)!important;color:#f5f8ff!important;
+  border-color:rgba(160,190,220,.15)!important;
+}
+nav[aria-label="Primary navigation"] button:hover{color:#71bdff!important;}
+nav[aria-label="Primary navigation"] button[onclick*="showTab('route')"]{
+  background:#1687ff!important;color:#fff!important;
+  box-shadow:0 6px 20px rgba(22,135,255,.24)!important;
+}
+#sidebar,#sheet{
+  background:rgba(7,11,19,.98)!important;color:#f4f8ff!important;
+  border-color:rgba(160,190,220,.17)!important;
+}
+#sidebar>div:first-child,#sheet .flex.border-b{
+  background:#0b111c!important;border-color:rgba(160,190,220,.15)!important;
+}
+#sidebar>div:first-child button:hover,
+#sheet .flex.border-b button:hover{background:#111f31!important;color:#eaf5ff!important;}
+#sidebar>div:first-child button.text-white,
+#sidebar>div:first-child button.border-white,
+#sidebar>div:first-child button.on,
+#sidebar>div[role="tablist"][aria-label="Road intelligence views"]>button.on,
+#sidebar>div[role="tablist"][aria-label="Road intelligence views"]>button[aria-selected="true"]{
+  background:#102945!important;color:#8ccaff!important;
+  border-color:rgba(77,163,255,.38)!important;
+}
+#sidebar .tab-pane input,#sidebar .tab-pane select,#sidebar .tab-pane textarea,
+#sheet input{
+  background:#080e18!important;color:#f2f7ff!important;
+  border-color:rgba(140,180,225,.24)!important;
+}
+#sidebar .tab-pane input:focus,#sidebar .tab-pane select:focus,
+#sidebar .tab-pane textarea:focus,#sheet input:focus{
+  outline:1px solid #1687ff!important;border-color:#1687ff!important;
+}
+#sidebar .tab-pane #d-go-btn,#sheet #m-go-btn,
+#map-command-deck .map-deck-btn[aria-pressed="true"],
+#map-command-deck .map-deck-btn.active{
+  background:#1687ff!important;color:#fff!important;border-color:#1687ff!important;
+  box-shadow:0 6px 18px rgba(22,135,255,.2)!important;
+}
+#toggle-btn,#map-command-deck .map-deck-icon-btn{
+  background:#0b111c!important;color:#eaf2ff!important;
+  border-color:rgba(140,180,225,.2)!important;
+}
+#toggle-btn:hover,#map-command-deck .map-deck-icon-btn:hover{
+  background:#102945!important;color:#79c1ff!important;border-color:#4da3ff!important;
+}
+#route-status-overlay>div,#map-feedback-toast{
+  background:rgba(5,10,18,.96)!important;color:#f4f8ff!important;
+  border-color:rgba(77,163,255,.32)!important;
+}
+#route-status-path{color:#f4f8ff!important;}
+#route-status-distance,#route-status-time{color:#9eacc0!important;}
+.map-context-pill strong{color:#70bdff!important;}
+#map-cinematic-frame{
+  border-color:rgba(100,170,240,.12)!important;
+  box-shadow:inset 0 0 90px rgba(0,0,0,.18)!important;
+}
+@media(max-width:767px){
+  body>nav[aria-label="Primary navigation"]{
+    background:rgba(5,8,14,.98)!important;color:#f5f8ff!important;
+  }
+  body>nav[aria-label="Primary navigation"] button.sm\\:hidden{
+    background:#1687ff!important;color:#fff!important;
+  }
+}
