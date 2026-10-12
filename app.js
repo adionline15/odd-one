@@ -39,9 +39,11 @@
     }
 
     // Initial tile layer setup
-    tile = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+    tile = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      subdomains: 'abc',
       maxZoom: 19,
-      attribution: '&copy; Esri, HERE, Garmin, USGS, Intermap, INCREMENT P, and the GIS User Community'
+      className: 'odd-one-dark-tiles',
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
     setTimeout(() => map.invalidateSize(), 300);
     function updateMapIntelligenceHUD() {
@@ -54,16 +56,45 @@
     }
     map.on('moveend zoomend', updateMapIntelligenceHUD);
 
-    // World-scale fallback: once the road map reaches its global limit,
-    // return to the real 3D Earth instead of showing repeated flat worlds.
+    // World-scale fallback: hand back to the globe only at the map's
+    // world limit, preserving the current camera center instead of snapping
+    // to a hard-coded India view.
+    let globeZoomHandoff = false;
+    let globeHandoffTimer = null;
+    map.on('zoom', () => {
+      if (!earthGlobe || !earthGlobeEl || globeZoomHandoff) return;
+      const zoom = map.getZoom();
+      // Start the globe handoff at world scale, but do not reset its camera
+      // on every wheel tick. That repeated reset is what feels like a jump.
+      if (zoom <= 2.5 && !earthOverviewActive) {
+        const center = map.getCenter();
+        globeZoomHandoff = true;
+        setEarthOverview(true);
+        earthGlobe.controls().autoRotate = false;
+        earthGlobe.controls().enableZoom = false;
+        earthGlobe.pointOfView(
+          { lat: center.lat, lng: center.lng, altitude: Math.max(1.7, 1.6 + (2.5 - zoom) * 0.45) },
+          prefersReducedMotion ? 0 : 520
+        );
+      }
+    });
     map.on('zoomend', () => {
-      if (!earthGlobe || !earthGlobeEl || !earthOverviewActive) {
-        if (earthGlobe && map.getZoom() <= 1) {
-          setEarthOverview(true);
-          earthGlobe.controls().autoRotate = !prefersReducedMotion;
-          earthGlobe.pointOfView({ lat: 22, lng: 78, altitude: 2.15 }, prefersReducedMotion ? 0 : 650);
-        }
-        return;
+      if (!earthGlobe || !earthGlobeEl) return;
+      if (earthOverviewActive && map.getZoom() <= 2.5) {
+        clearTimeout(globeHandoffTimer);
+        const center = map.getCenter();
+        // Keep the user's geographic focus. Never spin away to another
+        // continent just because the map reached its minimum zoom.
+        earthGlobe.controls().autoRotate = false;
+        earthGlobe.controls().enableZoom = true;
+        earthGlobe.pointOfView(
+          { lat: center.lat, lng: center.lng, altitude: Math.max(1.7, 1.6 + (2.5 - map.getZoom()) * 0.45) },
+          prefersReducedMotion ? 0 : 420
+        );
+        globeHandoffTimer = setTimeout(() => { globeZoomHandoff = false; }, 500);
+      } else if (map.getZoom() > 2.5 && earthOverviewActive) {
+        // Do not fight active map navigation by snapping the globe back.
+        globeZoomHandoff = false;
       }
     });
 
@@ -75,18 +106,25 @@
     let earthGlobe = null;
     let earthOverviewActive = true;
     const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches === true;
-    const EARTH_CAMERA_MS = prefersReducedMotion ? 450 : 1350;
-    const DETAIL_FLY_MS = prefersReducedMotion ? 900 : 2250;
+    const EARTH_CAMERA_MS = prefersReducedMotion ? 450 : 2100;
+    const DETAIL_FLY_MS = prefersReducedMotion ? 900 : 3200;
     let earthTransitionTimer = null;
     let earthTransitionId = 0;
 
     function setEarthOverview(active) {
       earthOverviewActive = active;
       if (earthGlobe) {
+        // The WebGL globe is expensive to keep rendering under the road map.
+        // Resume it only while visible so the detail map stays responsive.
+        if (active) earthGlobe.resumeAnimation?.();
+        else earthGlobe.pauseAnimation?.();
         earthGlobe.controls().autoRotate = active && !prefersReducedMotion;
         if (active) earthGlobe.controls().enableZoom = true;
       }
       earthGlobeEl?.classList.toggle('is-visible', active);
+      // Cross-fade the two renderers instead of letting the flat world map
+      // peek through around the globe during the handoff.
+      document.getElementById('map')?.classList.toggle('earth-mode', active);
       earthGlobeEl?.setAttribute('aria-hidden', active ? 'false' : 'true');
       earthGlobeEl?.setAttribute('tabindex', active ? '0' : '-1');
       updateMapContext();
@@ -119,7 +157,7 @@
           .pointOfView({ lat: 22, lng: 78, altitude: 2.15 }, 0);
 
         earthGlobe.controls().autoRotate = !prefersReducedMotion;
-        earthGlobe.controls().autoRotateSpeed = 0.28;
+        earthGlobe.controls().autoRotateSpeed = 0.42;
         earthGlobe.controls().enableZoom = true;
         earthGlobe.onGlobeReady(() => {
           earthGlobeEl.classList.remove('is-loading');
@@ -128,7 +166,7 @@
           if (!Number.isFinite(lat) || !Number.isFinite(lng)) return;
           locationRequestId += 1;
           cancelActiveRoute(true);
-          showEarthThenZoom([lat, lng], 13, 'Selected location');
+          showEarthThenZoom([lat, lng], 16, 'Selected location');
         });
         earthGlobeEl.addEventListener('keydown', event => {
           const point = earthGlobe?.pointOfView();
@@ -142,11 +180,11 @@
             event.preventDefault();
             locationRequestId += 1;
             cancelActiveRoute(true);
-            showEarthThenZoom([point.lat, point.lng], 13, 'Selected location');
+            showEarthThenZoom([point.lat, point.lng], 16, 'Selected location');
             return;
           } else return;
           event.preventDefault();
-          earthGlobe.pointOfView(next, 250);
+          earthGlobe.pointOfView(next, prefersReducedMotion ? 0 : 650);
         });
 
         const resizeGlobe = () => {
@@ -192,6 +230,7 @@
       // Reduced-motion users should reach the requested location without the
       // globe camera sweep or delayed handoff.
       if (prefersReducedMotion) {
+        earthGlobeEl?.classList.remove('is-transitioning');
         setEarthOverview(false);
         earthGlobe.controls().enableZoom = true;
         map.invalidateSize();
@@ -202,6 +241,7 @@
       }
 
       setEarthOverview(true);
+      earthGlobeEl?.classList.add('is-transitioning');
 
       // Cinematic navigation: settle on the destination first, then hand off
       // to the detailed road map. The two engines overlap briefly so the
@@ -230,6 +270,7 @@
           easeLinearity: 0.12
         });
         placeMarker(coords, name, markerColor);
+        earthGlobeEl?.classList.remove('is-transitioning');
       }, EARTH_CAMERA_MS);
     }
 
@@ -238,7 +279,6 @@
       document.getElementById('map')?.classList.remove('globe-overview');
     }
     map.on('resize', updateGlobeOverview);
-    setTimeout(initEarthGlobe, 0);
 
 
     // ── HEXAGONAL ROAD INTELLIGENCE GRID ──
@@ -458,13 +498,16 @@
     });
 
     function updateObservationStatus(count, state='READY') {
+      const strip = document.getElementById('observation-status-strip');
       const countEl = document.getElementById('obs-status-count');
       const stateEl = document.getElementById('obs-status-state');
-      const dot = document.getElementById('obs-status-dot');
-      if (!countEl || !stateEl || !dot) return;
-      countEl.textContent = Number.isFinite(count) ? String(count) : '--';
-      stateEl.textContent = state;
-      dot.className = 'w-1.5 h-1.5 rounded-full ' + (state === 'READY' ? 'bg-emerald-400' : state === 'NO DATA' ? 'bg-amber-400' : 'bg-rose-400');
+      if (!countEl || !stateEl || !strip) return;
+      const normalized = state === 'READY' ? (count > 0 ? 'live' : 'empty') :
+        state === 'NO DATA' ? 'empty' : state === 'LOADING' ? 'loading' : 'error';
+      strip.dataset.state = normalized;
+      countEl.textContent = Number.isFinite(count) ? String(count) : '—';
+      stateEl.textContent = normalized === 'live' ? 'LIVE' :
+        normalized === 'empty' ? 'NO DATA' : normalized === 'loading' ? 'LOADING' : 'UNAVAILABLE';
     }
 
     function applyObservationFilters() {
@@ -798,22 +841,48 @@
     updateMapContext();
     loadObservationsInView();
 
-    // Manual Point Select Popup
-    map.on('click', e => {
+    // Map background clicks should never expose raw coordinates to visitors.
+    map.on('click', () => {
       if (selectedObservationLayer) {
         selectedObservationLayer.setStyle({ weight: 2, opacity: 1, fillOpacity: 0.88 });
         selectedObservationLayer.getElement()?.classList.remove('road-intel-selected');
         selectedObservationLayer = null;
       }
       document.getElementById('road-intel-overlay')?.classList.add('hidden');
-      const lat = e.latlng.lat.toFixed(5), lng = e.latlng.lng.toFixed(5);
-      L.popup().setLatLng(e.latlng)
-        .setContent(`<div class="space-y-1">
-          <p class="text-[9px] uppercase tracking-wider text-zinc-500 font-bold">Selected Coordinate</p>
-          <p class="text-xs font-mono-lux text-white">${lat}, ${lng}</p>
-        </div>`)
-        .openOn(map);
+      map.closePopup();
     });
+
+    
+    // Lightweight premium cursor accent: animate only on pointer events and
+    // only over controls, never over the draggable map or text inputs.
+    (() => {
+      if (window.matchMedia('(hover: none), (pointer: coarse)').matches ||
+          window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const cursor = document.createElement('div');
+      cursor.id = 'oo-cursor-accent';
+      cursor.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(cursor);
+      let frame = 0, x = -100, y = -100, target = null;
+      const interactive = 'button,a,[role="button"],[role="option"],.leaflet-control-zoom a,#toggle-btn';
+      window.addEventListener('pointermove', event => {
+        target = event.target instanceof Element ? event.target.closest(interactive) : null;
+        document.body.classList.toggle('oo-cursor-hover', Boolean(target));
+        x = event.clientX;
+        y = event.clientY;
+        if (frame) return;
+        frame = requestAnimationFrame(() => {
+          cursor.style.transform = `translate3d(${x}px,${y}px,0) translate(-50%,-50%)`;
+          frame = 0;
+        });
+      }, { passive: true });
+      window.addEventListener('pointerout', event => {
+        if (!event.relatedTarget) {
+          document.body.classList.remove('oo-cursor-hover');
+          cursor.style.opacity = '0';
+        }
+      }, { passive: true });
+      window.addEventListener('pointerover', () => { cursor.style.opacity = ''; }, { passive: true });
+    })();
 
     // ── MAP TILE LAYER SELECTION ──
     function setTile(t) {
@@ -821,8 +890,10 @@
       if (t === 'sat') {
         document.getElementById('map').classList.remove('map-dark');
         tile = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-          maxZoom: 19,
-          maxNativeZoom: 19,
+          // Keep satellite zoom below the level where Esri commonly returns
+          // unavailable-imagery tiles; OSM retains its separate zoom range.
+          maxZoom: 17,
+          maxNativeZoom: 17,
           attribution: '&copy; Esri, Maxar, Earthstar Geographics, and the GIS User Community'
         }).addTo(map);
         document.getElementById('btn-sat').classList.add('active');
@@ -830,9 +901,11 @@
         document.getElementById('btn-map').classList.remove('active');
         document.getElementById('btn-map').setAttribute('aria-pressed', 'false');
       } else {
-        tile = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+        tile = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          subdomains: 'abc',
           maxZoom: 19,
-          attribution: '&copy; Esri, HERE, Garmin, USGS, Intermap, INCREMENT P, and the GIS User Community'
+          className: 'odd-one-dark-tiles',
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
         document.getElementById('btn-map').classList.add('active');
         document.getElementById('btn-map').setAttribute('aria-pressed', 'true');
@@ -1099,9 +1172,7 @@
           className: '', iconSize: [12, 12], iconAnchor: [6, 6]
         })
       }).addTo(map);
-      const latLabel = Number(coords[0]).toFixed(5);
-      const lonLabel = Number(coords[1]).toFixed(5);
-      locMarker.bindPopup(`<div class="oo-location-popup"><strong>${escapeHTML(name)}</strong><div>${latLabel}, ${lonLabel}</div></div>`);
+      locMarker.bindPopup(`<div class="oo-location-popup"><strong>${escapeHTML(name)}</strong></div>`);
     }
 
     function escapeHTML(value) {
@@ -1109,6 +1180,8 @@
         '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
       }[char]));
     }
+
+    // Uttarakhand tourist-destination highlights removed by request.
 
     // ── HIGH SPEED ROUTER ENGINE (OSRM) ──
     function drawRouteLine(coords, dashed = false) {
