@@ -656,6 +656,7 @@ body>nav[aria-label="Primary navigation"] .border-black\/10{border-color:rgba(22
 }
 
 /* Keep the public OSM road tiles readable while matching the dark infrastructure UI. */
+.leaflet-layer.odd-one-dark-tiles .leaflet-tile,
 .leaflet-tile.odd-one-dark-tiles{
   filter: brightness(.58) invert(.88) hue-rotate(180deg) saturate(.62) contrast(1.08);
 }
