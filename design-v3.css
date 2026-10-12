@@ -850,3 +850,18 @@ nav[aria-label="Primary navigation"] button[onclick*="showTab('route')"]{
     filter:none!important;
   }
 }
+
+
+/* ── SUBTLE EARTH-SIDE ANIMATION: orbital halos + moving light points ── */
+#earth-globe .oo-earth-accents{position:absolute;inset:0;z-index:3;overflow:hidden;pointer-events:none;}
+#earth-globe .oo-orbit-halo{position:absolute;left:50%;top:50%;width:min(62vw,760px);height:min(28vw,340px);border:1px solid rgba(61,160,255,.22);border-radius:50%;transform:translate(-50%,-50%) rotate(-18deg);box-shadow:0 0 18px rgba(22,135,255,.04),inset 0 0 18px rgba(22,135,255,.025);animation:oo-halo-breathe 6s ease-in-out infinite alternate;}
+#earth-globe .oo-halo-two{width:min(74vw,920px);height:min(36vw,440px);transform:translate(-50%,-50%) rotate(17deg);border-color:rgba(95,190,255,.12);animation-delay:-3s;}
+#earth-globe .oo-orbit-particle{position:absolute;left:50%;top:50%;width:5px;height:5px;border-radius:50%;background:#a8dcff;box-shadow:0 0 8px 2px rgba(54,157,255,.8),0 0 22px rgba(22,135,255,.45);}
+#earth-globe .oo-particle-one{animation:oo-particle-orbit 13s linear infinite;}
+#earth-globe .oo-particle-two{width:3px;height:3px;background:#e1f5ff;animation:oo-particle-orbit 19s linear infinite reverse;}
+#earth-globe .oo-particle-three{width:4px;height:4px;background:#3b9cff;animation:oo-particle-orbit 16s linear infinite;animation-delay:-7s;}
+@keyframes oo-halo-breathe{from{opacity:.35}to{opacity:.9}}
+@keyframes oo-particle-orbit{0%{transform:rotate(0deg) translateX(min(31vw,380px)) rotate(0deg)}100%{transform:rotate(360deg) translateX(min(31vw,380px)) rotate(-360deg)}}
+#earth-globe.is-transitioning .oo-earth-accents{opacity:.3;transition:opacity .4s ease;}
+@media(max-width:640px){#earth-globe .oo-orbit-halo{width:105vw;height:52vw}#earth-globe .oo-halo-two{width:120vw;height:65vw}#earth-globe .oo-particle-one{animation-duration:18s}#earth-globe .oo-particle-two{animation-duration:23s}}
+@media(prefers-reduced-motion:reduce){#earth-globe .oo-orbit-halo,#earth-globe .oo-orbit-particle{animation:none!important;opacity:.55}}
