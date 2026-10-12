@@ -798,3 +798,19 @@ nav[aria-label="Primary navigation"] button[onclick*="showTab('route')"]{
     background:#1687ff!important;color:#fff!important;
   }
 }
+
+
+/* ── Map legibility hotfix: never grayscale satellite imagery ──
+   Apply the monochrome treatment only to the standard OSM road layer.
+   Satellite tiles retain their natural color and luminance.
+*/
+#map .leaflet-tile-pane{
+  filter:none!important;
+}
+#map .leaflet-layer:not(.odd-one-dark-tiles) .leaflet-tile{
+  filter:none!important;
+}
+#map .leaflet-layer.odd-one-dark-tiles .leaflet-tile,
+#map .leaflet-tile.odd-one-dark-tiles{
+  filter:grayscale(1) brightness(.88) contrast(1.06) saturate(.8)!important;
+}
