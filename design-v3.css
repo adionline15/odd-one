@@ -690,11 +690,4 @@ body>nav[aria-label="Primary navigation"] .border-black\/10{border-color:rgba(22
 }
 .leaflet-popup-content{margin:13px 15px!important;}
 .leaflet-popup-close-button{color:#c9d2c1!important;}
-@media(max-width:640px){
-  .oo-destination-label{font-size:9px;padding:4px 6px;left:10px;top:-11px;}
-  #map.destinations-detail .oo-destination-label{max-width:140px;overflow:hidden;text-overflow:ellipsis;}
-  .oo-destination-pulse{width:22px;height:22px;left:-11px;top:-11px;}
-}
-
-
 .oo-location-popup div{display:none!important;}
