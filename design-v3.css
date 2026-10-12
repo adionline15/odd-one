@@ -996,3 +996,77 @@ body.oo-cursor-hover #toggle-btn{cursor:none!important;}
   #observation-status-strip .obs-status-label{display:none!important;}
 }
 @media(prefers-reduced-motion:reduce){#observation-status-strip #obs-status-dot{animation:none!important;}}
+
+
+/* ── Observation telemetry / refined map HUD ──
+   Quiet by default, legible at a glance, and never competes with the map.
+*/
+#observation-status-strip{
+  position:absolute!important;
+  top:auto!important;
+  left:18px!important;
+  bottom:18px!important;
+  z-index:24!important;
+  display:flex!important;
+  align-items:center!important;
+  gap:9px!important;
+  width:max-content!important;
+  max-width:calc(100% - 36px)!important;
+  min-height:34px!important;
+  padding:0 12px!important;
+  border:1px solid rgba(164,190,220,.18)!important;
+  border-left:2px solid #fbbf24!important;
+  border-radius:8px!important;
+  background:rgba(8,13,21,.92)!important;
+  color:#f2f6fc!important;
+  box-shadow:0 6px 20px rgba(0,0,0,.18)!important;
+  backdrop-filter:blur(12px)!important;
+  -webkit-backdrop-filter:blur(12px)!important;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace!important;
+  letter-spacing:.025em!important;
+  white-space:nowrap!important;
+  pointer-events:none!important;
+}
+#observation-status-strip #obs-status-dot{
+  display:block!important;flex:0 0 6px!important;
+  width:6px!important;height:6px!important;border-radius:50%!important;
+  background:#fbbf24!important;color:#fbbf24!important;
+  box-shadow:0 0 9px currentColor!important;
+}
+#observation-status-strip .obs-status-label{
+  color:#9eafc4!important;
+  font-size:9px!important;font-weight:650!important;
+  text-transform:uppercase!important;letter-spacing:.09em!important;
+}
+#observation-status-strip #obs-status-count{
+  color:#f7fbff!important;
+  font-size:12px!important;font-weight:750!important;
+  font-variant-numeric:tabular-nums!important;
+  padding-left:8px!important;
+  border-left:1px solid rgba(164,190,220,.20)!important;
+}
+#observation-status-strip #obs-status-state{
+  color:#fbbf24!important;
+  font-size:8px!important;font-weight:700!important;
+  letter-spacing:.09em!important;
+  padding:4px 6px!important;
+  border-radius:4px!important;
+  background:rgba(251,191,36,.09)!important;
+  border:1px solid rgba(251,191,36,.14)!important;
+}
+#observation-status-strip[data-state="live"]{border-left-color:#34d399!important;}
+#observation-status-strip[data-state="live"] #obs-status-dot{background:#34d399!important;color:#34d399!important;}
+#observation-status-strip[data-state="live"] #obs-status-state{color:#6ee7b7!important;background:rgba(52,211,153,.09)!important;border-color:rgba(52,211,153,.15)!important;}
+#observation-status-strip[data-state="empty"]{border-left-color:#7f91a8!important;}
+#observation-status-strip[data-state="empty"] #obs-status-dot{background:#94a3b8!important;color:#94a3b8!important;box-shadow:none!important;}
+#observation-status-strip[data-state="empty"] #obs-status-state{color:#c0ccda!important;background:rgba(148,163,184,.08)!important;border-color:rgba(148,163,184,.12)!important;}
+#observation-status-strip[data-state="error"]{border-left-color:#fb7185!important;}
+#observation-status-strip[data-state="error"] #obs-status-dot{background:#fb7185!important;color:#fb7185!important;}
+#observation-status-strip[data-state="error"] #obs-status-state{color:#fda4af!important;background:rgba(251,113,133,.09)!important;border-color:rgba(251,113,133,.16)!important;}
+#observation-status-strip[data-state="loading"] #obs-status-dot{animation:oo-observation-pulse 1.4s ease-in-out infinite;}
+@media(max-width:640px){
+  #observation-status-strip{left:10px!important;bottom:10px!important;max-width:calc(100% - 20px)!important;min-height:31px!important;padding:0 9px!important;gap:7px!important;}
+  #observation-status-strip .obs-status-label{font-size:8px!important;letter-spacing:.05em!important;}
+  #observation-status-strip #obs-status-count{font-size:11px!important;}
+}
+@media(prefers-reduced-motion:reduce){#observation-status-strip #obs-status-dot{animation:none!important;}}
