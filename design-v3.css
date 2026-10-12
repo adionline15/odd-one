@@ -464,3 +464,193 @@ nav[aria-label="Primary navigation"] button[onclick*="showTab('route')"]{box-sha
 @media (max-width: 767px){
   #sidebar{display:none!important;}
 }
+
+
+/* ─────────────────────────────────────────────────────────────
+   ODD-ONE CINEMATIC ROAD MAP
+   Inspired by dark urban infrastructure / reconstruction maps.
+   Keep the map readable; verified road data remains the source of truth.
+   ───────────────────────────────────────────────────────────── */
+:root{
+  --oo-night:#080a0b;
+  --oo-panel:rgba(11,14,15,.94);
+  --oo-panel-border:rgba(210,225,218,.17);
+  --oo-muted:#9ba6a0;
+  --oo-green:#b7f36b;
+}
+html,body{background:var(--oo-night)!important;color:#f4f7f4!important;}
+body>nav[aria-label="Primary navigation"]{
+  background:rgba(5,7,7,.98)!important;
+  color:#f7f9f7!important;
+  border-bottom:1px solid rgba(225,238,230,.17)!important;
+  box-shadow:0 8px 26px rgba(0,0,0,.32)!important;
+}
+body>nav[aria-label="Primary navigation"] .font-serif-lux,
+body>nav[aria-label="Primary navigation"] .font-serif-lux span{
+  color:#f7f9f7!important;
+  -webkit-text-fill-color:currentColor!important;
+}
+body>nav[aria-label="Primary navigation"] .text-zinc-500,
+body>nav[aria-label="Primary navigation"] .text-zinc-600{color:#929d97!important;}
+body>nav[aria-label="Primary navigation"] .border-black\/10{border-color:rgba(225,238,230,.15)!important;}
+#map{
+  background:#090c0c!important;
+  isolation:isolate;
+}
+#map .leaflet-tile-pane{
+  filter:brightness(.82) contrast(1.12) saturate(.72);
+}
+#map .leaflet-control-attribution{
+  background:rgba(5,7,7,.78)!important;
+  color:#9aa69f!important;
+  border:1px solid rgba(255,255,255,.10)!important;
+  border-radius:5px 0 0 0!important;
+  padding:3px 6px!important;
+}
+#map .leaflet-control-attribution a{color:#c7ed91!important;}
+#map .leaflet-bar{
+  border:1px solid rgba(224,238,228,.18)!important;
+  border-radius:8px!important;
+  overflow:hidden;
+  box-shadow:0 8px 24px rgba(0,0,0,.35)!important;
+}
+#map .leaflet-bar a,
+#map .leaflet-bar a:hover{
+  background:#111615!important;
+  color:#e8eee9!important;
+  border-bottom-color:rgba(224,238,228,.12)!important;
+}
+#map .leaflet-bar a:hover{background:#202923!important;color:var(--oo-green)!important;}
+#map .leaflet-control-scale-line{
+  background:rgba(6,9,8,.78)!important;
+  color:#d0d9d2!important;
+  border-color:#a7b3aa!important;
+  text-shadow:none!important;
+}
+#map .leaflet-popup-content-wrapper,
+#map .leaflet-popup-tip{
+  background:#111615!important;
+  color:#f3f7f3!important;
+  border:1px solid rgba(211,232,216,.17)!important;
+  box-shadow:0 18px 45px rgba(0,0,0,.42)!important;
+}
+#map .leaflet-popup-content{margin:13px 16px!important;}
+#map .leaflet-popup-close-button{color:#b8c4bb!important;}
+#map-command-deck{
+  background:rgba(8,11,10,.94)!important;
+  border:1px solid var(--oo-panel-border)!important;
+  box-shadow:0 16px 42px rgba(0,0,0,.42)!important;
+  backdrop-filter:blur(20px)!important;
+}
+#map-command-deck .map-layer-switcher{background:#171c19!important;}
+#map-command-deck .map-deck-btn{color:#9da9a0!important;}
+#map-command-deck .map-deck-btn[aria-pressed="true"]{
+  background:#29352a!important;
+  color:#e5ffd0!important;
+  border-color:rgba(183,243,107,.28)!important;
+  box-shadow:inset 0 0 0 1px rgba(183,243,107,.07)!important;
+}
+#map-command-deck .map-deck-icon-btn{
+  background:#151a17!important;
+  color:#e5ece6!important;
+  border-color:rgba(225,238,230,.15)!important;
+}
+#map-command-deck .map-deck-icon-btn:hover{
+  background:#263127!important;
+  color:var(--oo-green)!important;
+  border-color:rgba(183,243,107,.32)!important;
+}
+#intelligence-hero>div,
+#map-intelligence-hud .intel-card,
+#observation-status-strip .intel-card{
+  background:rgba(7,10,9,.86)!important;
+  border-color:rgba(216,235,220,.17)!important;
+  box-shadow:0 18px 45px rgba(0,0,0,.30)!important;
+  backdrop-filter:blur(18px)!important;
+}
+#intelligence-hero h2{color:#f3f7f3!important;}
+#intelligence-hero p{color:#a3ada6!important;}
+#intelligence-hero .text-zinc-500,
+#intelligence-hero .text-zinc-600{color:#a0aaa2!important;}
+#intelligence-hero .border-zinc-800{border-color:rgba(221,239,225,.14)!important;}
+#map-intelligence-hud .intel-value{color:#eff5ef!important;}
+#map-intelligence-hud .intel-kicker,
+#observation-status-strip .intel-kicker{color:#a9b5ac!important;}
+.map-context-pill{
+  background:rgba(8,11,10,.88)!important;
+  border-color:rgba(221,239,225,.18)!important;
+  color:#aab6ad!important;
+  box-shadow:0 8px 24px rgba(0,0,0,.32)!important;
+  backdrop-filter:blur(16px)!important;
+}
+.map-context-pill strong{color:var(--oo-green)!important;}
+#map-scale-wrap .map-scale-label{color:#9ba79f!important;}
+#map-cinematic-frame{
+  border-color:rgba(198,220,202,.10)!important;
+  box-shadow:inset 0 0 90px rgba(0,0,0,.12)!important;
+  pointer-events:none!important;
+}
+#sidebar{
+  background:rgba(9,12,11,.97)!important;
+  border-left:1px solid rgba(225,238,230,.15)!important;
+  box-shadow:-18px 0 45px rgba(0,0,0,.30)!important;
+  color:#eaf0eb!important;
+}
+#sidebar>div:first-child{background:#111614!important;border-color:rgba(225,238,230,.12)!important;}
+#sidebar>div:first-child button{color:#9ca89f!important;}
+#sidebar>div:first-child button:hover{color:#f5faf5!important;background:#1b231d!important;}
+#sidebar>div:first-child button.text-white,
+#sidebar>div:first-child button.border-white,
+#sidebar>div:first-child button.on{
+  background:#263126!important;color:#e6ffd1!important;border-color:rgba(183,243,107,.20)!important;
+}
+#sidebar .tab-pane{color:#e9f0e9!important;}
+#sidebar .tab-pane input,
+#sidebar .tab-pane select,
+#sidebar .tab-pane textarea{
+  background:#111614!important;color:#edf3ee!important;border-color:rgba(225,238,230,.16)!important;
+}
+#sidebar .tab-pane input::placeholder,
+#sidebar .tab-pane textarea::placeholder{color:#78867b!important;}
+#sidebar .tab-pane #d-go-btn{
+  background:var(--oo-green)!important;color:#11170d!important;
+  box-shadow:0 8px 22px rgba(183,243,107,.12)!important;
+}
+#sidebar .tab-pane #d-go-btn:hover{background:#d0ff91!important;}
+#toggle-btn{background:#101512!important;color:#eaf1eb!important;border-color:rgba(225,238,230,.18)!important;}
+#toggle-btn:hover{background:#202a22!important;color:var(--oo-green)!important;}
+#sheet{
+  background:rgba(9,12,11,.96)!important;color:#eef3ef!important;
+  border-color:rgba(225,238,230,.16)!important;
+}
+#sheet .flex.border-b{background:#111614!important;border-color:rgba(225,238,230,.12)!important;}
+#sheet .flex.border-b button{color:#9da99f!important;}
+#sheet .flex.border-b button.border-white{color:#e6ffd1!important;box-shadow:inset 0 -2px 0 var(--oo-green)!important;}
+#sheet>.flex-1.overflow-y-auto{color:#eaf0eb!important;}
+#sheet input{background:#111614!important;color:#f0f5f1!important;border-color:rgba(225,238,230,.15)!important;}
+#sheet input::placeholder{color:#7c897f!important;}
+#sheet #m-go-btn{background:var(--oo-green)!important;color:#11170d!important;}
+#route-status-overlay>div{
+  background:rgba(7,10,9,.92)!important;color:#eff5ef!important;
+  border-color:rgba(183,243,107,.20)!important;backdrop-filter:blur(18px)!important;
+}
+#route-status-path{color:#eff5ef!important;}
+#route-status-distance,#route-status-time{color:#a3aea5!important;}
+#map-feedback-toast{background:rgba(9,12,11,.94)!important;color:#eff5ef!important;border-color:rgba(225,238,230,.16)!important;}
+@media(max-width:767px){
+  body>nav[aria-label="Primary navigation"]{
+    background:rgba(5,7,7,.98)!important;color:#f7f9f7!important;
+    border-bottom-color:rgba(225,238,230,.16)!important;
+  }
+  body>nav[aria-label="Primary navigation"] button.sm\\:hidden{
+    background:#b7f36b!important;color:#11170d!important;box-shadow:none!important;
+  }
+  #map-command-deck{background:rgba(8,11,10,.94)!important;border-color:rgba(225,238,230,.16)!important;}
+  .map-layer-switcher{background:#171c19!important;}
+  .map-layer-switcher .map-deck-btn{color:#9da9a0!important;}
+  .map-layer-switcher .map-deck-btn.active,
+  .map-layer-switcher .map-deck-btn[aria-pressed="true"]{
+    color:#e6ffd1!important;background:#29352a!important;box-shadow:none!important;
+  }
+  #map-command-deck .map-deck-icon-btn{background:#151a17!important;color:#e5ece6!important;border-color:rgba(225,238,230,.15)!important;}
+}
