@@ -56,16 +56,19 @@
     }
     map.on('moveend zoomend', updateMapIntelligenceHUD);
 
-    // World-scale fallback: once the road map reaches its global limit,
-    // return to the real 3D Earth instead of showing repeated flat worlds.
+    // World-scale fallback: hand back to the globe only at the map's
+    // world limit, preserving the current camera center instead of snapping
+    // to a hard-coded India view.
     map.on('zoomend', () => {
-      if (!earthGlobe || !earthGlobeEl || !earthOverviewActive) {
-        if (earthGlobe && map.getZoom() <= 1) {
-          setEarthOverview(true);
-          earthGlobe.controls().autoRotate = !prefersReducedMotion;
-          earthGlobe.pointOfView({ lat: 22, lng: 78, altitude: 2.15 }, prefersReducedMotion ? 0 : 650);
-        }
-        return;
+      if (!earthGlobe || !earthGlobeEl) return;
+      if (!earthOverviewActive && map.getZoom() <= 1) {
+        const center = map.getCenter();
+        setEarthOverview(true);
+        earthGlobe.controls().autoRotate = !prefersReducedMotion;
+        earthGlobe.pointOfView(
+          { lat: center.lat, lng: center.lng, altitude: 2.15 },
+          prefersReducedMotion ? 0 : 900
+        );
       }
     });
 
@@ -240,7 +243,6 @@
       document.getElementById('map')?.classList.remove('globe-overview');
     }
     map.on('resize', updateGlobeOverview);
-    setTimeout(initEarthGlobe, 0);
 
 
     // ── HEXAGONAL ROAD INTELLIGENCE GRID ──
