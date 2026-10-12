@@ -162,7 +162,7 @@
           if (!Number.isFinite(lat) || !Number.isFinite(lng)) return;
           locationRequestId += 1;
           cancelActiveRoute(true);
-          showEarthThenZoom([lat, lng], 13, 'Selected location');
+          showEarthThenZoom([lat, lng], 16, 'Selected location');
         });
         earthGlobeEl.addEventListener('keydown', event => {
           const point = earthGlobe?.pointOfView();
@@ -176,7 +176,7 @@
             event.preventDefault();
             locationRequestId += 1;
             cancelActiveRoute(true);
-            showEarthThenZoom([point.lat, point.lng], 13, 'Selected location');
+            showEarthThenZoom([point.lat, point.lng], 16, 'Selected location');
             return;
           } else return;
           event.preventDefault();
