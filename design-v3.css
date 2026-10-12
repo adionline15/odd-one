@@ -768,3 +768,24 @@ body>nav[aria-label="Primary navigation"] .border-black\/10{border-color:rgba(22
   #map.destinations-detail .oo-destination-label{max-width:140px;overflow:hidden;text-overflow:ellipsis;}
   .oo-destination-pulse{width:22px;height:22px;left:-11px;top:-11px;}
 }
+
+
+.oo-uttarakhand-control{margin-top:12px;margin-right:12px;}
+.oo-uttarakhand-control button{
+  display:flex;align-items:center;gap:9px;
+  padding:11px 14px;border-radius:7px;
+  color:#eaffc9;background:rgba(5,13,10,.91);
+  border:1px solid rgba(190,255,78,.45);
+  box-shadow:0 8px 24px rgba(0,0,0,.32),inset 0 1px rgba(255,255,255,.06);
+  font:800 9px/1 Inter,system-ui,sans-serif;letter-spacing:.13em;
+  cursor:pointer;backdrop-filter:blur(12px);
+  transition:background .2s ease,border-color .2s ease,transform .2s ease;
+}
+.oo-uttarakhand-control button:hover{
+  background:rgba(18,32,15,.97);border-color:#c8ff55;transform:translateY(-1px);
+}
+.oo-control-pulse{width:7px;height:7px;flex:0 0 7px;border-radius:50%;background:#c8ff55;box-shadow:0 0 10px rgba(200,255,85,.9);}
+@media(max-width:640px){
+  .oo-uttarakhand-control{margin-top:10px;margin-right:10px;}
+  .oo-uttarakhand-control button{font-size:8px;padding:10px 11px;}
+}
