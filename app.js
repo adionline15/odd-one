@@ -1145,6 +1145,92 @@
       }[char]));
     }
 
+    // ── UTTARAKHAND DESTINATION INTELLIGENCE ──
+    // Curated major visitor destinations from the official Uttarakhand
+    // tourism destination guide. Coordinates are approximate map pin locations;
+    // these are discovery highlights, not live safety/road-status claims.
+    const uttarakhandDestinations = [
+      {name:'Mussoorie',lat:30.4598,lng:78.0644,type:'Hill station'},
+      {name:'Dehradun',lat:30.3165,lng:78.0322,type:'City & gateway'},
+      {name:'Rishikesh',lat:30.0869,lng:78.2676,type:'River & adventure'},
+      {name:'Haridwar',lat:29.9457,lng:78.1642,type:'Heritage & pilgrimage'},
+      {name:'Chakrata',lat:30.7036,lng:77.8639,type:'Mountain escape'},
+      {name:'Lansdowne',lat:29.8372,lng:78.6871,type:'Hill station'},
+      {name:'Jim Corbett National Park',lat:29.5300,lng:78.7747,type:'Wildlife'},
+      {name:'Nainital',lat:29.3919,lng:79.4542,type:'Lake & hill station'},
+      {name:'Bhimtal',lat:29.3445,lng:79.5632,type:'Lake'},
+      {name:'Sattal',lat:29.3650,lng:79.5500,type:'Lakes & nature'},
+      {name:'Mukteshwar',lat:29.4722,lng:79.6479,type:'Mountain views'},
+      {name:'Almora',lat:29.5971,lng:79.6591,type:'Culture & heritage'},
+      {name:'Kausani',lat:29.8430,lng:79.6030,type:'Himalayan views'},
+      {name:'Ranikhet',lat:29.6434,lng:79.4322,type:'Hill station'},
+      {name:'Pithoragarh',lat:29.5829,lng:80.2182,type:'Himalayan gateway'},
+      {name:'Auli',lat:30.5286,lng:79.5669,type:'Ski & mountain views'},
+      {name:'Joshimath',lat:30.5550,lng:79.5644,type:'Mountain gateway'},
+      {name:'Badrinath Temple',lat:30.7433,lng:79.4938,type:'Pilgrimage'},
+      {name:'Valley of Flowers',lat:30.7280,lng:79.6050,type:'National park & trek'},
+      {name:'Hemkund Sahib',lat:30.6990,lng:79.6320,type:'Pilgrimage & trek'},
+      {name:'Kedarnath Temple',lat:30.7346,lng:79.0669,type:'Pilgrimage'},
+      {name:'Gangotri Temple',lat:30.9949,lng:78.9398,type:'Pilgrimage'},
+      {name:'Yamunotri Temple',lat:31.0140,lng:78.4600,type:'Pilgrimage & trek'},
+      {name:'Uttarkashi',lat:30.7268,lng:78.4354,type:'Mountain gateway'},
+      {name:'Chopta',lat:30.4867,lng:79.2160,type:'Trekking & meadows'},
+      {name:'Tungnath Temple',lat:30.4885,lng:79.2130,type:'High-altitude temple'},
+      {name:'Deoria Tal',lat:30.5285,lng:79.1190,type:'Alpine lake'},
+      {name:'Tehri Lake',lat:30.3784,lng:78.4804,type:'Lake & water sports'},
+      {name:'Patal Bhuvaneshwar',lat:29.6860,lng:80.0370,type:'Cave temple'},
+      {name:'Jageshwar Temples',lat:29.6400,lng:79.8510,type:'Temple heritage'}
+    ];
+    const uttarakhandHighlightLayer = L.layerGroup();
+    let uttarakhandHighlightBounds = null;
+
+    function initUttarakhandHighlights() {
+      if (!map || !window.L || uttarakhandHighlightLayer.getLayers().length) return;
+      if (!map.getPane('destination-highlights')) {
+        map.createPane('destination-highlights');
+        map.getPane('destination-highlights').style.zIndex = 640;
+      }
+      uttarakhandDestinations.forEach((place, index) => {
+        const icon = L.divIcon({
+          className: 'oo-destination-marker',
+          html: `<span class="oo-destination-pulse"></span><span class="oo-destination-dot"></span><span class="oo-destination-label">${escapeHTML(place.name)}</span>`,
+          iconSize: [1, 1],
+          iconAnchor: [0, 0]
+        });
+        const marker = L.marker([place.lat, place.lng], {
+          icon, title: place.name, alt: place.name, keyboard: true,
+          pane: 'destination-highlights', riseOnHover: true, zIndexOffset: 900 + index
+        });
+        marker.bindPopup(`<div class="oo-destination-popup"><span>UTTARAKHAND · DESTINATION</span><strong>${escapeHTML(place.name)}</strong><small>${escapeHTML(place.type)}</small><button type="button" data-oo-destination="${index}">Explore this place ↗</button></div>`);
+        marker.on('click', () => {
+          if (map.getZoom() < 9) map.flyTo([place.lat, place.lng], 9, {duration: 1.25, easeLinearity: 0.22});
+        });
+        marker.addTo(uttarakhandHighlightLayer);
+      });
+      uttarakhandHighlightLayer.addTo(map);
+      uttarakhandHighlightBounds = L.latLngBounds(uttarakhandDestinations.map(p => [p.lat,p.lng]));
+    }
+
+    function showUttarakhandDestinations() {
+      initUttarakhandHighlights();
+      if (uttarakhandHighlightBounds) {
+        map.flyToBounds(uttarakhandHighlightBounds, {
+          paddingTopLeft: [40, 40], paddingBottomRight: [40, 40],
+          maxZoom: 7, duration: 1.8, easeLinearity: 0.2
+        });
+      }
+    }
+
+    document.addEventListener('click', event => {
+      const button = event.target.closest('[data-oo-destination]');
+      if (!button) return;
+      const place = uttarakhandDestinations[Number(button.dataset.ooDestination)];
+      if (!place) return;
+      map.closePopup();
+      gotoCoords(place.lat, place.lng, place.name, 12);
+    });
+    setTimeout(initUttarakhandHighlights, 0);
+
     // ── HIGH SPEED ROUTER ENGINE (OSRM) ──
     function drawRouteLine(coords, dashed = false) {
       // Dedicated route pane keeps the highlighted corridor above the base map and markers.
