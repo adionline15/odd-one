@@ -1181,6 +1181,24 @@
       {name:'Patal Bhuvaneshwar',lat:29.6860,lng:80.0370,type:'Cave temple'},
       {name:'Jageshwar Temples',lat:29.6400,lng:79.8510,type:'Temple heritage'}
     ];
+    // Curated landscape previews for destination popups. These are illustrative
+    // photo previews (not claimed to be verified photos of each exact landmark).
+    const uttarakhandPhotoThemes = {
+      mountain: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=760&q=82',
+      lake: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=760&q=82',
+      forest: 'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=760&q=82',
+      river: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=760&q=82',
+      heritage: 'https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=760&q=82'
+    };
+    function getUttarakhandPhoto(place) {
+      const type = place.type.toLowerCase();
+      if (/lake|water/.test(type)) return uttarakhandPhotoThemes.lake;
+      if (/wildlife|nature|forest|park/.test(type)) return uttarakhandPhotoThemes.forest;
+      if (/river|adventure/.test(type)) return uttarakhandPhotoThemes.mountain;
+      if (/heritage|temple|pilgrimage|culture/.test(type)) return uttarakhandPhotoThemes.heritage;
+      return uttarakhandPhotoThemes.mountain;
+    }
+
     const uttarakhandHighlightLayer = L.layerGroup();
     let uttarakhandHighlightBounds = null;
 
@@ -1201,7 +1219,8 @@
           icon, title: place.name, alt: place.name, keyboard: true,
           pane: 'destination-highlights', riseOnHover: true, zIndexOffset: 900 + index
         });
-        marker.bindPopup(`<div class="oo-destination-popup"><span>UTTARAKHAND · DESTINATION</span><strong>${escapeHTML(place.name)}</strong><small>${escapeHTML(place.type)}</small><button type="button" data-oo-destination="${index}">Explore this place ↗</button></div>`);
+        const photoUrl = getUttarakhandPhoto(place);
+        marker.bindPopup(`<div class="oo-destination-popup"><img class="oo-destination-photo" src="${photoUrl}" alt="Scenic preview for ${escapeHTML(place.name)}" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'"><span>UTTARAKHAND · DESTINATION</span><strong>${escapeHTML(place.name)}</strong><small>${escapeHTML(place.type)}</small><button type="button" data-oo-destination="${index}">Explore this place ↗</button></div>`);
         marker.on('click', () => {
           if (map.getZoom() < 9) map.flyTo([place.lat, place.lng], 9, {duration: 1.25, easeLinearity: 0.22});
         });
