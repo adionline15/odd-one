@@ -850,3 +850,30 @@ nav[aria-label="Primary navigation"] button[onclick*="showTab('route')"]{
     filter:none!important;
   }
 }
+
+
+/* ── CINEMATIC SOLAR SYSTEM BEAUTIFICATION (decorative only) ── */
+#earth-globe .oo-solar-system{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none;opacity:.9;transition:opacity .5s ease;}
+#earth-globe canvas{position:relative;z-index:2;}
+#earth-globe .oo-starfield{position:absolute;inset:0;opacity:.42;background-image:radial-gradient(1px 1px at 12% 24%,#fff 80%,transparent),radial-gradient(1px 1px at 78% 18%,#9bcaff 80%,transparent),radial-gradient(1.5px 1.5px at 86% 66%,#fff 80%,transparent),radial-gradient(1px 1px at 23% 78%,#b8d9ff 80%,transparent),radial-gradient(1px 1px at 57% 12%,#fff 80%,transparent),radial-gradient(1px 1px at 41% 86%,#fff 80%,transparent);background-size:330px 270px;animation:oo-star-drift 90s linear infinite;}
+#earth-globe .oo-orbit{position:absolute;left:50%;top:50%;width:var(--orbit-w);height:var(--orbit-h);border:1px solid rgba(83,166,255,.24);border-radius:50%;transform:translate(-50%,-50%) rotate(var(--orbit-tilt));box-shadow:0 0 12px rgba(0,115,255,.035);animation:oo-orbit-breathe 7s ease-in-out infinite alternate;}
+#earth-globe .oo-orbit-a{--orbit-w:35%;--orbit-h:20%;--orbit-tilt:-17deg;}
+#earth-globe .oo-orbit-b{--orbit-w:49%;--orbit-h:29%;--orbit-tilt:22deg;animation-duration:9s;}
+#earth-globe .oo-orbit-c{--orbit-w:64%;--orbit-h:38%;--orbit-tilt:-11deg;animation-duration:11s;}
+#earth-globe .oo-orbit-d{--orbit-w:80%;--orbit-h:49%;--orbit-tilt:15deg;animation-duration:13s;}
+#earth-globe .oo-orbit-e{--orbit-w:96%;--orbit-h:60%;--orbit-tilt:-8deg;animation-duration:15s;}
+#earth-globe .oo-orbit-f{--orbit-w:112%;--orbit-h:70%;--orbit-tilt:9deg;animation-duration:17s;}
+#earth-globe .oo-planet{position:absolute;left:0;top:50%;display:block;width:7px;height:7px;border-radius:50%;background:radial-gradient(circle at 30% 28%,#fff,#7eb8ff 32%,#1354a8 75%);box-shadow:0 0 12px rgba(76,161,255,.85);transform:translate(-50%,-50%);}
+#earth-globe .oo-mercury{width:4px;height:4px;background:#c9c5bd;box-shadow:0 0 7px #c9c5bd;}
+#earth-globe .oo-venus{width:6px;height:6px;background:radial-gradient(circle at 30% 30%,#ffe0a8,#bd7542 75%);box-shadow:0 0 9px #d28b53;}
+#earth-globe .oo-mars{width:6px;height:6px;background:radial-gradient(circle at 30% 30%,#ffc19d,#b7462c 75%);box-shadow:0 0 9px #e45d3b;}
+#earth-globe .oo-jupiter{width:15px;height:15px;background:radial-gradient(circle at 30% 25%,#ffe0b4,#bd895a 44%,#6e4b36 80%);box-shadow:0 0 15px rgba(221,161,105,.5);}
+#earth-globe .oo-saturn{width:12px;height:12px;background:radial-gradient(circle at 30% 25%,#fff0cc,#c2a274 70%);box-shadow:0 0 12px rgba(230,196,143,.5);}
+#earth-globe .oo-saturn b{position:absolute;width:23px;height:8px;left:50%;top:50%;border:1px solid rgba(225,199,157,.85);border-radius:50%;transform:translate(-50%,-50%) rotate(-22deg);}
+#earth-globe .oo-ice{width:8px;height:8px;background:radial-gradient(circle at 30% 25%,#d6f6ff,#2d8eb9 75%);}
+#earth-globe .oo-solar-sun{position:absolute;left:5%;top:46%;width:clamp(36px,5vw,72px);height:clamp(36px,5vw,72px);border-radius:50%;background:radial-gradient(circle at 40% 40%,#fff7d0 0,#ffc15e 28%,#f36a24 58%,transparent 72%);filter:drop-shadow(0 0 18px rgba(255,143,48,.48));opacity:.72;}
+@keyframes oo-star-drift{from{background-position:0 0}to{background-position:330px 270px}}
+@keyframes oo-orbit-breathe{from{opacity:.55}to{opacity:1}}
+#earth-globe.is-transitioning .oo-solar-system{opacity:.18;}
+@media(max-width:640px){#earth-globe .oo-solar-system{opacity:.58}#earth-globe .oo-orbit-d,#earth-globe .oo-orbit-e,#earth-globe .oo-orbit-f{opacity:.55}#earth-globe .oo-solar-sun{left:1%;width:30px;height:30px}}
+@media(prefers-reduced-motion:reduce){#earth-globe .oo-starfield,#earth-globe .oo-orbit{animation:none!important}#earth-globe .oo-solar-system{transition:none!important}}
