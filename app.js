@@ -851,8 +851,10 @@
       if (t === 'sat') {
         document.getElementById('map').classList.remove('map-dark');
         tile = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-          maxZoom: 19,
-          maxNativeZoom: 19,
+          // Keep satellite zoom below the level where Esri commonly returns
+          // unavailable-imagery tiles; OSM retains its separate zoom range.
+          maxZoom: 17,
+          maxNativeZoom: 17,
           attribution: '&copy; Esri, Maxar, Earthstar Geographics, and the GIS User Community'
         }).addTo(map);
         document.getElementById('btn-sat').classList.add('active');
