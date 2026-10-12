@@ -106,8 +106,8 @@
     let earthGlobe = null;
     let earthOverviewActive = true;
     const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches === true;
-    const EARTH_CAMERA_MS = prefersReducedMotion ? 450 : 1350;
-    const DETAIL_FLY_MS = prefersReducedMotion ? 900 : 2250;
+    const EARTH_CAMERA_MS = prefersReducedMotion ? 450 : 2100;
+    const DETAIL_FLY_MS = prefersReducedMotion ? 900 : 3200;
     let earthTransitionTimer = null;
     let earthTransitionId = 0;
 
@@ -153,7 +153,7 @@
           .pointOfView({ lat: 22, lng: 78, altitude: 2.15 }, 0);
 
         earthGlobe.controls().autoRotate = !prefersReducedMotion;
-        earthGlobe.controls().autoRotateSpeed = 0.28;
+        earthGlobe.controls().autoRotateSpeed = 0.42;
         earthGlobe.controls().enableZoom = true;
         earthGlobe.onGlobeReady(() => {
           earthGlobeEl.classList.remove('is-loading');
@@ -180,7 +180,7 @@
             return;
           } else return;
           event.preventDefault();
-          earthGlobe.pointOfView(next, 250);
+          earthGlobe.pointOfView(next, prefersReducedMotion ? 0 : 650);
         });
 
         const resizeGlobe = () => {
@@ -226,6 +226,7 @@
       // Reduced-motion users should reach the requested location without the
       // globe camera sweep or delayed handoff.
       if (prefersReducedMotion) {
+        earthGlobeEl?.classList.remove('is-transitioning');
         setEarthOverview(false);
         earthGlobe.controls().enableZoom = true;
         map.invalidateSize();
@@ -236,6 +237,7 @@
       }
 
       setEarthOverview(true);
+      earthGlobeEl?.classList.add('is-transitioning');
 
       // Cinematic navigation: settle on the destination first, then hand off
       // to the detailed road map. The two engines overlap briefly so the
@@ -264,6 +266,7 @@
           easeLinearity: 0.12
         });
         placeMarker(coords, name, markerColor);
+        earthGlobeEl?.classList.remove('is-transitioning');
       }, EARTH_CAMERA_MS);
     }
 
