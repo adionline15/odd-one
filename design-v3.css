@@ -24,6 +24,17 @@
   pointer-events:auto;
   transition:opacity 420ms cubic-bezier(.22,.61,.36,1), visibility 0s;
 }
+
+/* Cross-fade the map renderer with the WebGL Earth instead of showing
+   the flat world tiles beneath the globe during handoff. */
+#map{
+  transition:opacity 420ms cubic-bezier(.22,.61,.36,1);
+}
+#map.earth-mode{
+  opacity:0!important;
+  pointer-events:none!important;
+}
+
 #earth-globe.is-loading::before{
   content:"";
   position:absolute;
