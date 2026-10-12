@@ -39,10 +39,11 @@
     }
 
     // Initial tile layer setup
-    tile = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-      subdomains: 'abcd',
-      maxZoom: 20,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+    tile = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      subdomains: 'abc',
+      maxZoom: 19,
+      className: 'odd-one-dark-tiles',
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
     setTimeout(() => map.invalidateSize(), 300);
     function updateMapIntelligenceHUD() {
@@ -831,10 +832,11 @@
         document.getElementById('btn-map').classList.remove('active');
         document.getElementById('btn-map').setAttribute('aria-pressed', 'false');
       } else {
-        tile = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-          subdomains: 'abcd',
-          maxZoom: 20,
-          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+        tile = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          subdomains: 'abc',
+          maxZoom: 19,
+          className: 'odd-one-dark-tiles',
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
         document.getElementById('btn-map').classList.add('active');
         document.getElementById('btn-map').setAttribute('aria-pressed', 'true');
