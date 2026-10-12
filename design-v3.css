@@ -808,8 +808,15 @@ body>nav[aria-label="Primary navigation"] .border-black\/10{border-color:rgba(22
 
 
 /* User requested photo-only destination popups: no coordinates or text */
-.oo-destination-popup.oo-destination-image-only{min-width:220px;max-width:260px;gap:0;padding:0;}
-.oo-destination-popup.oo-destination-image-only .oo-destination-photo{height:150px;margin:0;border:0;border-radius:7px;}
+.oo-destination-marker{cursor:pointer!important;}
+.oo-destination-marker *{cursor:pointer!important;}
+.oo-destination-popup.oo-destination-image-only{min-width:280px;max-width:340px;gap:0;padding:0;}
+.oo-destination-popup.oo-destination-image-only .oo-destination-photo{height:205px;margin:0;border:0;border-radius:7px;object-fit:cover;pointer-events:auto;}
 .oo-destination-popup.oo-destination-image-only:empty{display:none;}
 .leaflet-popup-content:has(.oo-destination-image-only){margin:5px!important;}
+.leaflet-popup:has(.oo-destination-image-only){z-index:1000;}
+@media(max-width:640px){
+  .oo-destination-popup.oo-destination-image-only{min-width:250px;max-width:290px;}
+  .oo-destination-popup.oo-destination-image-only .oo-destination-photo{height:175px;}
+}
 .oo-location-popup div{display:none!important;}
