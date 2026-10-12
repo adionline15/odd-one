@@ -814,3 +814,39 @@ nav[aria-label="Primary navigation"] button[onclick*="showTab('route')"]{
 #map .leaflet-tile.odd-one-dark-tiles{
   filter:grayscale(1) brightness(.88) contrast(1.06) saturate(.8)!important;
 }
+
+
+/* ── CINEMATIC EARTH CAMERA PASS ──
+   Dramatic but restrained transition effects; no synthetic map data.
+*/
+#earth-globe.is-transitioning{
+  filter:saturate(1.08) contrast(1.04);
+}
+#earth-globe.is-transitioning::after{
+  background:
+    radial-gradient(circle at 50% 50%,transparent 22%,rgba(22,135,255,.10) 47%,rgba(0,0,0,.28) 68%,rgba(0,0,0,.66) 100%),
+    linear-gradient(180deg,rgba(5,15,30,.10),transparent 42%,rgba(5,15,30,.24));
+  animation:oo-earth-camera-vignette 2.1s cubic-bezier(.22,.61,.36,1) both;
+}
+#earth-globe.is-transitioning canvas{
+  filter:drop-shadow(0 0 26px rgba(22,135,255,.10));
+}
+#map.earth-mode{
+  opacity:0!important;
+  filter:blur(2px) saturate(.9);
+}
+#map{
+  transition:opacity 650ms cubic-bezier(.22,.61,.36,1),filter 650ms cubic-bezier(.22,.61,.36,1);
+}
+@keyframes oo-earth-camera-vignette{
+  0%{opacity:.45}
+  35%{opacity:1}
+  100%{opacity:.78}
+}
+@media(prefers-reduced-motion:reduce){
+  #earth-globe,#earth-globe::after,#earth-globe canvas,#map{
+    animation:none!important;
+    transition:none!important;
+    filter:none!important;
+  }
+}
