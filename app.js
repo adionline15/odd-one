@@ -498,13 +498,16 @@
     });
 
     function updateObservationStatus(count, state='READY') {
+      const strip = document.getElementById('observation-status-strip');
       const countEl = document.getElementById('obs-status-count');
       const stateEl = document.getElementById('obs-status-state');
-      const dot = document.getElementById('obs-status-dot');
-      if (!countEl || !stateEl || !dot) return;
-      countEl.textContent = Number.isFinite(count) ? String(count) : '--';
-      stateEl.textContent = state;
-      dot.className = 'w-1.5 h-1.5 rounded-full ' + (state === 'READY' ? 'bg-emerald-400' : state === 'NO DATA' ? 'bg-amber-400' : 'bg-rose-400');
+      if (!countEl || !stateEl || !strip) return;
+      const normalized = state === 'READY' ? (count > 0 ? 'live' : 'empty') :
+        state === 'NO DATA' ? 'empty' : state === 'LOADING' ? 'loading' : 'error';
+      strip.dataset.state = normalized;
+      countEl.textContent = Number.isFinite(count) ? String(count) : '—';
+      stateEl.textContent = normalized === 'live' ? 'LIVE' :
+        normalized === 'empty' ? 'NO DATA' : normalized === 'loading' ? 'LOADING' : 'UNAVAILABLE';
     }
 
     function applyObservationFilters() {
