@@ -654,3 +654,8 @@ body>nav[aria-label="Primary navigation"] .border-black\/10{border-color:rgba(22
   }
   #map-command-deck .map-deck-icon-btn{background:#151a17!important;color:#e5ece6!important;border-color:rgba(225,238,230,.15)!important;}
 }
+
+/* Keep the public OSM road tiles readable while matching the dark infrastructure UI. */
+.leaflet-tile.odd-one-dark-tiles{
+  filter: brightness(.58) invert(.88) hue-rotate(180deg) saturate(.62) contrast(1.08);
+}
