@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#070b12">
+  <meta name="description" content="Odd-One Live — a map and opt-in device GPS foundation.">
+  <title>Odd-One Live — Map & GPS Foundation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@6.14.0/dist/maplibre-gl.css">
+  <link rel="stylesheet" href="live-map.css">
+  <script type="module" src="live-map.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#map">Skip to live map</a>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Odd-One India road intelligence home">odd-one<span>.in</span></a>
+    <div class="product-name"><span class="pulse" aria-hidden="true"></span><span>ODD-ONE LIVE</span><small>MAP & GPS FOUNDATION</small></div>
+    <div class="header-right"><span class="env-label">GPS OPT-IN</span><a href="/" class="back-link">Main map ↗</a></div>
+  </header>
+
+  <main class="workspace">
+    <aside class="sidebar" aria-label="Map controls">
+      <div class="intro">
+        <p class="eyebrow">ROAD & MOBILITY INTELLIGENCE</p>
+        <h1>See movement.<br><em>Understand roads.</em></h1>
+        <p class="muted">A unified map foundation for authorized GPS feeds, field teams and road events.</p>
+      </div>
+
+      <section class="metric-grid" aria-label="Map overview">
+        <article class="metric"><span>Demo vehicles</span><strong id="vehicle-count">0</strong><small>Simulated feed</small></article>
+        <article class="metric"><span>Field teams</span><strong id="team-count">0</strong><small>Simulated feed</small></article>
+        <article class="metric"><span>Road events</span><strong id="event-count">0</strong><small>Sample data</small></article>
+        <article class="metric"><span>Your GPS</span><strong id="gps-state">Off</strong><small id="gps-updated">Not sharing</small></article>
+      </section>
+
+      <section class="panel">
+        <div class="section-heading"><h2>Live layers</h2><span class="section-tag">MAP</span></div>
+        <label class="layer-row"><span class="layer-symbol vehicle-symbol">↗</span><span class="layer-copy"><b>Vehicles</b><small>Simulated movement</small></span><input id="toggle-vehicles" type="checkbox" checked><span class="switch" aria-hidden="true"></span></label>
+        <label class="layer-row"><span class="layer-symbol team-symbol">●</span><span class="layer-copy"><b>Field teams</b><small>Simulated locations</small></span><input id="toggle-teams" type="checkbox" checked><span class="switch" aria-hidden="true"></span></label>
+        <label class="layer-row"><span class="layer-symbol event-symbol">!</span><span class="layer-copy"><b>Road events</b><small>Sample incidents</small></span><input id="toggle-events" type="checkbox" checked><span class="switch" aria-hidden="true"></span></label>
+        <label class="layer-row"><span class="layer-symbol me-symbol">◎</span><span class="layer-copy"><b>My device location</b><small>Only on this device</small></span><input id="toggle-me" type="checkbox"><span class="switch" aria-hidden="true"></span></label>
+      </section>
+
+      <section class="panel gps-panel">
+        <div class="section-heading"><h2>Device GPS</h2><span class="permission-note">OPT-IN</span></div>
+        <p class="muted small">Share your own browser location with this map while this page is open. It is not sent to a server or shared with other users.</p>
+        <button id="gps-button" class="primary-button" type="button"><span aria-hidden="true">◎</span> Enable my GPS</button>
+        <p id="gps-message" class="inline-status" role="status" aria-live="polite">GPS is off. Nothing is being tracked.</p>
+      </section>
+
+      <section class="panel feed-panel">
+        <div class="section-heading"><h2>Activity feed</h2><span class="section-tag">DEMO</span></div>
+        <div id="activity-feed" class="activity-feed" aria-live="polite"></div>
+        <p class="data-disclaimer">Demo markers and events are synthetic examples, not actual vehicles, people, traffic or verified road reports.</p>
+      </section>
+
+      <footer class="sidebar-footer"><span class="status-dot"></span><span id="connection-state">Demo stream running locally</span><span class="footer-version">MAPLIBRE 6.14.0</span></footer>
+    </aside>
+
+    <section class="map-region" aria-label="Interactive live map">
+      <div id="map" role="application" aria-label="Interactive map of Delhi with simulated vehicle, team and road-event markers"></div>
+      <div class="map-top-controls">
+        <div class="search-box"><span aria-hidden="true">⌕</span><input id="map-search" type="search" placeholder="Search a place or coordinates" aria-label="Search a place or coordinates"><button id="search-button" type="button">Go</button></div>
+        <button id="reset-view" class="icon-button" type="button" aria-label="Reset map view" title="Reset view">⌖</button>
+      </div>
+      <div class="map-legend"><span><i class="legend-dot vehicle-dot"></i>Vehicles</span><span><i class="legend-dot team-dot"></i>Teams</span><span><i class="legend-dot event-dot"></i>Road events</span></div>
+      <div id="map-status" class="map-status" role="status" aria-live="polite">Loading map…</div>
+      <div id="feature-card" class="feature-card" hidden aria-live="polite">
+        <button id="close-feature" class="close-button" type="button" aria-label="Close feature details">×</button>
+        <p id="feature-type" class="eyebrow">MAP FEATURE</p><h2 id="feature-title">Feature details</h2><p id="feature-description" class="muted"></p><div id="feature-meta" class="feature-meta"></div>
+      </div>
+      <div class="map-bottom"><span>BASEMAP · OPENFREEMAP / OPENSTREETMAP</span><span>GPS IS DEVICE-LOCAL · DEMO FEEDS ARE SIMULATED</span></div>
+    </section>
+  </main>
+</body>
+</html>

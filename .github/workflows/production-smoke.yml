@@ -24,6 +24,18 @@ jobs:
           printf '%s' "$body" | grep -q '/design-v2.css'
           echo "Production HTML contract OK"
 
+      - name: Check production Live Map page
+        shell: bash
+        run: |
+          set -euo pipefail
+          url="https://www.odd-one.in/live-map.html"
+          body="$(curl --fail --silent --show-error --location --max-time 20 "$url")"
+          printf '%s' "$body" | grep -q '<title>Odd-One Live'
+          printf '%s' "$body" | grep -q 'live-map.css'
+          printf '%s' "$body" | grep -q 'maplibre-gl@6.14.0'
+          printf '%s' "$body" | grep -q 'GPS IS DEVICE-LOCAL'
+          echo "Production Live Map contract OK"
+
       - name: Check production health endpoint
         shell: bash
         run: |
