@@ -104,13 +104,23 @@
 
       try {
         earthGlobeEl.classList.add('is-loading');
-        earthGlobe = window.Globe()(earthGlobeEl)
+        // Mobile GPUs are often fill-rate limited. Disable MSAA there and ask
+        // Three.js for a low-power renderer instead of spending battery on edges.
+        const mobileGlobe = isMobile();
+        earthGlobe = window.Globe()(earthGlobeEl, {
+          rendererConfig: {
+            antialias: !mobileGlobe,
+            alpha: true,
+            powerPreference: mobileGlobe ? 'low-power' : 'high-performance'
+          }
+        })
           .backgroundColor('rgba(0,0,0,0)')
           .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
-          .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
-          .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
-          .globeCurvatureResolution(2)
-          .showAtmosphere(true)
+          // The bump map adds a large extra texture upload; skip it on phones.
+          .bumpImageUrl(mobileGlobe ? null : 'https://unpkg.com/three-globe/example/img/earth-topology.png')
+          .backgroundImageUrl(mobileGlobe ? null : 'https://unpkg.com/three-globe/example/img/night-sky.png')
+          .globeCurvatureResolution(mobileGlobe ? 1 : 2)
+          .showAtmosphere(!mobileGlobe)
           .atmosphereColor('#4f9dff')
           .atmosphereAltitude(0.11)
           .enablePointerInteraction(true)
@@ -123,6 +133,7 @@
         earthGlobe.controls().enableZoom = true;
         earthGlobe.onGlobeReady(() => {
           earthGlobeEl.classList.remove('is-loading');
+          earthGlobeEl.dataset.globeState = 'ready';
         });
         earthGlobe.onGlobeClick(({ lat, lng }) => {
           if (!Number.isFinite(lat) || !Number.isFinite(lng)) return;
@@ -159,11 +170,17 @@
       } catch (error) {
         console.warn('[earth] WebGL globe unavailable; using the road map fallback.', error);
         earthGlobe = null;
+        earthGlobeEl.dataset.globeState = 'failed';
         earthGlobeEl.classList.remove('is-loading');
         setEarthOverview(false);
       }
     }
 
+    // Pause globe rotation while the tab is hidden to reduce mobile GPU/battery use.
+    document.addEventListener('visibilitychange', () => {
+      if (!earthGlobe) return;
+      earthGlobe.controls().autoRotate = !document.hidden && earthOverviewActive && !prefersReducedMotion;
+    });
     // Start in the real 3D Earth overview; location searches hand off to Leaflet.
     initEarthGlobe();
 
