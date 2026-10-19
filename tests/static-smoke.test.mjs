@@ -251,9 +251,9 @@ test('Earth globe uses a cinematic starfield and waits for globe readiness', () 
   const runtime = read('app.js');
   const init = runtime.slice(runtime.indexOf('function initEarthGlobe'), runtime.indexOf('function showEarthThenZoom'));
   assert.match(init, /globeImageUrl\('https:\/\/unpkg\.com\/three-globe\/example\/img\/earth-blue-marble\.jpg'\)/);
-  assert.match(init, /bumpImageUrl\('https:\/\/unpkg\.com\/three-globe\/example\/img\/earth-topology\.png'\)/);
-  assert.match(init, /backgroundImageUrl\('https:\/\/unpkg\.com\/three-globe\/example\/img\/night-sky\.png'\)/);
-  assert.match(init, /globeCurvatureResolution\(2\)/);
+  assert.match(init, /bumpImageUrl\(mobileGlobe \? null : 'https:\/\/unpkg\.com\/three-globe\/example\/img\/earth-topology\.png'\)/);
+  assert.match(init, /backgroundImageUrl\(mobileGlobe \? null : 'https:\/\/unpkg\.com\/three-globe\/example\/img\/night-sky\.png'\)/);
+  assert.match(init, /globeCurvatureResolution\(mobileGlobe \? 1 : 2\)/);
   assert.match(init, /atmosphereAltitude\(0\.11\)/);
   assert.match(init, /earthGlobe\.onGlobeReady\(\(\) => \{\s*earthGlobeEl\.classList\.remove\('is-loading'\)/);
   assert.match(init, /setTimeout\(\(\) => earthGlobeEl\.classList\.remove\('is-loading'\), 7000\)/);
@@ -557,7 +557,7 @@ test('compact mobile map surface covers narrow tablet widths', () => {
 
 test('desktop intelligence tabs stay compact and keep labels visible', () => {
   const css = read('design-v3.css');
-  assert.match(css, /#sidebar > div\[role="tablist"\]\[aria-label="Road intelligence views"\] > button\{[\s\S]*?height:44px!important;[\s\S]*?align-items:center!important;[\s\S]*?white-space:nowrap!important;/);
+  assert.match(css, /#sidebar > div\[role="tablist"\]\[aria-label="Road intelligence views"\] > button\{[\s\S]*?align-items:center!important;[\s\S]*?height:44px!important;[\s\S]*?white-space:nowrap!important;/);
   assert.match(css, /#sidebar > div\[role="tablist"\]\[aria-label="Road intelligence views"\] > button\.on/);
   assert.match(css, /@media \(max-width: 767px\)\{\s*#sidebar\{display:none!important;\}/);
 });
