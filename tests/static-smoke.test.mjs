@@ -563,8 +563,6 @@ test('desktop intelligence tabs stay compact and keep labels visible', () => {
 });
 
 test('brand wordmark keeps strong contrast on dark headers', () => {
-  const css = read('design-v3.css');
-  assert.match(css, /nav\\[aria-label="Primary navigation"\\] h1\\{color:#f8fafc!important;/);
-  assert.match(css, /nav\\[aria-label="Primary navigation"\\] h1 span\\{color:#a1a1aa!important;/);
+  const html = read('index.html');
+  assert.match(html, /<h1 class="[^"]*text-zinc-900[^"]*">Odd-One<span class="text-zinc-500/);
 });
-
