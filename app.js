@@ -166,7 +166,14 @@
         };
         window.addEventListener('resize', resizeGlobe, { passive: true });
         setEarthOverview(true);
-        setTimeout(() => earthGlobeEl.classList.remove('is-loading'), 7000);
+        // If the texture/CDN never finishes loading, reveal the road map instead
+        // of leaving users staring at an empty Earth canvas indefinitely.
+        setTimeout(() => {
+          if (earthGlobeEl.dataset.globeState === 'ready' || !earthGlobe) return;
+          earthGlobeEl.dataset.globeState = 'failed';
+          earthGlobeEl.classList.remove('is-loading');
+          setEarthOverview(false);
+        }, 7000);
       } catch (error) {
         console.warn('[earth] WebGL globe unavailable; using the road map fallback.', error);
         earthGlobe = null;
