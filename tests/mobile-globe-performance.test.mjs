@@ -30,3 +30,12 @@ test('Earth globe startup does not create a duplicate WebGL instance', () => {
   assert.equal((runtime.match(/\binitEarthGlobe\(\);/g) || []).length, 1);
   assert.doesNotMatch(runtime, /setTimeout\(initEarthGlobe\s*,\s*0\)/);
 });
+
+
+test('Earth globe falls back to the road map if loading stalls', () => {
+  const runtime = fs.readFileSync(new URL('../app.js', import.meta.url), 'utf8');
+  assert.match(runtime, /If the texture\/CDN never finishes loading/);
+  assert.match(runtime, /earthGlobeEl\.dataset\.globeState === 'ready' \|\| !earthGlobe/);
+  assert.match(runtime, /earthGlobeEl\.dataset\.globeState = 'failed'/);
+  assert.match(runtime, /setEarthOverview\(false\);/);
+});
