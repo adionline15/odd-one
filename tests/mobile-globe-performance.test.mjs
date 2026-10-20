@@ -23,3 +23,10 @@ test('Earth globe reports ready and failed lifecycle states for diagnostics', ()
   assert.match(runtime, /dataset\.globeState = 'failed'/);
   assert.match(runtime, /using the road map fallback/);
 });
+
+
+test('Earth globe startup does not create a duplicate WebGL instance', () => {
+  const runtime = fs.readFileSync(new URL('../app.js', import.meta.url), 'utf8');
+  assert.equal((runtime.match(/\binitEarthGlobe\(\);/g) || []).length, 1);
+  assert.doesNotMatch(runtime, /setTimeout\(initEarthGlobe\s*,\s*0\)/);
+});
