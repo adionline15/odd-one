@@ -255,7 +255,6 @@
       document.getElementById('map')?.classList.remove('globe-overview');
     }
     map.on('resize', updateGlobeOverview);
-    setTimeout(initEarthGlobe, 0);
 
 
     // ── HEXAGONAL ROAD INTELLIGENCE GRID ──
