@@ -78,6 +78,7 @@
     const EARTH_CAMERA_MS = prefersReducedMotion ? 450 : 1350;
     const DETAIL_FLY_MS = prefersReducedMotion ? 900 : 2250;
     let earthTransitionTimer = null;
+    let earthGlobeLoadTimeout = null;
     let earthTransitionId = 0;
 
     function setEarthOverview(active) {
@@ -132,6 +133,8 @@
         earthGlobe.controls().autoRotateSpeed = 0.28;
         earthGlobe.controls().enableZoom = true;
         earthGlobe.onGlobeReady(() => {
+          clearTimeout(earthGlobeLoadTimeout);
+          earthGlobeLoadTimeout = null;
           earthGlobeEl.classList.remove('is-loading');
           earthGlobeEl.dataset.globeState = 'ready';
         });
@@ -168,13 +171,16 @@
         setEarthOverview(true);
         // If the texture/CDN never finishes loading, reveal the road map instead
         // of leaving users staring at an empty Earth canvas indefinitely.
-        setTimeout(() => {
+        earthGlobeLoadTimeout = setTimeout(() => {
+          earthGlobeLoadTimeout = null;
           if (earthGlobeEl.dataset.globeState === 'ready' || !earthGlobe) return;
           earthGlobeEl.dataset.globeState = 'failed';
           earthGlobeEl.classList.remove('is-loading');
           setEarthOverview(false);
         }, 7000);
       } catch (error) {
+        clearTimeout(earthGlobeLoadTimeout);
+        earthGlobeLoadTimeout = null;
         console.warn('[earth] WebGL globe unavailable; using the road map fallback.', error);
         earthGlobe = null;
         earthGlobeEl.dataset.globeState = 'failed';
