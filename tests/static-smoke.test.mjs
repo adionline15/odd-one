@@ -256,7 +256,10 @@ test('Earth globe uses a cinematic starfield and waits for globe readiness', () 
   assert.match(init, /globeCurvatureResolution\(mobileGlobe \? 1 : 2\)/);
   assert.match(init, /atmosphereAltitude\(0\.11\)/);
   assert.match(init, /earthGlobe\.onGlobeReady\(\(\) => \{\s*earthGlobeEl\.classList\.remove\('is-loading'\)/);
-  assert.match(init, /setTimeout\(\(\) => earthGlobeEl\.classList\.remove\('is-loading'\), 7000\)/);
+  assert.match(init, /If the texture\/CDN never finishes loading/);
+  assert.match(init, /earthGlobeEl\.dataset\.globeState === 'ready' \|\| !earthGlobe/);
+  assert.match(init, /earthGlobeEl\.dataset\.globeState = 'failed'/);
+  assert.match(init, /setEarthOverview\(false\)/);
 });
 
 test('Earth globe clicks can navigate to a selected coordinate', () => {
