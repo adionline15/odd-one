@@ -247,7 +247,6 @@
   ready(() => window.addEventListener('orientationchange',()=>setTimeout(()=>getMap()?.invalidateSize?.({pan:false}),250),{passive:true}));
   ready(() => document.getElementById('s-input')?.setAttribute('aria-controls','sugg'));
   ready(() => document.body.setAttribute('data-progressive-ui','enabled'));
-})();
 
 document.documentElement.dataset.oddOneViewport='ready';
 
@@ -502,3 +501,5 @@ document.documentElement.dataset.interactionPhase='ready';
   ready(() => document.getElementById('map-live-context')?.setAttribute('aria-label','Live map viewport zoom'));
 
   ready(() => document.getElementById('map')?.setAttribute('title','Pan and zoom to explore verified road intelligence'));
+
+})();
