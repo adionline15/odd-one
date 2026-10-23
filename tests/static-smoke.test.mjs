@@ -17,8 +17,8 @@ test('Supabase schema has balanced function bodies and initializes PostGIS schem
   assert.match(schema, /create schema if not exists gis;/i);
   assert.match(schema, /create extension if not exists postgis with schema gis;/i);
   assert.equal((schema.match(/as \$\$/g) || []).length, (schema.match(/^\$\$;$/gm) || []).length);
-  assert.doesNotMatch(schema, /^as \$/m);
-  assert.doesNotMatch(schema, /^\$;$/m);
+  assert.doesNotMatch(schema, /^as \$(?!\$)/m);
+  assert.doesNotMatch(schema, /^\$(?!\$);$/m);
   assert.equal((schema.match(/create or replace function public\.set_updated_at\(/g) || []).length, 1);
   assert.match(schema, /create or replace function public\.approved_road_change_in_view\([\s\S]*?\$\$;/);
 });
