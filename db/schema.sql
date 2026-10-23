@@ -220,7 +220,7 @@ returns table (
 language plpgsql
 security definer
 set search_path = public, gis
-as $
+as $$
 begin
   if p_min_lat < -90 or p_min_lat > 90 or p_max_lat < -90 or p_max_lat > 90 or
      p_min_lon < -180 or p_min_lon > 180 or p_max_lon < -180 or p_max_lon > 180 or
@@ -289,7 +289,7 @@ returns table (
 language sql
 security definer
 set search_path = public, gis
-as $
+as $$
   select
     o.id,
     gis.st_y(o.location::gis.geometry),
@@ -305,7 +305,7 @@ as $
   from public.observations o
   where o.id = p_id
     and o.status = 'approved';
-$;
+$$;
 
 comment on function public.approved_observation_detail(uuid)
   is 'Returns one approved observation with provenance and review metadata.';
@@ -329,7 +329,7 @@ returns table (
 language sql
 security definer
 set search_path = public, gis
-as $
+as $$
   select
     o.observation_type,
     o.source,
@@ -348,7 +348,7 @@ as $
       )::gis.geography
   group by o.observation_type, o.source
   order by count(*) desc;
-$;
+$$;
 
 comment on function public.approved_observation_summary(double precision, double precision, double precision, double precision) is 'Aggregates approved observations by type and source inside a geographic viewport.';
 
@@ -366,7 +366,7 @@ returns table (
 language sql
 security definer
 set search_path = public
-as $
+as $$
   select
     count(*)::bigint,
     count(distinct o.source)::bigint,
@@ -375,7 +375,7 @@ as $
     max(o.observed_at)
   from public.observations o
   where o.status = 'approved';
-$;
+$$;
 
 comment on function public.approved_observation_stats()
   is 'Returns aggregate statistics for approved observations only.';
