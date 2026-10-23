@@ -78,6 +78,7 @@
     const EARTH_CAMERA_MS = prefersReducedMotion ? 450 : 1350;
     const DETAIL_FLY_MS = prefersReducedMotion ? 900 : 2250;
     let earthTransitionTimer = null;
+    let earthGlobeLoadTimeout = null;
     let earthTransitionId = 0;
 
     function setEarthOverview(active) {
@@ -104,13 +105,23 @@
 
       try {
         earthGlobeEl.classList.add('is-loading');
-        earthGlobe = window.Globe()(earthGlobeEl)
+        // Mobile GPUs are often fill-rate limited. Disable MSAA there and ask
+        // Three.js for a low-power renderer instead of spending battery on edges.
+        const mobileGlobe = isMobile();
+        earthGlobe = window.Globe()(earthGlobeEl, {
+          rendererConfig: {
+            antialias: !mobileGlobe,
+            alpha: true,
+            powerPreference: mobileGlobe ? 'low-power' : 'high-performance'
+          }
+        })
           .backgroundColor('rgba(0,0,0,0)')
           .globeImageUrl('https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg')
-          .bumpImageUrl('https://unpkg.com/three-globe/example/img/earth-topology.png')
-          .backgroundImageUrl('https://unpkg.com/three-globe/example/img/night-sky.png')
-          .globeCurvatureResolution(2)
-          .showAtmosphere(true)
+          // The bump map adds a large extra texture upload; skip it on phones.
+          .bumpImageUrl(mobileGlobe ? null : 'https://unpkg.com/three-globe/example/img/earth-topology.png')
+          .backgroundImageUrl(mobileGlobe ? null : 'https://unpkg.com/three-globe/example/img/night-sky.png')
+          .globeCurvatureResolution(mobileGlobe ? 1 : 2)
+          .showAtmosphere(!mobileGlobe)
           .atmosphereColor('#4f9dff')
           .atmosphereAltitude(0.11)
           .enablePointerInteraction(true)
@@ -122,7 +133,10 @@
         earthGlobe.controls().autoRotateSpeed = 0.28;
         earthGlobe.controls().enableZoom = true;
         earthGlobe.onGlobeReady(() => {
+          clearTimeout(earthGlobeLoadTimeout);
+          earthGlobeLoadTimeout = null;
           earthGlobeEl.classList.remove('is-loading');
+          earthGlobeEl.dataset.globeState = 'ready';
         });
         earthGlobe.onGlobeClick(({ lat, lng }) => {
           if (!Number.isFinite(lat) || !Number.isFinite(lng)) return;
@@ -155,15 +169,31 @@
         };
         window.addEventListener('resize', resizeGlobe, { passive: true });
         setEarthOverview(true);
-        setTimeout(() => earthGlobeEl.classList.remove('is-loading'), 7000);
+        // If the texture/CDN never finishes loading, reveal the road map instead
+        // of leaving users staring at an empty Earth canvas indefinitely.
+        earthGlobeLoadTimeout = setTimeout(() => {
+          earthGlobeLoadTimeout = null;
+          if (earthGlobeEl.dataset.globeState === 'ready' || !earthGlobe) return;
+          earthGlobeEl.dataset.globeState = 'failed';
+          earthGlobeEl.classList.remove('is-loading');
+          setEarthOverview(false);
+        }, 7000);
       } catch (error) {
+        clearTimeout(earthGlobeLoadTimeout);
+        earthGlobeLoadTimeout = null;
         console.warn('[earth] WebGL globe unavailable; using the road map fallback.', error);
         earthGlobe = null;
+        earthGlobeEl.dataset.globeState = 'failed';
         earthGlobeEl.classList.remove('is-loading');
         setEarthOverview(false);
       }
     }
 
+    // Pause globe rotation while the tab is hidden to reduce mobile GPU/battery use.
+    document.addEventListener('visibilitychange', () => {
+      if (!earthGlobe) return;
+      earthGlobe.controls().autoRotate = !document.hidden && earthOverviewActive && !prefersReducedMotion;
+    });
     // Start in the real 3D Earth overview; location searches hand off to Leaflet.
     initEarthGlobe();
 
@@ -238,7 +268,6 @@
       document.getElementById('map')?.classList.remove('globe-overview');
     }
     map.on('resize', updateGlobeOverview);
-    setTimeout(initEarthGlobe, 0);
 
 
     // ── HEXAGONAL ROAD INTELLIGENCE GRID ──

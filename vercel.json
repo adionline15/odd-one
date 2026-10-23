@@ -22,5 +22,5 @@
       ]
     }
   ],
-  "ignoreCommand": "git diff --quiet HEAD^ HEAD -- . ':(exclude)README.md' ':(exclude)docs/**' ':(exclude)AGENT_SYSTEM/**' ':(exclude)tests/**' ':(exclude).github/**'"
+  "ignoreCommand": "git diff --quiet HEAD^ HEAD -- . ':(exclude)README.md' ':(exclude)docs/**' ':(exclude)AGENT_SYSTEM/**' ':(exclude).github/**'"
 }
