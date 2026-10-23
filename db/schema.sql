@@ -1,8 +1,9 @@
 -- Odd-One road intelligence foundation
--- Run this in Supabase SQL Editor after enabling PostGIS in the `gis` schema.
+-- Run this in Supabase SQL Editor on a fresh project. It creates the `gis` schema and installs PostGIS there.
 -- Supabase recommends keeping PostGIS outside `public`. See:
 -- https://supabase.com/docs/guides/database/extensions/postgis
 
+create schema if not exists gis;
 create extension if not exists postgis with schema gis;
 
 create type public.observation_type as enum (
@@ -404,7 +405,7 @@ returns table (
 language sql
 security definer
 set search_path = public, gis
-as $
+as $$
   select
     o.id,
     gis.st_y(o.location::gis.geometry),
@@ -413,47 +414,26 @@ as $
     o.source,
     o.observed_at,
     o.confidence,
-    case when (o.metadata->>'baseline_year') ~ '^[0-9]{4}
-returns trigger
-language plpgsql
-set search_path = public
-as $$
-begin
-  new.updated_at = now();
-  return new;
-end;
-$$;
-
-drop trigger if exists observations_updated_at on public.observations;
-create trigger observations_updated_at
-before update on public.observations
-for each row execute function public.set_updated_at();
- then (o.metadata->>'baseline_year')::integer end,
-    case when (o.metadata->>'comparison_year') ~ '^[0-9]{4}
-returns trigger
-language plpgsql
-set search_path = public
-as $$
-begin
-  new.updated_at = now();
-  return new;
-end;
-$$;
-
-drop trigger if exists observations_updated_at on public.observations;
-create trigger observations_updated_at
-before update on public.observations
-for each row execute function public.set_updated_at();
- then (o.metadata->>'comparison_year')::integer end,
-    case when (o.metadata->>'detected_at') is not null then (o.metadata->>'detected_at')::timestamptz end,
-    nullif(left(coalesce(o.metadata->>'change_type',''), 120), '')
+    case
+      when coalesce(o.metadata->>'baseline_year', '') ~ '^[0-9]{4}$'
+      then (o.metadata->>'baseline_year')::integer
+    end,
+    case
+      when coalesce(o.metadata->>'comparison_year', '') ~ '^[0-9]{4}$'
+      then (o.metadata->>'comparison_year')::integer
+    end,
+    case
+      when coalesce(o.metadata->>'detected_at', '') <> ''
+      then (o.metadata->>'detected_at')::timestamptz
+    end,
+    nullif(left(coalesce(o.metadata->>'change_type', ''), 120), '')
   from public.observations o
   where o.status = 'approved'
     and o.location operator(gis.&&)
       gis.st_setsrid(gis.st_makebox2d(
-        gis.st_point(p_min_lon,p_min_lat),
-        gis.st_point(p_max_lon,p_max_lat)
-      ),4326)::gis.geography
+        gis.st_point(p_min_lon, p_min_lat),
+        gis.st_point(p_max_lon, p_max_lat)
+      ), 4326)::gis.geography
     and (
       o.metadata ? 'baseline_year' or
       o.metadata ? 'comparison_year' or
@@ -461,10 +441,11 @@ for each row execute function public.set_updated_at();
       o.metadata ? 'change_type'
     )
   order by o.observed_at desc;
-$;
+$$;
 
 comment on function public.approved_road_change_in_view(double precision,double precision,double precision,double precision)
   is 'Returns only approved observations carrying explicit temporal/change metadata.';
+
 revoke execute on function public.approved_road_change_in_view(double precision,double precision,double precision,double precision) from public, anon, authenticated;
 grant execute on function public.approved_road_change_in_view(double precision,double precision,double precision,double precision) to service_role;
 
