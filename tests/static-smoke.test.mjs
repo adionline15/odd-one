@@ -20,9 +20,10 @@ test('Supabase schema has balanced function bodies and initializes PostGIS schem
   assert.doesNotMatch(schema, /^as \$(?!\$)/m);
   assert.doesNotMatch(schema, /^\$(?!\$);$/m);
   assert.equal((schema.match(/create or replace function public\.set_updated_at\(/g) || []).length, 1);
-  assert.ok(schema.includes('as $viewport  assert.match(schema, /create or replace function public\.approved_road_change_in_view\([\s\S]*?\$\$;/);
+  assert.ok(schema.includes('as $viewport$'));
+  assert.ok(schema.includes("end;\n$viewport$;"));
+  assert.match(schema, /create or replace function public\.approved_road_change_in_view\([\s\S]*?\$\$;/);
 });
-
 test('frontend preserves verified observation boundaries', () => {
   const html = read('index.html');
   const runtime = read('app.js');
