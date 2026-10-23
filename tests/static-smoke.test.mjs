@@ -7,6 +7,11 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
 
+test('Vercel Node.js API handlers are configured for ES modules', () => {
+  const manifest = JSON.parse(read('package.json'));
+  assert.equal(manifest.type, 'module');
+});
+
 test('frontend preserves verified observation boundaries', () => {
   const html = read('index.html');
   const runtime = read('app.js');
