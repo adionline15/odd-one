@@ -20,7 +20,7 @@ test('Supabase schema has balanced function bodies and initializes PostGIS schem
   assert.doesNotMatch(schema, /^as \$(?!\$)/m);
   assert.doesNotMatch(schema, /^\$(?!\$);$/m);
   assert.equal((schema.match(/create or replace function public\.set_updated_at\(/g) || []).length, 1);
-  assert.match(schema, /create or replace function public\\.approved_observations_in_view\\([\\s\\S]*?limit least\\(greatest\\(p_limit, 1\\), 500\\);\\s*end;\\s*\\$\\$;/);
+  assert.match(schema, /create or replace function public\.approved_observations_in_view\([\s\S]*?limit least\(greatest\(p_limit, 1\), 500\);\s*end;\s*\$\$;/);
   assert.match(schema, /create or replace function public\.approved_road_change_in_view\([\s\S]*?\$\$;/);
 });
 
