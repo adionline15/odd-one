@@ -220,7 +220,7 @@ returns table (
 language plpgsql
 security definer
 set search_path = public, gis
-as $$
+as $viewport$
 begin
   if p_min_lat < -90 or p_min_lat > 90 or p_max_lat < -90 or p_max_lat > 90 or
      p_min_lon < -180 or p_min_lon > 180 or p_max_lon < -180 or p_max_lon > 180 or
@@ -252,7 +252,7 @@ begin
   order by o.observed_at desc
   limit least(greatest(p_limit, 1), 500);
 end;
-$;
+$viewport$;
 
 comment on function public.approved_observations_in_view(double precision, double precision, double precision, double precision, integer)
   is 'Returns approved observations intersecting a geographic viewport, newest first.';
