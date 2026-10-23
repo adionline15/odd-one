@@ -213,6 +213,15 @@ test('map stores viewport center state',()=>assert.match(read('interaction-v2.js
 
 test('map has a useful interaction title',()=>assert.match(read('interaction-v2.js'),/Pan and zoom to explore verified road intelligence/));
 
+test('interaction layer keeps ready helper in scope for all progressive enhancements', () => {
+  const interaction = read('interaction-v2.js');
+  const lastReadyCall = interaction.lastIndexOf("ready(() => document.getElementById('map')?.setAttribute('title','Pan and zoom to explore verified road intelligence'))");
+  assert.match(interaction, /const ready = fn => document\\.readyState === 'loading'/);
+  assert.ok(lastReadyCall >= 0, 'expected final progressive ready() enhancement');
+  assert.ok(interaction.lastIndexOf('})();') > lastReadyCall, 'the IIFE must close after the final ready() enhancement');
+  assert.equal((interaction.match(/\\}\\)\\(\\);/g) || []).length, 1, 'expected one enclosing IIFE');
+});
+
 test('Earth-to-location transitions cancel stale camera handoffs', () => {
   const runtime = read('app.js');
   assert.match(runtime, /let earthTransitionId = 0/);
